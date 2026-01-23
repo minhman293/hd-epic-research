@@ -24,11 +24,11 @@ When using the dataset, kindly reference:
 
 ## ![NEW](https://img.shields.io/badge/NEW-red?style=for-the-badge) HD-EPIC Intermediate Data
 
-We have released new intermediate data for HD-EPIC, aligned to the released MP4 videos, providing per-video
+We have released new intermediate data for HD-EPIC, aligned to the MP4 videos, providing per-video
 Aria glasses device calibration and frame-wise camera pose and gaze information.
 
 **Includes:**
-- Static device calibration (cameras and sensors), including sensor to device transforms
+- Per-video static device calibration (cameras and sensors), including sensor to device transforms
 - Per-frame device to world transforms
 - Per-frame gaze centre (image space) and 3D gaze direction (world space)
 
