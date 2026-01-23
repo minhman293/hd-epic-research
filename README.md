@@ -22,6 +22,20 @@ When using the dataset, kindly reference:
 }
 ```
 
+## ![NEW](https://img.shields.io/badge/NEW-red?style=for-the-badge) HD-EPIC Intermediate Data
+
+We have released new intermediate data for HD-EPIC, aligned to the released MP4 videos, providing per-video
+Aria glasses device calibration and frame-wise camera pose and gaze information.
+
+**Includes:**
+- Static device calibration (cameras and sensors), including sensor to device transforms
+- Per-frame device to world transforms
+- Per-frame gaze centre (image space) and 3D gaze direction (world space)
+
+**[Download intermediate data](https://uob-my.sharepoint.com/:f:/g/personal/jc17360_bristol_ac_uk/IgCCGb5qDbiOR7cmj1R9OyUWAXQFYL7FP_d0eMzB4ENPVQk?e=3hngWD)**
+
+Full details are provided in the README in the link above.
+
 ## Narrations and Action Segments
 
 This folder contains narration annotations structured as follows:
