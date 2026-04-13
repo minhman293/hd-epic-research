@@ -1,0 +1,115 @@
+{
+  "recipe_id": "P08_R01",
+  "recipe_data": {
+    "participant": "P08",
+    "name": "Coffee",
+    "type": "online",
+    "source": "https://www.goodhousekeeping.com/food-recipes/cooking/a35952377/how-to-make-espresso/",
+    "steps": {
+      "P08_R01_S01": "GRIND AND WEIGH YOUR COFFEE.",
+      "P08_R01_S02": " DISTRIBUTE AND TAMP YOUR SHOT.",
+      "P08_R01_S03": "PULL YOUR SHOT."
+    },
+    "captures": [
+      {
+        "videos": [
+          "P08-20240613-122900"
+        ],
+        "ingredients": {
+          "P08_R01_I01": {
+            "name": "coffee",
+            "amount": 5,
+            "amount_unit": "g",
+            "calories": 0,
+            "fat": 0,
+            "carbs": 0,
+            "protein": 0,
+            "weigh": [
+              {
+                "video": "P08-20240613-122900",
+                "start": 35.0,
+                "end": 50.99
+              }
+            ],
+            "add": []
+          }
+        },
+        "step_times": {
+          "P08_R01_S01": [
+            {
+              "video": "P08-20240613-122900",
+              "start": 37.415,
+              "end": 40.56
+            },
+            {
+              "video": "P08-20240613-122900",
+              "start": 27.302,
+              "end": 28.431
+            },
+            {
+              "video": "P08-20240613-122900",
+              "start": 72.963,
+              "end": 95.125
+            }
+          ],
+          "P08_R01_S02": [
+            {
+              "video": "P08-20240613-122900",
+              "start": 143.077,
+              "end": 155.528
+            }
+          ],
+          "P08_R01_S03": [
+            {
+              "video": "P08-20240613-122900",
+              "start": 163.078,
+              "end": 190.051
+            }
+          ]
+        },
+        "prep_times": {
+          "P08_R01_S01": [
+            {
+              "video": "P08-20240613-122900",
+              "start": 16.302,
+              "end": 27.367
+            },
+            {
+              "video": "P08-20240613-122900",
+              "start": 120.404,
+              "end": 130.367
+            },
+            {
+              "video": "P08-20240613-122900",
+              "start": 33.695,
+              "end": 37.448
+            }
+          ],
+          "P08_R01_S02": [
+            {
+              "video": "P08-20240613-122900",
+              "start": 107.399,
+              "end": 117.593
+            },
+            {
+              "video": "P08-20240613-122900",
+              "start": 130.4,
+              "end": 143.077
+            }
+          ],
+          "P08_R01_S03": [
+            {
+              "video": "P08-20240613-122900",
+              "start": 160.844,
+              "end": 163.044
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "video_ids": [
+    "P08-20240613-122900"
+  ],
+  "narrations_count": 57
+}

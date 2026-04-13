@@ -1,0 +1,11 @@
+rank,from_action,to_action,avg_pause,frequency,intervention_type,urgency,robot_action
+12,put(cup),take(can),5.110000000000003,1,monitoring,low,Monitor transition from put(cup) to take(can)
+3,move(scale),take(cup),4.460000000000001,1,monitoring,low,Monitor transition from move(scale) to take(cup)
+53,take(plate),finish(machine:washing),2.3700000000000045,1,monitoring,low,Monitor transition from take(plate) to finish(machine:washing)
+32,turn-on(machine:washing),take(cup),2.1599999999999966,1,monitoring,low,Monitor transition from turn-on(machine:washing) to take(cup)
+4,move(scale),take(maker:coffee),2.1099999999999994,1,monitoring,low,Monitor transition from move(scale) to take(maker:coffee)
+40,pat(maker:coffee),put(spoon),1.8799999999999955,1,monitoring,low,Monitor transition from pat(maker:coffee) to put(spoon)
+7,take(cup),search(rack:drying),1.5700000000000074,1,monitoring,low,Monitor transition from take(cup) to search(rack:drying)
+29,open(cap),pour(coffee),1.539999999999992,1,monitoring,low,Monitor transition from open(cap) to pour(coffee)
+5,move(scale),pat(maker:coffee),1.3900000000000006,1,monitoring,low,Monitor transition from move(scale) to pat(maker:coffee)
+8,take(cup),take(cup),1.2399999999999949,1,monitoring,low,Monitor transition from take(cup) to take(cup)
