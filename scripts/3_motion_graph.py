@@ -8,33 +8,46 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import json
 import pickle
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 from utils import (load_hd_epic_data, get_verb_name, get_noun_name, 
                    get_action_name, calculate_pause)
 
 
-def load_selected_recipe_files(outputs_dir='../outputs'):
-    """Load latest recipe-specific selection files from outputs directory."""
+def load_selected_recipe_files(outputs_dir='../outputs', recipe_id=None):
+    """Load recipe-specific selection files from outputs directory.
+
+    If recipe_id is provided, load exact files for that recipe.
+    Otherwise, load the most recently modified selected_recipe_*.json.
+    """
     outputs_path = Path(outputs_dir)
 
-    recipe_json_candidates = sorted(
-        outputs_path.glob('selected_recipe_*.json'),
-        key=lambda p: p.stat().st_mtime,
-        reverse=True,
-    )
-    if not recipe_json_candidates:
-        raise FileNotFoundError(
-            "No selection file found. Run 2_recipe_selector.py first "
-            "to create selected_recipe_<recipe_id>.json"
+    if recipe_id:
+        recipe_json_path = outputs_path / f'selected_recipe_{recipe_id}.json'
+        if not recipe_json_path.exists():
+            raise FileNotFoundError(
+                f"Missing selection file: {recipe_json_path}. "
+                "Run 2_recipe_selector.py for this recipe first."
+            )
+    else:
+        recipe_json_candidates = sorted(
+            outputs_path.glob('selected_recipe_*.json'),
+            key=lambda p: p.stat().st_mtime,
+            reverse=True,
         )
+        if not recipe_json_candidates:
+            raise FileNotFoundError(
+                "No selection file found. Run 2_recipe_selector.py first "
+                "to create selected_recipe_<recipe_id>.json"
+            )
+        recipe_json_path = recipe_json_candidates[0]
 
-    recipe_json_path = recipe_json_candidates[0]
     with open(recipe_json_path, 'r') as f:
         recipe_info = json.load(f)
 
-    recipe_id = recipe_info['recipe_id']
-    recipe_narrations_path = outputs_path / f'recipe_narrations_{recipe_id}.pkl'
+    resolved_recipe_id = recipe_info['recipe_id']
+    recipe_narrations_path = outputs_path / f'recipe_narrations_{resolved_recipe_id}.pkl'
     if not recipe_narrations_path.exists():
         raise FileNotFoundError(
             f"Missing narration file: {recipe_narrations_path}. "
@@ -42,6 +55,10 @@ def load_selected_recipe_files(outputs_dir='../outputs'):
         )
 
     recipe_narrations = pd.read_pickle(recipe_narrations_path)
+
+    print(f"Using selection file: {recipe_json_path.name}")
+    print(f"Using narrations file: {recipe_narrations_path.name}")
+
     return recipe_info, recipe_narrations
 
 
@@ -192,31 +209,16 @@ def visualize_motion_graph(G, recipe_id, recipe_name, output_path='../outputs/fi
     for u, v, key, data in G.edges(data=True, keys=True):
         edge_data.append({
             'u': u,
-            'v': v,
-            'weight': data['weight'],
-            'avg_pause': data['avg_pause']
+            'v': v
         })
-    
-    # Normalize edge widths
-    max_weight = max([e['weight'] for e in edge_data]) if edge_data else 1
-    
-    # Draw edges by pause category
+
+    # Draw edges with a uniform style (no pause-based encoding)
     print("Drawing edges...")
     for edge in edge_data:
-        width = (edge['weight'] / max_weight) * 8
-        
-        # Color by pause duration
-        if edge['avg_pause'] > 30:
-            color = 'red'
-        elif edge['avg_pause'] > 10:
-            color = 'orange'
-        else:
-            color = 'green'
-        
         nx.draw_networkx_edges(G, pos,
                               edgelist=[(edge['u'], edge['v'])],
-                              width=width,
-                              edge_color=color,
+                              width=2.0,
+                              edge_color='#64748B',
                               alpha=0.6,
                               arrows=True,
                               arrowsize=20,
@@ -236,7 +238,7 @@ def visualize_motion_graph(G, recipe_id, recipe_name, output_path='../outputs/fi
                            ax=ax)
     
     ax.set_title(
-        f'Recipe Motion Graph: {recipe_name} ({recipe_id})\nAction Flow with Pause Indicators',
+        f'Recipe Motion Graph: {recipe_name} ({recipe_id})\nAction Flow',
         fontsize=20,
         fontweight='bold',
         pad=20,
@@ -246,12 +248,8 @@ def visualize_motion_graph(G, recipe_id, recipe_name, output_path='../outputs/fi
     # Legend
     from matplotlib.lines import Line2D
     legend_elements = [
-        Line2D([0], [0], color='green', linewidth=4, 
-               label='Fast transition (<10s pause)'),
-        Line2D([0], [0], color='orange', linewidth=4,
-               label='Medium pause (10-30s)'),
-        Line2D([0], [0], color='red', linewidth=4,
-               label='Long pause (>30s) - Struggle point')
+         Line2D([0], [0], color='#64748B', linewidth=3,
+             label='Transition edge (uniform style)')
     ]
     ax.legend(handles=legend_elements, loc='upper right', fontsize=14)
     
@@ -404,11 +402,16 @@ def save_graph_data(G, output_path='../outputs/graphs/motion_graph.pkl'):
 
 
 def main():
+    # Optional CLI usage:
+    #   python 3_motion_graph.py P08_R01
+    # If omitted, most recent selected_recipe_*.json is used.
+    recipe_id_arg = sys.argv[1].strip() if len(sys.argv) > 1 else None
+
     # Load data
     data = load_hd_epic_data('..')
     
     # Load recipe selection outputs
-    recipe_info, recipe_narrations = load_selected_recipe_files('../outputs')
+    recipe_info, recipe_narrations = load_selected_recipe_files('../outputs', recipe_id_arg)
     recipe_id = recipe_info['recipe_id']
     recipe_name = recipe_info.get('recipe_data', {}).get('name', 'Unknown Recipe')
     

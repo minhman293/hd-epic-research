@@ -47,11 +47,11 @@ def select_recipe(recipes, recipe_timestamps, narrations):
     
     recipe_df = pd.DataFrame(recipe_info)
     recipe_df = recipe_df[recipe_df['videos'] > 0].sort_values(
-        by=['videos', 'actions', 'steps', 'recipe_id'],
+        by=['actions', 'steps', 'videos', 'recipe_id'],
         ascending=[True, True, True, True]
     )
     
-    print("\nTop simplest recipes (fewest videos/actions/steps):")
+    print("\nTop simplest recipes (fewest actions/steps/videos):")
     print(recipe_df.head(20).to_string(index=False))
 
     if recipe_df.empty:
@@ -60,7 +60,7 @@ def select_recipe(recipes, recipe_timestamps, narrations):
             "Check recipe_id formatting in activities CSV files."
         )
     
-    # Auto-select simplest recipe based on fewest videos, actions, then steps
+    # Auto-select simplest recipe based on fewest actions, then steps, videos
     selected_row = recipe_df.iloc[0]       # CHANGE THIS INDEX TO SELECT DIFFERENT RECIPES
     selected_recipe_id = selected_row['recipe_id']
     

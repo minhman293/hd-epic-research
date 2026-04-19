@@ -529,8 +529,8 @@ def main():
     print(f"Videos: {len(recipe_info['video_ids'])}")
     print(f"Actions: {recipe_info['narrations_count']}")
 
-    motion_graph_img = f'../outputs/figures/motion_graph_{recipe_id}_new.png'
-    linear_flow_img = f'../outputs/figures/motion_graph_linear_{recipe_id}_new.png'
+    motion_graph_img = f'../outputs/figures/motion_graph_{recipe_id}_new2.png'
+    linear_flow_img = f'../outputs/figures/motion_graph_linear_{recipe_id}_new2.png'
     
     # Build graph
     G = build_motion_graph(

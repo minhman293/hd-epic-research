@@ -6,8 +6,8 @@ Target style: Image 3 (Gemini reference) — process flow graph with:
   - Strict left-to-right temporal layout (Sugiyama/hierarchical)
   - START and END sentinel nodes
   - Explicit cycle arcs (self-loops + back-edges drawn as curved arcs above the flow)
-  - Edge color encodes pause severity (green/orange/red)
-  - Edge width encodes transition frequency
+    - Uniform edge style (no pause-based color encoding)
+    - Dashed cycle/back edges to distinguish reverse direction
   - Node color encodes action category (verb-based)
   - Readable node labels, no label truncation overlap
 
@@ -112,25 +112,9 @@ def classify_edges(G, pos):
 # STEP 3: Determine edge visual properties
 # ─────────────────────────────────────────────────────────────────────────────
 
-def edge_style(data, max_weight):
-    """Return (color, linewidth, alpha) for an edge based on pause and frequency."""
-    avg_pause = data.get('avg_pause', 0)
-    weight    = data.get('weight', 1)
-
-    if avg_pause > 30:
-        color = '#DC2626'   # red — struggle point
-        alpha = 1.0
-    elif avg_pause > 10:
-        color = '#F59E0B'   # amber — medium pause
-        alpha = 0.9
-    else:
-        color = '#16A34A'   # green — fast transition
-        alpha = 0.7
-
-    # Width: 1.0 (rare) → 5.0 (most common), proportional to log frequency
-    lw = 1.0 + 4.0 * (np.log1p(weight) / np.log1p(max_weight))
-
-    return color, lw, alpha
+def edge_style():
+    """Return a uniform edge style (no pause-based encoding)."""
+    return '#64748B', 1.8, 0.85
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -220,11 +204,9 @@ def visualize_motion_graph_v3(G, recipe_id, recipe_name,
     G.add_node('START')
     G.add_node('END')
     for action in set(first_actions):
-        G.add_edge('START', action, weight=first_actions.count(action),
-                   avg_pause=0, max_pause=0, min_pause=0, std_pause=0, pauses=[])
+        G.add_edge('START', action, weight=first_actions.count(action))
     for action in set(last_actions):
-        G.add_edge(action, 'END', weight=last_actions.count(action),
-                   avg_pause=0, max_pause=0, min_pause=0, std_pause=0, pauses=[])
+        G.add_edge(action, 'END', weight=last_actions.count(action))
 
     # ── 5b. Layout ────────────────────────────────────────────────────────────
     print("Computing hierarchical layout...")
@@ -236,10 +218,6 @@ def visualize_motion_graph_v3(G, recipe_id, recipe_name,
 
     # ── 5c. Classify edges ────────────────────────────────────────────────────
     forward_edges, back_edges, self_loop_edges = classify_edges(G, pos)
-    max_weight = max(
-        (d.get('weight', 1) for _, _, d in G.edges(data=True)),
-        default=1
-    )
 
     # ── 5d. Figure setup ──────────────────────────────────────────────────────
     fig, ax = plt.subplots(figsize=(28, 16))
@@ -249,7 +227,7 @@ def visualize_motion_graph_v3(G, recipe_id, recipe_name,
     # ── 5e. Draw forward edges (main flow) ────────────────────────────────────
     print("Drawing forward edges (main flow)...")
     for u, v, data in forward_edges:
-        color, lw, alpha = edge_style(data, max_weight)
+        color, lw, alpha = edge_style()
         # Use a slight upward curve for forward edges to avoid label overlap
         nx.draw_networkx_edges(
             G, pos,
@@ -265,19 +243,11 @@ def visualize_motion_graph_v3(G, recipe_id, recipe_name,
             min_source_margin=22,
             min_target_margin=22,
         )
-        # Edge weight label (transition frequency) at midpoint
-        if data.get('weight', 1) > 1:
-            mx = (pos[u][0] + pos[v][0]) / 2
-            my = (pos[u][1] + pos[v][1]) / 2 + 0.25
-            ax.text(mx, my, str(int(data['weight'])),
-                    fontsize=7, color=color, ha='center', va='center',
-                    fontweight='bold',
-                    path_effects=[pe.withStroke(linewidth=2, foreground='white')])
 
     # ── 5f. Draw back-edges (cycles) as arcs above the graph ─────────────────
     print("Drawing cycle edges (back-edges)...")
     for u, v, data in back_edges:
-        color, lw, alpha = edge_style(data, max_weight)
+        color, lw, alpha = edge_style()
         # Large positive rad = arc curves strongly upward → clearly visible as cycle
         rad = 0.5 + 0.3 * min(
             abs(pos[u][0] - pos[v][0]) / (max(pos[n][0] for n in pos) + 1),
@@ -301,7 +271,7 @@ def visualize_motion_graph_v3(G, recipe_id, recipe_name,
 
     # ── 5g. Draw self-loops ───────────────────────────────────────────────────
     for u, v, data in self_loop_edges:
-        color, lw, alpha = edge_style(data, max_weight)
+        color, lw, alpha = edge_style()
         x, y = pos[u]
         loop = mpatches.FancyArrowPatch(
             posA=(x - 0.3, y + 0.5),
@@ -311,6 +281,7 @@ def visualize_motion_graph_v3(G, recipe_id, recipe_name,
             color=color,
             linewidth=lw,
             alpha=alpha,
+            linestyle='dashed',
             zorder=2,
         )
         ax.add_patch(loop)
@@ -356,12 +327,11 @@ def visualize_motion_graph_v3(G, recipe_id, recipe_name,
     from matplotlib.patches import Patch
 
     edge_legend = [
-        Line2D([0], [0], color='#16A34A', lw=3, label='Fast transition  (<10s pause)'),
-        Line2D([0], [0], color='#F59E0B', lw=3, label='Medium pause  (10–30s)'),
-        Line2D([0], [0], color='#DC2626', lw=3, label='Struggle point  (>30s pause)'),
-        Line2D([0], [0], color='#6B7280', lw=2, linestyle='dashed',
-               label='Cycle / back-edge'),
-        Line2D([0], [0], color='#1F2937', lw=2, label='Edge width = transition frequency'),
+         Line2D([0], [0], color='#64748B', lw=2.5, label='Forward transition'),
+         Line2D([0], [0], color='#64748B', lw=2.5, linestyle='dashed',
+             label='Cycle / back-edge / self-loop'),
+         Line2D([0], [0], color='#1F2937', lw=0, marker='>', markersize=7,
+             label='Arrow direction = temporal direction'),
     ]
     node_legend = [
         Patch(color='#3B82F6', label='Take / carry / move'),
