@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nespresso Motion Dashboard (P08_R01)</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    :root {
+      --bg: #f3f1ea;
+      --panel: #fffdf7;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --edge: #94a3b8;
+      --edge-active: #ea580c;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 18%, #d6f4ef 0%, transparent 35%),
+        radial-gradient(circle at 84% 8%, #fde7d3 0%, transparent 30%),
+        var(--bg);
+      font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+    }
+
+    .page {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 18px;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 14px;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: var(--panel);
+      border: 1px solid #ddd8cc;
+      border-radius: 14px;
+      padding: 14px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .title { margin: 0; font-size: 1.25rem; }
+    .sub { margin: 4px 0 0; color: var(--muted); font-size: 0.95rem; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      background: #ecfeff;
+      border: 1px solid #bae6fd;
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: #0c4a6e;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 14px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid #ddd8cc;
+      border-radius: 14px;
+      padding: 12px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .panel h2 { margin: 0; font-size: 1rem; }
+
+    #graphWrap {
+      height: 540px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      position: relative;
+      cursor: grab;
+    }
+
+    #graphWrap:active { cursor: grabbing; }
+
+    #graphSvg { width: 100%; height: 100%; display: block; }
+
+    .zoom-controls {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      z-index: 10;
+    }
+
+    .zoom-controls button {
+      width: 28px;
+      height: 28px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.92);
+      color: #374151;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .zoom-controls button:hover { background: #f3f4f6; }
+
+    .legend-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      font-size: 0.76rem;
+      padding: 6px 8px;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      color: #374151;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 1px solid rgba(0,0,0,0.15);
+    }
+
+    .legend-line {
+      width: 22px;
+      height: 2px;
+      flex-shrink: 0;
+      background: #94a3b8;
+    }
+
+    .legend-line.dashed {
+      background: none;
+      border-top: 2px dashed #94a3b8;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      background: #000;
+    }
+
+    .meta {
+      display: grid;
+      gap: 7px;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
+
+    .row span:first-child { color: var(--muted); }
+
+    .status {
+      border-top: 1px dashed #d1d5db;
+      margin-top: 4px;
+      padding-top: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .status strong { color: var(--accent); }
+
+    .footerPanel {
+      background: var(--panel);
+      border: 1px solid #ddd8cc;
+      border-radius: 14px;
+      padding: 10px 12px;
+      overflow: auto;
+      max-height: 200px;
+    }
+
+    .timeline { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+
+    .timeline th, .timeline td {
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 6px 8px;
+      white-space: nowrap;
+    }
+
+    .timeline th { position: sticky; top: 0; background: #f8fafc; z-index: 1; }
+    .timeline tr.active { background: #fff7ed; }
+
+    .empty {
+      color: #b91c1c;
+      font-weight: 600;
+      padding: 8px;
+      border-radius: 8px;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      margin-top: 8px;
+    }
+
+    /* ── Graph styles ─────────────────────────────────────────────────── */
+
+    .link {
+      stroke: var(--edge);
+      stroke-opacity: 0.55;
+      fill: none;
+      stroke-dashoffset: 0;
+    }
+
+    .link.back-edge,
+    .link.self-loop {
+      stroke-dasharray: 5 4;
+      stroke-opacity: 0.45;
+    }
+
+    .link.active {
+      stroke: var(--edge-active);
+      stroke-opacity: 1;
+      stroke-dasharray: 8 6;
+      filter: drop-shadow(0 0 3px rgba(234, 88, 12, 0.55));
+      animation: dashMove 0.7s linear infinite;
+    }
+
+    .paused .link.active { animation-play-state: paused; }
+
+    .node circle {
+      stroke: #1e293b;
+      stroke-width: 1.2;
+      fill-opacity: 0.92;
+    }
+
+    .node.active circle {
+      stroke: #ea580c;
+      stroke-width: 2.8;
+      filter: drop-shadow(0 0 5px rgba(234, 88, 12, 0.75));
+      animation: pulse 0.9s ease-in-out infinite;
+    }
+
+    .paused .node.active circle { animation-play-state: paused; }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.28); }
+    }
+
+    @keyframes dashMove {
+      to { stroke-dashoffset: -28; }
+    }
+
+    @media (max-width: 1100px) {
+      .layout { grid-template-columns: 1fr; }
+      #graphWrap { height: 460px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page" id="appRoot">
+
+    <section class="header">
+      <div>
+        <h1 class="title">Nespresso Motion Dashboard · P08_R01</h1>
+        <p class="sub">Motion graph synchronized with video — nodes = actions, directed edges = transitions</p>
+      </div>
+      <div class="pill" id="summaryPill">Loading…</div>
+    </section>
+
+    <section class="layout">
+      <article class="panel">
+        <h2>
+          Motion Graph
+          <span style="font-size:0.8em;font-weight:400;color:#6b7280">
+            — scroll to zoom · drag to pan
+          </span>
+        </h2>
+        <div id="graphWrap">
+          <svg id="graphSvg"></svg>
+          <div class="zoom-controls">
+            <button id="zoomIn"    title="Zoom in">+</button>
+            <button id="zoomReset" title="Fit to view">⊙</button>
+            <button id="zoomOut"   title="Zoom out">−</button>
+          </div>
+        </div>
+        <div class="legend-strip" id="legendStrip"></div>
+      </article>
+
+      <article class="panel">
+        <h2>Video Player</h2>
+        <video id="video" controls preload="metadata"></video>
+        <div class="meta">
+          <div class="row"><span>Recipe</span><span id="recipeLabel">-</span></div>
+          <div class="row"><span>Video</span><span id="videoLabel">-</span></div>
+          <div class="row"><span>Time</span><span id="timeLabel">0.00 s</span></div>
+          <div class="row"><span>Current Action</span><span id="actionLabel">-</span></div>
+          <div class="status" id="statusLabel">Status: <strong>Idle</strong></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="footerPanel">
+      <table class="timeline">
+        <thead>
+          <tr>
+            <th>#</th><th>Action</th><th>Start</th><th>End</th><th>Duration</th>
+          </tr>
+        </thead>
+        <tbody id="timelineBody"></tbody>
+      </table>
+    </section>
+
+  </div><!-- .page -->
+
+  <script>
+  const DATA_URL = "outputs/graphs/dashboard_P08_R01.json";
+
+  // ── Verb → color mapping (mirrors Python visualize_motion_graph.py) ────────
+  const VERB_COLORS = {
+    take: '#3B82F6', carry: '#3B82F6', move: '#3B82F6', slide: '#3B82F6',
+    put: '#8B5CF6',
+    pour: '#F97316', scoop: '#F97316', mix: '#F97316',
+    press: '#EF4444', crush: '#EF4444', squeeze: '#EF4444',
+    open: '#06B6D4', close: '#06B6D4',
+    'turn-on': '#10B981', 'turn-off': '#10B981', finish: '#10B981',
+    wait: '#6B7280', check: '#6B7280', search: '#6B7280',
+    write: '#6B7280', adjust: '#6B7280',
+    screw: '#F59E0B', pat: '#F59E0B',
+  };
+  const DEFAULT_NODE_COLOR = '#94A3B8';
+
+  const LEGEND_ITEMS = [
+    { type: 'dot', color: '#3B82F6',  label: 'Take / carry / move' },
+    { type: 'dot', color: '#8B5CF6',  label: 'Put / place' },
+    { type: 'dot', color: '#F97316',  label: 'Pour / scoop / mix' },
+    { type: 'dot', color: '#EF4444',  label: 'Press / crush' },
+    { type: 'dot', color: '#06B6D4',  label: 'Open / close' },
+    { type: 'dot', color: '#10B981',  label: 'Machine ops' },
+    { type: 'dot', color: '#F59E0B',  label: 'Screw / pat' },
+    { type: 'dot', color: '#6B7280',  label: 'Wait / check' },
+    { type: 'line', dashed: false,    label: 'Forward edge' },
+    { type: 'line', dashed: true,     label: 'Back edge (cycle)' },
+  ];
+
+  // ── DOM ────────────────────────────────────────────────────────────────────
+  const appRoot      = document.getElementById("appRoot");
+  const summaryPill  = document.getElementById("summaryPill");
+  const recipeLabel  = document.getElementById("recipeLabel");
+  const videoLabel   = document.getElementById("videoLabel");
+  const timeLabel    = document.getElementById("timeLabel");
+  const actionLabel  = document.getElementById("actionLabel");
+  const statusLabel  = document.getElementById("statusLabel");
+  const timelineBody = document.getElementById("timelineBody");
+  const video        = document.getElementById("video");
+  const svg          = d3.select("#graphSvg");
+
+  let linkSel      = null;
+  let nodeSel      = null;
+  let timelineRows = [];
+  let cachedData   = null;
+  let zoomBeh      = null;
+  let fitXform     = null;
+  let layoutRef    = null;   // node-id → {x, y} — set by buildGraph
+  let lastActiveNode = null; // tracks action changes to avoid redundant zoom
+
+  // ── Helpers ────────────────────────────────────────────────────────────────
+  const fmt = s => Number(s || 0).toFixed(2) + " s";
+
+  function nodeColor(id) {
+    return VERB_COLORS[id.split('(')[0].toLowerCase()] || DEFAULT_NODE_COLOR;
+  }
+
+  function currentItem(sequence, t) {
+    return sequence.find(s => t >= s.start && t < s.end) || null;
+  }
+
+  // ── Legend ─────────────────────────────────────────────────────────────────
+  function buildLegend() {
+    const strip = document.getElementById("legendStrip");
+    LEGEND_ITEMS.forEach(item => {
+      const el = document.createElement("div");
+      el.className = "legend-item";
+      if (item.type === 'dot') {
+        el.innerHTML =
+          `<div class="legend-dot" style="background:${item.color}"></div>` +
+          `<span>${item.label}</span>`;
+      } else {
+        el.innerHTML =
+          `<div class="legend-line${item.dashed ? ' dashed' : ''}"></div>` +
+          `<span>${item.label}</span>`;
+      }
+      strip.appendChild(el);
+    });
+  }
+
+  // ── Timeline ───────────────────────────────────────────────────────────────
+  function drawTimeline(sequence) {
+    timelineBody.innerHTML = "";
+    timelineRows = sequence.map(item => {
+      const tr = document.createElement("tr");
+      tr.dataset.index = item.index;
+      tr.innerHTML =
+        `<td>${item.index + 1}</td>` +
+        `<td title="${item.action}">${item.action}</td>` +
+        `<td>${fmt(item.start)}</td>` +
+        `<td>${fmt(item.end)}</td>` +
+        `<td>${fmt(item.duration)}</td>`;
+      timelineBody.appendChild(tr);
+      return tr;
+    });
+  }
+
+  // ── Hierarchical layout ────────────────────────────────────────────────────
+  // X = median normalised sequence position (left = early, right = late)
+  // Y = spread nodes in the same column vertically
+  function computeLayout(nodes, sequence) {
+    const n = sequence.length;
+    const occurrences = {};
+
+    sequence.forEach((item, idx) => {
+      (occurrences[item.action] = occurrences[item.action] || [])
+        .push(idx / Math.max(n - 1, 1));
+    });
+
+    const N_COLS  = 20;
+    const X_SCALE = 120;
+    const Y_SCALE = 72;
+    const buckets = {};
+
+    nodes.forEach(d => {
+      const pos    = occurrences[d.id] || [0.5];
+      const sorted = [...pos].sort((a, b) => a - b);
+      const mid    = Math.floor(sorted.length / 2);
+      const median = sorted.length % 2 === 0
+        ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
+      const col = Math.round(median * (N_COLS - 1));
+      (buckets[col] = buckets[col] || []).push(d.id);
+    });
+
+    const layout = {};
+    Object.entries(buckets).forEach(([col, ids]) => {
+      const sorted = [...ids].sort();
+      const nk = sorted.length;
+      sorted.forEach((id, i) => {
+        layout[id] = {
+          x: parseInt(col) * X_SCALE,
+          y: (i - (nk - 1) / 2) * Y_SCALE,
+        };
+      });
+    });
+    return layout;
+  }
+
+  // ── Build motion graph ─────────────────────────────────────────────────────
+  function buildGraph(graph, sequence) {
+    const wrap = document.getElementById("graphWrap");
+    const W = wrap.clientWidth  || 700;
+    const H = wrap.clientHeight || 540;
+
+    svg.attr("width", W).attr("height", H);
+    svg.selectAll("*").remove();
+
+    // Arrowhead markers
+    const defs = svg.append("defs");
+    [["arrow", "#94a3b8"], ["arrowActive", "#ea580c"]].forEach(([id, color]) => {
+      defs.append("marker")
+        .attr("id", id)
+        .attr("viewBox", "0 -4 10 8")
+        .attr("refX", 9).attr("refY", 0)
+        .attr("markerWidth", 5).attr("markerHeight", 5)
+        .attr("orient", "auto")
+        .append("path")
+        .attr("d", "M0,-4L10,0L0,4Z")
+        .attr("fill", color);
+    });
+
+    const g = svg.append("g").attr("id", "zoomGroup");
+
+    const layout = computeLayout(graph.nodes, sequence);
+
+    // Node radius scale
+    const maxCount = d3.max(graph.nodes, d => d.count) || 1;
+    const nodeR = d3.scaleSqrt().domain([1, Math.max(maxCount, 2)]).range([8, 18]);
+
+    // Per-node radius lookup (used for edge endpoint offsets)
+    const radMap = {};
+    graph.nodes.forEach(d => { radMap[d.id] = nodeR(d.count); });
+
+    // Classify edges
+    const fwdEdges = [], backEdges = [], selfLoops = [];
+    graph.links.forEach(link => {
+      if (link.source === link.target) {
+        selfLoops.push(link);
+      } else {
+        const sx = (layout[link.source] || { x: 0 }).x;
+        const tx = (layout[link.target] || { x: 0 }).x;
+        (tx >= sx ? fwdEdges : backEdges).push(link);
+      }
+    });
+
+    // ── Path helpers ───────────────────────────────────────────────────────
+    function straightPath(link) {
+      const s  = layout[link.source] || { x: 0, y: 0 };
+      const t  = layout[link.target] || { x: 0, y: 0 };
+      const dx = t.x - s.x, dy = t.y - s.y;
+      const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+      const nx = dx / dist, ny = dy / dist;
+      const x1 = s.x + nx * (radMap[link.source] || 8);
+      const y1 = s.y + ny * (radMap[link.source] || 8);
+      const x2 = t.x - nx * ((radMap[link.target] || 8) + 3);
+      const y2 = t.y - ny * ((radMap[link.target] || 8) + 3);
+      // Slight upward curve to separate parallel edges
+      const mx = (x1 + x2) / 2, my = (y1 + y2) / 2 - 10;
+      return `M${x1},${y1} Q${mx},${my} ${x2},${y2}`;
+    }
+
+    function arcPath(link) {
+      const s  = layout[link.source] || { x: 0, y: 0 };
+      const t  = layout[link.target] || { x: 0, y: 0 };
+      const dx = t.x - s.x, dy = t.y - s.y;
+      const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+      const nx = dx / dist, ny = dy / dist;
+      const x1 = s.x + nx * (radMap[link.source] || 8);
+      const y1 = s.y + ny * (radMap[link.source] || 8);
+      const x2 = t.x - nx * ((radMap[link.target] || 8) + 3);
+      const y2 = t.y - ny * ((radMap[link.target] || 8) + 3);
+      const mx  = (s.x + t.x) / 2;
+      const arcH = Math.max(70, Math.abs(s.x - t.x) * 0.55 + Math.abs(s.y - t.y) * 0.2);
+      const cy  = Math.min(s.y, t.y) - arcH;
+      return `M${x1},${y1} Q${mx},${cy} ${x2},${y2}`;
+    }
+
+    // ── Draw back edges (behind everything) ───────────────────────────────
+    g.append("g").selectAll("path")
+      .data(backEdges).enter().append("path")
+      .attr("class", "link back-edge")
+      .attr("data-key", d => d.key)
+      .attr("stroke-width", 1.3)
+      .attr("marker-end", "url(#arrow)")
+      .attr("d", arcPath);
+
+    // ── Draw self-loops ────────────────────────────────────────────────────
+    g.append("g").selectAll("path")
+      .data(selfLoops).enter().append("path")
+      .attr("class", "link self-loop")
+      .attr("data-key", d => d.key)
+      .attr("stroke-width", 1.3)
+      .attr("marker-end", "url(#arrow)")
+      .attr("d", d => {
+        const p = layout[d.source] || { x: 0, y: 0 };
+        const r = radMap[d.source] || 8;
+        const lr = r + 13;
+        return `M${p.x - r * 0.6},${p.y - r} A${lr},${lr} 0 1,0 ${p.x + r * 0.6},${p.y - r}`;
+      });
+
+    // ── Draw forward edges ─────────────────────────────────────────────────
+    g.append("g").selectAll("path")
+      .data(fwdEdges).enter().append("path")
+      .attr("class", "link fwd-edge")
+      .attr("data-key", d => d.key)
+      .attr("stroke-width", d => d.count > 1 ? 2 : 1.4)
+      .attr("marker-end", "url(#arrow)")
+      .attr("d", straightPath);
+
+    // ── Draw nodes (on top) ────────────────────────────────────────────────
+    const nodeGs = g.append("g").selectAll(".node")
+      .data(graph.nodes).enter()
+      .append("g")
+      .attr("class", "node")
+      .attr("data-id", d => d.id)
+      .attr("transform", d => {
+        const p = layout[d.id] || { x: 0, y: 0 };
+        return `translate(${p.x},${p.y})`;
+      });
+
+    nodeGs.append("circle")
+      .attr("r", d => nodeR(d.count))
+      .style("fill", d => nodeColor(d.id));
+
+    // Verb label inside circle
+    nodeGs.append("text")
+      .attr("text-anchor", "middle").attr("dy", "0.35em")
+      .attr("font-size", "6.5px").attr("font-weight", "bold")
+      .attr("fill", "white").attr("pointer-events", "none")
+      .text(d => {
+        const v = d.id.split('(')[0];
+        return v.length > 7 ? v.slice(0, 6) + "…" : v;
+      });
+
+    // Noun label below circle
+    nodeGs.append("text")
+      .attr("text-anchor", "middle")
+      .attr("dy", d => nodeR(d.count) + 11)
+      .attr("font-size", "6px").attr("fill", "#475569")
+      .attr("pointer-events", "none")
+      .text(d => { const m = d.id.match(/\((.+)\)/); return m ? m[1] : ""; });
+
+    // Tooltip
+    nodeGs.append("title").text(d => `${d.id}\nCount: ${d.count}`);
+
+    // Store selections and layout for video sync
+    linkSel   = g.selectAll(".link");
+    nodeSel   = g.selectAll(".node");
+    layoutRef = layout;
+
+    // ── Fit-to-view initial transform ──────────────────────────────────────
+    const xs = Object.values(layout).map(p => p.x);
+    const ys = Object.values(layout).map(p => p.y);
+    const pad = 50;
+    const minX = Math.min(...xs) - pad, maxX = Math.max(...xs) + pad;
+    const minY = Math.min(...ys) - pad, maxY = Math.max(...ys) + pad;
+    const gW = maxX - minX, gH = maxY - minY;
+    const sc = Math.min(W / gW, H / gH) * 0.9;
+    const tx = (W - gW * sc) / 2 - minX * sc;
+    const ty = (H - gH * sc) / 2 - minY * sc;
+    fitXform = d3.zoomIdentity.translate(tx, ty).scale(sc);
+
+    // ── Zoom behavior ──────────────────────────────────────────────────────
+    zoomBeh = d3.zoom()
+      .scaleExtent([0.04, 8])
+      .on("zoom", e => g.attr("transform", e.transform));
+
+    svg.call(zoomBeh);
+    svg.call(zoomBeh.transform, fitXform);
+
+    // Zoom buttons
+    document.getElementById("zoomIn").onclick = () =>
+      svg.transition().duration(250).call(zoomBeh.scaleBy, 1.5);
+    document.getElementById("zoomOut").onclick = () =>
+      svg.transition().duration(250).call(zoomBeh.scaleBy, 1 / 1.5);
+    document.getElementById("zoomReset").onclick = () =>
+      svg.transition().duration(400).call(zoomBeh.transform, fitXform);
+  }
+
+  // ── Auto-zoom graph to centre on the active node ──────────────────────────
+  function autoZoomToNode(nodeId) {
+    if (!layoutRef || !zoomBeh) return;
+    const p = layoutRef[nodeId];
+    if (!p) return;
+    const wrap = document.getElementById("graphWrap");
+    const W = wrap.clientWidth, H = wrap.clientHeight;
+    const scale = 2.2;
+    const tx = W / 2 - p.x * scale;
+    const ty = H / 2 - p.y * scale;
+    svg.transition().duration(550)
+      .call(zoomBeh.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
+  }
+
+  // ── Scroll the footer table without affecting the page ────────────────────
+  const footerPanel = document.querySelector(".footerPanel");
+
+  function scrollTimelineToRow(row) {
+    const rowTop = row.offsetTop;
+    const rowH   = row.offsetHeight;
+    const panelH = footerPanel.clientHeight;
+    footerPanel.scrollTop = rowTop - (panelH - rowH) / 2;
+  }
+
+  // ── Active state (called on every video timeupdate) ────────────────────────
+  function updateActive(item) {
+    const activeNode = item ? item.action   : null;
+    const activeEdge = item ? item.edge_key : null;
+
+    // Auto-zoom to node only when the active action changes
+    if (activeNode !== lastActiveNode) {
+      lastActiveNode = activeNode;
+      if (activeNode) {
+        autoZoomToNode(activeNode);
+      } else {
+        // Video ended / no active action — restore fit view
+        svg.transition().duration(400).call(zoomBeh.transform, fitXform);
+      }
+    }
+
+    if (nodeSel) nodeSel.classed("active", d => d.id === activeNode);
+
+    if (linkSel) {
+      linkSel
+        .classed("active", d => d && d.key === activeEdge)
+        .attr("marker-end", d => d && d.key === activeEdge
+          ? "url(#arrowActive)" : "url(#arrow)");
+    }
+
+    timelineRows.forEach(row => {
+      const on = item && Number(row.dataset.index) === item.index;
+      row.classList.toggle("active", Boolean(on));
+      if (on) scrollTimelineToRow(row);
+    });
+
+    actionLabel.textContent = item ? item.action : "-";
+  }
+
+  function refresh() {
+    if (!cachedData) return;
+    const item = currentItem(cachedData.sequence, video.currentTime || 0);
+    timeLabel.textContent = fmt(video.currentTime || 0);
+    updateActive(item);
+  }
+
+  // ── Init ───────────────────────────────────────────────────────────────────
+  async function init() {
+    buildLegend();
+    try {
+      const res = await fetch(DATA_URL);
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+      cachedData = data;
+
+      recipeLabel.textContent = `${data.recipe.name} (${data.recipe.id})`;
+      videoLabel.textContent  = data.recipe.video_id;
+      summaryPill.textContent =
+        `${data.graph.nodes.length} nodes · ` +
+        `${data.graph.links.length} transitions · ` +
+        `${data.sequence.length} actions`;
+
+      video.src = data.recipe.video_path;
+      drawTimeline(data.sequence);
+      buildGraph(data.graph, data.sequence);
+      statusLabel.innerHTML = "Status: <strong>Ready</strong>";
+
+      video.addEventListener("play", () => {
+        appRoot.classList.remove("paused");
+        statusLabel.innerHTML = "Status: <strong>Playing</strong>";
+        refresh();
+      });
+      video.addEventListener("pause", () => {
+        appRoot.classList.add("paused");
+        statusLabel.innerHTML = "Status: <strong>Paused</strong>";
+        refresh();
+      });
+      video.addEventListener("timeupdate", refresh);
+      video.addEventListener("seeked",     refresh);
+      video.addEventListener("ended", () => {
+        appRoot.classList.add("paused");
+        statusLabel.innerHTML = "Status: <strong>Ended</strong>";
+        refresh();
+      });
+
+    } catch (err) {
+      summaryPill.textContent = "Data unavailable";
+      const div = document.createElement("div");
+      div.className = "empty";
+      div.textContent =
+        "Run scripts/6_prepare_dashboard_data.py first, then reload. (" + err.message + ")";
+      document.querySelector(".header").appendChild(div);
+      console.error(err);
+    }
+  }
+
+  init();
+  </script>
+</body>
+</html>
