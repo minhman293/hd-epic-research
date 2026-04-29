@@ -1,4 +1,4 @@
-import { DATA_URL, LEGEND_ITEMS } from "./config.js";
+import { getDataUrl, DEFAULT_DATA_MODE, LEGEND_ITEMS } from "./config.js";
 import { createGraphController } from "./graph.js";
 import { buildLegend } from "./legend.js";
 import { drawTimeline, updateTimelineActive } from "./timeline.js";
@@ -16,6 +16,7 @@ const footerPanel = document.querySelector(".footerPanel");
 const legendStrip = document.getElementById("legendStrip");
 const header = document.querySelector(".header");
 const video = document.getElementById("video");
+const graphModeSelect = document.getElementById("graphModeSelect");
 
 const graphController = createGraphController({
   svgSelector: "#graphSvg",
@@ -41,16 +42,12 @@ function refresh() {
   updateTimelineActive(timelineRows, footerPanel, item);
 }
 
-async function init() {
-  if (!window.d3) {
-    renderDataError(summaryPill, header, "D3 was not loaded. Please check your network and reload.");
-    return;
-  }
-
-  buildLegend(legendStrip, LEGEND_ITEMS);
+async function loadGraphData() {
+  const mode = graphModeSelect.value;
+  const dataUrl = getDataUrl(mode);
 
   try {
-    const response = await fetch(DATA_URL);
+    const response = await fetch(dataUrl);
     if (!response.ok) {
       throw new Error("HTTP " + response.status);
     }
@@ -66,38 +63,60 @@ async function init() {
       `${data.sequence.length} actions`;
 
     video.src = data.recipe.video_path;
+    video.currentTime = 0; // Reset video to start
     timelineRows = drawTimeline(timelineBody, data.sequence);
     graphController.buildGraph(data.graph, data.sequence);
     statusLabel.innerHTML = "Status: <strong>Ready</strong>";
-
-    video.addEventListener("play", () => {
-      appRoot.classList.remove("paused");
-      statusLabel.innerHTML = "Status: <strong>Playing</strong>";
-      refresh();
-    });
-
-    video.addEventListener("pause", () => {
-      appRoot.classList.add("paused");
-      statusLabel.innerHTML = "Status: <strong>Paused</strong>";
-      refresh();
-    });
-
-    video.addEventListener("timeupdate", refresh);
-    video.addEventListener("seeked", refresh);
-
-    video.addEventListener("ended", () => {
-      appRoot.classList.add("paused");
-      statusLabel.innerHTML = "Status: <strong>Ended</strong>";
-      refresh();
-    });
+    actionLabel.textContent = "-";
   } catch (error) {
     renderDataError(
       summaryPill,
       header,
-      "Run scripts/6_prepare_dashboard_data.py first, then reload. (" + error.message + ")"
+      "Failed to load graph data. (" + error.message + ")"
     );
     console.error(error);
   }
+}
+
+// Listen for graph mode changes
+graphModeSelect.addEventListener("change", () => {
+  loadGraphData();
+});
+
+async function init() {
+  if (!window.d3) {
+    renderDataError(summaryPill, header, "D3 was not loaded. Please check your network and reload.");
+    return;
+  }
+
+  // Set default graph mode
+  graphModeSelect.value = DEFAULT_DATA_MODE;
+
+  buildLegend(legendStrip, LEGEND_ITEMS);
+
+  // Load initial graph data
+  await loadGraphData();
+
+  video.addEventListener("play", () => {
+    appRoot.classList.remove("paused");
+    statusLabel.innerHTML = "Status: <strong>Playing</strong>";
+    refresh();
+  });
+
+  video.addEventListener("pause", () => {
+    appRoot.classList.add("paused");
+    statusLabel.innerHTML = "Status: <strong>Paused</strong>";
+    refresh();
+  });
+
+  video.addEventListener("timeupdate", refresh);
+  video.addEventListener("seeked", refresh);
+
+  video.addEventListener("ended", () => {
+    appRoot.classList.add("paused");
+    statusLabel.innerHTML = "Status: <strong>Ended</strong>";
+    refresh();
+  });
 }
 
 init();

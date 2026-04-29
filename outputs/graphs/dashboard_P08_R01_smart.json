@@ -1,0 +1,1169 @@
+{
+  "recipe": {
+    "id": "P08_R01",
+    "name": "Coffee",
+    "video_id": "P08-20240613-122900",
+    "video_path": "raw-video/P08-20240613-122900.mp4",
+    "narration_count": 57
+  },
+  "steps": [
+    {
+      "id": "P08_R01_S01",
+      "text": "GRIND AND WEIGH YOUR COFFEE."
+    },
+    {
+      "id": "P08_R01_S02",
+      "text": "DISTRIBUTE AND TAMP YOUR SHOT."
+    },
+    {
+      "id": "P08_R01_S03",
+      "text": "PULL YOUR SHOT."
+    }
+  ],
+  "sequence": [
+    {
+      "index": 0,
+      "action": "slide",
+      "start": 3.31,
+      "end": 4.67,
+      "duration": 1.3599999999999999,
+      "next_action": "open(phone)",
+      "edge_key": "slide(phone)|||open(phone)"
+    },
+    {
+      "index": 1,
+      "action": "open",
+      "start": 4.5,
+      "end": 7.92,
+      "duration": 3.42,
+      "next_action": "move(scale)",
+      "edge_key": "open(phone)|||move(scale)"
+    },
+    {
+      "index": 2,
+      "action": "move",
+      "start": 8.79,
+      "end": 11.04,
+      "duration": 2.25,
+      "next_action": "take(cup)",
+      "edge_key": "move(scale)|||take(cup)"
+    },
+    {
+      "index": 3,
+      "action": "take",
+      "start": 15.5,
+      "end": 17.34,
+      "duration": 1.8399999999999999,
+      "next_action": "turn-on(scale)",
+      "edge_key": "take(cup)|||turn-on(scale)"
+    },
+    {
+      "index": 4,
+      "action": "turn-on",
+      "start": 17.78,
+      "end": 19.23,
+      "duration": 1.4499999999999993,
+      "next_action": "adjust(scale)",
+      "edge_key": "turn-on(scale)|||adjust(scale)"
+    },
+    {
+      "index": 5,
+      "action": "adjust",
+      "start": 18.85,
+      "end": 26.83,
+      "duration": 7.979999999999997,
+      "next_action": "put(cup)",
+      "edge_key": "adjust(scale)|||put(cup)"
+    },
+    {
+      "index": 6,
+      "action": "put",
+      "start": 27.4,
+      "end": 28.74,
+      "duration": 1.3399999999999999,
+      "next_action": "take(can)",
+      "edge_key": "put(cup)|||take(can)"
+    },
+    {
+      "index": 7,
+      "action": "take",
+      "start": 33.85,
+      "end": 35.16,
+      "duration": 1.3099999999999952,
+      "next_action": "open(can)",
+      "edge_key": "take(can)|||open(can)"
+    },
+    {
+      "index": 8,
+      "action": "open",
+      "start": 35.71,
+      "end": 36.87,
+      "duration": 1.1599999999999966,
+      "next_action": "pour(coffee)",
+      "edge_key": "open(can)|||pour(coffee)"
+    },
+    {
+      "index": 9,
+      "action": "pour",
+      "start": 36.64,
+      "end": 41.37,
+      "duration": 4.729999999999997,
+      "next_action": "close(can)",
+      "edge_key": "pour(coffee)|||close(can)"
+    },
+    {
+      "index": 10,
+      "action": "close",
+      "start": 41.26,
+      "end": 44.71,
+      "duration": 3.450000000000003,
+      "next_action": "put(can)",
+      "edge_key": "close(can)|||put(can)"
+    },
+    {
+      "index": 11,
+      "action": "put",
+      "start": 45.26,
+      "end": 46.7,
+      "duration": 1.4400000000000048,
+      "next_action": "carry(phone)",
+      "edge_key": "put(can)|||carry(phone)"
+    },
+    {
+      "index": 12,
+      "action": "carry",
+      "start": 46.28,
+      "end": 47.26,
+      "duration": 0.9799999999999969,
+      "next_action": "write(coffee)",
+      "edge_key": "carry(phone)|||write(coffee)"
+    },
+    {
+      "index": 13,
+      "action": "write",
+      "start": 48.26,
+      "end": 67.23,
+      "duration": 18.970000000000006,
+      "next_action": "move(phone)",
+      "edge_key": "write(coffee)|||move(phone)"
+    },
+    {
+      "index": 14,
+      "action": "move",
+      "start": 67.39,
+      "end": 68.61,
+      "duration": 1.2199999999999989,
+      "next_action": "move(scale)",
+      "edge_key": "move(phone)|||move(scale)"
+    },
+    {
+      "index": 15,
+      "action": "move",
+      "start": 69.72,
+      "end": 70.74,
+      "duration": 1.019999999999996,
+      "next_action": "take(maker:coffee)",
+      "edge_key": "move(scale)|||take(maker:coffee)"
+    },
+    {
+      "index": 16,
+      "action": "take",
+      "start": 72.85,
+      "end": 73.35,
+      "duration": 0.5,
+      "next_action": "open(cap)",
+      "edge_key": "take(maker:coffee)|||open(cap)"
+    },
+    {
+      "index": 17,
+      "action": "open",
+      "start": 73.44,
+      "end": 74.18,
+      "duration": 0.7400000000000091,
+      "next_action": "pour(coffee)",
+      "edge_key": "open(cap)|||pour(coffee)"
+    },
+    {
+      "index": 18,
+      "action": "pour",
+      "start": 75.72,
+      "end": 76.96000000000001,
+      "duration": 1.240000000000009,
+      "next_action": "put(cup)",
+      "edge_key": "pour(coffee)|||put(cup)"
+    },
+    {
+      "index": 19,
+      "action": "put",
+      "start": 77.41,
+      "end": 80.11,
+      "duration": 2.700000000000003,
+      "next_action": "crush(coffee)",
+      "edge_key": "put(cup)|||crush(coffee)"
+    },
+    {
+      "index": 20,
+      "action": "crush",
+      "start": 79.89,
+      "end": 96.38,
+      "duration": 16.489999999999995,
+      "next_action": "turn-on(machine:washing)",
+      "edge_key": "crush(coffee)|||turn-on(machine:washing)"
+    },
+    {
+      "index": 21,
+      "action": "turn-on",
+      "start": 97.41,
+      "end": 98.76,
+      "duration": 1.3500000000000085,
+      "next_action": "take(cup)",
+      "edge_key": "turn-on(machine:washing)|||take(cup)"
+    },
+    {
+      "index": 22,
+      "action": "take",
+      "start": 100.92,
+      "end": 101.6,
+      "duration": 0.6799999999999926,
+      "next_action": "search(rack:drying)",
+      "edge_key": "take(cup)|||search(rack:drying)"
+    },
+    {
+      "index": 23,
+      "action": "search",
+      "start": 103.17,
+      "end": 106.93,
+      "duration": 3.760000000000005,
+      "next_action": "take(cup)",
+      "edge_key": "search(rack:drying)|||take(cup)"
+    },
+    {
+      "index": 24,
+      "action": "take",
+      "start": 107.37,
+      "end": 107.81,
+      "duration": 0.4399999999999977,
+      "next_action": "take(cup)",
+      "edge_key": "take(cup)|||take(cup)"
+    },
+    {
+      "index": 25,
+      "action": "take",
+      "start": 109.05,
+      "end": 110.35,
+      "duration": 1.2999999999999972,
+      "next_action": "screw(cup)",
+      "edge_key": "take(cup)|||screw(cup)"
+    },
+    {
+      "index": 26,
+      "action": "screw",
+      "start": 111.19,
+      "end": 114.51,
+      "duration": 3.3200000000000074,
+      "next_action": "put(cup)",
+      "edge_key": "screw(cup)|||put(cup)"
+    },
+    {
+      "index": 27,
+      "action": "put",
+      "start": 114.38,
+      "end": 114.99,
+      "duration": 0.6099999999999994,
+      "next_action": "put(cup)",
+      "edge_key": "put(cup)|||put(cup)"
+    },
+    {
+      "index": 28,
+      "action": "put",
+      "start": 115.55,
+      "end": 117.26,
+      "duration": 1.710000000000008,
+      "next_action": "move(scale)",
+      "edge_key": "put(cup)|||move(scale)"
+    },
+    {
+      "index": 29,
+      "action": "move",
+      "start": 117.69,
+      "end": 118.96,
+      "duration": 1.269999999999996,
+      "next_action": "pat(maker:coffee)",
+      "edge_key": "move(scale)|||pat(maker:coffee)"
+    },
+    {
+      "index": 30,
+      "action": "pat",
+      "start": 120.35,
+      "end": 121.44,
+      "duration": 1.0900000000000034,
+      "next_action": "take(spoon)",
+      "edge_key": "pat(maker:coffee)|||take(spoon)"
+    },
+    {
+      "index": 31,
+      "action": "take",
+      "start": 121.42,
+      "end": 122.39,
+      "duration": 0.9699999999999989,
+      "next_action": "mix(coffee)",
+      "edge_key": "take(spoon)|||mix(coffee)"
+    },
+    {
+      "index": 32,
+      "action": "mix",
+      "start": 122.47,
+      "end": 125.8,
+      "duration": 3.3299999999999983,
+      "next_action": "pat(maker:coffee)",
+      "edge_key": "mix(coffee)|||pat(maker:coffee)"
+    },
+    {
+      "index": 33,
+      "action": "pat",
+      "start": 125.55,
+      "end": 128.0,
+      "duration": 2.450000000000003,
+      "next_action": "scoop(coffee)",
+      "edge_key": "pat(maker:coffee)|||scoop(coffee)"
+    },
+    {
+      "index": 34,
+      "action": "scoop",
+      "start": 127.75,
+      "end": 130.2,
+      "duration": 2.4499999999999886,
+      "next_action": "put(coffee)",
+      "edge_key": "scoop(coffee)|||put(coffee)"
+    },
+    {
+      "index": 35,
+      "action": "put",
+      "start": 130.13,
+      "end": 131.6,
+      "duration": 1.4699999999999989,
+      "next_action": "pat(maker:coffee)",
+      "edge_key": "put(coffee)|||pat(maker:coffee)"
+    },
+    {
+      "index": 36,
+      "action": "pat",
+      "start": 131.4,
+      "end": 133.15,
+      "duration": 1.75,
+      "next_action": "crush(coffee)",
+      "edge_key": "pat(maker:coffee)|||crush(coffee)"
+    },
+    {
+      "index": 37,
+      "action": "crush",
+      "start": 132.95,
+      "end": 135.95,
+      "duration": 3.0,
+      "next_action": "pat(maker:coffee)",
+      "edge_key": "crush(coffee)|||pat(maker:coffee)"
+    },
+    {
+      "index": 38,
+      "action": "pat",
+      "start": 135.55,
+      "end": 137.62,
+      "duration": 2.069999999999993,
+      "next_action": "put(spoon)",
+      "edge_key": "pat(maker:coffee)|||put(spoon)"
+    },
+    {
+      "index": 39,
+      "action": "put",
+      "start": 139.5,
+      "end": 140.73,
+      "duration": 1.2299999999999898,
+      "next_action": "pat(cup)",
+      "edge_key": "put(spoon)|||pat(cup)"
+    },
+    {
+      "index": 40,
+      "action": "pat",
+      "start": 140.77,
+      "end": 142.18,
+      "duration": 1.4099999999999966,
+      "next_action": "press(coffee)",
+      "edge_key": "pat(cup)|||press(coffee)"
+    },
+    {
+      "index": 41,
+      "action": "press",
+      "start": 142.25,
+      "end": 151.13,
+      "duration": 8.879999999999995,
+      "next_action": "put(presser)",
+      "edge_key": "press(coffee)|||put(presser)"
+    },
+    {
+      "index": 42,
+      "action": "put",
+      "start": 150.79,
+      "end": 152.04,
+      "duration": 1.25,
+      "next_action": "put(cup)",
+      "edge_key": "put(presser)|||put(cup)"
+    },
+    {
+      "index": 43,
+      "action": "put",
+      "start": 152.09,
+      "end": 153.82,
+      "duration": 1.7299999999999898,
+      "next_action": "screw(cup)",
+      "edge_key": "put(cup)|||screw(cup)"
+    },
+    {
+      "index": 44,
+      "action": "screw",
+      "start": 153.87,
+      "end": 154.9,
+      "duration": 1.0300000000000011,
+      "next_action": "put(machine:washing)",
+      "edge_key": "screw(cup)|||put(machine:washing)"
+    },
+    {
+      "index": 45,
+      "action": "put",
+      "start": 154.89,
+      "end": 156.27,
+      "duration": 1.3800000000000239,
+      "next_action": "move(phone)",
+      "edge_key": "put(machine:washing)|||move(phone)"
+    },
+    {
+      "index": 46,
+      "action": "move",
+      "start": 156.37,
+      "end": 160.13,
+      "duration": 3.759999999999991,
+      "next_action": "carry(cup)",
+      "edge_key": "move(phone)|||carry(cup)"
+    },
+    {
+      "index": 47,
+      "action": "carry",
+      "start": 160.23,
+      "end": 161.28,
+      "duration": 1.0500000000000114,
+      "next_action": "put(cup)",
+      "edge_key": "carry(cup)|||put(cup)"
+    },
+    {
+      "index": 48,
+      "action": "put",
+      "start": 161.38,
+      "end": 162.5,
+      "duration": 1.1200000000000045,
+      "next_action": "turn-on(machine:washing)",
+      "edge_key": "put(cup)|||turn-on(machine:washing)"
+    },
+    {
+      "index": 49,
+      "action": "turn-on",
+      "start": 163.4,
+      "end": 165.95,
+      "duration": 2.549999999999983,
+      "next_action": "check(coffee)",
+      "edge_key": "turn-on(machine:washing)|||check(coffee)"
+    },
+    {
+      "index": 50,
+      "action": "check",
+      "start": 166.32,
+      "end": 174.87,
+      "duration": 8.550000000000011,
+      "next_action": "open(drawer)",
+      "edge_key": "check(coffee)|||open(drawer)"
+    },
+    {
+      "index": 51,
+      "action": "open",
+      "start": 174.97,
+      "end": 175.82,
+      "duration": 0.8499999999999943,
+      "next_action": "take(plate)",
+      "edge_key": "open(drawer)|||take(plate)"
+    },
+    {
+      "index": 52,
+      "action": "take",
+      "start": 175.89,
+      "end": 176.32,
+      "duration": 0.4300000000000068,
+      "next_action": "finish(machine:washing)",
+      "edge_key": "take(plate)|||finish(machine:washing)"
+    },
+    {
+      "index": 53,
+      "action": "finish",
+      "start": 178.69,
+      "end": 180.39,
+      "duration": 1.6999999999999886,
+      "next_action": "wait(machine:washing)",
+      "edge_key": "finish(machine:washing)|||wait(machine:washing)"
+    },
+    {
+      "index": 54,
+      "action": "wait",
+      "start": 180.55,
+      "end": 185.2,
+      "duration": 4.649999999999977,
+      "next_action": "squeeze(cup)",
+      "edge_key": "wait(machine:washing)|||squeeze(cup)"
+    },
+    {
+      "index": 55,
+      "action": "squeeze",
+      "start": 185.21,
+      "end": 191.15,
+      "duration": 5.939999999999998,
+      "next_action": "turn-off(machine:washing)",
+      "edge_key": "squeeze(cup)|||turn-off(machine:washing)"
+    },
+    {
+      "index": 56,
+      "action": "turn-off",
+      "start": 192.17,
+      "end": 193.26,
+      "duration": 1.0900000000000034,
+      "next_action": null,
+      "edge_key": null
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "put",
+        "count": 11,
+        "objects": {
+          "cup": 6,
+          "can": 1,
+          "coffee": 1,
+          "spoon": 1,
+          "presser": 1,
+          "machine:washing": 1
+        }
+      },
+      {
+        "id": "take",
+        "count": 8,
+        "objects": {
+          "cup": 4,
+          "can": 1,
+          "maker:coffee": 1,
+          "spoon": 1,
+          "plate": 1
+        }
+      },
+      {
+        "id": "move",
+        "count": 5,
+        "objects": {
+          "scale": 3,
+          "phone": 2
+        }
+      },
+      {
+        "id": "pat",
+        "count": 5,
+        "objects": {
+          "maker:coffee": 4,
+          "cup": 1
+        }
+      },
+      {
+        "id": "open",
+        "count": 4,
+        "objects": {
+          "phone": 1,
+          "can": 1,
+          "cap": 1,
+          "drawer": 1
+        }
+      },
+      {
+        "id": "turn-on",
+        "count": 3,
+        "objects": {
+          "scale": 1,
+          "machine:washing": 2
+        }
+      },
+      {
+        "id": "carry",
+        "count": 2,
+        "objects": {
+          "phone": 1,
+          "cup": 1
+        }
+      },
+      {
+        "id": "crush",
+        "count": 2,
+        "objects": {
+          "coffee": 2
+        }
+      },
+      {
+        "id": "pour",
+        "count": 2,
+        "objects": {
+          "coffee": 2
+        }
+      },
+      {
+        "id": "screw",
+        "count": 2,
+        "objects": {
+          "cup": 2
+        }
+      },
+      {
+        "id": "adjust",
+        "count": 1,
+        "objects": {
+          "scale": 1
+        }
+      },
+      {
+        "id": "check",
+        "count": 1,
+        "objects": {
+          "coffee": 1
+        }
+      },
+      {
+        "id": "close",
+        "count": 1,
+        "objects": {
+          "can": 1
+        }
+      },
+      {
+        "id": "finish",
+        "count": 1,
+        "objects": {
+          "machine:washing": 1
+        }
+      },
+      {
+        "id": "mix",
+        "count": 1,
+        "objects": {
+          "coffee": 1
+        }
+      },
+      {
+        "id": "press",
+        "count": 1,
+        "objects": {
+          "coffee": 1
+        }
+      },
+      {
+        "id": "scoop",
+        "count": 1,
+        "objects": {
+          "coffee": 1
+        }
+      },
+      {
+        "id": "search",
+        "count": 1,
+        "objects": {
+          "rack:drying": 1
+        }
+      },
+      {
+        "id": "slide",
+        "count": 1,
+        "objects": {
+          "phone": 1
+        }
+      },
+      {
+        "id": "squeeze",
+        "count": 1,
+        "objects": {
+          "cup": 1
+        }
+      },
+      {
+        "id": "turn-off",
+        "count": 1,
+        "objects": {
+          "machine:washing": 1
+        }
+      },
+      {
+        "id": "wait",
+        "count": 1,
+        "objects": {
+          "machine:washing": 1
+        }
+      },
+      {
+        "id": "write",
+        "count": 1,
+        "objects": {
+          "coffee": 1
+        }
+      }
+    ],
+    "links": [
+      {
+        "source": "move",
+        "target": "take",
+        "count": 2,
+        "key": "move|||take",
+        "occurrences": [
+          2,
+          15
+        ]
+      },
+      {
+        "source": "open",
+        "target": "pour",
+        "count": 2,
+        "key": "open|||pour",
+        "occurrences": [
+          8,
+          17
+        ]
+      },
+      {
+        "source": "put",
+        "target": "move",
+        "count": 2,
+        "key": "put|||move",
+        "occurrences": [
+          28,
+          45
+        ]
+      },
+      {
+        "source": "put",
+        "target": "pat",
+        "count": 2,
+        "key": "put|||pat",
+        "occurrences": [
+          35,
+          39
+        ]
+      },
+      {
+        "source": "put",
+        "target": "put",
+        "count": 2,
+        "key": "put|||put",
+        "occurrences": [
+          27,
+          42
+        ]
+      },
+      {
+        "source": "screw",
+        "target": "put",
+        "count": 2,
+        "key": "screw|||put",
+        "occurrences": [
+          26,
+          44
+        ]
+      },
+      {
+        "source": "take",
+        "target": "open",
+        "count": 2,
+        "key": "take|||open",
+        "occurrences": [
+          7,
+          16
+        ]
+      },
+      {
+        "source": "adjust",
+        "target": "put",
+        "count": 1,
+        "key": "adjust|||put",
+        "occurrences": [
+          5
+        ]
+      },
+      {
+        "source": "carry",
+        "target": "put",
+        "count": 1,
+        "key": "carry|||put",
+        "occurrences": [
+          47
+        ]
+      },
+      {
+        "source": "carry",
+        "target": "write",
+        "count": 1,
+        "key": "carry|||write",
+        "occurrences": [
+          12
+        ]
+      },
+      {
+        "source": "check",
+        "target": "open",
+        "count": 1,
+        "key": "check|||open",
+        "occurrences": [
+          50
+        ]
+      },
+      {
+        "source": "close",
+        "target": "put",
+        "count": 1,
+        "key": "close|||put",
+        "occurrences": [
+          10
+        ]
+      },
+      {
+        "source": "crush",
+        "target": "pat",
+        "count": 1,
+        "key": "crush|||pat",
+        "occurrences": [
+          37
+        ]
+      },
+      {
+        "source": "crush",
+        "target": "turn-on",
+        "count": 1,
+        "key": "crush|||turn-on",
+        "occurrences": [
+          20
+        ]
+      },
+      {
+        "source": "finish",
+        "target": "wait",
+        "count": 1,
+        "key": "finish|||wait",
+        "occurrences": [
+          53
+        ]
+      },
+      {
+        "source": "mix",
+        "target": "pat",
+        "count": 1,
+        "key": "mix|||pat",
+        "occurrences": [
+          32
+        ]
+      },
+      {
+        "source": "move",
+        "target": "carry",
+        "count": 1,
+        "key": "move|||carry",
+        "occurrences": [
+          46
+        ]
+      },
+      {
+        "source": "move",
+        "target": "move",
+        "count": 1,
+        "key": "move|||move",
+        "occurrences": [
+          14
+        ]
+      },
+      {
+        "source": "move",
+        "target": "pat",
+        "count": 1,
+        "key": "move|||pat",
+        "occurrences": [
+          29
+        ]
+      },
+      {
+        "source": "open",
+        "target": "move",
+        "count": 1,
+        "key": "open|||move",
+        "occurrences": [
+          1
+        ]
+      },
+      {
+        "source": "open",
+        "target": "take",
+        "count": 1,
+        "key": "open|||take",
+        "occurrences": [
+          51
+        ]
+      },
+      {
+        "source": "pat",
+        "target": "crush",
+        "count": 1,
+        "key": "pat|||crush",
+        "occurrences": [
+          36
+        ]
+      },
+      {
+        "source": "pat",
+        "target": "press",
+        "count": 1,
+        "key": "pat|||press",
+        "occurrences": [
+          40
+        ]
+      },
+      {
+        "source": "pat",
+        "target": "put",
+        "count": 1,
+        "key": "pat|||put",
+        "occurrences": [
+          38
+        ]
+      },
+      {
+        "source": "pat",
+        "target": "scoop",
+        "count": 1,
+        "key": "pat|||scoop",
+        "occurrences": [
+          33
+        ]
+      },
+      {
+        "source": "pat",
+        "target": "take",
+        "count": 1,
+        "key": "pat|||take",
+        "occurrences": [
+          30
+        ]
+      },
+      {
+        "source": "pour",
+        "target": "close",
+        "count": 1,
+        "key": "pour|||close",
+        "occurrences": [
+          9
+        ]
+      },
+      {
+        "source": "pour",
+        "target": "put",
+        "count": 1,
+        "key": "pour|||put",
+        "occurrences": [
+          18
+        ]
+      },
+      {
+        "source": "press",
+        "target": "put",
+        "count": 1,
+        "key": "press|||put",
+        "occurrences": [
+          41
+        ]
+      },
+      {
+        "source": "put",
+        "target": "carry",
+        "count": 1,
+        "key": "put|||carry",
+        "occurrences": [
+          11
+        ]
+      },
+      {
+        "source": "put",
+        "target": "crush",
+        "count": 1,
+        "key": "put|||crush",
+        "occurrences": [
+          19
+        ]
+      },
+      {
+        "source": "put",
+        "target": "screw",
+        "count": 1,
+        "key": "put|||screw",
+        "occurrences": [
+          43
+        ]
+      },
+      {
+        "source": "put",
+        "target": "take",
+        "count": 1,
+        "key": "put|||take",
+        "occurrences": [
+          6
+        ]
+      },
+      {
+        "source": "put",
+        "target": "turn-on",
+        "count": 1,
+        "key": "put|||turn-on",
+        "occurrences": [
+          48
+        ]
+      },
+      {
+        "source": "scoop",
+        "target": "put",
+        "count": 1,
+        "key": "scoop|||put",
+        "occurrences": [
+          34
+        ]
+      },
+      {
+        "source": "search",
+        "target": "take",
+        "count": 1,
+        "key": "search|||take",
+        "occurrences": [
+          23
+        ]
+      },
+      {
+        "source": "slide",
+        "target": "open",
+        "count": 1,
+        "key": "slide|||open",
+        "occurrences": [
+          0
+        ]
+      },
+      {
+        "source": "squeeze",
+        "target": "turn-off",
+        "count": 1,
+        "key": "squeeze|||turn-off",
+        "occurrences": [
+          55
+        ]
+      },
+      {
+        "source": "take",
+        "target": "finish",
+        "count": 1,
+        "key": "take|||finish",
+        "occurrences": [
+          52
+        ]
+      },
+      {
+        "source": "take",
+        "target": "mix",
+        "count": 1,
+        "key": "take|||mix",
+        "occurrences": [
+          31
+        ]
+      },
+      {
+        "source": "take",
+        "target": "screw",
+        "count": 1,
+        "key": "take|||screw",
+        "occurrences": [
+          25
+        ]
+      },
+      {
+        "source": "take",
+        "target": "search",
+        "count": 1,
+        "key": "take|||search",
+        "occurrences": [
+          22
+        ]
+      },
+      {
+        "source": "take",
+        "target": "take",
+        "count": 1,
+        "key": "take|||take",
+        "occurrences": [
+          24
+        ]
+      },
+      {
+        "source": "take",
+        "target": "turn-on",
+        "count": 1,
+        "key": "take|||turn-on",
+        "occurrences": [
+          3
+        ]
+      },
+      {
+        "source": "turn-on",
+        "target": "adjust",
+        "count": 1,
+        "key": "turn-on|||adjust",
+        "occurrences": [
+          4
+        ]
+      },
+      {
+        "source": "turn-on",
+        "target": "check",
+        "count": 1,
+        "key": "turn-on|||check",
+        "occurrences": [
+          49
+        ]
+      },
+      {
+        "source": "turn-on",
+        "target": "take",
+        "count": 1,
+        "key": "turn-on|||take",
+        "occurrences": [
+          21
+        ]
+      },
+      {
+        "source": "wait",
+        "target": "squeeze",
+        "count": 1,
+        "key": "wait|||squeeze",
+        "occurrences": [
+          54
+        ]
+      },
+      {
+        "source": "write",
+        "target": "move",
+        "count": 1,
+        "key": "write|||move",
+        "occurrences": [
+          13
+        ]
+      }
+    ]
+  }
+}

@@ -26,6 +26,14 @@
             - scroll to zoom - drag to pan
           </span>
         </h2>
+        <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px; flex-wrap: wrap;">
+          <label style="font-size: 0.9rem; font-weight: 500; color: #374151;">Detail Level:</label>
+          <select id="graphModeSelect" style="padding: 6px 36px 6px 10px; border-radius: 6px; border: 1px solid #d1d5db; font-size: 0.9rem; cursor: pointer; background: white url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 24 24%22 stroke=%22%236B7280%22%3E%3Cpath stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%222%22 d=%22M19 9l-7 7-7-7%22/%3E%3C/svg%3E') no-repeat right 14px center; background-size: 16px; appearance: none; -webkit-appearance: none;">
+            <option value="smart">Smart-Merged (Clear)</option>
+            <option value="full">Full Raw (Complete)</option>
+            <option value="abstracted">Task Phases (Overview)</option>
+          </select>
+        </div>
         <div id="graphWrap">
           <svg id="graphSvg"></svg>
           <div class="zoom-controls">

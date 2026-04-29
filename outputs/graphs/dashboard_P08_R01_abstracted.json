@@ -1,0 +1,953 @@
+{
+  "recipe": {
+    "id": "P08_R01",
+    "name": "Coffee",
+    "video_id": "P08-20240613-122900",
+    "video_path": "raw-video/P08-20240613-122900.mp4",
+    "narration_count": 57
+  },
+  "steps": [
+    {
+      "id": "P08_R01_S01",
+      "text": "GRIND AND WEIGH YOUR COFFEE."
+    },
+    {
+      "id": "P08_R01_S02",
+      "text": "DISTRIBUTE AND TAMP YOUR SHOT."
+    },
+    {
+      "id": "P08_R01_S03",
+      "text": "PULL YOUR SHOT."
+    }
+  ],
+  "sequence": [
+    {
+      "index": 0,
+      "action": "task-ops",
+      "start": 3.31,
+      "end": 4.67,
+      "duration": 1.3599999999999999,
+      "next_action": "open(phone)",
+      "edge_key": "slide(phone)|||open(phone)",
+      "raw_action": "slide(phone)"
+    },
+    {
+      "index": 1,
+      "action": "task-ops",
+      "start": 4.5,
+      "end": 7.92,
+      "duration": 3.42,
+      "next_action": "move(scale)",
+      "edge_key": "open(phone)|||move(scale)",
+      "raw_action": "open(phone)"
+    },
+    {
+      "index": 2,
+      "action": "measure",
+      "start": 8.79,
+      "end": 11.04,
+      "duration": 2.25,
+      "next_action": "take(cup)",
+      "edge_key": "move(scale)|||take(cup)",
+      "raw_action": "move(scale)"
+    },
+    {
+      "index": 3,
+      "action": "handle-cup",
+      "start": 15.5,
+      "end": 17.34,
+      "duration": 1.8399999999999999,
+      "next_action": "turn-on(scale)",
+      "edge_key": "take(cup)|||turn-on(scale)",
+      "raw_action": "take(cup)"
+    },
+    {
+      "index": 4,
+      "action": "measure",
+      "start": 17.78,
+      "end": 19.23,
+      "duration": 1.4499999999999993,
+      "next_action": "adjust(scale)",
+      "edge_key": "turn-on(scale)|||adjust(scale)",
+      "raw_action": "turn-on(scale)"
+    },
+    {
+      "index": 5,
+      "action": "measure",
+      "start": 18.85,
+      "end": 26.83,
+      "duration": 7.979999999999997,
+      "next_action": "put(cup)",
+      "edge_key": "adjust(scale)|||put(cup)",
+      "raw_action": "adjust(scale)"
+    },
+    {
+      "index": 6,
+      "action": "handle-cup",
+      "start": 27.4,
+      "end": 28.74,
+      "duration": 1.3399999999999999,
+      "next_action": "take(can)",
+      "edge_key": "put(cup)|||take(can)",
+      "raw_action": "put(cup)"
+    },
+    {
+      "index": 7,
+      "action": "extract-coffee",
+      "start": 33.85,
+      "end": 35.16,
+      "duration": 1.3099999999999952,
+      "next_action": "open(can)",
+      "edge_key": "take(can)|||open(can)",
+      "raw_action": "take(can)"
+    },
+    {
+      "index": 8,
+      "action": "extract-coffee",
+      "start": 35.71,
+      "end": 36.87,
+      "duration": 1.1599999999999966,
+      "next_action": "pour(coffee)",
+      "edge_key": "open(can)|||pour(coffee)",
+      "raw_action": "open(can)"
+    },
+    {
+      "index": 9,
+      "action": "dispense",
+      "start": 36.64,
+      "end": 41.37,
+      "duration": 4.729999999999997,
+      "next_action": "close(can)",
+      "edge_key": "pour(coffee)|||close(can)",
+      "raw_action": "pour(coffee)"
+    },
+    {
+      "index": 10,
+      "action": "extract-coffee",
+      "start": 41.26,
+      "end": 44.71,
+      "duration": 3.450000000000003,
+      "next_action": "put(can)",
+      "edge_key": "close(can)|||put(can)",
+      "raw_action": "close(can)"
+    },
+    {
+      "index": 11,
+      "action": "extract-coffee",
+      "start": 45.26,
+      "end": 46.7,
+      "duration": 1.4400000000000048,
+      "next_action": "carry(phone)",
+      "edge_key": "put(can)|||carry(phone)",
+      "raw_action": "put(can)"
+    },
+    {
+      "index": 12,
+      "action": "task-ops",
+      "start": 46.28,
+      "end": 47.26,
+      "duration": 0.9799999999999969,
+      "next_action": "write(coffee)",
+      "edge_key": "carry(phone)|||write(coffee)",
+      "raw_action": "carry(phone)"
+    },
+    {
+      "index": 13,
+      "action": "task-ops",
+      "start": 48.26,
+      "end": 67.23,
+      "duration": 18.970000000000006,
+      "next_action": "move(phone)",
+      "edge_key": "write(coffee)|||move(phone)",
+      "raw_action": "write(coffee)"
+    },
+    {
+      "index": 14,
+      "action": "task-ops",
+      "start": 67.39,
+      "end": 68.61,
+      "duration": 1.2199999999999989,
+      "next_action": "move(scale)",
+      "edge_key": "move(phone)|||move(scale)",
+      "raw_action": "move(phone)"
+    },
+    {
+      "index": 15,
+      "action": "measure",
+      "start": 69.72,
+      "end": 70.74,
+      "duration": 1.019999999999996,
+      "next_action": "take(maker:coffee)",
+      "edge_key": "move(scale)|||take(maker:coffee)",
+      "raw_action": "move(scale)"
+    },
+    {
+      "index": 16,
+      "action": "prep-machine",
+      "start": 72.85,
+      "end": 73.35,
+      "duration": 0.5,
+      "next_action": "open(cap)",
+      "edge_key": "take(maker:coffee)|||open(cap)",
+      "raw_action": "take(maker:coffee)"
+    },
+    {
+      "index": 17,
+      "action": "prep-machine",
+      "start": 73.44,
+      "end": 74.18,
+      "duration": 0.7400000000000091,
+      "next_action": "pour(coffee)",
+      "edge_key": "open(cap)|||pour(coffee)",
+      "raw_action": "open(cap)"
+    },
+    {
+      "index": 18,
+      "action": "dispense",
+      "start": 75.72,
+      "end": 76.96000000000001,
+      "duration": 1.240000000000009,
+      "next_action": "put(cup)",
+      "edge_key": "pour(coffee)|||put(cup)",
+      "raw_action": "pour(coffee)"
+    },
+    {
+      "index": 19,
+      "action": "handle-cup",
+      "start": 77.41,
+      "end": 80.11,
+      "duration": 2.700000000000003,
+      "next_action": "crush(coffee)",
+      "edge_key": "put(cup)|||crush(coffee)",
+      "raw_action": "put(cup)"
+    },
+    {
+      "index": 20,
+      "action": "tamp",
+      "start": 79.89,
+      "end": 96.38,
+      "duration": 16.489999999999995,
+      "next_action": "turn-on(machine:washing)",
+      "edge_key": "crush(coffee)|||turn-on(machine:washing)",
+      "raw_action": "crush(coffee)"
+    },
+    {
+      "index": 21,
+      "action": "clean-machine",
+      "start": 97.41,
+      "end": 98.76,
+      "duration": 1.3500000000000085,
+      "next_action": "take(cup)",
+      "edge_key": "turn-on(machine:washing)|||take(cup)",
+      "raw_action": "turn-on(machine:washing)"
+    },
+    {
+      "index": 22,
+      "action": "handle-cup",
+      "start": 100.92,
+      "end": 101.6,
+      "duration": 0.6799999999999926,
+      "next_action": "search(rack:drying)",
+      "edge_key": "take(cup)|||search(rack:drying)",
+      "raw_action": "take(cup)"
+    },
+    {
+      "index": 23,
+      "action": "prep-machine",
+      "start": 103.17,
+      "end": 106.93,
+      "duration": 3.760000000000005,
+      "next_action": "take(cup)",
+      "edge_key": "search(rack:drying)|||take(cup)",
+      "raw_action": "search(rack:drying)"
+    },
+    {
+      "index": 24,
+      "action": "handle-cup",
+      "start": 107.37,
+      "end": 107.81,
+      "duration": 0.4399999999999977,
+      "next_action": "take(cup)",
+      "edge_key": "take(cup)|||take(cup)",
+      "raw_action": "take(cup)"
+    },
+    {
+      "index": 25,
+      "action": "handle-cup",
+      "start": 109.05,
+      "end": 110.35,
+      "duration": 1.2999999999999972,
+      "next_action": "screw(cup)",
+      "edge_key": "take(cup)|||screw(cup)",
+      "raw_action": "take(cup)"
+    },
+    {
+      "index": 26,
+      "action": "handle-cup",
+      "start": 111.19,
+      "end": 114.51,
+      "duration": 3.3200000000000074,
+      "next_action": "put(cup)",
+      "edge_key": "screw(cup)|||put(cup)",
+      "raw_action": "screw(cup)"
+    },
+    {
+      "index": 27,
+      "action": "handle-cup",
+      "start": 114.38,
+      "end": 114.99,
+      "duration": 0.6099999999999994,
+      "next_action": "put(cup)",
+      "edge_key": "put(cup)|||put(cup)",
+      "raw_action": "put(cup)"
+    },
+    {
+      "index": 28,
+      "action": "handle-cup",
+      "start": 115.55,
+      "end": 117.26,
+      "duration": 1.710000000000008,
+      "next_action": "move(scale)",
+      "edge_key": "put(cup)|||move(scale)",
+      "raw_action": "put(cup)"
+    },
+    {
+      "index": 29,
+      "action": "measure",
+      "start": 117.69,
+      "end": 118.96,
+      "duration": 1.269999999999996,
+      "next_action": "pat(maker:coffee)",
+      "edge_key": "move(scale)|||pat(maker:coffee)",
+      "raw_action": "move(scale)"
+    },
+    {
+      "index": 30,
+      "action": "tamp",
+      "start": 120.35,
+      "end": 121.44,
+      "duration": 1.0900000000000034,
+      "next_action": "take(spoon)",
+      "edge_key": "pat(maker:coffee)|||take(spoon)",
+      "raw_action": "pat(maker:coffee)"
+    },
+    {
+      "index": 31,
+      "action": "prep-machine",
+      "start": 121.42,
+      "end": 122.39,
+      "duration": 0.9699999999999989,
+      "next_action": "mix(coffee)",
+      "edge_key": "take(spoon)|||mix(coffee)",
+      "raw_action": "take(spoon)"
+    },
+    {
+      "index": 32,
+      "action": "tamp",
+      "start": 122.47,
+      "end": 125.8,
+      "duration": 3.3299999999999983,
+      "next_action": "pat(maker:coffee)",
+      "edge_key": "mix(coffee)|||pat(maker:coffee)",
+      "raw_action": "mix(coffee)"
+    },
+    {
+      "index": 33,
+      "action": "tamp",
+      "start": 125.55,
+      "end": 128.0,
+      "duration": 2.450000000000003,
+      "next_action": "scoop(coffee)",
+      "edge_key": "pat(maker:coffee)|||scoop(coffee)",
+      "raw_action": "pat(maker:coffee)"
+    },
+    {
+      "index": 34,
+      "action": "prep-machine",
+      "start": 127.75,
+      "end": 130.2,
+      "duration": 2.4499999999999886,
+      "next_action": "put(coffee)",
+      "edge_key": "scoop(coffee)|||put(coffee)",
+      "raw_action": "scoop(coffee)"
+    },
+    {
+      "index": 35,
+      "action": "prep-machine",
+      "start": 130.13,
+      "end": 131.6,
+      "duration": 1.4699999999999989,
+      "next_action": "pat(maker:coffee)",
+      "edge_key": "put(coffee)|||pat(maker:coffee)",
+      "raw_action": "put(coffee)"
+    },
+    {
+      "index": 36,
+      "action": "tamp",
+      "start": 131.4,
+      "end": 133.15,
+      "duration": 1.75,
+      "next_action": "crush(coffee)",
+      "edge_key": "pat(maker:coffee)|||crush(coffee)",
+      "raw_action": "pat(maker:coffee)"
+    },
+    {
+      "index": 37,
+      "action": "tamp",
+      "start": 132.95,
+      "end": 135.95,
+      "duration": 3.0,
+      "next_action": "pat(maker:coffee)",
+      "edge_key": "crush(coffee)|||pat(maker:coffee)",
+      "raw_action": "crush(coffee)"
+    },
+    {
+      "index": 38,
+      "action": "tamp",
+      "start": 135.55,
+      "end": 137.62,
+      "duration": 2.069999999999993,
+      "next_action": "put(spoon)",
+      "edge_key": "pat(maker:coffee)|||put(spoon)",
+      "raw_action": "pat(maker:coffee)"
+    },
+    {
+      "index": 39,
+      "action": "other",
+      "start": 139.5,
+      "end": 140.73,
+      "duration": 1.2299999999999898,
+      "next_action": "pat(cup)",
+      "edge_key": "put(spoon)|||pat(cup)",
+      "raw_action": "put(spoon)"
+    },
+    {
+      "index": 40,
+      "action": "other",
+      "start": 140.77,
+      "end": 142.18,
+      "duration": 1.4099999999999966,
+      "next_action": "press(coffee)",
+      "edge_key": "pat(cup)|||press(coffee)",
+      "raw_action": "pat(cup)"
+    },
+    {
+      "index": 41,
+      "action": "tamp",
+      "start": 142.25,
+      "end": 151.13,
+      "duration": 8.879999999999995,
+      "next_action": "put(presser)",
+      "edge_key": "press(coffee)|||put(presser)",
+      "raw_action": "press(coffee)"
+    },
+    {
+      "index": 42,
+      "action": "tamp",
+      "start": 150.79,
+      "end": 152.04,
+      "duration": 1.25,
+      "next_action": "put(cup)",
+      "edge_key": "put(presser)|||put(cup)",
+      "raw_action": "put(presser)"
+    },
+    {
+      "index": 43,
+      "action": "handle-cup",
+      "start": 152.09,
+      "end": 153.82,
+      "duration": 1.7299999999999898,
+      "next_action": "screw(cup)",
+      "edge_key": "put(cup)|||screw(cup)",
+      "raw_action": "put(cup)"
+    },
+    {
+      "index": 44,
+      "action": "handle-cup",
+      "start": 153.87,
+      "end": 154.9,
+      "duration": 1.0300000000000011,
+      "next_action": "put(machine:washing)",
+      "edge_key": "screw(cup)|||put(machine:washing)",
+      "raw_action": "screw(cup)"
+    },
+    {
+      "index": 45,
+      "action": "other",
+      "start": 154.89,
+      "end": 156.27,
+      "duration": 1.3800000000000239,
+      "next_action": "move(phone)",
+      "edge_key": "put(machine:washing)|||move(phone)",
+      "raw_action": "put(machine:washing)"
+    },
+    {
+      "index": 46,
+      "action": "task-ops",
+      "start": 156.37,
+      "end": 160.13,
+      "duration": 3.759999999999991,
+      "next_action": "carry(cup)",
+      "edge_key": "move(phone)|||carry(cup)",
+      "raw_action": "move(phone)"
+    },
+    {
+      "index": 47,
+      "action": "handle-cup",
+      "start": 160.23,
+      "end": 161.28,
+      "duration": 1.0500000000000114,
+      "next_action": "put(cup)",
+      "edge_key": "carry(cup)|||put(cup)",
+      "raw_action": "carry(cup)"
+    },
+    {
+      "index": 48,
+      "action": "handle-cup",
+      "start": 161.38,
+      "end": 162.5,
+      "duration": 1.1200000000000045,
+      "next_action": "turn-on(machine:washing)",
+      "edge_key": "put(cup)|||turn-on(machine:washing)",
+      "raw_action": "put(cup)"
+    },
+    {
+      "index": 49,
+      "action": "clean-machine",
+      "start": 163.4,
+      "end": 165.95,
+      "duration": 2.549999999999983,
+      "next_action": "check(coffee)",
+      "edge_key": "turn-on(machine:washing)|||check(coffee)",
+      "raw_action": "turn-on(machine:washing)"
+    },
+    {
+      "index": 50,
+      "action": "clean-machine",
+      "start": 166.32,
+      "end": 174.87,
+      "duration": 8.550000000000011,
+      "next_action": "open(drawer)",
+      "edge_key": "check(coffee)|||open(drawer)",
+      "raw_action": "check(coffee)"
+    },
+    {
+      "index": 51,
+      "action": "clean-machine",
+      "start": 174.97,
+      "end": 175.82,
+      "duration": 0.8499999999999943,
+      "next_action": "take(plate)",
+      "edge_key": "open(drawer)|||take(plate)",
+      "raw_action": "open(drawer)"
+    },
+    {
+      "index": 52,
+      "action": "clean-machine",
+      "start": 175.89,
+      "end": 176.32,
+      "duration": 0.4300000000000068,
+      "next_action": "finish(machine:washing)",
+      "edge_key": "take(plate)|||finish(machine:washing)",
+      "raw_action": "take(plate)"
+    },
+    {
+      "index": 53,
+      "action": "clean-machine",
+      "start": 178.69,
+      "end": 180.39,
+      "duration": 1.6999999999999886,
+      "next_action": "wait(machine:washing)",
+      "edge_key": "finish(machine:washing)|||wait(machine:washing)",
+      "raw_action": "finish(machine:washing)"
+    },
+    {
+      "index": 54,
+      "action": "clean-machine",
+      "start": 180.55,
+      "end": 185.2,
+      "duration": 4.649999999999977,
+      "next_action": "squeeze(cup)",
+      "edge_key": "wait(machine:washing)|||squeeze(cup)",
+      "raw_action": "wait(machine:washing)"
+    },
+    {
+      "index": 55,
+      "action": "handle-cup",
+      "start": 185.21,
+      "end": 191.15,
+      "duration": 5.939999999999998,
+      "next_action": "turn-off(machine:washing)",
+      "edge_key": "squeeze(cup)|||turn-off(machine:washing)",
+      "raw_action": "squeeze(cup)"
+    },
+    {
+      "index": 56,
+      "action": "clean-machine",
+      "start": 192.17,
+      "end": 193.26,
+      "duration": 1.0900000000000034,
+      "next_action": null,
+      "edge_key": null,
+      "raw_action": "turn-off(machine:washing)"
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "measure",
+        "count": 5
+      },
+      {
+        "id": "extract-coffee",
+        "count": 4
+      },
+      {
+        "id": "prep-machine",
+        "count": 6
+      },
+      {
+        "id": "tamp",
+        "count": 9
+      },
+      {
+        "id": "handle-cup",
+        "count": 14
+      },
+      {
+        "id": "dispense",
+        "count": 2
+      },
+      {
+        "id": "clean-machine",
+        "count": 8
+      },
+      {
+        "id": "task-ops",
+        "count": 6
+      }
+    ],
+    "links": [
+      {
+        "source": "handle-cup",
+        "target": "handle-cup",
+        "count": 6,
+        "key": "handle-cup|||handle-cup",
+        "occurrences": [
+          24,
+          25,
+          26,
+          27,
+          43,
+          47
+        ]
+      },
+      {
+        "source": "clean-machine",
+        "target": "clean-machine",
+        "count": 5,
+        "key": "clean-machine|||clean-machine",
+        "occurrences": [
+          49,
+          50,
+          51,
+          52,
+          53
+        ]
+      },
+      {
+        "source": "tamp",
+        "target": "tamp",
+        "count": 4,
+        "key": "tamp|||tamp",
+        "occurrences": [
+          32,
+          36,
+          37,
+          41
+        ]
+      },
+      {
+        "source": "task-ops",
+        "target": "task-ops",
+        "count": 3,
+        "key": "task-ops|||task-ops",
+        "occurrences": [
+          0,
+          12,
+          13
+        ]
+      },
+      {
+        "source": "clean-machine",
+        "target": "handle-cup",
+        "count": 2,
+        "key": "clean-machine|||handle-cup",
+        "occurrences": [
+          21,
+          54
+        ]
+      },
+      {
+        "source": "extract-coffee",
+        "target": "extract-coffee",
+        "count": 2,
+        "key": "extract-coffee|||extract-coffee",
+        "occurrences": [
+          7,
+          10
+        ]
+      },
+      {
+        "source": "handle-cup",
+        "target": "clean-machine",
+        "count": 2,
+        "key": "handle-cup|||clean-machine",
+        "occurrences": [
+          48,
+          55
+        ]
+      },
+      {
+        "source": "handle-cup",
+        "target": "measure",
+        "count": 2,
+        "key": "handle-cup|||measure",
+        "occurrences": [
+          3,
+          28
+        ]
+      },
+      {
+        "source": "measure",
+        "target": "handle-cup",
+        "count": 2,
+        "key": "measure|||handle-cup",
+        "occurrences": [
+          2,
+          5
+        ]
+      },
+      {
+        "source": "prep-machine",
+        "target": "prep-machine",
+        "count": 2,
+        "key": "prep-machine|||prep-machine",
+        "occurrences": [
+          16,
+          34
+        ]
+      },
+      {
+        "source": "prep-machine",
+        "target": "tamp",
+        "count": 2,
+        "key": "prep-machine|||tamp",
+        "occurrences": [
+          31,
+          35
+        ]
+      },
+      {
+        "source": "tamp",
+        "target": "prep-machine",
+        "count": 2,
+        "key": "tamp|||prep-machine",
+        "occurrences": [
+          30,
+          33
+        ]
+      },
+      {
+        "source": "task-ops",
+        "target": "measure",
+        "count": 2,
+        "key": "task-ops|||measure",
+        "occurrences": [
+          1,
+          14
+        ]
+      },
+      {
+        "source": "dispense",
+        "target": "extract-coffee",
+        "count": 1,
+        "key": "dispense|||extract-coffee",
+        "occurrences": [
+          9
+        ]
+      },
+      {
+        "source": "dispense",
+        "target": "handle-cup",
+        "count": 1,
+        "key": "dispense|||handle-cup",
+        "occurrences": [
+          18
+        ]
+      },
+      {
+        "source": "extract-coffee",
+        "target": "dispense",
+        "count": 1,
+        "key": "extract-coffee|||dispense",
+        "occurrences": [
+          8
+        ]
+      },
+      {
+        "source": "extract-coffee",
+        "target": "task-ops",
+        "count": 1,
+        "key": "extract-coffee|||task-ops",
+        "occurrences": [
+          11
+        ]
+      },
+      {
+        "source": "handle-cup",
+        "target": "extract-coffee",
+        "count": 1,
+        "key": "handle-cup|||extract-coffee",
+        "occurrences": [
+          6
+        ]
+      },
+      {
+        "source": "handle-cup",
+        "target": "other",
+        "count": 1,
+        "key": "handle-cup|||other",
+        "occurrences": [
+          44
+        ]
+      },
+      {
+        "source": "handle-cup",
+        "target": "prep-machine",
+        "count": 1,
+        "key": "handle-cup|||prep-machine",
+        "occurrences": [
+          22
+        ]
+      },
+      {
+        "source": "handle-cup",
+        "target": "tamp",
+        "count": 1,
+        "key": "handle-cup|||tamp",
+        "occurrences": [
+          19
+        ]
+      },
+      {
+        "source": "measure",
+        "target": "measure",
+        "count": 1,
+        "key": "measure|||measure",
+        "occurrences": [
+          4
+        ]
+      },
+      {
+        "source": "measure",
+        "target": "prep-machine",
+        "count": 1,
+        "key": "measure|||prep-machine",
+        "occurrences": [
+          15
+        ]
+      },
+      {
+        "source": "measure",
+        "target": "tamp",
+        "count": 1,
+        "key": "measure|||tamp",
+        "occurrences": [
+          29
+        ]
+      },
+      {
+        "source": "other",
+        "target": "other",
+        "count": 1,
+        "key": "other|||other",
+        "occurrences": [
+          39
+        ]
+      },
+      {
+        "source": "other",
+        "target": "tamp",
+        "count": 1,
+        "key": "other|||tamp",
+        "occurrences": [
+          40
+        ]
+      },
+      {
+        "source": "other",
+        "target": "task-ops",
+        "count": 1,
+        "key": "other|||task-ops",
+        "occurrences": [
+          45
+        ]
+      },
+      {
+        "source": "prep-machine",
+        "target": "dispense",
+        "count": 1,
+        "key": "prep-machine|||dispense",
+        "occurrences": [
+          17
+        ]
+      },
+      {
+        "source": "prep-machine",
+        "target": "handle-cup",
+        "count": 1,
+        "key": "prep-machine|||handle-cup",
+        "occurrences": [
+          23
+        ]
+      },
+      {
+        "source": "tamp",
+        "target": "clean-machine",
+        "count": 1,
+        "key": "tamp|||clean-machine",
+        "occurrences": [
+          20
+        ]
+      },
+      {
+        "source": "tamp",
+        "target": "handle-cup",
+        "count": 1,
+        "key": "tamp|||handle-cup",
+        "occurrences": [
+          42
+        ]
+      },
+      {
+        "source": "tamp",
+        "target": "other",
+        "count": 1,
+        "key": "tamp|||other",
+        "occurrences": [
+          38
+        ]
+      },
+      {
+        "source": "task-ops",
+        "target": "handle-cup",
+        "count": 1,
+        "key": "task-ops|||handle-cup",
+        "occurrences": [
+          46
+        ]
+      }
+    ]
+  }
+}

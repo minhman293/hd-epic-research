@@ -1,4 +1,13 @@
-export const DATA_URL = "outputs/graphs/dashboard_P08_R01.json";
+export function getDataUrl(mode = "smart") {
+  const urls = {
+    smart: "outputs/graphs/dashboard_P08_R01_smart.json",
+    full: "outputs/graphs/dashboard_P08_R01.json",
+    abstracted: "outputs/graphs/dashboard_P08_R01_abstracted.json",
+  };
+  return urls[mode] || urls.smart;
+}
+
+export const DEFAULT_DATA_MODE = "smart";
 
 export const VERB_COLORS = {
   take: "#3B82F6",
@@ -28,6 +37,18 @@ export const VERB_COLORS = {
 
 export const DEFAULT_NODE_COLOR = "#94A3B8";
 
+// Phase colors for abstracted graph
+export const PHASE_COLORS = {
+  measure: "#06B6D4",
+  "extract-coffee": "#F97316",
+  "prep-machine": "#F59E0B",
+  tamp: "#EF4444",
+  "handle-cup": "#8B5CF6",
+  dispense: "#F97316",
+  "clean-machine": "#10B981",
+  "task-ops": "#6B7280",
+};
+
 export const LEGEND_ITEMS = [
   { type: "dot", color: "#3B82F6", label: "Take / carry / move" },
   { type: "dot", color: "#8B5CF6", label: "Put / place" },
@@ -37,5 +58,5 @@ export const LEGEND_ITEMS = [
   { type: "dot", color: "#10B981", label: "Machine ops" },
   { type: "dot", color: "#F59E0B", label: "Screw / pat" },
   { type: "dot", color: "#6B7280", label: "Wait / check" },
-  { type: "line", dashed: false, label: "Transition (animated)" },
+  { type: "line", dashed: false, label: "Transition" },
 ];

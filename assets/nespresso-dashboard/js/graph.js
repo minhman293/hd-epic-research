@@ -289,7 +289,17 @@ export function createGraphController({
         return match ? match[1] : "";
       });
 
-    nodeGroups.append("title").text((d) => `${d.id}\nCount: ${d.count}`);
+    nodeGroups.append("title").text((d) => {
+      let tooltip = `${d.id}\nCount: ${d.count}`;
+      // Add object details for smart-merged nodes
+      if (d.objects && Object.keys(d.objects).length > 0) {
+        const objectList = Object.entries(d.objects)
+          .map(([obj, cnt]) => `${obj}: ${cnt}`)
+          .join(", ");
+        tooltip += `\nObjects: ${objectList}`;
+      }
+      return tooltip;
+    });
 
     linkSelection = zoomGroup.selectAll(".link");
     nodeSelection = zoomGroup.selectAll(".node");
