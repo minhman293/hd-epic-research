@@ -37,6 +37,5 @@ export const LEGEND_ITEMS = [
   { type: "dot", color: "#10B981", label: "Machine ops" },
   { type: "dot", color: "#F59E0B", label: "Screw / pat" },
   { type: "dot", color: "#6B7280", label: "Wait / check" },
-  { type: "line", dashed: false, label: "Forward edge" },
-  { type: "line", dashed: true, label: "Back edge (cycle)" },
+  { type: "line", dashed: false, label: "Transition (animated)" },
 ];
