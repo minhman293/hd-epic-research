@@ -5,12 +5,18 @@ const d3 = window.d3;
 function computeLayout(nodes, sequence) {
   const n = sequence.length;
   const occurrences = {};
+  const firstOccurrence = {};
 
   sequence.forEach((item, index) => {
     if (!occurrences[item.action]) {
       occurrences[item.action] = [];
     }
-    occurrences[item.action].push(index / Math.max(n - 1, 1));
+    const normalized = index / Math.max(n - 1, 1);
+    occurrences[item.action].push(normalized);
+
+    if (firstOccurrence[item.action] === undefined) {
+      firstOccurrence[item.action] = normalized;
+    }
   });
 
   const columnCount = 20;
@@ -18,32 +24,36 @@ function computeLayout(nodes, sequence) {
   const yScale = 72;
   const buckets = {};
 
+  // Compute median for each node (used for both x and y-sort)
+  const medianMap = {};
   nodes.forEach((node) => {
-    // Special positioning for START and END nodes
     let pos;
-    if (node.id === "START") {
-      pos = [0];
-    } else if (node.id === "END") {
-      pos = [1];
-    } else {
-      pos = occurrences[node.id] || [0.5];
-    }
+    if (node.id === "START") pos = [0];
+    else if (node.id === "END") pos = [1];
+    else pos = occurrences[node.id] || [0.5];
 
     const sorted = [...pos].sort((a, b) => a - b);
     const mid = Math.floor(sorted.length / 2);
     const median =
-      sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
-    const col = Math.round(median * (columnCount - 1));
+      sorted.length % 2 === 0
+        ? (sorted[mid - 1] + sorted[mid]) / 2
+        : sorted[mid];
 
-    if (!buckets[col]) {
-      buckets[col] = [];
-    }
+    medianMap[node.id] = median;
+    const col = Math.round(median * (columnCount - 1));
+    if (!buckets[col]) buckets[col] = [];
     buckets[col].push(node.id);
   });
 
   const layout = {};
   Object.entries(buckets).forEach(([col, ids]) => {
-    const sortedIds = [...ids].sort();
+    // Sort by median occurrence — earlier actions sit higher (smaller y)
+    const sortedIds = [...ids].sort((a, b) => {
+      const aVal = medianMap[a] ?? 0.5;
+      const bVal = medianMap[b] ?? 0.5;
+      return aVal - bVal;
+    });
+
     const count = sortedIds.length;
     sortedIds.forEach((id, idx) => {
       layout[id] = {
