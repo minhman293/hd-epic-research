@@ -34,6 +34,11 @@
             <option value="abstracted">Task Phases (Overview)</option>
           </select>
         </div>
+        <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px; flex-wrap: wrap;">
+          <label style="font-size: 0.9rem; font-weight: 500; color: #374151;">Min. Transition Count:</label>
+          <input type="range" id="edgeThreshold" min="1" max="10" value="1" style="width: 140px; cursor: pointer;" />
+          <span id="thresholdLabel" style="font-weight: 600; min-width: 20px;">1</span>
+        </div>
         <div id="graphWrap">
           <svg id="graphSvg"></svg>
           <div class="zoom-controls">
@@ -70,6 +75,21 @@
     </section>
 
   </div>
+
+  <div id="edgeTooltip" style="
+    position: fixed;
+    background: rgba(0,0,0,0.85);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: monospace;
+    pointer-events: none;
+    display: none;
+    white-space: pre;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  "></div>
 
   <script type="module" src="assets/nespresso-dashboard/js/app.js"></script>
 </body>

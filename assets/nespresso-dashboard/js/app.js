@@ -17,6 +17,8 @@ const legendStrip = document.getElementById("legendStrip");
 const header = document.querySelector(".header");
 const video = document.getElementById("video");
 const graphModeSelect = document.getElementById("graphModeSelect");
+const edgeThreshold = document.getElementById("edgeThreshold");
+const thresholdLabel = document.getElementById("thresholdLabel");
 
 const graphController = createGraphController({
   svgSelector: "#graphSvg",
@@ -65,7 +67,7 @@ async function loadGraphData() {
     video.src = data.recipe.video_path;
     video.currentTime = 0; // Reset video to start
     timelineRows = drawTimeline(timelineBody, data.sequence);
-    graphController.buildGraph(data.graph, data.sequence);
+    graphController.buildGraph(data.graph, data.sequence, parseInt(edgeThreshold.value));
     statusLabel.innerHTML = "Status: <strong>Ready</strong>";
     actionLabel.textContent = "-";
   } catch (error) {
@@ -81,6 +83,15 @@ async function loadGraphData() {
 // Listen for graph mode changes
 graphModeSelect.addEventListener("change", () => {
   loadGraphData();
+});
+
+// Listen for edge threshold changes
+edgeThreshold.addEventListener("input", () => {
+  const val = parseInt(edgeThreshold.value);
+  thresholdLabel.textContent = val;
+  if (cachedData) {
+    graphController.buildGraph(cachedData.graph, cachedData.sequence, val);
+  }
 });
 
 async function init() {

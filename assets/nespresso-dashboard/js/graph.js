@@ -118,8 +118,11 @@ export function createGraphController({
   let nodeLayout = null;
   let lastActiveEdge = null;
   let radiusMapCache = null;
+  let enrichedLinksCache = null;  // Store for hover handlers
+  let edgeWidthScale = null;
+  let edgeOpacityScale = null;
 
-  function buildGraph(graph, sequence) {
+  function buildGraph(graph, sequence, minCount = 1) {
     const width = graphWrapEl.clientWidth || 700;
     const height = graphWrapEl.clientHeight || 540;
 
@@ -128,15 +131,15 @@ export function createGraphController({
 
     // Inject START and END nodes
     const enrichedNodes = [...graph.nodes];
-    const enrichedLinks = [...graph.links];
-    
+    let enrichedLinks = [...graph.links];
+
     if (sequence.length > 0) {
       const firstAction = sequence[0].action;
       const lastAction = sequence[sequence.length - 1].action;
-      
+
       enrichedNodes.unshift({ id: "START", count: 1, isSpecial: true });
       enrichedNodes.push({ id: "END", count: 1, isSpecial: true });
-      
+
       enrichedLinks.unshift({
         source: "START",
         target: firstAction,
@@ -152,6 +155,19 @@ export function createGraphController({
         key: lastAction + "-END",
       });
     }
+
+    // ── Suggestion 2: Filter edges by minimum count threshold ────────────────
+    enrichedLinks = enrichedLinks.filter(l => (l.count || 1) >= minCount);
+
+    // Only show nodes that still have at least one visible edge
+    const activeNodeIds = new Set();
+    enrichedLinks.forEach(l => {
+      activeNodeIds.add(l.source);
+      activeNodeIds.add(l.target);
+    });
+    const filteredNodes = enrichedNodes.filter(n => activeNodeIds.has(n.id));
+
+    enrichedLinksCache = enrichedLinks;  // Store for hover handlers
 
     const defs = svg.append("defs");
     [["arrow", "#94a3b8"], ["arrowActive", "#ea580c"]].forEach(([id, color]) => {
@@ -170,16 +186,26 @@ export function createGraphController({
     });
 
     const zoomGroup = svg.append("g").attr("id", "zoomGroup");
-    const layout = computeLayout(enrichedNodes, sequence);
+    const layout = computeLayout(filteredNodes, sequence);
 
-    const maxCount = d3.max(enrichedNodes, (d) => d.count) || 1;
+    const maxCount = d3.max(filteredNodes, (d) => d.count) || 1;
     const nodeRadius = d3.scaleSqrt().domain([1, Math.max(maxCount, 2)]).range([18, 36]);
 
     const radiusMap = {};
-    enrichedNodes.forEach((d) => {
+    filteredNodes.forEach((d) => {
       radiusMap[d.id] = nodeRadius(d.count);
     });
     radiusMapCache = radiusMap;
+
+    // ── Suggestion 1: Create scales for edge width and opacity by frequency ──
+    const maxLinkCount = d3.max(enrichedLinks, d => d.count) || 1;
+    edgeWidthScale = d3.scaleSqrt()
+      .domain([1, Math.max(maxLinkCount, 2)])
+      .range([0.8, 5]);
+
+    edgeOpacityScale = d3.scaleLinear()
+      .domain([1, Math.max(maxLinkCount, 2)])
+      .range([0.15, 0.85]);
 
     const forwardEdges = [];
     const backEdges = [];
@@ -200,6 +226,7 @@ export function createGraphController({
       }
     });
 
+    // ── Suggestion 3: Separate visual treatment for back edges ────────────────
     zoomGroup
       .append("g")
       .selectAll("path")
@@ -208,9 +235,13 @@ export function createGraphController({
       .append("path")
       .attr("class", "link back-edge")
       .attr("data-key", (d) => d.key)
-      .attr("stroke-width", 1.3)
+      .attr("stroke-width", d => Math.max(0.6, edgeWidthScale(d.count || 1) * 0.5))
+      .attr("stroke-opacity", d => edgeOpacityScale(d.count || 1) * 0.6)
+      .attr("stroke-dasharray", "4,3")
       .attr("marker-end", "url(#arrow)")
-      .attr("d", (d) => getArcPath(d, layout, radiusMap));
+      .attr("d", (d) => getArcPath(d, layout, radiusMap))
+      .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
+      .on("mouseout", hideEdgeTooltip);
 
     zoomGroup
       .append("g")
@@ -220,15 +251,20 @@ export function createGraphController({
       .append("path")
       .attr("class", "link self-loop")
       .attr("data-key", (d) => d.key)
-      .attr("stroke-width", 1.3)
+      .attr("stroke-width", d => edgeWidthScale(d.count || 1))
+      .attr("stroke-opacity", d => edgeOpacityScale(d.count || 1) * 0.7)
+      .attr("stroke-dasharray", "4,3")
       .attr("marker-end", "url(#arrow)")
       .attr("d", (d) => {
         const p = layout[d.source] || { x: 0, y: 0 };
         const r = radiusMap[d.source] || 18;
         const loopR = r + 13;
         return `M${p.x - r * 0.6},${p.y - r} A${loopR},${loopR} 0 1,0 ${p.x + r * 0.6},${p.y - r}`;
-      });
+      })
+      .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
+      .on("mouseout", hideEdgeTooltip);
 
+    // ── Forward edges with full treatment ────────────────────────────────────
     zoomGroup
       .append("g")
       .selectAll("path")
@@ -237,17 +273,17 @@ export function createGraphController({
       .append("path")
       .attr("class", "link fwd-edge")
       .attr("data-key", (d) => d.key)
-      .attr("stroke-width", (d) => {
-        if (d.probability === undefined) return 1.4;
-        return 1.4 + d.probability * 2.6;
-      })
+      .attr("stroke-width", d => edgeWidthScale(d.count || 1))
+      .attr("stroke-opacity", d => edgeOpacityScale(d.count || 1))
       .attr("marker-end", "url(#arrow)")
-      .attr("d", (d) => getStraightPath(d, layout, radiusMap));
+      .attr("d", (d) => getStraightPath(d, layout, radiusMap))
+      .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
+      .on("mouseout", hideEdgeTooltip);
 
     const nodeGroups = zoomGroup
       .append("g")
       .selectAll(".node")
-      .data(enrichedNodes)
+      .data(filteredNodes)
       .enter()
       .append("g")
       .attr("class", "node")
@@ -291,7 +327,6 @@ export function createGraphController({
 
     nodeGroups.append("title").text((d) => {
       let tooltip = `${d.id}\nCount: ${d.count}`;
-      // Add object details for smart-merged nodes
       if (d.objects && Object.keys(d.objects).length > 0) {
         const objectList = Object.entries(d.objects)
           .map(([obj, cnt]) => `${obj}: ${cnt}`)
@@ -300,6 +335,45 @@ export function createGraphController({
       }
       return tooltip;
     });
+
+    // ── Suggestion 4: Node hover highlighting with edge focus+context ────────
+    nodeGroups
+      .on("mouseover", function(event, d) {
+        const hoveredId = d.id;
+
+        // Dim all edges
+        linkSelection
+          .attr("stroke-opacity", 0.05)
+          .attr("stroke-width", 0.5);
+
+        // Highlight edges connected to hovered node
+        linkSelection
+          .filter(link => link.source === hoveredId || link.target === hoveredId)
+          .attr("stroke-opacity", link => edgeOpacityScale(link.count || 1))
+          .attr("stroke-width", link => edgeWidthScale(link.count || 1) * 1.5)
+          .attr("stroke", "#ea580c");
+
+        // Dim non-neighbor nodes
+        nodeSelection
+          .filter(n => n.id !== hoveredId)
+          .style("opacity", function(n) {
+            const isNeighbor = enrichedLinksCache.some(
+              l => (l.source === hoveredId && l.target === n.id) ||
+                   (l.target === hoveredId && l.source === n.id)
+            );
+            return isNeighbor ? 0.9 : 0.2;
+          });
+      })
+      .on("mouseout", function() {
+        // Restore all to frequency-based encoding
+        linkSelection
+          .attr("stroke-opacity", d => edgeOpacityScale(d.count || 1))
+          .attr("stroke-width", d => edgeWidthScale(d.count || 1))
+          .attr("stroke", null);
+
+        nodeSelection.style("opacity", 1);
+        hideEdgeTooltip();
+      });
 
     linkSelection = zoomGroup.selectAll(".link");
     nodeSelection = zoomGroup.selectAll(".node");
@@ -339,6 +413,24 @@ export function createGraphController({
     document.querySelector(zoomResetSelector).onclick = () => {
       svg.transition().duration(400).call(zoomBehavior.transform, fitTransform);
     };
+  }
+
+  // ── Suggestion 5: Edge tooltip showing count and percentage ────────────────
+  function showEdgeTooltip(event, d) {
+    const totalOutgoing = enrichedLinksCache
+      .filter(l => l.source === d.source)
+      .reduce((sum, l) => sum + (l.count || 1), 0);
+    const pct = ((d.count || 1) / totalOutgoing * 100).toFixed(0);
+
+    const tooltip = document.getElementById("edgeTooltip");
+    tooltip.textContent = `${d.source} → ${d.target}\nCount: ${d.count} (${pct}% of outgoing)`;
+    tooltip.style.display = "block";
+    tooltip.style.left = (event.clientX + 12) + "px";
+    tooltip.style.top = (event.clientY - 10) + "px";
+  }
+
+  function hideEdgeTooltip() {
+    document.getElementById("edgeTooltip").style.display = "none";
   }
 
   function zoomToTransition(sourceId, targetId) {
