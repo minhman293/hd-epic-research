@@ -67,7 +67,12 @@ async function loadGraphData() {
     video.src = data.recipe.video_path;
     video.currentTime = 0; // Reset video to start
     timelineRows = drawTimeline(timelineBody, data.sequence);
-    graphController.buildGraph(data.graph, data.sequence, parseInt(edgeThreshold.value));
+    graphController.buildGraph(
+      data.graph,
+      data.sequence,
+      parseInt(edgeThreshold.value),
+      mode
+    );
     statusLabel.innerHTML = "Status: <strong>Ready</strong>";
     actionLabel.textContent = "-";
   } catch (error) {
@@ -90,7 +95,12 @@ edgeThreshold.addEventListener("input", () => {
   const val = parseInt(edgeThreshold.value);
   thresholdLabel.textContent = val;
   if (cachedData) {
-    graphController.buildGraph(cachedData.graph, cachedData.sequence, val);
+    graphController.buildGraph(
+      cachedData.graph,
+      cachedData.sequence,
+      val,
+      graphModeSelect.value
+    );
   }
 });
 

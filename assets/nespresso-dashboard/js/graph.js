@@ -2,6 +2,66 @@ import { nodeColor } from "./utils.js";
 
 const d3 = window.d3;
 
+function wrapNodeLabel(text, maxCharsPerLine = 10) {
+  const cleaned = (text || "").replace(/[_-]+/g, " ").trim();
+  if (!cleaned) {
+    return [""];
+  }
+
+  const words = cleaned.split(/\s+/);
+  const lines = [];
+  let current = "";
+
+  words.forEach((word) => {
+    if (word.length > maxCharsPerLine) {
+      if (current) {
+        lines.push(current);
+        current = "";
+      }
+      for (let i = 0; i < word.length; i += maxCharsPerLine) {
+        lines.push(word.slice(i, i + maxCharsPerLine));
+      }
+      return;
+    }
+
+    if (!current) {
+      current = word;
+      return;
+    }
+
+    const candidate = `${current} ${word}`;
+    if (candidate.length <= maxCharsPerLine) {
+      current = candidate;
+    } else {
+      lines.push(current);
+      current = word;
+    }
+  });
+
+  if (current) {
+    lines.push(current);
+  }
+
+  return lines;
+}
+
+function getNodeLabelLines(node) {
+  if (node.isSpecial) {
+    return [node.id];
+  }
+  const verb = (node.id || "").split("(")[0].trim();
+  return wrapNodeLabel(verb, 10);
+}
+
+function estimateTextRadius(labelLines, fontSize = 9) {
+  const maxChars = labelLines.reduce((max, line) => Math.max(max, line.length), 0);
+  const estimatedWidth = maxChars * (fontSize * 0.58);
+  const estimatedHeight = Math.max(labelLines.length, 1) * fontSize * 1.1;
+  const radiusByWidth = estimatedWidth / 2 + 8;
+  const radiusByHeight = estimatedHeight / 2 + 8;
+  return Math.max(18, radiusByWidth, radiusByHeight);
+}
+
 function computeLayout(nodes, sequence) {
   const n = sequence.length;
   const occurrences = {};
@@ -131,8 +191,14 @@ export function createGraphController({
   let enrichedLinksCache = null;  // Store for hover handlers
   let edgeWidthScale = null;
   let edgeOpacityScale = null;
+  let currentMode = "smart";
+  let lastActiveNode = null;
 
-  function buildGraph(graph, sequence, minCount = 1) {
+  function buildGraph(graph, sequence, minCount = 1, mode = "smart") {
+    currentMode = mode;
+    lastActiveEdge = null;
+    lastActiveNode = null;
+
     const width = graphWrapEl.clientWidth || 700;
     const height = graphWrapEl.clientHeight || 540;
 
@@ -199,11 +265,16 @@ export function createGraphController({
     const layout = computeLayout(filteredNodes, sequence);
 
     const maxCount = d3.max(filteredNodes, (d) => d.count) || 1;
-    const nodeRadius = d3.scaleSqrt().domain([1, Math.max(maxCount, 2)]).range([18, 36]);
+    const nodeRadiusByCount = d3.scaleSqrt().domain([1, Math.max(maxCount, 2)]).range([18, 36]);
 
     const radiusMap = {};
+    const labelLinesMap = {};
     filteredNodes.forEach((d) => {
-      radiusMap[d.id] = nodeRadius(d.count);
+      const labelLines = getNodeLabelLines(d);
+      labelLinesMap[d.id] = labelLines;
+      const countRadius = d.isSpecial ? 18 : nodeRadiusByCount(d.count);
+      const textRadius = estimateTextRadius(labelLines, d.isSpecial ? 10 : 9);
+      radiusMap[d.id] = Math.max(countRadius, textRadius);
     });
     radiusMapCache = radiusMap;
 
@@ -305,27 +376,35 @@ export function createGraphController({
 
     nodeGroups
       .append("circle")
-      .attr("r", (d) => nodeRadius(d.count))
+      .attr("r", (d) => radiusMap[d.id] || 18)
       .style("fill", (d) => (d.isSpecial ? "#d1d5db" : nodeColor(d.id)));
 
     nodeGroups
       .append("text")
       .attr("text-anchor", "middle")
-      .attr("dy", "0.35em")
       .attr("font-size", (d) => (d.isSpecial ? "10px" : "9px"))
       .attr("font-weight", "bold")
       .attr("fill", (d) => (d.isSpecial ? "#4b5563" : "white"))
       .attr("pointer-events", "none")
-      .text((d) => {
-        if (d.isSpecial) return d.id;
-        const verb = d.id.split("(")[0];
-        return verb.length > 7 ? verb.slice(0, 6) + "..." : verb;
-      });
+      .selectAll("tspan")
+      .data((d) => {
+        const lines = labelLinesMap[d.id] || [d.id];
+        return lines.map((line, index) => ({
+          line,
+          index,
+          total: lines.length,
+        }));
+      })
+      .enter()
+      .append("tspan")
+      .attr("x", 0)
+      .attr("dy", (line) => (line.index === 0 ? `${-(line.total - 1) * 0.55}em` : "1.1em"))
+      .text((line) => line.line);
 
     nodeGroups
       .append("text")
       .attr("text-anchor", "middle")
-      .attr("dy", (d) => nodeRadius(d.count) + 14)
+      .attr("dy", (d) => (radiusMap[d.id] || 18) + 14)
       .attr("font-size", "7px")
       .attr("fill", "#475569")
       .attr("pointer-events", "none")
@@ -513,28 +592,43 @@ export function createGraphController({
   function updateActive(item) {
     const activeNode = item ? item.action : null;
     const activeEdge = item ? item.edge_key : null;
-    let shouldZoom = false;
-    let zoomSource = null;
-    let zoomTarget = null;
+    const isFullRawMode = currentMode === "full";
 
-    // Detect transition change and parse edge_key (format: "action1|||action2")
-    if (activeEdge && activeEdge !== lastActiveEdge) {
-      lastActiveEdge = activeEdge;
-      shouldZoom = true;
-      const parts = activeEdge.split("|||");
-      if (parts.length === 2) {
-        zoomSource = parts[0].trim();
-        zoomTarget = parts[1].trim();
+    if (isFullRawMode) {
+      let shouldZoom = false;
+      let zoomSource = null;
+      let zoomTarget = null;
+
+      // Detect transition change and parse edge_key (format: "action1|||action2")
+      if (activeEdge && activeEdge !== lastActiveEdge) {
+        lastActiveEdge = activeEdge;
+        shouldZoom = true;
+        const parts = activeEdge.split("|||");
+        if (parts.length === 2) {
+          zoomSource = parts[0].trim();
+          zoomTarget = parts[1].trim();
+        }
+      } else if (!activeEdge && lastActiveEdge) {
+        lastActiveEdge = null;
+        if (zoomBehavior && fitTransform) {
+          svg.transition().duration(400).call(zoomBehavior.transform, fitTransform);
+        }
       }
-    } else if (!activeEdge && lastActiveEdge) {
+
+      if (shouldZoom && zoomSource && zoomTarget) {
+        zoomToTransition(zoomSource, zoomTarget);
+      }
+    } else {
       lastActiveEdge = null;
-      if (zoomBehavior && fitTransform) {
-        svg.transition().duration(400).call(zoomBehavior.transform, fitTransform);
+      if (activeNode && activeNode !== lastActiveNode) {
+        lastActiveNode = activeNode;
+        autoZoomToNode(activeNode);
+      } else if (!activeNode && lastActiveNode) {
+        lastActiveNode = null;
+        if (zoomBehavior && fitTransform) {
+          svg.transition().duration(400).call(zoomBehavior.transform, fitTransform);
+        }
       }
-    }
-
-    if (shouldZoom && zoomSource && zoomTarget) {
-      zoomToTransition(zoomSource, zoomTarget);
     }
 
     if (nodeSelection) {
