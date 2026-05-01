@@ -49,14 +49,24 @@ export const PHASE_COLORS = {
   "task-ops": "#6B7280",
 };
 
-export const LEGEND_ITEMS = [
-  { type: "dot", color: "#3B82F6", label: "Take / carry / move" },
-  { type: "dot", color: "#8B5CF6", label: "Put / place" },
-  { type: "dot", color: "#F97316", label: "Pour / scoop / mix" },
-  { type: "dot", color: "#EF4444", label: "Press / crush" },
-  { type: "dot", color: "#06B6D4", label: "Open / close" },
-  { type: "dot", color: "#10B981", label: "Machine ops" },
-  { type: "dot", color: "#F59E0B", label: "Screw / pat" },
-  { type: "dot", color: "#6B7280", label: "Wait / check" },
-  { type: "line", dashed: false, label: "Transition" },
-];
+export const LEGEND_ITEMS = {
+  node: [
+    { type: "dot", color: "#3B82F6", label: "take / carry / move" },
+    { type: "dot", color: "#8B5CF6", label: "put / place" },
+    { type: "dot", color: "#F97316", label: "pour / scoop / mix" },
+    { type: "dot", color: "#EF4444", label: "press / crush" },
+    { type: "dot", color: "#06B6D4", label: "open / close" },
+    { type: "dot", color: "#10B981", label: "machine ops" },
+    { type: "dot", color: "#F59E0B", label: "screw / pat" },
+    { type: "dot", color: "#6B7280", label: "wait / check" },
+    { type: "badge", dashed: false, label: "Node size: action frequency" },
+    { type: "badge1", label: "Top-left badge: backward connection count" },
+    { type: "ring", label: "Top-right ring: self-loop present" },
+    { type: "label", label: "Inside label: action / phase name" },
+  ],
+  edge: [
+    { type: "line", dashed: false, label: "Solid line: transition" },
+    { type: "line", dashed: true, label: "Dashed line: transition while video plays" },
+    { type: "arrow", label: "Bidirectional arrow: two-way transition" },
+  ],
+};

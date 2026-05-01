@@ -2,67 +2,7 @@ import { nodeColor } from "./utils.js";
 
 const d3 = window.d3;
 
-function wrapNodeLabel(text, maxCharsPerLine = 10) {
-  const cleaned = (text || "").replace(/[_-]+/g, " ").trim();
-  if (!cleaned) {
-    return [""];
-  }
-
-  const words = cleaned.split(/\s+/);
-  const lines = [];
-  let current = "";
-
-  words.forEach((word) => {
-    if (word.length > maxCharsPerLine) {
-      if (current) {
-        lines.push(current);
-        current = "";
-      }
-      for (let i = 0; i < word.length; i += maxCharsPerLine) {
-        lines.push(word.slice(i, i + maxCharsPerLine));
-      }
-      return;
-    }
-
-    if (!current) {
-      current = word;
-      return;
-    }
-
-    const candidate = `${current} ${word}`;
-    if (candidate.length <= maxCharsPerLine) {
-      current = candidate;
-    } else {
-      lines.push(current);
-      current = word;
-    }
-  });
-
-  if (current) {
-    lines.push(current);
-  }
-
-  return lines;
-}
-
-function getNodeLabelLines(node) {
-  if (node.isSpecial) {
-    return [node.id];
-  }
-  const verb = (node.id || "").split("(")[0].trim();
-  return wrapNodeLabel(verb, 10);
-}
-
-function estimateTextRadius(labelLines, fontSize = 9) {
-  const maxChars = labelLines.reduce((max, line) => Math.max(max, line.length), 0);
-  const estimatedWidth = maxChars * (fontSize * 0.58);
-  const estimatedHeight = Math.max(labelLines.length, 1) * fontSize * 1.1;
-  const radiusByWidth = estimatedWidth / 2 + 8;
-  const radiusByHeight = estimatedHeight / 2 + 8;
-  return Math.max(18, radiusByWidth, radiusByHeight);
-}
-
-function computeLayout(nodes, sequence) {
+function computeLayout(nodes, sequence, { maxRadius = 18 } = {}) {
   const n = sequence.length;
   const occurrences = {};
   const firstOccurrence = {};
@@ -80,8 +20,8 @@ function computeLayout(nodes, sequence) {
   });
 
   const columnCount = 20;
-  const xScale = 120;
-  const yScale = 72;
+  const xScale = Math.max(120, Math.round(maxRadius * 3.2));
+  const yScale = Math.max(72, Math.round(maxRadius * 2.4));
   const buckets = {};
 
   // Compute median for each node (used for both x and y-sort)
@@ -171,6 +111,34 @@ function getArcPath(link, layout, radiusMap) {
   return `M${x1},${y1} Q${mx},${cy} ${x2},${y2}`;
 }
 
+function getNodeLabel(node, mode) {
+  if (node.isSpecial) {
+    return node.id;
+  }
+
+  if (mode === "abstracted") {
+    return node.id;
+  }
+
+  const verb = node.id.split("(")[0];
+  return verb.length > 7 ? verb.slice(0, 6) + "..." : verb;
+}
+
+function getNodeSubtitle(node, mode) {
+  if (node.isSpecial || mode === "abstracted") {
+    return "";
+  }
+
+  const match = node.id.match(/\((.+)\)/);
+  return match ? match[1] : "";
+}
+
+function estimateNodeRadius(node, label, countRadius, mode) {
+  const charWidth = mode === "abstracted" ? 4.9 : 3.9;
+  const labelRadius = Math.max(14, label.length * charWidth * 0.5 + 12);
+  return Math.max(countRadius, labelRadius);
+}
+
 export function createGraphController({
   svgSelector,
   graphWrapSelector,
@@ -183,22 +151,24 @@ export function createGraphController({
 
   let linkSelection = null;
   let nodeSelection = null;
+  let selfLoopSelection = null;
   let zoomBehavior = null;
   let fitTransform = null;
   let nodeLayout = null;
   let lastActiveEdge = null;
+  let lastActiveNode = null;
   let radiusMapCache = null;
   let enrichedLinksCache = null;  // Store for hover handlers
   let edgeWidthScale = null;
   let edgeOpacityScale = null;
   let currentMode = "smart";
-  let lastActiveNode = null;
+  let currentSequenceCache = [];
 
   function buildGraph(graph, sequence, minCount = 1, mode = "smart") {
     currentMode = mode;
     lastActiveEdge = null;
     lastActiveNode = null;
-
+    currentSequenceCache = sequence || [];
     const width = graphWrapEl.clientWidth || 700;
     const height = graphWrapEl.clientHeight || 540;
 
@@ -260,23 +230,39 @@ export function createGraphController({
         .attr("d", "M0,-4L10,0L0,4Z")
         .attr("fill", color);
     });
+    defs
+      .append("marker")
+      .attr("id", "arrowReverse")
+      .attr("viewBox", "0 -4 10 8")
+      .attr("refX", 1)
+      .attr("refY", 0)
+      .attr("markerWidth", 5)
+      .attr("markerHeight", 5)
+      .attr("orient", "auto-start-reverse")
+      .append("path")
+      .attr("d", "M0,-4L10,0L0,4Z")
+      .attr("fill", "#94a3b8");
 
     const zoomGroup = svg.append("g").attr("id", "zoomGroup");
-    const layout = computeLayout(filteredNodes, sequence);
+
+    const nodeLabels = new Map();
+    filteredNodes.forEach((node) => {
+      nodeLabels.set(node.id, getNodeLabel(node, currentMode));
+    });
 
     const maxCount = d3.max(filteredNodes, (d) => d.count) || 1;
     const nodeRadiusByCount = d3.scaleSqrt().domain([1, Math.max(maxCount, 2)]).range([18, 36]);
 
     const radiusMap = {};
-    const labelLinesMap = {};
     filteredNodes.forEach((d) => {
-      const labelLines = getNodeLabelLines(d);
-      labelLinesMap[d.id] = labelLines;
-      const countRadius = d.isSpecial ? 18 : nodeRadiusByCount(d.count);
-      const textRadius = estimateTextRadius(labelLines, d.isSpecial ? 10 : 9);
-      radiusMap[d.id] = Math.max(countRadius, textRadius);
+      const label = nodeLabels.get(d.id) || d.id;
+      const countRadius = nodeRadiusByCount(d.count);
+      radiusMap[d.id] = estimateNodeRadius(d, label, countRadius, currentMode);
     });
     radiusMapCache = radiusMap;
+
+    const maxRadius = d3.max(Object.values(radiusMap)) || 18;
+    const layout = computeLayout(filteredNodes, sequence, { maxRadius });
 
     // ── Suggestion 1: Create scales for edge width and opacity by frequency ──
     const maxLinkCount = d3.max(enrichedLinks, d => d.count) || 1;
@@ -307,56 +293,105 @@ export function createGraphController({
       }
     });
 
-    // ── Suggestion 3: Separate visual treatment for back edges ────────────────
-    zoomGroup
-      .append("g")
-      .selectAll("path")
-      .data(backEdges)
-      .enter()
-      .append("path")
-      .attr("class", "link back-edge")
-      .attr("data-key", (d) => d.key)
-      .attr("stroke-width", d => Math.max(0.6, edgeWidthScale(d.count || 1) * 0.5))
-      .attr("stroke-opacity", d => edgeOpacityScale(d.count || 1) * 0.6)
-      .attr("stroke-dasharray", "4,3")
-      .attr("marker-end", "url(#arrow)")
-      .attr("d", (d) => getArcPath(d, layout, radiusMap))
-      .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
-      .on("mouseout", hideEdgeTooltip);
+    const medianCount = d3.median(forwardEdges, (d) => d.count || 1) || 1;
 
+    const selfLoopSummary = [...d3.group(selfLoops, (d) => d.source)].map(([sourceId, edges]) => ({
+      source: sourceId,
+      target: sourceId,
+      key: edges[0]?.key || `${sourceId}|||${sourceId}`,
+      count: d3.sum(edges, (e) => e.count || 1),
+      occurrences: edges.flatMap((e) => e.occurrences || []),
+    }));
+
+    const backEdgesBySource = d3.group(backEdges, (d) => d.source);
     zoomGroup
       .append("g")
-      .selectAll("path")
-      .data(selfLoops)
+      .attr("class", "back-indicators")
+      .selectAll("g.back-indicator")
+      .data([...backEdgesBySource.entries()])
       .enter()
-      .append("path")
-      .attr("class", "link self-loop")
-      .attr("data-key", (d) => d.key)
-      .attr("stroke-width", d => edgeWidthScale(d.count || 1))
-      .attr("stroke-opacity", d => edgeOpacityScale(d.count || 1) * 0.7)
-      .attr("stroke-dasharray", "4,3")
-      .attr("marker-end", "url(#arrow)")
-      .attr("d", (d) => {
-        const p = layout[d.source] || { x: 0, y: 0 };
-        const r = radiusMap[d.source] || 18;
-        const loopR = r + 13;
-        return `M${p.x - r * 0.6},${p.y - r} A${loopR},${loopR} 0 1,0 ${p.x + r * 0.6},${p.y - r}`;
+      .append("g")
+      .attr("class", "back-indicator")
+      .attr("transform", ([sourceId]) => {
+        const p = layout[sourceId] || { x: 0, y: 0 };
+        return `translate(${p.x}, ${p.y})`;
       })
+      .each(function([sourceId, edges]) {
+        const r = radiusMap[sourceId] || 18;
+        const g = d3.select(this);
+
+        g.append("circle")
+          .attr("class", "back-indicator-badge")
+          .attr("cx", -r * 0.7)
+          .attr("cy", -r - 4)
+          .attr("r", 7)
+          .attr("fill", "#f1f5f9")
+          .attr("stroke", "#94a3b8")
+          .attr("stroke-width", 1);
+
+        g.append("text")
+          .attr("x", -r * 0.7)
+          .attr("y", -r - 4)
+          .attr("text-anchor", "middle")
+          .attr("dy", "0.35em")
+          .attr("font-size", "7px")
+          .attr("fill", "#64748b")
+          .text(edges.length);
+
+        g.append("title")
+          .text(`Backward to: ${edges.map((e) => e.target).join(", ")}`);
+      });
+
+    const edgeSet = new Set(forwardEdges.map((d) => `${d.source}|||${d.target}`));
+    const bidirectionalPairs = new Set();
+    const bidirectionalForward = [];
+    const unidirectionalForward = [];
+
+    forwardEdges.forEach((d) => {
+      const currentKey = `${d.source}|||${d.target}`;
+      const reverseKey = `${d.target}|||${d.source}`;
+      if (edgeSet.has(reverseKey) && !bidirectionalPairs.has(currentKey) && !bidirectionalPairs.has(reverseKey)) {
+        bidirectionalPairs.add(currentKey);
+        bidirectionalPairs.add(reverseKey);
+        bidirectionalForward.push({ ...d, pairKey: reverseKey });
+      } else if (!bidirectionalPairs.has(currentKey)) {
+        unidirectionalForward.push(d);
+      }
+    });
+
+    zoomGroup
+      .append("g")
+      .selectAll("path.unidir")
+      .data(unidirectionalForward)
+      .enter()
+      .append("path")
+      .attr("class", (d) => `link fwd-edge ${(d.count || 1) > medianCount ? "dominant" : "minor"}`)
+      .attr("data-key", (d) => d.key)
+      .attr("stroke-width", (d) => edgeWidthScale(d.count || 1))
+      .attr("stroke-opacity", (d) => {
+        const count = d.count || 1;
+        if (count > medianCount) return 0.75;
+        if (count === medianCount) return 0.4;
+        return 0.15;
+      })
+      .attr("marker-end", "url(#arrow)")
+      .attr("d", (d) => getStraightPath(d, layout, radiusMap))
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
       .on("mouseout", hideEdgeTooltip);
 
-    // ── Forward edges with full treatment ────────────────────────────────────
     zoomGroup
       .append("g")
-      .selectAll("path")
-      .data(forwardEdges)
+      .selectAll("path.bidir")
+      .data(bidirectionalForward)
       .enter()
       .append("path")
-      .attr("class", "link fwd-edge")
+      .attr("class", "link bidir-edge")
       .attr("data-key", (d) => d.key)
-      .attr("stroke-width", d => edgeWidthScale(d.count || 1))
-      .attr("stroke-opacity", d => edgeOpacityScale(d.count || 1))
+      .attr("data-pair-key", (d) => d.pairKey)
+      .attr("stroke-width", (d) => edgeWidthScale(d.count || 1))
+      .attr("stroke-opacity", 0.6)
       .attr("marker-end", "url(#arrow)")
+      .attr("marker-start", "url(#arrowReverse)")
       .attr("d", (d) => getStraightPath(d, layout, radiusMap))
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
       .on("mouseout", hideEdgeTooltip);
@@ -382,37 +417,64 @@ export function createGraphController({
     nodeGroups
       .append("text")
       .attr("text-anchor", "middle")
-      .attr("font-size", (d) => (d.isSpecial ? "10px" : "9px"))
+      .attr("dy", (d) => (getNodeSubtitle(d, currentMode) ? "-0.12em" : "0.35em"))
+      .attr("font-size", (d) => {
+        const label = nodeLabels.get(d.id) || d.id;
+        if (d.isSpecial) return "10px";
+        if (currentMode === "abstracted") {
+          return label.length > 18 ? "7px" : label.length > 10 ? "8px" : "9px";
+        }
+        return label.length > 10 ? "8px" : "9px";
+      })
       .attr("font-weight", "bold")
       .attr("fill", (d) => (d.isSpecial ? "#4b5563" : "white"))
       .attr("pointer-events", "none")
-      .selectAll("tspan")
-      .data((d) => {
-        const lines = labelLinesMap[d.id] || [d.id];
-        return lines.map((line, index) => ({
-          line,
-          index,
-          total: lines.length,
-        }));
+      .attr("textLength", (d) => {
+        const r = radiusMap[d.id] || 18;
+        return Math.max(20, r * 1.55);
       })
-      .enter()
-      .append("tspan")
-      .attr("x", 0)
-      .attr("dy", (line) => (line.index === 0 ? `${-(line.total - 1) * 0.55}em` : "1.1em"))
-      .text((line) => line.line);
+      .attr("lengthAdjust", "spacingAndGlyphs")
+      .text((d) => nodeLabels.get(d.id) || d.id);
 
     nodeGroups
       .append("text")
       .attr("text-anchor", "middle")
       .attr("dy", (d) => (radiusMap[d.id] || 18) + 14)
-      .attr("font-size", "7px")
+      .attr("font-size", (d) => (currentMode === "abstracted" ? "0px" : "7px"))
       .attr("fill", "#475569")
       .attr("pointer-events", "none")
-      .text((d) => {
-        if (d.isSpecial) return "";
-        const match = d.id.match(/\((.+)\)/);
-        return match ? match[1] : "";
+      .text((d) => getNodeSubtitle(d, currentMode));
+
+    const selfLoopIndicators = zoomGroup
+      .append("g")
+      .attr("class", "self-loop-indicators")
+      .selectAll("g.self-loop-indicator")
+      .data(selfLoopSummary)
+      .enter()
+      .append("g")
+      .attr("class", "self-loop-indicator")
+      .attr("data-key", (d) => d.key)
+      .attr("transform", (d) => {
+        const p = layout[d.source] || { x: 0, y: 0 };
+        return `translate(${p.x},${p.y})`;
       });
+
+    selfLoopIndicators
+      .append("text")
+      .attr("class", "self-loop-indicator-glyph")
+      .attr("x", (d) => (radiusMap[d.source] || 18) * 0.7)
+      .attr("y", (d) => -(radiusMap[d.source] || 18) - 4)
+      .attr("text-anchor", "middle")
+      .attr("dy", "0.35em")
+      .text("⟳");
+
+    selfLoopIndicators
+      .append("title")
+      .text((d) => `Self-loop on ${d.source} (count: ${d.count})`);
+
+    selfLoopIndicators
+      .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
+      .on("mouseout", hideEdgeTooltip);
 
     nodeGroups.append("title").text((d) => {
       let tooltip = `${d.id}\nCount: ${d.count}`;
@@ -466,6 +528,7 @@ export function createGraphController({
 
     linkSelection = zoomGroup.selectAll(".link");
     nodeSelection = zoomGroup.selectAll(".node");
+    selfLoopSelection = zoomGroup.selectAll(".self-loop-indicator");
     nodeLayout = layout;
 
     const xs = Object.values(layout).map((p) => p.x);
@@ -511,8 +574,28 @@ export function createGraphController({
       .reduce((sum, l) => sum + (l.count || 1), 0);
     const pct = ((d.count || 1) / totalOutgoing * 100).toFixed(0);
 
+    const detailMap = new Map();
+    if (currentMode !== "full" && Array.isArray(d.occurrences) && currentSequenceCache.length > 0) {
+      d.occurrences.forEach((index) => {
+        const sourceItem = currentSequenceCache[index];
+        const targetItem = currentSequenceCache[index + 1];
+        if (!sourceItem || !targetItem) {
+          return;
+        }
+
+        const detailKey = `${sourceItem.action} -> ${targetItem.action}`;
+        detailMap.set(detailKey, (detailMap.get(detailKey) || 0) + 1);
+      });
+    }
+
+    const detailLines = [...detailMap.entries()]
+      .map(([pair, count]) => `${pair}: ${count}`)
+      .join("\n");
+
     const tooltip = document.getElementById("edgeTooltip");
-    tooltip.textContent = `${d.source} → ${d.target}\nCount: ${d.count} (${pct}% of outgoing)`;
+    tooltip.textContent = detailLines
+      ? `${d.source} → ${d.target}\nCount: ${d.count} (${pct}% of outgoing)\n${detailLines}`
+      : `${d.source} → ${d.target}\nCount: ${d.count} (${pct}% of outgoing)`;
     tooltip.style.display = "block";
     tooltip.style.left = (event.clientX + 12) + "px";
     tooltip.style.top = (event.clientY - 10) + "px";
@@ -568,7 +651,7 @@ export function createGraphController({
   }
 
   function autoZoomToNode(nodeId) {
-    if (!nodeLayout || !zoomBehavior) {
+    if (!nodeLayout || !zoomBehavior || !radiusMapCache) {
       return;
     }
 
@@ -579,7 +662,8 @@ export function createGraphController({
 
     const width = graphWrapEl.clientWidth;
     const height = graphWrapEl.clientHeight;
-    const scale = 2.2;
+    const radius = radiusMapCache[nodeId] || 18;
+    const scale = Math.min(3, Math.max(1.6, Math.min(width / (radius * 6), height / (radius * 6))));
     const tx = width / 2 - p.x * scale;
     const ty = height / 2 - p.y * scale;
 
@@ -592,17 +676,13 @@ export function createGraphController({
   function updateActive(item) {
     const activeNode = item ? item.action : null;
     const activeEdge = item ? item.edge_key : null;
-    const isFullRawMode = currentMode === "full";
 
-    if (isFullRawMode) {
-      let shouldZoom = false;
+    if (currentMode === "full") {
       let zoomSource = null;
       let zoomTarget = null;
 
-      // Detect transition change and parse edge_key (format: "action1|||action2")
       if (activeEdge && activeEdge !== lastActiveEdge) {
         lastActiveEdge = activeEdge;
-        shouldZoom = true;
         const parts = activeEdge.split("|||");
         if (parts.length === 2) {
           zoomSource = parts[0].trim();
@@ -615,19 +695,15 @@ export function createGraphController({
         }
       }
 
-      if (shouldZoom && zoomSource && zoomTarget) {
+      if (zoomSource && zoomTarget) {
         zoomToTransition(zoomSource, zoomTarget);
       }
-    } else {
-      lastActiveEdge = null;
-      if (activeNode && activeNode !== lastActiveNode) {
-        lastActiveNode = activeNode;
+    } else if (activeNode !== lastActiveNode) {
+      lastActiveNode = activeNode;
+      if (activeNode) {
         autoZoomToNode(activeNode);
-      } else if (!activeNode && lastActiveNode) {
-        lastActiveNode = null;
-        if (zoomBehavior && fitTransform) {
-          svg.transition().duration(400).call(zoomBehavior.transform, fitTransform);
-        }
+      } else if (zoomBehavior && fitTransform) {
+        svg.transition().duration(400).call(zoomBehavior.transform, fitTransform);
       }
     }
 
@@ -637,8 +713,12 @@ export function createGraphController({
 
     if (linkSelection) {
       linkSelection
-        .classed("active", (d) => d && d.key === activeEdge)
-        .attr("marker-end", (d) => (d && d.key === activeEdge ? "url(#arrowActive)" : "url(#arrow)"));
+        .classed("active", (d) => d && (d.key === activeEdge || d.pairKey === activeEdge))
+        .attr("marker-end", (d) => (d && (d.key === activeEdge || d.pairKey === activeEdge) ? "url(#arrowActive)" : "url(#arrow)"));
+    }
+
+    if (selfLoopSelection) {
+      selfLoopSelection.classed("active", (d) => d && d.key === activeEdge);
     }
   }
 

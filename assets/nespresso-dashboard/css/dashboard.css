@@ -125,9 +125,9 @@ body {
 .zoom-controls button:hover { background: #f3f4f6; }
 
 .legend-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 14px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 14px;
   font-size: 0.76rem;
   padding: 6px 8px;
   background: #f8fafc;
@@ -140,6 +140,25 @@ body {
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+.legend-section {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+
+.legend-section-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.legend-section-items {
+  display: grid;
+  gap: 6px;
 }
 
 .legend-dot {
@@ -160,6 +179,41 @@ body {
 .legend-line.dashed {
   background: none;
   border-top: 2px dashed #94a3b8;
+}
+
+.legend-badge,
+.legend-arrow,
+.legend-ring,
+.legend-label-sample {
+  width: 22px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 999px;
+  background: #fff;
+  color: #64748b;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.legend-ring {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.legend-arrow {
+  border-radius: 6px;
+}
+
+.legend-label-sample {
+  font-family: inherit;
+  letter-spacing: 0.03em;
 }
 
 video {
@@ -239,6 +293,34 @@ video {
   stroke-opacity: 0.55;
 }
 
+.link.fwd-edge.dominant {
+  stroke-opacity: 0.75;
+}
+
+.link.fwd-edge.minor {
+  stroke-opacity: 0.15;
+}
+
+.link.bidir-edge {
+  stroke-opacity: 0.6;
+}
+
+.back-indicator-badge {
+  pointer-events: none;
+}
+
+.self-loop-indicator-glyph {
+  fill: #475569;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.self-loop-indicator.active .self-loop-indicator-glyph {
+  fill: var(--edge-active);
+  filter: drop-shadow(0 0 3px rgba(234, 88, 12, 0.55));
+}
+
 .link.active {
   stroke: var(--edge-active);
   stroke-opacity: 1;
@@ -276,4 +358,5 @@ video {
 @media (max-width: 1100px) {
   .layout { grid-template-columns: 1fr; }
   #graphWrap { height: 460px; }
+  .legend-strip { grid-template-columns: 1fr; }
 }
