@@ -14,7 +14,7 @@ The core visualization showing the flow of actions as a directed graph. Spatiall
 #### **2. Right Panel: Video Player + Metadata**
 - Plays the actual video synchronized with the graph
 - Shows current recipe name, video ID, elapsed time, and current action being performed
-- Status bar shows: Idle, Playing, Paused, or Ended
+- Status bar shows: Ready, Playing, Paused, or Ended
 
 #### **3. Bottom Panel: Timeline Table**
 Lists all actions in chronological order with:
@@ -30,11 +30,11 @@ Lists all actions in chronological order with:
 #### **Detail Level Dropdown** (Top of graph)
 Three options to show different levels of abstraction:
 
-1. **Smart-Merged (Clear)** — Default view. Merges redundant edges intelligently to reduce visual clutter while preserving the essential flow structure.
+1. **Smart-Merged (Clear)** — Default view. Merges redundant edges to reduce visual clutter while preserving the essential flow structure.
 
 2. **Full Raw (Complete)** — Shows every single recorded transition, no merging. Most detailed but can be visually dense. When video plays, the graph automatically **zooms to highlight the current transition** occurring in the video.
 
-3. **Task Phases (Overview)** — Highest abstraction level. Groups individual actions into higher-level task phases (e.g., "measure," "extract-coffee," "clean-machine"). Provides a bird's-eye view of the overall task structure.
+3. **Task Phases (Overview)** — Highest abstraction level. Groups individual actions into higher-level task phases (e.g., "measure," "extract-coffee," "clean-machine"). 
 
 #### **Min. Transition Count Slider**
 Filters edges by minimum frequency:
@@ -48,16 +48,27 @@ Filters edges by minimum frequency:
 ### **Node Positioning**
 
 #### **Horizontal Position (Left to Right)**
-Represents **temporal occurrence** in the sequence:
-- **Left side** = actions that occur early in the task
-- **Right side** = actions that occur late in the task
-- Specifically: nodes are placed in columns based on the **median time** they occur, divided into 20 columns across the timeline
+Represents **median index position** in the action sequence:
+
+**Calculation process:**
+1. For each action, find all indices where it appears in the 57-item sequence (indexed 0–56)
+2. Normalize each index: `index / (57 - 1)` → produces values 0.0 to 1.0
+3. Take the **median** of all normalized positions
+4. Map median to one of 20 columns: `Math.round(median × 19)`
+5. Convert to pixel x-coordinate: `column × 120`
+
+**Example:** If "pour(water)" appears at sequence indices 5, 23, and 41:
+- Normalized: 0.09, 0.40, 0.72
+- Median: 0.40
+- Column: 7
+- X position: 840 pixels
+
+**Key insight:** The x position is determined by the **middle occurrence**, not the first or the average. This centers actions that repeat throughout the sequence at their temporal center-of-mass.
 
 #### **Vertical Position (Top to Bottom)**
 Resolves conflicts within the same time window:
-- Actions occurring at similar times are stacked vertically to avoid overlap
+- Actions occurring at the same median position are stacked vertically to avoid overlap
 - Stacking order is determined by their first occurrence within that temporal cluster
-- No inherent meaning—purely for layout clarity
 
 ---
 
@@ -94,20 +105,18 @@ Colors remain consistent across all detail levels (except Task Phases mode, whic
 #### **Badges on Nodes**
 
 1. **Top-Left Badge (Small Circle)**
-   - Shows a **count** of backward edges pointing to this node
-   - **Meaning**: How many different actions can lead back to this action
-   - Example: If "pour(water)" has a badge showing "3", it means 3 different actions can transition back to pouring
-   - Useful for identifying cyclic or repeatable sub-tasks
+- Shows a count of backward edges originating from this node
+- **Meaning**: How many different actions this node can **reach by going backward** (i.e., to earlier actions it has already passed)
+- Example: If "pour(water)" has a badge showing "3", it means 3 different actions appear before it in the sequence and are reachable via backward transitions
+
 
 2. **Top-Right Badge (⟳ Glyph)**
    - Indicates a **self-loop** (an action that can repeat itself)
    - Example: "mix(coffee)" might loop back to itself multiple times
-   - Shows the count of self-repetitions on hover
 
 3. **Inside Text**
    - **Top line**: Abbreviated action name (e.g., "pour" from "pour(water)")
    - **Bottom line (gray)**: Parameter details in parentheses (e.g., "water", "button")
-   - Shrinks when the node is small to maintain readability
 
 ---
 
@@ -123,7 +132,6 @@ Represents **transition frequency**:
 Also represents **frequency**, but inverted for subtle visual layering:
 - **More opaque** = frequent transitions (up to 85% opacity)
 - **More transparent** = infrequent transitions (down to 15% opacity)
-- Helps de-emphasize rare pathways while keeping them visible
 
 #### **Edge Types**
 
@@ -138,11 +146,6 @@ Also represents **frequency**, but inverted for subtle visual layering:
 3. **Self-Loops** (⟳ symbol above node)
    - Not rendered as edges, but as indicators
    - Shows an action repeating consecutively
-
-#### **Edge Coloring During Hover**
-- **Normal**: Gray (`#94a3b8`)
-- **On hover**: Turns bright orange (`#ea580c`)
-- **Adjacent edges to hovered node**: Show count and percentage in tooltip
 
 ---
 
@@ -177,7 +180,6 @@ Count: X (Y% of outgoing)
 
 #### **Hovering Over a Node**
 - **Current node**: Remains at full opacity, highlighted with a glow
-- **Connected edges**: Brighten to orange, show increased thickness, and display counts
 - **Neighbor nodes**: Remain visible (90% opacity)
 - **Other nodes**: Fade to 20% opacity
 - **Edges not connected**: Fade to 5% opacity
@@ -186,9 +188,6 @@ Count: X (Y% of outgoing)
 #### **Hovering Over an Edge**
 - Tooltip appears with source → target, count, and percentage
 - In non-full modes, shows breakdown of raw action pairs that compose this edge
-
-#### **Clicking on Timeline Entries**
-- Selects the action, which highlights it in the graph
 
 ---
 
@@ -200,7 +199,6 @@ Count: X (Y% of outgoing)
    - The **graph automatically zooms** to focus on the **current transition** occurring in the video
    - Smooth camera movement centers both the source and target nodes in the viewport
    - Updates continuously as the video plays
-   - When paused/stopped, graph zooms back out to full view
    - **Purpose**: Keeps you focused on what's currently happening
 
 2. **In Smart/Task Phases Modes:**
@@ -213,12 +211,6 @@ Count: X (Y% of outgoing)
   - The **source node** of the transition (bright fill)
   - The **target node** of the transition (bright fill)
   - The **edge itself** (orange arrow)
-  - The current action node gets highlighted (e.g., a ring or glow effect)
-
-#### **Synchronization:**
-- Video time and graph highlighting are **perfectly synchronized**
-- The timeline table also highlights the row of the current action
-- Visual feedback on all three panels (graph, video, timeline) keeps you oriented
 
 ---
 
@@ -227,14 +219,3 @@ Shows three key numbers:
 - **X nodes** — Total number of actions/phases in the current view
 - **Y transitions** — Total number of edges (action pairs)
 - **Z actions** — Total action occurrences in the video sequence
-
----
-
-### **Visual Design Principles**
-
-1. **Temporal Flow**: Left-to-right layout mirrors the progression of time
-2. **Frequency Encoding**: Size, width, and opacity all represent how often something occurs
-3. **Color Semantics**: Action verbs have consistent colors across views, making action types instantly recognizable
-4. **Progressive Disclosure**: Three detail levels let you zoom from "what are the main phases?" to "what's every micro-action?"
-5. **Interactive Highlighting**: Hovering reveals structural relationships without permanently cluttering the view
-6. **Synchronized Multi-View**: Graph, video, and timeline stay in lockstep, giving you multiple perspectives on the same data

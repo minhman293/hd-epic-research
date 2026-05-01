@@ -468,9 +468,6 @@ export function createGraphController({
       .attr("dy", "0.35em")
       .text("⟳");
 
-    selfLoopIndicators
-      .append("title")
-      .text((d) => `Self-loop on ${d.source} (count: ${d.count})`);
 
     selfLoopIndicators
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
