@@ -94,7 +94,7 @@ Encodes the **primary action verb**. Color scheme:
 | 🟢 Green | turn-on, turn-off, finish, machine ops |
 | 🟡 Yellow | screw, pat (mechanical adjustments) |
 | ⚫ Gray | wait, check, search, write, adjust (utility/monitoring) |
-| ⚪ Light Gray | START and END nodes (special) |
+| ⚪ Light Gray | START and END nodes |
 
 Colors remain consistent across all detail levels (except Task Phases mode, which uses phase-specific colors).
 
@@ -105,9 +105,9 @@ Colors remain consistent across all detail levels (except Task Phases mode, whic
 #### **Badges on Nodes**
 
 1. **Top-Left Badge (Small Circle)**
-- Shows a count of backward edges originating from this node
-- **Meaning**: How many different actions this node can **reach by going backward** (i.e., to earlier actions it has already passed)
-- Example: If "pour(water)" has a badge showing "3", it means 3 different actions appear before it in the sequence and are reachable via backward transitions
+    - Shows a count of backward edges originating from this node
+    - **Meaning**: How many different actions this node can **reach by going backward** (i.e., to earlier actions it has already passed)
+    - Example: If "pour(water)" has a badge showing "3", it means 3 different actions appear before it in the sequence and are reachable via backward transitions
 
 
 2. **Top-Right Badge (⟳ Glyph)**
