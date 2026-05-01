@@ -161,6 +161,23 @@ body {
   gap: 6px;
 }
 
+.legend-node-colors-grid,
+.legend-node-annotations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 10px;
+}
+
+.legend-node-colors-grid .legend-item,
+.legend-node-annotations-grid .legend-item {
+  min-width: 0;
+}
+
+.legend-node-colors-grid .legend-item span,
+.legend-node-annotations-grid .legend-item span {
+  overflow-wrap: anywhere;
+}
+
 .legend-dot {
   width: 10px;
   height: 10px;

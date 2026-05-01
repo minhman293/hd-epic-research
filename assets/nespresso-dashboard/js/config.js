@@ -61,8 +61,8 @@ export const LEGEND_ITEMS = {
     { type: "dot", color: "#6B7280", label: "wait / check" },
     { type: "badge", dashed: false, label: "Node size: action frequency" },
     { type: "badge1", label: "Top-left badge: backward connection count" },
-    { type: "ring", label: "Top-right ring: self-loop present" },
-    { type: "label", label: "Inside label: action / phase name" },
+    { type: "ring", label: "Top-right ring: self-loop" },
+    { type: "label", label: "Inside label: action" },
   ],
   edge: [
     { type: "line", dashed: false, label: "Solid line: transition" },

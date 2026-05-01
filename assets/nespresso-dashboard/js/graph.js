@@ -583,7 +583,23 @@ export function createGraphController({
           return;
         }
 
-        const detailKey = `${sourceItem.action} -> ${targetItem.action}`;
+        let rawSource = "";
+        let rawTarget = "";
+
+        if (typeof sourceItem.edge_key === "string" && sourceItem.edge_key.includes("|||")) {
+          const parts = sourceItem.edge_key.split("|||");
+          rawSource = (parts[0] || "").trim();
+          rawTarget = (parts[1] || "").trim();
+        }
+
+        if (!rawSource) {
+          rawSource = sourceItem.raw_action || sourceItem.action || "";
+        }
+        if (!rawTarget) {
+          rawTarget = sourceItem.next_action || targetItem.raw_action || targetItem.action || "";
+        }
+
+        const detailKey = `${rawSource} -> ${rawTarget}`;
         detailMap.set(detailKey, (detailMap.get(detailKey) || 0) + 1);
       });
     }
