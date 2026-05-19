@@ -1,4 +1,5 @@
 import { nodeColor } from "./utils.js";
+import { ACTION_TO_PHASE, PHASE_COLORS } from "./config.js";
 
 const d3 = window.d3;
 
@@ -139,6 +140,54 @@ function estimateNodeRadius(node, label, countRadius, mode) {
   return Math.max(countRadius, labelRadius);
 }
 
+function makeNodeColorFn(filteredNodes, sequence, colorMode, graphMode) {
+  if (colorMode === "category") {
+    return (d) => d.isSpecial ? "#d1d5db" : nodeColor(d.id);
+  }
+
+  if (colorMode === "phase") {
+    return (d) => {
+      if (d.isSpecial) return "#d1d5db";
+
+      if (graphMode === "abstracted") {
+        return PHASE_COLORS[d.id] || "#94A3B8";
+      }
+
+      if (graphMode === "smart") {
+        const verb = d.id.toLowerCase();
+        const matchKey = Object.keys(ACTION_TO_PHASE).find(
+          (key) => key.split("(")[0] === verb
+        );
+        const phase = matchKey ? ACTION_TO_PHASE[matchKey] : null;
+        return phase ? (PHASE_COLORS[phase] || "#94A3B8") : "#94A3B8";
+      }
+
+      const phase = ACTION_TO_PHASE[d.id] || null;
+      return phase ? (PHASE_COLORS[phase] || "#94A3B8") : "#94A3B8";
+    };
+  }
+
+  if (colorMode === "duration") {
+    // Compute mean duration per action from sequence
+    const durationMap = {};
+    sequence.forEach(s => {
+      if (!durationMap[s.action]) durationMap[s.action] = [];
+      durationMap[s.action].push(s.duration);
+    });
+    const meanDuration = {};
+    Object.entries(durationMap).forEach(([a, ds]) => {
+      meanDuration[a] = ds.reduce((s, v) => s + v, 0) / ds.length;
+    });
+    const values = Object.values(meanDuration);
+    const colorScale = d3.scaleSequential()
+      .domain([d3.min(values), d3.max(values)])
+      .interpolator(d3.interpolateYlOrRd);
+    return (d) => d.isSpecial ? "#d1d5db" : (colorScale(meanDuration[d.id] || 0));
+  }
+  
+  return (d) => d.isSpecial ? "#d1d5db" : "#94A3B8";
+}
+
 export function createGraphController({
   svgSelector,
   graphWrapSelector,
@@ -165,7 +214,7 @@ export function createGraphController({
   let currentSequenceCache = [];
   let autoZoomEnabled = true;
 
-  function buildGraph(graph, sequence, minCount = 1, mode = "smart") {
+  function buildGraph(graph, sequence, minCount = 1, mode = "smart", colorMode = "category") {
     currentMode = mode;
     lastActiveEdge = null;
     lastActiveNode = null;
@@ -410,10 +459,12 @@ export function createGraphController({
         return `translate(${p.x},${p.y})`;
       });
 
+    const colorFn = makeNodeColorFn(filteredNodes, sequence, colorMode, mode);
+
     nodeGroups
       .append("circle")
       .attr("r", (d) => radiusMap[d.id] || 18)
-      .style("fill", (d) => (d.isSpecial ? "#d1d5db" : nodeColor(d.id)));
+      .style("fill", colorFn);
 
     nodeGroups
       .append("text")

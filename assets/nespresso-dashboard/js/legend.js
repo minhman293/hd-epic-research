@@ -1,5 +1,6 @@
-export function buildLegend(legendStripEl, legendItems) {
+export function buildLegend(legendStripEl, legendItems, colorMode = "category", sequence = []) {
   legendStripEl.innerHTML = "";
+  
   const groups = Array.isArray(legendItems)
     ? { edge: legendItems }
     : legendItems;
@@ -11,6 +12,10 @@ export function buildLegend(legendStripEl, legendItems) {
     if (item.type === "dot") {
       el.innerHTML =
         `<div class="legend-dot" style="background:${item.color}"></div>` +
+        `<span>${item.label}</span>`;
+    } else if (item.type === "gradient") {
+      el.innerHTML =
+        `<div style="width:60px;height:10px;flex-shrink:0;background:linear-gradient(to right, #ffffcc, #fd8d3c, #800026);border-radius:3px;border:1px solid rgba(0,0,0,0.1);"></div>` +
         `<span>${item.label}</span>`;
     } else if (item.type === "line") {
       el.innerHTML =

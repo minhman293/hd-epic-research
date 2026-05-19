@@ -1,4 +1,4 @@
-import { getDataUrl, DEFAULT_DATA_MODE, LEGEND_ITEMS } from "./config.js";
+import { getDataUrl, DEFAULT_DATA_MODE, DEFAULT_COLOR_ENCODE_MODE, getLegendItems } from "./config.js";
 import { createGraphController } from "./graph.js";
 import { buildLegend } from "./legend.js";
 import { drawTimeline, updateTimelineActive } from "./timeline.js";
@@ -19,6 +19,7 @@ const video = document.getElementById("video");
 const graphModeSelect = document.getElementById("graphModeSelect");
 const edgeThreshold = document.getElementById("edgeThreshold");
 const thresholdLabel = document.getElementById("thresholdLabel");
+const colorEncodeSelect = document.getElementById("colorEncodeSelect");
 
 const graphController = createGraphController({
   svgSelector: "#graphSvg",
@@ -42,6 +43,15 @@ function refresh() {
 
   graphController.updateActive(item);
   updateTimelineActive(timelineRows, footerPanel, item);
+}
+
+function rebuildLegend() {
+  buildLegend(
+    legendStrip,
+    getLegendItems(colorEncodeSelect.value, "frequency"),
+    colorEncodeSelect.value,
+    cachedData?.sequence || []
+  );
 }
 
 async function loadGraphData() {
@@ -71,8 +81,10 @@ async function loadGraphData() {
       data.graph,
       data.sequence,
       parseInt(edgeThreshold.value),
-      mode
+      mode,
+      colorEncodeSelect.value
     );
+    rebuildLegend();
     statusLabel.innerHTML = "Status: <strong>Ready</strong>";
     actionLabel.textContent = "-";
   } catch (error) {
@@ -88,6 +100,7 @@ async function loadGraphData() {
 // Listen for graph mode changes
 graphModeSelect.addEventListener("change", () => {
   loadGraphData();
+  rebuildLegend();
 });
 
 // Listen for edge threshold changes
@@ -99,8 +112,24 @@ edgeThreshold.addEventListener("input", () => {
       cachedData.graph,
       cachedData.sequence,
       val,
-      graphModeSelect.value
+      graphModeSelect.value,
+      colorEncodeSelect.value
     );
+    rebuildLegend();
+  }
+});
+
+// Listen for color encoding changes
+colorEncodeSelect.addEventListener("change", () => {
+  if (cachedData) {
+    graphController.buildGraph(
+      cachedData.graph,
+      cachedData.sequence,
+      parseInt(edgeThreshold.value),
+      graphModeSelect.value,
+      colorEncodeSelect.value
+    );
+    rebuildLegend();
   }
 });
 
@@ -110,10 +139,11 @@ async function init() {
     return;
   }
 
-  // Set default graph mode
+  // Set default graph mode and color encoding
   graphModeSelect.value = DEFAULT_DATA_MODE;
+  colorEncodeSelect.value = DEFAULT_COLOR_ENCODE_MODE;
 
-  buildLegend(legendStrip, LEGEND_ITEMS);
+  rebuildLegend();
 
   // Load initial graph data
   await loadGraphData();
