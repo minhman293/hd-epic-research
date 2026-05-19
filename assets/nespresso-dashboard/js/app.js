@@ -119,12 +119,14 @@ async function init() {
   await loadGraphData();
 
   video.addEventListener("play", () => {
+    graphController.setAutoZoom(false);
     appRoot.classList.remove("paused");
     statusLabel.innerHTML = "Status: <strong>Playing</strong>";
     refresh();
   });
 
   video.addEventListener("pause", () => {
+    graphController.setAutoZoom(true);
     appRoot.classList.add("paused");
     statusLabel.innerHTML = "Status: <strong>Paused</strong>";
     refresh();
@@ -134,6 +136,7 @@ async function init() {
   video.addEventListener("seeked", refresh);
 
   video.addEventListener("ended", () => {
+    graphController.setAutoZoom(true);
     appRoot.classList.add("paused");
     statusLabel.innerHTML = "Status: <strong>Ended</strong>";
     refresh();

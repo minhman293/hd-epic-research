@@ -163,6 +163,7 @@ export function createGraphController({
   let edgeOpacityScale = null;
   let currentMode = "smart";
   let currentSequenceCache = [];
+  let autoZoomEnabled = true;
 
   function buildGraph(graph, sequence, minCount = 1, mode = "smart") {
     currentMode = mode;
@@ -711,14 +712,14 @@ export function createGraphController({
         }
       }
 
-      if (zoomSource && zoomTarget) {
+      if (autoZoomEnabled && zoomSource && zoomTarget) {
         zoomToTransition(zoomSource, zoomTarget);
       }
     } else if (activeNode !== lastActiveNode) {
       lastActiveNode = activeNode;
-      if (activeNode) {
+      if (autoZoomEnabled && activeNode) {
         autoZoomToNode(activeNode);
-      } else if (zoomBehavior && fitTransform) {
+      } else if (autoZoomEnabled && zoomBehavior && fitTransform) {
         svg.transition().duration(400).call(zoomBehavior.transform, fitTransform);
       }
     }
@@ -738,8 +739,13 @@ export function createGraphController({
     }
   }
 
+  function setAutoZoom(enabled) {
+    autoZoomEnabled = enabled;
+  }
+
   return {
     buildGraph,
     updateActive,
+    setAutoZoom,
   };
 }
