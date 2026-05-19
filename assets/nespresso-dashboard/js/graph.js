@@ -134,10 +134,43 @@ function getNodeSubtitle(node, mode) {
   return match ? match[1] : "";
 }
 
-function estimateNodeRadius(node, label, countRadius, mode) {
-  const charWidth = mode === "abstracted" ? 4.9 : 3.9;
-  const labelRadius = Math.max(14, label.length * charWidth * 0.5 + 12);
-  return Math.max(countRadius, labelRadius);
+function makeNodeSizeMap(filteredNodes, nodeDurationStats, sizeMode, nodeRadiusByCount, graphMode) {
+  if (sizeMode === "frequency") {
+    const result = {};
+    filteredNodes.forEach((d) => {
+      result[d.id] = d.isSpecial ? 18 : nodeRadiusByCount(d.count);
+    });
+    return result;
+  }
+
+  if (sizeMode === "duration") {
+    const getValue = (nodeId) => {
+      const stats = nodeDurationStats[nodeId];
+      if (!stats) return 0;
+      return graphMode === "abstracted" ? stats.total : stats.mean;
+    };
+
+    const vals = filteredNodes
+      .filter((d) => !d.isSpecial)
+      .map((d) => getValue(d.id))
+      .filter((v) => isFinite(v) && v > 0);
+
+    const sizeScale = d3.scaleLinear()
+      .domain([d3.min(vals) || 0, d3.max(vals) || 1])
+      .range([18, 36]);
+
+    const result = {};
+    filteredNodes.forEach((d) => {
+      result[d.id] = d.isSpecial ? 18 : sizeScale(getValue(d.id));
+    });
+    return result;
+  }
+
+  const result = {};
+  filteredNodes.forEach((d) => {
+    result[d.id] = d.isSpecial ? 18 : nodeRadiusByCount(d.count);
+  });
+  return result;
 }
 
 function makeNodeColorFn(filteredNodes, sequence, colorMode, graphMode) {
@@ -212,9 +245,10 @@ export function createGraphController({
   let edgeOpacityScale = null;
   let currentMode = "smart";
   let currentSequenceCache = [];
+  let nodeDurationStatsCache = null;
   let autoZoomEnabled = true;
 
-  function buildGraph(graph, sequence, minCount = 1, mode = "smart", colorMode = "category") {
+  function buildGraph(graph, sequence, minCount = 1, mode = "smart", colorMode = "category", sizeMode = "frequency") {
     currentMode = mode;
     lastActiveEdge = null;
     lastActiveNode = null;
@@ -263,6 +297,40 @@ export function createGraphController({
     });
     const filteredNodes = enrichedNodes.filter(n => activeNodeIds.has(n.id));
 
+    function computeNodeDurationStats(nodes, seq) {
+      const durationMap = {};
+      seq.forEach((item) => {
+        if (!durationMap[item.action]) durationMap[item.action] = [];
+        durationMap[item.action].push(item.duration);
+      });
+
+      const stats = {};
+      nodes.forEach((n) => {
+        if (n.isSpecial) return;
+        const durations = durationMap[n.id] || [];
+        if (durations.length === 0) {
+          stats[n.id] = null;
+          return;
+        }
+        const total = durations.reduce((sum, value) => sum + value, 0);
+        stats[n.id] = {
+          mean: total / durations.length,
+          total,
+          min: Math.min(...durations),
+          max: Math.max(...durations),
+          n: durations.length,
+        };
+      });
+      return stats;
+    }
+
+    nodeDurationStatsCache = computeNodeDurationStats(filteredNodes, sequence);
+
+    const maxCount = d3.max(filteredNodes, (d) => d.count) || 1;
+    const nodeRadiusByCount = d3.scaleSqrt()
+      .domain([1, Math.max(maxCount, 2)])
+      .range([18, 36]);
+
     enrichedLinksCache = enrichedLinks;  // Store for hover handlers
 
     const defs = svg.append("defs");
@@ -300,15 +368,13 @@ export function createGraphController({
       nodeLabels.set(node.id, getNodeLabel(node, currentMode));
     });
 
-    const maxCount = d3.max(filteredNodes, (d) => d.count) || 1;
-    const nodeRadiusByCount = d3.scaleSqrt().domain([1, Math.max(maxCount, 2)]).range([18, 36]);
-
-    const radiusMap = {};
-    filteredNodes.forEach((d) => {
-      const label = nodeLabels.get(d.id) || d.id;
-      const countRadius = nodeRadiusByCount(d.count);
-      radiusMap[d.id] = estimateNodeRadius(d, label, countRadius, currentMode);
-    });
+    const radiusMap = makeNodeSizeMap(
+      filteredNodes,
+      nodeDurationStatsCache,
+      sizeMode,
+      nodeRadiusByCount,
+      mode
+    );
     radiusMapCache = radiusMap;
 
     const maxRadius = d3.max(Object.values(radiusMap)) || 18;
@@ -528,21 +594,10 @@ export function createGraphController({
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
       .on("mouseout", hideEdgeTooltip);
 
-    nodeGroups.append("title").text((d) => {
-      let tooltip = `${d.id}\nCount: ${d.count}`;
-      if (d.objects && Object.keys(d.objects).length > 0) {
-        const objectList = Object.entries(d.objects)
-          .map(([obj, cnt]) => `${obj}: ${cnt}`)
-          .join(", ");
-        tooltip += `\nObjects: ${objectList}`;
-      }
-      return tooltip;
-    });
-
     // ── Suggestion 4: Node hover highlighting with edge focus+context ────────
     nodeGroups
       .on("mouseover", function(event, d) {
-        const hoveredId = d.id;
+        showNodeTooltip(event, d, currentMode);
 
         // Dim all edges
         linkSelection
@@ -551,23 +606,25 @@ export function createGraphController({
 
         // Highlight edges connected to hovered node
         linkSelection
-          .filter(link => link.source === hoveredId || link.target === hoveredId)
+          .filter(link => link.source === d.id || link.target === d.id)
           .attr("stroke-opacity", link => edgeOpacityScale(link.count || 1))
           .attr("stroke-width", link => edgeWidthScale(link.count || 1) * 1.5)
           .attr("stroke", "#ea580c");
 
         // Dim non-neighbor nodes
         nodeSelection
-          .filter(n => n.id !== hoveredId)
+          .filter(n => n.id !== d.id)
           .style("opacity", function(n) {
             const isNeighbor = enrichedLinksCache.some(
-              l => (l.source === hoveredId && l.target === n.id) ||
-                   (l.target === hoveredId && l.source === n.id)
+              l => (l.source === d.id && l.target === n.id) ||
+                   (l.target === d.id && l.source === n.id)
             );
             return isNeighbor ? 0.9 : 0.2;
           });
       })
       .on("mouseout", function() {
+        hideNodeTooltip();
+
         // Restore all to frequency-based encoding
         linkSelection
           .attr("stroke-opacity", d => edgeOpacityScale(d.count || 1))
@@ -671,6 +728,47 @@ export function createGraphController({
 
   function hideEdgeTooltip() {
     document.getElementById("edgeTooltip").style.display = "none";
+  }
+
+  function showNodeTooltip(event, d, graphMode) {
+    const stats = nodeDurationStatsCache?.[d.id];
+    const lines = [`${d.id}`, `Count: ${d.count}`];
+
+    if (stats) {
+      if (graphMode === "abstracted") {
+        lines.push(`Total phase duration: ${stats.total.toFixed(2)} s`);
+        lines.push(`  (${stats.n} actions, ${stats.min.toFixed(2)}-${stats.max.toFixed(2)} s)`);
+      } else if (graphMode === "full") {
+        if (stats.n === 1) {
+          lines.push(`Duration: ${stats.mean.toFixed(2)} s`);
+        } else {
+          lines.push(`Mean duration: ${stats.mean.toFixed(2)} s`);
+          lines.push(`  range: ${stats.min.toFixed(2)}-${stats.max.toFixed(2)} s`);
+        }
+      } else if (graphMode === "smart") {
+        lines.push(`Mean duration (all objects): ${stats.mean.toFixed(2)} s`);
+        if (stats.n > 1) {
+          lines.push(`  range: ${stats.min.toFixed(2)}-${stats.max.toFixed(2)} s`);
+        }
+      }
+    }
+
+    if (d.objects && Object.keys(d.objects).length > 0) {
+      const objectList = Object.entries(d.objects)
+        .map(([obj, cnt]) => `  ${obj}: ${cnt}`)
+        .join("\n");
+      lines.push(`Objects:\n${objectList}`);
+    }
+
+    const tooltip = document.getElementById("nodeTooltip");
+    tooltip.textContent = lines.join("\n");
+    tooltip.style.display = "block";
+    tooltip.style.left = (event.clientX + 12) + "px";
+    tooltip.style.top = (event.clientY - 10) + "px";
+  }
+
+  function hideNodeTooltip() {
+    document.getElementById("nodeTooltip").style.display = "none";
   }
 
   function zoomToTransition(sourceId, targetId) {

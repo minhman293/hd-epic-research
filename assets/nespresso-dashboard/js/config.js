@@ -91,7 +91,7 @@ export const ACTION_TO_PHASE = {
 
 export const DEFAULT_COLOR_ENCODE_MODE = "category";
 
-export function getLegendItems(colorMode = "category", sizeMode = "frequency") {
+export function getLegendItems(colorMode = "category", sizeMode = "frequency", graphMode = "smart") {
   const nodeColorItems = colorMode === "phase"
     ? [
       { type: "dot", color: PHASE_COLORS.measure, label: "measure" },
@@ -116,11 +116,13 @@ export function getLegendItems(colorMode = "category", sizeMode = "frequency") {
         { type: "dot", color: "#6B7280", label: "wait / check" },
       ];
 
-  const nodeSizeLabel = sizeMode === "duration"
-    ? "Node size: mean duration"
-    : sizeMode === "variance"
-      ? "Node size: duration variance"
-      : "Node size: action frequency";
+  const nodeSizeLabel =
+    sizeMode === "frequency" ? "Node size: action frequency"
+      : sizeMode === "duration" && graphMode === "abstracted"
+        ? "Node size: total phase duration"
+        : sizeMode === "duration"
+          ? "Node size: mean duration"
+          : "Node size: action frequency";
 
   return {
     node: [

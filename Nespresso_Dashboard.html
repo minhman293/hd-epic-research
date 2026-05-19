@@ -41,6 +41,11 @@
             <option value="phase">Task phase</option>
             <option value="duration">Mean duration</option>
           </select>
+          <label style="font-size: 0.9rem; font-weight: 500; color: #374151; margin-left: 8px;">Node size:</label>
+          <select id="sizeEncodeSelect" style="padding: 6px 36px 6px 10px; border-radius: 6px; border: 1px solid #d1d5db; font-size: 0.9rem; cursor: pointer; background: white url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 24 24%22 stroke=%22%236B7280%22%3E%3Cpath stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%222%22 d=%22M19 9l-7 7-7-7%22/%3E%3C/svg%3E') no-repeat right 14px center; background-size: 16px; appearance: none; -webkit-appearance: none;">
+            <option value="frequency">Frequency</option>
+            <option value="duration">Duration</option>
+          </select>
         </div>
         <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px; flex-wrap: wrap;">
           <label style="font-size: 0.9rem; font-weight: 500; color: #374151;">Min. Transition Count:</label>
@@ -85,6 +90,21 @@
   </div>
 
   <div id="edgeTooltip" style="
+    position: fixed;
+    background: rgba(0,0,0,0.85);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: monospace;
+    pointer-events: none;
+    display: none;
+    white-space: pre;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  "></div>
+
+  <div id="nodeTooltip" style="
     position: fixed;
     background: rgba(0,0,0,0.85);
     color: white;

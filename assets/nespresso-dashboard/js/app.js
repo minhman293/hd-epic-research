@@ -20,6 +20,7 @@ const graphModeSelect = document.getElementById("graphModeSelect");
 const edgeThreshold = document.getElementById("edgeThreshold");
 const thresholdLabel = document.getElementById("thresholdLabel");
 const colorEncodeSelect = document.getElementById("colorEncodeSelect");
+const sizeEncodeSelect = document.getElementById("sizeEncodeSelect");
 
 const graphController = createGraphController({
   svgSelector: "#graphSvg",
@@ -48,7 +49,7 @@ function refresh() {
 function rebuildLegend() {
   buildLegend(
     legendStrip,
-    getLegendItems(colorEncodeSelect.value, "frequency"),
+    getLegendItems(colorEncodeSelect.value, sizeEncodeSelect.value, graphModeSelect.value),
     colorEncodeSelect.value,
     cachedData?.sequence || []
   );
@@ -82,7 +83,8 @@ async function loadGraphData() {
       data.sequence,
       parseInt(edgeThreshold.value),
       mode,
-      colorEncodeSelect.value
+      colorEncodeSelect.value,
+      sizeEncodeSelect.value
     );
     rebuildLegend();
     statusLabel.innerHTML = "Status: <strong>Ready</strong>";
@@ -113,7 +115,8 @@ edgeThreshold.addEventListener("input", () => {
       cachedData.sequence,
       val,
       graphModeSelect.value,
-      colorEncodeSelect.value
+      colorEncodeSelect.value,
+      sizeEncodeSelect.value
     );
     rebuildLegend();
   }
@@ -127,9 +130,25 @@ colorEncodeSelect.addEventListener("change", () => {
       cachedData.sequence,
       parseInt(edgeThreshold.value),
       graphModeSelect.value,
-      colorEncodeSelect.value
+      colorEncodeSelect.value,
+      sizeEncodeSelect.value
     );
     rebuildLegend();
+  }
+});
+
+// Listen for size encoding changes
+sizeEncodeSelect.addEventListener("input", () => {
+  rebuildLegend();
+  if (cachedData) {
+    graphController.buildGraph(
+      cachedData.graph,
+      cachedData.sequence,
+      parseInt(edgeThreshold.value),
+      graphModeSelect.value,
+      colorEncodeSelect.value,
+      sizeEncodeSelect.value
+    );
   }
 });
 
@@ -139,9 +158,10 @@ async function init() {
     return;
   }
 
-  // Set default graph mode and color encoding
+  // Set default graph mode, color encoding, and size encoding
   graphModeSelect.value = DEFAULT_DATA_MODE;
   colorEncodeSelect.value = DEFAULT_COLOR_ENCODE_MODE;
+  sizeEncodeSelect.value = "frequency";
 
   rebuildLegend();
 
