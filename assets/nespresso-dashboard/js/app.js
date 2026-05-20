@@ -21,6 +21,7 @@ const edgeThreshold = document.getElementById("edgeThreshold");
 const thresholdLabel = document.getElementById("thresholdLabel");
 const colorEncodeSelect = document.getElementById("colorEncodeSelect");
 const sizeEncodeSelect = document.getElementById("sizeEncodeSelect");
+const layoutModeSelect = document.getElementById("layoutModeSelect");
 
 const graphController = createGraphController({
   svgSelector: "#graphSvg",
@@ -84,7 +85,8 @@ async function loadGraphData() {
       parseInt(edgeThreshold.value),
       mode,
       colorEncodeSelect.value,
-      sizeEncodeSelect.value
+      sizeEncodeSelect.value,
+      layoutModeSelect ? layoutModeSelect.value : "temporal"
     );
     rebuildLegend();
     statusLabel.innerHTML = "Status: <strong>Ready</strong>";
@@ -109,17 +111,18 @@ graphModeSelect.addEventListener("change", () => {
 edgeThreshold.addEventListener("input", () => {
   const val = parseInt(edgeThreshold.value);
   thresholdLabel.textContent = val;
-  if (cachedData) {
-    graphController.buildGraph(
-      cachedData.graph,
-      cachedData.sequence,
-      val,
-      graphModeSelect.value,
-      colorEncodeSelect.value,
-      sizeEncodeSelect.value
-    );
-    rebuildLegend();
-  }
+    if (cachedData) {
+      graphController.buildGraph(
+        cachedData.graph,
+        cachedData.sequence,
+        val,
+        graphModeSelect.value,
+        colorEncodeSelect.value,
+        sizeEncodeSelect.value,
+        layoutModeSelect ? layoutModeSelect.value : "temporal"
+      );
+      rebuildLegend();
+    }
 });
 
 // Listen for color encoding changes
@@ -131,7 +134,8 @@ colorEncodeSelect.addEventListener("change", () => {
       parseInt(edgeThreshold.value),
       graphModeSelect.value,
       colorEncodeSelect.value,
-      sizeEncodeSelect.value
+      sizeEncodeSelect.value,
+      layoutModeSelect ? layoutModeSelect.value : "temporal"
     );
     rebuildLegend();
   }
@@ -147,10 +151,29 @@ sizeEncodeSelect.addEventListener("input", () => {
       parseInt(edgeThreshold.value),
       graphModeSelect.value,
       colorEncodeSelect.value,
-      sizeEncodeSelect.value
+      sizeEncodeSelect.value,
+      layoutModeSelect ? layoutModeSelect.value : "temporal"
     );
   }
 });
+
+// Listen for layout mode changes
+if (layoutModeSelect) {
+  layoutModeSelect.addEventListener("change", () => {
+    if (cachedData) {
+      graphController.buildGraph(
+        cachedData.graph,
+        cachedData.sequence,
+        parseInt(edgeThreshold.value),
+        graphModeSelect.value,
+        colorEncodeSelect.value,
+        sizeEncodeSelect.value,
+        layoutModeSelect.value
+      );
+      rebuildLegend();
+    }
+  });
+}
 
 async function init() {
   if (!window.d3) {
@@ -162,6 +185,7 @@ async function init() {
   graphModeSelect.value = DEFAULT_DATA_MODE;
   colorEncodeSelect.value = DEFAULT_COLOR_ENCODE_MODE;
   sizeEncodeSelect.value = "frequency";
+  if (layoutModeSelect) layoutModeSelect.value = "temporal";
 
   rebuildLegend();
 

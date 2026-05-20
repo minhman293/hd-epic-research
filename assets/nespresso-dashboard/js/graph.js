@@ -3,7 +3,7 @@ import { ACTION_TO_PHASE, PHASE_COLORS } from "./config.js";
 
 const d3 = window.d3;
 
-function computeLayout(nodes, sequence, { maxRadius = 18 } = {}) {
+function computeStructuralLayout(nodes, sequence, { maxRadius = 18 } = {}) {
   const n = sequence.length;
   const occurrences = {};
   const firstOccurrence = {};
@@ -65,6 +65,59 @@ function computeLayout(nodes, sequence, { maxRadius = 18 } = {}) {
   });
 
   return layout;
+}
+
+function computeTemporalLayout(nodes, sequence, { maxRadius = 18 } = {}) {
+  // Step 1a: collect all start times per action from sequence
+  const onsetMap = {}; // action → [start times]
+  sequence.forEach(item => {
+    if (!onsetMap[item.action]) onsetMap[item.action] = [];
+    onsetMap[item.action].push(item.start);
+  });
+
+  // Step 1b: compute mean onset per node
+  const totalDuration = sequence[sequence.length - 1]?.end || 1;
+  const meanOnset = {};
+  nodes.forEach(n => {
+    if (n.id === "START") { meanOnset["START"] = 0; return; }
+    if (n.id === "END")   { meanOnset["END"] = totalDuration; return; }
+    const times = onsetMap[n.id] || [0];
+    meanOnset[n.id] = times.reduce((s, v) => s + v, 0) / times.length;
+  });
+
+  // Step 1c: map seconds → logical canvas pixels
+  const CANVAS_WIDTH = 2200;
+  const xScale = d3.scaleLinear()
+    .domain([0, totalDuration])
+    .range([0, CANVAS_WIDTH]);
+
+  // Step 1d: resolve y-conflicts — bucket nodes whose x-positions are close,
+  // stack them vertically within each bucket
+  const BUCKET_PX = 90; // nodes within 90px of each other share a column
+  const yStep = Math.max(72, Math.round(maxRadius * 2.4));
+  const buckets = {}; // bucketKey → [nodeId]
+
+  nodes.forEach(n => {
+    const rawX = xScale(meanOnset[n.id] || 0);
+    const bucketKey = Math.round(rawX / BUCKET_PX) * BUCKET_PX;
+    if (!buckets[bucketKey]) buckets[bucketKey] = [];
+    buckets[bucketKey].push(n.id);
+  });
+
+  const layout = {};
+  Object.entries(buckets).forEach(([bucketKey, ids]) => {
+    const sorted = [...ids].sort(
+      (a, b) => (meanOnset[a] || 0) - (meanOnset[b] || 0)
+    );
+    sorted.forEach((id, idx) => {
+      layout[id] = {
+        x: Number(bucketKey),
+        y: (idx - (sorted.length - 1) / 2) * yStep,
+      };
+    });
+  });
+
+  return { layout, totalDuration, xScale };
 }
 
 function getStraightPath(link, layout, radiusMap) {
@@ -247,8 +300,10 @@ export function createGraphController({
   let currentSequenceCache = [];
   let nodeDurationStatsCache = null;
   let autoZoomEnabled = true;
+  let xScaleCache = null;
+  let totalDurationCache = null;
 
-  function buildGraph(graph, sequence, minCount = 1, mode = "smart", colorMode = "category", sizeMode = "frequency") {
+  function buildGraph(graph, sequence, minCount = 1, mode = "smart", colorMode = "category", sizeMode = "frequency", layoutMode = "temporal", options = {}) {
     currentMode = mode;
     lastActiveEdge = null;
     lastActiveNode = null;
@@ -378,7 +433,58 @@ export function createGraphController({
     radiusMapCache = radiusMap;
 
     const maxRadius = d3.max(Object.values(radiusMap)) || 18;
-    const layout = computeLayout(filteredNodes, sequence, { maxRadius });
+    let layout = {};
+    let totalDuration = sequence[sequence.length - 1]?.end || 1;
+    let xScale = null;
+
+    if (layoutMode === "temporal") {
+      const temporal = computeTemporalLayout(filteredNodes, sequence, { maxRadius });
+      layout = temporal.layout;
+      totalDuration = temporal.totalDuration;
+      xScale = temporal.xScale;
+      xScaleCache = xScale;
+      totalDurationCache = totalDuration;
+    } else {
+      layout = computeStructuralLayout(filteredNodes, sequence, { maxRadius });
+      xScaleCache = null;
+      totalDurationCache = sequence[sequence.length - 1]?.end || 1;
+    }
+
+    // Draw time ruler for temporal layout inside zoomGroup (it will pan/zoom with graph)
+    if (xScale) {
+      const minNodeY = Math.min(...Object.values(layout).map(p => p.y));
+      const rulerY = minNodeY - maxRadius - 28;
+      const TICK_INTERVAL = 30; // seconds
+      const ticks = d3.range(0, totalDuration + TICK_INTERVAL, TICK_INTERVAL);
+      const rulerG = zoomGroup.append("g").attr("class", "time-ruler");
+
+      // Baseline
+      rulerG.append("line")
+        .attr("x1", xScale(0))
+        .attr("x2", xScale(totalDuration))
+        .attr("y1", rulerY)
+        .attr("y2", rulerY)
+        .attr("stroke", "#cbd5e1")
+        .attr("stroke-width", 1);
+
+      ticks.forEach(t => {
+        const x = xScale(t);
+
+        rulerG.append("line")
+          .attr("x1", x).attr("x2", x)
+          .attr("y1", rulerY - 4).attr("y2", rulerY + 4)
+          .attr("stroke", "#94a3b8")
+          .attr("stroke-width", 1);
+
+        rulerG.append("text")
+          .attr("x", x)
+          .attr("y", rulerY - 8)
+          .attr("text-anchor", "middle")
+          .attr("font-size", "9px")
+          .attr("fill", "#6b7280")
+          .text(t + "s");
+      });
+    }
 
     // ── Suggestion 1: Create scales for edge width and opacity by frequency ──
     const maxLinkCount = d3.max(enrichedLinks, d => d.count) || 1;
