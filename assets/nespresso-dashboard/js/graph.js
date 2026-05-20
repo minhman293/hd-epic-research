@@ -303,7 +303,7 @@ export function createGraphController({
   let xScaleCache = null;
   let totalDurationCache = null;
 
-  function buildGraph(graph, sequence, minCount = 1, mode = "smart", colorMode = "category", sizeMode = "frequency", layoutMode = "temporal", options = {}) {
+  function buildGraph(graph, sequence, minCount = 1, mode = "smart", colorMode = "category", sizeMode = "frequency", layoutMode = "temporal", options = { onNodeClick: null }) {
     currentMode = mode;
     lastActiveEdge = null;
     lastActiveNode = null;
@@ -739,6 +739,11 @@ export function createGraphController({
 
         nodeSelection.style("opacity", 1);
         hideEdgeTooltip();
+      })
+      .on("click", function(event, d) {
+        if (options.onNodeClick) {
+          options.onNodeClick(d, currentSequenceCache);
+        }
       });
 
     linkSelection = zoomGroup.selectAll(".link");
