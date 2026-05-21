@@ -363,6 +363,12 @@ video {
 
 .paused .node.active circle { animation-play-state: paused; }
 
+.node.selected circle {
+  stroke: #2563eb;
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 4px rgba(37, 99, 235, 0.65));
+}
+
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.28); }

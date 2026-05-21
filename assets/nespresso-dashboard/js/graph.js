@@ -1,8 +1,9 @@
 import { nodeColor } from "./utils.js";
+import { ACTION_TO_PHASE, PHASE_COLORS } from "./config.js";
 
 const d3 = window.d3;
 
-function computeLayout(nodes, sequence, { maxRadius = 18 } = {}) {
+function computeStructuralLayout(nodes, sequence, { maxRadius = 18 } = {}) {
   const n = sequence.length;
   const occurrences = {};
   const firstOccurrence = {};
@@ -64,6 +65,59 @@ function computeLayout(nodes, sequence, { maxRadius = 18 } = {}) {
   });
 
   return layout;
+}
+
+function computeTemporalLayout(nodes, sequence, { maxRadius = 18 } = {}) {
+  // Step 1a: collect all start times per action from sequence
+  const onsetMap = {}; // action → [start times]
+  sequence.forEach(item => {
+    if (!onsetMap[item.action]) onsetMap[item.action] = [];
+    onsetMap[item.action].push(item.start);
+  });
+
+  // Step 1b: compute mean onset per node
+  const totalDuration = sequence[sequence.length - 1]?.end || 1;
+  const meanOnset = {};
+  nodes.forEach(n => {
+    if (n.id === "START") { meanOnset["START"] = 0; return; }
+    if (n.id === "END")   { meanOnset["END"] = totalDuration; return; }
+    const times = onsetMap[n.id] || [0];
+    meanOnset[n.id] = times.reduce((s, v) => s + v, 0) / times.length;
+  });
+
+  // Step 1c: map seconds → logical canvas pixels
+  const CANVAS_WIDTH = 2200;
+  const xScale = d3.scaleLinear()
+    .domain([0, totalDuration])
+    .range([0, CANVAS_WIDTH]);
+
+  // Step 1d: resolve y-conflicts — bucket nodes whose x-positions are close,
+  // stack them vertically within each bucket
+  const BUCKET_PX = 90; // nodes within 90px of each other share a column
+  const yStep = Math.max(72, Math.round(maxRadius * 2.4));
+  const buckets = {}; // bucketKey → [nodeId]
+
+  nodes.forEach(n => {
+    const rawX = xScale(meanOnset[n.id] || 0);
+    const bucketKey = Math.round(rawX / BUCKET_PX) * BUCKET_PX;
+    if (!buckets[bucketKey]) buckets[bucketKey] = [];
+    buckets[bucketKey].push(n.id);
+  });
+
+  const layout = {};
+  Object.entries(buckets).forEach(([bucketKey, ids]) => {
+    const sorted = [...ids].sort(
+      (a, b) => (meanOnset[a] || 0) - (meanOnset[b] || 0)
+    );
+    sorted.forEach((id, idx) => {
+      layout[id] = {
+        x: Number(bucketKey),
+        y: (idx - (sorted.length - 1) / 2) * yStep,
+      };
+    });
+  });
+
+  return { layout, totalDuration, xScale };
 }
 
 function getStraightPath(link, layout, radiusMap) {
@@ -133,10 +187,91 @@ function getNodeSubtitle(node, mode) {
   return match ? match[1] : "";
 }
 
-function estimateNodeRadius(node, label, countRadius, mode) {
-  const charWidth = mode === "abstracted" ? 4.9 : 3.9;
-  const labelRadius = Math.max(14, label.length * charWidth * 0.5 + 12);
-  return Math.max(countRadius, labelRadius);
+function makeNodeSizeMap(filteredNodes, nodeDurationStats, sizeMode, nodeRadiusByCount, graphMode) {
+  if (sizeMode === "frequency") {
+    const result = {};
+    filteredNodes.forEach((d) => {
+      result[d.id] = d.isSpecial ? 18 : nodeRadiusByCount(d.count);
+    });
+    return result;
+  }
+
+  if (sizeMode === "duration") {
+    const getValue = (nodeId) => {
+      const stats = nodeDurationStats[nodeId];
+      if (!stats) return 0;
+      return graphMode === "abstracted" ? stats.total : stats.mean;
+    };
+
+    const vals = filteredNodes
+      .filter((d) => !d.isSpecial)
+      .map((d) => getValue(d.id))
+      .filter((v) => isFinite(v) && v > 0);
+
+    const sizeScale = d3.scaleLinear()
+      .domain([d3.min(vals) || 0, d3.max(vals) || 1])
+      .range([18, 36]);
+
+    const result = {};
+    filteredNodes.forEach((d) => {
+      result[d.id] = d.isSpecial ? 18 : sizeScale(getValue(d.id));
+    });
+    return result;
+  }
+
+  const result = {};
+  filteredNodes.forEach((d) => {
+    result[d.id] = d.isSpecial ? 18 : nodeRadiusByCount(d.count);
+  });
+  return result;
+}
+
+function makeNodeColorFn(filteredNodes, sequence, colorMode, graphMode) {
+  if (colorMode === "category") {
+    return (d) => d.isSpecial ? "#d1d5db" : nodeColor(d.id);
+  }
+
+  if (colorMode === "phase") {
+    return (d) => {
+      if (d.isSpecial) return "#d1d5db";
+
+      if (graphMode === "abstracted") {
+        return PHASE_COLORS[d.id] || "#94A3B8";
+      }
+
+      if (graphMode === "smart") {
+        const verb = d.id.toLowerCase();
+        const matchKey = Object.keys(ACTION_TO_PHASE).find(
+          (key) => key.split("(")[0] === verb
+        );
+        const phase = matchKey ? ACTION_TO_PHASE[matchKey] : null;
+        return phase ? (PHASE_COLORS[phase] || "#94A3B8") : "#94A3B8";
+      }
+
+      const phase = ACTION_TO_PHASE[d.id] || null;
+      return phase ? (PHASE_COLORS[phase] || "#94A3B8") : "#94A3B8";
+    };
+  }
+
+  if (colorMode === "duration") {
+    // Compute mean duration per action from sequence
+    const durationMap = {};
+    sequence.forEach(s => {
+      if (!durationMap[s.action]) durationMap[s.action] = [];
+      durationMap[s.action].push(s.duration);
+    });
+    const meanDuration = {};
+    Object.entries(durationMap).forEach(([a, ds]) => {
+      meanDuration[a] = ds.reduce((s, v) => s + v, 0) / ds.length;
+    });
+    const values = Object.values(meanDuration);
+    const colorScale = d3.scaleSequential()
+      .domain([d3.min(values), d3.max(values)])
+      .interpolator(d3.interpolateYlOrRd);
+    return (d) => d.isSpecial ? "#d1d5db" : (colorScale(meanDuration[d.id] || 0));
+  }
+  
+  return (d) => d.isSpecial ? "#d1d5db" : "#94A3B8";
 }
 
 export function createGraphController({
@@ -163,8 +298,12 @@ export function createGraphController({
   let edgeOpacityScale = null;
   let currentMode = "smart";
   let currentSequenceCache = [];
+  let nodeDurationStatsCache = null;
+  let autoZoomEnabled = true;
+  let xScaleCache = null;
+  let totalDurationCache = null;
 
-  function buildGraph(graph, sequence, minCount = 1, mode = "smart") {
+  function buildGraph(graph, sequence, minCount = 1, mode = "smart", colorMode = "category", sizeMode = "frequency", layoutMode = "temporal", options = { onNodeClick: null }) {
     currentMode = mode;
     lastActiveEdge = null;
     lastActiveNode = null;
@@ -213,6 +352,40 @@ export function createGraphController({
     });
     const filteredNodes = enrichedNodes.filter(n => activeNodeIds.has(n.id));
 
+    function computeNodeDurationStats(nodes, seq) {
+      const durationMap = {};
+      seq.forEach((item) => {
+        if (!durationMap[item.action]) durationMap[item.action] = [];
+        durationMap[item.action].push(item.duration);
+      });
+
+      const stats = {};
+      nodes.forEach((n) => {
+        if (n.isSpecial) return;
+        const durations = durationMap[n.id] || [];
+        if (durations.length === 0) {
+          stats[n.id] = null;
+          return;
+        }
+        const total = durations.reduce((sum, value) => sum + value, 0);
+        stats[n.id] = {
+          mean: total / durations.length,
+          total,
+          min: Math.min(...durations),
+          max: Math.max(...durations),
+          n: durations.length,
+        };
+      });
+      return stats;
+    }
+
+    nodeDurationStatsCache = computeNodeDurationStats(filteredNodes, sequence);
+
+    const maxCount = d3.max(filteredNodes, (d) => d.count) || 1;
+    const nodeRadiusByCount = d3.scaleSqrt()
+      .domain([1, Math.max(maxCount, 2)])
+      .range([18, 36]);
+
     enrichedLinksCache = enrichedLinks;  // Store for hover handlers
 
     const defs = svg.append("defs");
@@ -250,19 +423,68 @@ export function createGraphController({
       nodeLabels.set(node.id, getNodeLabel(node, currentMode));
     });
 
-    const maxCount = d3.max(filteredNodes, (d) => d.count) || 1;
-    const nodeRadiusByCount = d3.scaleSqrt().domain([1, Math.max(maxCount, 2)]).range([18, 36]);
-
-    const radiusMap = {};
-    filteredNodes.forEach((d) => {
-      const label = nodeLabels.get(d.id) || d.id;
-      const countRadius = nodeRadiusByCount(d.count);
-      radiusMap[d.id] = estimateNodeRadius(d, label, countRadius, currentMode);
-    });
+    const radiusMap = makeNodeSizeMap(
+      filteredNodes,
+      nodeDurationStatsCache,
+      sizeMode,
+      nodeRadiusByCount,
+      mode
+    );
     radiusMapCache = radiusMap;
 
     const maxRadius = d3.max(Object.values(radiusMap)) || 18;
-    const layout = computeLayout(filteredNodes, sequence, { maxRadius });
+    let layout = {};
+    let totalDuration = sequence[sequence.length - 1]?.end || 1;
+    let xScale = null;
+
+    if (layoutMode === "temporal") {
+      const temporal = computeTemporalLayout(filteredNodes, sequence, { maxRadius });
+      layout = temporal.layout;
+      totalDuration = temporal.totalDuration;
+      xScale = temporal.xScale;
+      xScaleCache = xScale;
+      totalDurationCache = totalDuration;
+    } else {
+      layout = computeStructuralLayout(filteredNodes, sequence, { maxRadius });
+      xScaleCache = null;
+      totalDurationCache = sequence[sequence.length - 1]?.end || 1;
+    }
+
+    // Draw time ruler for temporal layout inside zoomGroup (it will pan/zoom with graph)
+    if (xScale) {
+      const minNodeY = Math.min(...Object.values(layout).map(p => p.y));
+      const rulerY = minNodeY - maxRadius - 28;
+      const TICK_INTERVAL = 30; // seconds
+      const ticks = d3.range(0, totalDuration + TICK_INTERVAL, TICK_INTERVAL);
+      const rulerG = zoomGroup.append("g").attr("class", "time-ruler");
+
+      // Baseline
+      rulerG.append("line")
+        .attr("x1", xScale(0))
+        .attr("x2", xScale(totalDuration))
+        .attr("y1", rulerY)
+        .attr("y2", rulerY)
+        .attr("stroke", "#cbd5e1")
+        .attr("stroke-width", 1);
+
+      ticks.forEach(t => {
+        const x = xScale(t);
+
+        rulerG.append("line")
+          .attr("x1", x).attr("x2", x)
+          .attr("y1", rulerY - 4).attr("y2", rulerY + 4)
+          .attr("stroke", "#94a3b8")
+          .attr("stroke-width", 1);
+
+        rulerG.append("text")
+          .attr("x", x)
+          .attr("y", rulerY - 8)
+          .attr("text-anchor", "middle")
+          .attr("font-size", "9px")
+          .attr("fill", "#6b7280")
+          .text(t + "s");
+      });
+    }
 
     // ── Suggestion 1: Create scales for edge width and opacity by frequency ──
     const maxLinkCount = d3.max(enrichedLinks, d => d.count) || 1;
@@ -409,10 +631,12 @@ export function createGraphController({
         return `translate(${p.x},${p.y})`;
       });
 
+    const colorFn = makeNodeColorFn(filteredNodes, sequence, colorMode, mode);
+
     nodeGroups
       .append("circle")
       .attr("r", (d) => radiusMap[d.id] || 18)
-      .style("fill", (d) => (d.isSpecial ? "#d1d5db" : nodeColor(d.id)));
+      .style("fill", colorFn);
 
     nodeGroups
       .append("text")
@@ -473,21 +697,10 @@ export function createGraphController({
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
       .on("mouseout", hideEdgeTooltip);
 
-    nodeGroups.append("title").text((d) => {
-      let tooltip = `${d.id}\nCount: ${d.count}`;
-      if (d.objects && Object.keys(d.objects).length > 0) {
-        const objectList = Object.entries(d.objects)
-          .map(([obj, cnt]) => `${obj}: ${cnt}`)
-          .join(", ");
-        tooltip += `\nObjects: ${objectList}`;
-      }
-      return tooltip;
-    });
-
     // ── Suggestion 4: Node hover highlighting with edge focus+context ────────
     nodeGroups
       .on("mouseover", function(event, d) {
-        const hoveredId = d.id;
+        showNodeTooltip(event, d, currentMode);
 
         // Dim all edges
         linkSelection
@@ -496,23 +709,25 @@ export function createGraphController({
 
         // Highlight edges connected to hovered node
         linkSelection
-          .filter(link => link.source === hoveredId || link.target === hoveredId)
+          .filter(link => link.source === d.id || link.target === d.id)
           .attr("stroke-opacity", link => edgeOpacityScale(link.count || 1))
           .attr("stroke-width", link => edgeWidthScale(link.count || 1) * 1.5)
           .attr("stroke", "#ea580c");
 
         // Dim non-neighbor nodes
         nodeSelection
-          .filter(n => n.id !== hoveredId)
+          .filter(n => n.id !== d.id)
           .style("opacity", function(n) {
             const isNeighbor = enrichedLinksCache.some(
-              l => (l.source === hoveredId && l.target === n.id) ||
-                   (l.target === hoveredId && l.source === n.id)
+              l => (l.source === d.id && l.target === n.id) ||
+                   (l.target === d.id && l.source === n.id)
             );
             return isNeighbor ? 0.9 : 0.2;
           });
       })
       .on("mouseout", function() {
+        hideNodeTooltip();
+
         // Restore all to frequency-based encoding
         linkSelection
           .attr("stroke-opacity", d => edgeOpacityScale(d.count || 1))
@@ -521,6 +736,11 @@ export function createGraphController({
 
         nodeSelection.style("opacity", 1);
         hideEdgeTooltip();
+      })
+      .on("click", function(event, d) {
+        if (options.onNodeClick) {
+          options.onNodeClick(d, currentSequenceCache);
+        }
       });
 
     linkSelection = zoomGroup.selectAll(".link");
@@ -618,6 +838,47 @@ export function createGraphController({
     document.getElementById("edgeTooltip").style.display = "none";
   }
 
+  function showNodeTooltip(event, d, graphMode) {
+    const stats = nodeDurationStatsCache?.[d.id];
+    const lines = [`${d.id}`, `Count: ${d.count}`];
+
+    if (stats) {
+      if (graphMode === "abstracted") {
+        lines.push(`Total phase duration: ${stats.total.toFixed(2)} s`);
+        lines.push(`  (${stats.n} actions, ${stats.min.toFixed(2)}-${stats.max.toFixed(2)} s)`);
+      } else if (graphMode === "full") {
+        if (stats.n === 1) {
+          lines.push(`Duration: ${stats.mean.toFixed(2)} s`);
+        } else {
+          lines.push(`Mean duration: ${stats.mean.toFixed(2)} s`);
+          lines.push(`  range: ${stats.min.toFixed(2)}-${stats.max.toFixed(2)} s`);
+        }
+      } else if (graphMode === "smart") {
+        lines.push(`Mean duration (all objects): ${stats.mean.toFixed(2)} s`);
+        if (stats.n > 1) {
+          lines.push(`  range: ${stats.min.toFixed(2)}-${stats.max.toFixed(2)} s`);
+        }
+      }
+    }
+
+    if (d.objects && Object.keys(d.objects).length > 0) {
+      const objectList = Object.entries(d.objects)
+        .map(([obj, cnt]) => `  ${obj}: ${cnt}`)
+        .join("\n");
+      lines.push(`Objects:\n${objectList}`);
+    }
+
+    const tooltip = document.getElementById("nodeTooltip");
+    tooltip.textContent = lines.join("\n");
+    tooltip.style.display = "block";
+    tooltip.style.left = (event.clientX + 12) + "px";
+    tooltip.style.top = (event.clientY - 10) + "px";
+  }
+
+  function hideNodeTooltip() {
+    document.getElementById("nodeTooltip").style.display = "none";
+  }
+
   function zoomToTransition(sourceId, targetId) {
     if (!nodeLayout || !zoomBehavior || !radiusMapCache) {
       return;
@@ -708,14 +969,14 @@ export function createGraphController({
         }
       }
 
-      if (zoomSource && zoomTarget) {
+      if (autoZoomEnabled && zoomSource && zoomTarget) {
         zoomToTransition(zoomSource, zoomTarget);
       }
     } else if (activeNode !== lastActiveNode) {
       lastActiveNode = activeNode;
-      if (activeNode) {
+      if (autoZoomEnabled && activeNode) {
         autoZoomToNode(activeNode);
-      } else if (zoomBehavior && fitTransform) {
+      } else if (autoZoomEnabled && zoomBehavior && fitTransform) {
         svg.transition().duration(400).call(zoomBehavior.transform, fitTransform);
       }
     }
@@ -735,8 +996,13 @@ export function createGraphController({
     }
   }
 
+  function setAutoZoom(enabled) {
+    autoZoomEnabled = enabled;
+  }
+
   return {
     buildGraph,
     updateActive,
+    setAutoZoom,
   };
 }
