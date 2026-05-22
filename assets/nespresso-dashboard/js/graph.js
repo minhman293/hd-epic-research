@@ -302,8 +302,32 @@ export function createGraphController({
   let autoZoomEnabled = true;
   let xScaleCache = null;
   let totalDurationCache = null;
+  let userPositions = {}; // nodeId -> { x, y }
+  let selectedNodeId = null;
+  let lastGraph = null;
+  let lastSequence = null;
+  let lastMinCount = 1;
+  let lastMode = "smart";
+  let lastColorMode = "category";
+  let lastSizeMode = "frequency";
+  let lastLayoutMode = "temporal";
+  let lastOptions = { onNodeClick: null };
 
-  function buildGraph(graph, sequence, minCount = 1, mode = "smart", colorMode = "category", sizeMode = "frequency", layoutMode = "temporal", options = { onNodeClick: null }) {
+  function buildGraph(graph, sequence, minCount = 1, mode = "smart", colorMode = "category", sizeMode = "frequency", layoutMode = "temporal", options = { onNodeClick: null }, resetPositions = true) {
+    // Store latest render parameters so resetLayout can rebuild with current settings.
+    lastGraph = graph;
+    lastSequence = sequence;
+    lastMinCount = minCount;
+    lastMode = mode;
+    lastColorMode = colorMode;
+    lastSizeMode = sizeMode;
+    lastLayoutMode = layoutMode;
+    lastOptions = options;
+
+    if (resetPositions) {
+      userPositions = {};
+    }
+
     currentMode = mode;
     lastActiveEdge = null;
     lastActiveNode = null;
@@ -449,6 +473,11 @@ export function createGraphController({
       xScaleCache = null;
       totalDurationCache = sequence[sequence.length - 1]?.end || 1;
     }
+
+    // Merge user drag overrides into computed layout.
+    Object.entries(userPositions).forEach(([id, pos]) => {
+      if (layout[id]) layout[id] = { ...layout[id], ...pos };
+    });
 
     // Draw time ruler for temporal layout inside zoomGroup (it will pan/zoom with graph)
     if (xScale) {
@@ -669,6 +698,84 @@ export function createGraphController({
       .attr("pointer-events", "none")
       .text((d) => getNodeSubtitle(d, currentMode));
 
+    const dragBehavior = d3.drag()
+      .on("start", function(event, d) {
+        event.sourceEvent.stopPropagation();
+        d.__dragMoved = false;
+
+        // Get current zoom transform
+        const currentTransform = d3.zoomTransform(svg.node());
+
+        // Convert pointer position to graph coordinates
+        const [pointerX, pointerY] = d3.pointer(event, svg.node());
+        const graphX = (pointerX - currentTransform.x) / currentTransform.k;
+        const graphY = (pointerY - currentTransform.y) / currentTransform.k;
+
+        // Record offset between pointer and node center at drag start
+        // This is what eliminates the gap
+        d.__offsetX = graphX - (layout[d.id]?.x || 0);
+        d.__offsetY = graphY - (layout[d.id]?.y || 0);
+
+        d3.select(this).classed("dragging", true);
+        this.parentNode.appendChild(this);
+      })
+      .on("drag", function(event, d) {
+        d.__dragMoved = true;
+
+        const currentTransform = d3.zoomTransform(svg.node());
+
+        // Convert current pointer position to graph coordinates
+        const [pointerX, pointerY] = d3.pointer(event, svg.node());
+        const graphX = (pointerX - currentTransform.x) / currentTransform.k;
+        const graphY = (pointerY - currentTransform.y) / currentTransform.k;
+
+        // New node position = pointer in graph coords minus the initial offset
+        const newX = graphX - d.__offsetX;
+        const newY = graphY - d.__offsetY;
+
+        // Update layout and userPositions
+        if (layout[d.id]) {
+          layout[d.id].x = newX;
+          layout[d.id].y = newY;
+          userPositions[d.id] = { x: newX, y: newY };
+        }
+
+        // Move the node group
+        d3.select(this).attr("transform", `translate(${newX}, ${newY})`);
+
+        // Redraw connected edges
+        svg.selectAll(".link")
+          .filter(link => link.source === d.id || link.target === d.id)
+          .attr("d", link => {
+            const isBackEdge =
+              (layout[link.source]?.x || 0) > (layout[link.target]?.x || 0);
+            return isBackEdge
+              ? getArcPath(link, layout, radiusMapCache)
+              : getStraightPath(link, layout, radiusMapCache);
+          });
+
+        // Redraw back-indicator badges
+        svg.selectAll(".back-indicator")
+          .filter(([sourceId]) => sourceId === d.id)
+          .attr("transform", `translate(${newX}, ${newY})`);
+
+        // Redraw self-loop indicator
+        svg.selectAll(".self-loop-indicator")
+          .filter(sl => sl.source === d.id)
+          .attr("transform", `translate(${newX}, ${newY})`);
+
+        // Redraw cycle badge if active on this node
+        const cycleBadge = svg.select(".cycle-badge-group");
+        if (!cycleBadge.empty() && selectedNodeId === d.id) {
+          cycleBadge.attr("transform", `translate(${newX}, ${newY})`);
+        }
+      })
+      .on("end", function(event, d) {
+        d3.select(this).classed("dragging", false);
+      });
+
+    nodeGroups.call(dragBehavior);
+
     const selfLoopIndicators = zoomGroup
       .append("g")
       .attr("class", "self-loop-indicators")
@@ -741,6 +848,11 @@ export function createGraphController({
         hideEdgeTooltip();
       })
       .on("click", function(event, d) {
+        if (d.__dragMoved) {
+          d.__dragMoved = false;
+          return;
+        }
+        selectedNodeId = d.id;
         if (options.onNodeClick) {
           options.onNodeClick(d, currentSequenceCache);
         }
@@ -1003,9 +1115,28 @@ export function createGraphController({
     autoZoomEnabled = enabled;
   }
 
+  function resetLayout() {
+    userPositions = {};
+    if (!lastGraph || !lastSequence) {
+      return;
+    }
+    buildGraph(
+      lastGraph,
+      lastSequence,
+      lastMinCount,
+      lastMode,
+      lastColorMode,
+      lastSizeMode,
+      lastLayoutMode,
+      lastOptions,
+      true
+    );
+  }
+
   return {
     buildGraph,
     updateActive,
     setAutoZoom,
+    resetLayout,
   };
 }
