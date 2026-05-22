@@ -93,6 +93,10 @@ body {
 
 #graphWrap:active { cursor: grabbing; }
 
+#graphWrap:has(.node.dragging) {
+  cursor: default;
+}
+
 #graphSvg { width: 100%; height: 100%; display: block; }
 
 .zoom-controls {
@@ -367,6 +371,16 @@ video {
   stroke: #2563eb;
   stroke-width: 2.5;
   filter: drop-shadow(0 0 4px rgba(37, 99, 235, 0.65));
+}
+
+.node.dragging {
+  cursor: grabbing;
+}
+
+.node.dragging circle {
+  stroke: #3b82f6;
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.6));
 }
 
 @keyframes pulse {

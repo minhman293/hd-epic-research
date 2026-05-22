@@ -226,6 +226,8 @@ edgeThreshold.addEventListener("input", () => {
 
 // Listen for color encoding changes
 colorEncodeSelect.addEventListener("change", () => {
+  rebuildLegend();
+  rebuildAnnotationTimeline();
   if (cachedData) {
     graphController.buildGraph(
       cachedData.graph,
@@ -237,16 +239,16 @@ colorEncodeSelect.addEventListener("change", () => {
       layoutModeSelect ? layoutModeSelect.value : "temporal",
       {
         onNodeClick: handleNodeClick
-      }
+      },
+      false
     );
-    rebuildAnnotationTimeline();
-    rebuildLegend();
   }
 });
 
 // Listen for size encoding changes
 sizeEncodeSelect.addEventListener("input", () => {
   rebuildLegend();
+  rebuildAnnotationTimeline();
   if (cachedData) {
     graphController.buildGraph(
       cachedData.graph,
@@ -257,14 +259,9 @@ sizeEncodeSelect.addEventListener("input", () => {
       sizeEncodeSelect.value,
       layoutModeSelect ? layoutModeSelect.value : "temporal",
       {
-        onNodeClick: (d, sequence) => {
-          const match = sequence.find(s => s.action === d.id);
-          if (match) {
-            video.currentTime = match.start;
-            d3.selectAll(".node").classed("selected", n => n.id === d.id);
-          }
-        }
-      }
+        onNodeClick: handleNodeClick
+      },
+      false
     );
   }
 });
@@ -289,6 +286,13 @@ if (layoutModeSelect) {
       rebuildLegend();
     }
   });
+}
+
+const resetLayoutButton = document.querySelector("#resetLayout");
+if (resetLayoutButton) {
+  resetLayoutButton.onclick = () => {
+    graphController.resetLayout();
+  };
 }
 
 async function init() {
