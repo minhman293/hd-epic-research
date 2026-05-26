@@ -852,49 +852,59 @@ export function createGraphController({
       .attr("pointer-events", "none")
       .text((d) => getNodeSubtitle(d, currentMode));
 
+    const DRAG_THRESHOLD_PX = 4;  // standard OS-level click-vs-drag threshold
+
     const dragBehavior = d3.drag()
       .on("start", function(event, d) {
-        event.sourceEvent.stopPropagation();
+        // Do NOT stopPropagation here — it can swallow the click event.
+        // We rely on the threshold instead.
+        
         d.__dragMoved = false;
+        d.__startScreenX = event.sourceEvent.clientX;
+        d.__startScreenY = event.sourceEvent.clientY;
 
-        // Get current zoom transform
         const currentTransform = d3.zoomTransform(svg.node());
-
-        // Convert pointer position to graph coordinates
         const [pointerX, pointerY] = d3.pointer(event, svg.node());
         const graphX = (pointerX - currentTransform.x) / currentTransform.k;
         const graphY = (pointerY - currentTransform.y) / currentTransform.k;
 
-        // Record offset between pointer and node center at drag start
-        // This is what eliminates the gap
         d.__offsetX = graphX - (layout[d.id]?.x || 0);
         d.__offsetY = graphY - (layout[d.id]?.y || 0);
 
-        d3.select(this).classed("dragging", true);
-        this.parentNode.appendChild(this);
+        // Do not add .dragging class yet — wait until threshold is crossed
       })
       .on("drag", function(event, d) {
-        d.__dragMoved = true;
+        // Compute screen-space displacement from drag start
+        const dxScreen = event.sourceEvent.clientX - d.__startScreenX;
+        const dyScreen = event.sourceEvent.clientY - d.__startScreenY;
+        const distance = Math.sqrt(dxScreen * dxScreen + dyScreen * dyScreen);
+
+        // Only register as a drag once we've crossed the threshold
+        if (!d.__dragMoved && distance < DRAG_THRESHOLD_PX) {
+          return;  // ignore sub-threshold movement — treat as a still click
+        }
+
+        if (!d.__dragMoved) {
+          // First time crossing threshold — commit to drag mode
+          d.__dragMoved = true;
+          d3.select(this).classed("dragging", true);
+          this.parentNode.appendChild(this);  // bring to front
+        }
 
         const currentTransform = d3.zoomTransform(svg.node());
-
-        // Convert current pointer position to graph coordinates
         const [pointerX, pointerY] = d3.pointer(event, svg.node());
         const graphX = (pointerX - currentTransform.x) / currentTransform.k;
         const graphY = (pointerY - currentTransform.y) / currentTransform.k;
 
-        // New node position = pointer in graph coords minus the initial offset
         const newX = graphX - d.__offsetX;
         const newY = graphY - d.__offsetY;
 
-        // Update layout and userPositions
         if (layout[d.id]) {
           layout[d.id].x = newX;
           layout[d.id].y = newY;
           userPositions[d.id] = { x: newX, y: newY };
         }
 
-        // Move the node group
         d3.select(this).attr("transform", `translate(${newX}, ${newY})`);
 
         // Redraw connected edges
@@ -908,17 +918,14 @@ export function createGraphController({
               : getStraightPath(link, layout, radiusMapCache);
           });
 
-        // Redraw back-indicator badges
         svg.selectAll(".back-indicator")
           .filter(([sourceId]) => sourceId === d.id)
           .attr("transform", `translate(${newX}, ${newY})`);
 
-        // Redraw self-loop indicator
         svg.selectAll(".self-loop-indicator")
           .filter(sl => sl.source === d.id)
           .attr("transform", `translate(${newX}, ${newY})`);
 
-        // Redraw cycle badge if active on this node
         const cycleBadge = svg.select(".cycle-badge-group");
         if (!cycleBadge.empty() && selectedNodeId === d.id) {
           cycleBadge.attr("transform", `translate(${newX}, ${newY})`);
@@ -930,6 +937,8 @@ export function createGraphController({
       })
       .on("end", function(event, d) {
         d3.select(this).classed("dragging", false);
+        // __dragMoved is read by the click handler that fires right after.
+        // We do NOT reset it here — the click handler resets it after reading.
       });
 
     nodeGroups.call(dragBehavior);

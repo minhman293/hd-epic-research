@@ -394,6 +394,30 @@ video {
   letter-spacing: 0.03em;
 }
 
+.node.selected circle {
+  stroke: #EA580C;       /* blue ring — distinct channel from orange active */
+  stroke-width: 4px;
+}
+
+.node.active circle {
+  stroke: #EA580C;       /* orange — playback */
+  stroke-width: 3px;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+/* When BOTH apply: blue ring outside, orange pulse */
+.node.selected.active circle {
+  stroke: #EA580C;
+  stroke-width: 3px;
+}
+
+.node.selected .selection-ring { opacity: 1; }
+
+@keyframes pulse {
+  0%, 100% { stroke-opacity: 1; }
+  50% { stroke-opacity: 0.4; }
+}
+
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.28); }

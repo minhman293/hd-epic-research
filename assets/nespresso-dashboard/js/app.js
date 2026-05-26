@@ -39,12 +39,32 @@ let timelineRows = [];
 let annotationPlayheadEl = null;
 let currentTotalDuration = 0;
 
+// Module-level state for cycling occurrences
+let lastClickedNodeId = null;
+let occurrenceCycleIndex = 0;
+
 function handleNodeClick(d, sequence) {
-  const match = sequence.find((item) => item.action === d.id);
-  if (match) {
-    video.currentTime = match.start;
-    d3.selectAll(".node").classed("selected", (node) => node.id === d.id);
+  // Find all occurrences of this action in the sequence
+  const occurrences = sequence.filter((item) => item.action === d.id);
+  if (occurrences.length === 0) return;
+
+  // Reset cycle if a different node was clicked
+  if (lastClickedNodeId !== d.id) {
+    occurrenceCycleIndex = 0;
+    lastClickedNodeId = d.id;
+  } else {
+    // Same node clicked again — advance cycle
+    occurrenceCycleIndex = (occurrenceCycleIndex + 1) % occurrences.length;
   }
+
+  const target = occurrences[occurrenceCycleIndex];
+  video.currentTime = target.start;
+
+  // Mark this node as selected (distinct from playback-active)
+  d3.selectAll(".node").classed("selected", (n) => n.id === d.id);
+
+  // Optional: update a status indicator showing "occurrence k of N"
+  statusLabel.innerHTML = `Status: <strong>Selected ${d.id} (${occurrenceCycleIndex + 1}/${occurrences.length})</strong>`;
 }
 
 function refresh() {
@@ -55,6 +75,14 @@ function refresh() {
   const item = currentSequenceItem(cachedData.sequence, video.currentTime || 0);
   timeLabel.textContent = formatSeconds(video.currentTime || 0);
   actionLabel.textContent = item ? item.action : "-";
+
+  // Auto-deselect: if playback has moved past the selected node, clear the selection.
+  // The selected node is meaningful only while it's the one being played.
+  if (lastClickedNodeId && item && item.action !== lastClickedNodeId) {
+    lastClickedNodeId = null;
+    occurrenceCycleIndex = 0;
+    d3.selectAll(".node").classed("selected", false);
+  }
 
   graphController.updateActive(item);
   updateTimelineActive(timelineRows, footerPanel, item);
@@ -140,7 +168,18 @@ function rebuildAnnotationTimeline() {
     annotationTimeline,
     cachedData.sequence,
     currentTotalDuration,
-    getCurrentColorFn()
+    getCurrentColorFn(),
+    {
+      onSegmentClick: (item, idx) => {
+        video.currentTime = item.start;
+        // Also highlight the matching node — reuse the click handler logic
+        const node = d3.select(`.node[data-id="${CSS.escape(item.action)}"]`);
+        if (!node.empty()) {
+          d3.selectAll(".node").classed("selected", false);
+          node.classed("selected", true);
+        }
+      }
+    }
   );
 }
 
@@ -334,6 +373,24 @@ async function init() {
     appRoot.classList.add("paused");
     statusLabel.innerHTML = "Status: <strong>Ended</strong>";
     refresh();
+  });
+
+  document.getElementById("graphSvg").addEventListener("click", (e) => {
+    // Only clear if click was on SVG background, not on a node
+    if (e.target.tagName === "svg" || e.target.id === "zoomGroup") {
+      lastClickedNodeId = null;
+      occurrenceCycleIndex = 0;
+      d3.selectAll(".node").classed("selected", false);
+    }
+  });
+
+  annotationTimeline.addEventListener("click", (e) => {
+    if (e.target === annotationTimeline) {
+      // clicked the strip background, not a segment — seek to that relative position
+      const rect = annotationTimeline.getBoundingClientRect();
+      const pct = (e.clientX - rect.left) / rect.width;
+      video.currentTime = pct * currentTotalDuration;
+    }
   });
 }
 
