@@ -413,7 +413,7 @@
     },
     {
       "index": 39,
-      "action": "other",
+      "action": "tamp",
       "start": 139.5,
       "end": 140.73,
       "duration": 1.2299999999999898,
@@ -423,7 +423,7 @@
     },
     {
       "index": 40,
-      "action": "other",
+      "action": "tamp",
       "start": 140.77,
       "end": 142.18,
       "duration": 1.4099999999999966,
@@ -473,7 +473,7 @@
     },
     {
       "index": 45,
-      "action": "other",
+      "action": "clean-machine",
       "start": 154.89,
       "end": 156.27,
       "duration": 1.3800000000000239,
@@ -608,7 +608,7 @@
       },
       {
         "id": "tamp",
-        "count": 9
+        "count": 11
       },
       {
         "id": "handle-cup",
@@ -620,7 +620,7 @@
       },
       {
         "id": "clean-machine",
-        "count": 8
+        "count": 9
       },
       {
         "id": "task-ops",
@@ -628,6 +628,21 @@
       }
     ],
     "links": [
+      {
+        "source": "tamp",
+        "target": "tamp",
+        "count": 7,
+        "key": "tamp|||tamp",
+        "occurrences": [
+          32,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41
+        ]
+      },
       {
         "source": "handle-cup",
         "target": "handle-cup",
@@ -656,15 +671,14 @@
         ]
       },
       {
-        "source": "tamp",
-        "target": "tamp",
-        "count": 4,
-        "key": "tamp|||tamp",
+        "source": "handle-cup",
+        "target": "clean-machine",
+        "count": 3,
+        "key": "handle-cup|||clean-machine",
         "occurrences": [
-          32,
-          36,
-          37,
-          41
+          44,
+          48,
+          55
         ]
       },
       {
@@ -696,16 +710,6 @@
         "occurrences": [
           7,
           10
-        ]
-      },
-      {
-        "source": "handle-cup",
-        "target": "clean-machine",
-        "count": 2,
-        "key": "handle-cup|||clean-machine",
-        "occurrences": [
-          48,
-          55
         ]
       },
       {
@@ -769,6 +773,15 @@
         ]
       },
       {
+        "source": "clean-machine",
+        "target": "task-ops",
+        "count": 1,
+        "key": "clean-machine|||task-ops",
+        "occurrences": [
+          45
+        ]
+      },
+      {
         "source": "dispense",
         "target": "extract-coffee",
         "count": 1,
@@ -811,15 +824,6 @@
         "key": "handle-cup|||extract-coffee",
         "occurrences": [
           6
-        ]
-      },
-      {
-        "source": "handle-cup",
-        "target": "other",
-        "count": 1,
-        "key": "handle-cup|||other",
-        "occurrences": [
-          44
         ]
       },
       {
@@ -868,33 +872,6 @@
         ]
       },
       {
-        "source": "other",
-        "target": "other",
-        "count": 1,
-        "key": "other|||other",
-        "occurrences": [
-          39
-        ]
-      },
-      {
-        "source": "other",
-        "target": "tamp",
-        "count": 1,
-        "key": "other|||tamp",
-        "occurrences": [
-          40
-        ]
-      },
-      {
-        "source": "other",
-        "target": "task-ops",
-        "count": 1,
-        "key": "other|||task-ops",
-        "occurrences": [
-          45
-        ]
-      },
-      {
         "source": "prep-machine",
         "target": "dispense",
         "count": 1,
@@ -928,15 +905,6 @@
         "key": "tamp|||handle-cup",
         "occurrences": [
           42
-        ]
-      },
-      {
-        "source": "tamp",
-        "target": "other",
-        "count": 1,
-        "key": "tamp|||other",
-        "occurrences": [
-          38
         ]
       },
       {

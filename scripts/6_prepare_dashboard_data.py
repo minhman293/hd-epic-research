@@ -284,6 +284,10 @@ ACTION_TO_PHASE = {
     "write(coffee)": "task-ops",
     "carry(phone)": "task-ops",
     "move(phone)": "task-ops",
+
+    "put(spoon)":           "tamp",
+    "pat(cup)":             "tamp",
+    "put(machine:washing)": "clean-machine",
 }
 
 PHASE_ORDER = [

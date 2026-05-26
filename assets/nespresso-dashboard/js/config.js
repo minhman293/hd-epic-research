@@ -49,6 +49,47 @@ export const PHASE_COLORS = {
   "clean-machine": "#10B981"
 };
 
+// Cluster centers for category-grouped layout.
+// Arranged in a circle around the origin; order is aesthetic, not meaningful.
+export const CATEGORY_CLUSTER_CENTERS = {
+  take: { cx: 0, cy: -280 },
+  carry: { cx: 0, cy: -280 },
+  move: { cx: 0, cy: -280 },
+  slide: { cx: 0, cy: -280 },
+  put: { cx: 198, cy: -198 },
+  pour: { cx: 280, cy: 0 },
+  scoop: { cx: 280, cy: 0 },
+  mix: { cx: 280, cy: 0 },
+  press: { cx: 198, cy: 198 },
+  crush: { cx: 198, cy: 198 },
+  squeeze: { cx: 198, cy: 198 },
+  open: { cx: 0, cy: 280 },
+  close: { cx: 0, cy: 280 },
+  "turn-on": { cx: -198, cy: 198 },
+  "turn-off": { cx: -198, cy: 198 },
+  finish: { cx: -198, cy: 198 },
+  wait: { cx: -280, cy: 0 },
+  check: { cx: -280, cy: 0 },
+  search: { cx: -280, cy: 0 },
+  write: { cx: -280, cy: 0 },
+  adjust: { cx: -280, cy: 0 },
+  screw: { cx: -198, cy: -198 },
+  pat: { cx: -198, cy: -198 },
+};
+
+// Cluster centers for phase-grouped layout in Task Phases mode.
+export const PHASE_CLUSTER_CENTERS = {
+  measure: { cx: 0, cy: -280 },
+  "extract-coffee": { cx: 198, cy: -198 },
+  "prep-machine": { cx: 280, cy: 0 },
+  tamp: { cx: 198, cy: 198 },
+  "handle-cup": { cx: 0, cy: 280 },
+  dispense: { cx: -198, cy: 198 },
+  "clean-machine": { cx: -280, cy: 0 },
+  "task-ops": { cx: -198, cy: -198 },
+  other: { cx: 0, cy: 0 },
+};
+
 // Mapping from raw actions to abstract task phases
 export const ACTION_TO_PHASE = {
   "move(scale)": "measure",
@@ -70,6 +111,8 @@ export const ACTION_TO_PHASE = {
   "crush(coffee)": "tamp",
   "press(coffee)": "tamp",
   "put(presser)": "tamp",
+  "put(spoon)":           "tamp",
+  "pat(cup)":             "tamp",
   "take(cup)": "handle-cup",
   "put(cup)": "handle-cup",
   "screw(cup)": "handle-cup",
@@ -79,6 +122,7 @@ export const ACTION_TO_PHASE = {
   "wait(machine:washing)": "clean-machine",
   "finish(machine:washing)": "clean-machine",
   "turn-off(machine:washing)": "clean-machine",
+  "put(machine:washing)": "clean-machine",
   "check(coffee)": "clean-machine",
   "open(drawer)": "clean-machine",
   "take(plate)": "clean-machine",

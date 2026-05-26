@@ -1,9 +1,9 @@
 import { nodeColor } from "./utils.js";
-import { ACTION_TO_PHASE, PHASE_COLORS } from "./config.js";
+import { ACTION_TO_PHASE, PHASE_COLORS, VERB_COLORS, CATEGORY_CLUSTER_CENTERS, PHASE_CLUSTER_CENTERS } from "./config.js";
 
 const d3 = window.d3;
 
-function computeStructuralLayout(nodes, sequence, { maxRadius = 18 } = {}) {
+function computeSequenceLayout(nodes, sequence, { maxRadius = 18 } = {}) {
   const n = sequence.length;
   const occurrences = {};
   const firstOccurrence = {};
@@ -117,7 +117,147 @@ function computeTemporalLayout(nodes, sequence, { maxRadius = 18 } = {}) {
     });
   });
 
+  const START_X = layout["START"]?.x || 0;
+  const START_R = 18;
+  Object.entries(layout).forEach(([id, pos]) => {
+    if (id === "START" || id === "END") return;
+    const r = 18;
+    const MIN_GAP = START_R + r + 60;
+    if (Math.abs(pos.x - START_X) < MIN_GAP) {
+      pos.x = START_X + MIN_GAP;
+    }
+  });
+
   return { layout, totalDuration, xScale };
+}
+
+function computeCategoryLayout(nodes, sequence, graphMode) {
+  function getClusterCenter(nodeId) {
+    if (nodeId === "START") return { cx: -400, cy: 0 };
+    if (nodeId === "END") return { cx: 400, cy: 0 };
+
+    if (graphMode === "abstracted") {
+      return PHASE_CLUSTER_CENTERS[nodeId] || { cx: 0, cy: 0 };
+    }
+
+    if (graphMode === "smart") {
+      return CATEGORY_CLUSTER_CENTERS[nodeId.toLowerCase()] || { cx: 0, cy: 0 };
+    }
+
+    const verb = nodeId.split("(")[0].toLowerCase();
+    return CATEGORY_CLUSTER_CENTERS[verb] || { cx: 0, cy: 0 };
+  }
+
+  const clusters = {};
+  nodes.forEach((node) => {
+    const center = getClusterCenter(node.id);
+    const key = `${center.cx},${center.cy}`;
+    if (!clusters[key]) clusters[key] = { center, ids: [] };
+    clusters[key].ids.push(node.id);
+  });
+
+  const onsetMap = {};
+  sequence.forEach((item) => {
+    if (!onsetMap[item.action]) onsetMap[item.action] = [];
+    onsetMap[item.action].push(item.start);
+  });
+
+  const meanOnset = {};
+  nodes.forEach((node) => {
+    if (node.id === "START") { meanOnset[node.id] = 0; return; }
+    if (node.id === "END") { meanOnset[node.id] = sequence[sequence.length - 1]?.end || 0; return; }
+    const times = onsetMap[node.id] || [0];
+    meanOnset[node.id] = times.reduce((sum, value) => sum + value, 0) / times.length;
+  });
+
+  const layout = {};
+  const INNER_SPACING = 55;
+
+  Object.values(clusters).forEach(({ center, ids }) => {
+    const sorted = [...ids].sort((a, b) => (meanOnset[a] || 0) - (meanOnset[b] || 0));
+    const count = sorted.length;
+
+    if (count === 1) {
+      layout[sorted[0]] = { x: center.cx, y: center.cy };
+      return;
+    }
+
+    const cols = count <= 4 ? count : Math.ceil(count / 2);
+    const rows = Math.ceil(count / cols);
+
+    sorted.forEach((id, idx) => {
+      const col = idx % cols;
+      const row = Math.floor(idx / cols);
+      const x = center.cx + (col - (cols - 1) / 2) * INNER_SPACING;
+      const y = center.cy + (row - (rows - 1) / 2) * INNER_SPACING;
+      layout[id] = { x, y };
+    });
+  });
+
+  return { layout, clusters };
+}
+
+function drawClusterHulls(zoomGroup, clusters, layout, radiusMap, graphMode) {
+  zoomGroup.selectAll(".cluster-layer").remove();
+  const clusterLayer = zoomGroup.insert("g", ":first-child").attr("class", "cluster-layer");
+
+  Object.values(clusters).forEach(({ center, ids }) => {
+    if (ids.length === 0) return;
+
+    const repNode = ids.find((id) => id !== "START" && id !== "END");
+    if (!repNode) return;
+
+    const clusterColor = graphMode === "abstracted"
+      ? (PHASE_COLORS[repNode] || "#94A3B8")
+      : (() => {
+          const verb = repNode.split("(")[0].toLowerCase();
+          return VERB_COLORS[verb] || "#94A3B8";
+        })();
+
+    const points = [];
+    ids.forEach((id) => {
+      const p = layout[id];
+      const r = (radiusMap[id] || 18) + 12;
+      if (!p) return;
+      for (let a = 0; a < 8; a++) {
+        const angle = (a / 8) * 2 * Math.PI;
+        points.push([p.x + Math.cos(angle) * r, p.y + Math.sin(angle) * r]);
+      }
+    });
+
+    if (points.length < 3) return;
+
+    const hull = d3.polygonHull(points);
+    if (!hull) return;
+
+    clusterLayer.append("path")
+      .attr("class", "cluster-hull")
+      .attr("d", `M${hull.join("L")}Z`)
+      .attr("fill", clusterColor)
+      .attr("fill-opacity", 0.08)
+      .attr("stroke", clusterColor)
+      .attr("stroke-opacity", 0.35)
+      .attr("stroke-width", 1.5)
+      .attr("stroke-dasharray", "5 3")
+      .attr("stroke-linejoin", "round");
+
+    const labelY = Math.min(...ids.map((id) => (layout[id]?.y || 0))) - (radiusMap[ids[0]] || 18) - 18;
+    const labelText = graphMode === "abstracted"
+      ? repNode
+      : repNode.split("(")[0];
+
+    clusterLayer.append("text")
+      .attr("class", "cluster-label")
+      .attr("x", center.cx)
+      .attr("y", labelY)
+      .attr("text-anchor", "middle")
+      .attr("font-size", "11px")
+      .attr("font-weight", "500")
+      .attr("fill", clusterColor)
+      .attr("opacity", 0.8)
+      .attr("pointer-events", "none")
+      .text(labelText);
+  });
 }
 
 function getStraightPath(link, layout, radiusMap) {
@@ -331,12 +471,14 @@ export function createGraphController({
     currentMode = mode;
     lastActiveEdge = null;
     lastActiveNode = null;
+    selectedNodeId = null;
     currentSequenceCache = sequence || [];
     const width = graphWrapEl.clientWidth || 700;
     const height = graphWrapEl.clientHeight || 540;
 
     svg.attr("width", width).attr("height", height);
     svg.selectAll("*").remove();
+    svg.selectAll(".cycle-badge-group").remove();
 
     // Inject START and END nodes
     const enrichedNodes = [...graph.nodes];
@@ -458,6 +600,7 @@ export function createGraphController({
 
     const maxRadius = d3.max(Object.values(radiusMap)) || 18;
     let layout = {};
+    let clusters = null;
     let totalDuration = sequence[sequence.length - 1]?.end || 1;
     let xScale = null;
 
@@ -469,7 +612,9 @@ export function createGraphController({
       xScaleCache = xScale;
       totalDurationCache = totalDuration;
     } else {
-      layout = computeStructuralLayout(filteredNodes, sequence, { maxRadius });
+      const category = computeCategoryLayout(filteredNodes, sequence, mode);
+      layout = category.layout;
+      clusters = category.clusters;
       xScaleCache = null;
       totalDurationCache = sequence[sequence.length - 1]?.end || 1;
     }
@@ -480,7 +625,7 @@ export function createGraphController({
     });
 
     // Draw time ruler for temporal layout inside zoomGroup (it will pan/zoom with graph)
-    if (xScale) {
+    if (layoutMode === "temporal" && xScale) {
       const minNodeY = Math.min(...Object.values(layout).map(p => p.y));
       const rulerY = minNodeY - maxRadius - 28;
       const TICK_INTERVAL = 30; // seconds
@@ -515,6 +660,10 @@ export function createGraphController({
       });
     }
 
+      if (layoutMode === "category" && clusters) {
+        drawClusterHulls(zoomGroup, clusters, layout, radiusMap, mode);
+      }
+
     // ── Suggestion 1: Create scales for edge width and opacity by frequency ──
     const maxLinkCount = d3.max(enrichedLinks, d => d.count) || 1;
     edgeWidthScale = d3.scaleSqrt()
@@ -532,6 +681,11 @@ export function createGraphController({
     enrichedLinks.forEach((link) => {
       if (link.source === link.target) {
         selfLoops.push(link);
+        return;
+      }
+
+      if (link.source === "START" || link.target === "END") {
+        forwardEdges.push(link);
         return;
       }
 
@@ -559,7 +713,7 @@ export function createGraphController({
       .append("g")
       .attr("class", "back-indicators")
       .selectAll("g.back-indicator")
-      .data([...backEdgesBySource.entries()])
+      .data([...backEdgesBySource.entries()].filter(([sourceId]) => sourceId !== "START" && sourceId !== "END"))
       .enter()
       .append("g")
       .attr("class", "back-indicator")
@@ -769,6 +923,10 @@ export function createGraphController({
         if (!cycleBadge.empty() && selectedNodeId === d.id) {
           cycleBadge.attr("transform", `translate(${newX}, ${newY})`);
         }
+
+        if (layoutMode === "category" && clusters) {
+          drawClusterHulls(zoomGroup, clusters, layout, radiusMapCache, mode);
+        }
       })
       .on("end", function(event, d) {
         d3.select(this).classed("dragging", false);
@@ -780,7 +938,7 @@ export function createGraphController({
       .append("g")
       .attr("class", "self-loop-indicators")
       .selectAll("g.self-loop-indicator")
-      .data(selfLoopSummary)
+      .data(selfLoopSummary.filter((d) => d.source !== "START" && d.source !== "END"))
       .enter()
       .append("g")
       .attr("class", "self-loop-indicator")
@@ -798,10 +956,6 @@ export function createGraphController({
       .attr("text-anchor", "middle")
       .attr("dy", "0.35em")
       .text("⟳");
-
-    selfLoopIndicators
-      .append("title")
-      .text((d) => `Self-loop on ${d.source} (count: ${d.count})`);
 
     selfLoopIndicators
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })

@@ -383,6 +383,17 @@ video {
   filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.6));
 }
 
+.cluster-hull {
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.cluster-label {
+  pointer-events: none;
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+  letter-spacing: 0.03em;
+}
+
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.28); }
