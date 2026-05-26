@@ -3,6 +3,29 @@ import { ACTION_TO_PHASE, PHASE_COLORS, VERB_COLORS, CATEGORY_CLUSTER_CENTERS, P
 
 const d3 = window.d3;
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Lane assignment
+// ─────────────────────────────────────────────────────────────────────────────
+// A node is "secondary" when its is_primary flag is false. That flag is set
+// by the Python pipeline (6_prepare_dashboard_data.py) based on whether the
+// action's time range overlaps any recipe step_times window from
+// complete_recipes.json. This replaces the older manual ACTION_TO_PHASE
+// lookup, which only worked for the Coffee recipe.
+// ─────────────────────────────────────────────────────────────────────────────
+function isSecondaryNode(node) {
+  if (!node) return false;
+  if (node.isSpecial) return false;          // START / END
+  if (node.is_primary === undefined) return false; // fallback for older JSONs
+  return node.is_primary === false;
+}
+
+// Convenience: look up node object by id from the current filtered set.
+function makeNodeLookup(filteredNodes) {
+  const lookup = {};
+  filteredNodes.forEach((n) => { lookup[n.id] = n; });
+  return lookup;
+}
+
 function computeSequenceLayout(nodes, sequence, { maxRadius = 18 } = {}) {
   const n = sequence.length;
   const occurrences = {};
@@ -25,7 +48,6 @@ function computeSequenceLayout(nodes, sequence, { maxRadius = 18 } = {}) {
   const yScale = Math.max(72, Math.round(maxRadius * 2.4));
   const buckets = {};
 
-  // Compute median for each node (used for both x and y-sort)
   const medianMap = {};
   nodes.forEach((node) => {
     let pos;
@@ -48,7 +70,6 @@ function computeSequenceLayout(nodes, sequence, { maxRadius = 18 } = {}) {
 
   const layout = {};
   Object.entries(buckets).forEach(([col, ids]) => {
-    // Sort by median occurrence — earlier actions sit higher (smaller y)
     const sortedIds = [...ids].sort((a, b) => {
       const aVal = medianMap[a] ?? 0.5;
       const bVal = medianMap[b] ?? 0.5;
@@ -68,14 +89,14 @@ function computeSequenceLayout(nodes, sequence, { maxRadius = 18 } = {}) {
 }
 
 function computeTemporalLayout(nodes, sequence, { maxRadius = 18 } = {}) {
-  // Step 1a: collect all start times per action from sequence
-  const onsetMap = {}; // action → [start times]
+  const nodeLookup = makeNodeLookup(nodes);
+
+  const onsetMap = {};
   sequence.forEach(item => {
     if (!onsetMap[item.action]) onsetMap[item.action] = [];
     onsetMap[item.action].push(item.start);
   });
 
-  // Step 1b: compute mean onset per node
   const totalDuration = sequence[sequence.length - 1]?.end || 1;
   const meanOnset = {};
   nodes.forEach(n => {
@@ -85,27 +106,32 @@ function computeTemporalLayout(nodes, sequence, { maxRadius = 18 } = {}) {
     meanOnset[n.id] = times.reduce((s, v) => s + v, 0) / times.length;
   });
 
-  // Step 1c: map seconds → logical canvas pixels
   const CANVAS_WIDTH = 2200;
   const xScale = d3.scaleLinear()
     .domain([0, totalDuration])
     .range([0, CANVAS_WIDTH]);
 
-  // Step 1d: resolve y-conflicts — bucket nodes whose x-positions are close,
-  // stack them vertically within each bucket
-  const BUCKET_PX = 90; // nodes within 90px of each other share a column
+  const BUCKET_PX = 90;
   const yStep = Math.max(72, Math.round(maxRadius * 2.4));
-  const buckets = {}; // bucketKey → [nodeId]
+
+  // ── Bucket primary and secondary nodes SEPARATELY ─────────────────────────
+  // Each lane gets its own y-stacking, so a secondary node never has to share
+  // vertical space with a primary node in the same x-bucket.
+  const primaryBuckets = {};
+  const secondaryBuckets = {};
 
   nodes.forEach(n => {
     const rawX = xScale(meanOnset[n.id] || 0);
     const bucketKey = Math.round(rawX / BUCKET_PX) * BUCKET_PX;
-    if (!buckets[bucketKey]) buckets[bucketKey] = [];
-    buckets[bucketKey].push(n.id);
+    const targetBuckets = isSecondaryNode(nodeLookup[n.id]) ? secondaryBuckets : primaryBuckets;
+    if (!targetBuckets[bucketKey]) targetBuckets[bucketKey] = [];
+    targetBuckets[bucketKey].push(n.id);
   });
 
   const layout = {};
-  Object.entries(buckets).forEach(([bucketKey, ids]) => {
+
+  // Primary nodes: stacked centered around y=0
+  Object.entries(primaryBuckets).forEach(([bucketKey, ids]) => {
     const sorted = [...ids].sort(
       (a, b) => (meanOnset[a] || 0) - (meanOnset[b] || 0)
     );
@@ -117,6 +143,26 @@ function computeTemporalLayout(nodes, sequence, { maxRadius = 18 } = {}) {
     });
   });
 
+  // Find lowest primary y so the secondary lane sits cleanly below
+  const primaryYs = Object.values(layout).map((p) => p.y);
+  const primaryBottom = primaryYs.length > 0 ? Math.max(...primaryYs) : 0;
+  const LANE_GAP = 120;
+  const secondaryLaneTop = primaryBottom + LANE_GAP;
+
+  // Secondary nodes: stacked downward starting at secondaryLaneTop
+  Object.entries(secondaryBuckets).forEach(([bucketKey, ids]) => {
+    const sorted = [...ids].sort(
+      (a, b) => (meanOnset[a] || 0) - (meanOnset[b] || 0)
+    );
+    sorted.forEach((id, idx) => {
+      layout[id] = {
+        x: Number(bucketKey),
+        y: secondaryLaneTop + idx * yStep,
+      };
+    });
+  });
+
+  // START node collision fix (unchanged)
   const START_X = layout["START"]?.x || 0;
   const START_R = 18;
   Object.entries(layout).forEach(([id, pos]) => {
@@ -128,10 +174,12 @@ function computeTemporalLayout(nodes, sequence, { maxRadius = 18 } = {}) {
     }
   });
 
-  return { layout, totalDuration, xScale };
+  return { layout, totalDuration, xScale, secondaryLaneTop };
 }
 
 function computeCategoryLayout(nodes, sequence, graphMode) {
+  const nodeLookup = makeNodeLookup(nodes);
+
   function getClusterCenter(nodeId) {
     if (nodeId === "START") return { cx: -400, cy: 0 };
     if (nodeId === "END") return { cx: 400, cy: 0 };
@@ -148,11 +196,16 @@ function computeCategoryLayout(nodes, sequence, graphMode) {
     return CATEGORY_CLUSTER_CENTERS[verb] || { cx: 0, cy: 0 };
   }
 
+  // Separate primary and secondary node ids before clustering
+  const primaryNodes = nodes.filter(n => !isSecondaryNode(nodeLookup[n.id]));
+  const secondaryNodes = nodes.filter(n => isSecondaryNode(nodeLookup[n.id]));
+
+  // ── Build clusters from primary nodes only ────────────────────────────────
   const clusters = {};
-  nodes.forEach((node) => {
+  primaryNodes.forEach((node) => {
     const center = getClusterCenter(node.id);
     const key = `${center.cx},${center.cy}`;
-    if (!clusters[key]) clusters[key] = { center, ids: [] };
+    if (!clusters[key]) clusters[key] = { center, ids: [], isSecondary: false };
     clusters[key].ids.push(node.id);
   });
 
@@ -194,6 +247,38 @@ function computeCategoryLayout(nodes, sequence, graphMode) {
     });
   });
 
+  // ── Place secondary nodes in a single horizontal lane below the clusters ──
+  if (secondaryNodes.length > 0) {
+    const primaryYs = Object.values(layout).map((p) => p.y);
+    const primaryBottom = primaryYs.length > 0 ? Math.max(...primaryYs) : 280;
+    const LANE_GAP = 140;
+    const secondaryY = primaryBottom + LANE_GAP;
+
+    // Sort secondary nodes by temporal mean onset, then place left-to-right
+    const sorted = [...secondaryNodes].sort(
+      (a, b) => (meanOnset[a.id] || 0) - (meanOnset[b.id] || 0)
+    );
+
+    const SECONDARY_SPACING = 110;
+    const totalWidth = (sorted.length - 1) * SECONDARY_SPACING;
+    const startX = -totalWidth / 2;
+
+    sorted.forEach((node, idx) => {
+      layout[node.id] = {
+        x: startX + idx * SECONDARY_SPACING,
+        y: secondaryY,
+      };
+    });
+
+    // Add a virtual "secondary cluster" so drawClusterHulls can render its hull
+    const secondaryCenter = { cx: 0, cy: secondaryY };
+    clusters["__secondary__"] = {
+      center: secondaryCenter,
+      ids: sorted.map((n) => n.id),
+      isSecondary: true,
+    };
+  }
+
   return { layout, clusters };
 }
 
@@ -201,18 +286,21 @@ function drawClusterHulls(zoomGroup, clusters, layout, radiusMap, graphMode) {
   zoomGroup.selectAll(".cluster-layer").remove();
   const clusterLayer = zoomGroup.insert("g", ":first-child").attr("class", "cluster-layer");
 
-  Object.values(clusters).forEach(({ center, ids }) => {
+  Object.values(clusters).forEach(({ center, ids, isSecondary }) => {
     if (ids.length === 0) return;
 
     const repNode = ids.find((id) => id !== "START" && id !== "END");
     if (!repNode) return;
 
-    const clusterColor = graphMode === "abstracted"
-      ? (PHASE_COLORS[repNode] || "#94A3B8")
-      : (() => {
-          const verb = repNode.split("(")[0].toLowerCase();
-          return VERB_COLORS[verb] || "#94A3B8";
-        })();
+    // Secondary cluster gets neutral gray styling (its own visual lane)
+    const clusterColor = isSecondary
+      ? "#94A3B8"
+      : graphMode === "abstracted"
+        ? (PHASE_COLORS[repNode] || "#94A3B8")
+        : (() => {
+            const verb = repNode.split("(")[0].toLowerCase();
+            return VERB_COLORS[verb] || "#94A3B8";
+          })();
 
     const points = [];
     ids.forEach((id) => {
@@ -234,17 +322,19 @@ function drawClusterHulls(zoomGroup, clusters, layout, radiusMap, graphMode) {
       .attr("class", "cluster-hull")
       .attr("d", `M${hull.join("L")}Z`)
       .attr("fill", clusterColor)
-      .attr("fill-opacity", 0.08)
+      .attr("fill-opacity", isSecondary ? 0.04 : 0.08)
       .attr("stroke", clusterColor)
-      .attr("stroke-opacity", 0.35)
+      .attr("stroke-opacity", isSecondary ? 0.25 : 0.35)
       .attr("stroke-width", 1.5)
-      .attr("stroke-dasharray", "5 3")
+      .attr("stroke-dasharray", isSecondary ? "4 4" : "5 3")
       .attr("stroke-linejoin", "round");
 
     const labelY = Math.min(...ids.map((id) => (layout[id]?.y || 0))) - (radiusMap[ids[0]] || 18) - 18;
-    const labelText = graphMode === "abstracted"
-      ? repNode
-      : repNode.split("(")[0];
+    const labelText = isSecondary
+      ? "Secondary actions (outside recipe steps)"
+      : graphMode === "abstracted"
+        ? repNode
+        : repNode.split("(")[0];
 
     clusterLayer.append("text")
       .attr("class", "cluster-label")
@@ -258,6 +348,106 @@ function drawClusterHulls(zoomGroup, clusters, layout, radiusMap, graphMode) {
       .attr("pointer-events", "none")
       .text(labelText);
   });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// drawLanes — render the two-lane background rectangles
+// Called from buildGraph after the layout is computed. The lane rectangles
+// always sit behind the hulls and nodes thanks to insert(":first-child").
+// ─────────────────────────────────────────────────────────────────────────────
+function drawLanes(zoomGroup, filteredNodes, layout, radiusMap) {
+  zoomGroup.selectAll(".lane-layer").remove();
+  const nodeLookup = makeNodeLookup(filteredNodes);
+
+  const primaryIds = filteredNodes
+    .filter((n) => !n.isSpecial && !isSecondaryNode(nodeLookup[n.id]))
+    .map((n) => n.id);
+  const secondaryIds = filteredNodes
+    .filter((n) => !n.isSpecial && isSecondaryNode(nodeLookup[n.id]))
+    .map((n) => n.id);
+
+  // No lane drawing unless both lanes exist
+  if (primaryIds.length === 0 || secondaryIds.length === 0) return;
+
+  const laneLayer = zoomGroup.insert("g", ":first-child").attr("class", "lane-layer");
+
+  function bbox(ids, padding = 28) {
+    const xs = ids.flatMap((id) => {
+      const p = layout[id] || { x: 0 };
+      const r = radiusMap[id] || 18;
+      return [p.x - r, p.x + r];
+    });
+    const ys = ids.flatMap((id) => {
+      const p = layout[id] || { y: 0 };
+      const r = radiusMap[id] || 18;
+      return [p.y - r, p.y + r];
+    });
+    return {
+      x: Math.min(...xs) - padding,
+      y: Math.min(...ys) - padding,
+      width: Math.max(...xs) - Math.min(...xs) + padding * 2,
+      height: Math.max(...ys) - Math.min(...ys) + padding * 2,
+    };
+  }
+
+  const primaryBox = bbox(primaryIds);
+  const secondaryBox = bbox(secondaryIds);
+
+  // Align both lanes to the same horizontal extent so they read as parallel rows
+  const sharedX = Math.min(primaryBox.x, secondaryBox.x);
+  const sharedWidth = Math.max(
+    primaryBox.x + primaryBox.width,
+    secondaryBox.x + secondaryBox.width
+  ) - sharedX;
+
+  // Primary lane
+  laneLayer.append("rect")
+    .attr("class", "lane lane-primary")
+    .attr("x", sharedX)
+    .attr("y", primaryBox.y)
+    .attr("width", sharedWidth)
+    .attr("height", primaryBox.height)
+    .attr("rx", 12)
+    .attr("fill", "#f0fdf4")
+    .attr("fill-opacity", 0.5)
+    .attr("stroke", "#86efac")
+    .attr("stroke-width", 1);
+
+  laneLayer.append("text")
+    .attr("class", "lane-label")
+    .attr("x", sharedX + 12)
+    .attr("y", primaryBox.y + 18)
+    .attr("font-size", "11px")
+    .attr("font-weight", "500")
+    .attr("fill", "#16a34a")
+    .attr("opacity", 0.85)
+    .attr("pointer-events", "none")
+    .text("Recipe actions");
+
+  // Secondary lane
+  laneLayer.append("rect")
+    .attr("class", "lane lane-secondary")
+    .attr("x", sharedX)
+    .attr("y", secondaryBox.y)
+    .attr("width", sharedWidth)
+    .attr("height", secondaryBox.height)
+    .attr("rx", 12)
+    .attr("fill", "#fafafa")
+    .attr("fill-opacity", 0.6)
+    .attr("stroke", "#94a3b8")
+    .attr("stroke-width", 1)
+    .attr("stroke-dasharray", "6 3");
+
+  laneLayer.append("text")
+    .attr("class", "lane-label")
+    .attr("x", sharedX + 12)
+    .attr("y", secondaryBox.y + 18)
+    .attr("font-size", "11px")
+    .attr("font-weight", "500")
+    .attr("fill", "#64748b")
+    .attr("opacity", 0.85)
+    .attr("pointer-events", "none")
+    .text("Secondary actions (outside recipe steps)");
 }
 
 function getStraightPath(link, layout, radiusMap) {
@@ -309,11 +499,9 @@ function getNodeLabel(node, mode) {
   if (node.isSpecial) {
     return node.id;
   }
-
   if (mode === "abstracted") {
     return node.id;
   }
-
   const verb = node.id.split("(")[0];
   return verb.length > 7 ? verb.slice(0, 6) + "..." : verb;
 }
@@ -322,7 +510,6 @@ function getNodeSubtitle(node, mode) {
   if (node.isSpecial || mode === "abstracted") {
     return "";
   }
-
   const match = node.id.match(/\((.+)\)/);
   return match ? match[1] : "";
 }
@@ -394,7 +581,6 @@ function makeNodeColorFn(filteredNodes, sequence, colorMode, graphMode) {
   }
 
   if (colorMode === "duration") {
-    // Compute mean duration per action from sequence
     const durationMap = {};
     sequence.forEach(s => {
       if (!durationMap[s.action]) durationMap[s.action] = [];
@@ -410,7 +596,7 @@ function makeNodeColorFn(filteredNodes, sequence, colorMode, graphMode) {
       .interpolator(d3.interpolateYlOrRd);
     return (d) => d.isSpecial ? "#d1d5db" : (colorScale(meanDuration[d.id] || 0));
   }
-  
+
   return (d) => d.isSpecial ? "#d1d5db" : "#94A3B8";
 }
 
@@ -433,7 +619,7 @@ export function createGraphController({
   let lastActiveEdge = null;
   let lastActiveNode = null;
   let radiusMapCache = null;
-  let enrichedLinksCache = null;  // Store for hover handlers
+  let enrichedLinksCache = null;
   let edgeWidthScale = null;
   let edgeOpacityScale = null;
   let currentMode = "smart";
@@ -442,7 +628,7 @@ export function createGraphController({
   let autoZoomEnabled = true;
   let xScaleCache = null;
   let totalDurationCache = null;
-  let userPositions = {}; // nodeId -> { x, y }
+  let userPositions = {};
   let selectedNodeId = null;
   let lastGraph = null;
   let lastSequence = null;
@@ -454,7 +640,6 @@ export function createGraphController({
   let lastOptions = { onNodeClick: null };
 
   function buildGraph(graph, sequence, minCount = 1, mode = "smart", colorMode = "category", sizeMode = "frequency", layoutMode = "temporal", options = { onNodeClick: null }, resetPositions = true) {
-    // Store latest render parameters so resetLayout can rebuild with current settings.
     lastGraph = graph;
     lastSequence = sequence;
     lastMinCount = minCount;
@@ -488,8 +673,8 @@ export function createGraphController({
       const firstAction = sequence[0].action;
       const lastAction = sequence[sequence.length - 1].action;
 
-      enrichedNodes.unshift({ id: "START", count: 1, isSpecial: true });
-      enrichedNodes.push({ id: "END", count: 1, isSpecial: true });
+      enrichedNodes.unshift({ id: "START", count: 1, isSpecial: true, is_primary: true });
+      enrichedNodes.push({ id: "END", count: 1, isSpecial: true, is_primary: true });
 
       enrichedLinks.unshift({
         source: "START",
@@ -507,10 +692,8 @@ export function createGraphController({
       });
     }
 
-    // ── Suggestion 2: Filter edges by minimum count threshold ────────────────
     enrichedLinks = enrichedLinks.filter(l => (l.count || 1) >= minCount);
 
-    // Only show nodes that still have at least one visible edge
     const activeNodeIds = new Set();
     enrichedLinks.forEach(l => {
       activeNodeIds.add(l.source);
@@ -552,7 +735,7 @@ export function createGraphController({
       .domain([1, Math.max(maxCount, 2)])
       .range([18, 36]);
 
-    enrichedLinksCache = enrichedLinks;  // Store for hover handlers
+    enrichedLinksCache = enrichedLinks;
 
     const defs = svg.append("defs");
     [["arrow", "#94a3b8"], ["arrowActive", "#ea580c"]].forEach(([id, color]) => {
@@ -619,20 +802,18 @@ export function createGraphController({
       totalDurationCache = sequence[sequence.length - 1]?.end || 1;
     }
 
-    // Merge user drag overrides into computed layout.
     Object.entries(userPositions).forEach(([id, pos]) => {
       if (layout[id]) layout[id] = { ...layout[id], ...pos };
     });
 
-    // Draw time ruler for temporal layout inside zoomGroup (it will pan/zoom with graph)
+    // Time ruler in temporal mode
     if (layoutMode === "temporal" && xScale) {
       const minNodeY = Math.min(...Object.values(layout).map(p => p.y));
       const rulerY = minNodeY - maxRadius - 28;
-      const TICK_INTERVAL = 30; // seconds
+      const TICK_INTERVAL = 30;
       const ticks = d3.range(0, totalDuration + TICK_INTERVAL, TICK_INTERVAL);
       const rulerG = zoomGroup.append("g").attr("class", "time-ruler");
 
-      // Baseline
       rulerG.append("line")
         .attr("x1", xScale(0))
         .attr("x2", xScale(totalDuration))
@@ -643,13 +824,11 @@ export function createGraphController({
 
       ticks.forEach(t => {
         const x = xScale(t);
-
         rulerG.append("line")
           .attr("x1", x).attr("x2", x)
           .attr("y1", rulerY - 4).attr("y2", rulerY + 4)
           .attr("stroke", "#94a3b8")
           .attr("stroke-width", 1);
-
         rulerG.append("text")
           .attr("x", x)
           .attr("y", rulerY - 8)
@@ -660,11 +839,14 @@ export function createGraphController({
       });
     }
 
-      if (layoutMode === "category" && clusters) {
-        drawClusterHulls(zoomGroup, clusters, layout, radiusMap, mode);
-      }
+    // Hulls (category layout)
+    if (layoutMode === "category" && clusters) {
+      drawClusterHulls(zoomGroup, clusters, layout, radiusMap, mode);
+    }
 
-    // ── Suggestion 1: Create scales for edge width and opacity by frequency ──
+    // Lane rectangles — drawn for BOTH layout modes whenever both lanes exist
+    drawLanes(zoomGroup, filteredNodes, layout, radiusMap);
+
     const maxLinkCount = d3.max(enrichedLinks, d => d.count) || 1;
     edgeWidthScale = d3.scaleSqrt()
       .domain([1, Math.max(maxLinkCount, 2)])
@@ -683,12 +865,10 @@ export function createGraphController({
         selfLoops.push(link);
         return;
       }
-
       if (link.source === "START" || link.target === "END") {
         forwardEdges.push(link);
         return;
       }
-
       const sourceX = (layout[link.source] || { x: 0 }).x;
       const targetX = (layout[link.target] || { x: 0 }).x;
       if (targetX >= sourceX) {
@@ -816,10 +996,14 @@ export function createGraphController({
 
     const colorFn = makeNodeColorFn(filteredNodes, sequence, colorMode, mode);
 
+    // Selection ring (hidden by default; CSS .node.selected toggles opacity)
+
     nodeGroups
       .append("circle")
       .attr("r", (d) => radiusMap[d.id] || 18)
-      .style("fill", colorFn);
+      .style("fill", colorFn)
+      // Secondary nodes get muted opacity so they recede visually
+      .style("opacity", (d) => isSecondaryNode(d) ? 0.55 : 1.0);
 
     nodeGroups
       .append("text")
@@ -852,13 +1036,11 @@ export function createGraphController({
       .attr("pointer-events", "none")
       .text((d) => getNodeSubtitle(d, currentMode));
 
-    const DRAG_THRESHOLD_PX = 4;  // standard OS-level click-vs-drag threshold
+    // ── Drag behavior with screen-pixel threshold (fixes click-vs-drag) ─────
+    const DRAG_THRESHOLD_PX = 4;
 
     const dragBehavior = d3.drag()
       .on("start", function(event, d) {
-        // Do NOT stopPropagation here — it can swallow the click event.
-        // We rely on the threshold instead.
-        
         d.__dragMoved = false;
         d.__startScreenX = event.sourceEvent.clientX;
         d.__startScreenY = event.sourceEvent.clientY;
@@ -870,25 +1052,19 @@ export function createGraphController({
 
         d.__offsetX = graphX - (layout[d.id]?.x || 0);
         d.__offsetY = graphY - (layout[d.id]?.y || 0);
-
-        // Do not add .dragging class yet — wait until threshold is crossed
       })
       .on("drag", function(event, d) {
-        // Compute screen-space displacement from drag start
         const dxScreen = event.sourceEvent.clientX - d.__startScreenX;
         const dyScreen = event.sourceEvent.clientY - d.__startScreenY;
         const distance = Math.sqrt(dxScreen * dxScreen + dyScreen * dyScreen);
 
-        // Only register as a drag once we've crossed the threshold
         if (!d.__dragMoved && distance < DRAG_THRESHOLD_PX) {
-          return;  // ignore sub-threshold movement — treat as a still click
+          return;
         }
-
         if (!d.__dragMoved) {
-          // First time crossing threshold — commit to drag mode
           d.__dragMoved = true;
           d3.select(this).classed("dragging", true);
-          this.parentNode.appendChild(this);  // bring to front
+          this.parentNode.appendChild(this);
         }
 
         const currentTransform = d3.zoomTransform(svg.node());
@@ -907,7 +1083,6 @@ export function createGraphController({
 
         d3.select(this).attr("transform", `translate(${newX}, ${newY})`);
 
-        // Redraw connected edges
         svg.selectAll(".link")
           .filter(link => link.source === d.id || link.target === d.id)
           .attr("d", link => {
@@ -937,8 +1112,6 @@ export function createGraphController({
       })
       .on("end", function(event, d) {
         d3.select(this).classed("dragging", false);
-        // __dragMoved is read by the click handler that fires right after.
-        // We do NOT reset it here — the click handler resets it after reading.
       });
 
     nodeGroups.call(dragBehavior);
@@ -970,24 +1143,20 @@ export function createGraphController({
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
       .on("mouseout", hideEdgeTooltip);
 
-    // ── Suggestion 4: Node hover highlighting with edge focus+context ────────
     nodeGroups
       .on("mouseover", function(event, d) {
         showNodeTooltip(event, d, currentMode);
 
-        // Dim all edges
         linkSelection
           .attr("stroke-opacity", 0.05)
           .attr("stroke-width", 0.5);
 
-        // Highlight edges connected to hovered node
         linkSelection
           .filter(link => link.source === d.id || link.target === d.id)
           .attr("stroke-opacity", link => edgeOpacityScale(link.count || 1))
           .attr("stroke-width", link => edgeWidthScale(link.count || 1) * 1.5)
           .attr("stroke", "#ea580c");
 
-        // Dim non-neighbor nodes
         nodeSelection
           .filter(n => n.id !== d.id)
           .style("opacity", function(n) {
@@ -1001,7 +1170,6 @@ export function createGraphController({
       .on("mouseout", function() {
         hideNodeTooltip();
 
-        // Restore all to frequency-based encoding
         linkSelection
           .attr("stroke-opacity", d => edgeOpacityScale(d.count || 1))
           .attr("stroke-width", d => edgeWidthScale(d.count || 1))
@@ -1062,7 +1230,6 @@ export function createGraphController({
     };
   }
 
-  // ── Suggestion 5: Edge tooltip showing count and percentage ────────────────
   function showEdgeTooltip(event, d) {
     const totalOutgoing = enrichedLinksCache
       .filter(l => l.source === d.source)
@@ -1074,9 +1241,7 @@ export function createGraphController({
       d.occurrences.forEach((index) => {
         const sourceItem = currentSequenceCache[index];
         const targetItem = currentSequenceCache[index + 1];
-        if (!sourceItem || !targetItem) {
-          return;
-        }
+        if (!sourceItem || !targetItem) return;
 
         let rawSource = "";
         let rawTarget = "";
@@ -1086,13 +1251,8 @@ export function createGraphController({
           rawSource = (parts[0] || "").trim();
           rawTarget = (parts[1] || "").trim();
         }
-
-        if (!rawSource) {
-          rawSource = sourceItem.raw_action || sourceItem.action || "";
-        }
-        if (!rawTarget) {
-          rawTarget = sourceItem.next_action || targetItem.raw_action || targetItem.action || "";
-        }
+        if (!rawSource) rawSource = sourceItem.raw_action || sourceItem.action || "";
+        if (!rawTarget) rawTarget = sourceItem.next_action || targetItem.raw_action || targetItem.action || "";
 
         const detailKey = `${rawSource} -> ${rawTarget}`;
         detailMap.set(detailKey, (detailMap.get(detailKey) || 0) + 1);
@@ -1119,6 +1279,13 @@ export function createGraphController({
   function showNodeTooltip(event, d, graphMode) {
     const stats = nodeDurationStatsCache?.[d.id];
     const lines = [`${d.id}`, `Count: ${d.count}`];
+
+    // Show lane membership in tooltip
+    if (d.is_primary === false) {
+      lines.push(`Lane: secondary (outside recipe steps)`);
+    } else if (d.is_primary === true) {
+      lines.push(`Lane: primary (recipe action)`);
+    }
 
     if (stats) {
       if (graphMode === "abstracted") {
@@ -1158,24 +1325,18 @@ export function createGraphController({
   }
 
   function zoomToTransition(sourceId, targetId) {
-    if (!nodeLayout || !zoomBehavior || !radiusMapCache) {
-      return;
-    }
+    if (!nodeLayout || !zoomBehavior || !radiusMapCache) return;
 
     const sourcePos = nodeLayout[sourceId];
     const targetPos = nodeLayout[targetId];
-    
-    if (!sourcePos || !targetPos) {
-      return;
-    }
+    if (!sourcePos || !targetPos) return;
 
     const width = graphWrapEl.clientWidth;
     const height = graphWrapEl.clientHeight;
 
-    // Calculate bounding box of both nodes
     const sourceRadius = radiusMapCache[sourceId] || 18;
     const targetRadius = radiusMapCache[targetId] || 18;
-    
+
     const minX = Math.min(sourcePos.x - sourceRadius, targetPos.x - targetRadius);
     const maxX = Math.max(sourcePos.x + sourceRadius, targetPos.x + targetRadius);
     const minY = Math.min(sourcePos.y - sourceRadius, targetPos.y - targetRadius);
@@ -1185,12 +1346,10 @@ export function createGraphController({
     const boxHeight = maxY - minY;
     const padding = 40;
 
-    // Calculate scale to fit both nodes with padding
     const scaleX = (width - padding * 2) / Math.max(boxWidth, 1);
     const scaleY = (height - padding * 2) / Math.max(boxHeight, 1);
     const scale = Math.min(scaleX, scaleY, 3.5);
 
-    // Center both nodes in viewport
     const centerX = (minX + maxX) / 2;
     const centerY = (minY + maxY) / 2;
     const tx = width / 2 - centerX * scale;
@@ -1203,14 +1362,9 @@ export function createGraphController({
   }
 
   function autoZoomToNode(nodeId) {
-    if (!nodeLayout || !zoomBehavior || !radiusMapCache) {
-      return;
-    }
-
+    if (!nodeLayout || !zoomBehavior || !radiusMapCache) return;
     const p = nodeLayout[nodeId];
-    if (!p) {
-      return;
-    }
+    if (!p) return;
 
     const width = graphWrapEl.clientWidth;
     const height = graphWrapEl.clientHeight;
@@ -1262,13 +1416,11 @@ export function createGraphController({
     if (nodeSelection) {
       nodeSelection.classed("active", (d) => d.id === activeNode);
     }
-
     if (linkSelection) {
       linkSelection
         .classed("active", (d) => d && (d.key === activeEdge || d.pairKey === activeEdge))
         .attr("marker-end", (d) => (d && (d.key === activeEdge || d.pairKey === activeEdge) ? "url(#arrowActive)" : "url(#arrow)"));
     }
-
     if (selfLoopSelection) {
       selfLoopSelection.classed("active", (d) => d && d.key === activeEdge);
     }
@@ -1280,9 +1432,7 @@ export function createGraphController({
 
   function resetLayout() {
     userPositions = {};
-    if (!lastGraph || !lastSequence) {
-      return;
-    }
+    if (!lastGraph || !lastSequence) return;
     buildGraph(
       lastGraph,
       lastSequence,

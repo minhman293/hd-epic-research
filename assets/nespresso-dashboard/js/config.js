@@ -37,7 +37,10 @@ export const VERB_COLORS = {
 
 export const DEFAULT_NODE_COLOR = "#94A3B8";
 
-// Phase colors for abstracted graph
+// Phase colors used by the abstracted (Task Phases) view.
+// These remain a manual semantic abstraction for visualization purposes only;
+// lane assignment (primary vs. secondary) is now driven by the is_primary
+// flag computed from HD-EPIC step_times in the Python pipeline.
 export const PHASE_COLORS = {
   "task-ops": "#6B7280",
   "prep-machine": "#F59E0B",
@@ -50,7 +53,6 @@ export const PHASE_COLORS = {
 };
 
 // Cluster centers for category-grouped layout.
-// Arranged in a circle around the origin; order is aesthetic, not meaningful.
 export const CATEGORY_CLUSTER_CENTERS = {
   take: { cx: 0, cy: -280 },
   carry: { cx: 0, cy: -280 },
@@ -77,7 +79,6 @@ export const CATEGORY_CLUSTER_CENTERS = {
   pat: { cx: -198, cy: -198 },
 };
 
-// Cluster centers for phase-grouped layout in Task Phases mode.
 export const PHASE_CLUSTER_CENTERS = {
   measure: { cx: 0, cy: -280 },
   "extract-coffee": { cx: 198, cy: -198 },
@@ -90,7 +91,12 @@ export const PHASE_CLUSTER_CENTERS = {
   other: { cx: 0, cy: 0 },
 };
 
-// Mapping from raw actions to abstract task phases
+// ─────────────────────────────────────────────────────────────────────────────
+// ACTION_TO_PHASE — preserved ONLY for the Task Phases (abstracted) view.
+// Lane assignment (primary vs. secondary) now reads node.is_primary from the
+// JSON payload, which is computed in the Python pipeline from the recipe's
+// step_times annotations. Do NOT use this table to decide lanes.
+// ─────────────────────────────────────────────────────────────────────────────
 export const ACTION_TO_PHASE = {
   "move(scale)": "measure",
   "turn-on(scale)": "measure",
@@ -111,8 +117,8 @@ export const ACTION_TO_PHASE = {
   "crush(coffee)": "tamp",
   "press(coffee)": "tamp",
   "put(presser)": "tamp",
-  "put(spoon)":           "tamp",
-  "pat(cup)":             "tamp",
+  "put(spoon)": "tamp",
+  "pat(cup)": "tamp",
   "take(cup)": "handle-cup",
   "put(cup)": "handle-cup",
   "screw(cup)": "handle-cup",
