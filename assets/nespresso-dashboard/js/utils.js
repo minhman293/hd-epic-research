@@ -1,3 +1,4 @@
+// utils.js - Utility functions for the Nespresso Dashboard
 import { DEFAULT_NODE_COLOR, VERB_COLORS, PHASE_COLORS } from "./config.js";
 
 export function formatSeconds(seconds) {

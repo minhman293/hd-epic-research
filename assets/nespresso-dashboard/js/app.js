@@ -1,3 +1,4 @@
+// app.js - Main application logic for the Nespresso Dashboard
 import { getDataUrl, DEFAULT_DATA_MODE, DEFAULT_COLOR_ENCODE_MODE, getLegendItems } from "./config.js";
 import { createGraphController } from "./graph.js";
 import { buildLegend } from "./legend.js";
