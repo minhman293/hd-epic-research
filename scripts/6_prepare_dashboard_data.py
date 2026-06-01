@@ -1,4 +1,6 @@
 """
+6_prepare_dashboard_data.py
+
 Step 6: Export single-recipe dashboard data for D3 (Coffee P08_R01)
 Generates three versions: full raw, smart-merged, and abstracted task phases.
 
