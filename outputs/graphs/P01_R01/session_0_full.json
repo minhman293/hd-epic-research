@@ -1,0 +1,4863 @@
+{
+  "recipe": {
+    "id": "P01_R01",
+    "name": "Nespresso",
+    "session_index": 0,
+    "video_id": "P01-20240202-110250",
+    "video_path": "raw-video/P01-20240202-110250.mp4",
+    "narration_count": 224
+  },
+  "steps": [
+    {
+      "id": "P01_R01_S01",
+      "text": "Put one capsule into the coffee machine."
+    },
+    {
+      "id": "P01_R01_S02",
+      "text": "Press the long coffee button"
+    },
+    {
+      "id": "P01_R01_S03",
+      "text": "Pour minimum amount of milk into the frother"
+    },
+    {
+      "id": "P01_R01_S04",
+      "text": "Add the frothed milk into the coffee"
+    },
+    {
+      "id": "P01_R01_S05",
+      "text": "Stir"
+    }
+  ],
+  "sequence": [
+    {
+      "index": 0,
+      "action": "open(cupboard)",
+      "start": 7.44,
+      "end": 8.75,
+      "duration": 1.3099999999999996,
+      "next_action": "stretch(hand)",
+      "edge_key": "open(cupboard)|||stretch(hand)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 1,
+      "action": "stretch(hand)",
+      "start": 8.85,
+      "end": 9.36,
+      "duration": 0.5099999999999998,
+      "next_action": "take(cup)",
+      "edge_key": "stretch(hand)|||take(cup)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 2,
+      "action": "take(cup)",
+      "start": 9.34,
+      "end": 11.16,
+      "duration": 1.8200000000000003,
+      "next_action": "turn(cup)",
+      "edge_key": "take(cup)|||turn(cup)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 3,
+      "action": "turn(cup)",
+      "start": 11.15,
+      "end": 11.6,
+      "duration": 0.4499999999999993,
+      "next_action": "close(cupboard)",
+      "edge_key": "turn(cup)|||close(cupboard)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 4,
+      "action": "close(cupboard)",
+      "start": 11.5,
+      "end": 12.18,
+      "duration": 0.6799999999999997,
+      "next_action": "flip(maker:coffee)",
+      "edge_key": "close(cupboard)|||flip(maker:coffee)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 5,
+      "action": "flip(maker:coffee)",
+      "start": 13.73,
+      "end": 14.11,
+      "duration": 0.379999999999999,
+      "next_action": "put(cup)",
+      "edge_key": "flip(maker:coffee)|||put(cup)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 6,
+      "action": "put(cup)",
+      "start": 14.2,
+      "end": 14.55,
+      "duration": 0.3500000000000014,
+      "next_action": "take(coffee)",
+      "edge_key": "put(cup)|||take(coffee)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 7,
+      "action": "take(coffee)",
+      "start": 14.81,
+      "end": 15.08,
+      "duration": 0.2699999999999996,
+      "next_action": "press(button)",
+      "edge_key": "take(coffee)|||press(button)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 8,
+      "action": "press(button)",
+      "start": 15.36,
+      "end": 15.65,
+      "duration": 0.2900000000000009,
+      "next_action": "lift(handle)",
+      "edge_key": "press(button)|||lift(handle)",
+      "step_id": "P01_R01_S02",
+      "is_primary": true
+    },
+    {
+      "index": 9,
+      "action": "lift(handle)",
+      "start": 16.06,
+      "end": 16.64,
+      "duration": 0.5800000000000018,
+      "next_action": "slide(coffee)",
+      "edge_key": "lift(handle)|||slide(coffee)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 10,
+      "action": "slide(coffee)",
+      "start": 16.08,
+      "end": 17.26,
+      "duration": 1.1800000000000033,
+      "next_action": "pull(handle)",
+      "edge_key": "slide(coffee)|||pull(handle)",
+      "step_id": "P01_R01_S01",
+      "is_primary": true
+    },
+    {
+      "index": 11,
+      "action": "pull(handle)",
+      "start": 17.4,
+      "end": 18.02,
+      "duration": 0.620000000000001,
+      "next_action": "open(fridge)",
+      "edge_key": "pull(handle)|||open(fridge)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 12,
+      "action": "open(fridge)",
+      "start": 19.75,
+      "end": 21.1,
+      "duration": 1.3500000000000014,
+      "next_action": "take(bottle)",
+      "edge_key": "open(fridge)|||take(bottle)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 13,
+      "action": "take(bottle)",
+      "start": 21.4,
+      "end": 22.0,
+      "duration": 0.6000000000000014,
+      "next_action": "close(fridge)",
+      "edge_key": "take(bottle)|||close(fridge)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 14,
+      "action": "close(fridge)",
+      "start": 22.1,
+      "end": 23.47,
+      "duration": 1.3699999999999974,
+      "next_action": "slide(milk)",
+      "edge_key": "close(fridge)|||slide(milk)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 15,
+      "action": "slide(milk)",
+      "start": 24.55,
+      "end": 25.5,
+      "duration": 0.9499999999999993,
+      "next_action": "open(bottle)",
+      "edge_key": "slide(milk)|||open(bottle)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 16,
+      "action": "open(bottle)",
+      "start": 25.75,
+      "end": 26.8,
+      "duration": 1.0500000000000007,
+      "next_action": "lift(bottle)",
+      "edge_key": "open(bottle)|||lift(bottle)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 17,
+      "action": "lift(bottle)",
+      "start": 27.0,
+      "end": 27.5,
+      "duration": 0.5,
+      "next_action": "lift(bottle)",
+      "edge_key": "lift(bottle)|||lift(bottle)",
+      "step_id": "P01_R01_S03",
+      "is_primary": true
+    },
+    {
+      "index": 18,
+      "action": "lift(bottle)",
+      "start": 27.61,
+      "end": 33.79,
+      "duration": 6.18,
+      "next_action": "turn-on(milk)",
+      "edge_key": "lift(bottle)|||turn-on(milk)",
+      "step_id": "P01_R01_S03",
+      "is_primary": true
+    },
+    {
+      "index": 19,
+      "action": "turn-on(milk)",
+      "start": 30.7,
+      "end": 32.4,
+      "duration": 1.6999999999999993,
+      "next_action": "take(bottle)",
+      "edge_key": "turn-on(milk)|||take(bottle)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 20,
+      "action": "take(bottle)",
+      "start": 34.14,
+      "end": 34.83,
+      "duration": 0.6899999999999977,
+      "next_action": "open(fridge)",
+      "edge_key": "take(bottle)|||open(fridge)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 21,
+      "action": "open(fridge)",
+      "start": 36.07,
+      "end": 37.07,
+      "duration": 1.0,
+      "next_action": "put(bottle)",
+      "edge_key": "open(fridge)|||put(bottle)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 22,
+      "action": "put(bottle)",
+      "start": 37.17,
+      "end": 38.09,
+      "duration": 0.9200000000000017,
+      "next_action": "close(fridge)",
+      "edge_key": "put(bottle)|||close(fridge)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 23,
+      "action": "close(fridge)",
+      "start": 38.02,
+      "end": 38.64,
+      "duration": 0.6199999999999974,
+      "next_action": "press(button)",
+      "edge_key": "close(fridge)|||press(button)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 24,
+      "action": "press(button)",
+      "start": 41.19,
+      "end": 42.43,
+      "duration": 1.240000000000002,
+      "next_action": "open(drawer)",
+      "edge_key": "press(button)|||open(drawer)",
+      "step_id": "P01_R01_S02",
+      "is_primary": true
+    },
+    {
+      "index": 25,
+      "action": "open(drawer)",
+      "start": 48.28,
+      "end": 49.29,
+      "duration": 1.009999999999998,
+      "next_action": "take(scissors)",
+      "edge_key": "open(drawer)|||take(scissors)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 26,
+      "action": "take(scissors)",
+      "start": 49.54,
+      "end": 50.04,
+      "duration": 0.5,
+      "next_action": "remove(package)",
+      "edge_key": "take(scissors)|||remove(package)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 27,
+      "action": "remove(package)",
+      "start": 50.17,
+      "end": 51.04,
+      "duration": 0.8699999999999974,
+      "next_action": "open(scissors)",
+      "edge_key": "remove(package)|||open(scissors)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 28,
+      "action": "open(scissors)",
+      "start": 51.41,
+      "end": 52.71,
+      "duration": 1.3000000000000043,
+      "next_action": "take(orange)",
+      "edge_key": "open(scissors)|||take(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 29,
+      "action": "take(orange)",
+      "start": 53.31,
+      "end": 54.11,
+      "duration": 0.7999999999999972,
+      "next_action": "take(orange)",
+      "edge_key": "take(orange)|||take(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 30,
+      "action": "take(orange)",
+      "start": 55.26,
+      "end": 55.62,
+      "duration": 0.35999999999999943,
+      "next_action": "take(orange)",
+      "edge_key": "take(orange)|||take(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 31,
+      "action": "take(orange)",
+      "start": 56.6,
+      "end": 57.98,
+      "duration": 1.3799999999999955,
+      "next_action": "wrap(scissors)",
+      "edge_key": "take(orange)|||wrap(scissors)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 32,
+      "action": "wrap(scissors)",
+      "start": 58.66,
+      "end": 60.48,
+      "duration": 1.8200000000000003,
+      "next_action": "open(drawer)",
+      "edge_key": "wrap(scissors)|||open(drawer)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 33,
+      "action": "open(drawer)",
+      "start": 61.54,
+      "end": 62.54,
+      "duration": 1.0,
+      "next_action": "put(scissors)",
+      "edge_key": "open(drawer)|||put(scissors)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 34,
+      "action": "put(scissors)",
+      "start": 62.44,
+      "end": 62.78,
+      "duration": 0.3400000000000034,
+      "next_action": "slide(board:chopping)",
+      "edge_key": "put(scissors)|||slide(board:chopping)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 35,
+      "action": "slide(board:chopping)",
+      "start": 64.86,
+      "end": 65.84,
+      "duration": 0.980000000000004,
+      "next_action": "take(food)",
+      "edge_key": "slide(board:chopping)|||take(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 36,
+      "action": "take(food)",
+      "start": 66.2,
+      "end": 68.92,
+      "duration": 2.719999999999999,
+      "next_action": "hold(food)",
+      "edge_key": "take(food)|||hold(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 37,
+      "action": "hold(food)",
+      "start": 69.58,
+      "end": 69.91,
+      "duration": 0.3299999999999983,
+      "next_action": "remove(plug)",
+      "edge_key": "hold(food)|||remove(plug)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 38,
+      "action": "remove(plug)",
+      "start": 70.27,
+      "end": 70.55,
+      "duration": 0.28000000000000114,
+      "next_action": "put(plug)",
+      "edge_key": "remove(plug)|||put(plug)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 39,
+      "action": "put(plug)",
+      "start": 71.03,
+      "end": 71.86,
+      "duration": 0.8299999999999983,
+      "next_action": "press(plug)",
+      "edge_key": "put(plug)|||press(plug)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 40,
+      "action": "press(plug)",
+      "start": 71.93,
+      "end": 72.49,
+      "duration": 0.5599999999999881,
+      "next_action": "turn(lid)",
+      "edge_key": "press(plug)|||turn(lid)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 41,
+      "action": "turn(lid)",
+      "start": 73.14,
+      "end": 73.94,
+      "duration": 0.7999999999999972,
+      "next_action": "put(lid)",
+      "edge_key": "turn(lid)|||put(lid)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 42,
+      "action": "put(lid)",
+      "start": 74.16,
+      "end": 74.74,
+      "duration": 0.5799999999999983,
+      "next_action": "open(cupboard)",
+      "edge_key": "put(lid)|||open(cupboard)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 43,
+      "action": "open(cupboard)",
+      "start": 76.15,
+      "end": 78.0,
+      "duration": 1.8499999999999943,
+      "next_action": "move(package)",
+      "edge_key": "open(cupboard)|||move(package)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 44,
+      "action": "move(package)",
+      "start": 81.51,
+      "end": 82.59,
+      "duration": 1.0799999999999983,
+      "next_action": "take(juicer)",
+      "edge_key": "move(package)|||take(juicer)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 45,
+      "action": "take(juicer)",
+      "start": 84.55,
+      "end": 85.23,
+      "duration": 0.6800000000000068,
+      "next_action": "close(cupboard)",
+      "edge_key": "take(juicer)|||close(cupboard)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 46,
+      "action": "close(cupboard)",
+      "start": 85.85,
+      "end": 87.47,
+      "duration": 1.6200000000000045,
+      "next_action": "move(box)",
+      "edge_key": "close(cupboard)|||move(box)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 47,
+      "action": "move(box)",
+      "start": 87.21000000000001,
+      "end": 89.05,
+      "duration": 1.8399999999999892,
+      "next_action": "slide(cupboard)",
+      "edge_key": "move(box)|||slide(cupboard)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 48,
+      "action": "slide(cupboard)",
+      "start": 89.36,
+      "end": 90.29,
+      "duration": 0.9300000000000068,
+      "next_action": "press(cupboard)",
+      "edge_key": "slide(cupboard)|||press(cupboard)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 49,
+      "action": "press(cupboard)",
+      "start": 90.63,
+      "end": 91.38,
+      "duration": 0.75,
+      "next_action": "put(juicer)",
+      "edge_key": "press(cupboard)|||put(juicer)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 50,
+      "action": "put(juicer)",
+      "start": 93.43,
+      "end": 94.65,
+      "duration": 1.2199999999999989,
+      "next_action": "turn(juicer)",
+      "edge_key": "put(juicer)|||turn(juicer)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 51,
+      "action": "turn(juicer)",
+      "start": 94.49,
+      "end": 95.36,
+      "duration": 0.8700000000000045,
+      "next_action": "lift(cream)",
+      "edge_key": "turn(juicer)|||lift(cream)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 52,
+      "action": "lift(cream)",
+      "start": 95.46,
+      "end": 97.82,
+      "duration": 2.3599999999999994,
+      "next_action": "turn(knob)",
+      "edge_key": "lift(cream)|||turn(knob)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 53,
+      "action": "turn(knob)",
+      "start": 97.92,
+      "end": 98.88,
+      "duration": 0.9599999999999937,
+      "next_action": "switch(button)",
+      "edge_key": "turn(knob)|||switch(button)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 54,
+      "action": "switch(button)",
+      "start": 98.98,
+      "end": 100.14,
+      "duration": 1.1599999999999966,
+      "next_action": "turn(food)",
+      "edge_key": "switch(button)|||turn(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 55,
+      "action": "turn(food)",
+      "start": 100.09,
+      "end": 100.94,
+      "duration": 0.8499999999999943,
+      "next_action": "turn(knob)",
+      "edge_key": "turn(food)|||turn(knob)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 56,
+      "action": "turn(knob)",
+      "start": 100.9,
+      "end": 101.71,
+      "duration": 0.8099999999999881,
+      "next_action": "take(orange)",
+      "edge_key": "turn(knob)|||take(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 57,
+      "action": "take(orange)",
+      "start": 101.81,
+      "end": 102.93,
+      "duration": 1.1200000000000045,
+      "next_action": "put(orange)",
+      "edge_key": "take(orange)|||put(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 58,
+      "action": "put(orange)",
+      "start": 103.03,
+      "end": 103.78,
+      "duration": 0.75,
+      "next_action": "open(drawer)",
+      "edge_key": "put(orange)|||open(drawer)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 59,
+      "action": "open(drawer)",
+      "start": 103.88,
+      "end": 104.92,
+      "duration": 1.0400000000000063,
+      "next_action": "take(vegetable)",
+      "edge_key": "open(drawer)|||take(vegetable)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 60,
+      "action": "take(vegetable)",
+      "start": 105.13,
+      "end": 106.1,
+      "duration": 0.9699999999999989,
+      "next_action": "take(roll)",
+      "edge_key": "take(vegetable)|||take(roll)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 61,
+      "action": "take(roll)",
+      "start": 106.2,
+      "end": 108.67,
+      "duration": 2.469999999999999,
+      "next_action": "feel(roll)",
+      "edge_key": "take(roll)|||feel(roll)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 62,
+      "action": "feel(roll)",
+      "start": 108.64,
+      "end": 116.04,
+      "duration": 7.400000000000006,
+      "next_action": "pull(bag)",
+      "edge_key": "feel(roll)|||pull(bag)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 63,
+      "action": "pull(bag)",
+      "start": 116.01,
+      "end": 116.68,
+      "duration": 0.6700000000000017,
+      "next_action": "put(vegetable)",
+      "edge_key": "pull(bag)|||put(vegetable)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 64,
+      "action": "put(vegetable)",
+      "start": 116.76,
+      "end": 117.8,
+      "duration": 1.039999999999992,
+      "next_action": "close(drawer)",
+      "edge_key": "put(vegetable)|||close(drawer)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 65,
+      "action": "close(drawer)",
+      "start": 117.89,
+      "end": 118.65,
+      "duration": 0.7600000000000051,
+      "next_action": "pull(bag)",
+      "edge_key": "close(drawer)|||pull(bag)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 66,
+      "action": "pull(bag)",
+      "start": 119.51,
+      "end": 123.38,
+      "duration": 3.8699999999999903,
+      "next_action": "shake(bag)",
+      "edge_key": "pull(bag)|||shake(bag)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 67,
+      "action": "shake(bag)",
+      "start": 123.5,
+      "end": 124.14,
+      "duration": 0.6400000000000006,
+      "next_action": "open(lid)",
+      "edge_key": "shake(bag)|||open(lid)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 68,
+      "action": "open(lid)",
+      "start": 124.43,
+      "end": 125.09,
+      "duration": 0.6599999999999966,
+      "next_action": "put(bag)",
+      "edge_key": "open(lid)|||put(bag)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 69,
+      "action": "put(bag)",
+      "start": 125.19,
+      "end": 127.9,
+      "duration": 2.710000000000008,
+      "next_action": "close(lid)",
+      "edge_key": "put(bag)|||close(lid)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 70,
+      "action": "close(lid)",
+      "start": 127.89,
+      "end": 128.68,
+      "duration": 0.7900000000000063,
+      "next_action": "press(top)",
+      "edge_key": "close(lid)|||press(top)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 71,
+      "action": "press(top)",
+      "start": 128.91,
+      "end": 129.68,
+      "duration": 0.7700000000000102,
+      "next_action": "hold(kettle)",
+      "edge_key": "press(top)|||hold(kettle)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 72,
+      "action": "hold(kettle)",
+      "start": 130.41,
+      "end": 131.13,
+      "duration": 0.7199999999999989,
+      "next_action": "press(button)",
+      "edge_key": "hold(kettle)|||press(button)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 73,
+      "action": "press(button)",
+      "start": 130.81,
+      "end": 132.82,
+      "duration": 2.009999999999991,
+      "next_action": "close(kettle)",
+      "edge_key": "press(button)|||close(kettle)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 74,
+      "action": "close(kettle)",
+      "start": 132.85,
+      "end": 133.86,
+      "duration": 1.0100000000000193,
+      "next_action": "turn(cup)",
+      "edge_key": "close(kettle)|||turn(cup)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 75,
+      "action": "turn(cup)",
+      "start": 136.35,
+      "end": 137.31,
+      "duration": 0.960000000000008,
+      "next_action": "take(milk)",
+      "edge_key": "turn(cup)|||take(milk)",
+      "step_id": "P01_R01_S04",
+      "is_primary": true
+    },
+    {
+      "index": 76,
+      "action": "take(milk)",
+      "start": 136.72,
+      "end": 137.47,
+      "duration": 0.75,
+      "next_action": "pat(milk)",
+      "edge_key": "take(milk)|||pat(milk)",
+      "step_id": "P01_R01_S04",
+      "is_primary": true
+    },
+    {
+      "index": 77,
+      "action": "pat(milk)",
+      "start": 137.25,
+      "end": 138.07,
+      "duration": 0.8199999999999932,
+      "next_action": "lift(milk)",
+      "edge_key": "pat(milk)|||lift(milk)",
+      "step_id": "P01_R01_S04",
+      "is_primary": true
+    },
+    {
+      "index": 78,
+      "action": "lift(milk)",
+      "start": 137.7,
+      "end": 139.91,
+      "duration": 2.210000000000008,
+      "next_action": "lift(milk)",
+      "edge_key": "lift(milk)|||lift(milk)",
+      "step_id": "P01_R01_S04",
+      "is_primary": true
+    },
+    {
+      "index": 79,
+      "action": "lift(milk)",
+      "start": 139.92000000000002,
+      "end": 142.8,
+      "duration": 2.8799999999999955,
+      "next_action": "lift(milk)",
+      "edge_key": "lift(milk)|||lift(milk)",
+      "step_id": "P01_R01_S04",
+      "is_primary": true
+    },
+    {
+      "index": 80,
+      "action": "lift(milk)",
+      "start": 141.14,
+      "end": 143.1,
+      "duration": 1.960000000000008,
+      "next_action": "lift(lid)",
+      "edge_key": "lift(milk)|||lift(lid)",
+      "step_id": "P01_R01_S04",
+      "is_primary": true
+    },
+    {
+      "index": 81,
+      "action": "lift(lid)",
+      "start": 143.45,
+      "end": 144.89,
+      "duration": 1.4399999999999977,
+      "next_action": "move(spoon)",
+      "edge_key": "lift(lid)|||move(spoon)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 82,
+      "action": "move(spoon)",
+      "start": 144.86,
+      "end": 145.16,
+      "duration": 0.29999999999998295,
+      "next_action": "mix(coffee)",
+      "edge_key": "move(spoon)|||mix(coffee)",
+      "step_id": "P01_R01_S05",
+      "is_primary": true
+    },
+    {
+      "index": 83,
+      "action": "mix(coffee)",
+      "start": 145.29,
+      "end": 147.12,
+      "duration": 1.8300000000000125,
+      "next_action": "mix(coffee)",
+      "edge_key": "mix(coffee)|||mix(coffee)",
+      "step_id": "P01_R01_S05",
+      "is_primary": true
+    },
+    {
+      "index": 84,
+      "action": "mix(coffee)",
+      "start": 147.02,
+      "end": 149.77,
+      "duration": 2.75,
+      "next_action": "take(rest)",
+      "edge_key": "mix(coffee)|||take(rest)",
+      "step_id": "P01_R01_S05",
+      "is_primary": true
+    },
+    {
+      "index": 85,
+      "action": "take(rest)",
+      "start": 149.86,
+      "end": 150.78,
+      "duration": 0.9199999999999875,
+      "next_action": "shake(spoon)",
+      "edge_key": "take(rest)|||shake(spoon)",
+      "step_id": "P01_R01_S05",
+      "is_primary": true
+    },
+    {
+      "index": 86,
+      "action": "shake(spoon)",
+      "start": 150.73,
+      "end": 151.61,
+      "duration": 0.8800000000000239,
+      "next_action": "open(lid)",
+      "edge_key": "shake(spoon)|||open(lid)",
+      "step_id": "P01_R01_S05",
+      "is_primary": true
+    },
+    {
+      "index": 87,
+      "action": "open(lid)",
+      "start": 153.12,
+      "end": 153.38,
+      "duration": 0.2599999999999909,
+      "next_action": "throw(spoon)",
+      "edge_key": "open(lid)|||throw(spoon)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 88,
+      "action": "throw(spoon)",
+      "start": 153.63,
+      "end": 154.07999999999998,
+      "duration": 0.44999999999998863,
+      "next_action": "close(bin)",
+      "edge_key": "throw(spoon)|||close(bin)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 89,
+      "action": "close(bin)",
+      "start": 154.06,
+      "end": 154.29,
+      "duration": 0.22999999999998977,
+      "next_action": "take(milk)",
+      "edge_key": "close(bin)|||take(milk)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 90,
+      "action": "take(milk)",
+      "start": 155.41,
+      "end": 156.07999999999998,
+      "duration": 0.6699999999999875,
+      "next_action": "open(tap)",
+      "edge_key": "take(milk)|||open(tap)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 91,
+      "action": "open(tap)",
+      "start": 157.91,
+      "end": 158.57,
+      "duration": 0.6599999999999966,
+      "next_action": "move(milk)",
+      "edge_key": "open(tap)|||move(milk)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 92,
+      "action": "move(milk)",
+      "start": 158.37,
+      "end": 159.53,
+      "duration": 1.1599999999999966,
+      "next_action": "wash(milk)",
+      "edge_key": "move(milk)|||wash(milk)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 93,
+      "action": "wash(milk)",
+      "start": 159.45,
+      "end": 160.94,
+      "duration": 1.490000000000009,
+      "next_action": "turn(milk)",
+      "edge_key": "wash(milk)|||turn(milk)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 94,
+      "action": "turn(milk)",
+      "start": 160.97,
+      "end": 161.81,
+      "duration": 0.8400000000000034,
+      "next_action": "remove(cake)",
+      "edge_key": "turn(milk)|||remove(cake)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 95,
+      "action": "remove(cake)",
+      "start": 161.4,
+      "end": 162.72,
+      "duration": 1.3199999999999932,
+      "next_action": "wash(milk)",
+      "edge_key": "remove(cake)|||wash(milk)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 96,
+      "action": "wash(milk)",
+      "start": 162.94,
+      "end": 163.36,
+      "duration": 0.4200000000000159,
+      "next_action": "wash(milk)",
+      "edge_key": "wash(milk)|||wash(milk)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 97,
+      "action": "wash(milk)",
+      "start": 163.57999999999998,
+      "end": 165.86,
+      "duration": 2.2800000000000296,
+      "next_action": "take(sponge)",
+      "edge_key": "wash(milk)|||take(sponge)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 98,
+      "action": "take(sponge)",
+      "start": 168.14,
+      "end": 168.81,
+      "duration": 0.6700000000000159,
+      "next_action": "scrub(sponge)",
+      "edge_key": "take(sponge)|||scrub(sponge)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 99,
+      "action": "scrub(sponge)",
+      "start": 168.7,
+      "end": 170.55,
+      "duration": 1.8500000000000227,
+      "next_action": "insert(sponge)",
+      "edge_key": "scrub(sponge)|||insert(sponge)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 100,
+      "action": "insert(sponge)",
+      "start": 168.74,
+      "end": 169.51,
+      "duration": 0.7699999999999818,
+      "next_action": "wash(milk)",
+      "edge_key": "insert(sponge)|||wash(milk)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 101,
+      "action": "wash(milk)",
+      "start": 170.35,
+      "end": 172.23,
+      "duration": 1.8799999999999955,
+      "next_action": "take(tray)",
+      "edge_key": "wash(milk)|||take(tray)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 102,
+      "action": "take(tray)",
+      "start": 172.24,
+      "end": 173.07999999999998,
+      "duration": 0.839999999999975,
+      "next_action": "close(tap)",
+      "edge_key": "take(tray)|||close(tap)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 103,
+      "action": "close(tap)",
+      "start": 173.24,
+      "end": 173.62,
+      "duration": 0.37999999999999545,
+      "next_action": "lift(milk)",
+      "edge_key": "close(tap)|||lift(milk)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 104,
+      "action": "lift(milk)",
+      "start": 174.12,
+      "end": 175.54,
+      "duration": 1.4199999999999875,
+      "next_action": "put(cream)",
+      "edge_key": "lift(milk)|||put(cream)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 105,
+      "action": "put(cream)",
+      "start": 175.59,
+      "end": 176.51,
+      "duration": 0.9199999999999875,
+      "next_action": "put(milk)",
+      "edge_key": "put(cream)|||put(milk)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 106,
+      "action": "put(milk)",
+      "start": 178.32999999999998,
+      "end": 178.72,
+      "duration": 0.3900000000000148,
+      "next_action": "take(lid)",
+      "edge_key": "put(milk)|||take(lid)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 107,
+      "action": "take(lid)",
+      "start": 179.06,
+      "end": 180.18,
+      "duration": 1.1200000000000045,
+      "next_action": "take(towel)",
+      "edge_key": "take(lid)|||take(towel)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 108,
+      "action": "take(towel)",
+      "start": 180.72,
+      "end": 182.56,
+      "duration": 1.8400000000000034,
+      "next_action": "take(knife)",
+      "edge_key": "take(towel)|||take(knife)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 109,
+      "action": "take(knife)",
+      "start": 183.89,
+      "end": 184.12,
+      "duration": 0.2300000000000182,
+      "next_action": "cut(orange)",
+      "edge_key": "take(knife)|||cut(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 110,
+      "action": "cut(orange)",
+      "start": 184.78,
+      "end": 186.73,
+      "duration": 1.9499999999999886,
+      "next_action": "put(knife)",
+      "edge_key": "cut(orange)|||put(knife)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 111,
+      "action": "put(knife)",
+      "start": 186.95,
+      "end": 187.53,
+      "duration": 0.5800000000000125,
+      "next_action": "flip(orange)",
+      "edge_key": "put(knife)|||flip(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 112,
+      "action": "flip(orange)",
+      "start": 187.89,
+      "end": 188.28,
+      "duration": 0.3900000000000148,
+      "next_action": "turn(food)",
+      "edge_key": "flip(orange)|||turn(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 113,
+      "action": "turn(food)",
+      "start": 188.63,
+      "end": 189.03,
+      "duration": 0.4000000000000057,
+      "next_action": "press(orange)",
+      "edge_key": "turn(food)|||press(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 114,
+      "action": "press(orange)",
+      "start": 189.37,
+      "end": 193.13,
+      "duration": 3.759999999999991,
+      "next_action": "press(juicer)",
+      "edge_key": "press(orange)|||press(juicer)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 115,
+      "action": "press(juicer)",
+      "start": 193.02,
+      "end": 200.78,
+      "duration": 7.759999999999991,
+      "next_action": "turn-off(food)",
+      "edge_key": "press(juicer)|||turn-off(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 116,
+      "action": "turn-off(food)",
+      "start": 200.91,
+      "end": 201.67,
+      "duration": 0.7599999999999909,
+      "next_action": "remove(orange)",
+      "edge_key": "turn-off(food)|||remove(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 117,
+      "action": "remove(orange)",
+      "start": 202.24,
+      "end": 202.65,
+      "duration": 0.4099999999999966,
+      "next_action": "lift(lid)",
+      "edge_key": "remove(orange)|||lift(lid)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 118,
+      "action": "lift(lid)",
+      "start": 203.0,
+      "end": 203.36,
+      "duration": 0.36000000000001364,
+      "next_action": "throw(skin)",
+      "edge_key": "lift(lid)|||throw(skin)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 119,
+      "action": "throw(skin)",
+      "start": 203.61,
+      "end": 203.82,
+      "duration": 0.20999999999997954,
+      "next_action": "take(orange)",
+      "edge_key": "throw(skin)|||take(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 120,
+      "action": "take(orange)",
+      "start": 204.23,
+      "end": 204.69,
+      "duration": 0.46000000000000796,
+      "next_action": "put(orange)",
+      "edge_key": "take(orange)|||put(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 121,
+      "action": "put(orange)",
+      "start": 204.77,
+      "end": 205.41,
+      "duration": 0.6399999999999864,
+      "next_action": "turn-on(food)",
+      "edge_key": "put(orange)|||turn-on(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 122,
+      "action": "turn-on(food)",
+      "start": 205.51,
+      "end": 206.2,
+      "duration": 0.6899999999999977,
+      "next_action": "press(orange)",
+      "edge_key": "turn-on(food)|||press(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 123,
+      "action": "press(orange)",
+      "start": 206.38,
+      "end": 216.88,
+      "duration": 10.5,
+      "next_action": "turn-off(food)",
+      "edge_key": "press(orange)|||turn-off(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 124,
+      "action": "turn-off(food)",
+      "start": 217.02,
+      "end": 217.81,
+      "duration": 0.789999999999992,
+      "next_action": "flip(orange)",
+      "edge_key": "turn-off(food)|||flip(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 125,
+      "action": "flip(orange)",
+      "start": 218.13,
+      "end": 218.48,
+      "duration": 0.3499999999999943,
+      "next_action": "open(lid)",
+      "edge_key": "flip(orange)|||open(lid)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 126,
+      "action": "open(lid)",
+      "start": 218.64,
+      "end": 219.53,
+      "duration": 0.8900000000000148,
+      "next_action": "throw(skin)",
+      "edge_key": "open(lid)|||throw(skin)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 127,
+      "action": "throw(skin)",
+      "start": 219.42,
+      "end": 219.79,
+      "duration": 0.37000000000000455,
+      "next_action": "take(orange)",
+      "edge_key": "throw(skin)|||take(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 128,
+      "action": "take(orange)",
+      "start": 220.62,
+      "end": 221.0,
+      "duration": 0.37999999999999545,
+      "next_action": "put(orange)",
+      "edge_key": "take(orange)|||put(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 129,
+      "action": "put(orange)",
+      "start": 221.17,
+      "end": 221.52,
+      "duration": 0.35000000000002274,
+      "next_action": "take(knife)",
+      "edge_key": "put(orange)|||take(knife)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 130,
+      "action": "take(knife)",
+      "start": 221.79,
+      "end": 222.11,
+      "duration": 0.3200000000000216,
+      "next_action": "cut(orange)",
+      "edge_key": "take(knife)|||cut(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 131,
+      "action": "cut(orange)",
+      "start": 222.27,
+      "end": 224.42,
+      "duration": 2.1499999999999773,
+      "next_action": "put(knife)",
+      "edge_key": "cut(orange)|||put(knife)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 132,
+      "action": "put(knife)",
+      "start": 224.56,
+      "end": 225.01,
+      "duration": 0.44999999999998863,
+      "next_action": "take(orange)",
+      "edge_key": "put(knife)|||take(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 133,
+      "action": "take(orange)",
+      "start": 225.14,
+      "end": 225.51,
+      "duration": 0.37000000000000455,
+      "next_action": "flip(orange)",
+      "edge_key": "take(orange)|||flip(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 134,
+      "action": "flip(orange)",
+      "start": 225.69,
+      "end": 225.96,
+      "duration": 0.27000000000001023,
+      "next_action": "turn-on(food)",
+      "edge_key": "flip(orange)|||turn-on(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 135,
+      "action": "turn-on(food)",
+      "start": 226.22,
+      "end": 226.57,
+      "duration": 0.3499999999999943,
+      "next_action": "press(orange)",
+      "edge_key": "turn-on(food)|||press(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 136,
+      "action": "press(orange)",
+      "start": 226.85,
+      "end": 235.75,
+      "duration": 8.900000000000006,
+      "next_action": "turn-off(food)",
+      "edge_key": "press(orange)|||turn-off(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 137,
+      "action": "turn-off(food)",
+      "start": 235.84,
+      "end": 237.27,
+      "duration": 1.4300000000000068,
+      "next_action": "open(lid)",
+      "edge_key": "turn-off(food)|||open(lid)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 138,
+      "action": "open(lid)",
+      "start": 238.05,
+      "end": 238.77,
+      "duration": 0.7199999999999989,
+      "next_action": "throw(orange)",
+      "edge_key": "open(lid)|||throw(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 139,
+      "action": "throw(orange)",
+      "start": 238.72,
+      "end": 239.02,
+      "duration": 0.30000000000001137,
+      "next_action": "take(orange)",
+      "edge_key": "throw(orange)|||take(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 140,
+      "action": "take(orange)",
+      "start": 239.49,
+      "end": 240.39,
+      "duration": 0.8999999999999773,
+      "next_action": "put(orange)",
+      "edge_key": "take(orange)|||put(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 141,
+      "action": "put(orange)",
+      "start": 240.5,
+      "end": 240.79,
+      "duration": 0.28999999999999204,
+      "next_action": "turn-on(food)",
+      "edge_key": "put(orange)|||turn-on(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 142,
+      "action": "turn-on(food)",
+      "start": 241.05,
+      "end": 241.54,
+      "duration": 0.4899999999999807,
+      "next_action": "press(orange)",
+      "edge_key": "turn-on(food)|||press(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 143,
+      "action": "press(orange)",
+      "start": 241.69,
+      "end": 250.28,
+      "duration": 8.590000000000003,
+      "next_action": "turn-off(food)",
+      "edge_key": "press(orange)|||turn-off(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 144,
+      "action": "turn-off(food)",
+      "start": 250.37,
+      "end": 251.32,
+      "duration": 0.9499999999999886,
+      "next_action": "lift(lid)",
+      "edge_key": "turn-off(food)|||lift(lid)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 145,
+      "action": "lift(lid)",
+      "start": 251.67,
+      "end": 252.52,
+      "duration": 0.8500000000000227,
+      "next_action": "throw(skin)",
+      "edge_key": "lift(lid)|||throw(skin)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 146,
+      "action": "throw(skin)",
+      "start": 252.72,
+      "end": 253.07,
+      "duration": 0.3499999999999943,
+      "next_action": "take(orange)",
+      "edge_key": "throw(skin)|||take(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 147,
+      "action": "take(orange)",
+      "start": 253.67,
+      "end": 254.52,
+      "duration": 0.8500000000000227,
+      "next_action": "put(orange)",
+      "edge_key": "take(orange)|||put(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 148,
+      "action": "put(orange)",
+      "start": 254.62,
+      "end": 255.02,
+      "duration": 0.4000000000000057,
+      "next_action": "take(knife)",
+      "edge_key": "put(orange)|||take(knife)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 149,
+      "action": "take(knife)",
+      "start": 255.12,
+      "end": 255.62,
+      "duration": 0.5,
+      "next_action": "cut(orange)",
+      "edge_key": "take(knife)|||cut(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 150,
+      "action": "cut(orange)",
+      "start": 255.14,
+      "end": 258.7,
+      "duration": 3.5600000000000023,
+      "next_action": "put(knife)",
+      "edge_key": "cut(orange)|||put(knife)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 151,
+      "action": "put(knife)",
+      "start": 258.71,
+      "end": 259.0,
+      "duration": 0.29000000000002046,
+      "next_action": "insert(top)",
+      "edge_key": "put(knife)|||insert(top)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 152,
+      "action": "insert(top)",
+      "start": 259.1,
+      "end": 260.24,
+      "duration": 1.1399999999999864,
+      "next_action": "take(orange)",
+      "edge_key": "insert(top)|||take(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 153,
+      "action": "take(orange)",
+      "start": 260.22,
+      "end": 260.57,
+      "duration": 0.3499999999999659,
+      "next_action": "put(orange)",
+      "edge_key": "take(orange)|||put(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 154,
+      "action": "put(orange)",
+      "start": 260.67,
+      "end": 261.37,
+      "duration": 0.6999999999999886,
+      "next_action": "turn-on(food)",
+      "edge_key": "put(orange)|||turn-on(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 155,
+      "action": "turn-on(food)",
+      "start": 261.77,
+      "end": 262.02,
+      "duration": 0.25,
+      "next_action": "press(orange)",
+      "edge_key": "turn-on(food)|||press(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 156,
+      "action": "press(orange)",
+      "start": 262.35,
+      "end": 273.07,
+      "duration": 10.71999999999997,
+      "next_action": "turn-off(food)",
+      "edge_key": "press(orange)|||turn-off(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 157,
+      "action": "turn-off(food)",
+      "start": 273.4,
+      "end": 274.16,
+      "duration": 0.7600000000000477,
+      "next_action": "turn(orange)",
+      "edge_key": "turn-off(food)|||turn(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 158,
+      "action": "turn(orange)",
+      "start": 274.81,
+      "end": 275.39,
+      "duration": 0.5799999999999841,
+      "next_action": "turn(orange)",
+      "edge_key": "turn(orange)|||turn(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 159,
+      "action": "turn(orange)",
+      "start": 275.5,
+      "end": 276.16,
+      "duration": 0.660000000000025,
+      "next_action": "turn(food)",
+      "edge_key": "turn(orange)|||turn(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 160,
+      "action": "turn(food)",
+      "start": 276.54,
+      "end": 277.88,
+      "duration": 1.339999999999975,
+      "next_action": "turn-off(food)",
+      "edge_key": "turn(food)|||turn-off(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 161,
+      "action": "turn-off(food)",
+      "start": 277.93,
+      "end": 278.83,
+      "duration": 0.8999999999999773,
+      "next_action": "open(lid)",
+      "edge_key": "turn-off(food)|||open(lid)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 162,
+      "action": "open(lid)",
+      "start": 279.71,
+      "end": 280.39,
+      "duration": 0.6800000000000068,
+      "next_action": "throw(skin)",
+      "edge_key": "open(lid)|||throw(skin)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 163,
+      "action": "throw(skin)",
+      "start": 280.47,
+      "end": 280.77,
+      "duration": 0.2999999999999545,
+      "next_action": "take(orange)",
+      "edge_key": "throw(skin)|||take(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 164,
+      "action": "take(orange)",
+      "start": 281.35,
+      "end": 281.85,
+      "duration": 0.5,
+      "next_action": "put(orange)",
+      "edge_key": "take(orange)|||put(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 165,
+      "action": "put(orange)",
+      "start": 282.15,
+      "end": 283.36,
+      "duration": 1.2100000000000364,
+      "next_action": "turn-on(machine:washing)",
+      "edge_key": "put(orange)|||turn-on(machine:washing)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 166,
+      "action": "turn-on(machine:washing)",
+      "start": 283.07,
+      "end": 283.45,
+      "duration": 0.37999999999999545,
+      "next_action": "press(orange)",
+      "edge_key": "turn-on(machine:washing)|||press(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 167,
+      "action": "press(orange)",
+      "start": 284.0,
+      "end": 292.8,
+      "duration": 8.800000000000011,
+      "next_action": "turn-off(food)",
+      "edge_key": "press(orange)|||turn-off(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 168,
+      "action": "turn-off(food)",
+      "start": 292.98,
+      "end": 294.49,
+      "duration": 1.509999999999991,
+      "next_action": "lift(orange)",
+      "edge_key": "turn-off(food)|||lift(orange)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 169,
+      "action": "lift(orange)",
+      "start": 295.08,
+      "end": 296.85,
+      "duration": 1.7700000000000387,
+      "next_action": "turn-on(machine:washing)",
+      "edge_key": "lift(orange)|||turn-on(machine:washing)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 170,
+      "action": "turn-on(machine:washing)",
+      "start": 296.34000000000003,
+      "end": 297.9,
+      "duration": 1.5599999999999454,
+      "next_action": "turn-off(machine:washing)",
+      "edge_key": "turn-on(machine:washing)|||turn-off(machine:washing)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 171,
+      "action": "turn-off(machine:washing)",
+      "start": 298.69,
+      "end": 299.8,
+      "duration": 1.1100000000000136,
+      "next_action": "remove(skin)",
+      "edge_key": "turn-off(machine:washing)|||remove(skin)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 172,
+      "action": "remove(skin)",
+      "start": 300.2,
+      "end": 301.66,
+      "duration": 1.4600000000000364,
+      "next_action": "open(lid)",
+      "edge_key": "remove(skin)|||open(lid)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 173,
+      "action": "open(lid)",
+      "start": 301.6,
+      "end": 301.95,
+      "duration": 0.3499999999999659,
+      "next_action": "throw(skin)",
+      "edge_key": "open(lid)|||throw(skin)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 174,
+      "action": "throw(skin)",
+      "start": 302.05,
+      "end": 302.3,
+      "duration": 0.25,
+      "next_action": "take(knife)",
+      "edge_key": "throw(skin)|||take(knife)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 175,
+      "action": "take(knife)",
+      "start": 302.99,
+      "end": 303.72,
+      "duration": 0.7300000000000182,
+      "next_action": "move(food)",
+      "edge_key": "take(knife)|||move(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 176,
+      "action": "move(food)",
+      "start": 303.62,
+      "end": 314.83,
+      "duration": 11.20999999999998,
+      "next_action": "put(knife)",
+      "edge_key": "move(food)|||put(knife)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 177,
+      "action": "put(knife)",
+      "start": 315.35,
+      "end": 315.8,
+      "duration": 0.44999999999998863,
+      "next_action": "remove(cream)",
+      "edge_key": "put(knife)|||remove(cream)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 178,
+      "action": "remove(cream)",
+      "start": 317.05,
+      "end": 318.45,
+      "duration": 1.3999999999999773,
+      "next_action": "shake(skin)",
+      "edge_key": "remove(cream)|||shake(skin)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 179,
+      "action": "shake(skin)",
+      "start": 318.55,
+      "end": 318.8,
+      "duration": 0.25,
+      "next_action": "put(cream)",
+      "edge_key": "shake(skin)|||put(cream)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 180,
+      "action": "put(cream)",
+      "start": 319.88,
+      "end": 320.61,
+      "duration": 0.7300000000000182,
+      "next_action": "wash(cream)",
+      "edge_key": "put(cream)|||wash(cream)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 181,
+      "action": "wash(cream)",
+      "start": 320.71,
+      "end": 322.43,
+      "duration": 1.7200000000000273,
+      "next_action": "take(sponge)",
+      "edge_key": "wash(cream)|||take(sponge)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 182,
+      "action": "take(sponge)",
+      "start": 322.51,
+      "end": 322.87,
+      "duration": 0.36000000000001364,
+      "next_action": "wash(cream)",
+      "edge_key": "take(sponge)|||wash(cream)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 183,
+      "action": "wash(cream)",
+      "start": 322.97,
+      "end": 324.61,
+      "duration": 1.6399999999999864,
+      "next_action": "put(sponge)",
+      "edge_key": "wash(cream)|||put(sponge)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 184,
+      "action": "put(sponge)",
+      "start": 324.71,
+      "end": 325.24,
+      "duration": 0.5300000000000296,
+      "next_action": "wash(cream)",
+      "edge_key": "put(sponge)|||wash(cream)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 185,
+      "action": "wash(cream)",
+      "start": 325.24,
+      "end": 325.8,
+      "duration": 0.5600000000000023,
+      "next_action": "turn-off(tap)",
+      "edge_key": "wash(cream)|||turn-off(tap)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 186,
+      "action": "turn-off(tap)",
+      "start": 325.91,
+      "end": 326.48,
+      "duration": 0.5699999999999932,
+      "next_action": "put(cream)",
+      "edge_key": "turn-off(tap)|||put(cream)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 187,
+      "action": "put(cream)",
+      "start": 326.89,
+      "end": 327.39,
+      "duration": 0.5,
+      "next_action": "turn(bowl)",
+      "edge_key": "put(cream)|||turn(bowl)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 188,
+      "action": "turn(bowl)",
+      "start": 329.17,
+      "end": 330.55,
+      "duration": 1.3799999999999955,
+      "next_action": "lift(bowl)",
+      "edge_key": "turn(bowl)|||lift(bowl)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 189,
+      "action": "lift(bowl)",
+      "start": 330.32,
+      "end": 337.09000000000003,
+      "duration": 6.770000000000039,
+      "next_action": "open(lid)",
+      "edge_key": "lift(bowl)|||open(lid)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 190,
+      "action": "open(lid)",
+      "start": 331.96,
+      "end": 333.19,
+      "duration": 1.2300000000000182,
+      "next_action": "throw(food)",
+      "edge_key": "open(lid)|||throw(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 191,
+      "action": "throw(food)",
+      "start": 333.57,
+      "end": 334.53,
+      "duration": 0.9599999999999795,
+      "next_action": "pat(bowl)",
+      "edge_key": "throw(food)|||pat(bowl)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 192,
+      "action": "pat(bowl)",
+      "start": 334.56,
+      "end": 336.72,
+      "duration": 2.160000000000025,
+      "next_action": "close(lid)",
+      "edge_key": "pat(bowl)|||close(lid)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 193,
+      "action": "close(lid)",
+      "start": 337.2,
+      "end": 337.74,
+      "duration": 0.5400000000000205,
+      "next_action": "put(bowl)",
+      "edge_key": "close(lid)|||put(bowl)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 194,
+      "action": "put(bowl)",
+      "start": 338.08,
+      "end": 338.79,
+      "duration": 0.7100000000000364,
+      "next_action": "open(tap)",
+      "edge_key": "put(bowl)|||open(tap)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 195,
+      "action": "open(tap)",
+      "start": 338.79,
+      "end": 339.68,
+      "duration": 0.8899999999999864,
+      "next_action": "wash(bowl)",
+      "edge_key": "open(tap)|||wash(bowl)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 196,
+      "action": "wash(bowl)",
+      "start": 339.08,
+      "end": 341.62,
+      "duration": 2.5400000000000205,
+      "next_action": "turn(bowl)",
+      "edge_key": "wash(bowl)|||turn(bowl)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 197,
+      "action": "turn(bowl)",
+      "start": 341.41,
+      "end": 341.86,
+      "duration": 0.44999999999998863,
+      "next_action": "wash(juicer)",
+      "edge_key": "turn(bowl)|||wash(juicer)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 198,
+      "action": "wash(juicer)",
+      "start": 341.73,
+      "end": 345.83,
+      "duration": 4.099999999999966,
+      "next_action": "close(tap)",
+      "edge_key": "wash(juicer)|||close(tap)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 199,
+      "action": "close(tap)",
+      "start": 345.77,
+      "end": 346.26,
+      "duration": 0.4900000000000091,
+      "next_action": "put(bowl)",
+      "edge_key": "close(tap)|||put(bowl)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 200,
+      "action": "put(bowl)",
+      "start": 346.95,
+      "end": 347.5,
+      "duration": 0.5500000000000114,
+      "next_action": "take(towel)",
+      "edge_key": "put(bowl)|||take(towel)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 201,
+      "action": "take(towel)",
+      "start": 349.64,
+      "end": 351.24,
+      "duration": 1.6000000000000227,
+      "next_action": "open(cupboard)",
+      "edge_key": "take(towel)|||open(cupboard)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 202,
+      "action": "open(cupboard)",
+      "start": 352.1,
+      "end": 352.89,
+      "duration": 0.7899999999999636,
+      "next_action": "take(glass)",
+      "edge_key": "open(cupboard)|||take(glass)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 203,
+      "action": "take(glass)",
+      "start": 353.33,
+      "end": 354.22,
+      "duration": 0.8900000000000432,
+      "next_action": "turn(glass)",
+      "edge_key": "take(glass)|||turn(glass)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 204,
+      "action": "turn(glass)",
+      "start": 355.72,
+      "end": 356.22,
+      "duration": 0.5,
+      "next_action": "put(glass)",
+      "edge_key": "turn(glass)|||put(glass)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 205,
+      "action": "put(glass)",
+      "start": 356.4,
+      "end": 357.02,
+      "duration": 0.6200000000000045,
+      "next_action": "turn(bowl)",
+      "edge_key": "put(glass)|||turn(bowl)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 206,
+      "action": "turn(bowl)",
+      "start": 357.51,
+      "end": 358.69,
+      "duration": 1.1800000000000068,
+      "next_action": "lift(bowl)",
+      "edge_key": "turn(bowl)|||lift(bowl)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 207,
+      "action": "lift(bowl)",
+      "start": 358.59000000000003,
+      "end": 359.31,
+      "duration": 0.7199999999999704,
+      "next_action": "take(glass)",
+      "edge_key": "lift(bowl)|||take(glass)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 208,
+      "action": "take(glass)",
+      "start": 359.63,
+      "end": 360.12,
+      "duration": 0.4900000000000091,
+      "next_action": "lift(bowl)",
+      "edge_key": "take(glass)|||lift(bowl)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 209,
+      "action": "lift(bowl)",
+      "start": 360.37,
+      "end": 364.0,
+      "duration": 3.6299999999999955,
+      "next_action": "put(glass)",
+      "edge_key": "lift(bowl)|||put(glass)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 210,
+      "action": "put(glass)",
+      "start": 367.3,
+      "end": 368.2,
+      "duration": 0.8999999999999773,
+      "next_action": "put(bowl)",
+      "edge_key": "put(glass)|||put(bowl)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 211,
+      "action": "put(bowl)",
+      "start": 370.15,
+      "end": 370.65,
+      "duration": 0.5,
+      "next_action": "open(cap)",
+      "edge_key": "put(bowl)|||open(cap)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 212,
+      "action": "open(cap)",
+      "start": 370.47,
+      "end": 370.72,
+      "duration": 0.25,
+      "next_action": "wash(food)",
+      "edge_key": "open(cap)|||wash(food)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 213,
+      "action": "wash(food)",
+      "start": 370.77,
+      "end": 374.05,
+      "duration": 3.2800000000000296,
+      "next_action": "close(tap)",
+      "edge_key": "wash(food)|||close(tap)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 214,
+      "action": "close(tap)",
+      "start": 373.5,
+      "end": 373.8,
+      "duration": 0.30000000000001137,
+      "next_action": "take(sponge)",
+      "edge_key": "close(tap)|||take(sponge)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 215,
+      "action": "take(sponge)",
+      "start": 374.15,
+      "end": 374.5,
+      "duration": 0.35000000000002274,
+      "next_action": "scrub(bowl)",
+      "edge_key": "take(sponge)|||scrub(bowl)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 216,
+      "action": "scrub(bowl)",
+      "start": 374.6,
+      "end": 380.3,
+      "duration": 5.699999999999989,
+      "next_action": "put(sponge)",
+      "edge_key": "scrub(bowl)|||put(sponge)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 217,
+      "action": "put(sponge)",
+      "start": 380.5,
+      "end": 380.85,
+      "duration": 0.35000000000002274,
+      "next_action": "open(tap)",
+      "edge_key": "put(sponge)|||open(tap)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 218,
+      "action": "open(tap)",
+      "start": 381.05,
+      "end": 381.35,
+      "duration": 0.30000000000001137,
+      "next_action": "wash(bowl)",
+      "edge_key": "open(tap)|||wash(bowl)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 219,
+      "action": "wash(bowl)",
+      "start": 381.45,
+      "end": 386.4,
+      "duration": 4.949999999999989,
+      "next_action": "turn-off(tap)",
+      "edge_key": "wash(bowl)|||turn-off(tap)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 220,
+      "action": "turn-off(tap)",
+      "start": 386.46,
+      "end": 387.1,
+      "duration": 0.6400000000000432,
+      "next_action": "lift(bowl)",
+      "edge_key": "turn-off(tap)|||lift(bowl)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 221,
+      "action": "lift(bowl)",
+      "start": 386.66,
+      "end": 387.65,
+      "duration": 0.9899999999999523,
+      "next_action": "turn(bowl)",
+      "edge_key": "lift(bowl)|||turn(bowl)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 222,
+      "action": "turn(bowl)",
+      "start": 386.83,
+      "end": 389.94,
+      "duration": 3.1100000000000136,
+      "next_action": "take(towel)",
+      "edge_key": "turn(bowl)|||take(towel)",
+      "step_id": null,
+      "is_primary": false
+    },
+    {
+      "index": 223,
+      "action": "take(towel)",
+      "start": 391.66,
+      "end": 394.72,
+      "duration": 3.0600000000000023,
+      "next_action": null,
+      "edge_key": null,
+      "step_id": null,
+      "is_primary": false
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "take(orange)",
+        "count": 11,
+        "is_primary": false
+      },
+      {
+        "id": "open(lid)",
+        "count": 7,
+        "is_primary": false
+      },
+      {
+        "id": "put(orange)",
+        "count": 7,
+        "is_primary": false
+      },
+      {
+        "id": "turn-off(food)",
+        "count": 7,
+        "is_primary": false
+      },
+      {
+        "id": "press(orange)",
+        "count": 6,
+        "is_primary": false
+      },
+      {
+        "id": "throw(skin)",
+        "count": 5,
+        "is_primary": false
+      },
+      {
+        "id": "lift(bowl)",
+        "count": 4,
+        "is_primary": false
+      },
+      {
+        "id": "lift(milk)",
+        "count": 4,
+        "is_primary": true
+      },
+      {
+        "id": "put(knife)",
+        "count": 4,
+        "is_primary": false
+      },
+      {
+        "id": "take(knife)",
+        "count": 4,
+        "is_primary": false
+      },
+      {
+        "id": "turn(bowl)",
+        "count": 4,
+        "is_primary": false
+      },
+      {
+        "id": "turn-on(food)",
+        "count": 4,
+        "is_primary": false
+      },
+      {
+        "id": "wash(milk)",
+        "count": 4,
+        "is_primary": false
+      },
+      {
+        "id": "close(tap)",
+        "count": 3,
+        "is_primary": false
+      },
+      {
+        "id": "cut(orange)",
+        "count": 3,
+        "is_primary": false
+      },
+      {
+        "id": "flip(orange)",
+        "count": 3,
+        "is_primary": false
+      },
+      {
+        "id": "lift(lid)",
+        "count": 3,
+        "is_primary": false
+      },
+      {
+        "id": "open(cupboard)",
+        "count": 3,
+        "is_primary": false
+      },
+      {
+        "id": "open(drawer)",
+        "count": 3,
+        "is_primary": false
+      },
+      {
+        "id": "open(tap)",
+        "count": 3,
+        "is_primary": false
+      },
+      {
+        "id": "press(button)",
+        "count": 3,
+        "is_primary": true
+      },
+      {
+        "id": "put(bowl)",
+        "count": 3,
+        "is_primary": false
+      },
+      {
+        "id": "put(cream)",
+        "count": 3,
+        "is_primary": false
+      },
+      {
+        "id": "take(sponge)",
+        "count": 3,
+        "is_primary": false
+      },
+      {
+        "id": "take(towel)",
+        "count": 3,
+        "is_primary": false
+      },
+      {
+        "id": "turn(food)",
+        "count": 3,
+        "is_primary": false
+      },
+      {
+        "id": "wash(cream)",
+        "count": 3,
+        "is_primary": false
+      },
+      {
+        "id": "close(cupboard)",
+        "count": 2,
+        "is_primary": false
+      },
+      {
+        "id": "close(fridge)",
+        "count": 2,
+        "is_primary": false
+      },
+      {
+        "id": "close(lid)",
+        "count": 2,
+        "is_primary": false
+      },
+      {
+        "id": "lift(bottle)",
+        "count": 2,
+        "is_primary": true
+      },
+      {
+        "id": "mix(coffee)",
+        "count": 2,
+        "is_primary": true
+      },
+      {
+        "id": "open(fridge)",
+        "count": 2,
+        "is_primary": false
+      },
+      {
+        "id": "pull(bag)",
+        "count": 2,
+        "is_primary": false
+      },
+      {
+        "id": "put(glass)",
+        "count": 2,
+        "is_primary": false
+      },
+      {
+        "id": "put(sponge)",
+        "count": 2,
+        "is_primary": false
+      },
+      {
+        "id": "take(bottle)",
+        "count": 2,
+        "is_primary": false
+      },
+      {
+        "id": "take(glass)",
+        "count": 2,
+        "is_primary": false
+      },
+      {
+        "id": "take(milk)",
+        "count": 2,
+        "is_primary": true
+      },
+      {
+        "id": "turn(cup)",
+        "count": 2,
+        "is_primary": true
+      },
+      {
+        "id": "turn(knob)",
+        "count": 2,
+        "is_primary": false
+      },
+      {
+        "id": "turn(orange)",
+        "count": 2,
+        "is_primary": false
+      },
+      {
+        "id": "turn-off(tap)",
+        "count": 2,
+        "is_primary": false
+      },
+      {
+        "id": "turn-on(machine:washing)",
+        "count": 2,
+        "is_primary": false
+      },
+      {
+        "id": "wash(bowl)",
+        "count": 2,
+        "is_primary": false
+      },
+      {
+        "id": "close(bin)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "close(drawer)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "close(kettle)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "feel(roll)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "flip(maker:coffee)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "hold(food)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "hold(kettle)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "insert(sponge)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "insert(top)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "lift(cream)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "lift(handle)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "lift(orange)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "move(box)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "move(food)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "move(milk)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "move(package)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "move(spoon)",
+        "count": 1,
+        "is_primary": true
+      },
+      {
+        "id": "open(bottle)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "open(cap)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "open(scissors)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "pat(bowl)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "pat(milk)",
+        "count": 1,
+        "is_primary": true
+      },
+      {
+        "id": "press(cupboard)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "press(juicer)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "press(plug)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "press(top)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "pull(handle)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "put(bag)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "put(bottle)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "put(cup)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "put(juicer)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "put(lid)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "put(milk)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "put(plug)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "put(scissors)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "put(vegetable)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "remove(cake)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "remove(cream)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "remove(orange)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "remove(package)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "remove(plug)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "remove(skin)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "scrub(bowl)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "scrub(sponge)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "shake(bag)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "shake(skin)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "shake(spoon)",
+        "count": 1,
+        "is_primary": true
+      },
+      {
+        "id": "slide(board:chopping)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "slide(coffee)",
+        "count": 1,
+        "is_primary": true
+      },
+      {
+        "id": "slide(cupboard)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "slide(milk)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "stretch(hand)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "switch(button)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "take(coffee)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "take(cup)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "take(food)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "take(juicer)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "take(lid)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "take(rest)",
+        "count": 1,
+        "is_primary": true
+      },
+      {
+        "id": "take(roll)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "take(scissors)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "take(tray)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "take(vegetable)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "throw(food)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "throw(orange)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "throw(spoon)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "turn(glass)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "turn(juicer)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "turn(lid)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "turn(milk)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "turn-off(machine:washing)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "turn-on(milk)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "wash(food)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "wash(juicer)",
+        "count": 1,
+        "is_primary": false
+      },
+      {
+        "id": "wrap(scissors)",
+        "count": 1,
+        "is_primary": false
+      }
+    ],
+    "links": [
+      {
+        "source": "take(orange)",
+        "target": "put(orange)",
+        "count": 7,
+        "key": "take(orange)|||put(orange)",
+        "occurrences": [
+          57,
+          120,
+          128,
+          140,
+          147,
+          153,
+          164
+        ]
+      },
+      {
+        "source": "press(orange)",
+        "target": "turn-off(food)",
+        "count": 5,
+        "key": "press(orange)|||turn-off(food)",
+        "occurrences": [
+          123,
+          136,
+          143,
+          156,
+          167
+        ]
+      },
+      {
+        "source": "throw(skin)",
+        "target": "take(orange)",
+        "count": 4,
+        "key": "throw(skin)|||take(orange)",
+        "occurrences": [
+          119,
+          127,
+          146,
+          163
+        ]
+      },
+      {
+        "source": "turn-on(food)",
+        "target": "press(orange)",
+        "count": 4,
+        "key": "turn-on(food)|||press(orange)",
+        "occurrences": [
+          122,
+          135,
+          142,
+          155
+        ]
+      },
+      {
+        "source": "cut(orange)",
+        "target": "put(knife)",
+        "count": 3,
+        "key": "cut(orange)|||put(knife)",
+        "occurrences": [
+          110,
+          131,
+          150
+        ]
+      },
+      {
+        "source": "open(lid)",
+        "target": "throw(skin)",
+        "count": 3,
+        "key": "open(lid)|||throw(skin)",
+        "occurrences": [
+          126,
+          162,
+          173
+        ]
+      },
+      {
+        "source": "put(orange)",
+        "target": "turn-on(food)",
+        "count": 3,
+        "key": "put(orange)|||turn-on(food)",
+        "occurrences": [
+          121,
+          141,
+          154
+        ]
+      },
+      {
+        "source": "take(knife)",
+        "target": "cut(orange)",
+        "count": 3,
+        "key": "take(knife)|||cut(orange)",
+        "occurrences": [
+          109,
+          130,
+          149
+        ]
+      },
+      {
+        "source": "lift(lid)",
+        "target": "throw(skin)",
+        "count": 2,
+        "key": "lift(lid)|||throw(skin)",
+        "occurrences": [
+          118,
+          145
+        ]
+      },
+      {
+        "source": "lift(milk)",
+        "target": "lift(milk)",
+        "count": 2,
+        "key": "lift(milk)|||lift(milk)",
+        "occurrences": [
+          78,
+          79
+        ]
+      },
+      {
+        "source": "open(tap)",
+        "target": "wash(bowl)",
+        "count": 2,
+        "key": "open(tap)|||wash(bowl)",
+        "occurrences": [
+          195,
+          218
+        ]
+      },
+      {
+        "source": "put(orange)",
+        "target": "take(knife)",
+        "count": 2,
+        "key": "put(orange)|||take(knife)",
+        "occurrences": [
+          129,
+          148
+        ]
+      },
+      {
+        "source": "take(orange)",
+        "target": "take(orange)",
+        "count": 2,
+        "key": "take(orange)|||take(orange)",
+        "occurrences": [
+          29,
+          30
+        ]
+      },
+      {
+        "source": "turn(bowl)",
+        "target": "lift(bowl)",
+        "count": 2,
+        "key": "turn(bowl)|||lift(bowl)",
+        "occurrences": [
+          188,
+          206
+        ]
+      },
+      {
+        "source": "turn-off(food)",
+        "target": "open(lid)",
+        "count": 2,
+        "key": "turn-off(food)|||open(lid)",
+        "occurrences": [
+          137,
+          161
+        ]
+      },
+      {
+        "source": "close(bin)",
+        "target": "take(milk)",
+        "count": 1,
+        "key": "close(bin)|||take(milk)",
+        "occurrences": [
+          89
+        ]
+      },
+      {
+        "source": "close(cupboard)",
+        "target": "flip(maker:coffee)",
+        "count": 1,
+        "key": "close(cupboard)|||flip(maker:coffee)",
+        "occurrences": [
+          4
+        ]
+      },
+      {
+        "source": "close(cupboard)",
+        "target": "move(box)",
+        "count": 1,
+        "key": "close(cupboard)|||move(box)",
+        "occurrences": [
+          46
+        ]
+      },
+      {
+        "source": "close(drawer)",
+        "target": "pull(bag)",
+        "count": 1,
+        "key": "close(drawer)|||pull(bag)",
+        "occurrences": [
+          65
+        ]
+      },
+      {
+        "source": "close(fridge)",
+        "target": "press(button)",
+        "count": 1,
+        "key": "close(fridge)|||press(button)",
+        "occurrences": [
+          23
+        ]
+      },
+      {
+        "source": "close(fridge)",
+        "target": "slide(milk)",
+        "count": 1,
+        "key": "close(fridge)|||slide(milk)",
+        "occurrences": [
+          14
+        ]
+      },
+      {
+        "source": "close(kettle)",
+        "target": "turn(cup)",
+        "count": 1,
+        "key": "close(kettle)|||turn(cup)",
+        "occurrences": [
+          74
+        ]
+      },
+      {
+        "source": "close(lid)",
+        "target": "press(top)",
+        "count": 1,
+        "key": "close(lid)|||press(top)",
+        "occurrences": [
+          70
+        ]
+      },
+      {
+        "source": "close(lid)",
+        "target": "put(bowl)",
+        "count": 1,
+        "key": "close(lid)|||put(bowl)",
+        "occurrences": [
+          193
+        ]
+      },
+      {
+        "source": "close(tap)",
+        "target": "lift(milk)",
+        "count": 1,
+        "key": "close(tap)|||lift(milk)",
+        "occurrences": [
+          103
+        ]
+      },
+      {
+        "source": "close(tap)",
+        "target": "put(bowl)",
+        "count": 1,
+        "key": "close(tap)|||put(bowl)",
+        "occurrences": [
+          199
+        ]
+      },
+      {
+        "source": "close(tap)",
+        "target": "take(sponge)",
+        "count": 1,
+        "key": "close(tap)|||take(sponge)",
+        "occurrences": [
+          214
+        ]
+      },
+      {
+        "source": "feel(roll)",
+        "target": "pull(bag)",
+        "count": 1,
+        "key": "feel(roll)|||pull(bag)",
+        "occurrences": [
+          62
+        ]
+      },
+      {
+        "source": "flip(maker:coffee)",
+        "target": "put(cup)",
+        "count": 1,
+        "key": "flip(maker:coffee)|||put(cup)",
+        "occurrences": [
+          5
+        ]
+      },
+      {
+        "source": "flip(orange)",
+        "target": "open(lid)",
+        "count": 1,
+        "key": "flip(orange)|||open(lid)",
+        "occurrences": [
+          125
+        ]
+      },
+      {
+        "source": "flip(orange)",
+        "target": "turn(food)",
+        "count": 1,
+        "key": "flip(orange)|||turn(food)",
+        "occurrences": [
+          112
+        ]
+      },
+      {
+        "source": "flip(orange)",
+        "target": "turn-on(food)",
+        "count": 1,
+        "key": "flip(orange)|||turn-on(food)",
+        "occurrences": [
+          134
+        ]
+      },
+      {
+        "source": "hold(food)",
+        "target": "remove(plug)",
+        "count": 1,
+        "key": "hold(food)|||remove(plug)",
+        "occurrences": [
+          37
+        ]
+      },
+      {
+        "source": "hold(kettle)",
+        "target": "press(button)",
+        "count": 1,
+        "key": "hold(kettle)|||press(button)",
+        "occurrences": [
+          72
+        ]
+      },
+      {
+        "source": "insert(sponge)",
+        "target": "wash(milk)",
+        "count": 1,
+        "key": "insert(sponge)|||wash(milk)",
+        "occurrences": [
+          100
+        ]
+      },
+      {
+        "source": "insert(top)",
+        "target": "take(orange)",
+        "count": 1,
+        "key": "insert(top)|||take(orange)",
+        "occurrences": [
+          152
+        ]
+      },
+      {
+        "source": "lift(bottle)",
+        "target": "lift(bottle)",
+        "count": 1,
+        "key": "lift(bottle)|||lift(bottle)",
+        "occurrences": [
+          17
+        ]
+      },
+      {
+        "source": "lift(bottle)",
+        "target": "turn-on(milk)",
+        "count": 1,
+        "key": "lift(bottle)|||turn-on(milk)",
+        "occurrences": [
+          18
+        ]
+      },
+      {
+        "source": "lift(bowl)",
+        "target": "open(lid)",
+        "count": 1,
+        "key": "lift(bowl)|||open(lid)",
+        "occurrences": [
+          189
+        ]
+      },
+      {
+        "source": "lift(bowl)",
+        "target": "put(glass)",
+        "count": 1,
+        "key": "lift(bowl)|||put(glass)",
+        "occurrences": [
+          209
+        ]
+      },
+      {
+        "source": "lift(bowl)",
+        "target": "take(glass)",
+        "count": 1,
+        "key": "lift(bowl)|||take(glass)",
+        "occurrences": [
+          207
+        ]
+      },
+      {
+        "source": "lift(bowl)",
+        "target": "turn(bowl)",
+        "count": 1,
+        "key": "lift(bowl)|||turn(bowl)",
+        "occurrences": [
+          221
+        ]
+      },
+      {
+        "source": "lift(cream)",
+        "target": "turn(knob)",
+        "count": 1,
+        "key": "lift(cream)|||turn(knob)",
+        "occurrences": [
+          52
+        ]
+      },
+      {
+        "source": "lift(handle)",
+        "target": "slide(coffee)",
+        "count": 1,
+        "key": "lift(handle)|||slide(coffee)",
+        "occurrences": [
+          9
+        ]
+      },
+      {
+        "source": "lift(lid)",
+        "target": "move(spoon)",
+        "count": 1,
+        "key": "lift(lid)|||move(spoon)",
+        "occurrences": [
+          81
+        ]
+      },
+      {
+        "source": "lift(milk)",
+        "target": "lift(lid)",
+        "count": 1,
+        "key": "lift(milk)|||lift(lid)",
+        "occurrences": [
+          80
+        ]
+      },
+      {
+        "source": "lift(milk)",
+        "target": "put(cream)",
+        "count": 1,
+        "key": "lift(milk)|||put(cream)",
+        "occurrences": [
+          104
+        ]
+      },
+      {
+        "source": "lift(orange)",
+        "target": "turn-on(machine:washing)",
+        "count": 1,
+        "key": "lift(orange)|||turn-on(machine:washing)",
+        "occurrences": [
+          169
+        ]
+      },
+      {
+        "source": "mix(coffee)",
+        "target": "mix(coffee)",
+        "count": 1,
+        "key": "mix(coffee)|||mix(coffee)",
+        "occurrences": [
+          83
+        ]
+      },
+      {
+        "source": "mix(coffee)",
+        "target": "take(rest)",
+        "count": 1,
+        "key": "mix(coffee)|||take(rest)",
+        "occurrences": [
+          84
+        ]
+      },
+      {
+        "source": "move(box)",
+        "target": "slide(cupboard)",
+        "count": 1,
+        "key": "move(box)|||slide(cupboard)",
+        "occurrences": [
+          47
+        ]
+      },
+      {
+        "source": "move(food)",
+        "target": "put(knife)",
+        "count": 1,
+        "key": "move(food)|||put(knife)",
+        "occurrences": [
+          176
+        ]
+      },
+      {
+        "source": "move(milk)",
+        "target": "wash(milk)",
+        "count": 1,
+        "key": "move(milk)|||wash(milk)",
+        "occurrences": [
+          92
+        ]
+      },
+      {
+        "source": "move(package)",
+        "target": "take(juicer)",
+        "count": 1,
+        "key": "move(package)|||take(juicer)",
+        "occurrences": [
+          44
+        ]
+      },
+      {
+        "source": "move(spoon)",
+        "target": "mix(coffee)",
+        "count": 1,
+        "key": "move(spoon)|||mix(coffee)",
+        "occurrences": [
+          82
+        ]
+      },
+      {
+        "source": "open(bottle)",
+        "target": "lift(bottle)",
+        "count": 1,
+        "key": "open(bottle)|||lift(bottle)",
+        "occurrences": [
+          16
+        ]
+      },
+      {
+        "source": "open(cap)",
+        "target": "wash(food)",
+        "count": 1,
+        "key": "open(cap)|||wash(food)",
+        "occurrences": [
+          212
+        ]
+      },
+      {
+        "source": "open(cupboard)",
+        "target": "move(package)",
+        "count": 1,
+        "key": "open(cupboard)|||move(package)",
+        "occurrences": [
+          43
+        ]
+      },
+      {
+        "source": "open(cupboard)",
+        "target": "stretch(hand)",
+        "count": 1,
+        "key": "open(cupboard)|||stretch(hand)",
+        "occurrences": [
+          0
+        ]
+      },
+      {
+        "source": "open(cupboard)",
+        "target": "take(glass)",
+        "count": 1,
+        "key": "open(cupboard)|||take(glass)",
+        "occurrences": [
+          202
+        ]
+      },
+      {
+        "source": "open(drawer)",
+        "target": "put(scissors)",
+        "count": 1,
+        "key": "open(drawer)|||put(scissors)",
+        "occurrences": [
+          33
+        ]
+      },
+      {
+        "source": "open(drawer)",
+        "target": "take(scissors)",
+        "count": 1,
+        "key": "open(drawer)|||take(scissors)",
+        "occurrences": [
+          25
+        ]
+      },
+      {
+        "source": "open(drawer)",
+        "target": "take(vegetable)",
+        "count": 1,
+        "key": "open(drawer)|||take(vegetable)",
+        "occurrences": [
+          59
+        ]
+      },
+      {
+        "source": "open(fridge)",
+        "target": "put(bottle)",
+        "count": 1,
+        "key": "open(fridge)|||put(bottle)",
+        "occurrences": [
+          21
+        ]
+      },
+      {
+        "source": "open(fridge)",
+        "target": "take(bottle)",
+        "count": 1,
+        "key": "open(fridge)|||take(bottle)",
+        "occurrences": [
+          12
+        ]
+      },
+      {
+        "source": "open(lid)",
+        "target": "put(bag)",
+        "count": 1,
+        "key": "open(lid)|||put(bag)",
+        "occurrences": [
+          68
+        ]
+      },
+      {
+        "source": "open(lid)",
+        "target": "throw(food)",
+        "count": 1,
+        "key": "open(lid)|||throw(food)",
+        "occurrences": [
+          190
+        ]
+      },
+      {
+        "source": "open(lid)",
+        "target": "throw(orange)",
+        "count": 1,
+        "key": "open(lid)|||throw(orange)",
+        "occurrences": [
+          138
+        ]
+      },
+      {
+        "source": "open(lid)",
+        "target": "throw(spoon)",
+        "count": 1,
+        "key": "open(lid)|||throw(spoon)",
+        "occurrences": [
+          87
+        ]
+      },
+      {
+        "source": "open(scissors)",
+        "target": "take(orange)",
+        "count": 1,
+        "key": "open(scissors)|||take(orange)",
+        "occurrences": [
+          28
+        ]
+      },
+      {
+        "source": "open(tap)",
+        "target": "move(milk)",
+        "count": 1,
+        "key": "open(tap)|||move(milk)",
+        "occurrences": [
+          91
+        ]
+      },
+      {
+        "source": "pat(bowl)",
+        "target": "close(lid)",
+        "count": 1,
+        "key": "pat(bowl)|||close(lid)",
+        "occurrences": [
+          192
+        ]
+      },
+      {
+        "source": "pat(milk)",
+        "target": "lift(milk)",
+        "count": 1,
+        "key": "pat(milk)|||lift(milk)",
+        "occurrences": [
+          77
+        ]
+      },
+      {
+        "source": "press(button)",
+        "target": "close(kettle)",
+        "count": 1,
+        "key": "press(button)|||close(kettle)",
+        "occurrences": [
+          73
+        ]
+      },
+      {
+        "source": "press(button)",
+        "target": "lift(handle)",
+        "count": 1,
+        "key": "press(button)|||lift(handle)",
+        "occurrences": [
+          8
+        ]
+      },
+      {
+        "source": "press(button)",
+        "target": "open(drawer)",
+        "count": 1,
+        "key": "press(button)|||open(drawer)",
+        "occurrences": [
+          24
+        ]
+      },
+      {
+        "source": "press(cupboard)",
+        "target": "put(juicer)",
+        "count": 1,
+        "key": "press(cupboard)|||put(juicer)",
+        "occurrences": [
+          49
+        ]
+      },
+      {
+        "source": "press(juicer)",
+        "target": "turn-off(food)",
+        "count": 1,
+        "key": "press(juicer)|||turn-off(food)",
+        "occurrences": [
+          115
+        ]
+      },
+      {
+        "source": "press(orange)",
+        "target": "press(juicer)",
+        "count": 1,
+        "key": "press(orange)|||press(juicer)",
+        "occurrences": [
+          114
+        ]
+      },
+      {
+        "source": "press(plug)",
+        "target": "turn(lid)",
+        "count": 1,
+        "key": "press(plug)|||turn(lid)",
+        "occurrences": [
+          40
+        ]
+      },
+      {
+        "source": "press(top)",
+        "target": "hold(kettle)",
+        "count": 1,
+        "key": "press(top)|||hold(kettle)",
+        "occurrences": [
+          71
+        ]
+      },
+      {
+        "source": "pull(bag)",
+        "target": "put(vegetable)",
+        "count": 1,
+        "key": "pull(bag)|||put(vegetable)",
+        "occurrences": [
+          63
+        ]
+      },
+      {
+        "source": "pull(bag)",
+        "target": "shake(bag)",
+        "count": 1,
+        "key": "pull(bag)|||shake(bag)",
+        "occurrences": [
+          66
+        ]
+      },
+      {
+        "source": "pull(handle)",
+        "target": "open(fridge)",
+        "count": 1,
+        "key": "pull(handle)|||open(fridge)",
+        "occurrences": [
+          11
+        ]
+      },
+      {
+        "source": "put(bag)",
+        "target": "close(lid)",
+        "count": 1,
+        "key": "put(bag)|||close(lid)",
+        "occurrences": [
+          69
+        ]
+      },
+      {
+        "source": "put(bottle)",
+        "target": "close(fridge)",
+        "count": 1,
+        "key": "put(bottle)|||close(fridge)",
+        "occurrences": [
+          22
+        ]
+      },
+      {
+        "source": "put(bowl)",
+        "target": "open(cap)",
+        "count": 1,
+        "key": "put(bowl)|||open(cap)",
+        "occurrences": [
+          211
+        ]
+      },
+      {
+        "source": "put(bowl)",
+        "target": "open(tap)",
+        "count": 1,
+        "key": "put(bowl)|||open(tap)",
+        "occurrences": [
+          194
+        ]
+      },
+      {
+        "source": "put(bowl)",
+        "target": "take(towel)",
+        "count": 1,
+        "key": "put(bowl)|||take(towel)",
+        "occurrences": [
+          200
+        ]
+      },
+      {
+        "source": "put(cream)",
+        "target": "put(milk)",
+        "count": 1,
+        "key": "put(cream)|||put(milk)",
+        "occurrences": [
+          105
+        ]
+      },
+      {
+        "source": "put(cream)",
+        "target": "turn(bowl)",
+        "count": 1,
+        "key": "put(cream)|||turn(bowl)",
+        "occurrences": [
+          187
+        ]
+      },
+      {
+        "source": "put(cream)",
+        "target": "wash(cream)",
+        "count": 1,
+        "key": "put(cream)|||wash(cream)",
+        "occurrences": [
+          180
+        ]
+      },
+      {
+        "source": "put(cup)",
+        "target": "take(coffee)",
+        "count": 1,
+        "key": "put(cup)|||take(coffee)",
+        "occurrences": [
+          6
+        ]
+      },
+      {
+        "source": "put(glass)",
+        "target": "put(bowl)",
+        "count": 1,
+        "key": "put(glass)|||put(bowl)",
+        "occurrences": [
+          210
+        ]
+      },
+      {
+        "source": "put(glass)",
+        "target": "turn(bowl)",
+        "count": 1,
+        "key": "put(glass)|||turn(bowl)",
+        "occurrences": [
+          205
+        ]
+      },
+      {
+        "source": "put(juicer)",
+        "target": "turn(juicer)",
+        "count": 1,
+        "key": "put(juicer)|||turn(juicer)",
+        "occurrences": [
+          50
+        ]
+      },
+      {
+        "source": "put(knife)",
+        "target": "flip(orange)",
+        "count": 1,
+        "key": "put(knife)|||flip(orange)",
+        "occurrences": [
+          111
+        ]
+      },
+      {
+        "source": "put(knife)",
+        "target": "insert(top)",
+        "count": 1,
+        "key": "put(knife)|||insert(top)",
+        "occurrences": [
+          151
+        ]
+      },
+      {
+        "source": "put(knife)",
+        "target": "remove(cream)",
+        "count": 1,
+        "key": "put(knife)|||remove(cream)",
+        "occurrences": [
+          177
+        ]
+      },
+      {
+        "source": "put(knife)",
+        "target": "take(orange)",
+        "count": 1,
+        "key": "put(knife)|||take(orange)",
+        "occurrences": [
+          132
+        ]
+      },
+      {
+        "source": "put(lid)",
+        "target": "open(cupboard)",
+        "count": 1,
+        "key": "put(lid)|||open(cupboard)",
+        "occurrences": [
+          42
+        ]
+      },
+      {
+        "source": "put(milk)",
+        "target": "take(lid)",
+        "count": 1,
+        "key": "put(milk)|||take(lid)",
+        "occurrences": [
+          106
+        ]
+      },
+      {
+        "source": "put(orange)",
+        "target": "open(drawer)",
+        "count": 1,
+        "key": "put(orange)|||open(drawer)",
+        "occurrences": [
+          58
+        ]
+      },
+      {
+        "source": "put(orange)",
+        "target": "turn-on(machine:washing)",
+        "count": 1,
+        "key": "put(orange)|||turn-on(machine:washing)",
+        "occurrences": [
+          165
+        ]
+      },
+      {
+        "source": "put(plug)",
+        "target": "press(plug)",
+        "count": 1,
+        "key": "put(plug)|||press(plug)",
+        "occurrences": [
+          39
+        ]
+      },
+      {
+        "source": "put(scissors)",
+        "target": "slide(board:chopping)",
+        "count": 1,
+        "key": "put(scissors)|||slide(board:chopping)",
+        "occurrences": [
+          34
+        ]
+      },
+      {
+        "source": "put(sponge)",
+        "target": "open(tap)",
+        "count": 1,
+        "key": "put(sponge)|||open(tap)",
+        "occurrences": [
+          217
+        ]
+      },
+      {
+        "source": "put(sponge)",
+        "target": "wash(cream)",
+        "count": 1,
+        "key": "put(sponge)|||wash(cream)",
+        "occurrences": [
+          184
+        ]
+      },
+      {
+        "source": "put(vegetable)",
+        "target": "close(drawer)",
+        "count": 1,
+        "key": "put(vegetable)|||close(drawer)",
+        "occurrences": [
+          64
+        ]
+      },
+      {
+        "source": "remove(cake)",
+        "target": "wash(milk)",
+        "count": 1,
+        "key": "remove(cake)|||wash(milk)",
+        "occurrences": [
+          95
+        ]
+      },
+      {
+        "source": "remove(cream)",
+        "target": "shake(skin)",
+        "count": 1,
+        "key": "remove(cream)|||shake(skin)",
+        "occurrences": [
+          178
+        ]
+      },
+      {
+        "source": "remove(orange)",
+        "target": "lift(lid)",
+        "count": 1,
+        "key": "remove(orange)|||lift(lid)",
+        "occurrences": [
+          117
+        ]
+      },
+      {
+        "source": "remove(package)",
+        "target": "open(scissors)",
+        "count": 1,
+        "key": "remove(package)|||open(scissors)",
+        "occurrences": [
+          27
+        ]
+      },
+      {
+        "source": "remove(plug)",
+        "target": "put(plug)",
+        "count": 1,
+        "key": "remove(plug)|||put(plug)",
+        "occurrences": [
+          38
+        ]
+      },
+      {
+        "source": "remove(skin)",
+        "target": "open(lid)",
+        "count": 1,
+        "key": "remove(skin)|||open(lid)",
+        "occurrences": [
+          172
+        ]
+      },
+      {
+        "source": "scrub(bowl)",
+        "target": "put(sponge)",
+        "count": 1,
+        "key": "scrub(bowl)|||put(sponge)",
+        "occurrences": [
+          216
+        ]
+      },
+      {
+        "source": "scrub(sponge)",
+        "target": "insert(sponge)",
+        "count": 1,
+        "key": "scrub(sponge)|||insert(sponge)",
+        "occurrences": [
+          99
+        ]
+      },
+      {
+        "source": "shake(bag)",
+        "target": "open(lid)",
+        "count": 1,
+        "key": "shake(bag)|||open(lid)",
+        "occurrences": [
+          67
+        ]
+      },
+      {
+        "source": "shake(skin)",
+        "target": "put(cream)",
+        "count": 1,
+        "key": "shake(skin)|||put(cream)",
+        "occurrences": [
+          179
+        ]
+      },
+      {
+        "source": "shake(spoon)",
+        "target": "open(lid)",
+        "count": 1,
+        "key": "shake(spoon)|||open(lid)",
+        "occurrences": [
+          86
+        ]
+      },
+      {
+        "source": "slide(board:chopping)",
+        "target": "take(food)",
+        "count": 1,
+        "key": "slide(board:chopping)|||take(food)",
+        "occurrences": [
+          35
+        ]
+      },
+      {
+        "source": "slide(coffee)",
+        "target": "pull(handle)",
+        "count": 1,
+        "key": "slide(coffee)|||pull(handle)",
+        "occurrences": [
+          10
+        ]
+      },
+      {
+        "source": "slide(cupboard)",
+        "target": "press(cupboard)",
+        "count": 1,
+        "key": "slide(cupboard)|||press(cupboard)",
+        "occurrences": [
+          48
+        ]
+      },
+      {
+        "source": "slide(milk)",
+        "target": "open(bottle)",
+        "count": 1,
+        "key": "slide(milk)|||open(bottle)",
+        "occurrences": [
+          15
+        ]
+      },
+      {
+        "source": "stretch(hand)",
+        "target": "take(cup)",
+        "count": 1,
+        "key": "stretch(hand)|||take(cup)",
+        "occurrences": [
+          1
+        ]
+      },
+      {
+        "source": "switch(button)",
+        "target": "turn(food)",
+        "count": 1,
+        "key": "switch(button)|||turn(food)",
+        "occurrences": [
+          54
+        ]
+      },
+      {
+        "source": "take(bottle)",
+        "target": "close(fridge)",
+        "count": 1,
+        "key": "take(bottle)|||close(fridge)",
+        "occurrences": [
+          13
+        ]
+      },
+      {
+        "source": "take(bottle)",
+        "target": "open(fridge)",
+        "count": 1,
+        "key": "take(bottle)|||open(fridge)",
+        "occurrences": [
+          20
+        ]
+      },
+      {
+        "source": "take(coffee)",
+        "target": "press(button)",
+        "count": 1,
+        "key": "take(coffee)|||press(button)",
+        "occurrences": [
+          7
+        ]
+      },
+      {
+        "source": "take(cup)",
+        "target": "turn(cup)",
+        "count": 1,
+        "key": "take(cup)|||turn(cup)",
+        "occurrences": [
+          2
+        ]
+      },
+      {
+        "source": "take(food)",
+        "target": "hold(food)",
+        "count": 1,
+        "key": "take(food)|||hold(food)",
+        "occurrences": [
+          36
+        ]
+      },
+      {
+        "source": "take(glass)",
+        "target": "lift(bowl)",
+        "count": 1,
+        "key": "take(glass)|||lift(bowl)",
+        "occurrences": [
+          208
+        ]
+      },
+      {
+        "source": "take(glass)",
+        "target": "turn(glass)",
+        "count": 1,
+        "key": "take(glass)|||turn(glass)",
+        "occurrences": [
+          203
+        ]
+      },
+      {
+        "source": "take(juicer)",
+        "target": "close(cupboard)",
+        "count": 1,
+        "key": "take(juicer)|||close(cupboard)",
+        "occurrences": [
+          45
+        ]
+      },
+      {
+        "source": "take(knife)",
+        "target": "move(food)",
+        "count": 1,
+        "key": "take(knife)|||move(food)",
+        "occurrences": [
+          175
+        ]
+      },
+      {
+        "source": "take(lid)",
+        "target": "take(towel)",
+        "count": 1,
+        "key": "take(lid)|||take(towel)",
+        "occurrences": [
+          107
+        ]
+      },
+      {
+        "source": "take(milk)",
+        "target": "open(tap)",
+        "count": 1,
+        "key": "take(milk)|||open(tap)",
+        "occurrences": [
+          90
+        ]
+      },
+      {
+        "source": "take(milk)",
+        "target": "pat(milk)",
+        "count": 1,
+        "key": "take(milk)|||pat(milk)",
+        "occurrences": [
+          76
+        ]
+      },
+      {
+        "source": "take(orange)",
+        "target": "flip(orange)",
+        "count": 1,
+        "key": "take(orange)|||flip(orange)",
+        "occurrences": [
+          133
+        ]
+      },
+      {
+        "source": "take(orange)",
+        "target": "wrap(scissors)",
+        "count": 1,
+        "key": "take(orange)|||wrap(scissors)",
+        "occurrences": [
+          31
+        ]
+      },
+      {
+        "source": "take(rest)",
+        "target": "shake(spoon)",
+        "count": 1,
+        "key": "take(rest)|||shake(spoon)",
+        "occurrences": [
+          85
+        ]
+      },
+      {
+        "source": "take(roll)",
+        "target": "feel(roll)",
+        "count": 1,
+        "key": "take(roll)|||feel(roll)",
+        "occurrences": [
+          61
+        ]
+      },
+      {
+        "source": "take(scissors)",
+        "target": "remove(package)",
+        "count": 1,
+        "key": "take(scissors)|||remove(package)",
+        "occurrences": [
+          26
+        ]
+      },
+      {
+        "source": "take(sponge)",
+        "target": "scrub(bowl)",
+        "count": 1,
+        "key": "take(sponge)|||scrub(bowl)",
+        "occurrences": [
+          215
+        ]
+      },
+      {
+        "source": "take(sponge)",
+        "target": "scrub(sponge)",
+        "count": 1,
+        "key": "take(sponge)|||scrub(sponge)",
+        "occurrences": [
+          98
+        ]
+      },
+      {
+        "source": "take(sponge)",
+        "target": "wash(cream)",
+        "count": 1,
+        "key": "take(sponge)|||wash(cream)",
+        "occurrences": [
+          182
+        ]
+      },
+      {
+        "source": "take(towel)",
+        "target": "open(cupboard)",
+        "count": 1,
+        "key": "take(towel)|||open(cupboard)",
+        "occurrences": [
+          201
+        ]
+      },
+      {
+        "source": "take(towel)",
+        "target": "take(knife)",
+        "count": 1,
+        "key": "take(towel)|||take(knife)",
+        "occurrences": [
+          108
+        ]
+      },
+      {
+        "source": "take(tray)",
+        "target": "close(tap)",
+        "count": 1,
+        "key": "take(tray)|||close(tap)",
+        "occurrences": [
+          102
+        ]
+      },
+      {
+        "source": "take(vegetable)",
+        "target": "take(roll)",
+        "count": 1,
+        "key": "take(vegetable)|||take(roll)",
+        "occurrences": [
+          60
+        ]
+      },
+      {
+        "source": "throw(food)",
+        "target": "pat(bowl)",
+        "count": 1,
+        "key": "throw(food)|||pat(bowl)",
+        "occurrences": [
+          191
+        ]
+      },
+      {
+        "source": "throw(orange)",
+        "target": "take(orange)",
+        "count": 1,
+        "key": "throw(orange)|||take(orange)",
+        "occurrences": [
+          139
+        ]
+      },
+      {
+        "source": "throw(skin)",
+        "target": "take(knife)",
+        "count": 1,
+        "key": "throw(skin)|||take(knife)",
+        "occurrences": [
+          174
+        ]
+      },
+      {
+        "source": "throw(spoon)",
+        "target": "close(bin)",
+        "count": 1,
+        "key": "throw(spoon)|||close(bin)",
+        "occurrences": [
+          88
+        ]
+      },
+      {
+        "source": "turn(bowl)",
+        "target": "take(towel)",
+        "count": 1,
+        "key": "turn(bowl)|||take(towel)",
+        "occurrences": [
+          222
+        ]
+      },
+      {
+        "source": "turn(bowl)",
+        "target": "wash(juicer)",
+        "count": 1,
+        "key": "turn(bowl)|||wash(juicer)",
+        "occurrences": [
+          197
+        ]
+      },
+      {
+        "source": "turn(cup)",
+        "target": "close(cupboard)",
+        "count": 1,
+        "key": "turn(cup)|||close(cupboard)",
+        "occurrences": [
+          3
+        ]
+      },
+      {
+        "source": "turn(cup)",
+        "target": "take(milk)",
+        "count": 1,
+        "key": "turn(cup)|||take(milk)",
+        "occurrences": [
+          75
+        ]
+      },
+      {
+        "source": "turn(food)",
+        "target": "press(orange)",
+        "count": 1,
+        "key": "turn(food)|||press(orange)",
+        "occurrences": [
+          113
+        ]
+      },
+      {
+        "source": "turn(food)",
+        "target": "turn(knob)",
+        "count": 1,
+        "key": "turn(food)|||turn(knob)",
+        "occurrences": [
+          55
+        ]
+      },
+      {
+        "source": "turn(food)",
+        "target": "turn-off(food)",
+        "count": 1,
+        "key": "turn(food)|||turn-off(food)",
+        "occurrences": [
+          160
+        ]
+      },
+      {
+        "source": "turn(glass)",
+        "target": "put(glass)",
+        "count": 1,
+        "key": "turn(glass)|||put(glass)",
+        "occurrences": [
+          204
+        ]
+      },
+      {
+        "source": "turn(juicer)",
+        "target": "lift(cream)",
+        "count": 1,
+        "key": "turn(juicer)|||lift(cream)",
+        "occurrences": [
+          51
+        ]
+      },
+      {
+        "source": "turn(knob)",
+        "target": "switch(button)",
+        "count": 1,
+        "key": "turn(knob)|||switch(button)",
+        "occurrences": [
+          53
+        ]
+      },
+      {
+        "source": "turn(knob)",
+        "target": "take(orange)",
+        "count": 1,
+        "key": "turn(knob)|||take(orange)",
+        "occurrences": [
+          56
+        ]
+      },
+      {
+        "source": "turn(lid)",
+        "target": "put(lid)",
+        "count": 1,
+        "key": "turn(lid)|||put(lid)",
+        "occurrences": [
+          41
+        ]
+      },
+      {
+        "source": "turn(milk)",
+        "target": "remove(cake)",
+        "count": 1,
+        "key": "turn(milk)|||remove(cake)",
+        "occurrences": [
+          94
+        ]
+      },
+      {
+        "source": "turn(orange)",
+        "target": "turn(food)",
+        "count": 1,
+        "key": "turn(orange)|||turn(food)",
+        "occurrences": [
+          159
+        ]
+      },
+      {
+        "source": "turn(orange)",
+        "target": "turn(orange)",
+        "count": 1,
+        "key": "turn(orange)|||turn(orange)",
+        "occurrences": [
+          158
+        ]
+      },
+      {
+        "source": "turn-off(food)",
+        "target": "flip(orange)",
+        "count": 1,
+        "key": "turn-off(food)|||flip(orange)",
+        "occurrences": [
+          124
+        ]
+      },
+      {
+        "source": "turn-off(food)",
+        "target": "lift(lid)",
+        "count": 1,
+        "key": "turn-off(food)|||lift(lid)",
+        "occurrences": [
+          144
+        ]
+      },
+      {
+        "source": "turn-off(food)",
+        "target": "lift(orange)",
+        "count": 1,
+        "key": "turn-off(food)|||lift(orange)",
+        "occurrences": [
+          168
+        ]
+      },
+      {
+        "source": "turn-off(food)",
+        "target": "remove(orange)",
+        "count": 1,
+        "key": "turn-off(food)|||remove(orange)",
+        "occurrences": [
+          116
+        ]
+      },
+      {
+        "source": "turn-off(food)",
+        "target": "turn(orange)",
+        "count": 1,
+        "key": "turn-off(food)|||turn(orange)",
+        "occurrences": [
+          157
+        ]
+      },
+      {
+        "source": "turn-off(machine:washing)",
+        "target": "remove(skin)",
+        "count": 1,
+        "key": "turn-off(machine:washing)|||remove(skin)",
+        "occurrences": [
+          171
+        ]
+      },
+      {
+        "source": "turn-off(tap)",
+        "target": "lift(bowl)",
+        "count": 1,
+        "key": "turn-off(tap)|||lift(bowl)",
+        "occurrences": [
+          220
+        ]
+      },
+      {
+        "source": "turn-off(tap)",
+        "target": "put(cream)",
+        "count": 1,
+        "key": "turn-off(tap)|||put(cream)",
+        "occurrences": [
+          186
+        ]
+      },
+      {
+        "source": "turn-on(machine:washing)",
+        "target": "press(orange)",
+        "count": 1,
+        "key": "turn-on(machine:washing)|||press(orange)",
+        "occurrences": [
+          166
+        ]
+      },
+      {
+        "source": "turn-on(machine:washing)",
+        "target": "turn-off(machine:washing)",
+        "count": 1,
+        "key": "turn-on(machine:washing)|||turn-off(machine:washing)",
+        "occurrences": [
+          170
+        ]
+      },
+      {
+        "source": "turn-on(milk)",
+        "target": "take(bottle)",
+        "count": 1,
+        "key": "turn-on(milk)|||take(bottle)",
+        "occurrences": [
+          19
+        ]
+      },
+      {
+        "source": "wash(bowl)",
+        "target": "turn(bowl)",
+        "count": 1,
+        "key": "wash(bowl)|||turn(bowl)",
+        "occurrences": [
+          196
+        ]
+      },
+      {
+        "source": "wash(bowl)",
+        "target": "turn-off(tap)",
+        "count": 1,
+        "key": "wash(bowl)|||turn-off(tap)",
+        "occurrences": [
+          219
+        ]
+      },
+      {
+        "source": "wash(cream)",
+        "target": "put(sponge)",
+        "count": 1,
+        "key": "wash(cream)|||put(sponge)",
+        "occurrences": [
+          183
+        ]
+      },
+      {
+        "source": "wash(cream)",
+        "target": "take(sponge)",
+        "count": 1,
+        "key": "wash(cream)|||take(sponge)",
+        "occurrences": [
+          181
+        ]
+      },
+      {
+        "source": "wash(cream)",
+        "target": "turn-off(tap)",
+        "count": 1,
+        "key": "wash(cream)|||turn-off(tap)",
+        "occurrences": [
+          185
+        ]
+      },
+      {
+        "source": "wash(food)",
+        "target": "close(tap)",
+        "count": 1,
+        "key": "wash(food)|||close(tap)",
+        "occurrences": [
+          213
+        ]
+      },
+      {
+        "source": "wash(juicer)",
+        "target": "close(tap)",
+        "count": 1,
+        "key": "wash(juicer)|||close(tap)",
+        "occurrences": [
+          198
+        ]
+      },
+      {
+        "source": "wash(milk)",
+        "target": "take(sponge)",
+        "count": 1,
+        "key": "wash(milk)|||take(sponge)",
+        "occurrences": [
+          97
+        ]
+      },
+      {
+        "source": "wash(milk)",
+        "target": "take(tray)",
+        "count": 1,
+        "key": "wash(milk)|||take(tray)",
+        "occurrences": [
+          101
+        ]
+      },
+      {
+        "source": "wash(milk)",
+        "target": "turn(milk)",
+        "count": 1,
+        "key": "wash(milk)|||turn(milk)",
+        "occurrences": [
+          93
+        ]
+      },
+      {
+        "source": "wash(milk)",
+        "target": "wash(milk)",
+        "count": 1,
+        "key": "wash(milk)|||wash(milk)",
+        "occurrences": [
+          96
+        ]
+      },
+      {
+        "source": "wrap(scissors)",
+        "target": "open(drawer)",
+        "count": 1,
+        "key": "wrap(scissors)|||open(drawer)",
+        "occurrences": [
+          32
+        ]
+      }
+    ]
+  }
+}
