@@ -26,49 +26,69 @@
       </div>
     </section>
 
-    <!-- Session picker — tab-style buttons. Hidden until manifest is loaded. -->
     <section class="session-picker-row" id="sessionPickerRow" style="display:none;">
       <label class="control-label">Session:</label>
-      <div class="session-picker-tabs" id="sessionPickerTabs">
-        <!-- buttons injected by app.js -->
+      <div class="session-picker-tabs" id="sessionPickerTabs"></div>
+
+      <!-- Sub-mode toggle: shown only when Merged tab is active -->
+      <div class="submode-row" id="mergedSubmodeRow" style="display:none;">
+        <label class="control-label">View:</label>
+        <div class="submode-tabs" id="mergedSubmodeTabs">
+          <button class="submode-tab active" data-submode="merged">Merged graph</button>
+          <button class="submode-tab" data-submode="small_multiples">Small multiples</button>
+        </div>
+
+        <!-- Support filter slider: visible in merged sub-mode -->
+        <div class="support-filter-wrap" id="supportFilterWrap">
+          <label class="control-label">Min. support:</label>
+          <input type="range" id="supportFilter" min="1" max="3" value="1" class="control-slider" />
+          <span id="supportFilterLabel" class="threshold-label">1</span>
+        </div>
       </div>
     </section>
 
-    <section class="layout">
+    <!-- ENCODING CONTROLS — shared across both views ──────────────────────────── -->
+    <section class="encoding-controls-row" id="encodingControlsRow">
+      <label class="control-label">Detail Level:</label>
+      <select id="graphModeSelect" class="control-select">
+        <option value="smart">Smart-Merged (Clear)</option>
+        <option value="full">Full Raw (Complete)</option>
+        <option value="abstracted">Task Phases (Overview)</option>
+      </select>
+
+      <span class="encoding-controls-sep"></span>
+
+      <label class="control-label">Color encodes:</label>
+      <select id="colorEncodeSelect" class="control-select">
+        <option value="category">Action category</option>
+        <option value="phase">Task phase (recipe step)</option>
+        <option value="duration">Mean duration</option>
+      </select>
+
+      <label class="control-label">Node size:</label>
+      <select id="sizeEncodeSelect" class="control-select">
+        <option value="frequency">Frequency</option>
+        <option value="duration">Duration</option>
+      </select>
+
+      <!-- Layout: hidden in comparison view via CSS (data-comparison-hide) -->
+      <label class="control-label" id="layoutLabel" data-comparison-hide>Layout:</label>
+      <select id="layoutModeSelect" class="control-select" data-comparison-hide>
+        <option value="temporal">Temporal (clock time)</option>
+        <option value="category">Category groups</option>
+      </select>
+    </section>
+
+    <!-- SINGLE-SESSION VIEW (default) ─────────────────────────────────────────── -->
+    <section class="layout" id="singleSessionView">
       <article class="panel">
         <h2>
           Motion Graph
           <span class="graph-hint">— scroll to zoom · drag to pan</span>
         </h2>
         <div class="controls-row">
-          <label class="control-label">Detail Level:</label>
-          <select id="graphModeSelect" class="control-select">
-            <option value="smart">Smart-Merged</option>
-            <option value="full">Full Raw</option>
-            <option value="abstracted">Recipe Steps</option>
-          </select>
-        </div>
-        <div class="controls-row">
-          <label class="control-label">Color encodes:</label>
-          <select id="colorEncodeSelect" class="control-select">
-            <option value="category">Action category</option>
-            <option value="phase">Recipe step</option>
-            <option value="duration">Mean duration</option>
-          </select>
-          <label class="control-label">Node size:</label>
-          <select id="sizeEncodeSelect" class="control-select">
-            <option value="frequency">Frequency</option>
-            <option value="duration">Duration</option>
-          </select>
-          <label class="control-label">Layout:</label>
-          <select id="layoutModeSelect" class="control-select">
-            <option value="temporal">Temporal</option>
-            <option value="category">Categorical</option>
-          </select>
-        </div>
-        <div class="controls-row">
           <label class="control-label">Min. Transition Count:</label>
-          <input type="range" id="edgeThreshold" min="1" max="5" value="1" class="control-slider" />
+          <input type="range" id="edgeThreshold" min="1" max="10" value="1" class="control-slider" />
           <span id="thresholdLabel" class="threshold-label">1</span>
         </div>
         <div id="graphWrap">
@@ -98,7 +118,49 @@
       </article>
     </section>
 
-    <section class="footerPanel">
+    <!-- COMPARISON VIEW ────────────────────────────────────────────────────────── -->
+    <section class="comparison-layout" id="comparisonView" style="display:none;">
+
+      <!-- LEFT: motion graph (merged) OR small multiples -->
+      <article class="panel comparison-graph-panel">
+        <h2>
+          <span id="comparisonGraphHeading">Merged Motion Graph</span>
+        </h2>
+
+        <!-- Merged graph wrapper -->
+        <div id="mergedGraphWrap">
+          <svg id="mergedGraphSvg"></svg>
+        </div>
+
+        <!-- Small multiples container -->
+        <div id="smallMultiplesContainer" style="display:none;"></div>
+
+        <div class="legend-strip" id="comparisonLegendStrip"></div>
+      </article>
+
+      <!-- RIGHT: video queue + barcodes -->
+      <article class="panel comparison-video-panel">
+        <h2>Video Player &amp; Sessions</h2>
+
+        <video id="comparisonVideo" controls preload="metadata"></video>
+
+        <div class="video-queue-row">
+          <span class="video-queue-label-prefix">Switch to:</span>
+          <div id="videoQueue" class="video-queue"></div>
+        </div>
+
+        <h3 class="barcode-stack-heading">Action sequences (normalized time)</h3>
+        <div id="barcodeStack" class="barcode-stack-container"></div>
+
+        <div class="meta">
+          <div class="row"><span>Recipe</span><span id="cmpRecipeLabel">-</span></div>
+          <div class="row"><span>Active Session</span><span id="cmpSessionLabel">-</span></div>
+          <div class="row"><span>Time</span><span id="cmpTimeLabel">0.00 s</span></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="footerPanel" id="footerPanel">
       <table class="timeline">
         <thead>
           <tr>

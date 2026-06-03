@@ -75,11 +75,7 @@ body {
 
 /* ────────── Recipe selector + session tabs ────────────────────────────── */
 
-.recipe-selector {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+.recipe-selector { display: flex; align-items: center; gap: 8px; }
 
 .session-picker-row {
   background: var(--panel);
@@ -88,7 +84,7 @@ body {
   padding: 10px 14px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
@@ -120,10 +116,77 @@ body {
 }
 
 .session-tab.merged-tab {
-  font-style: italic;
   background: #f3f4f6;
 }
 .session-tab.merged-tab.active { background: var(--accent); color: white; }
+
+/* ────────── Shared encoding-controls row ─────────────────────────────── */
+
+.encoding-controls-row {
+  background: var(--panel);
+  border: 1px solid #ddd8cc;
+  border-radius: 14px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.encoding-controls-sep {
+  width: 1px;
+  height: 22px;
+  background: #d1d5db;
+  margin: 0 6px;
+}
+
+/* When the comparison view is active, hide controls marked
+   data-comparison-hide (used by the Layout dropdown which doesn't apply
+   to the merged-graph view). */
+body.comparison-mode [data-comparison-hide] {
+  display: none !important;
+}
+
+/* Sub-mode toggle (merged graph vs small multiples) */
+
+.submode-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-left: 12px;
+}
+
+.submode-tabs {
+  display: inline-flex;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+}
+
+.submode-tab {
+  padding: 6px 14px;
+  border: none;
+  background: white;
+  font-size: 0.82rem;
+  color: #374151;
+  cursor: pointer;
+  border-right: 1px solid #d1d5db;
+}
+
+.submode-tab:last-child { border-right: none; }
+.submode-tab:hover { background: #f9fafb; }
+.submode-tab.active {
+  background: #fdba74;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.support-filter-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
 /* ────────── Generic controls ──────────────────────────────────────────── */
 
@@ -145,6 +208,12 @@ body {
   -webkit-appearance: none;
 }
 
+.control-select.disabled,
+.control-select:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 .control-slider {
   width: 140px;
   cursor: pointer;
@@ -163,7 +232,7 @@ body {
   flex-wrap: wrap;
 }
 
-/* ────────── Two-column layout ─────────────────────────────────────────── */
+/* ────────── Single-session layout ─────────────────────────────────────── */
 
 .layout {
   display: grid;
@@ -184,6 +253,7 @@ body {
 }
 
 .panel h2 { margin: 0; font-size: 1rem; }
+.panel h3 { margin: 6px 0 4px; font-size: 0.92rem; }
 
 .graph-hint {
   font-size: 0.8em;
@@ -191,7 +261,7 @@ body {
   color: #6b7280;
 }
 
-#graphWrap {
+#graphWrap, #mergedGraphWrap {
   height: 620px;
   border-radius: 10px;
   background: linear-gradient(180deg, #fff 0%, #f8fafc 100%);
@@ -201,9 +271,8 @@ body {
   cursor: grab;
 }
 
-#graphWrap:active { cursor: grabbing; }
-#graphWrap:has(.node.dragging) { cursor: default; }
-#graphSvg { width: 100%; height: 100%; display: block; }
+#graphWrap:active, #mergedGraphWrap:active { cursor: grabbing; }
+#graphSvg, #mergedGraphSvg { width: 100%; height: 100%; display: block; }
 
 .zoom-controls {
   position: absolute;
@@ -233,6 +302,177 @@ body {
 }
 
 .zoom-controls button:hover { background: #f3f4f6; }
+
+/* ────────── Comparison layout ─────────────────────────────────────────── */
+
+.comparison-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 12px;
+  min-height: 0;
+}
+
+.comparison-graph-panel { min-width: 0; }
+.comparison-video-panel { min-width: 0; }
+
+/* Small multiples — three stacked thumbnail rows */
+#smallMultiplesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.thumbnail-graph-wrap {
+  border: 2px solid #d1d5db;
+  border-radius: 10px;
+  padding: 8px;
+  background: linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.thumbnail-graph-heading {
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.thumbnail-graph-svg {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+
+/* Video queue */
+
+.video-queue-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.video-queue-label-prefix {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.video-queue {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.video-queue-thumb {
+  width: 120px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  overflow: hidden;
+  cursor: pointer;
+  background: #000;
+  position: relative;
+  transition: transform 0.12s, border-color 0.12s;
+}
+
+.video-queue-thumb:hover {
+  border-color: var(--accent);
+  transform: scale(1.03);
+}
+
+.video-queue-thumb video {
+  width: 100%;
+  height: 68px;
+  object-fit: cover;
+  display: block;
+}
+
+.video-queue-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.65);
+  color: white;
+  font-size: 0.72rem;
+  padding: 2px 6px;
+  text-align: center;
+}
+
+/* Barcode stack */
+
+.barcode-stack-heading {
+  margin: 14px 0 6px;
+  font-size: 0.88rem;
+  color: #374151;
+  font-weight: 600;
+}
+
+.barcode-stack-container { display: flex; flex-direction: column; gap: 6px; }
+
+.barcode-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.barcode-row-label {
+  min-width: 78px;
+  font-size: 0.78rem;
+  color: #374151;
+  font-weight: 500;
+  text-align: right;
+}
+
+.barcode-strip {
+  flex: 1;
+  height: 26px;
+  position: relative;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #f8fafc;
+  cursor: pointer;
+}
+
+.barcode-row.active .barcode-strip {
+  border: 2.5px solid var(--selected);
+  height: 28px;
+}
+
+.barcode-segment {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  opacity: 0.78;
+  cursor: pointer;
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+  transition: opacity 0.12s;
+}
+
+.barcode-segment:hover { opacity: 1; }
+
+.barcode-playhead {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: #1f2937;
+  pointer-events: none;
+  z-index: 10;
+  left: 0;
+}
+
+/* Legend / comparison-mode strip */
+
+.comparison-legend-strip {
+  font-size: 0.75rem;
+  color: #475569;
+  padding: 6px;
+}
 
 /* ────────── Legend ────────────────────────────────────────────────────── */
 
@@ -267,12 +507,6 @@ body {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 6px 10px;
 }
-
-.legend-node-colors-grid .legend-item,
-.legend-node-annotations-grid .legend-item { min-width: 0; }
-
-.legend-node-colors-grid .legend-item span,
-.legend-node-annotations-grid .legend-item span { overflow-wrap: anywhere; }
 
 .legend-dot {
   width: 10px;
@@ -321,14 +555,19 @@ body {
 }
 
 .legend-arrow { border-radius: 6px; }
-.legend-label-sample { font-family: inherit; letter-spacing: 0.03em; }
 
-/* ────────── Video + annotation strip ──────────────────────────────────── */
+/* ────────── Video + annotation strip (single session) ──────────────────── */
 
 video {
   width: 100%;
   border-radius: 10px;
   border: 1px solid #d1d5db;
+  background: #000;
+}
+
+#comparisonVideo {
+  width: 100%;
+  max-height: 360px;
   background: #000;
 }
 
@@ -350,6 +589,7 @@ video {
   border: 1px solid #e5e7eb;
   border-radius: 10px;
   padding: 10px;
+  margin-top: 6px;
 }
 
 .row {
@@ -429,26 +669,11 @@ video {
 .link.fwd-edge.minor { stroke-opacity: 0.15; }
 .link.bidir-edge { stroke-opacity: 0.6; }
 
-.back-indicator-badge { pointer-events: none; }
-
-.self-loop-indicator-glyph {
-  fill: #475569;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.self-loop-indicator.active .self-loop-indicator-glyph {
-  fill: var(--edge-active);
-  filter: drop-shadow(0 0 3px rgba(234, 88, 12, 0.55));
-}
-
 .link.active {
   stroke: var(--edge-active);
   stroke-opacity: 1;
   stroke-dasharray: 8 6;
   animation: dashMove 0.7s linear infinite;
-  filter: drop-shadow(0 0 3px rgba(234, 88, 12, 0.55));
 }
 
 .paused .link.active { animation-play-state: paused; }
@@ -482,19 +707,19 @@ video {
 .node.dragging circle {
   stroke: #3b82f6;
   stroke-width: 2.5;
-  filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.6));
 }
 
 .cluster-hull {
   pointer-events: none;
-  transition: opacity 0.3s;
 }
 
-.cluster-label {
+.cluster-label, .lane-label {
   pointer-events: none;
   font-family: "Segoe UI", "Trebuchet MS", sans-serif;
-  letter-spacing: 0.03em;
 }
+
+/* Support badge (merged motion graph) */
+.support-badge-bg, .support-badge-text { pointer-events: none; }
 
 /* ────────── Hover tooltips ────────────────────────────────────────────── */
 
@@ -528,7 +753,7 @@ video {
 /* ────────── Responsive ────────────────────────────────────────────────── */
 
 @media (max-width: 1100px) {
-  .layout { grid-template-columns: 1fr; }
-  #graphWrap { height: 460px; }
+  .layout, .comparison-layout { grid-template-columns: 1fr; }
+  #graphWrap, #mergedGraphWrap { height: 460px; }
   .legend-strip { grid-template-columns: 1fr; }
 }
