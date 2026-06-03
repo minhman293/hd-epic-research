@@ -1,0 +1,71 @@
+{
+  "generated_at": "2026-06-01T20:42:40",
+  "recipes": [
+    {
+      "id": "P01_R01",
+      "name": "Nespresso",
+      "sessions": [
+        {
+          "index": 0,
+          "video_id": "P01-20240202-110250",
+          "video_path": "raw-video/P01-20240202-110250.mp4",
+          "action_count": 224,
+          "duration_s": 394.72,
+          "node_count": 27,
+          "primary_count": 2,
+          "secondary_count": 25
+        },
+        {
+          "index": 1,
+          "video_id": "P01-20240203-093333",
+          "video_path": "raw-video/P01-20240203-093333.mp4",
+          "action_count": 68,
+          "duration_s": 152.93,
+          "node_count": 15,
+          "primary_count": 3,
+          "secondary_count": 12
+        },
+        {
+          "index": 2,
+          "video_id": "P01-20240204-095114",
+          "video_path": "raw-video/P01-20240204-095114.mp4",
+          "action_count": 81,
+          "duration_s": 164.47,
+          "node_count": 19,
+          "primary_count": 7,
+          "secondary_count": 12
+        }
+      ],
+      "has_merged": true,
+      "merged": {
+        "modes": [
+          "full",
+          "smart",
+          "abstracted"
+        ],
+        "node_count": 32,
+        "link_count": 164,
+        "n_sessions": 3,
+        "support_in_all": 11,
+        "support_in_one": 14
+      }
+    },
+    {
+      "id": "P08_R01",
+      "name": "Coffee",
+      "sessions": [
+        {
+          "index": 0,
+          "video_id": "P08-20240613-122900",
+          "video_path": "raw-video/P08-20240613-122900.mp4",
+          "action_count": 57,
+          "duration_s": 193.26,
+          "node_count": 23,
+          "primary_count": 9,
+          "secondary_count": 14
+        }
+      ],
+      "has_merged": false
+    }
+  ]
+}
