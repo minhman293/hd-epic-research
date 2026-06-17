@@ -12,6 +12,7 @@ import {
   getMergedDataUrl,
   DEFAULT_DATA_MODE,
   DEFAULT_COLOR_ENCODE_MODE,
+  loadVerbCategories,
   getLegendItems,
   getStepPhaseColor,
 } from "./config.js";
@@ -791,6 +792,10 @@ async function init() {
     renderDataError(summaryPill, header, "D3 was not loaded. Please reload.");
     return;
   }
+
+  // --- NEW: Load the dynamic verb categories first ---
+  // Ensure the path points to your actual CSV location
+  await loadVerbCategories('../../../narrations-and-action-segments/HD_EPIC_verb_classes.csv');
 
   graphModeSelect.value = DEFAULT_DATA_MODE;
   colorEncodeSelect.value = DEFAULT_COLOR_ENCODE_MODE;
