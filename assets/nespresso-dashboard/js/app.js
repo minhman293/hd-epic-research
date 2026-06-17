@@ -179,25 +179,33 @@ function refresh() {
 }
 
 function rebuildLegend() {
-  // Single-session legend: always built from cachedData
+  // Single-session legend: built from cachedData
+  const singleSeq = cachedData?.sequence || [];
   buildLegend(
     legendStrip,
-    getLegendItems(colorEncodeSelect.value, sizeEncodeSelect.value, graphModeSelect.value),
+    // Pass the sequence as the 4th argument here
+    getLegendItems(colorEncodeSelect.value, sizeEncodeSelect.value, graphModeSelect.value, singleSeq),
     colorEncodeSelect.value,
-    cachedData?.sequence || []
+    singleSeq
   );
 
   // Comparison-mode legend: render only when the comparison data is loaded.
-  // Use the first session's sequence as a representative for duration / phase
-  // legend computation (it's only used to populate the gradient endpoints).
   const comparisonLegendStrip = document.getElementById("comparisonLegendStrip");
   if (comparisonLegendStrip && comparisonSessionPayloads.length > 0) {
-    const repSeq = comparisonSessionPayloads[0].sequence || [];
+    
+    // Combine the sequences of ALL active sessions to ensure the comparison
+    // legend shows every category present across the merged graph.
+    let combinedSeq = [];
+    comparisonSessionPayloads.forEach((payload) => {
+      if (payload.sequence) combinedSeq = combinedSeq.concat(payload.sequence);
+    });
+
     buildLegend(
       comparisonLegendStrip,
-      getLegendItems(colorEncodeSelect.value, sizeEncodeSelect.value, graphModeSelect.value),
+      // Pass the combined sequence here
+      getLegendItems(colorEncodeSelect.value, sizeEncodeSelect.value, graphModeSelect.value, combinedSeq),
       colorEncodeSelect.value,
-      repSeq
+      combinedSeq
     );
   }
 }

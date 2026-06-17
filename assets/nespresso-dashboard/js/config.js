@@ -325,10 +325,15 @@ export const ACTION_TO_PHASE = {};
 // legend entries.
 // ─────────────────────────────────────────────────────────────────────────────
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Legend (Dynamically Filtered)
+// ─────────────────────────────────────────────────────────────────────────────
+
 export function getLegendItems(
   colorMode = "category",
   sizeMode = "frequency",
-  graphMode = "smart"
+  graphMode = "smart",
+  sequence = [] // <-- NEW: Accept the active sequence
 ) {
   let nodeColorItems;
 
@@ -345,23 +350,41 @@ export function getLegendItems(
     nodeColorItems = [{ type: "gradient", label: "Node color: mean duration" }];
 
   } else {
-    // "category" mode — 13 HD-EPIC canonical categories
-    // Representative verbs listed for each (3–4 most common in kitchen context)
-    nodeColorItems = [
-      { type: "dot", color: CATEGORY_COLORS.retrieve,   label: "retrieve — take, remove, scoop" },
-      { type: "dot", color: CATEGORY_COLORS.leave,      label: "leave — put, insert, serve" },
-      { type: "dot", color: CATEGORY_COLORS.manipulate, label: "manipulate — press, squeeze, shake" },
-      { type: "dot", color: CATEGORY_COLORS.merge,      label: "merge — pour, mix, add, fill" },
-      { type: "dot", color: CATEGORY_COLORS.split,      label: "split — cut, peel, break, crush" },
-      { type: "dot", color: CATEGORY_COLORS.access,     label: "access — open, turn-on, unscrew" },
-      { type: "dot", color: CATEGORY_COLORS.block,      label: "block — close, turn-off, wrap" },
-      { type: "dot", color: CATEGORY_COLORS.clean,      label: "clean — wash, dry, scrub" },
-      { type: "dot", color: CATEGORY_COLORS.distribute, label: "distribute — pour, sprinkle, spray" },
-      { type: "dot", color: CATEGORY_COLORS.monitor,    label: "monitor — check, wait, measure" },
-      { type: "dot", color: CATEGORY_COLORS.transition, label: "transition — move, carry" },
-      { type: "dot", color: CATEGORY_COLORS.sense,      label: "sense — eat, drink, smell, pat" },
-      { type: "dot", color: CATEGORY_COLORS.order,      label: "order — fold, sort" },
+    // "category" mode
+    
+    // 1. Scan the sequence to see which categories actually exist
+    const activeCategories = new Set();
+    if (sequence && sequence.length > 0) {
+      sequence.forEach(item => {
+        const verb = item.action.includes("(") ? item.action.split("(")[0] : item.action;
+        const category = VERB_TO_CATEGORY[verb] || "unknown";
+        activeCategories.add(category);
+      });
+    }
+
+    // 2. The master list of all 13 canonical categories
+    const allCategoryItems = [
+      { type: "dot", category: "retrieve",   color: CATEGORY_COLORS.retrieve,   label: "retrieve — take, remove, scoop" },
+      { type: "dot", category: "leave",      color: CATEGORY_COLORS.leave,      label: "leave — put, insert, serve" },
+      { type: "dot", category: "manipulate", color: CATEGORY_COLORS.manipulate, label: "manipulate — press, squeeze, shake" },
+      { type: "dot", category: "merge",      color: CATEGORY_COLORS.merge,      label: "merge — pour, mix, add, fill" },
+      { type: "dot", category: "split",      color: CATEGORY_COLORS.split,      label: "split — cut, peel, break, crush" },
+      { type: "dot", category: "access",     color: CATEGORY_COLORS.access,     label: "access — open, turn-on, unscrew" },
+      { type: "dot", category: "block",      color: CATEGORY_COLORS.block,      label: "block — close, turn-off, wrap" },
+      { type: "dot", category: "clean",      color: CATEGORY_COLORS.clean,      label: "clean — wash, dry, scrub" },
+      { type: "dot", category: "distribute", color: CATEGORY_COLORS.distribute, label: "distribute — pour, sprinkle, spray" },
+      { type: "dot", category: "monitor",    color: CATEGORY_COLORS.monitor,    label: "monitor — check, wait, measure" },
+      { type: "dot", category: "transition", color: CATEGORY_COLORS.transition, label: "transition — move, carry" },
+      { type: "dot", category: "sense",      color: CATEGORY_COLORS.sense,      label: "sense — eat, drink, smell, pat" },
+      { type: "dot", category: "order",      color: CATEGORY_COLORS.order,      label: "order — fold, sort" },
     ];
+
+    // 3. Filter the master list (fallback to all if no sequence is loaded yet)
+    if (sequence && sequence.length > 0) {
+      nodeColorItems = allCategoryItems.filter(item => activeCategories.has(item.category));
+    } else {
+      nodeColorItems = allCategoryItems;
+    }
   }
 
   const nodeSizeLabel =
