@@ -10,23 +10,28 @@
   "steps": [
     {
       "id": "P01_R01_S01",
-      "text": "Put one capsule into the coffee machine."
+      "text": "Put one capsule into the coffee machine.",
+      "label": "load coffee capsule"
     },
     {
       "id": "P01_R01_S02",
-      "text": "Press the long coffee button"
+      "text": "Press the long coffee button",
+      "label": "brew espresso"
     },
     {
       "id": "P01_R01_S03",
-      "text": "Pour minimum amount of milk into the frother"
+      "text": "Pour minimum amount of milk into the frother",
+      "label": "froth milk"
     },
     {
       "id": "P01_R01_S04",
-      "text": "Add the frothed milk into the coffee"
+      "text": "Add the frothed milk into the coffee",
+      "label": "pour foam in coffee"
     },
     {
       "id": "P01_R01_S05",
-      "text": "Stir"
+      "text": "Stir",
+      "label": "stir"
     }
   ],
   "sequence": [
@@ -39,7 +44,8 @@
       "next_action": "feel(cupboard)",
       "edge_key": "put(plate)|||feel(cupboard)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(plate)"
     },
     {
       "index": 1,
@@ -50,7 +56,8 @@
       "next_action": "lift(pot)",
       "edge_key": "feel(cupboard)|||lift(pot)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "feel(cupboard)"
     },
     {
       "index": 2,
@@ -61,7 +68,8 @@
       "next_action": "take(cup)",
       "edge_key": "lift(pot)|||take(cup)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "lift(pot)"
     },
     {
       "index": 3,
@@ -72,7 +80,8 @@
       "next_action": "put(pot)",
       "edge_key": "take(cup)|||put(pot)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(cup)"
     },
     {
       "index": 4,
@@ -83,7 +92,8 @@
       "next_action": "turn(cup)",
       "edge_key": "put(pot)|||turn(cup)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(pot)"
     },
     {
       "index": 5,
@@ -94,7 +104,8 @@
       "next_action": "lift(shelf)",
       "edge_key": "turn(cup)|||lift(shelf)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn(cup)"
     },
     {
       "index": 6,
@@ -105,7 +116,8 @@
       "next_action": "put(cup)",
       "edge_key": "lift(shelf)|||put(cup)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "lift(shelf)"
     },
     {
       "index": 7,
@@ -116,7 +128,8 @@
       "next_action": "press(button)",
       "edge_key": "put(cup)|||press(button)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(cup)"
     },
     {
       "index": 8,
@@ -127,7 +140,8 @@
       "next_action": "lift(lid)",
       "edge_key": "press(button)|||lift(lid)",
       "step_id": "P01_R01_S02",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "press(button)"
     },
     {
       "index": 9,
@@ -138,7 +152,8 @@
       "next_action": "hold(water)",
       "edge_key": "lift(lid)|||hold(water)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "lift(lid)"
     },
     {
       "index": 10,
@@ -149,7 +164,8 @@
       "next_action": "take(jug)",
       "edge_key": "hold(water)|||take(jug)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "hold(water)"
     },
     {
       "index": 11,
@@ -160,7 +176,8 @@
       "next_action": "pour(water)",
       "edge_key": "take(jug)|||pour(water)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(jug)"
     },
     {
       "index": 12,
@@ -171,7 +188,8 @@
       "next_action": "put(jug)",
       "edge_key": "pour(water)|||put(jug)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "pour(water)"
     },
     {
       "index": 13,
@@ -182,7 +200,8 @@
       "next_action": "close(lid)",
       "edge_key": "put(jug)|||close(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(jug)"
     },
     {
       "index": 14,
@@ -193,7 +212,8 @@
       "next_action": "put(water)",
       "edge_key": "close(lid)|||put(water)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(lid)"
     },
     {
       "index": 15,
@@ -204,7 +224,8 @@
       "next_action": "take(box)",
       "edge_key": "put(water)|||take(box)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(water)"
     },
     {
       "index": 16,
@@ -215,7 +236,8 @@
       "next_action": "put(box)",
       "edge_key": "take(box)|||put(box)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(box)"
     },
     {
       "index": 17,
@@ -226,7 +248,8 @@
       "next_action": "open(box)",
       "edge_key": "put(box)|||open(box)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(box)"
     },
     {
       "index": 18,
@@ -237,7 +260,8 @@
       "next_action": "take(coffee)",
       "edge_key": "open(box)|||take(coffee)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(box)"
     },
     {
       "index": 19,
@@ -248,7 +272,8 @@
       "next_action": "open(drawer)",
       "edge_key": "take(coffee)|||open(drawer)",
       "step_id": "P01_R01_S01",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "take(coffee)"
     },
     {
       "index": 20,
@@ -259,7 +284,8 @@
       "next_action": "put(coffee)",
       "edge_key": "open(drawer)|||put(coffee)",
       "step_id": "P01_R01_S01",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "open(drawer)"
     },
     {
       "index": 21,
@@ -270,7 +296,8 @@
       "next_action": "close(machine:washing)",
       "edge_key": "put(coffee)|||close(machine:washing)",
       "step_id": "P01_R01_S01",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "put(coffee)"
     },
     {
       "index": 22,
@@ -281,7 +308,8 @@
       "next_action": "open(fridge)",
       "edge_key": "close(machine:washing)|||open(fridge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(machine:washing)"
     },
     {
       "index": 23,
@@ -292,7 +320,8 @@
       "next_action": "take(bottle)",
       "edge_key": "open(fridge)|||take(bottle)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(fridge)"
     },
     {
       "index": 24,
@@ -303,7 +332,8 @@
       "next_action": "take(can)",
       "edge_key": "take(bottle)|||take(can)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(bottle)"
     },
     {
       "index": 25,
@@ -314,7 +344,8 @@
       "next_action": "turn(can)",
       "edge_key": "take(can)|||turn(can)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(can)"
     },
     {
       "index": 26,
@@ -325,7 +356,8 @@
       "next_action": "look(can)",
       "edge_key": "turn(can)|||look(can)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn(can)"
     },
     {
       "index": 27,
@@ -336,7 +368,8 @@
       "next_action": "look(alarm)",
       "edge_key": "look(can)|||look(alarm)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "look(can)"
     },
     {
       "index": 28,
@@ -347,7 +380,8 @@
       "next_action": "close(fridge)",
       "edge_key": "look(alarm)|||close(fridge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "look(alarm)"
     },
     {
       "index": 29,
@@ -358,7 +392,8 @@
       "next_action": "open(bin)",
       "edge_key": "close(fridge)|||open(bin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(fridge)"
     },
     {
       "index": 30,
@@ -369,7 +404,8 @@
       "next_action": "throw(can)",
       "edge_key": "open(bin)|||throw(can)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(bin)"
     },
     {
       "index": 31,
@@ -380,7 +416,8 @@
       "next_action": "close(bin)",
       "edge_key": "throw(can)|||close(bin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "throw(can)"
     },
     {
       "index": 32,
@@ -391,7 +428,8 @@
       "next_action": "lift(lid)",
       "edge_key": "close(bin)|||lift(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(bin)"
     },
     {
       "index": 33,
@@ -402,7 +440,8 @@
       "next_action": "put(lid)",
       "edge_key": "lift(lid)|||put(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "lift(lid)"
     },
     {
       "index": 34,
@@ -413,7 +452,8 @@
       "next_action": "open(bottle)",
       "edge_key": "put(lid)|||open(bottle)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(lid)"
     },
     {
       "index": 35,
@@ -424,7 +464,8 @@
       "next_action": "pour(milk)",
       "edge_key": "open(bottle)|||pour(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(bottle)"
     },
     {
       "index": 36,
@@ -435,7 +476,8 @@
       "next_action": "close(bottle)",
       "edge_key": "pour(milk)|||close(bottle)",
       "step_id": "P01_R01_S03",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "pour(milk)"
     },
     {
       "index": 37,
@@ -446,7 +488,8 @@
       "next_action": "press(button)",
       "edge_key": "close(bottle)|||press(button)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(bottle)"
     },
     {
       "index": 38,
@@ -457,7 +500,8 @@
       "next_action": "press(button)",
       "edge_key": "press(button)|||press(button)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "press(button)"
     },
     {
       "index": 39,
@@ -468,7 +512,8 @@
       "next_action": "open(fridge)",
       "edge_key": "press(button)|||open(fridge)",
       "step_id": "P01_R01_S02",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "press(button)"
     },
     {
       "index": 40,
@@ -479,7 +524,8 @@
       "next_action": "put(bottle)",
       "edge_key": "open(fridge)|||put(bottle)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(fridge)"
     },
     {
       "index": 41,
@@ -490,7 +536,8 @@
       "next_action": "close(fridge)",
       "edge_key": "put(bottle)|||close(fridge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(bottle)"
     },
     {
       "index": 42,
@@ -501,7 +548,8 @@
       "next_action": "open(box)",
       "edge_key": "close(fridge)|||open(box)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(fridge)"
     },
     {
       "index": 43,
@@ -512,7 +560,8 @@
       "next_action": "take(spoon)",
       "edge_key": "open(box)|||take(spoon)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(box)"
     },
     {
       "index": 44,
@@ -523,7 +572,8 @@
       "next_action": "press(button)",
       "edge_key": "take(spoon)|||press(button)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(spoon)"
     },
     {
       "index": 45,
@@ -534,7 +584,8 @@
       "next_action": "take(cup)",
       "edge_key": "press(button)|||take(cup)",
       "step_id": "P01_R01_S02",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "press(button)"
     },
     {
       "index": 46,
@@ -545,7 +596,8 @@
       "next_action": "take(milk)",
       "edge_key": "take(cup)|||take(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(cup)"
     },
     {
       "index": 47,
@@ -556,7 +608,8 @@
       "next_action": "pour(milk)",
       "edge_key": "take(milk)|||pour(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(milk)"
     },
     {
       "index": 48,
@@ -567,7 +620,8 @@
       "next_action": "put(milk)",
       "edge_key": "pour(milk)|||put(milk)",
       "step_id": "P01_R01_S04",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "pour(milk)"
     },
     {
       "index": 49,
@@ -578,7 +632,8 @@
       "next_action": "open(tap)",
       "edge_key": "put(milk)|||open(tap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(milk)"
     },
     {
       "index": 50,
@@ -589,7 +644,8 @@
       "next_action": "wash(milk)",
       "edge_key": "open(tap)|||wash(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(tap)"
     },
     {
       "index": 51,
@@ -600,7 +656,8 @@
       "next_action": "remove(top)",
       "edge_key": "wash(milk)|||remove(top)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "wash(milk)"
     },
     {
       "index": 52,
@@ -611,7 +668,8 @@
       "next_action": "put(plate)",
       "edge_key": "remove(top)|||put(plate)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "remove(top)"
     },
     {
       "index": 53,
@@ -622,7 +680,8 @@
       "next_action": "take(sponge)",
       "edge_key": "put(plate)|||take(sponge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(plate)"
     },
     {
       "index": 54,
@@ -633,7 +692,8 @@
       "next_action": "wash(milk)",
       "edge_key": "take(sponge)|||wash(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(sponge)"
     },
     {
       "index": 55,
@@ -644,7 +704,8 @@
       "next_action": "put(sponge)",
       "edge_key": "wash(milk)|||put(sponge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "wash(milk)"
     },
     {
       "index": 56,
@@ -655,7 +716,8 @@
       "next_action": "wash(milk)",
       "edge_key": "put(sponge)|||wash(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(sponge)"
     },
     {
       "index": 57,
@@ -666,7 +728,8 @@
       "next_action": "close(tap)",
       "edge_key": "wash(milk)|||close(tap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "wash(milk)"
     },
     {
       "index": 58,
@@ -677,7 +740,8 @@
       "next_action": "take(top)",
       "edge_key": "close(tap)|||take(top)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(tap)"
     },
     {
       "index": 59,
@@ -688,7 +752,8 @@
       "next_action": "put(top)",
       "edge_key": "take(top)|||put(top)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(top)"
     },
     {
       "index": 60,
@@ -699,7 +764,8 @@
       "next_action": "put(milk)",
       "edge_key": "put(top)|||put(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(top)"
     },
     {
       "index": 61,
@@ -710,7 +776,8 @@
       "next_action": "take(cup)",
       "edge_key": "put(milk)|||take(cup)",
       "step_id": "P01_R01_S05",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "put(milk)"
     },
     {
       "index": 62,
@@ -721,7 +788,8 @@
       "next_action": "mix(coffee)",
       "edge_key": "take(cup)|||mix(coffee)",
       "step_id": "P01_R01_S05",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "take(cup)"
     },
     {
       "index": 63,
@@ -732,7 +800,8 @@
       "next_action": "lift(colander)",
       "edge_key": "mix(coffee)|||lift(colander)",
       "step_id": "P01_R01_S05",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "mix(coffee)"
     },
     {
       "index": 64,
@@ -743,7 +812,8 @@
       "next_action": "open(bin)",
       "edge_key": "lift(colander)|||open(bin)",
       "step_id": "P01_R01_S05",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "lift(colander)"
     },
     {
       "index": 65,
@@ -754,7 +824,8 @@
       "next_action": "throw(spoon)",
       "edge_key": "open(bin)|||throw(spoon)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(bin)"
     },
     {
       "index": 66,
@@ -765,7 +836,8 @@
       "next_action": "close(bin)",
       "edge_key": "throw(spoon)|||close(bin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "throw(spoon)"
     },
     {
       "index": 67,
@@ -776,7 +848,8 @@
       "next_action": null,
       "edge_key": null,
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(bin)"
     }
   ],
   "graph": {

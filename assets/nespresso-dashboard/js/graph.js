@@ -1,7 +1,66 @@
 import { nodeColor } from "./utils.js";
-import { ACTION_TO_PHASE, PHASE_COLORS, VERB_COLORS, CATEGORY_CLUSTER_CENTERS, PHASE_CLUSTER_CENTERS, getStepPhaseColor } from "./config.js";
+import {
+  PHASE_COLORS,
+  VERB_COLORS,
+  CATEGORY_CLUSTER_CENTERS,
+  PHASE_CLUSTER_CENTERS,
+  getStepPhaseColor,
+  getVerbCategory,
+  supportToOpacity,
+  HRI_ROLES,
+  HRI_CENTERS,
+} from "./config.js";
 
 const d3 = window.d3;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// HRI role time-budget
+//
+// Computed from the SEQUENCE by summed DURATION, so the role percentages are
+// INVARIANT across detail levels (full / smart / abstracted). The previous
+// node-count basis drifted when smart-merge collapsed nodes, and broke entirely
+// in abstracted mode (node ids are step labels like "S01", not verbs, so every
+// node fell through to the "human" default → ~100% human-led). See research
+// notes on counting by time, not node count (cf. Hart & Staveland 1988).
+//
+// Each sequence item carries the real verb-noun action: directly in `action`
+// for full/smart, and in `raw_action` for abstracted (where `action` is "S01").
+// ─────────────────────────────────────────────────────────────────────────────
+function computeHriDurationBudget(sequence) {
+  const roleSeconds = { robot: 0, collab: 0, human: 0 };
+
+  (sequence || []).forEach((item) => {
+    // Prefer the real verb-noun action; in abstracted mode item.action is "S01"
+    // but item.raw_action carries the underlying "verb(noun)".
+    const actionStr = item.raw_action || item.action || "";
+    if (!actionStr) return;
+
+    const verb = actionStr.includes("(") ? actionStr.split("(")[0] : actionStr;
+    const category = getVerbCategory(verb) || "unknown";
+    const role = HRI_ROLES[category] || "human";
+
+    // Guard against missing/NaN durations so one bad item can't poison totals.
+    const dur = Number.isFinite(item.duration) ? item.duration : 0;
+    roleSeconds[role] = (roleSeconds[role] || 0) + dur;
+  });
+
+  const total = roleSeconds.robot + roleSeconds.collab + roleSeconds.human;
+  return { roleSeconds, total };
+}
+
+// Round a {key: percent} object so the integer percents sum to exactly 100.
+// Avoids "44 + 36 + 20" sometimes displaying as 99 or 101 from independent
+// rounding. Largest-remainder (Hamilton) method.
+function largestRemainderRound(pctObj) {
+  const entries = Object.entries(pctObj);
+  const floors = entries.map(([k, v]) => [k, Math.floor(v), v - Math.floor(v)]);
+  const used = floors.reduce((s, [, f]) => s + f, 0);
+  const remaining = Math.max(0, 100 - used);
+  floors.sort((a, b) => b[2] - a[2]); // largest fractional parts first
+  const out = {};
+  floors.forEach(([k, f], i) => { out[k] = f + (i < remaining ? 1 : 0); });
+  return out;
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Lane assignment
@@ -23,18 +82,18 @@ function computeTemporalLayout(nodes, sequence, { maxRadius = 18 } = {}) {
   const nodeLookup = makeNodeLookup(nodes);
 
   const onsetMap = {};
-  sequence.forEach(item => {
+  sequence.forEach((item) => {
     if (!onsetMap[item.action]) onsetMap[item.action] = [];
     onsetMap[item.action].push(item.start);
   });
 
   const totalDuration = sequence[sequence.length - 1]?.end || 1;
   const meanOnset = {};
-  nodes.forEach(n => {
-    if (n.id === "START") { meanOnset["START"] = 0; return; }
-    if (n.id === "END") { meanOnset["END"] = totalDuration; return; }
+  nodes.forEach((n) => {
+    if (n.id === "START") { meanOnset.START = 0; return; }
+    if (n.id === "END") { meanOnset.END = totalDuration; return; }
     const times = onsetMap[n.id] || [0];
-    meanOnset[n.id] = times.reduce((s, v) => s + v, 0) / times.length;
+    meanOnset[n.id] = times.reduce((sum, v) => sum + v, 0) / times.length;
   });
 
   const CANVAS_WIDTH = 2200;
@@ -45,7 +104,7 @@ function computeTemporalLayout(nodes, sequence, { maxRadius = 18 } = {}) {
 
   const primaryBuckets = {};
   const secondaryBuckets = {};
-  nodes.forEach(n => {
+  nodes.forEach((n) => {
     const rawX = xScale(meanOnset[n.id] || 0);
     const bucketKey = Math.round(rawX / BUCKET_PX) * BUCKET_PX;
     const targetBuckets = isSecondaryNode(nodeLookup[n.id]) ? secondaryBuckets : primaryBuckets;
@@ -72,7 +131,7 @@ function computeTemporalLayout(nodes, sequence, { maxRadius = 18 } = {}) {
     });
   });
 
-  const START_X = layout["START"]?.x || 0;
+  const START_X = layout.START?.x || 0;
   const START_R = 18;
   Object.entries(layout).forEach(([id, pos]) => {
     if (id === "START" || id === "END") return;
@@ -86,6 +145,7 @@ function computeTemporalLayout(nodes, sequence, { maxRadius = 18 } = {}) {
 
 function computeCategoryLayout(nodes, sequence, graphMode) {
   const nodeLookup = makeNodeLookup(nodes);
+
   function getClusterCenter(nodeId) {
     if (nodeId === "START") return { cx: -400, cy: 0 };
     if (nodeId === "END") return { cx: 400, cy: 0 };
@@ -95,8 +155,8 @@ function computeCategoryLayout(nodes, sequence, graphMode) {
     return CATEGORY_CLUSTER_CENTERS[verb] || { cx: 0, cy: 0 };
   }
 
-  const primaryNodes = nodes.filter(n => !isSecondaryNode(nodeLookup[n.id]));
-  const secondaryNodes = nodes.filter(n => isSecondaryNode(nodeLookup[n.id]));
+  const primaryNodes = nodes.filter((n) => !isSecondaryNode(nodeLookup[n.id]));
+  const secondaryNodes = nodes.filter((n) => isSecondaryNode(nodeLookup[n.id]));
 
   const clusters = {};
   primaryNodes.forEach((node) => {
@@ -111,6 +171,7 @@ function computeCategoryLayout(nodes, sequence, graphMode) {
     if (!onsetMap[item.action]) onsetMap[item.action] = [];
     onsetMap[item.action].push(item.start);
   });
+
   const meanOnset = {};
   nodes.forEach((node) => {
     if (node.id === "START") { meanOnset[node.id] = 0; return; }
@@ -124,7 +185,10 @@ function computeCategoryLayout(nodes, sequence, graphMode) {
   Object.values(clusters).forEach(({ center, ids }) => {
     const sorted = [...ids].sort((a, b) => (meanOnset[a] || 0) - (meanOnset[b] || 0));
     const count = sorted.length;
-    if (count === 1) { layout[sorted[0]] = { x: center.cx, y: center.cy }; return; }
+    if (count === 1) {
+      layout[sorted[0]] = { x: center.cx, y: center.cy };
+      return;
+    }
     const cols = count <= 4 ? count : Math.ceil(count / 2);
     const rows = Math.ceil(count / cols);
     sorted.forEach((id, idx) => {
@@ -154,6 +218,7 @@ function computeCategoryLayout(nodes, sequence, graphMode) {
       isSecondary: true,
     };
   }
+
   return { layout, clusters };
 }
 
@@ -310,7 +375,11 @@ function getArcPath(link, layout, radiusMap) {
 
 function getNodeLabel(node, mode) {
   if (node.isSpecial) return node.id;
-  if (mode === "abstracted") return node.id;
+  if (mode === "abstracted") {
+    // Prefer the LLM/human step label (carried on the node as `step_label`);
+    // fall back to the step id ("S01") so the node is never blank.
+    return node.step_label || node.id;
+  }
   const verb = node.id.split("(")[0];
   return verb.length > 7 ? verb.slice(0, 6) + "..." : verb;
 }
@@ -329,53 +398,60 @@ function makeNodeSizeMap(filteredNodes, nodeDurationStats, sizeMode, nodeRadiusB
     });
     return result;
   }
+
   if (sizeMode === "duration") {
     const getValue = (nodeId) => {
       const stats = nodeDurationStats[nodeId];
       if (!stats) return 0;
       return graphMode === "abstracted" ? stats.total : stats.mean;
     };
+
     const vals = filteredNodes
       .filter((d) => !d.isSpecial)
       .map((d) => getValue(d.id))
       .filter((v) => isFinite(v) && v > 0);
+
     const sizeScale = d3.scaleLinear()
       .domain([d3.min(vals) || 0, d3.max(vals) || 1])
       .range([18, 36]);
+
     const result = {};
     filteredNodes.forEach((d) => {
       result[d.id] = d.isSpecial ? 18 : sizeScale(getValue(d.id));
     });
     return result;
   }
+
   if (sizeMode === "support") {
-    // Used only for the merged-graph view. Maps support [1..nSessions]
-    // linearly to radius. Nodes without a support field (single-session) get
-    // the small default so this falls back gracefully if misapplied.
     const supports = filteredNodes
       .filter((d) => !d.isSpecial && d.support !== undefined)
       .map((d) => d.support);
+
     if (supports.length === 0) {
-      // No support data — fall back to frequency
       const fallback = {};
       filteredNodes.forEach((d) => {
         fallback[d.id] = d.isSpecial ? 18 : nodeRadiusByCount(d.count);
       });
       return fallback;
     }
+
     const maxSupport = Math.max(...supports);
     const minSupport = Math.min(...supports);
-    // If all nodes have the same support, use a fixed middle size
     const sizeScale = (maxSupport === minSupport)
       ? () => 28
       : d3.scaleLinear().domain([minSupport, maxSupport]).range([18, 36]);
+
     const result = {};
     filteredNodes.forEach((d) => {
-      if (d.isSpecial) { result[d.id] = 18; return; }
+      if (d.isSpecial) {
+        result[d.id] = 18;
+        return;
+      }
       result[d.id] = d.support !== undefined ? sizeScale(d.support) : 22;
     });
     return result;
   }
+
   const result = {};
   filteredNodes.forEach((d) => {
     result[d.id] = d.isSpecial ? 18 : nodeRadiusByCount(d.count);
@@ -449,6 +525,57 @@ export function createGraphController({
 }) {
   const svg = d3.select(svgSelector);
   const graphWrapEl = document.querySelector(graphWrapSelector);
+  let bgLayer = null;
+  let gLinks = null;
+
+  function drawHRIBackgrounds(show, counts = {}, totalNodes = 1) {
+    bgLayer.selectAll("*").remove();
+    if (!show) return;
+
+    const zones = Object.entries(HRI_CENTERS).map(([id, zone]) => ({ id, ...zone }));
+
+    bgLayer.selectAll(".hri-zone")
+      .data(zones)
+      .enter()
+      .append("circle")
+      .attr("cx", (d) => d.x)
+      .attr("cy", (d) => d.y)
+      .attr("r", 150)
+      .style("fill", "#f8fafc")
+      .style("stroke", "#e2e8f0")
+      .style("stroke-width", "2px")
+      .style("stroke-dasharray", "4 4");
+
+    bgLayer.selectAll(".hri-title")
+      .data(zones)
+      .enter()
+      .append("text")
+      .attr("x", (d) => d.x)
+      .attr("y", (d) => d.y - 170)
+      .attr("text-anchor", "middle")
+      .style("font-weight", "bold")
+      .style("font-size", "14px")
+      .style("fill", "#334155")
+      .text((d) => {
+        // counts[] now carries integer PERCENTAGES (duration-based) and
+        // totalNodes is passed as 100, so this arithmetic yields the percent
+        // directly. See computeHriDurationBudget() + largestRemainderRound().
+        const count = counts[d.id] || 0;
+        const pct = totalNodes > 0 ? Math.round((count / totalNodes) * 100) : 0;
+        return `${d.title} — ${pct}%`;
+      });
+
+    bgLayer.selectAll(".hri-subtitle")
+      .data(zones)
+      .enter()
+      .append("text")
+      .attr("x", (d) => d.x)
+      .attr("y", (d) => d.y - 155)
+      .attr("text-anchor", "middle")
+      .style("font-size", "12px")
+      .style("fill", "#64748b")
+      .text((d) => d.subtitle);
+  }
 
   let linkSelection = null;
   let nodeSelection = null;
@@ -606,6 +733,8 @@ export function createGraphController({
       .append("path").attr("d", "M0,-4L10,0L0,4Z").attr("fill", "#94a3b8");
 
     const zoomGroup = svg.append("g").attr("id", "zoomGroup");
+    bgLayer = zoomGroup.append("g").attr("class", "hri-backgrounds");
+    gLinks = zoomGroup.append("g").attr("class", "edges");
 
     const nodeLabels = new Map();
     filteredNodes.forEach((node) => { nodeLabels.set(node.id, getNodeLabel(node, currentMode)); });
@@ -622,11 +751,94 @@ export function createGraphController({
     let xScale = null;
 
     if (layoutMode === "temporal") {
+      drawHRIBackgrounds(false);
       const t = computeTemporalLayout(filteredNodes, sequence, { maxRadius });
       layout = t.layout; totalDuration = t.totalDuration; xScale = t.xScale;
     } else {
-      const c = computeCategoryLayout(filteredNodes, sequence, mode);
-      layout = c.layout; clusters = c.clusters;
+      // Group nodes by role for LAYOUT positioning.
+      const roleNodes = { robot: [], collab: [], human: [] };
+      filteredNodes.forEach((n) => {
+        if (n.isSpecial) return;
+        // In abstracted mode n.id is "S01"; recover a representative verb from
+        // the node's raw_actions (most frequent underlying action) so the node
+        // lands in the right role cluster. Otherwise read the verb off the id.
+        let verb;
+        if (mode === "abstracted" && n.raw_actions) {
+          const top = Object.entries(n.raw_actions).sort((a, b) => b[1] - a[1])[0];
+          const act = top ? top[0] : n.id;
+          verb = act.includes("(") ? act.split("(")[0] : act;
+        } else {
+          verb = n.id.includes("(") ? n.id.split("(")[0] : n.id;
+        }
+        const category = getVerbCategory(verb) || "unknown";
+        const role = HRI_ROLES[category] || "human";
+        if (!roleNodes[role]) roleNodes[role] = [];
+        roleNodes[role].push(n);
+      });
+
+      // Header PERCENTAGES come from DURATION, computed off the sequence —
+      // invariant across detail levels (full / smart / abstracted). Convert to
+      // integer percents that sum to exactly 100, then pass with total=100 so
+      // drawHRIBackgrounds' (count/total*100) arithmetic yields the percent.
+      const { roleSeconds, total } = computeHriDurationBudget(sequence);
+      const pct = (s) => (total > 0 ? (s / total) * 100 : 0);
+      const rawPct = {
+        robot: pct(roleSeconds.robot),
+        collab: pct(roleSeconds.collab),
+        human: pct(roleSeconds.human),
+      };
+      const roleCounts = largestRemainderRound(rawPct);
+      const totalRoleNodes = 100;
+
+      drawHRIBackgrounds(true, roleCounts, totalRoleNodes);
+
+      gLinks.style("display", "none");
+      zoomGroup.selectAll(".lane-layer, .time-ruler").style("display", "none");
+      const zoneRadius = 150;
+      const zonePadding = 16;
+
+      const clampToZone = (x, y, center, nodeRadius) => {
+        const dx = x - center.x;
+        const dy = y - center.y;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        const maxDist = Math.max(0, zoneRadius - nodeRadius - zonePadding);
+        if (dist <= maxDist) return { x, y };
+        const scale = maxDist / dist;
+        return { x: center.x + dx * scale, y: center.y + dy * scale };
+      };
+
+      Object.entries(roleNodes).forEach(([role, nodes]) => {
+        if (!nodes || nodes.length === 0) return;
+
+        const center = HRI_CENTERS[role] || { x: 0, y: 0 };
+        const simNodes = nodes.map((node, idx) => ({
+          id: node.id,
+          radius: radiusMap[node.id] || 18,
+          x: center.x + Math.cos((idx / Math.max(nodes.length, 1)) * 2 * Math.PI - Math.PI / 2) * 48,
+          y: center.y + Math.sin((idx / Math.max(nodes.length, 1)) * 2 * Math.PI - Math.PI / 2) * 48,
+        }));
+
+        if (simNodes.length === 1) {
+          layout[simNodes[0].id] = { x: center.x, y: center.y };
+          return;
+        }
+
+        const sim = d3.forceSimulation(simNodes)
+          .alpha(1)
+          .alphaDecay(0.04)
+          .velocityDecay(0.35)
+          .force("x", d3.forceX(center.x).strength(0.16))
+          .force("y", d3.forceY(center.y).strength(0.16))
+          .force("collide", d3.forceCollide().radius((d) => (d.radius || 18) + 12).iterations(3))
+          .stop();
+
+        for (let i = 0; i < 180; i += 1) sim.tick();
+
+        simNodes.forEach((node) => {
+          const clamped = clampToZone(node.x, node.y, center, node.radius);
+          layout[node.id] = clamped;
+        });
+      });
     }
 
     Object.entries(userPositions).forEach(([id, pos]) => {
@@ -662,7 +874,9 @@ export function createGraphController({
     if (layoutMode === "category" && clusters) {
       drawClusterHulls(zoomGroup, clusters, layout, radiusMap, mode);
     }
-    drawLanes(zoomGroup, filteredNodes, layout, radiusMap);
+    if (layoutMode === "temporal") {
+      drawLanes(zoomGroup, filteredNodes, layout, radiusMap);
+    }
 
     // Edge width / opacity scales.
     // In merged-graph mode (showSupportBadges), drive both by support so
@@ -675,10 +889,10 @@ export function createGraphController({
       const maxSup = supports.length > 0 ? Math.max(...supports) : 1;
       if (minSup === maxSup) {
         edgeWidthScale = () => 2;
-        edgeOpacityScale = () => 0.6;
+        edgeOpacityScale = () => supportToOpacity(minSup, nSessionsHint || 1);
       } else {
         edgeWidthScale = d3.scaleLinear().domain([minSup, maxSup]).range([0.8, 5]);
-        edgeOpacityScale = d3.scaleLinear().domain([minSup, maxSup]).range([0.25, 0.85]);
+        edgeOpacityScale = (support) => supportToOpacity(support, nSessionsHint || 1);
       }
     } else {
       edgeMetricFn = (d) => d.count || 1;
@@ -745,7 +959,7 @@ export function createGraphController({
       }
     });
 
-    zoomGroup.append("g").selectAll("path.unidir")
+    gLinks.append("g").selectAll("path.unidir")
       .data(unidirectionalForward).enter().append("path")
       .attr("class", (d) => `link fwd-edge ${(d.count || 1) > medianCount ? "dominant" : "minor"}`)
       .attr("data-key", (d) => d.key)
@@ -762,7 +976,7 @@ export function createGraphController({
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
       .on("mouseout", hideEdgeTooltip);
 
-    zoomGroup.append("g").selectAll("path.bidir")
+    gLinks.append("g").selectAll("path.bidir")
       .data(bidirectionalForward).enter().append("path")
       .attr("class", "link bidir-edge")
       .attr("data-key", (d) => d.key)
@@ -1058,6 +1272,8 @@ export function createGraphController({
       const objectList = Object.entries(d.objects).map(([o, c]) => `  ${o}: ${c}`).join("\n");
       lines.push(`Objects:\n${objectList}`);
     }
+    // Show both the readable step label (if present) and the full step text.
+    if (d.step_label) lines.push(`Step: ${d.step_label}`);
     if (d.step_text) lines.push(`Step text: ${d.step_text}`);
 
     const tooltip = document.getElementById("nodeTooltip");

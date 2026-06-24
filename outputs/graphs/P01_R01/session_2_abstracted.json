@@ -10,23 +10,28 @@
   "steps": [
     {
       "id": "P01_R01_S01",
-      "text": "Put one capsule into the coffee machine."
+      "text": "Put one capsule into the coffee machine.",
+      "label": "load coffee capsule"
     },
     {
       "id": "P01_R01_S02",
-      "text": "Press the long coffee button"
+      "text": "Press the long coffee button",
+      "label": "brew espresso"
     },
     {
       "id": "P01_R01_S03",
-      "text": "Pour minimum amount of milk into the frother"
+      "text": "Pour minimum amount of milk into the frother",
+      "label": "froth milk"
     },
     {
       "id": "P01_R01_S04",
-      "text": "Add the frothed milk into the coffee"
+      "text": "Add the frothed milk into the coffee",
+      "label": "pour foam in coffee"
     },
     {
       "id": "P01_R01_S05",
-      "text": "Stir"
+      "text": "Stir",
+      "label": "stir"
     }
   ],
   "sequence": [
@@ -1092,6 +1097,7 @@
         "is_primary": true,
         "step_id": "P01_R01_S01",
         "step_text": "Put one capsule into the coffee machine.",
+        "step_label": "load coffee capsule",
         "raw_actions": {
           "take(coffee)": 1,
           "close(box)": 1,
@@ -1105,6 +1111,7 @@
         "is_primary": true,
         "step_id": "P01_R01_S02",
         "step_text": "Press the long coffee button",
+        "step_label": "brew espresso",
         "raw_actions": {
           "turn-on(machine:washing)": 1,
           "press(button)": 1,
@@ -1117,6 +1124,7 @@
         "is_primary": true,
         "step_id": "P01_R01_S03",
         "step_text": "Pour minimum amount of milk into the frother",
+        "step_label": "froth milk",
         "raw_actions": {
           "pour(milk)": 1
         }
@@ -1127,6 +1135,7 @@
         "is_primary": true,
         "step_id": "P01_R01_S04",
         "step_text": "Add the frothed milk into the coffee",
+        "step_label": "pour foam in coffee",
         "raw_actions": {
           "take(milk)": 1,
           "pat(milk)": 1,
@@ -1141,6 +1150,7 @@
         "is_primary": true,
         "step_id": "P01_R01_S05",
         "step_text": "Stir",
+        "step_label": "stir",
         "raw_actions": {
           "hold(cup)": 1,
           "hold(spoon)": 1,
@@ -1155,6 +1165,7 @@
         "is_primary": false,
         "step_id": "unassigned",
         "step_text": null,
+        "step_label": null,
         "raw_actions": {
           "open(fridge)": 2,
           "take(bottle)": 2,

@@ -1,10 +1,4 @@
-// app.js  —  Delivery 3B
-//
-// Extends 3A with:
-//   - merged-graph rendering in comparison mode (via a second graphController)
-//   - small-multiples view (via thumbnailGraph instances)
-//   - sub-mode toggle wired to swap between the two
-//   - support filter wired to re-render the merged graph
+// app.js
 
 import {
   getManifestUrl,
@@ -15,6 +9,8 @@ import {
   loadVerbCategories,
   getLegendItems,
   getStepPhaseColor,
+  buildStepLabelLookup,
+  resolveStepLabel
 } from "./config.js";
 
 import { createGraphController } from "./graph.js";
@@ -181,10 +177,18 @@ function refresh() {
 function rebuildLegend() {
   // Single-session legend: built from cachedData
   const singleSeq = cachedData?.sequence || [];
+  // Build the step-label lookup from whatever data is in scope. At init time
+  // cachedData is null, so guard with optional chaining and fall back to [].
+  const singleStepLabelLookup = buildStepLabelLookup(cachedData?.steps || []);
   buildLegend(
     legendStrip,
-    // Pass the sequence as the 4th argument here
-    getLegendItems(colorEncodeSelect.value, sizeEncodeSelect.value, graphModeSelect.value, singleSeq),
+    getLegendItems(
+      colorEncodeSelect.value,
+      sizeEncodeSelect.value,
+      graphModeSelect.value,
+      singleSeq,
+      singleStepLabelLookup
+    ),
     colorEncodeSelect.value,
     singleSeq
   );
@@ -192,18 +196,28 @@ function rebuildLegend() {
   // Comparison-mode legend: render only when the comparison data is loaded.
   const comparisonLegendStrip = document.getElementById("comparisonLegendStrip");
   if (comparisonLegendStrip && comparisonSessionPayloads.length > 0) {
-    
+
     // Combine the sequences of ALL active sessions to ensure the comparison
     // legend shows every category present across the merged graph.
     let combinedSeq = [];
-    comparisonSessionPayloads.forEach((payload) => {
-      if (payload.sequence) combinedSeq = combinedSeq.concat(payload.sequence);
+    comparisonSessionPayloads.forEach((sessionData) => {
+      if (sessionData.sequence) combinedSeq = combinedSeq.concat(sessionData.sequence);
     });
+
+    // All sessions of a recipe share the same steps, so the first payload's
+    // steps are a fine source for the label lookup.
+    const firstPayload = comparisonSessionPayloads[0]?.payload;
+    const comparisonStepLabelLookup = buildStepLabelLookup(firstPayload?.steps || []);
 
     buildLegend(
       comparisonLegendStrip,
-      // Pass the combined sequence here
-      getLegendItems(colorEncodeSelect.value, sizeEncodeSelect.value, graphModeSelect.value, combinedSeq),
+      getLegendItems(
+        colorEncodeSelect.value,
+        sizeEncodeSelect.value,
+        graphModeSelect.value,
+        combinedSeq,
+        comparisonStepLabelLookup
+      ),
       colorEncodeSelect.value,
       combinedSeq
     );
@@ -568,6 +582,22 @@ function renderMergedGraph() {
   const recipe = getCurrentRecipe();
   const nSessions = recipe.sessions.length;
   const supportFilterVal = parseInt(supportFilter.value, 10);
+
+  // Stamp step labels onto the merged nodes. The merged JSON (from
+  // 8_aggregate_sessions.py) has no step_label, but the per-session payloads do
+  // — all sessions share the same recipe steps, so build the lookup from the
+  // first session and apply it to each merged node by its step id.
+  const firstPayload = comparisonSessionPayloads[0]?.payload;
+  const stepLabelLookup = buildStepLabelLookup(firstPayload?.steps || []);
+  comparisonMergedPayload.graph.nodes.forEach((n) => {
+    if (n.step_label) return;                 // already labeled, leave it
+    // abstracted merged node id is the step's local id ("S01"); also try
+    // merged_step_id if present.
+    const sid = n.merged_step_id || n.id;
+    const label = resolveStepLabel(sid, stepLabelLookup);
+    // only stamp if we got a real label (not just the id echoed back)
+    if (label && label !== sid) n.step_label = label;
+  });
 
   // Synthesize a pseudo-sequence from each node's mean_normalized_onset.
   // graph.js's temporal layout uses sequence start times to place nodes;

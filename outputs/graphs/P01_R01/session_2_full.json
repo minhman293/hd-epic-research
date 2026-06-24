@@ -10,23 +10,28 @@
   "steps": [
     {
       "id": "P01_R01_S01",
-      "text": "Put one capsule into the coffee machine."
+      "text": "Put one capsule into the coffee machine.",
+      "label": "load coffee capsule"
     },
     {
       "id": "P01_R01_S02",
-      "text": "Press the long coffee button"
+      "text": "Press the long coffee button",
+      "label": "brew espresso"
     },
     {
       "id": "P01_R01_S03",
-      "text": "Pour minimum amount of milk into the frother"
+      "text": "Pour minimum amount of milk into the frother",
+      "label": "froth milk"
     },
     {
       "id": "P01_R01_S04",
-      "text": "Add the frothed milk into the coffee"
+      "text": "Add the frothed milk into the coffee",
+      "label": "pour foam in coffee"
     },
     {
       "id": "P01_R01_S05",
-      "text": "Stir"
+      "text": "Stir",
+      "label": "stir"
     }
   ],
   "sequence": [

@@ -9,6 +9,13 @@
 //     across every recipe in the dataset — no per-recipe hand-curation needed.
 //   - getLegendItems() updated: "Action category" legend now shows 13 category
 //     swatches with the canonical HD-EPIC category names.
+//
+// Step-label update:
+//   - buildStepLabelLookup() / resolveStepLabel(): map a step id ("S01" or
+//     "P01_R01_S01") to its short diagnostic label from step_labels.json
+//     (carried on payload.steps[].label). Falls back to the raw id so the UI
+//     never shows a blank. getLegendItems() now accepts a stepLabelLookup so the
+//     phase legend shows readable labels.
 
 const GRAPHS_BASE = "outputs/graphs";
 
@@ -243,6 +250,74 @@ export function getStepPhaseColor(stepLabel) {
   }
   return UNASSIGNED_PHASE_COLOR;
 }
+// Determine the sorted list of step local-ids ("S01", "S02", ...) that actually
+// exist for the current recipe. Tries the label lookup first (keys include
+// local ids), then the sequence's step_ids. Returns a de-duplicated, sorted
+// list so the legend shows exactly the recipe's steps — no phantom S06.
+function collectStepLocals(stepLabelLookup, sequence) {
+  const set = new Set();
+
+  // 1. from the label lookup keys (e.g. "S01", and full ids "P01_R01_S01")
+  if (stepLabelLookup) {
+    Object.keys(stepLabelLookup).forEach((k) => {
+      const m = String(k).match(/S\d{2}$/);
+      if (m) set.add(m[0]);
+    });
+  }
+
+  // 2. from the sequence's step_ids (covers cases where lookup was empty)
+  if (set.size === 0 && Array.isArray(sequence)) {
+    sequence.forEach((item) => {
+      const sid = item.step_id;
+      if (!sid) return;
+      const m = String(sid).match(/S\d{2}$/);
+      if (m) set.add(m[0]);
+    });
+  }
+
+  // 3. last-resort fallback so the legend isn't empty before data loads
+  if (set.size === 0) {
+    for (let i = 1; i <= 5; i++) set.add(`S${String(i).padStart(2, "0")}`);
+  }
+
+  return [...set].sort();  // "S01" < "S02" < ... lexical sort works for zero-padded
+}
+// ─────────────────────────────────────────────────────────────────────────────
+// Step label resolver (LLM/human labels from step_labels.json)
+//
+// Labels ride on each payload's `steps[].label` (and on abstracted nodes'
+// `step_label`). These helpers map a step id — full ("P01_R01_S01") or local
+// ("S01") — to its short diagnostic label, falling back to the local id if no
+// label is present so the UI never shows a blank node.
+//
+// Build the lookup ONCE when a payload loads:
+//     const stepLabelLookup = buildStepLabelLookup(payload.steps);
+// then pass it wherever a step id is shown to the user.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function buildStepLabelLookup(steps) {
+  const lookup = {};
+  (steps || []).forEach((s) => {
+    if (!s || !s.id) return;
+    const label = s.label || null;
+    lookup[s.id] = label;                 // full id  ("P01_R01_S01")
+    const local = String(s.id).split("_").pop();
+    if (local) lookup[local] = label;     // local id ("S01")
+  });
+  return lookup;
+}
+
+export function resolveStepLabel(stepIdOrLocal, lookup) {
+  if (!stepIdOrLocal) return stepIdOrLocal;
+  if (lookup) {
+    if (lookup[stepIdOrLocal]) return lookup[stepIdOrLocal];
+    const local = String(stepIdOrLocal).split("_").pop();
+    if (lookup[local]) return lookup[local];
+    return local || stepIdOrLocal;        // graceful fallback to the id itself
+  }
+  // no lookup available → just return the local part of the id
+  return String(stepIdOrLocal).split("_").pop() || stepIdOrLocal;
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Backward-compat exports (legacy phase system, kept stable)
@@ -327,22 +402,36 @@ export const ACTION_TO_PHASE = {};
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Legend (Dynamically Filtered)
+//
+// `stepLabelLookup` (optional): pass the result of buildStepLabelLookup(steps)
+// so the phase legend shows readable labels ("insert capsule") instead of S01.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function getLegendItems(
   colorMode = "category",
   sizeMode = "frequency",
   graphMode = "smart",
-  sequence = [] // <-- NEW: Accept the active sequence
+  sequence = [],          // active sequence (used to filter categories)
+  stepLabelLookup = null  // NEW: optional {stepId -> label} for the phase legend
 ) {
   let nodeColorItems;
 
   if (colorMode === "phase") {
     const items = [];
-    for (let i = 1; i <= 6; i++) {
-      const label = `S${String(i).padStart(2, "0")}`;
-      items.push({ type: "dot", color: getStepPhaseColor(label), label });
-    }
+
+    // Determine which steps actually exist for this recipe, rather than
+    // hardcoding S01..S06. Prefer the label lookup (built from payload.steps);
+    // fall back to scanning the sequence's step_ids; finally fall back to a
+    // small default range so the legend is never empty.
+    const stepLocals = collectStepLocals(stepLabelLookup, sequence);
+
+    stepLocals.forEach((local) => {
+      items.push({
+        type: "dot",
+        color: getStepPhaseColor(local),
+        label: resolveStepLabel(local, stepLabelLookup),
+      });
+    });
     items.push({ type: "dot", color: UNASSIGNED_PHASE_COLOR, label: "outside recipe step" });
     nodeColorItems = items;
 
@@ -411,3 +500,32 @@ export function getLegendItems(
     ],
   };
 }
+
+// HRI Role Mapping
+// Groups the 13 HD-EPIC categories into three collaborative roles
+export const HRI_ROLES = {
+  // Robot-led: Retrieval, transport
+  retrieve: "robot",
+  leave: "robot",
+  transition: "robot",
+  order: "robot",
+  
+  // Collaborative: State changes, monitoring, sensing
+  monitor: "collab",
+  access: "collab",
+  block: "collab",
+  
+  // Human-led: Dexterous manipulation, judgment, complex combination
+  manipulate: "human",
+  merge: "human",
+  split: "human",
+  distribute: "human",
+  sense: "human",
+   clean: "human",
+};
+
+export const HRI_CENTERS = {
+  robot:  { id: "robot", x: -350, y: 0, title: "Robot-led", subtitle: "(Retrieve, Transport)" },
+  collab: { id: "collab", x: 0,    y: 0, title: "Collaborative", subtitle: "(Monitor, State Change)" },
+  human:  { id: "human", x: 350,  y: 0, title: "Human-led", subtitle: "(Dexterous, Judgment)" }
+};

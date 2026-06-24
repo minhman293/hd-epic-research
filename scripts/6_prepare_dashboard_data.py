@@ -10,6 +10,11 @@ time range overlaps any annotated `step_times` window in the recipe.
 The "abstracted" (Task Phases) view now uses step_id as the phase identifier
 (Path B), so it works universally across recipes without per-recipe hand-curation.
 
+UPDATE (step labels): if outputs/step_labels.json exists (produced by
+9_generate_step_labels.py), each step's short diagnostic label is attached to
+the payload's `steps[].label` and to abstracted nodes' `step_label`. Missing
+labels are non-fatal — the frontend falls back to the raw step id.
+
 Usage:
   python 6_prepare_dashboard_data.py P01_R01
   python 6_prepare_dashboard_data.py P08_R01
@@ -55,6 +60,48 @@ def load_recipe_context(recipe_id, outputs_dir="../outputs"):
     with open(selected_path, "r", encoding="utf-8") as f:
         selected_recipe = json.load(f)
     return selected_recipe, narrations_path
+
+
+def load_step_labels(outputs_dir="../outputs"):
+    """
+    Load the offline-generated step labels (9_generate_step_labels.py).
+    Returns {step_id: label}. Missing file is non-fatal — we just fall back
+    to step ids downstream, so the dashboard degrades gracefully.
+    """
+    labels_path = Path(outputs_dir) / "step_labels.json"
+    if not labels_path.exists():
+        # also try repo-root / current dir as a convenience
+        for alt in (Path("step_labels.json"), Path("../step_labels.json")):
+            if alt.exists():
+                labels_path = alt
+                break
+    if not labels_path.exists():
+        print("  ⚠ step_labels.json not found — steps will show raw ids (S01...).")
+        return {}
+    # Read defensively: the file may have been written with Windows-1252 smart
+    # quotes (byte 0x92 etc.) rather than UTF-8. Try UTF-8 first, then fall back
+    # to cp1252 so a curly apostrophe in a step's `raw` text can't crash us.
+    raw = None
+    for enc in ("utf-8", "utf-8-sig", "cp1252"):
+        try:
+            with open(labels_path, "r", encoding=enc) as f:
+                raw = json.load(f)
+            if enc != "utf-8":
+                print(f"  ⚠ step_labels.json was not UTF-8; read it as {enc}. "
+                      f"Consider re-saving it as UTF-8.")
+            break
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            continue
+    if raw is None:
+        print("  ⚠ Could not decode step_labels.json in any known encoding — "
+              "steps will show raw ids (S01...).")
+        return {}
+    # accept either {sid: {"label": ...}} or {sid: "label"}
+    out = {}
+    for sid, val in raw.items():
+        out[sid] = val["label"] if isinstance(val, dict) else val
+    print(f"  ✓ Loaded {len(out)} step labels from {labels_path}")
+    return out
 
 
 def discover_sessions(recipe_meta, available_video_ids):
@@ -142,7 +189,8 @@ def compute_node_primary_majority(sequence):
 
 
 def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
-                       video_relative_dir="raw-video"):
+                       step_labels=None, video_relative_dir="raw-video"):
+    step_labels = step_labels or {}
     verb_classes = data["verb_classes"]
     noun_classes = data["noun_classes"]
     video_id = session["video_id"]
@@ -209,7 +257,11 @@ def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
         for (src, dst), c in sorted(edge_counts.items(), key=lambda x: (-x[1], x[0][0], x[0][1]))
     ]
     step_text = [
-        {"id": sid, "text": text.strip()}
+        {
+            "id": sid,
+            "text": text.strip(),
+            "label": step_labels.get(sid),   # may be None → frontend falls back
+        }
         for sid, text in recipe_meta.get("steps", {}).items()
     ]
 
@@ -242,6 +294,9 @@ def create_smart_merged_graph(payload):
         if noun:
             verb_objects[verb][noun] += 1
         m = seq_item.copy()
+        # preserve the original verb-noun so downstream consumers (e.g. the HRI
+        # duration budget) can recover the underlying action if needed.
+        m["raw_action"] = seq_item["action"]
         m["action"] = verb
         merged_sequence.append(m)
 
@@ -282,6 +337,7 @@ def create_abstracted_graph(payload):
     """
     UNASSIGNED = "unassigned"
     step_text_lookup = {step["id"]: step["text"] for step in payload.get("steps", [])}
+    step_label_lookup = {step["id"]: step.get("label") for step in payload.get("steps", [])}
 
     abstracted_sequence = []
     for seq_item in payload["sequence"]:
@@ -329,6 +385,7 @@ def create_abstracted_graph(payload):
             "is_primary": bool(node_primary.get(display_step, True)),
             "step_id": raw_step,
             "step_text": step_text,
+            "step_label": step_label_lookup.get(raw_step),  # NEW: LLM/human label
             "raw_actions": dict(step_actions[display_step]),
         })
 
@@ -361,6 +418,7 @@ def main():
 
     selected_recipe, narrations_path = load_recipe_context(recipe_id, args.outputs_dir)
     data = load_hd_epic_data("..")
+    step_labels = load_step_labels(args.outputs_dir)
     recipe_narrations = pd.read_pickle(narrations_path)
 
     recipe_meta = selected_recipe.get("recipe_data", {})
@@ -380,6 +438,7 @@ def main():
         print(f"\n[Session {s['index']}: {s['video_id']}]")
         payload_full = build_full_payload(
             data, recipe_id, recipe_meta, s, recipe_narrations,
+            step_labels=step_labels,
             video_relative_dir=args.video_relative_dir,
         )
         payload_smart = create_smart_merged_graph(payload_full)

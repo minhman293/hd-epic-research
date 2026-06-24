@@ -10,23 +10,28 @@
   "steps": [
     {
       "id": "P01_R01_S01",
-      "text": "Put one capsule into the coffee machine."
+      "text": "Put one capsule into the coffee machine.",
+      "label": "load coffee capsule"
     },
     {
       "id": "P01_R01_S02",
-      "text": "Press the long coffee button"
+      "text": "Press the long coffee button",
+      "label": "brew espresso"
     },
     {
       "id": "P01_R01_S03",
-      "text": "Pour minimum amount of milk into the frother"
+      "text": "Pour minimum amount of milk into the frother",
+      "label": "froth milk"
     },
     {
       "id": "P01_R01_S04",
-      "text": "Add the frothed milk into the coffee"
+      "text": "Add the frothed milk into the coffee",
+      "label": "pour foam in coffee"
     },
     {
       "id": "P01_R01_S05",
-      "text": "Stir"
+      "text": "Stir",
+      "label": "stir"
     }
   ],
   "sequence": [
@@ -39,7 +44,8 @@
       "next_action": "stretch(hand)",
       "edge_key": "open(cupboard)|||stretch(hand)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(cupboard)"
     },
     {
       "index": 1,
@@ -50,7 +56,8 @@
       "next_action": "take(cup)",
       "edge_key": "stretch(hand)|||take(cup)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "stretch(hand)"
     },
     {
       "index": 2,
@@ -61,7 +68,8 @@
       "next_action": "turn(cup)",
       "edge_key": "take(cup)|||turn(cup)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(cup)"
     },
     {
       "index": 3,
@@ -72,7 +80,8 @@
       "next_action": "close(cupboard)",
       "edge_key": "turn(cup)|||close(cupboard)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn(cup)"
     },
     {
       "index": 4,
@@ -83,7 +92,8 @@
       "next_action": "flip(maker:coffee)",
       "edge_key": "close(cupboard)|||flip(maker:coffee)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(cupboard)"
     },
     {
       "index": 5,
@@ -94,7 +104,8 @@
       "next_action": "put(cup)",
       "edge_key": "flip(maker:coffee)|||put(cup)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "flip(maker:coffee)"
     },
     {
       "index": 6,
@@ -105,7 +116,8 @@
       "next_action": "take(coffee)",
       "edge_key": "put(cup)|||take(coffee)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(cup)"
     },
     {
       "index": 7,
@@ -116,7 +128,8 @@
       "next_action": "press(button)",
       "edge_key": "take(coffee)|||press(button)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(coffee)"
     },
     {
       "index": 8,
@@ -127,7 +140,8 @@
       "next_action": "lift(handle)",
       "edge_key": "press(button)|||lift(handle)",
       "step_id": "P01_R01_S02",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "press(button)"
     },
     {
       "index": 9,
@@ -138,7 +152,8 @@
       "next_action": "slide(coffee)",
       "edge_key": "lift(handle)|||slide(coffee)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "lift(handle)"
     },
     {
       "index": 10,
@@ -149,7 +164,8 @@
       "next_action": "pull(handle)",
       "edge_key": "slide(coffee)|||pull(handle)",
       "step_id": "P01_R01_S01",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "slide(coffee)"
     },
     {
       "index": 11,
@@ -160,7 +176,8 @@
       "next_action": "open(fridge)",
       "edge_key": "pull(handle)|||open(fridge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "pull(handle)"
     },
     {
       "index": 12,
@@ -171,7 +188,8 @@
       "next_action": "take(bottle)",
       "edge_key": "open(fridge)|||take(bottle)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(fridge)"
     },
     {
       "index": 13,
@@ -182,7 +200,8 @@
       "next_action": "close(fridge)",
       "edge_key": "take(bottle)|||close(fridge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(bottle)"
     },
     {
       "index": 14,
@@ -193,7 +212,8 @@
       "next_action": "slide(milk)",
       "edge_key": "close(fridge)|||slide(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(fridge)"
     },
     {
       "index": 15,
@@ -204,7 +224,8 @@
       "next_action": "open(bottle)",
       "edge_key": "slide(milk)|||open(bottle)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "slide(milk)"
     },
     {
       "index": 16,
@@ -215,7 +236,8 @@
       "next_action": "lift(bottle)",
       "edge_key": "open(bottle)|||lift(bottle)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(bottle)"
     },
     {
       "index": 17,
@@ -226,7 +248,8 @@
       "next_action": "lift(bottle)",
       "edge_key": "lift(bottle)|||lift(bottle)",
       "step_id": "P01_R01_S03",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "lift(bottle)"
     },
     {
       "index": 18,
@@ -237,7 +260,8 @@
       "next_action": "turn-on(milk)",
       "edge_key": "lift(bottle)|||turn-on(milk)",
       "step_id": "P01_R01_S03",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "lift(bottle)"
     },
     {
       "index": 19,
@@ -248,7 +272,8 @@
       "next_action": "take(bottle)",
       "edge_key": "turn-on(milk)|||take(bottle)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn-on(milk)"
     },
     {
       "index": 20,
@@ -259,7 +284,8 @@
       "next_action": "open(fridge)",
       "edge_key": "take(bottle)|||open(fridge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(bottle)"
     },
     {
       "index": 21,
@@ -270,7 +296,8 @@
       "next_action": "put(bottle)",
       "edge_key": "open(fridge)|||put(bottle)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(fridge)"
     },
     {
       "index": 22,
@@ -281,7 +308,8 @@
       "next_action": "close(fridge)",
       "edge_key": "put(bottle)|||close(fridge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(bottle)"
     },
     {
       "index": 23,
@@ -292,7 +320,8 @@
       "next_action": "press(button)",
       "edge_key": "close(fridge)|||press(button)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(fridge)"
     },
     {
       "index": 24,
@@ -303,7 +332,8 @@
       "next_action": "open(drawer)",
       "edge_key": "press(button)|||open(drawer)",
       "step_id": "P01_R01_S02",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "press(button)"
     },
     {
       "index": 25,
@@ -314,7 +344,8 @@
       "next_action": "take(scissors)",
       "edge_key": "open(drawer)|||take(scissors)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(drawer)"
     },
     {
       "index": 26,
@@ -325,7 +356,8 @@
       "next_action": "remove(package)",
       "edge_key": "take(scissors)|||remove(package)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(scissors)"
     },
     {
       "index": 27,
@@ -336,7 +368,8 @@
       "next_action": "open(scissors)",
       "edge_key": "remove(package)|||open(scissors)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "remove(package)"
     },
     {
       "index": 28,
@@ -347,7 +380,8 @@
       "next_action": "take(orange)",
       "edge_key": "open(scissors)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(scissors)"
     },
     {
       "index": 29,
@@ -358,7 +392,8 @@
       "next_action": "take(orange)",
       "edge_key": "take(orange)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(orange)"
     },
     {
       "index": 30,
@@ -369,7 +404,8 @@
       "next_action": "take(orange)",
       "edge_key": "take(orange)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(orange)"
     },
     {
       "index": 31,
@@ -380,7 +416,8 @@
       "next_action": "wrap(scissors)",
       "edge_key": "take(orange)|||wrap(scissors)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(orange)"
     },
     {
       "index": 32,
@@ -391,7 +428,8 @@
       "next_action": "open(drawer)",
       "edge_key": "wrap(scissors)|||open(drawer)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "wrap(scissors)"
     },
     {
       "index": 33,
@@ -402,7 +440,8 @@
       "next_action": "put(scissors)",
       "edge_key": "open(drawer)|||put(scissors)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(drawer)"
     },
     {
       "index": 34,
@@ -413,7 +452,8 @@
       "next_action": "slide(board:chopping)",
       "edge_key": "put(scissors)|||slide(board:chopping)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(scissors)"
     },
     {
       "index": 35,
@@ -424,7 +464,8 @@
       "next_action": "take(food)",
       "edge_key": "slide(board:chopping)|||take(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "slide(board:chopping)"
     },
     {
       "index": 36,
@@ -435,7 +476,8 @@
       "next_action": "hold(food)",
       "edge_key": "take(food)|||hold(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(food)"
     },
     {
       "index": 37,
@@ -446,7 +488,8 @@
       "next_action": "remove(plug)",
       "edge_key": "hold(food)|||remove(plug)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "hold(food)"
     },
     {
       "index": 38,
@@ -457,7 +500,8 @@
       "next_action": "put(plug)",
       "edge_key": "remove(plug)|||put(plug)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "remove(plug)"
     },
     {
       "index": 39,
@@ -468,7 +512,8 @@
       "next_action": "press(plug)",
       "edge_key": "put(plug)|||press(plug)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(plug)"
     },
     {
       "index": 40,
@@ -479,7 +524,8 @@
       "next_action": "turn(lid)",
       "edge_key": "press(plug)|||turn(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "press(plug)"
     },
     {
       "index": 41,
@@ -490,7 +536,8 @@
       "next_action": "put(lid)",
       "edge_key": "turn(lid)|||put(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn(lid)"
     },
     {
       "index": 42,
@@ -501,7 +548,8 @@
       "next_action": "open(cupboard)",
       "edge_key": "put(lid)|||open(cupboard)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(lid)"
     },
     {
       "index": 43,
@@ -512,7 +560,8 @@
       "next_action": "move(package)",
       "edge_key": "open(cupboard)|||move(package)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(cupboard)"
     },
     {
       "index": 44,
@@ -523,7 +572,8 @@
       "next_action": "take(juicer)",
       "edge_key": "move(package)|||take(juicer)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "move(package)"
     },
     {
       "index": 45,
@@ -534,7 +584,8 @@
       "next_action": "close(cupboard)",
       "edge_key": "take(juicer)|||close(cupboard)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(juicer)"
     },
     {
       "index": 46,
@@ -545,7 +596,8 @@
       "next_action": "move(box)",
       "edge_key": "close(cupboard)|||move(box)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(cupboard)"
     },
     {
       "index": 47,
@@ -556,7 +608,8 @@
       "next_action": "slide(cupboard)",
       "edge_key": "move(box)|||slide(cupboard)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "move(box)"
     },
     {
       "index": 48,
@@ -567,7 +620,8 @@
       "next_action": "press(cupboard)",
       "edge_key": "slide(cupboard)|||press(cupboard)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "slide(cupboard)"
     },
     {
       "index": 49,
@@ -578,7 +632,8 @@
       "next_action": "put(juicer)",
       "edge_key": "press(cupboard)|||put(juicer)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "press(cupboard)"
     },
     {
       "index": 50,
@@ -589,7 +644,8 @@
       "next_action": "turn(juicer)",
       "edge_key": "put(juicer)|||turn(juicer)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(juicer)"
     },
     {
       "index": 51,
@@ -600,7 +656,8 @@
       "next_action": "lift(cream)",
       "edge_key": "turn(juicer)|||lift(cream)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn(juicer)"
     },
     {
       "index": 52,
@@ -611,7 +668,8 @@
       "next_action": "turn(knob)",
       "edge_key": "lift(cream)|||turn(knob)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "lift(cream)"
     },
     {
       "index": 53,
@@ -622,7 +680,8 @@
       "next_action": "switch(button)",
       "edge_key": "turn(knob)|||switch(button)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn(knob)"
     },
     {
       "index": 54,
@@ -633,7 +692,8 @@
       "next_action": "turn(food)",
       "edge_key": "switch(button)|||turn(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "switch(button)"
     },
     {
       "index": 55,
@@ -644,7 +704,8 @@
       "next_action": "turn(knob)",
       "edge_key": "turn(food)|||turn(knob)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn(food)"
     },
     {
       "index": 56,
@@ -655,7 +716,8 @@
       "next_action": "take(orange)",
       "edge_key": "turn(knob)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn(knob)"
     },
     {
       "index": 57,
@@ -666,7 +728,8 @@
       "next_action": "put(orange)",
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(orange)"
     },
     {
       "index": 58,
@@ -677,7 +740,8 @@
       "next_action": "open(drawer)",
       "edge_key": "put(orange)|||open(drawer)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(orange)"
     },
     {
       "index": 59,
@@ -688,7 +752,8 @@
       "next_action": "take(vegetable)",
       "edge_key": "open(drawer)|||take(vegetable)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(drawer)"
     },
     {
       "index": 60,
@@ -699,7 +764,8 @@
       "next_action": "take(roll)",
       "edge_key": "take(vegetable)|||take(roll)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(vegetable)"
     },
     {
       "index": 61,
@@ -710,7 +776,8 @@
       "next_action": "feel(roll)",
       "edge_key": "take(roll)|||feel(roll)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(roll)"
     },
     {
       "index": 62,
@@ -721,7 +788,8 @@
       "next_action": "pull(bag)",
       "edge_key": "feel(roll)|||pull(bag)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "feel(roll)"
     },
     {
       "index": 63,
@@ -732,7 +800,8 @@
       "next_action": "put(vegetable)",
       "edge_key": "pull(bag)|||put(vegetable)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "pull(bag)"
     },
     {
       "index": 64,
@@ -743,7 +812,8 @@
       "next_action": "close(drawer)",
       "edge_key": "put(vegetable)|||close(drawer)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(vegetable)"
     },
     {
       "index": 65,
@@ -754,7 +824,8 @@
       "next_action": "pull(bag)",
       "edge_key": "close(drawer)|||pull(bag)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(drawer)"
     },
     {
       "index": 66,
@@ -765,7 +836,8 @@
       "next_action": "shake(bag)",
       "edge_key": "pull(bag)|||shake(bag)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "pull(bag)"
     },
     {
       "index": 67,
@@ -776,7 +848,8 @@
       "next_action": "open(lid)",
       "edge_key": "shake(bag)|||open(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "shake(bag)"
     },
     {
       "index": 68,
@@ -787,7 +860,8 @@
       "next_action": "put(bag)",
       "edge_key": "open(lid)|||put(bag)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(lid)"
     },
     {
       "index": 69,
@@ -798,7 +872,8 @@
       "next_action": "close(lid)",
       "edge_key": "put(bag)|||close(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(bag)"
     },
     {
       "index": 70,
@@ -809,7 +884,8 @@
       "next_action": "press(top)",
       "edge_key": "close(lid)|||press(top)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(lid)"
     },
     {
       "index": 71,
@@ -820,7 +896,8 @@
       "next_action": "hold(kettle)",
       "edge_key": "press(top)|||hold(kettle)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "press(top)"
     },
     {
       "index": 72,
@@ -831,7 +908,8 @@
       "next_action": "press(button)",
       "edge_key": "hold(kettle)|||press(button)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "hold(kettle)"
     },
     {
       "index": 73,
@@ -842,7 +920,8 @@
       "next_action": "close(kettle)",
       "edge_key": "press(button)|||close(kettle)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "press(button)"
     },
     {
       "index": 74,
@@ -853,7 +932,8 @@
       "next_action": "turn(cup)",
       "edge_key": "close(kettle)|||turn(cup)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(kettle)"
     },
     {
       "index": 75,
@@ -864,7 +944,8 @@
       "next_action": "take(milk)",
       "edge_key": "turn(cup)|||take(milk)",
       "step_id": "P01_R01_S04",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "turn(cup)"
     },
     {
       "index": 76,
@@ -875,7 +956,8 @@
       "next_action": "pat(milk)",
       "edge_key": "take(milk)|||pat(milk)",
       "step_id": "P01_R01_S04",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "take(milk)"
     },
     {
       "index": 77,
@@ -886,7 +968,8 @@
       "next_action": "lift(milk)",
       "edge_key": "pat(milk)|||lift(milk)",
       "step_id": "P01_R01_S04",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "pat(milk)"
     },
     {
       "index": 78,
@@ -897,7 +980,8 @@
       "next_action": "lift(milk)",
       "edge_key": "lift(milk)|||lift(milk)",
       "step_id": "P01_R01_S04",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "lift(milk)"
     },
     {
       "index": 79,
@@ -908,7 +992,8 @@
       "next_action": "lift(milk)",
       "edge_key": "lift(milk)|||lift(milk)",
       "step_id": "P01_R01_S04",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "lift(milk)"
     },
     {
       "index": 80,
@@ -919,7 +1004,8 @@
       "next_action": "lift(lid)",
       "edge_key": "lift(milk)|||lift(lid)",
       "step_id": "P01_R01_S04",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "lift(milk)"
     },
     {
       "index": 81,
@@ -930,7 +1016,8 @@
       "next_action": "move(spoon)",
       "edge_key": "lift(lid)|||move(spoon)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "lift(lid)"
     },
     {
       "index": 82,
@@ -941,7 +1028,8 @@
       "next_action": "mix(coffee)",
       "edge_key": "move(spoon)|||mix(coffee)",
       "step_id": "P01_R01_S05",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "move(spoon)"
     },
     {
       "index": 83,
@@ -952,7 +1040,8 @@
       "next_action": "mix(coffee)",
       "edge_key": "mix(coffee)|||mix(coffee)",
       "step_id": "P01_R01_S05",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "mix(coffee)"
     },
     {
       "index": 84,
@@ -963,7 +1052,8 @@
       "next_action": "take(rest)",
       "edge_key": "mix(coffee)|||take(rest)",
       "step_id": "P01_R01_S05",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "mix(coffee)"
     },
     {
       "index": 85,
@@ -974,7 +1064,8 @@
       "next_action": "shake(spoon)",
       "edge_key": "take(rest)|||shake(spoon)",
       "step_id": "P01_R01_S05",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "take(rest)"
     },
     {
       "index": 86,
@@ -985,7 +1076,8 @@
       "next_action": "open(lid)",
       "edge_key": "shake(spoon)|||open(lid)",
       "step_id": "P01_R01_S05",
-      "is_primary": true
+      "is_primary": true,
+      "raw_action": "shake(spoon)"
     },
     {
       "index": 87,
@@ -996,7 +1088,8 @@
       "next_action": "throw(spoon)",
       "edge_key": "open(lid)|||throw(spoon)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(lid)"
     },
     {
       "index": 88,
@@ -1007,7 +1100,8 @@
       "next_action": "close(bin)",
       "edge_key": "throw(spoon)|||close(bin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "throw(spoon)"
     },
     {
       "index": 89,
@@ -1018,7 +1112,8 @@
       "next_action": "take(milk)",
       "edge_key": "close(bin)|||take(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(bin)"
     },
     {
       "index": 90,
@@ -1029,7 +1124,8 @@
       "next_action": "open(tap)",
       "edge_key": "take(milk)|||open(tap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(milk)"
     },
     {
       "index": 91,
@@ -1040,7 +1136,8 @@
       "next_action": "move(milk)",
       "edge_key": "open(tap)|||move(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(tap)"
     },
     {
       "index": 92,
@@ -1051,7 +1148,8 @@
       "next_action": "wash(milk)",
       "edge_key": "move(milk)|||wash(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "move(milk)"
     },
     {
       "index": 93,
@@ -1062,7 +1160,8 @@
       "next_action": "turn(milk)",
       "edge_key": "wash(milk)|||turn(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "wash(milk)"
     },
     {
       "index": 94,
@@ -1073,7 +1172,8 @@
       "next_action": "remove(cake)",
       "edge_key": "turn(milk)|||remove(cake)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn(milk)"
     },
     {
       "index": 95,
@@ -1084,7 +1184,8 @@
       "next_action": "wash(milk)",
       "edge_key": "remove(cake)|||wash(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "remove(cake)"
     },
     {
       "index": 96,
@@ -1095,7 +1196,8 @@
       "next_action": "wash(milk)",
       "edge_key": "wash(milk)|||wash(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "wash(milk)"
     },
     {
       "index": 97,
@@ -1106,7 +1208,8 @@
       "next_action": "take(sponge)",
       "edge_key": "wash(milk)|||take(sponge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "wash(milk)"
     },
     {
       "index": 98,
@@ -1117,7 +1220,8 @@
       "next_action": "scrub(sponge)",
       "edge_key": "take(sponge)|||scrub(sponge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(sponge)"
     },
     {
       "index": 99,
@@ -1128,7 +1232,8 @@
       "next_action": "insert(sponge)",
       "edge_key": "scrub(sponge)|||insert(sponge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "scrub(sponge)"
     },
     {
       "index": 100,
@@ -1139,7 +1244,8 @@
       "next_action": "wash(milk)",
       "edge_key": "insert(sponge)|||wash(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "insert(sponge)"
     },
     {
       "index": 101,
@@ -1150,7 +1256,8 @@
       "next_action": "take(tray)",
       "edge_key": "wash(milk)|||take(tray)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "wash(milk)"
     },
     {
       "index": 102,
@@ -1161,7 +1268,8 @@
       "next_action": "close(tap)",
       "edge_key": "take(tray)|||close(tap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(tray)"
     },
     {
       "index": 103,
@@ -1172,7 +1280,8 @@
       "next_action": "lift(milk)",
       "edge_key": "close(tap)|||lift(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(tap)"
     },
     {
       "index": 104,
@@ -1183,7 +1292,8 @@
       "next_action": "put(cream)",
       "edge_key": "lift(milk)|||put(cream)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "lift(milk)"
     },
     {
       "index": 105,
@@ -1194,7 +1304,8 @@
       "next_action": "put(milk)",
       "edge_key": "put(cream)|||put(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(cream)"
     },
     {
       "index": 106,
@@ -1205,7 +1316,8 @@
       "next_action": "take(lid)",
       "edge_key": "put(milk)|||take(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(milk)"
     },
     {
       "index": 107,
@@ -1216,7 +1328,8 @@
       "next_action": "take(towel)",
       "edge_key": "take(lid)|||take(towel)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(lid)"
     },
     {
       "index": 108,
@@ -1227,7 +1340,8 @@
       "next_action": "take(knife)",
       "edge_key": "take(towel)|||take(knife)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(towel)"
     },
     {
       "index": 109,
@@ -1238,7 +1352,8 @@
       "next_action": "cut(orange)",
       "edge_key": "take(knife)|||cut(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(knife)"
     },
     {
       "index": 110,
@@ -1249,7 +1364,8 @@
       "next_action": "put(knife)",
       "edge_key": "cut(orange)|||put(knife)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "cut(orange)"
     },
     {
       "index": 111,
@@ -1260,7 +1376,8 @@
       "next_action": "flip(orange)",
       "edge_key": "put(knife)|||flip(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(knife)"
     },
     {
       "index": 112,
@@ -1271,7 +1388,8 @@
       "next_action": "turn(food)",
       "edge_key": "flip(orange)|||turn(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "flip(orange)"
     },
     {
       "index": 113,
@@ -1282,7 +1400,8 @@
       "next_action": "press(orange)",
       "edge_key": "turn(food)|||press(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn(food)"
     },
     {
       "index": 114,
@@ -1293,7 +1412,8 @@
       "next_action": "press(juicer)",
       "edge_key": "press(orange)|||press(juicer)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "press(orange)"
     },
     {
       "index": 115,
@@ -1304,7 +1424,8 @@
       "next_action": "turn-off(food)",
       "edge_key": "press(juicer)|||turn-off(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "press(juicer)"
     },
     {
       "index": 116,
@@ -1315,7 +1436,8 @@
       "next_action": "remove(orange)",
       "edge_key": "turn-off(food)|||remove(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn-off(food)"
     },
     {
       "index": 117,
@@ -1326,7 +1448,8 @@
       "next_action": "lift(lid)",
       "edge_key": "remove(orange)|||lift(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "remove(orange)"
     },
     {
       "index": 118,
@@ -1337,7 +1460,8 @@
       "next_action": "throw(skin)",
       "edge_key": "lift(lid)|||throw(skin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "lift(lid)"
     },
     {
       "index": 119,
@@ -1348,7 +1472,8 @@
       "next_action": "take(orange)",
       "edge_key": "throw(skin)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "throw(skin)"
     },
     {
       "index": 120,
@@ -1359,7 +1484,8 @@
       "next_action": "put(orange)",
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(orange)"
     },
     {
       "index": 121,
@@ -1370,7 +1496,8 @@
       "next_action": "turn-on(food)",
       "edge_key": "put(orange)|||turn-on(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(orange)"
     },
     {
       "index": 122,
@@ -1381,7 +1508,8 @@
       "next_action": "press(orange)",
       "edge_key": "turn-on(food)|||press(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn-on(food)"
     },
     {
       "index": 123,
@@ -1392,7 +1520,8 @@
       "next_action": "turn-off(food)",
       "edge_key": "press(orange)|||turn-off(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "press(orange)"
     },
     {
       "index": 124,
@@ -1403,7 +1532,8 @@
       "next_action": "flip(orange)",
       "edge_key": "turn-off(food)|||flip(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn-off(food)"
     },
     {
       "index": 125,
@@ -1414,7 +1544,8 @@
       "next_action": "open(lid)",
       "edge_key": "flip(orange)|||open(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "flip(orange)"
     },
     {
       "index": 126,
@@ -1425,7 +1556,8 @@
       "next_action": "throw(skin)",
       "edge_key": "open(lid)|||throw(skin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(lid)"
     },
     {
       "index": 127,
@@ -1436,7 +1568,8 @@
       "next_action": "take(orange)",
       "edge_key": "throw(skin)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "throw(skin)"
     },
     {
       "index": 128,
@@ -1447,7 +1580,8 @@
       "next_action": "put(orange)",
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(orange)"
     },
     {
       "index": 129,
@@ -1458,7 +1592,8 @@
       "next_action": "take(knife)",
       "edge_key": "put(orange)|||take(knife)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(orange)"
     },
     {
       "index": 130,
@@ -1469,7 +1604,8 @@
       "next_action": "cut(orange)",
       "edge_key": "take(knife)|||cut(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(knife)"
     },
     {
       "index": 131,
@@ -1480,7 +1616,8 @@
       "next_action": "put(knife)",
       "edge_key": "cut(orange)|||put(knife)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "cut(orange)"
     },
     {
       "index": 132,
@@ -1491,7 +1628,8 @@
       "next_action": "take(orange)",
       "edge_key": "put(knife)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(knife)"
     },
     {
       "index": 133,
@@ -1502,7 +1640,8 @@
       "next_action": "flip(orange)",
       "edge_key": "take(orange)|||flip(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(orange)"
     },
     {
       "index": 134,
@@ -1513,7 +1652,8 @@
       "next_action": "turn-on(food)",
       "edge_key": "flip(orange)|||turn-on(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "flip(orange)"
     },
     {
       "index": 135,
@@ -1524,7 +1664,8 @@
       "next_action": "press(orange)",
       "edge_key": "turn-on(food)|||press(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn-on(food)"
     },
     {
       "index": 136,
@@ -1535,7 +1676,8 @@
       "next_action": "turn-off(food)",
       "edge_key": "press(orange)|||turn-off(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "press(orange)"
     },
     {
       "index": 137,
@@ -1546,7 +1688,8 @@
       "next_action": "open(lid)",
       "edge_key": "turn-off(food)|||open(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn-off(food)"
     },
     {
       "index": 138,
@@ -1557,7 +1700,8 @@
       "next_action": "throw(orange)",
       "edge_key": "open(lid)|||throw(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(lid)"
     },
     {
       "index": 139,
@@ -1568,7 +1712,8 @@
       "next_action": "take(orange)",
       "edge_key": "throw(orange)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "throw(orange)"
     },
     {
       "index": 140,
@@ -1579,7 +1724,8 @@
       "next_action": "put(orange)",
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(orange)"
     },
     {
       "index": 141,
@@ -1590,7 +1736,8 @@
       "next_action": "turn-on(food)",
       "edge_key": "put(orange)|||turn-on(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(orange)"
     },
     {
       "index": 142,
@@ -1601,7 +1748,8 @@
       "next_action": "press(orange)",
       "edge_key": "turn-on(food)|||press(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn-on(food)"
     },
     {
       "index": 143,
@@ -1612,7 +1760,8 @@
       "next_action": "turn-off(food)",
       "edge_key": "press(orange)|||turn-off(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "press(orange)"
     },
     {
       "index": 144,
@@ -1623,7 +1772,8 @@
       "next_action": "lift(lid)",
       "edge_key": "turn-off(food)|||lift(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn-off(food)"
     },
     {
       "index": 145,
@@ -1634,7 +1784,8 @@
       "next_action": "throw(skin)",
       "edge_key": "lift(lid)|||throw(skin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "lift(lid)"
     },
     {
       "index": 146,
@@ -1645,7 +1796,8 @@
       "next_action": "take(orange)",
       "edge_key": "throw(skin)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "throw(skin)"
     },
     {
       "index": 147,
@@ -1656,7 +1808,8 @@
       "next_action": "put(orange)",
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(orange)"
     },
     {
       "index": 148,
@@ -1667,7 +1820,8 @@
       "next_action": "take(knife)",
       "edge_key": "put(orange)|||take(knife)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(orange)"
     },
     {
       "index": 149,
@@ -1678,7 +1832,8 @@
       "next_action": "cut(orange)",
       "edge_key": "take(knife)|||cut(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(knife)"
     },
     {
       "index": 150,
@@ -1689,7 +1844,8 @@
       "next_action": "put(knife)",
       "edge_key": "cut(orange)|||put(knife)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "cut(orange)"
     },
     {
       "index": 151,
@@ -1700,7 +1856,8 @@
       "next_action": "insert(top)",
       "edge_key": "put(knife)|||insert(top)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(knife)"
     },
     {
       "index": 152,
@@ -1711,7 +1868,8 @@
       "next_action": "take(orange)",
       "edge_key": "insert(top)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "insert(top)"
     },
     {
       "index": 153,
@@ -1722,7 +1880,8 @@
       "next_action": "put(orange)",
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(orange)"
     },
     {
       "index": 154,
@@ -1733,7 +1892,8 @@
       "next_action": "turn-on(food)",
       "edge_key": "put(orange)|||turn-on(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(orange)"
     },
     {
       "index": 155,
@@ -1744,7 +1904,8 @@
       "next_action": "press(orange)",
       "edge_key": "turn-on(food)|||press(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn-on(food)"
     },
     {
       "index": 156,
@@ -1755,7 +1916,8 @@
       "next_action": "turn-off(food)",
       "edge_key": "press(orange)|||turn-off(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "press(orange)"
     },
     {
       "index": 157,
@@ -1766,7 +1928,8 @@
       "next_action": "turn(orange)",
       "edge_key": "turn-off(food)|||turn(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn-off(food)"
     },
     {
       "index": 158,
@@ -1777,7 +1940,8 @@
       "next_action": "turn(orange)",
       "edge_key": "turn(orange)|||turn(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn(orange)"
     },
     {
       "index": 159,
@@ -1788,7 +1952,8 @@
       "next_action": "turn(food)",
       "edge_key": "turn(orange)|||turn(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn(orange)"
     },
     {
       "index": 160,
@@ -1799,7 +1964,8 @@
       "next_action": "turn-off(food)",
       "edge_key": "turn(food)|||turn-off(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn(food)"
     },
     {
       "index": 161,
@@ -1810,7 +1976,8 @@
       "next_action": "open(lid)",
       "edge_key": "turn-off(food)|||open(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn-off(food)"
     },
     {
       "index": 162,
@@ -1821,7 +1988,8 @@
       "next_action": "throw(skin)",
       "edge_key": "open(lid)|||throw(skin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(lid)"
     },
     {
       "index": 163,
@@ -1832,7 +2000,8 @@
       "next_action": "take(orange)",
       "edge_key": "throw(skin)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "throw(skin)"
     },
     {
       "index": 164,
@@ -1843,7 +2012,8 @@
       "next_action": "put(orange)",
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(orange)"
     },
     {
       "index": 165,
@@ -1854,7 +2024,8 @@
       "next_action": "turn-on(machine:washing)",
       "edge_key": "put(orange)|||turn-on(machine:washing)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(orange)"
     },
     {
       "index": 166,
@@ -1865,7 +2036,8 @@
       "next_action": "press(orange)",
       "edge_key": "turn-on(machine:washing)|||press(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn-on(machine:washing)"
     },
     {
       "index": 167,
@@ -1876,7 +2048,8 @@
       "next_action": "turn-off(food)",
       "edge_key": "press(orange)|||turn-off(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "press(orange)"
     },
     {
       "index": 168,
@@ -1887,7 +2060,8 @@
       "next_action": "lift(orange)",
       "edge_key": "turn-off(food)|||lift(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn-off(food)"
     },
     {
       "index": 169,
@@ -1898,7 +2072,8 @@
       "next_action": "turn-on(machine:washing)",
       "edge_key": "lift(orange)|||turn-on(machine:washing)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "lift(orange)"
     },
     {
       "index": 170,
@@ -1909,7 +2084,8 @@
       "next_action": "turn-off(machine:washing)",
       "edge_key": "turn-on(machine:washing)|||turn-off(machine:washing)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn-on(machine:washing)"
     },
     {
       "index": 171,
@@ -1920,7 +2096,8 @@
       "next_action": "remove(skin)",
       "edge_key": "turn-off(machine:washing)|||remove(skin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn-off(machine:washing)"
     },
     {
       "index": 172,
@@ -1931,7 +2108,8 @@
       "next_action": "open(lid)",
       "edge_key": "remove(skin)|||open(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "remove(skin)"
     },
     {
       "index": 173,
@@ -1942,7 +2120,8 @@
       "next_action": "throw(skin)",
       "edge_key": "open(lid)|||throw(skin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(lid)"
     },
     {
       "index": 174,
@@ -1953,7 +2132,8 @@
       "next_action": "take(knife)",
       "edge_key": "throw(skin)|||take(knife)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "throw(skin)"
     },
     {
       "index": 175,
@@ -1964,7 +2144,8 @@
       "next_action": "move(food)",
       "edge_key": "take(knife)|||move(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(knife)"
     },
     {
       "index": 176,
@@ -1975,7 +2156,8 @@
       "next_action": "put(knife)",
       "edge_key": "move(food)|||put(knife)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "move(food)"
     },
     {
       "index": 177,
@@ -1986,7 +2168,8 @@
       "next_action": "remove(cream)",
       "edge_key": "put(knife)|||remove(cream)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(knife)"
     },
     {
       "index": 178,
@@ -1997,7 +2180,8 @@
       "next_action": "shake(skin)",
       "edge_key": "remove(cream)|||shake(skin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "remove(cream)"
     },
     {
       "index": 179,
@@ -2008,7 +2192,8 @@
       "next_action": "put(cream)",
       "edge_key": "shake(skin)|||put(cream)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "shake(skin)"
     },
     {
       "index": 180,
@@ -2019,7 +2204,8 @@
       "next_action": "wash(cream)",
       "edge_key": "put(cream)|||wash(cream)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(cream)"
     },
     {
       "index": 181,
@@ -2030,7 +2216,8 @@
       "next_action": "take(sponge)",
       "edge_key": "wash(cream)|||take(sponge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "wash(cream)"
     },
     {
       "index": 182,
@@ -2041,7 +2228,8 @@
       "next_action": "wash(cream)",
       "edge_key": "take(sponge)|||wash(cream)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(sponge)"
     },
     {
       "index": 183,
@@ -2052,7 +2240,8 @@
       "next_action": "put(sponge)",
       "edge_key": "wash(cream)|||put(sponge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "wash(cream)"
     },
     {
       "index": 184,
@@ -2063,7 +2252,8 @@
       "next_action": "wash(cream)",
       "edge_key": "put(sponge)|||wash(cream)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(sponge)"
     },
     {
       "index": 185,
@@ -2074,7 +2264,8 @@
       "next_action": "turn-off(tap)",
       "edge_key": "wash(cream)|||turn-off(tap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "wash(cream)"
     },
     {
       "index": 186,
@@ -2085,7 +2276,8 @@
       "next_action": "put(cream)",
       "edge_key": "turn-off(tap)|||put(cream)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn-off(tap)"
     },
     {
       "index": 187,
@@ -2096,7 +2288,8 @@
       "next_action": "turn(bowl)",
       "edge_key": "put(cream)|||turn(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(cream)"
     },
     {
       "index": 188,
@@ -2107,7 +2300,8 @@
       "next_action": "lift(bowl)",
       "edge_key": "turn(bowl)|||lift(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn(bowl)"
     },
     {
       "index": 189,
@@ -2118,7 +2312,8 @@
       "next_action": "open(lid)",
       "edge_key": "lift(bowl)|||open(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "lift(bowl)"
     },
     {
       "index": 190,
@@ -2129,7 +2324,8 @@
       "next_action": "throw(food)",
       "edge_key": "open(lid)|||throw(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(lid)"
     },
     {
       "index": 191,
@@ -2140,7 +2336,8 @@
       "next_action": "pat(bowl)",
       "edge_key": "throw(food)|||pat(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "throw(food)"
     },
     {
       "index": 192,
@@ -2151,7 +2348,8 @@
       "next_action": "close(lid)",
       "edge_key": "pat(bowl)|||close(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "pat(bowl)"
     },
     {
       "index": 193,
@@ -2162,7 +2360,8 @@
       "next_action": "put(bowl)",
       "edge_key": "close(lid)|||put(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(lid)"
     },
     {
       "index": 194,
@@ -2173,7 +2372,8 @@
       "next_action": "open(tap)",
       "edge_key": "put(bowl)|||open(tap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(bowl)"
     },
     {
       "index": 195,
@@ -2184,7 +2384,8 @@
       "next_action": "wash(bowl)",
       "edge_key": "open(tap)|||wash(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(tap)"
     },
     {
       "index": 196,
@@ -2195,7 +2396,8 @@
       "next_action": "turn(bowl)",
       "edge_key": "wash(bowl)|||turn(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "wash(bowl)"
     },
     {
       "index": 197,
@@ -2206,7 +2408,8 @@
       "next_action": "wash(juicer)",
       "edge_key": "turn(bowl)|||wash(juicer)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn(bowl)"
     },
     {
       "index": 198,
@@ -2217,7 +2420,8 @@
       "next_action": "close(tap)",
       "edge_key": "wash(juicer)|||close(tap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "wash(juicer)"
     },
     {
       "index": 199,
@@ -2228,7 +2432,8 @@
       "next_action": "put(bowl)",
       "edge_key": "close(tap)|||put(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(tap)"
     },
     {
       "index": 200,
@@ -2239,7 +2444,8 @@
       "next_action": "take(towel)",
       "edge_key": "put(bowl)|||take(towel)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(bowl)"
     },
     {
       "index": 201,
@@ -2250,7 +2456,8 @@
       "next_action": "open(cupboard)",
       "edge_key": "take(towel)|||open(cupboard)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(towel)"
     },
     {
       "index": 202,
@@ -2261,7 +2468,8 @@
       "next_action": "take(glass)",
       "edge_key": "open(cupboard)|||take(glass)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(cupboard)"
     },
     {
       "index": 203,
@@ -2272,7 +2480,8 @@
       "next_action": "turn(glass)",
       "edge_key": "take(glass)|||turn(glass)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(glass)"
     },
     {
       "index": 204,
@@ -2283,7 +2492,8 @@
       "next_action": "put(glass)",
       "edge_key": "turn(glass)|||put(glass)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn(glass)"
     },
     {
       "index": 205,
@@ -2294,7 +2504,8 @@
       "next_action": "turn(bowl)",
       "edge_key": "put(glass)|||turn(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(glass)"
     },
     {
       "index": 206,
@@ -2305,7 +2516,8 @@
       "next_action": "lift(bowl)",
       "edge_key": "turn(bowl)|||lift(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn(bowl)"
     },
     {
       "index": 207,
@@ -2316,7 +2528,8 @@
       "next_action": "take(glass)",
       "edge_key": "lift(bowl)|||take(glass)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "lift(bowl)"
     },
     {
       "index": 208,
@@ -2327,7 +2540,8 @@
       "next_action": "lift(bowl)",
       "edge_key": "take(glass)|||lift(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(glass)"
     },
     {
       "index": 209,
@@ -2338,7 +2552,8 @@
       "next_action": "put(glass)",
       "edge_key": "lift(bowl)|||put(glass)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "lift(bowl)"
     },
     {
       "index": 210,
@@ -2349,7 +2564,8 @@
       "next_action": "put(bowl)",
       "edge_key": "put(glass)|||put(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(glass)"
     },
     {
       "index": 211,
@@ -2360,7 +2576,8 @@
       "next_action": "open(cap)",
       "edge_key": "put(bowl)|||open(cap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(bowl)"
     },
     {
       "index": 212,
@@ -2371,7 +2588,8 @@
       "next_action": "wash(food)",
       "edge_key": "open(cap)|||wash(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(cap)"
     },
     {
       "index": 213,
@@ -2382,7 +2600,8 @@
       "next_action": "close(tap)",
       "edge_key": "wash(food)|||close(tap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "wash(food)"
     },
     {
       "index": 214,
@@ -2393,7 +2612,8 @@
       "next_action": "take(sponge)",
       "edge_key": "close(tap)|||take(sponge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "close(tap)"
     },
     {
       "index": 215,
@@ -2404,7 +2624,8 @@
       "next_action": "scrub(bowl)",
       "edge_key": "take(sponge)|||scrub(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(sponge)"
     },
     {
       "index": 216,
@@ -2415,7 +2636,8 @@
       "next_action": "put(sponge)",
       "edge_key": "scrub(bowl)|||put(sponge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "scrub(bowl)"
     },
     {
       "index": 217,
@@ -2426,7 +2648,8 @@
       "next_action": "open(tap)",
       "edge_key": "put(sponge)|||open(tap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "put(sponge)"
     },
     {
       "index": 218,
@@ -2437,7 +2660,8 @@
       "next_action": "wash(bowl)",
       "edge_key": "open(tap)|||wash(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "open(tap)"
     },
     {
       "index": 219,
@@ -2448,7 +2672,8 @@
       "next_action": "turn-off(tap)",
       "edge_key": "wash(bowl)|||turn-off(tap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "wash(bowl)"
     },
     {
       "index": 220,
@@ -2459,7 +2684,8 @@
       "next_action": "lift(bowl)",
       "edge_key": "turn-off(tap)|||lift(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn-off(tap)"
     },
     {
       "index": 221,
@@ -2470,7 +2696,8 @@
       "next_action": "turn(bowl)",
       "edge_key": "lift(bowl)|||turn(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "lift(bowl)"
     },
     {
       "index": 222,
@@ -2481,7 +2708,8 @@
       "next_action": "take(towel)",
       "edge_key": "turn(bowl)|||take(towel)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "turn(bowl)"
     },
     {
       "index": 223,
@@ -2492,7 +2720,8 @@
       "next_action": null,
       "edge_key": null,
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "raw_action": "take(towel)"
     }
   ],
   "graph": {
