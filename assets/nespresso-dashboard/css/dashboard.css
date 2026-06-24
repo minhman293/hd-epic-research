@@ -140,9 +140,6 @@ body {
   margin: 0 6px;
 }
 
-/* When the comparison view is active, hide controls marked
-   data-comparison-hide (used by the Layout dropdown which doesn't apply
-   to the merged-graph view). */
 body.comparison-mode [data-comparison-hide] {
   display: none !important;
 }
@@ -315,7 +312,6 @@ body.comparison-mode [data-comparison-hide] {
 .comparison-graph-panel { min-width: 0; }
 .comparison-video-panel { min-width: 0; }
 
-/* Small multiples — three stacked thumbnail rows */
 #smallMultiplesContainer {
   display: flex;
   flex-direction: column;
@@ -465,8 +461,6 @@ body.comparison-mode [data-comparison-hide] {
   z-index: 10;
   left: 0;
 }
-
-/* Legend / comparison-mode strip */
 
 .comparison-legend-strip {
   font-size: 0.75rem;
@@ -718,7 +712,6 @@ video {
   font-family: "Segoe UI", "Trebuchet MS", sans-serif;
 }
 
-/* Support badge (merged motion graph) */
 .support-badge-bg, .support-badge-text { pointer-events: none; }
 
 /* ────────── Hover tooltips ────────────────────────────────────────────── */
@@ -750,10 +743,104 @@ video {
   to { stroke-dashoffset: -28; }
 }
 
+/* ────────── Swimlane ──────────────────────────────────────────────────── */
+
+.swimlane-panel {
+  grid-column: 1 / -1;
+}
+
+.swimlane-container {
+  min-height: 60px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.swimlane-wrap {
+  position: relative;
+}
+
+.swimlane-svg {
+  display: block;
+  width: 100%;
+}
+
+.swimlane-axis-line {
+  stroke: var(--muted);
+  stroke-width: 0.5;
+}
+
+.swimlane-axis-tick {
+  stroke: var(--muted);
+  stroke-width: 0.5;
+}
+
+.swimlane-axis-label {
+  fill: var(--muted);
+  font-size: 10px;
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+}
+
+.swimlane-bg-primary {
+  fill: var(--primary-lane-bg);
+  stroke: var(--primary-lane-stroke);
+  stroke-width: 0.5;
+}
+
+.swimlane-bg-secondary {
+  fill: var(--secondary-lane-bg);
+  stroke: var(--secondary-lane-stroke);
+  stroke-width: 0.5;
+  stroke-dasharray: 4 3;
+}
+
+.swimlane-label-text {
+  fill: var(--ink);
+  font-size: 11px;
+  font-weight: 600;
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+}
+
+.swimlane-label-secondary {
+  fill: var(--muted);
+  font-size: 10px;
+  font-weight: 500;
+  font-style: italic;
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+}
+
+.swimlane-bar {
+  opacity: 0.82;
+  cursor: pointer;
+  stroke: rgba(0, 0, 0, 0.08);
+  stroke-width: 0.5;
+  transition: opacity 0.1s;
+}
+
+.swimlane-bar:hover {
+  opacity: 1;
+  stroke: rgba(0, 0, 0, 0.35);
+  stroke-width: 1;
+}
+
+.swimlane-playhead {
+  stroke: #1f2937;
+  stroke-width: 2;
+  pointer-events: none;
+  shape-rendering: crispEdges;
+}
+
+.swimlane-empty {
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding: 18px;
+  text-align: center;
+}
+
 /* ────────── Responsive ────────────────────────────────────────────────── */
 
 @media (max-width: 1100px) {
   .layout, .comparison-layout { grid-template-columns: 1fr; }
   #graphWrap, #mergedGraphWrap { height: 460px; }
   .legend-strip { grid-template-columns: 1fr; }
+  .swimlane-panel { grid-column: 1; }
 }

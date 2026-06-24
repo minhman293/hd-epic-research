@@ -22,6 +22,7 @@ import { currentSequenceItem, formatSeconds, renderDataError, nodeColor } from "
 import { buildBarcodeStack } from "./barcodeStack.js";
 import { buildVideoQueue } from "./videoQueue.js";
 import { buildThumbnailGraph } from "./thumbnailGraph.js";
+import { buildSwimlane } from "./swimlane.js";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // DOM references
@@ -44,6 +45,7 @@ const footerPanel = document.getElementById("footerPanel");
 const legendStrip = document.getElementById("legendStrip");
 const video = document.getElementById("video");
 const annotationTimeline = document.getElementById("annotationTimeline");
+const swimlaneContainer = document.getElementById("swimlaneContainer");
 
 const comparisonView = document.getElementById("comparisonView");
 const comparisonVideo = document.getElementById("comparisonVideo");
@@ -84,7 +86,7 @@ const singleGraphController = createGraphController({
 const mergedGraphController = createGraphController({
   svgSelector: "#mergedGraphSvg",
   graphWrapSelector: "#mergedGraphWrap",
-  zoomInSelector: null,   // no zoom buttons for merged graph in 3B
+  zoomInSelector: null,
   zoomOutSelector: null,
   zoomResetSelector: null,
 });
@@ -96,8 +98,8 @@ const mergedGraphController = createGraphController({
 let manifest = null;
 let currentRecipeId = null;
 let currentSessionIndex = 0;
-let viewMode = "single";          // "single" | "comparison"
-let mergedSubmode = "merged";     // "merged" | "small_multiples"
+let viewMode = "single";
+let mergedSubmode = "merged";
 
 let cachedData = null;
 let timelineRows = [];
@@ -105,6 +107,7 @@ let annotationPlayheadEl = null;
 let currentTotalDuration = 0;
 let lastClickedNodeId = null;
 let occurrenceCycleIndex = 0;
+let swimlaneApi = null;
 
 // Comparison-mode state
 let barcodeApi = null;
@@ -137,7 +140,7 @@ function showComparisonView() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Single-session controller (unchanged from 3A)
+// Single-session controller
 // ─────────────────────────────────────────────────────────────────────────────
 
 function handleNodeClick(d, sequence) {
@@ -172,13 +175,13 @@ function refresh() {
   if (annotationPlayheadEl && currentTotalDuration > 0) {
     updateAnnotationPlayhead(annotationPlayheadEl, video.currentTime || 0, currentTotalDuration);
   }
+  if (swimlaneApi) {
+    swimlaneApi.updatePlayhead(video.currentTime || 0);
+  }
 }
 
 function rebuildLegend() {
-  // Single-session legend: built from cachedData
   const singleSeq = cachedData?.sequence || [];
-  // Build the step-label lookup from whatever data is in scope. At init time
-  // cachedData is null, so guard with optional chaining and fall back to [].
   const singleStepLabelLookup = buildStepLabelLookup(cachedData?.steps || []);
   buildLegend(
     legendStrip,
@@ -193,22 +196,14 @@ function rebuildLegend() {
     singleSeq
   );
 
-  // Comparison-mode legend: render only when the comparison data is loaded.
   const comparisonLegendStrip = document.getElementById("comparisonLegendStrip");
   if (comparisonLegendStrip && comparisonSessionPayloads.length > 0) {
-
-    // Combine the sequences of ALL active sessions to ensure the comparison
-    // legend shows every category present across the merged graph.
     let combinedSeq = [];
     comparisonSessionPayloads.forEach((sessionData) => {
       if (sessionData.sequence) combinedSeq = combinedSeq.concat(sessionData.sequence);
     });
-
-    // All sessions of a recipe share the same steps, so the first payload's
-    // steps are a fine source for the label lookup.
     const firstPayload = comparisonSessionPayloads[0]?.payload;
     const comparisonStepLabelLookup = buildStepLabelLookup(firstPayload?.steps || []);
-
     buildLegend(
       comparisonLegendStrip,
       getLegendItems(
@@ -225,8 +220,6 @@ function rebuildLegend() {
 }
 
 function getCurrentColorFn(seqOverride) {
-  // seqOverride is used so the comparison mode can pass a sequence (or a
-  // representative one) when computing duration / phase encodings.
   const colorMode = colorEncodeSelect.value;
   const graphMode = graphModeSelect.value;
   const seq = seqOverride || cachedData?.sequence || [];
@@ -299,6 +292,26 @@ function rebuildAnnotationTimeline() {
       },
     }
   );
+}
+
+function rebuildSwimlane() {
+  if (swimlaneApi) { swimlaneApi.destroy(); swimlaneApi = null; }
+  if (!cachedData || !swimlaneContainer) return;
+  const stepLabelLookup = buildStepLabelLookup(cachedData.steps || []);
+  swimlaneApi = buildSwimlane(swimlaneContainer, cachedData, getCurrentColorFn(), {
+    onSegmentClick: (item) => {
+      video.currentTime = item.start;
+      if (!item.synthetic) {
+        const node = d3.select(`.node[data-id="${CSS.escape(item.action)}"]`);
+        if (!node.empty()) {
+          d3.selectAll(".node").classed("selected", false);
+          node.classed("selected", true);
+        }
+      }
+    },
+    stepLabelLookup,
+    colorMode: colorEncodeSelect.value,
+  });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -432,6 +445,7 @@ async function loadSessionData() {
     );
     rebuildAnnotationTimeline();
     rebuildLegend();
+    rebuildSwimlane();
     statusLabel.innerHTML = "Status: <strong>Ready</strong>";
     actionLabel.textContent = "-";
   } catch (error) {
@@ -458,7 +472,6 @@ async function enterComparisonMode() {
 
   const mode = graphModeSelect.value;
 
-  // Fetch all per-session JSONs + the merged JSON in parallel
   try {
     const sessionFetches = recipe.sessions.map((s) =>
       fetch(getSessionDataUrl(currentRecipeId, s.index, mode))
@@ -490,19 +503,13 @@ async function enterComparisonMode() {
     `${comparisonMergedPayload.graph.nodes.length} merged nodes · ` +
     `${comparisonMergedPayload.graph.links.length} merged transitions`;
 
-  // Configure support filter slider
   supportFilter.min = "1";
   supportFilter.max = String(recipe.sessions.length);
   supportFilter.value = "1";
   supportFilterLabel.textContent = "1";
 
-  // Build video queue + barcode stack (foundational, same as 3A)
   buildComparisonVideoUI();
-
-  // Render whichever sub-mode is currently active
   renderMergedSubmode();
-
-  // Build the comparison-view legend now that data is available
   rebuildLegend();
 }
 
@@ -531,9 +538,6 @@ function buildComparisonVideoUI() {
     sequence: s.sequence,
     duration_s: s.duration_s,
   }));
-  // For barcode coloring in comparison mode, use the first session's sequence
-  // as a representative (for "duration" encoding). Phase / category modes
-  // don't need a sequence.
   const colorFn = getCurrentColorFn(comparisonSessionPayloads[0].sequence);
   barcodeApi = buildBarcodeStack(barcodeStackEl, sessionsForBarcode, colorFn, {
     onSegmentClick: (sessionIndex, item) => {
@@ -558,7 +562,6 @@ function buildComparisonVideoUI() {
 function renderMergedSubmode() {
   if (!comparisonMergedPayload || !comparisonSessionPayloads.length) return;
 
-  // Destroy any previous thumbnail instances
   thumbnailInstances.forEach((t) => t.destroy && t.destroy());
   thumbnailInstances = [];
   smallMultiplesContainer.innerHTML = "";
@@ -566,13 +569,12 @@ function renderMergedSubmode() {
   if (mergedSubmode === "merged") {
     mergedGraphWrap.style.display = "";
     smallMultiplesContainer.style.display = "none";
-    supportFilter.parentElement.style.display = "";    // show support slider container
+    supportFilter.parentElement.style.display = "";
     renderMergedGraph();
   } else {
-    // small_multiples
     mergedGraphWrap.style.display = "none";
     smallMultiplesContainer.style.display = "";
-    supportFilter.parentElement.style.display = "none";  // hide support slider
+    supportFilter.parentElement.style.display = "none";
     renderSmallMultiples();
   }
 }
@@ -583,26 +585,15 @@ function renderMergedGraph() {
   const nSessions = recipe.sessions.length;
   const supportFilterVal = parseInt(supportFilter.value, 10);
 
-  // Stamp step labels onto the merged nodes. The merged JSON (from
-  // 8_aggregate_sessions.py) has no step_label, but the per-session payloads do
-  // — all sessions share the same recipe steps, so build the lookup from the
-  // first session and apply it to each merged node by its step id.
   const firstPayload = comparisonSessionPayloads[0]?.payload;
   const stepLabelLookup = buildStepLabelLookup(firstPayload?.steps || []);
   comparisonMergedPayload.graph.nodes.forEach((n) => {
-    if (n.step_label) return;                 // already labeled, leave it
-    // abstracted merged node id is the step's local id ("S01"); also try
-    // merged_step_id if present.
+    if (n.step_label) return;
     const sid = n.merged_step_id || n.id;
     const label = resolveStepLabel(sid, stepLabelLookup);
-    // only stamp if we got a real label (not just the id echoed back)
     if (label && label !== sid) n.step_label = label;
   });
 
-  // Synthesize a pseudo-sequence from each node's mean_normalized_onset.
-  // graph.js's temporal layout uses sequence start times to place nodes;
-  // we feed it our normalized onsets * 100 so the layout reflects cross-
-  // session mean position.
   const synthesizedSequence = comparisonMergedPayload.graph.nodes.map((n, i) => ({
     index: i,
     action: n.id,
@@ -617,24 +608,18 @@ function renderMergedGraph() {
     .map((item, i) => ({ ...item, index: i }));
 
   const colorFn = getCurrentColorFn(synthesizedSequence);
-
-  // In merged-graph view, "Frequency" semantically means "support across
-  // sessions" (Prof. Grace's design choice). Map the dropdown value:
-  //   "frequency" → "support"   (node appears in more sessions = larger)
-  //   "duration"  → stays "duration"
-  // Single-session graphs keep the literal meaning.
   const mergedSizeMode = sizeEncodeSelect.value === "frequency" ? "support" : "duration";
 
   mergedGraphController.buildGraph(
     comparisonMergedPayload.graph,
     synthesizedSequence,
-    1,                                  // no edge threshold for merged graph
+    1,
     graphModeSelect.value,
     colorEncodeSelect.value,
     mergedSizeMode,
-    "temporal",                         // merged graph always temporal
-    { onNodeClick: null },              // no node-click action in merged graph
-    true,                               // reset positions
+    "temporal",
+    { onNodeClick: null },
+    true,
     {
       showSupportBadges: true,
       colorFn,
@@ -667,7 +652,6 @@ function renderSmallMultiples() {
 
     smallMultiplesContainer.appendChild(row);
 
-    // Defer render so the SVG has real width/height
     requestAnimationFrame(() => {
       const inst = buildThumbnailGraph(svg, s.payload.graph, s.payload.sequence, {
         colorFn: getCurrentColorFn(s.payload.sequence),
@@ -697,14 +681,6 @@ comparisonVideo.addEventListener("seeked", () => {
 
 recipeSelect.addEventListener("change", () => selectRecipe(recipeSelect.value, 0));
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Color-encode availability — Action category doesn't apply in Task Phases
-// level (node IDs are step labels, not verb-noun strings). Disable the
-// option in that case and, if it's currently selected, auto-switch to
-// Task phase. Following Munzner (2014) "constrain controls to valid
-// combinations" rather than producing meaningless gray output.
-// ─────────────────────────────────────────────────────────────────────────────
-
 function updateColorEncodeAvailability() {
   const isAbstracted = graphModeSelect.value === "abstracted";
   const categoryOption = colorEncodeSelect.querySelector('option[value="category"]');
@@ -716,7 +692,6 @@ function updateColorEncodeAvailability() {
                            "(node IDs are recipe steps, not actions).";
     if (colorEncodeSelect.value === "category") {
       colorEncodeSelect.value = "phase";
-      // Fire the change event so the dependent re-render happens
       colorEncodeSelect.dispatchEvent(new Event("change"));
     }
   } else {
@@ -727,7 +702,7 @@ function updateColorEncodeAvailability() {
 graphModeSelect.addEventListener("change", () => {
   updateColorEncodeAvailability();
   if (viewMode === "single") loadSessionData();
-  else enterComparisonMode();    // reload with new detail level
+  else enterComparisonMode();
 });
 
 edgeThreshold.addEventListener("input", () => {
@@ -748,6 +723,7 @@ colorEncodeSelect.addEventListener("change", () => {
   if (viewMode === "single") {
     rebuildLegend();
     rebuildAnnotationTimeline();
+    rebuildSwimlane();
     if (!cachedData) return;
     singleGraphController.buildGraph(
       cachedData.graph, cachedData.sequence,
@@ -757,7 +733,6 @@ colorEncodeSelect.addEventListener("change", () => {
       { onNodeClick: handleNodeClick }, false
     );
   } else {
-    // Comparison mode: rebuild barcodes + rerender current submode
     buildComparisonVideoUI();
     renderMergedSubmode();
     rebuildLegend();
@@ -777,7 +752,6 @@ sizeEncodeSelect.addEventListener("input", () => {
       { onNodeClick: handleNodeClick }, false
     );
   } else {
-    // Comparison mode: size affects merged graph only (small multiples use frequency-only)
     if (mergedSubmode === "merged") renderMergedGraph();
     rebuildLegend();
   }
@@ -798,7 +772,6 @@ if (layoutModeSelect) {
   });
 }
 
-// Sub-mode tabs
 document.querySelectorAll("#mergedSubmodeTabs .submode-tab").forEach((btn) => {
   btn.addEventListener("click", () => {
     document.querySelectorAll("#mergedSubmodeTabs .submode-tab").forEach((b) =>
@@ -808,7 +781,6 @@ document.querySelectorAll("#mergedSubmodeTabs .submode-tab").forEach((btn) => {
   });
 });
 
-// Support filter — re-renders merged graph
 supportFilter.addEventListener("input", () => {
   supportFilterLabel.textContent = supportFilter.value;
   if (viewMode === "comparison" && mergedSubmode === "merged") {
@@ -831,8 +803,6 @@ async function init() {
     return;
   }
 
-  // --- NEW: Load the dynamic verb categories first ---
-  // Ensure the path points to your actual CSV location
   await loadVerbCategories('../../../narrations-and-action-segments/HD_EPIC_verb_classes.csv');
 
   graphModeSelect.value = DEFAULT_DATA_MODE;

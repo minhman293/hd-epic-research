@@ -10,15 +10,18 @@
   "steps": [
     {
       "id": "P08_R01_S01",
-      "text": "GRIND AND WEIGH YOUR COFFEE."
+      "text": "GRIND AND WEIGH YOUR COFFEE.",
+      "label": "grind weigh coffee"
     },
     {
       "id": "P08_R01_S02",
-      "text": "DISTRIBUTE AND TAMP YOUR SHOT."
+      "text": "DISTRIBUTE AND TAMP YOUR SHOT.",
+      "label": "distribute tamp shot"
     },
     {
       "id": "P08_R01_S03",
-      "text": "PULL YOUR SHOT."
+      "text": "PULL YOUR SHOT.",
+      "label": "pull espresso shot"
     }
   ],
   "sequence": [
@@ -772,6 +775,7 @@
         "is_primary": true,
         "step_id": "P08_R01_S01",
         "step_text": "GRIND AND WEIGH YOUR COFFEE.",
+        "step_label": "grind weigh coffee",
         "raw_actions": {
           "put(cup)": 2,
           "pour(coffee)": 2,
@@ -786,6 +790,7 @@
         "is_primary": true,
         "step_id": "P08_R01_S02",
         "step_text": "DISTRIBUTE AND TAMP YOUR SHOT.",
+        "step_label": "distribute tamp shot",
         "raw_actions": {
           "press(coffee)": 1,
           "put(presser)": 1,
@@ -800,6 +805,7 @@
         "is_primary": true,
         "step_id": "P08_R01_S03",
         "step_text": "PULL YOUR SHOT.",
+        "step_label": "pull espresso shot",
         "raw_actions": {
           "turn-on(machine:washing)": 1,
           "check(coffee)": 1,
@@ -816,6 +822,7 @@
         "is_primary": false,
         "step_id": "unassigned",
         "step_text": null,
+        "step_label": null,
         "raw_actions": {
           "slide(phone)": 1,
           "open(phone)": 1,

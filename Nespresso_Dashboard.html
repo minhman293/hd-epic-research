@@ -53,7 +53,6 @@
       <select id="graphModeSelect" class="control-select">
         <option value="smart">Smart-Merged (Clear)</option>
         <option value="full">Full Raw (Complete)</option>
-        <option value="abstracted">Task Phases (Overview)</option>
       </select>
 
       <span class="encoding-controls-sep"></span>
@@ -61,7 +60,7 @@
       <label class="control-label">Color encodes:</label>
       <select id="colorEncodeSelect" class="control-select">
         <option value="category">Action category</option>
-        <option value="phase">Task phase (recipe step)</option>
+        <option value="phase">Recipe step</option>
         <option value="duration">Mean duration</option>
       </select>
 
@@ -74,8 +73,8 @@
       <!-- Layout: hidden in comparison view via CSS (data-comparison-hide) -->
       <label class="control-label" id="layoutLabel" data-comparison-hide>Layout:</label>
       <select id="layoutModeSelect" class="control-select" data-comparison-hide>
-        <option value="temporal">Temporal (clock time)</option>
-        <option value="category">HRI-category</option>
+        <option value="temporal">Temporal</option>
+        <option value="category">Category</option>
       </select>
     </section>
 
@@ -115,6 +114,15 @@
           <div class="row"><span>Current Action</span><span id="actionLabel">-</span></div>
           <div class="status" id="statusLabel">Status: <strong>Idle</strong></div>
         </div>
+      </article>
+
+      <!-- SWIMLANE — full-width row below graph + video ──────────────────────── -->
+      <article class="panel swimlane-panel" id="swimlanePanel">
+        <h2>
+          Swimlane
+          <span class="graph-hint">— one lane per recipe step · bar width = duration · click to seek</span>
+        </h2>
+        <div id="swimlaneContainer" class="swimlane-container"></div>
       </article>
     </section>
 
