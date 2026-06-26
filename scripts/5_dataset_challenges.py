@@ -202,6 +202,7 @@ def plot_overview(per_recipe):
     ax.set_title('Recipe steps', fontsize=10, fontweight='bold')
     ax.invert_yaxis()
     ax.grid(axis='x', alpha=0.2)
+    ax.set_xticks(range(0, max(steps) + 5, 5))
 
     # ── Col 2: Total windows ────────────────────────────────────────────
     ax = axes[1]

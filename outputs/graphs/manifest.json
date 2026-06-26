@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-01T20:42:40",
+  "generated_at": "2026-06-25T22:49:04",
   "recipes": [
     {
       "id": "P01_R01",
@@ -48,6 +48,65 @@
         "n_sessions": 3,
         "support_in_all": 11,
         "support_in_one": 14
+      }
+    },
+    {
+      "id": "P03_R03",
+      "name": "Drip Coffee",
+      "sessions": [
+        {
+          "index": 0,
+          "video_id": "P03-20240216-084005",
+          "video_path": "raw-video/P03-20240216-084005.mp4",
+          "action_count": 455,
+          "duration_s": 1058.0,
+          "node_count": 37,
+          "primary_count": 1,
+          "secondary_count": 36
+        },
+        {
+          "index": 1,
+          "video_id": "P03-20240217-091657",
+          "video_path": "raw-video/P03-20240217-091657.mp4",
+          "action_count": 391,
+          "duration_s": 943.02,
+          "node_count": 41,
+          "primary_count": 4,
+          "secondary_count": 37
+        },
+        {
+          "index": 2,
+          "video_id": "P03-20240218-094452",
+          "video_path": "raw-video/P03-20240218-094452.mp4",
+          "action_count": 480,
+          "duration_s": 1021.8,
+          "node_count": 37,
+          "primary_count": 2,
+          "secondary_count": 35
+        },
+        {
+          "index": 3,
+          "video_id": "P03-20240218-144430",
+          "video_path": "raw-video/P03-20240218-144430.mp4",
+          "action_count": 417,
+          "duration_s": 874.84,
+          "node_count": 41,
+          "primary_count": 5,
+          "secondary_count": 36
+        }
+      ],
+      "has_merged": true,
+      "merged": {
+        "modes": [
+          "full",
+          "smart",
+          "abstracted"
+        ],
+        "node_count": 58,
+        "link_count": 375,
+        "n_sessions": 4,
+        "support_in_all": 23,
+        "support_in_one": 16
       }
     },
     {

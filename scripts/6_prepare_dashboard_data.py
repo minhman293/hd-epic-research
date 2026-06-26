@@ -206,11 +206,18 @@ def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
         main_classes = row.get("main_action_classes", [])
         if not main_classes:
             continue
-        v, n = main_classes[0]
+        # Safe unpacking to handle actions that are missing a noun annotation
+        cls = main_classes[0]
+        if len(cls) >= 2:
+            v, n = cls[0], cls[1]
+        elif len(cls) == 1:
+            v, n = cls[0], ""
+        else:
+            v, n = "unknown", ""
         action_items.append({
             "action": get_action_name(v, n, verb_classes, noun_classes),
-            "verb_class": int(v),
-            "noun_class": int(n),
+            "verb_class": int(v) if str(v).isdigit() else -1,
+            "noun_class": int(n) if str(n).isdigit() else -1,
             "start": float(row["start_timestamp"]),
             "end": float(row["end_timestamp"]),
             "duration": float(row["end_timestamp"] - row["start_timestamp"]),

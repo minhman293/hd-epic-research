@@ -426,10 +426,12 @@ export function getLegendItems(
     const stepLocals = collectStepLocals(stepLabelLookup, sequence);
 
     stepLocals.forEach((local) => {
+      const resolved = resolveStepLabel(local, stepLabelLookup);
+      const label = (resolved && resolved !== local) ? local + " \u2013 " + resolved : local;
       items.push({
         type: "dot",
         color: getStepPhaseColor(local),
-        label: resolveStepLabel(local, stepLabelLookup),
+        label: label,
       });
     });
     items.push({ type: "dot", color: UNASSIGNED_PHASE_COLOR, label: "outside recipe step" });

@@ -245,7 +245,8 @@ export function buildSwimlane(containerEl, payload, colorFn, options) {
         label.textContent = "Secondary";
       } else {
         var resolved = resolveStepLabel(laneId, stepLabelLookup);
-        label.textContent = truncate(resolved || laneId, LABEL_MAX_CHARS);
+        var display = (resolved && resolved !== laneId) ? laneId + " \u2013 " + resolved : laneId;
+        label.textContent = truncate(display, LABEL_MAX_CHARS);
       }
       svg.appendChild(label);
 
