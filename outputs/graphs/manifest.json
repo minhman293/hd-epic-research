@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-25T22:49:04",
+  "generated_at": "2026-06-29T15:58:42",
   "recipes": [
     {
       "id": "P01_R01",
@@ -110,6 +110,23 @@
       }
     },
     {
+      "id": "P05_R01",
+      "name": "Chickpea and Spinach Curry with Rice",
+      "sessions": [
+        {
+          "index": 0,
+          "video_id": "P05-20240423-170021",
+          "video_path": "raw-video/P05-20240423-170021.mp4",
+          "action_count": 963,
+          "duration_s": 2785.41,
+          "node_count": 56,
+          "primary_count": 15,
+          "secondary_count": 41
+        }
+      ],
+      "has_merged": false
+    },
+    {
       "id": "P08_R01",
       "name": "Coffee",
       "sessions": [
@@ -122,6 +139,74 @@
           "node_count": 23,
           "primary_count": 9,
           "secondary_count": 14
+        }
+      ],
+      "has_merged": false
+    },
+    {
+      "id": "P08_R02",
+      "name": "Chopped Salad and Bread",
+      "sessions": [
+        {
+          "index": 0,
+          "video_id": "P08-20240613-123547",
+          "video_path": "raw-video/P08-20240613-123547.mp4",
+          "action_count": 221,
+          "duration_s": 1006.39,
+          "node_count": 26,
+          "primary_count": 10,
+          "secondary_count": 16
+        }
+      ],
+      "has_merged": false
+    },
+    {
+      "id": "P08_R03",
+      "name": "Scrambled Eggs",
+      "sessions": [
+        {
+          "index": 0,
+          "video_id": "P08-20240614-085000",
+          "video_path": "raw-video/P08-20240614-085000.mp4",
+          "action_count": 319,
+          "duration_s": 1085.3,
+          "node_count": 40,
+          "primary_count": 8,
+          "secondary_count": 32
+        }
+      ],
+      "has_merged": false
+    },
+    {
+      "id": "P08_R09",
+      "name": "Crispy Cucumber Salad",
+      "sessions": [
+        {
+          "index": 0,
+          "video_id": "P08-20240622-141902",
+          "video_path": "raw-video/P08-20240622-141902.mp4",
+          "action_count": 401,
+          "duration_s": 1116.5,
+          "node_count": 32,
+          "primary_count": 5,
+          "secondary_count": 27
+        }
+      ],
+      "has_merged": false
+    },
+    {
+      "id": "P09_R05",
+      "name": "Mango Lassi",
+      "sessions": [
+        {
+          "index": 0,
+          "video_id": "P09-20240623-120359",
+          "video_path": "raw-video/P09-20240623-120359.mp4",
+          "action_count": 1700,
+          "duration_s": 3639.87,
+          "node_count": 61,
+          "primary_count": 4,
+          "secondary_count": 57
         }
       ],
       "has_merged": false

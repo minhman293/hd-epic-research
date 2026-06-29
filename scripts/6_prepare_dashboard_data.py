@@ -1,23 +1,23 @@
 """
 6_prepare_dashboard_data.py
 
-Step 6: Export dashboard data for D3 — parameterized by recipe ID, loops over
-every capture (session) of that recipe, emits one set of JSON files per session.
+Step 6: Export dashboard data for D3 — one session per CAPTURE, stitching
+all videos of a multi-video capture onto a unified capture timeline.
 
-Each action is tagged with `step_id` and `is_primary` based on whether its
-time range overlaps any annotated `step_times` window in the recipe.
+Each action carries:
+  - start, end        — unified capture timeline (sums of preceding video durations)
+  - video_id          — which source video this action came from
+  - video_start, end  — within-video timestamps (= unified − offset_of_that_video)
+  - step_id           — recipe step whose stitched window this action overlaps
+  - is_primary        — True iff step_id is set
 
-The "abstracted" (Task Phases) view now uses step_id as the phase identifier
-(Path B), so it works universally across recipes without per-recipe hand-curation.
-
-UPDATE (step labels): if outputs/step_labels.json exists (produced by
-9_generate_step_labels.py), each step's short diagnostic label is attached to
-the payload's `steps[].label` and to abstracted nodes' `step_label`. Missing
-labels are non-fatal — the frontend falls back to the raw step id.
+The payload also contains a "videos" array listing each video's offset and
+duration on the unified timeline, so the frontend can map any unified
+timestamp back to {video_id, within_video_offset} and drive the player.
 
 Usage:
   python 6_prepare_dashboard_data.py P01_R01
-  python 6_prepare_dashboard_data.py P08_R01
+  python 6_prepare_dashboard_data.py P05_R01
 
 Output layout:
   outputs/graphs/{recipe_id}/session_{N}_smart.json
@@ -63,14 +63,8 @@ def load_recipe_context(recipe_id, outputs_dir="../outputs"):
 
 
 def load_step_labels(outputs_dir="../outputs"):
-    """
-    Load the offline-generated step labels (9_generate_step_labels.py).
-    Returns {step_id: label}. Missing file is non-fatal — we just fall back
-    to step ids downstream, so the dashboard degrades gracefully.
-    """
     labels_path = Path(outputs_dir) / "step_labels.json"
     if not labels_path.exists():
-        # also try repo-root / current dir as a convenience
         for alt in (Path("step_labels.json"), Path("../step_labels.json")):
             if alt.exists():
                 labels_path = alt
@@ -78,9 +72,6 @@ def load_step_labels(outputs_dir="../outputs"):
     if not labels_path.exists():
         print("  ⚠ step_labels.json not found — steps will show raw ids (S01...).")
         return {}
-    # Read defensively: the file may have been written with Windows-1252 smart
-    # quotes (byte 0x92 etc.) rather than UTF-8. Try UTF-8 first, then fall back
-    # to cp1252 so a curly apostrophe in a step's `raw` text can't crash us.
     raw = None
     for enc in ("utf-8", "utf-8-sig", "cp1252"):
         try:
@@ -93,10 +84,8 @@ def load_step_labels(outputs_dir="../outputs"):
         except (UnicodeDecodeError, json.JSONDecodeError):
             continue
     if raw is None:
-        print("  ⚠ Could not decode step_labels.json in any known encoding — "
-              "steps will show raw ids (S01...).")
+        print("  ⚠ Could not decode step_labels.json — falling back to raw ids.")
         return {}
-    # accept either {sid: {"label": ...}} or {sid: "label"}
     out = {}
     for sid, val in raw.items():
         out[sid] = val["label"] if isinstance(val, dict) else val
@@ -104,40 +93,67 @@ def load_step_labels(outputs_dir="../outputs"):
     return out
 
 
-def discover_sessions(recipe_meta, available_video_ids):
+# ─────────────────────────────────────────────────────────────────────────────
+# Multi-video stitching helpers
+# ─────────────────────────────────────────────────────────────────────────────
+
+def get_video_duration(vid, durations_map, narrations_df):
     """
-    Each capture in the recipe metadata = one session. Returns:
-        [{ "index": N, "video_id": ..., "capture": ... }, ...]
-    Multi-video captures use only their first video for now.
+    Get duration for a single video. Tries the CSV first; falls back to the
+    max narration end_timestamp in that video.
     """
-    captures = recipe_meta.get("captures", [])
-    sessions = []
-    available_set = set(available_video_ids)
-
-    for ci, cap in enumerate(captures):
-        videos = cap.get("videos", [])
-        usable = [v for v in videos if v in available_set]
-        if not usable:
-            print(f"  ⚠ Capture {ci} has no videos available locally — skipping.")
-            continue
-        if len(videos) > 1:
-            print(
-                f"  ⚠ Capture {ci} spans {len(videos)} videos; "
-                f"using only the first ({usable[0]}). "
-                "Multi-video concatenation is deferred."
-            )
-        sessions.append({"index": ci, "video_id": usable[0], "capture": cap})
-    return sessions
+    if vid in durations_map:
+        return float(durations_map[vid])
+    fallback = narrations_df[narrations_df["video_id"] == vid]["end_timestamp"]
+    if len(fallback) > 0:
+        d = float(fallback.max())
+        print(f"    ⚠ No CSV duration for {vid}; using narration-max ({d:.1f}s).")
+        return d
+    print(f"    ⚠ No duration available for {vid}; treating as 0s (gap).")
+    return 0.0
 
 
-def collect_step_windows(capture, video_id, buffer_s=STEP_WINDOW_BUFFER_S):
+def compute_video_layout(videos, durations_map, narrations_df):
+    """
+    Compute the unified-timeline layout for a capture's videos.
+
+    Returns: list of dicts in playback order, each:
+        {video_id, offset_s, duration_s}
+    """
+    layout = []
+    cumulative = 0.0
+    for vid in videos:
+        d = get_video_duration(vid, durations_map, narrations_df)
+        layout.append({
+            "video_id": vid,
+            "offset_s": cumulative,
+            "duration_s": d,
+        })
+        cumulative += d
+    return layout
+
+
+def collect_step_windows_stitched(capture, video_layout, buffer_s=STEP_WINDOW_BUFFER_S):
+    """
+    Returns step windows on the unified capture timeline. Each entry:
+        (unified_start, unified_end, step_id, video_id, video_start, video_end)
+
+    Step entries whose 'video' field doesn't match any video in this capture
+    are silently skipped (they belong to a different capture).
+    """
+    offsets = {v["video_id"]: v["offset_s"] for v in video_layout}
     windows = []
     for step_id, time_entries in capture.get("step_times", {}).items():
         for entry in time_entries:
-            if entry.get("video") == video_id:
-                rs = float(entry["start"])
-                re = float(entry["end"])
-                windows.append((max(0.0, rs - buffer_s), re + buffer_s, step_id))
+            vid = entry.get("video")
+            if vid not in offsets:
+                continue
+            off = offsets[vid]
+            v_start = float(entry["start"])
+            v_end = float(entry["end"])
+            u_start = max(0.0, v_start + off - buffer_s)
+            u_end = v_end + off + buffer_s
+            windows.append((u_start, u_end, step_id, vid, v_start, v_end))
     windows.sort(key=lambda w: w[0])
     return windows
 
@@ -145,7 +161,7 @@ def collect_step_windows(capture, video_id, buffer_s=STEP_WINDOW_BUFFER_S):
 def find_overlapping_step(a_start, a_end, step_windows):
     best_step = None
     best_overlap = 0.0
-    for w_start, w_end, sid in step_windows:
+    for w_start, w_end, sid, *_ in step_windows:
         overlap = min(a_end, w_end) - max(a_start, w_start)
         if overlap > best_overlap:
             best_overlap = overlap
@@ -153,29 +169,37 @@ def find_overlapping_step(a_start, a_end, step_windows):
     return best_step
 
 
-def tag_actions_with_step_coverage(action_items, capture, video_id):
-    step_windows = collect_step_windows(capture, video_id)
-    if not step_windows:
-        print(
-            f"    ⚠ No step_times for {video_id}. All actions → primary."
-        )
-        for item in action_items:
-            item["step_id"] = None
-            item["is_primary"] = True
-        return action_items
+def discover_sessions(recipe_meta, available_video_ids):
+    """
+    Each capture in the recipe metadata = one session, regardless of how many
+    videos it contains. Multi-video captures are stitched downstream.
 
-    for item in action_items:
-        sid = find_overlapping_step(item["start"], item["end"], step_windows)
-        item["step_id"] = sid
-        item["is_primary"] = sid is not None
+    A capture is skipped only if NONE of its videos appear in the narration
+    data; videos that are listed in the capture but have no narrations are
+    kept (they'll show up as gaps in the timeline).
+    """
+    captures = recipe_meta.get("captures", [])
+    sessions = []
+    available_set = set(available_video_ids)
 
-    primary = sum(1 for a in action_items if a["is_primary"])
-    secondary = len(action_items) - primary
-    print(
-        f"    Step-coverage: {primary} primary, {secondary} secondary "
-        f"({100 * secondary / len(action_items):.1f}% secondary)"
-    )
-    return action_items
+    for ci, cap in enumerate(captures):
+        videos = cap.get("videos", [])
+        in_narrations = [v for v in videos if v in available_set]
+        if not in_narrations:
+            print(f"  ⚠ Capture {ci} has no videos with narration data — skipping.")
+            continue
+        missing = [v for v in videos if v not in available_set]
+        if missing:
+            print(
+                f"  ⚠ Capture {ci} has {len(missing)} video(s) without "
+                f"narration data: {missing}. Keeping them as timeline gaps."
+            )
+        sessions.append({
+            "index": ci,
+            "videos": videos,
+            "capture": cap,
+        })
+    return sessions
 
 
 def compute_node_primary_majority(sequence):
@@ -188,46 +212,90 @@ def compute_node_primary_majority(sequence):
     return {a: p >= s for a, (p, s) in votes.items()}
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# Payload builders
+# ─────────────────────────────────────────────────────────────────────────────
+
 def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
                        step_labels=None, video_relative_dir="raw-video"):
     step_labels = step_labels or {}
     verb_classes = data["verb_classes"]
     noun_classes = data["noun_classes"]
-    video_id = session["video_id"]
-    capture = session["capture"]
+    durations_map = data.get("video_durations", {})
 
-    video_rows = narrations_df[narrations_df["video_id"] == video_id].copy()
-    if video_rows.empty:
-        raise ValueError(f"No narration rows for {video_id}")
-    video_rows = video_rows.sort_values("start_timestamp")
+    capture = session["capture"]
+    videos = session["videos"]
+
+    # 1. Compute the unified-timeline layout for all videos in this capture
+    video_layout = compute_video_layout(videos, durations_map, narrations_df)
+    total_capture_duration = sum(v["duration_s"] for v in video_layout)
+
+    # 2. Stitch narrations from all videos in this capture onto a unified timeline
+    offsets = {v["video_id"]: v["offset_s"] for v in video_layout}
 
     action_items = []
-    for _, row in video_rows.iterrows():
-        main_classes = row.get("main_action_classes", [])
-        if not main_classes:
+    for vlayout in video_layout:
+        vid = vlayout["video_id"]
+        v_rows = narrations_df[narrations_df["video_id"] == vid].copy()
+        if v_rows.empty:
             continue
-        # Safe unpacking to handle actions that are missing a noun annotation
-        cls = main_classes[0]
-        if len(cls) >= 2:
-            v, n = cls[0], cls[1]
-        elif len(cls) == 1:
-            v, n = cls[0], ""
-        else:
-            v, n = "unknown", ""
-        action_items.append({
-            "action": get_action_name(v, n, verb_classes, noun_classes),
-            "verb_class": int(v) if str(v).isdigit() else -1,
-            "noun_class": int(n) if str(n).isdigit() else -1,
-            "start": float(row["start_timestamp"]),
-            "end": float(row["end_timestamp"]),
-            "duration": float(row["end_timestamp"] - row["start_timestamp"]),
-        })
+        v_rows = v_rows.sort_values("start_timestamp")
+        off = offsets[vid]
+        for _, row in v_rows.iterrows():
+            main_classes = row.get("main_action_classes", [])
+            if not main_classes:
+                continue
+            cls = main_classes[0]
+            if len(cls) >= 2:
+                v, n = cls[0], cls[1]
+            elif len(cls) == 1:
+                v, n = cls[0], ""
+            else:
+                v, n = "unknown", ""
+            v_start = float(row["start_timestamp"])
+            v_end = float(row["end_timestamp"])
+            action_items.append({
+                "action": get_action_name(v, n, verb_classes, noun_classes),
+                "verb_class": int(v) if str(v).isdigit() else -1,
+                "noun_class": int(n) if str(n).isdigit() else -1,
+                "start": v_start + off,        # unified
+                "end": v_end + off,            # unified
+                "duration": v_end - v_start,
+                "video_id": vid,
+                "video_start": v_start,        # within-video
+                "video_end": v_end,            # within-video
+            })
+
+    # Sort by unified start. Within each video the rows were already sorted,
+    # and videos were appended in playback order, so this is effectively a
+    # stability check.
+    action_items.sort(key=lambda r: r["start"])
 
     if len(action_items) < 2:
         raise ValueError(f"Session {session['index']} has <2 actions")
 
-    tag_actions_with_step_coverage(action_items, capture, video_id)
+    # 3. Build step windows on the unified timeline
+    step_windows = collect_step_windows_stitched(capture, video_layout)
 
+    # 4. Tag each action with its overlapping step
+    if not step_windows:
+        print(f"    ⚠ No step_times for capture {session['index']}. All actions → primary.")
+        for item in action_items:
+            item["step_id"] = None
+            item["is_primary"] = True
+    else:
+        for item in action_items:
+            sid = find_overlapping_step(item["start"], item["end"], step_windows)
+            item["step_id"] = sid
+            item["is_primary"] = sid is not None
+        primary = sum(1 for a in action_items if a["is_primary"])
+        secondary = len(action_items) - primary
+        print(
+            f"    Step-coverage: {primary} primary, {secondary} secondary "
+            f"({100 * secondary / len(action_items):.1f}% secondary)"
+        )
+
+    # 5. Build node/edge counts and the sequence array
     node_counts = Counter(item["action"] for item in action_items)
     edge_counts = Counter()
     edge_occurrences = defaultdict(list)
@@ -250,6 +318,10 @@ def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
             "edge_key": edge_key,
             "step_id": item.get("step_id"),
             "is_primary": item.get("is_primary", True),
+            # Per-video provenance — frontend uses these to drive playback.
+            "video_id": item["video_id"],
+            "video_start": item["video_start"],
+            "video_end": item["video_end"],
         })
 
     node_primary = compute_node_primary_majority(sequence)
@@ -267,20 +339,39 @@ def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
         {
             "id": sid,
             "text": text.strip(),
-            "label": step_labels.get(sid),   # may be None → frontend falls back
+            "label": step_labels.get(sid),
         }
         for sid, text in recipe_meta.get("steps", {}).items()
     ]
+
+    # 6. Per-video payload block: tells the frontend how to drive the <video> element
+    videos_payload = [
+        {
+            "video_id": v["video_id"],
+            "video_path": f"{video_relative_dir}/{v['video_id']}.mp4",
+            "offset_s": v["offset_s"],
+            "duration_s": v["duration_s"],
+        }
+        for v in video_layout
+    ]
+
+    first_video = videos[0] if videos else None
 
     return {
         "recipe": {
             "id": recipe_id,
             "name": recipe_meta.get("name", recipe_id),
             "session_index": session["index"],
-            "video_id": video_id,
-            "video_path": f"{video_relative_dir}/{video_id}.mp4",
+            # Legacy fields point to the FIRST video so older frontends that
+            # haven't been updated yet don't blow up — they just see video 1.
+            # New frontends should use the "videos" array below instead.
+            "video_id": first_video,
+            "video_path": f"{video_relative_dir}/{first_video}.mp4" if first_video else None,
             "narration_count": len(sequence),
+            "n_videos": len(video_layout),
+            "total_capture_duration_s": total_capture_duration,
         },
+        "videos": videos_payload,
         "steps": step_text,
         "sequence": sequence,
         "graph": {"nodes": nodes, "links": links},
@@ -300,9 +391,7 @@ def create_smart_merged_graph(payload):
         noun = nof(seq_item["action"])
         if noun:
             verb_objects[verb][noun] += 1
-        m = seq_item.copy()
-        # preserve the original verb-noun so downstream consumers (e.g. the HRI
-        # duration budget) can recover the underlying action if needed.
+        m = seq_item.copy()  # preserves video_id, video_start, video_end
         m["raw_action"] = seq_item["action"]
         m["action"] = verb
         merged_sequence.append(m)
@@ -338,10 +427,6 @@ def create_smart_merged_graph(payload):
 
 
 def create_abstracted_graph(payload):
-    """
-    Path B: phase = recipe step (step_id). Display label = local part only (S01).
-    Actions outside any step → 'unassigned' node so they remain visible.
-    """
     UNASSIGNED = "unassigned"
     step_text_lookup = {step["id"]: step["text"] for step in payload.get("steps", [])}
     step_label_lookup = {step["id"]: step.get("label") for step in payload.get("steps", [])}
@@ -354,7 +439,7 @@ def create_abstracted_graph(payload):
         else:
             parts = raw_step.rsplit("_", 1)
             display = parts[1] if len(parts) == 2 and parts[1].startswith("S") else raw_step
-        m = seq_item.copy()
+        m = seq_item.copy()  # preserves video_id, video_start, video_end
         m["action"] = display
         m["raw_action"] = seq_item["action"]
         m["raw_step_id"] = raw_step
@@ -392,7 +477,7 @@ def create_abstracted_graph(payload):
             "is_primary": bool(node_primary.get(display_step, True)),
             "step_id": raw_step,
             "step_text": step_text,
-            "step_label": step_label_lookup.get(raw_step),  # NEW: LLM/human label
+            "step_label": step_label_lookup.get(raw_step),
             "raw_actions": dict(step_actions[display_step]),
         })
 
@@ -411,7 +496,7 @@ def create_abstracted_graph(payload):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Build dashboard JSON files for one recipe, all its sessions."
+        description="Build dashboard JSON files for one recipe, one session per capture."
     )
     parser.add_argument("recipe_id", help="Recipe ID (e.g. P01_R01)")
     parser.add_argument("--outputs-dir", default="../outputs")
@@ -436,13 +521,17 @@ def main():
 
     print(f"\nFound {len(sessions)} session(s):")
     for s in sessions:
-        print(f"  Session {s['index']}: {s['video_id']}")
+        n_vids = len(s["videos"])
+        if n_vids == 1:
+            print(f"  Session {s['index']}: 1 video — {s['videos'][0]}")
+        else:
+            print(f"  Session {s['index']}: {n_vids} videos — {s['videos']}")
 
     output_dir = Path(args.outputs_dir) / "graphs" / recipe_id
     output_dir.mkdir(parents=True, exist_ok=True)
 
     for s in sessions:
-        print(f"\n[Session {s['index']}: {s['video_id']}]")
+        print(f"\n[Session {s['index']}]")
         payload_full = build_full_payload(
             data, recipe_id, recipe_meta, s, recipe_narrations,
             step_labels=step_labels,

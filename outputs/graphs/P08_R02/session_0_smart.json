@@ -1,0 +1,4088 @@
+{
+  "recipe": {
+    "id": "P08_R02",
+    "name": "Chopped Salad and Bread",
+    "session_index": 0,
+    "video_id": "P08-20240613-123547",
+    "video_path": "raw-video/P08-20240613-123547.mp4",
+    "narration_count": 221
+  },
+  "steps": [
+    {
+      "id": "P08_R02_S01",
+      "text": "To make this salad, start by preparing the dressing. Whisk the dressing ingredients together, in a small bowl, until they're fully combined. Taste and add additional seasonings, if desired.",
+      "label": "whisk dressing"
+    },
+    {
+      "id": "P08_R02_S02",
+      "text": "Next, chop your cucumbers, cherry tomatoes, carrot, coriander, and red onion, and add them to a large bowl alongside the beans and diced tomatoes.",
+      "label": "chop salad veg"
+    },
+    {
+      "id": "P08_R02_S03",
+      "text": "Toss to combine, then pour the dressing on top and toss once more until the salad ingredients are fully coated in the dressing.",
+      "label": "toss in dressing"
+    },
+    {
+      "id": "P08_R02_S04",
+      "text": "Slice piece of sourdough bread and place on side of bowl.",
+      "label": "add sourdough slice"
+    },
+    {
+      "id": "P08_R02_S05",
+      "text": "Serve immediately and enjoy!",
+      "label": "serve salad"
+    }
+  ],
+  "sequence": [
+    {
+      "index": 0,
+      "action": "slide",
+      "start": 2.56,
+      "end": 8.16,
+      "duration": 5.6,
+      "next_action": "open(fridge)",
+      "edge_key": "slide(phone)|||open(fridge)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "slide(phone)"
+    },
+    {
+      "index": 1,
+      "action": "open",
+      "start": 10.4,
+      "end": 11.83,
+      "duration": 1.4299999999999997,
+      "next_action": "open(drawer)",
+      "edge_key": "open(fridge)|||open(drawer)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "open(fridge)"
+    },
+    {
+      "index": 2,
+      "action": "open",
+      "start": 12.51,
+      "end": 14.03,
+      "duration": 1.5199999999999996,
+      "next_action": "take(salad)",
+      "edge_key": "open(drawer)|||take(salad)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "open(drawer)"
+    },
+    {
+      "index": 3,
+      "action": "take",
+      "start": 16.83,
+      "end": 18.12,
+      "duration": 1.2900000000000027,
+      "next_action": "open(drawer)",
+      "edge_key": "take(salad)|||open(drawer)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(salad)"
+    },
+    {
+      "index": 4,
+      "action": "open",
+      "start": 18.42,
+      "end": 21.18,
+      "duration": 2.759999999999998,
+      "next_action": "take(bag)",
+      "edge_key": "open(drawer)|||take(bag)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "open(drawer)"
+    },
+    {
+      "index": 5,
+      "action": "take",
+      "start": 24.82,
+      "end": 25.56,
+      "duration": 0.7399999999999984,
+      "next_action": "take(carrot)",
+      "edge_key": "take(bag)|||take(carrot)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(bag)"
+    },
+    {
+      "index": 6,
+      "action": "take",
+      "start": 26.34,
+      "end": 28.7,
+      "duration": 2.3599999999999994,
+      "next_action": "move(food)",
+      "edge_key": "take(carrot)|||move(food)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(carrot)"
+    },
+    {
+      "index": 7,
+      "action": "move",
+      "start": 30.27,
+      "end": 33.07,
+      "duration": 2.8000000000000007,
+      "next_action": "move(colander)",
+      "edge_key": "move(food)|||move(colander)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "move(food)"
+    },
+    {
+      "index": 8,
+      "action": "move",
+      "start": 34.91,
+      "end": 36.33,
+      "duration": 1.4200000000000017,
+      "next_action": "take(box)",
+      "edge_key": "move(colander)|||take(box)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "move(colander)"
+    },
+    {
+      "index": 9,
+      "action": "take",
+      "start": 36.86,
+      "end": 37.84,
+      "duration": 0.980000000000004,
+      "next_action": "close(cupboard)",
+      "edge_key": "take(box)|||close(cupboard)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(box)"
+    },
+    {
+      "index": 10,
+      "action": "close",
+      "start": 40.37,
+      "end": 41.02,
+      "duration": 0.6500000000000057,
+      "next_action": "put(box)",
+      "edge_key": "close(cupboard)|||put(box)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "close(cupboard)"
+    },
+    {
+      "index": 11,
+      "action": "put",
+      "start": 42.07,
+      "end": 42.97,
+      "duration": 0.8999999999999986,
+      "next_action": "take(board:chopping)",
+      "edge_key": "put(box)|||take(board:chopping)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(box)"
+    },
+    {
+      "index": 12,
+      "action": "take",
+      "start": 43.32,
+      "end": 45.37,
+      "duration": 2.049999999999997,
+      "next_action": "open(drawer)",
+      "edge_key": "take(board:chopping)|||open(drawer)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(board:chopping)"
+    },
+    {
+      "index": 13,
+      "action": "open",
+      "start": 48.07,
+      "end": 50.27,
+      "duration": 2.200000000000003,
+      "next_action": "take(bag)",
+      "edge_key": "open(drawer)|||take(bag)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "open(drawer)"
+    },
+    {
+      "index": 14,
+      "action": "take",
+      "start": 51.32,
+      "end": 53.32,
+      "duration": 2.0,
+      "next_action": "pat(phone)",
+      "edge_key": "take(bag)|||pat(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(bag)"
+    },
+    {
+      "index": 15,
+      "action": "pat",
+      "start": 65.72,
+      "end": 69.87,
+      "duration": 4.150000000000006,
+      "next_action": "take(scale)",
+      "edge_key": "pat(phone)|||take(scale)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pat(phone)"
+    },
+    {
+      "index": 16,
+      "action": "take",
+      "start": 71.12,
+      "end": 72.97,
+      "duration": 1.8499999999999943,
+      "next_action": "open(bag)",
+      "edge_key": "take(scale)|||open(bag)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(scale)"
+    },
+    {
+      "index": 17,
+      "action": "open",
+      "start": 73.82,
+      "end": 74.87,
+      "duration": 1.0500000000000114,
+      "next_action": "scoop(salad)",
+      "edge_key": "open(bag)|||scoop(salad)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "open(bag)"
+    },
+    {
+      "index": 18,
+      "action": "scoop",
+      "start": 75.77,
+      "end": 77.57,
+      "duration": 1.7999999999999972,
+      "next_action": "take(bowl)",
+      "edge_key": "scoop(salad)|||take(bowl)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "scoop(salad)"
+    },
+    {
+      "index": 19,
+      "action": "take",
+      "start": 80.67,
+      "end": 81.92,
+      "duration": 1.25,
+      "next_action": "pat(scale)",
+      "edge_key": "take(bowl)|||pat(scale)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(bowl)"
+    },
+    {
+      "index": 20,
+      "action": "pat",
+      "start": 84.28,
+      "end": 84.62,
+      "duration": 0.3400000000000034,
+      "next_action": "scoop(salad)",
+      "edge_key": "pat(scale)|||scoop(salad)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pat(scale)"
+    },
+    {
+      "index": 21,
+      "action": "scoop",
+      "start": 85.93,
+      "end": 87.78,
+      "duration": 1.8499999999999943,
+      "next_action": "scoop(salad)",
+      "edge_key": "scoop(salad)|||scoop(salad)",
+      "step_id": "P08_R02_S01",
+      "is_primary": true,
+      "raw_action": "scoop(salad)"
+    },
+    {
+      "index": 22,
+      "action": "scoop",
+      "start": 90.95,
+      "end": 93.26,
+      "duration": 2.3100000000000023,
+      "next_action": "put(bag)",
+      "edge_key": "scoop(salad)|||put(bag)",
+      "step_id": "P08_R02_S01",
+      "is_primary": true,
+      "raw_action": "scoop(salad)"
+    },
+    {
+      "index": 23,
+      "action": "put",
+      "start": 95.33,
+      "end": 95.64,
+      "duration": 0.3100000000000023,
+      "next_action": "take(bowl)",
+      "edge_key": "put(bag)|||take(bowl)",
+      "step_id": "P08_R02_S01",
+      "is_primary": true,
+      "raw_action": "put(bag)"
+    },
+    {
+      "index": 24,
+      "action": "take",
+      "start": 110.51,
+      "end": 111.54,
+      "duration": 1.0300000000000011,
+      "next_action": "take(cucumber)",
+      "edge_key": "take(bowl)|||take(cucumber)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(bowl)"
+    },
+    {
+      "index": 25,
+      "action": "take",
+      "start": 112.06,
+      "end": 113.63,
+      "duration": 1.5699999999999932,
+      "next_action": "scan(bar)",
+      "edge_key": "take(cucumber)|||scan(bar)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(cucumber)"
+    },
+    {
+      "index": 26,
+      "action": "scan",
+      "start": 118.06,
+      "end": 132.34,
+      "duration": 14.280000000000001,
+      "next_action": "take(knife)",
+      "edge_key": "scan(bar)|||take(knife)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "scan(bar)"
+    },
+    {
+      "index": 27,
+      "action": "take",
+      "start": 154.28,
+      "end": 154.82,
+      "duration": 0.539999999999992,
+      "next_action": "pull(container)",
+      "edge_key": "take(knife)|||pull(container)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(knife)"
+    },
+    {
+      "index": 28,
+      "action": "pull",
+      "start": 157.09,
+      "end": 158.62,
+      "duration": 1.5300000000000011,
+      "next_action": "cut(cucumber)",
+      "edge_key": "pull(container)|||cut(cucumber)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pull(container)"
+    },
+    {
+      "index": 29,
+      "action": "cut",
+      "start": 158.76,
+      "end": 160.03,
+      "duration": 1.2700000000000102,
+      "next_action": "pat(scale)",
+      "edge_key": "cut(cucumber)|||pat(scale)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "cut(cucumber)"
+    },
+    {
+      "index": 30,
+      "action": "pat",
+      "start": 162.5,
+      "end": 163.73,
+      "duration": 1.2299999999999898,
+      "next_action": "put(cucumber)",
+      "edge_key": "pat(scale)|||put(cucumber)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pat(scale)"
+    },
+    {
+      "index": 31,
+      "action": "put",
+      "start": 163.82999999999998,
+      "end": 165.64,
+      "duration": 1.8100000000000023,
+      "next_action": "pat(phone)",
+      "edge_key": "put(cucumber)|||pat(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(cucumber)"
+    },
+    {
+      "index": 32,
+      "action": "pat",
+      "start": 165.74,
+      "end": 173.06,
+      "duration": 7.319999999999993,
+      "next_action": "take(cucumber)",
+      "edge_key": "pat(phone)|||take(cucumber)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pat(phone)"
+    },
+    {
+      "index": 33,
+      "action": "take",
+      "start": 173.16,
+      "end": 174.04,
+      "duration": 0.8799999999999955,
+      "next_action": "cut(cucumber)",
+      "edge_key": "take(cucumber)|||cut(cucumber)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(cucumber)"
+    },
+    {
+      "index": 34,
+      "action": "cut",
+      "start": 174.14,
+      "end": 178.96,
+      "duration": 4.820000000000022,
+      "next_action": "put(cucumber)",
+      "edge_key": "cut(cucumber)|||put(cucumber)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "cut(cucumber)"
+    },
+    {
+      "index": 35,
+      "action": "put",
+      "start": 178.85,
+      "end": 182.74,
+      "duration": 3.890000000000015,
+      "next_action": "turn(cucumber)",
+      "edge_key": "put(cucumber)|||turn(cucumber)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "put(cucumber)"
+    },
+    {
+      "index": 36,
+      "action": "turn",
+      "start": 182.62,
+      "end": 186.98,
+      "duration": 4.359999999999985,
+      "next_action": "take(cucumber)",
+      "edge_key": "turn(cucumber)|||take(cucumber)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "turn(cucumber)"
+    },
+    {
+      "index": 37,
+      "action": "take",
+      "start": 188.08,
+      "end": 189.98,
+      "duration": 1.8999999999999773,
+      "next_action": "scoop(cucumber)",
+      "edge_key": "take(cucumber)|||scoop(cucumber)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "take(cucumber)"
+    },
+    {
+      "index": 38,
+      "action": "scoop",
+      "start": 190.08,
+      "end": 190.98,
+      "duration": 0.8999999999999773,
+      "next_action": "cut(cucumber)",
+      "edge_key": "scoop(cucumber)|||cut(cucumber)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "scoop(cucumber)"
+    },
+    {
+      "index": 39,
+      "action": "cut",
+      "start": 191.08,
+      "end": 200.61,
+      "duration": 9.530000000000001,
+      "next_action": "take(cherry)",
+      "edge_key": "cut(cucumber)|||take(cherry)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "cut(cucumber)"
+    },
+    {
+      "index": 40,
+      "action": "take",
+      "start": 231.72,
+      "end": 233.38,
+      "duration": 1.6599999999999966,
+      "next_action": "take(tomato)",
+      "edge_key": "take(cherry)|||take(tomato)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(cherry)"
+    },
+    {
+      "index": 41,
+      "action": "take",
+      "start": 244.95,
+      "end": 245.99,
+      "duration": 1.0400000000000205,
+      "next_action": "scrape(cherry)",
+      "edge_key": "take(tomato)|||scrape(cherry)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(tomato)"
+    },
+    {
+      "index": 42,
+      "action": "scrape",
+      "start": 246.53,
+      "end": 247.81,
+      "duration": 1.2800000000000011,
+      "next_action": "squeeze(tomato)",
+      "edge_key": "scrape(cherry)|||squeeze(tomato)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "scrape(cherry)"
+    },
+    {
+      "index": 43,
+      "action": "squeeze",
+      "start": 248.06,
+      "end": 250.54,
+      "duration": 2.4799999999999898,
+      "next_action": "squeeze(tomato)",
+      "edge_key": "squeeze(tomato)|||squeeze(tomato)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "squeeze(tomato)"
+    },
+    {
+      "index": 44,
+      "action": "squeeze",
+      "start": 250.8,
+      "end": 252.03,
+      "duration": 1.2299999999999898,
+      "next_action": "take(cherry)",
+      "edge_key": "squeeze(tomato)|||take(cherry)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "squeeze(tomato)"
+    },
+    {
+      "index": 45,
+      "action": "take",
+      "start": 252.61,
+      "end": 265.48,
+      "duration": 12.870000000000005,
+      "next_action": "lift(board:chopping)",
+      "edge_key": "take(cherry)|||lift(board:chopping)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "take(cherry)"
+    },
+    {
+      "index": 46,
+      "action": "lift",
+      "start": 265.8,
+      "end": 267.9,
+      "duration": 2.099999999999966,
+      "next_action": "scrape(cherry)",
+      "edge_key": "lift(board:chopping)|||scrape(cherry)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "lift(board:chopping)"
+    },
+    {
+      "index": 47,
+      "action": "scrape",
+      "start": 268.23,
+      "end": 270.08,
+      "duration": 1.849999999999966,
+      "next_action": "move(salad)",
+      "edge_key": "scrape(cherry)|||move(salad)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "scrape(cherry)"
+    },
+    {
+      "index": 48,
+      "action": "move",
+      "start": 271.79,
+      "end": 274.14,
+      "duration": 2.349999999999966,
+      "next_action": "take(carrot)",
+      "edge_key": "move(salad)|||take(carrot)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "move(salad)"
+    },
+    {
+      "index": 49,
+      "action": "take",
+      "start": 274.61,
+      "end": 275.59000000000003,
+      "duration": 0.9800000000000182,
+      "next_action": "carry(carrot)",
+      "edge_key": "take(carrot)|||carry(carrot)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(carrot)"
+    },
+    {
+      "index": 50,
+      "action": "carry",
+      "start": 286.21,
+      "end": 287.69,
+      "duration": 1.4800000000000182,
+      "next_action": "lift(carrot)",
+      "edge_key": "carry(carrot)|||lift(carrot)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "carry(carrot)"
+    },
+    {
+      "index": 51,
+      "action": "lift",
+      "start": 292.12,
+      "end": 292.75,
+      "duration": 0.6299999999999955,
+      "next_action": "open(drawer)",
+      "edge_key": "lift(carrot)|||open(drawer)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "lift(carrot)"
+    },
+    {
+      "index": 52,
+      "action": "open",
+      "start": 293.17,
+      "end": 294.61,
+      "duration": 1.4399999999999977,
+      "next_action": "lift(carrot)",
+      "edge_key": "open(drawer)|||lift(carrot)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "open(drawer)"
+    },
+    {
+      "index": 53,
+      "action": "lift",
+      "start": 295.37,
+      "end": 300.49,
+      "duration": 5.1200000000000045,
+      "next_action": "move(colander)",
+      "edge_key": "lift(carrot)|||move(colander)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "lift(carrot)"
+    },
+    {
+      "index": 54,
+      "action": "move",
+      "start": 300.54,
+      "end": 301.6,
+      "duration": 1.0600000000000023,
+      "next_action": "move(carrot)",
+      "edge_key": "move(colander)|||move(carrot)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "move(colander)"
+    },
+    {
+      "index": 55,
+      "action": "move",
+      "start": 315.98,
+      "end": 317.23,
+      "duration": 1.25,
+      "next_action": "cut(carrot)",
+      "edge_key": "move(carrot)|||cut(carrot)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "move(carrot)"
+    },
+    {
+      "index": 56,
+      "action": "cut",
+      "start": 317.97,
+      "end": 320.61,
+      "duration": 2.6399999999999864,
+      "next_action": "cut(carrot)",
+      "edge_key": "cut(carrot)|||cut(carrot)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "cut(carrot)"
+    },
+    {
+      "index": 57,
+      "action": "cut",
+      "start": 321.71,
+      "end": 323.52,
+      "duration": 1.8100000000000023,
+      "next_action": "cut(carrot)",
+      "edge_key": "cut(carrot)|||cut(carrot)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "cut(carrot)"
+    },
+    {
+      "index": 58,
+      "action": "cut",
+      "start": 325.78,
+      "end": 332.23,
+      "duration": 6.4500000000000455,
+      "next_action": "turn(carrot)",
+      "edge_key": "cut(carrot)|||turn(carrot)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "cut(carrot)"
+    },
+    {
+      "index": 59,
+      "action": "turn",
+      "start": 332.61,
+      "end": 333.26,
+      "duration": 0.6499999999999773,
+      "next_action": "cut(carrot)",
+      "edge_key": "turn(carrot)|||cut(carrot)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "turn(carrot)"
+    },
+    {
+      "index": 60,
+      "action": "cut",
+      "start": 333.2,
+      "end": 341.43,
+      "duration": 8.230000000000018,
+      "next_action": "scrape(carrot)",
+      "edge_key": "cut(carrot)|||scrape(carrot)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "cut(carrot)"
+    },
+    {
+      "index": 61,
+      "action": "scrape",
+      "start": 341.43,
+      "end": 341.88,
+      "duration": 0.44999999999998863,
+      "next_action": "move(carrot)",
+      "edge_key": "scrape(carrot)|||move(carrot)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "scrape(carrot)"
+    },
+    {
+      "index": 62,
+      "action": "move",
+      "start": 342.15,
+      "end": 342.6,
+      "duration": 0.4500000000000455,
+      "next_action": "lift(board:chopping)",
+      "edge_key": "move(carrot)|||lift(board:chopping)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "move(carrot)"
+    },
+    {
+      "index": 63,
+      "action": "lift",
+      "start": 362.69,
+      "end": 363.8,
+      "duration": 1.1100000000000136,
+      "next_action": "scrape(carrot)",
+      "edge_key": "lift(board:chopping)|||scrape(carrot)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "lift(board:chopping)"
+    },
+    {
+      "index": 64,
+      "action": "scrape",
+      "start": 363.9,
+      "end": 366.72,
+      "duration": 2.82000000000005,
+      "next_action": "put(board:chopping)",
+      "edge_key": "scrape(carrot)|||put(board:chopping)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "scrape(carrot)"
+    },
+    {
+      "index": 65,
+      "action": "put",
+      "start": 367.24,
+      "end": 368.32,
+      "duration": 1.079999999999984,
+      "next_action": "lift(phone)",
+      "edge_key": "put(board:chopping)|||lift(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(board:chopping)"
+    },
+    {
+      "index": 66,
+      "action": "lift",
+      "start": 371.8,
+      "end": 375.03,
+      "duration": 3.2299999999999613,
+      "next_action": "take(bag)",
+      "edge_key": "lift(phone)|||take(bag)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "lift(phone)"
+    },
+    {
+      "index": 67,
+      "action": "take",
+      "start": 375.13,
+      "end": 376.33,
+      "duration": 1.1999999999999886,
+      "next_action": "put(phone)",
+      "edge_key": "take(bag)|||put(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(bag)"
+    },
+    {
+      "index": 68,
+      "action": "put",
+      "start": 391.15,
+      "end": 392.45,
+      "duration": 1.3000000000000114,
+      "next_action": "take(bag)",
+      "edge_key": "put(phone)|||take(bag)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(phone)"
+    },
+    {
+      "index": 69,
+      "action": "take",
+      "start": 392.58,
+      "end": 393.15,
+      "duration": 0.5699999999999932,
+      "next_action": "open(drawer)",
+      "edge_key": "take(bag)|||open(drawer)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(bag)"
+    },
+    {
+      "index": 70,
+      "action": "open",
+      "start": 395.85,
+      "end": 398.74,
+      "duration": 2.8899999999999864,
+      "next_action": "scoop(salad)",
+      "edge_key": "open(drawer)|||scoop(salad)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "open(drawer)"
+    },
+    {
+      "index": 71,
+      "action": "scoop",
+      "start": 398.84,
+      "end": 401.12,
+      "duration": 2.2800000000000296,
+      "next_action": "scoop(salad)",
+      "edge_key": "scoop(salad)|||scoop(salad)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "scoop(salad)"
+    },
+    {
+      "index": 72,
+      "action": "scoop",
+      "start": 400.81,
+      "end": 405.4,
+      "duration": 4.589999999999975,
+      "next_action": "put(spoon)",
+      "edge_key": "scoop(salad)|||put(spoon)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "scoop(salad)"
+    },
+    {
+      "index": 73,
+      "action": "put",
+      "start": 405.39,
+      "end": 405.99,
+      "duration": 0.6000000000000227,
+      "next_action": "take(spoon)",
+      "edge_key": "put(spoon)|||take(spoon)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "put(spoon)"
+    },
+    {
+      "index": 74,
+      "action": "take",
+      "start": 412.93,
+      "end": 415.27,
+      "duration": 2.339999999999975,
+      "next_action": "pat(phone)",
+      "edge_key": "take(spoon)|||pat(phone)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "take(spoon)"
+    },
+    {
+      "index": 75,
+      "action": "pat",
+      "start": 415.75,
+      "end": 417.12,
+      "duration": 1.3700000000000045,
+      "next_action": "close(bag)",
+      "edge_key": "pat(phone)|||close(bag)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pat(phone)"
+    },
+    {
+      "index": 76,
+      "action": "close",
+      "start": 417.31,
+      "end": 419.99,
+      "duration": 2.680000000000007,
+      "next_action": "take(bag)",
+      "edge_key": "close(bag)|||take(bag)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "close(bag)"
+    },
+    {
+      "index": 77,
+      "action": "take",
+      "start": 420.14,
+      "end": 420.94,
+      "duration": 0.8000000000000114,
+      "next_action": "put(bag)",
+      "edge_key": "take(bag)|||put(bag)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(bag)"
+    },
+    {
+      "index": 78,
+      "action": "put",
+      "start": 421.05,
+      "end": 422.03,
+      "duration": 0.9799999999999613,
+      "next_action": "scan(coriander)",
+      "edge_key": "put(bag)|||scan(coriander)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(bag)"
+    },
+    {
+      "index": 79,
+      "action": "scan",
+      "start": 422.43,
+      "end": 432.32,
+      "duration": 9.889999999999986,
+      "next_action": "pat(phone)",
+      "edge_key": "scan(coriander)|||pat(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "scan(coriander)"
+    },
+    {
+      "index": 80,
+      "action": "pat",
+      "start": 445.72,
+      "end": 449.64,
+      "duration": 3.919999999999959,
+      "next_action": "put(phone)",
+      "edge_key": "pat(phone)|||put(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pat(phone)"
+    },
+    {
+      "index": 81,
+      "action": "put",
+      "start": 449.72,
+      "end": 450.63,
+      "duration": 0.9099999999999682,
+      "next_action": "scoop(coriander)",
+      "edge_key": "put(phone)|||scoop(coriander)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(phone)"
+    },
+    {
+      "index": 82,
+      "action": "scoop",
+      "start": 451.27,
+      "end": 453.32,
+      "duration": 2.0500000000000114,
+      "next_action": "put(coriander)",
+      "edge_key": "scoop(coriander)|||put(coriander)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "scoop(coriander)"
+    },
+    {
+      "index": 83,
+      "action": "put",
+      "start": 453.55,
+      "end": 454.74,
+      "duration": 1.1899999999999977,
+      "next_action": "put(coriander)",
+      "edge_key": "put(coriander)|||put(coriander)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(coriander)"
+    },
+    {
+      "index": 84,
+      "action": "put",
+      "start": 455.54,
+      "end": 455.8,
+      "duration": 0.2599999999999909,
+      "next_action": "take(coriander)",
+      "edge_key": "put(coriander)|||take(coriander)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(coriander)"
+    },
+    {
+      "index": 85,
+      "action": "take",
+      "start": 465.58,
+      "end": 466.63,
+      "duration": 1.0500000000000114,
+      "next_action": "cut(coriander)",
+      "edge_key": "take(coriander)|||cut(coriander)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(coriander)"
+    },
+    {
+      "index": 86,
+      "action": "cut",
+      "start": 467.39,
+      "end": 472.95,
+      "duration": 5.560000000000002,
+      "next_action": "scrape(coriander)",
+      "edge_key": "cut(coriander)|||scrape(coriander)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "cut(coriander)"
+    },
+    {
+      "index": 87,
+      "action": "scrape",
+      "start": 473.1,
+      "end": 473.47,
+      "duration": 0.37000000000000455,
+      "next_action": "scoop(coriander)",
+      "edge_key": "scrape(coriander)|||scoop(coriander)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "scrape(coriander)"
+    },
+    {
+      "index": 88,
+      "action": "scoop",
+      "start": 473.58,
+      "end": 476.38,
+      "duration": 2.8000000000000114,
+      "next_action": "scrape(board:chopping)",
+      "edge_key": "scoop(coriander)|||scrape(board:chopping)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "scoop(coriander)"
+    },
+    {
+      "index": 89,
+      "action": "scrape",
+      "start": 477.1,
+      "end": 480.4,
+      "duration": 3.2999999999999545,
+      "next_action": "add(coriander)",
+      "edge_key": "scrape(board:chopping)|||add(coriander)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "scrape(board:chopping)"
+    },
+    {
+      "index": 90,
+      "action": "add",
+      "start": 480.4,
+      "end": 480.99,
+      "duration": 0.5900000000000318,
+      "next_action": "move(bread)",
+      "edge_key": "add(coriander)|||move(bread)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "add(coriander)"
+    },
+    {
+      "index": 91,
+      "action": "move",
+      "start": 483.28,
+      "end": 483.94,
+      "duration": 0.660000000000025,
+      "next_action": "take(onion)",
+      "edge_key": "move(bread)|||take(onion)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "move(bread)"
+    },
+    {
+      "index": 92,
+      "action": "take",
+      "start": 484.04,
+      "end": 485.56,
+      "duration": 1.5199999999999818,
+      "next_action": "take(knife)",
+      "edge_key": "take(onion)|||take(knife)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(onion)"
+    },
+    {
+      "index": 93,
+      "action": "take",
+      "start": 499.93,
+      "end": 500.36,
+      "duration": 0.4300000000000068,
+      "next_action": "cut(onion)",
+      "edge_key": "take(knife)|||cut(onion)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(knife)"
+    },
+    {
+      "index": 94,
+      "action": "cut",
+      "start": 500.74,
+      "end": 502.98,
+      "duration": 2.240000000000009,
+      "next_action": "take(onion)",
+      "edge_key": "cut(onion)|||take(onion)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "cut(onion)"
+    },
+    {
+      "index": 95,
+      "action": "take",
+      "start": 503.43,
+      "end": 506.38,
+      "duration": 2.9499999999999886,
+      "next_action": "pat(scale)",
+      "edge_key": "take(onion)|||pat(scale)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(onion)"
+    },
+    {
+      "index": 96,
+      "action": "pat",
+      "start": 506.48,
+      "end": 507.28,
+      "duration": 0.7999999999999545,
+      "next_action": "put(onion)",
+      "edge_key": "pat(scale)|||put(onion)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pat(scale)"
+    },
+    {
+      "index": 97,
+      "action": "put",
+      "start": 507.11,
+      "end": 509.24,
+      "duration": 2.1299999999999955,
+      "next_action": "peel(onion)",
+      "edge_key": "put(onion)|||peel(onion)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(onion)"
+    },
+    {
+      "index": 98,
+      "action": "peel",
+      "start": 515.51,
+      "end": 522.79,
+      "duration": 7.279999999999973,
+      "next_action": "put(onion)",
+      "edge_key": "peel(onion)|||put(onion)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "peel(onion)"
+    },
+    {
+      "index": 99,
+      "action": "put",
+      "start": 522.89,
+      "end": 524.0,
+      "duration": 1.1100000000000136,
+      "next_action": "peel(onion)",
+      "edge_key": "put(onion)|||peel(onion)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(onion)"
+    },
+    {
+      "index": 100,
+      "action": "peel",
+      "start": 524.13,
+      "end": 526.49,
+      "duration": 2.3600000000000136,
+      "next_action": "move(onion)",
+      "edge_key": "peel(onion)|||move(onion)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "peel(onion)"
+    },
+    {
+      "index": 101,
+      "action": "move",
+      "start": 526.92,
+      "end": 527.16,
+      "duration": 0.2400000000000091,
+      "next_action": "throw(onion)",
+      "edge_key": "move(onion)|||throw(onion)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "move(onion)"
+    },
+    {
+      "index": 102,
+      "action": "throw",
+      "start": 527.26,
+      "end": 527.65,
+      "duration": 0.38999999999998636,
+      "next_action": "turn(onion)",
+      "edge_key": "throw(onion)|||turn(onion)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "throw(onion)"
+    },
+    {
+      "index": 103,
+      "action": "turn",
+      "start": 530.87,
+      "end": 531.93,
+      "duration": 1.0599999999999454,
+      "next_action": "cut(onion)",
+      "edge_key": "turn(onion)|||cut(onion)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "turn(onion)"
+    },
+    {
+      "index": 104,
+      "action": "cut",
+      "start": 534.81,
+      "end": 540.82,
+      "duration": 6.010000000000105,
+      "next_action": "turn(onion)",
+      "edge_key": "cut(onion)|||turn(onion)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "cut(onion)"
+    },
+    {
+      "index": 105,
+      "action": "turn",
+      "start": 540.42,
+      "end": 542.06,
+      "duration": 1.6399999999999864,
+      "next_action": "cut(onion)",
+      "edge_key": "turn(onion)|||cut(onion)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "turn(onion)"
+    },
+    {
+      "index": 106,
+      "action": "cut",
+      "start": 541.67,
+      "end": 549.86,
+      "duration": 8.190000000000055,
+      "next_action": "take(board:chopping)",
+      "edge_key": "cut(onion)|||take(board:chopping)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "cut(onion)"
+    },
+    {
+      "index": 107,
+      "action": "take",
+      "start": 552.11,
+      "end": 554.59,
+      "duration": 2.480000000000018,
+      "next_action": "scrape(onion)",
+      "edge_key": "take(board:chopping)|||scrape(onion)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "take(board:chopping)"
+    },
+    {
+      "index": 108,
+      "action": "scrape",
+      "start": 555.08,
+      "end": 557.17,
+      "duration": 2.089999999999918,
+      "next_action": "put(board:chopping)",
+      "edge_key": "scrape(onion)|||put(board:chopping)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "scrape(onion)"
+    },
+    {
+      "index": 109,
+      "action": "put",
+      "start": 558.63,
+      "end": 561.54,
+      "duration": 2.909999999999968,
+      "next_action": "take(box)",
+      "edge_key": "put(board:chopping)|||take(box)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(board:chopping)"
+    },
+    {
+      "index": 110,
+      "action": "take",
+      "start": 561.78,
+      "end": 562.88,
+      "duration": 1.1000000000000227,
+      "next_action": "lift(lid)",
+      "edge_key": "take(box)|||lift(lid)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(box)"
+    },
+    {
+      "index": 111,
+      "action": "lift",
+      "start": 577.23,
+      "end": 578.62,
+      "duration": 1.3899999999999864,
+      "next_action": "put(lid)",
+      "edge_key": "lift(lid)|||put(lid)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "lift(lid)"
+    },
+    {
+      "index": 112,
+      "action": "put",
+      "start": 580.01,
+      "end": 581.81,
+      "duration": 1.7999999999999545,
+      "next_action": "pat(scale)",
+      "edge_key": "put(lid)|||pat(scale)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(lid)"
+    },
+    {
+      "index": 113,
+      "action": "pat",
+      "start": 582.78,
+      "end": 591.98,
+      "duration": 9.200000000000045,
+      "next_action": "take(box)",
+      "edge_key": "pat(scale)|||take(box)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pat(scale)"
+    },
+    {
+      "index": 114,
+      "action": "take",
+      "start": 595.08,
+      "end": 595.86,
+      "duration": 0.7799999999999727,
+      "next_action": "scoop(salad)",
+      "edge_key": "take(box)|||scoop(salad)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(box)"
+    },
+    {
+      "index": 115,
+      "action": "scoop",
+      "start": 596.03,
+      "end": 605.03,
+      "duration": 9.0,
+      "next_action": "hold(box)",
+      "edge_key": "scoop(salad)|||hold(box)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "scoop(salad)"
+    },
+    {
+      "index": 116,
+      "action": "hold",
+      "start": 604.33,
+      "end": 604.78,
+      "duration": 0.4499999999999318,
+      "next_action": "adjust(bean)",
+      "edge_key": "hold(box)|||adjust(bean)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "hold(box)"
+    },
+    {
+      "index": 117,
+      "action": "adjust",
+      "start": 604.6,
+      "end": 607.94,
+      "duration": 3.340000000000032,
+      "next_action": "put(box)",
+      "edge_key": "adjust(bean)|||put(box)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "adjust(bean)"
+    },
+    {
+      "index": 118,
+      "action": "put",
+      "start": 607.93,
+      "end": 609.13,
+      "duration": 1.2000000000000455,
+      "next_action": "drop(salad)",
+      "edge_key": "put(box)|||drop(salad)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(box)"
+    },
+    {
+      "index": 119,
+      "action": "drop",
+      "start": 629.09,
+      "end": 630.51,
+      "duration": 1.419999999999959,
+      "next_action": "take(lid)",
+      "edge_key": "drop(salad)|||take(lid)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "drop(salad)"
+    },
+    {
+      "index": 120,
+      "action": "take",
+      "start": 629.33,
+      "end": 630.53,
+      "duration": 1.1999999999999318,
+      "next_action": "scrape(bean)",
+      "edge_key": "take(lid)|||scrape(bean)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(lid)"
+    },
+    {
+      "index": 121,
+      "action": "scrape",
+      "start": 630.53,
+      "end": 633.8,
+      "duration": 3.269999999999982,
+      "next_action": "put(lid)",
+      "edge_key": "scrape(bean)|||put(lid)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "scrape(bean)"
+    },
+    {
+      "index": 122,
+      "action": "put",
+      "start": 633.74,
+      "end": 637.98,
+      "duration": 4.240000000000009,
+      "next_action": "take(bowl)",
+      "edge_key": "put(lid)|||take(bowl)",
+      "step_id": "P08_R02_S02",
+      "is_primary": true,
+      "raw_action": "put(lid)"
+    },
+    {
+      "index": 123,
+      "action": "take",
+      "start": 638.08,
+      "end": 639.65,
+      "duration": 1.5699999999999363,
+      "next_action": "move(spoon)",
+      "edge_key": "take(bowl)|||move(spoon)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(bowl)"
+    },
+    {
+      "index": 124,
+      "action": "move",
+      "start": 639.75,
+      "end": 641.26,
+      "duration": 1.509999999999991,
+      "next_action": "take(bottle)",
+      "edge_key": "move(spoon)|||take(bottle)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "move(spoon)"
+    },
+    {
+      "index": 125,
+      "action": "take",
+      "start": 641.36,
+      "end": 643.0,
+      "duration": 1.6399999999999864,
+      "next_action": "unscrew(oil)",
+      "edge_key": "take(bottle)|||unscrew(oil)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(bottle)"
+    },
+    {
+      "index": 126,
+      "action": "unscrew",
+      "start": 643.1,
+      "end": 645.14,
+      "duration": 2.0399999999999636,
+      "next_action": "take(spoon)",
+      "edge_key": "unscrew(oil)|||take(spoon)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "unscrew(oil)"
+    },
+    {
+      "index": 127,
+      "action": "take",
+      "start": 644.77,
+      "end": 645.53,
+      "duration": 0.7599999999999909,
+      "next_action": "pour(bottle)",
+      "edge_key": "take(spoon)|||pour(bottle)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(spoon)"
+    },
+    {
+      "index": 128,
+      "action": "pour",
+      "start": 645.63,
+      "end": 650.2,
+      "duration": 4.57000000000005,
+      "next_action": "put(bottle)",
+      "edge_key": "pour(bottle)|||put(bottle)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pour(bottle)"
+    },
+    {
+      "index": 129,
+      "action": "put",
+      "start": 650.3,
+      "end": 650.92,
+      "duration": 0.6200000000000045,
+      "next_action": "open(drawer)",
+      "edge_key": "put(bottle)|||open(drawer)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(bottle)"
+    },
+    {
+      "index": 130,
+      "action": "open",
+      "start": 651.25,
+      "end": 653.83,
+      "duration": 2.580000000000041,
+      "next_action": "pour(oil)",
+      "edge_key": "open(drawer)|||pour(oil)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "open(drawer)"
+    },
+    {
+      "index": 131,
+      "action": "pour",
+      "start": 654.62,
+      "end": 659.36,
+      "duration": 4.740000000000009,
+      "next_action": "put(spoon)",
+      "edge_key": "pour(oil)|||put(spoon)",
+      "step_id": "P08_R02_S03",
+      "is_primary": true,
+      "raw_action": "pour(oil)"
+    },
+    {
+      "index": 132,
+      "action": "put",
+      "start": 659.68,
+      "end": 660.75,
+      "duration": 1.07000000000005,
+      "next_action": "pour(oil)",
+      "edge_key": "put(spoon)|||pour(oil)",
+      "step_id": "P08_R02_S03",
+      "is_primary": true,
+      "raw_action": "put(spoon)"
+    },
+    {
+      "index": 133,
+      "action": "pour",
+      "start": 661.21,
+      "end": 662.72,
+      "duration": 1.509999999999991,
+      "next_action": "drop(oil)",
+      "edge_key": "pour(oil)|||drop(oil)",
+      "step_id": "P08_R02_S03",
+      "is_primary": true,
+      "raw_action": "pour(oil)"
+    },
+    {
+      "index": 134,
+      "action": "drop",
+      "start": 662.82,
+      "end": 663.9,
+      "duration": 1.0799999999999272,
+      "next_action": "pour(oil)",
+      "edge_key": "drop(oil)|||pour(oil)",
+      "step_id": "P08_R02_S03",
+      "is_primary": true,
+      "raw_action": "drop(oil)"
+    },
+    {
+      "index": 135,
+      "action": "pour",
+      "start": 664.29,
+      "end": 666.7,
+      "duration": 2.410000000000082,
+      "next_action": "pour(oil)",
+      "edge_key": "pour(oil)|||pour(oil)",
+      "step_id": "P08_R02_S03",
+      "is_primary": true,
+      "raw_action": "pour(oil)"
+    },
+    {
+      "index": 136,
+      "action": "pour",
+      "start": 666.8,
+      "end": 667.42,
+      "duration": 0.6200000000000045,
+      "next_action": "take(cap)",
+      "edge_key": "pour(oil)|||take(cap)",
+      "step_id": "P08_R02_S03",
+      "is_primary": true,
+      "raw_action": "pour(oil)"
+    },
+    {
+      "index": 137,
+      "action": "take",
+      "start": 669.13,
+      "end": 671.23,
+      "duration": 2.1000000000000227,
+      "next_action": "put(spoon)",
+      "edge_key": "take(cap)|||put(spoon)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(cap)"
+    },
+    {
+      "index": 138,
+      "action": "put",
+      "start": 671.56,
+      "end": 672.11,
+      "duration": 0.5500000000000682,
+      "next_action": "take(phone)",
+      "edge_key": "put(spoon)|||take(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(spoon)"
+    },
+    {
+      "index": 139,
+      "action": "take",
+      "start": 672.74,
+      "end": 673.64,
+      "duration": 0.8999999999999773,
+      "next_action": "take(bottle)",
+      "edge_key": "take(phone)|||take(bottle)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(phone)"
+    },
+    {
+      "index": 140,
+      "action": "take",
+      "start": 674.44,
+      "end": 674.93,
+      "duration": 0.4899999999998954,
+      "next_action": "put(phone)",
+      "edge_key": "take(bottle)|||put(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(bottle)"
+    },
+    {
+      "index": 141,
+      "action": "put",
+      "start": 674.99,
+      "end": 676.46,
+      "duration": 1.4700000000000273,
+      "next_action": "put(phone)",
+      "edge_key": "put(phone)|||put(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(phone)"
+    },
+    {
+      "index": 142,
+      "action": "put",
+      "start": 676.55,
+      "end": 680.06,
+      "duration": 3.509999999999991,
+      "next_action": "move(oil)",
+      "edge_key": "put(phone)|||move(oil)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(phone)"
+    },
+    {
+      "index": 143,
+      "action": "move",
+      "start": 680.09,
+      "end": 680.91,
+      "duration": 0.8199999999999363,
+      "next_action": "pat(hand)",
+      "edge_key": "move(oil)|||pat(hand)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "move(oil)"
+    },
+    {
+      "index": 144,
+      "action": "pat",
+      "start": 683.67,
+      "end": 685.65,
+      "duration": 1.9800000000000182,
+      "next_action": "put(phone)",
+      "edge_key": "pat(hand)|||put(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pat(hand)"
+    },
+    {
+      "index": 145,
+      "action": "put",
+      "start": 705.34,
+      "end": 705.99,
+      "duration": 0.6499999999999773,
+      "next_action": "take(bottle)",
+      "edge_key": "put(phone)|||take(bottle)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(phone)"
+    },
+    {
+      "index": 146,
+      "action": "take",
+      "start": 706.83,
+      "end": 707.46,
+      "duration": 0.6299999999999955,
+      "next_action": "move(bottle)",
+      "edge_key": "take(bottle)|||move(bottle)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(bottle)"
+    },
+    {
+      "index": 147,
+      "action": "move",
+      "start": 707.46,
+      "end": 709.12,
+      "duration": 1.6599999999999682,
+      "next_action": "pat(phone)",
+      "edge_key": "move(bottle)|||pat(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "move(bottle)"
+    },
+    {
+      "index": 148,
+      "action": "pat",
+      "start": 709.75,
+      "end": 716.02,
+      "duration": 6.269999999999982,
+      "next_action": "scrape(bottle)",
+      "edge_key": "pat(phone)|||scrape(bottle)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pat(phone)"
+    },
+    {
+      "index": 149,
+      "action": "scrape",
+      "start": 715.59,
+      "end": 720.64,
+      "duration": 5.0499999999999545,
+      "next_action": "put(bottle)",
+      "edge_key": "scrape(bottle)|||put(bottle)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "scrape(bottle)"
+    },
+    {
+      "index": 150,
+      "action": "put",
+      "start": 728.11,
+      "end": 729.46,
+      "duration": 1.3500000000000227,
+      "next_action": "put(phone)",
+      "edge_key": "put(bottle)|||put(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(bottle)"
+    },
+    {
+      "index": 151,
+      "action": "put",
+      "start": 730.36,
+      "end": 731.76,
+      "duration": 1.3999999999999773,
+      "next_action": "take(bottle)",
+      "edge_key": "put(phone)|||take(bottle)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(phone)"
+    },
+    {
+      "index": 152,
+      "action": "take",
+      "start": 731.37,
+      "end": 732.23,
+      "duration": 0.8600000000000136,
+      "next_action": "pour(sauce)",
+      "edge_key": "take(bottle)|||pour(sauce)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(bottle)"
+    },
+    {
+      "index": 153,
+      "action": "pour",
+      "start": 732.33,
+      "end": 733.64,
+      "duration": 1.3099999999999454,
+      "next_action": "squeeze(bottle)",
+      "edge_key": "pour(sauce)|||squeeze(bottle)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pour(sauce)"
+    },
+    {
+      "index": 154,
+      "action": "squeeze",
+      "start": 733.74,
+      "end": 739.87,
+      "duration": 6.1299999999999955,
+      "next_action": "put(spoon)",
+      "edge_key": "squeeze(bottle)|||put(spoon)",
+      "step_id": "P08_R02_S03",
+      "is_primary": true,
+      "raw_action": "squeeze(bottle)"
+    },
+    {
+      "index": 155,
+      "action": "put",
+      "start": 739.71,
+      "end": 758.18,
+      "duration": 18.469999999999914,
+      "next_action": "pour(sauce)",
+      "edge_key": "put(spoon)|||pour(sauce)",
+      "step_id": "P08_R02_S03",
+      "is_primary": true,
+      "raw_action": "put(spoon)"
+    },
+    {
+      "index": 156,
+      "action": "pour",
+      "start": 739.97,
+      "end": 741.5,
+      "duration": 1.5299999999999727,
+      "next_action": "take(bottle)",
+      "edge_key": "pour(sauce)|||take(bottle)",
+      "step_id": "P08_R02_S03",
+      "is_primary": true,
+      "raw_action": "pour(sauce)"
+    },
+    {
+      "index": 157,
+      "action": "take",
+      "start": 758.07,
+      "end": 764.01,
+      "duration": 5.939999999999941,
+      "next_action": "put(bottle)",
+      "edge_key": "take(bottle)|||put(bottle)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(bottle)"
+    },
+    {
+      "index": 158,
+      "action": "put",
+      "start": 763.82,
+      "end": 764.83,
+      "duration": 1.009999999999991,
+      "next_action": "pat(phone)",
+      "edge_key": "put(bottle)|||pat(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(bottle)"
+    },
+    {
+      "index": 159,
+      "action": "pat",
+      "start": 764.74,
+      "end": 771.96,
+      "duration": 7.220000000000027,
+      "next_action": "take(salt)",
+      "edge_key": "pat(phone)|||take(salt)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pat(phone)"
+    },
+    {
+      "index": 160,
+      "action": "take",
+      "start": 776.59,
+      "end": 777.26,
+      "duration": 0.6699999999999591,
+      "next_action": "crush(bottle)",
+      "edge_key": "take(salt)|||crush(bottle)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(salt)"
+    },
+    {
+      "index": 161,
+      "action": "crush",
+      "start": 778.28,
+      "end": 780.33,
+      "duration": 2.050000000000068,
+      "next_action": "put(bottle)",
+      "edge_key": "crush(bottle)|||put(bottle)",
+      "step_id": "P08_R02_S03",
+      "is_primary": true,
+      "raw_action": "crush(bottle)"
+    },
+    {
+      "index": 162,
+      "action": "put",
+      "start": 780.2,
+      "end": 781.57,
+      "duration": 1.3700000000000045,
+      "next_action": "pat(phone)",
+      "edge_key": "put(bottle)|||pat(phone)",
+      "step_id": "P08_R02_S03",
+      "is_primary": true,
+      "raw_action": "put(bottle)"
+    },
+    {
+      "index": 163,
+      "action": "pat",
+      "start": 781.67,
+      "end": 789.43,
+      "duration": 7.759999999999991,
+      "next_action": "take(pepper)",
+      "edge_key": "pat(phone)|||take(pepper)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pat(phone)"
+    },
+    {
+      "index": 164,
+      "action": "take",
+      "start": 789.95,
+      "end": 791.06,
+      "duration": 1.1099999999999,
+      "next_action": "crush(bottle)",
+      "edge_key": "take(pepper)|||crush(bottle)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(pepper)"
+    },
+    {
+      "index": 165,
+      "action": "crush",
+      "start": 791.16,
+      "end": 793.94,
+      "duration": 2.7800000000000864,
+      "next_action": "put(bottle)",
+      "edge_key": "crush(bottle)|||put(bottle)",
+      "step_id": "P08_R02_S03",
+      "is_primary": true,
+      "raw_action": "crush(bottle)"
+    },
+    {
+      "index": 166,
+      "action": "put",
+      "start": 793.99,
+      "end": 794.38,
+      "duration": 0.38999999999998636,
+      "next_action": "pat(phone)",
+      "edge_key": "put(bottle)|||pat(phone)",
+      "step_id": "P08_R02_S03",
+      "is_primary": true,
+      "raw_action": "put(bottle)"
+    },
+    {
+      "index": 167,
+      "action": "pat",
+      "start": 795.05,
+      "end": 802.72,
+      "duration": 7.670000000000073,
+      "next_action": "take(spoon)",
+      "edge_key": "pat(phone)|||take(spoon)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pat(phone)"
+    },
+    {
+      "index": 168,
+      "action": "take",
+      "start": 803.98,
+      "end": 804.28,
+      "duration": 0.2999999999999545,
+      "next_action": "take(spoon)",
+      "edge_key": "take(spoon)|||take(spoon)",
+      "step_id": "P08_R02_S03",
+      "is_primary": true,
+      "raw_action": "take(spoon)"
+    },
+    {
+      "index": 169,
+      "action": "take",
+      "start": 815.42,
+      "end": 824.97,
+      "duration": 9.550000000000068,
+      "next_action": "squeeze(oregano)",
+      "edge_key": "take(spoon)|||squeeze(oregano)",
+      "step_id": "P08_R02_S03",
+      "is_primary": true,
+      "raw_action": "take(spoon)"
+    },
+    {
+      "index": 170,
+      "action": "squeeze",
+      "start": 828.73,
+      "end": 830.46,
+      "duration": 1.7300000000000182,
+      "next_action": "pour(hand)",
+      "edge_key": "squeeze(oregano)|||pour(hand)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "squeeze(oregano)"
+    },
+    {
+      "index": 171,
+      "action": "pour",
+      "start": 830.36,
+      "end": 831.2,
+      "duration": 0.8400000000000318,
+      "next_action": "sprinkle(oregano)",
+      "edge_key": "pour(hand)|||sprinkle(oregano)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pour(hand)"
+    },
+    {
+      "index": 172,
+      "action": "sprinkle",
+      "start": 831.3,
+      "end": 833.41,
+      "duration": 2.1100000000000136,
+      "next_action": "pat(phone)",
+      "edge_key": "sprinkle(oregano)|||pat(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "sprinkle(oregano)"
+    },
+    {
+      "index": 173,
+      "action": "pat",
+      "start": 835.64,
+      "end": 840.23,
+      "duration": 4.590000000000032,
+      "next_action": "take(oil)",
+      "edge_key": "pat(phone)|||take(oil)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pat(phone)"
+    },
+    {
+      "index": 174,
+      "action": "take",
+      "start": 842.83,
+      "end": 847.48,
+      "duration": 4.649999999999977,
+      "next_action": "take(salt)",
+      "edge_key": "take(oil)|||take(salt)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(oil)"
+    },
+    {
+      "index": 175,
+      "action": "take",
+      "start": 847.3,
+      "end": 851.16,
+      "duration": 3.8600000000000136,
+      "next_action": "take(lettuce)",
+      "edge_key": "take(salt)|||take(lettuce)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(salt)"
+    },
+    {
+      "index": 176,
+      "action": "take",
+      "start": 851.26,
+      "end": 852.61,
+      "duration": 1.3500000000000227,
+      "next_action": "take(salad)",
+      "edge_key": "take(lettuce)|||take(salad)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(lettuce)"
+    },
+    {
+      "index": 177,
+      "action": "take",
+      "start": 852.71,
+      "end": 853.87,
+      "duration": 1.1599999999999682,
+      "next_action": "move(colander)",
+      "edge_key": "take(salad)|||move(colander)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(salad)"
+    },
+    {
+      "index": 178,
+      "action": "move",
+      "start": 853.93,
+      "end": 855.29,
+      "duration": 1.3600000000000136,
+      "next_action": "put(salad)",
+      "edge_key": "move(colander)|||put(salad)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "move(colander)"
+    },
+    {
+      "index": 179,
+      "action": "put",
+      "start": 855.3,
+      "end": 861.25,
+      "duration": 5.9500000000000455,
+      "next_action": "open(drawer)",
+      "edge_key": "put(salad)|||open(drawer)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(salad)"
+    },
+    {
+      "index": 180,
+      "action": "open",
+      "start": 858.2,
+      "end": 860.93,
+      "duration": 2.7299999999999045,
+      "next_action": "move(phone)",
+      "edge_key": "open(drawer)|||move(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "open(drawer)"
+    },
+    {
+      "index": 181,
+      "action": "move",
+      "start": 866.04,
+      "end": 866.95,
+      "duration": 0.9100000000000819,
+      "next_action": "move(knife)",
+      "edge_key": "move(phone)|||move(knife)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "move(phone)"
+    },
+    {
+      "index": 182,
+      "action": "move",
+      "start": 867.19,
+      "end": 867.65,
+      "duration": 0.4599999999999227,
+      "next_action": "scrape(food)",
+      "edge_key": "move(knife)|||scrape(food)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "move(knife)"
+    },
+    {
+      "index": 183,
+      "action": "scrape",
+      "start": 868.18,
+      "end": 875.34,
+      "duration": 7.160000000000082,
+      "next_action": "lift(board:chopping)",
+      "edge_key": "scrape(food)|||lift(board:chopping)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "scrape(food)"
+    },
+    {
+      "index": 184,
+      "action": "lift",
+      "start": 875.24,
+      "end": 878.23,
+      "duration": 2.990000000000009,
+      "next_action": "open(rubbish)",
+      "edge_key": "lift(board:chopping)|||open(rubbish)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "lift(board:chopping)"
+    },
+    {
+      "index": 185,
+      "action": "open",
+      "start": 878.33,
+      "end": 879.02,
+      "duration": 0.6899999999999409,
+      "next_action": "carry(board:chopping)",
+      "edge_key": "open(rubbish)|||carry(board:chopping)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "open(rubbish)"
+    },
+    {
+      "index": 186,
+      "action": "carry",
+      "start": 881.53,
+      "end": 883.65,
+      "duration": 2.1200000000000045,
+      "next_action": "take(board:chopping)",
+      "edge_key": "carry(board:chopping)|||take(board:chopping)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "carry(board:chopping)"
+    },
+    {
+      "index": 187,
+      "action": "take",
+      "start": 884.73,
+      "end": 887.03,
+      "duration": 2.2999999999999545,
+      "next_action": "squeeze(bread)",
+      "edge_key": "take(board:chopping)|||squeeze(bread)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(board:chopping)"
+    },
+    {
+      "index": 188,
+      "action": "squeeze",
+      "start": 887.63,
+      "end": 889.78,
+      "duration": 2.1499999999999773,
+      "next_action": "take(bag)",
+      "edge_key": "squeeze(bread)|||take(bag)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "squeeze(bread)"
+    },
+    {
+      "index": 189,
+      "action": "take",
+      "start": 889.85,
+      "end": 890.49,
+      "duration": 0.6399999999999864,
+      "next_action": "put(bread)",
+      "edge_key": "take(bag)|||put(bread)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(bag)"
+    },
+    {
+      "index": 190,
+      "action": "put",
+      "start": 892.0,
+      "end": 895.2,
+      "duration": 3.2000000000000455,
+      "next_action": "put(camera)",
+      "edge_key": "put(bread)|||put(camera)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(bread)"
+    },
+    {
+      "index": 191,
+      "action": "put",
+      "start": 895.3,
+      "end": 909.07,
+      "duration": 13.770000000000095,
+      "next_action": "pat(phone)",
+      "edge_key": "put(camera)|||pat(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(camera)"
+    },
+    {
+      "index": 192,
+      "action": "pat",
+      "start": 908.71,
+      "end": 914.31,
+      "duration": 5.599999999999909,
+      "next_action": "pull(bag)",
+      "edge_key": "pat(phone)|||pull(bag)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pat(phone)"
+    },
+    {
+      "index": 193,
+      "action": "pull",
+      "start": 914.53,
+      "end": 916.22,
+      "duration": 1.6900000000000546,
+      "next_action": "take(knife)",
+      "edge_key": "pull(bag)|||take(knife)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pull(bag)"
+    },
+    {
+      "index": 194,
+      "action": "take",
+      "start": 916.12,
+      "end": 917.57,
+      "duration": 1.4500000000000455,
+      "next_action": "cut(bread)",
+      "edge_key": "take(knife)|||cut(bread)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(knife)"
+    },
+    {
+      "index": 195,
+      "action": "cut",
+      "start": 917.67,
+      "end": 921.32,
+      "duration": 3.650000000000091,
+      "next_action": "turn(bread)",
+      "edge_key": "cut(bread)|||turn(bread)",
+      "step_id": "P08_R02_S04",
+      "is_primary": true,
+      "raw_action": "cut(bread)"
+    },
+    {
+      "index": 196,
+      "action": "turn",
+      "start": 921.39,
+      "end": 923.43,
+      "duration": 2.0399999999999636,
+      "next_action": "put(bread)",
+      "edge_key": "turn(bread)|||put(bread)",
+      "step_id": "P08_R02_S04",
+      "is_primary": true,
+      "raw_action": "turn(bread)"
+    },
+    {
+      "index": 197,
+      "action": "put",
+      "start": 923.43,
+      "end": 926.22,
+      "duration": 2.7900000000000773,
+      "next_action": "pat(scale)",
+      "edge_key": "put(bread)|||pat(scale)",
+      "step_id": "P08_R02_S04",
+      "is_primary": true,
+      "raw_action": "put(bread)"
+    },
+    {
+      "index": 198,
+      "action": "pat",
+      "start": 926.54,
+      "end": 927.56,
+      "duration": 1.0199999999999818,
+      "next_action": "take(bread)",
+      "edge_key": "pat(scale)|||take(bread)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pat(scale)"
+    },
+    {
+      "index": 199,
+      "action": "take",
+      "start": 927.66,
+      "end": 930.86,
+      "duration": 3.2000000000000455,
+      "next_action": "take(phone)",
+      "edge_key": "take(bread)|||take(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(bread)"
+    },
+    {
+      "index": 200,
+      "action": "take",
+      "start": 932.18,
+      "end": 933.45,
+      "duration": 1.2700000000000955,
+      "next_action": "pat(phone)",
+      "edge_key": "take(phone)|||pat(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(phone)"
+    },
+    {
+      "index": 201,
+      "action": "pat",
+      "start": 933.55,
+      "end": 945.18,
+      "duration": 11.629999999999995,
+      "next_action": "put(phone)",
+      "edge_key": "pat(phone)|||put(phone)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "pat(phone)"
+    },
+    {
+      "index": 202,
+      "action": "put",
+      "start": 945.83,
+      "end": 946.45,
+      "duration": 0.6200000000000045,
+      "next_action": "lift(bread)",
+      "edge_key": "put(phone)|||lift(bread)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(phone)"
+    },
+    {
+      "index": 203,
+      "action": "lift",
+      "start": 946.61,
+      "end": 947.35,
+      "duration": 0.7400000000000091,
+      "next_action": "cut(bread)",
+      "edge_key": "lift(bread)|||cut(bread)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "lift(bread)"
+    },
+    {
+      "index": 204,
+      "action": "cut",
+      "start": 948.05,
+      "end": 950.74,
+      "duration": 2.6900000000000546,
+      "next_action": "squeeze(hand)",
+      "edge_key": "cut(bread)|||squeeze(hand)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "cut(bread)"
+    },
+    {
+      "index": 205,
+      "action": "squeeze",
+      "start": 950.6,
+      "end": 953.24,
+      "duration": 2.6399999999999864,
+      "next_action": "open(drawer)",
+      "edge_key": "squeeze(hand)|||open(drawer)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "squeeze(hand)"
+    },
+    {
+      "index": 206,
+      "action": "open",
+      "start": 954.47,
+      "end": 956.37,
+      "duration": 1.8999999999999773,
+      "next_action": "take(spoon)",
+      "edge_key": "open(drawer)|||take(spoon)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "open(drawer)"
+    },
+    {
+      "index": 207,
+      "action": "take",
+      "start": 956.47,
+      "end": 966.51,
+      "duration": 10.039999999999964,
+      "next_action": "put(spoon)",
+      "edge_key": "take(spoon)|||put(spoon)",
+      "step_id": "P08_R02_S03",
+      "is_primary": true,
+      "raw_action": "take(spoon)"
+    },
+    {
+      "index": 208,
+      "action": "put",
+      "start": 966.86,
+      "end": 967.41,
+      "duration": 0.5499999999999545,
+      "next_action": "take(bread)",
+      "edge_key": "put(spoon)|||take(bread)",
+      "step_id": "P08_R02_S03",
+      "is_primary": true,
+      "raw_action": "put(spoon)"
+    },
+    {
+      "index": 209,
+      "action": "take",
+      "start": 967.38,
+      "end": 968.17,
+      "duration": 0.7899999999999636,
+      "next_action": "take(bowl)",
+      "edge_key": "take(bread)|||take(bowl)",
+      "step_id": "P08_R02_S04",
+      "is_primary": true,
+      "raw_action": "take(bread)"
+    },
+    {
+      "index": 210,
+      "action": "take",
+      "start": 968.31,
+      "end": 969.29,
+      "duration": 0.9800000000000182,
+      "next_action": "take(spoon)",
+      "edge_key": "take(bowl)|||take(spoon)",
+      "step_id": "P08_R02_S05",
+      "is_primary": true,
+      "raw_action": "take(bowl)"
+    },
+    {
+      "index": 211,
+      "action": "take",
+      "start": 969.39,
+      "end": 972.91,
+      "duration": 3.519999999999982,
+      "next_action": "take(board:chopping)",
+      "edge_key": "take(spoon)|||take(board:chopping)",
+      "step_id": "P08_R02_S05",
+      "is_primary": true,
+      "raw_action": "take(spoon)"
+    },
+    {
+      "index": 212,
+      "action": "take",
+      "start": 972.41,
+      "end": 975.94,
+      "duration": 3.5300000000000864,
+      "next_action": "take(onion)",
+      "edge_key": "take(board:chopping)|||take(onion)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(board:chopping)"
+    },
+    {
+      "index": 213,
+      "action": "take",
+      "start": 977.49,
+      "end": 978.53,
+      "duration": 1.0399999999999636,
+      "next_action": "open(fridge)",
+      "edge_key": "take(onion)|||open(fridge)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(onion)"
+    },
+    {
+      "index": 214,
+      "action": "open",
+      "start": 979.58,
+      "end": 980.4,
+      "duration": 0.8199999999999363,
+      "next_action": "put(onion)",
+      "edge_key": "open(fridge)|||put(onion)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "open(fridge)"
+    },
+    {
+      "index": 215,
+      "action": "put",
+      "start": 980.5,
+      "end": 981.39,
+      "duration": 0.8899999999999864,
+      "next_action": "take(onion)",
+      "edge_key": "put(onion)|||take(onion)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(onion)"
+    },
+    {
+      "index": 216,
+      "action": "take",
+      "start": 983.56,
+      "end": 984.82,
+      "duration": 1.2600000000001046,
+      "next_action": "put(carrot)",
+      "edge_key": "take(onion)|||put(carrot)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "take(onion)"
+    },
+    {
+      "index": 217,
+      "action": "put",
+      "start": 984.92,
+      "end": 985.56,
+      "duration": 0.6399999999999864,
+      "next_action": "open(rubbish)",
+      "edge_key": "put(carrot)|||open(rubbish)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "put(carrot)"
+    },
+    {
+      "index": 218,
+      "action": "open",
+      "start": 988.36,
+      "end": 989.81,
+      "duration": 1.4499999999999318,
+      "next_action": "take(plate)",
+      "edge_key": "open(rubbish)|||take(plate)",
+      "step_id": null,
+      "is_primary": false,
+      "raw_action": "open(rubbish)"
+    },
+    {
+      "index": 219,
+      "action": "take",
+      "start": 1002.5,
+      "end": 1004.1,
+      "duration": 1.6000000000000227,
+      "next_action": "open(drawer)",
+      "edge_key": "take(plate)|||open(drawer)",
+      "step_id": "P08_R02_S05",
+      "is_primary": true,
+      "raw_action": "take(plate)"
+    },
+    {
+      "index": 220,
+      "action": "open",
+      "start": 1004.45,
+      "end": 1006.39,
+      "duration": 1.9399999999999409,
+      "next_action": null,
+      "edge_key": null,
+      "step_id": "P08_R02_S05",
+      "is_primary": true,
+      "raw_action": "open(drawer)"
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "take",
+        "count": 59,
+        "is_primary": false,
+        "objects": {
+          "salad": 2,
+          "bag": 6,
+          "carrot": 2,
+          "box": 3,
+          "board:chopping": 4,
+          "scale": 1,
+          "bowl": 4,
+          "cucumber": 3,
+          "knife": 3,
+          "cherry": 2,
+          "tomato": 1,
+          "spoon": 6,
+          "coriander": 1,
+          "onion": 4,
+          "lid": 1,
+          "bottle": 5,
+          "cap": 1,
+          "phone": 2,
+          "salt": 2,
+          "pepper": 1,
+          "oil": 1,
+          "lettuce": 1,
+          "bread": 2,
+          "plate": 1
+        }
+      },
+      {
+        "id": "put",
+        "count": 37,
+        "is_primary": false,
+        "objects": {
+          "box": 2,
+          "bag": 2,
+          "cucumber": 2,
+          "board:chopping": 2,
+          "phone": 7,
+          "spoon": 5,
+          "coriander": 2,
+          "onion": 3,
+          "lid": 2,
+          "bottle": 5,
+          "salad": 1,
+          "bread": 2,
+          "camera": 1,
+          "carrot": 1
+        }
+      },
+      {
+        "id": "pat",
+        "count": 17,
+        "is_primary": false,
+        "objects": {
+          "phone": 11,
+          "scale": 5,
+          "hand": 1
+        }
+      },
+      {
+        "id": "move",
+        "count": 14,
+        "is_primary": false,
+        "objects": {
+          "food": 1,
+          "colander": 3,
+          "salad": 1,
+          "carrot": 2,
+          "bread": 1,
+          "onion": 1,
+          "spoon": 1,
+          "oil": 1,
+          "bottle": 1,
+          "phone": 1,
+          "knife": 1
+        }
+      },
+      {
+        "id": "open",
+        "count": 14,
+        "is_primary": false,
+        "objects": {
+          "fridge": 2,
+          "drawer": 9,
+          "bag": 1,
+          "rubbish": 2
+        }
+      },
+      {
+        "id": "cut",
+        "count": 13,
+        "is_primary": true,
+        "objects": {
+          "cucumber": 3,
+          "carrot": 4,
+          "coriander": 1,
+          "onion": 3,
+          "bread": 2
+        }
+      },
+      {
+        "id": "scrape",
+        "count": 10,
+        "is_primary": true,
+        "objects": {
+          "cherry": 2,
+          "carrot": 2,
+          "coriander": 1,
+          "board:chopping": 1,
+          "onion": 1,
+          "bean": 1,
+          "bottle": 1,
+          "food": 1
+        }
+      },
+      {
+        "id": "scoop",
+        "count": 9,
+        "is_primary": true,
+        "objects": {
+          "salad": 6,
+          "cucumber": 1,
+          "coriander": 2
+        }
+      },
+      {
+        "id": "lift",
+        "count": 8,
+        "is_primary": false,
+        "objects": {
+          "board:chopping": 3,
+          "carrot": 2,
+          "phone": 1,
+          "lid": 1,
+          "bread": 1
+        }
+      },
+      {
+        "id": "pour",
+        "count": 8,
+        "is_primary": true,
+        "objects": {
+          "bottle": 1,
+          "oil": 4,
+          "sauce": 2,
+          "hand": 1
+        }
+      },
+      {
+        "id": "squeeze",
+        "count": 6,
+        "is_primary": true,
+        "objects": {
+          "tomato": 2,
+          "bottle": 1,
+          "oregano": 1,
+          "bread": 1,
+          "hand": 1
+        }
+      },
+      {
+        "id": "turn",
+        "count": 5,
+        "is_primary": true,
+        "objects": {
+          "cucumber": 1,
+          "carrot": 1,
+          "onion": 2,
+          "bread": 1
+        }
+      },
+      {
+        "id": "carry",
+        "count": 2,
+        "is_primary": false,
+        "objects": {
+          "carrot": 1,
+          "board:chopping": 1
+        }
+      },
+      {
+        "id": "close",
+        "count": 2,
+        "is_primary": false,
+        "objects": {
+          "cupboard": 1,
+          "bag": 1
+        }
+      },
+      {
+        "id": "crush",
+        "count": 2,
+        "is_primary": true,
+        "objects": {
+          "bottle": 2
+        }
+      },
+      {
+        "id": "drop",
+        "count": 2,
+        "is_primary": true,
+        "objects": {
+          "salad": 1,
+          "oil": 1
+        }
+      },
+      {
+        "id": "peel",
+        "count": 2,
+        "is_primary": false,
+        "objects": {
+          "onion": 2
+        }
+      },
+      {
+        "id": "pull",
+        "count": 2,
+        "is_primary": false,
+        "objects": {
+          "container": 1,
+          "bag": 1
+        }
+      },
+      {
+        "id": "scan",
+        "count": 2,
+        "is_primary": false,
+        "objects": {
+          "bar": 1,
+          "coriander": 1
+        }
+      },
+      {
+        "id": "add",
+        "count": 1,
+        "is_primary": true,
+        "objects": {
+          "coriander": 1
+        }
+      },
+      {
+        "id": "adjust",
+        "count": 1,
+        "is_primary": false,
+        "objects": {
+          "bean": 1
+        }
+      },
+      {
+        "id": "hold",
+        "count": 1,
+        "is_primary": false,
+        "objects": {
+          "box": 1
+        }
+      },
+      {
+        "id": "slide",
+        "count": 1,
+        "is_primary": false,
+        "objects": {
+          "phone": 1
+        }
+      },
+      {
+        "id": "sprinkle",
+        "count": 1,
+        "is_primary": false,
+        "objects": {
+          "oregano": 1
+        }
+      },
+      {
+        "id": "throw",
+        "count": 1,
+        "is_primary": true,
+        "objects": {
+          "onion": 1
+        }
+      },
+      {
+        "id": "unscrew",
+        "count": 1,
+        "is_primary": false,
+        "objects": {
+          "oil": 1
+        }
+      }
+    ],
+    "links": [
+      {
+        "source": "take",
+        "target": "take",
+        "count": 14,
+        "key": "take|||take",
+        "occurrences": [
+          5,
+          24,
+          40,
+          92,
+          139,
+          168,
+          174,
+          175,
+          176,
+          199,
+          209,
+          210,
+          211,
+          212
+        ]
+      },
+      {
+        "source": "put",
+        "target": "take",
+        "count": 12,
+        "key": "put|||take",
+        "occurrences": [
+          11,
+          23,
+          68,
+          73,
+          84,
+          109,
+          122,
+          138,
+          145,
+          151,
+          208,
+          215
+        ]
+      },
+      {
+        "source": "pat",
+        "target": "take",
+        "count": 8,
+        "key": "pat|||take",
+        "occurrences": [
+          15,
+          32,
+          113,
+          159,
+          163,
+          167,
+          173,
+          198
+        ]
+      },
+      {
+        "source": "take",
+        "target": "put",
+        "count": 8,
+        "key": "take|||put",
+        "occurrences": [
+          67,
+          77,
+          137,
+          140,
+          157,
+          189,
+          207,
+          216
+        ]
+      },
+      {
+        "source": "put",
+        "target": "pat",
+        "count": 7,
+        "key": "put|||pat",
+        "occurrences": [
+          31,
+          112,
+          158,
+          162,
+          166,
+          191,
+          197
+        ]
+      },
+      {
+        "source": "take",
+        "target": "open",
+        "count": 6,
+        "key": "take|||open",
+        "occurrences": [
+          3,
+          12,
+          16,
+          69,
+          213,
+          219
+        ]
+      },
+      {
+        "source": "open",
+        "target": "take",
+        "count": 5,
+        "key": "open|||take",
+        "occurrences": [
+          2,
+          4,
+          13,
+          206,
+          218
+        ]
+      },
+      {
+        "source": "pat",
+        "target": "put",
+        "count": 5,
+        "key": "pat|||put",
+        "occurrences": [
+          30,
+          80,
+          96,
+          144,
+          201
+        ]
+      },
+      {
+        "source": "take",
+        "target": "pat",
+        "count": 5,
+        "key": "take|||pat",
+        "occurrences": [
+          14,
+          19,
+          74,
+          95,
+          200
+        ]
+      },
+      {
+        "source": "move",
+        "target": "take",
+        "count": 4,
+        "key": "move|||take",
+        "occurrences": [
+          8,
+          48,
+          91,
+          124
+        ]
+      },
+      {
+        "source": "put",
+        "target": "put",
+        "count": 4,
+        "key": "put|||put",
+        "occurrences": [
+          83,
+          141,
+          150,
+          190
+        ]
+      },
+      {
+        "source": "scrape",
+        "target": "put",
+        "count": 4,
+        "key": "scrape|||put",
+        "occurrences": [
+          64,
+          108,
+          121,
+          149
+        ]
+      },
+      {
+        "source": "take",
+        "target": "cut",
+        "count": 4,
+        "key": "take|||cut",
+        "occurrences": [
+          33,
+          85,
+          93,
+          194
+        ]
+      },
+      {
+        "source": "take",
+        "target": "move",
+        "count": 4,
+        "key": "take|||move",
+        "occurrences": [
+          6,
+          123,
+          146,
+          177
+        ]
+      },
+      {
+        "source": "cut",
+        "target": "take",
+        "count": 3,
+        "key": "cut|||take",
+        "occurrences": [
+          39,
+          94,
+          106
+        ]
+      },
+      {
+        "source": "cut",
+        "target": "turn",
+        "count": 3,
+        "key": "cut|||turn",
+        "occurrences": [
+          58,
+          104,
+          195
+        ]
+      },
+      {
+        "source": "move",
+        "target": "move",
+        "count": 3,
+        "key": "move|||move",
+        "occurrences": [
+          7,
+          54,
+          181
+        ]
+      },
+      {
+        "source": "put",
+        "target": "open",
+        "count": 3,
+        "key": "put|||open",
+        "occurrences": [
+          129,
+          179,
+          217
+        ]
+      },
+      {
+        "source": "scoop",
+        "target": "put",
+        "count": 3,
+        "key": "scoop|||put",
+        "occurrences": [
+          22,
+          72,
+          82
+        ]
+      },
+      {
+        "source": "take",
+        "target": "scrape",
+        "count": 3,
+        "key": "take|||scrape",
+        "occurrences": [
+          41,
+          107,
+          120
+        ]
+      },
+      {
+        "source": "turn",
+        "target": "cut",
+        "count": 3,
+        "key": "turn|||cut",
+        "occurrences": [
+          59,
+          103,
+          105
+        ]
+      },
+      {
+        "source": "crush",
+        "target": "put",
+        "count": 2,
+        "key": "crush|||put",
+        "occurrences": [
+          161,
+          165
+        ]
+      },
+      {
+        "source": "cut",
+        "target": "cut",
+        "count": 2,
+        "key": "cut|||cut",
+        "occurrences": [
+          56,
+          57
+        ]
+      },
+      {
+        "source": "cut",
+        "target": "scrape",
+        "count": 2,
+        "key": "cut|||scrape",
+        "occurrences": [
+          60,
+          86
+        ]
+      },
+      {
+        "source": "lift",
+        "target": "open",
+        "count": 2,
+        "key": "lift|||open",
+        "occurrences": [
+          51,
+          184
+        ]
+      },
+      {
+        "source": "lift",
+        "target": "scrape",
+        "count": 2,
+        "key": "lift|||scrape",
+        "occurrences": [
+          46,
+          63
+        ]
+      },
+      {
+        "source": "move",
+        "target": "pat",
+        "count": 2,
+        "key": "move|||pat",
+        "occurrences": [
+          143,
+          147
+        ]
+      },
+      {
+        "source": "open",
+        "target": "scoop",
+        "count": 2,
+        "key": "open|||scoop",
+        "occurrences": [
+          17,
+          70
+        ]
+      },
+      {
+        "source": "pour",
+        "target": "put",
+        "count": 2,
+        "key": "pour|||put",
+        "occurrences": [
+          128,
+          131
+        ]
+      },
+      {
+        "source": "pour",
+        "target": "take",
+        "count": 2,
+        "key": "pour|||take",
+        "occurrences": [
+          136,
+          156
+        ]
+      },
+      {
+        "source": "put",
+        "target": "lift",
+        "count": 2,
+        "key": "put|||lift",
+        "occurrences": [
+          65,
+          202
+        ]
+      },
+      {
+        "source": "put",
+        "target": "peel",
+        "count": 2,
+        "key": "put|||peel",
+        "occurrences": [
+          97,
+          99
+        ]
+      },
+      {
+        "source": "put",
+        "target": "pour",
+        "count": 2,
+        "key": "put|||pour",
+        "occurrences": [
+          132,
+          155
+        ]
+      },
+      {
+        "source": "scoop",
+        "target": "scoop",
+        "count": 2,
+        "key": "scoop|||scoop",
+        "occurrences": [
+          21,
+          71
+        ]
+      },
+      {
+        "source": "scrape",
+        "target": "move",
+        "count": 2,
+        "key": "scrape|||move",
+        "occurrences": [
+          47,
+          61
+        ]
+      },
+      {
+        "source": "squeeze",
+        "target": "take",
+        "count": 2,
+        "key": "squeeze|||take",
+        "occurrences": [
+          44,
+          188
+        ]
+      },
+      {
+        "source": "take",
+        "target": "crush",
+        "count": 2,
+        "key": "take|||crush",
+        "occurrences": [
+          160,
+          164
+        ]
+      },
+      {
+        "source": "take",
+        "target": "lift",
+        "count": 2,
+        "key": "take|||lift",
+        "occurrences": [
+          45,
+          110
+        ]
+      },
+      {
+        "source": "take",
+        "target": "pour",
+        "count": 2,
+        "key": "take|||pour",
+        "occurrences": [
+          127,
+          152
+        ]
+      },
+      {
+        "source": "take",
+        "target": "scoop",
+        "count": 2,
+        "key": "take|||scoop",
+        "occurrences": [
+          37,
+          114
+        ]
+      },
+      {
+        "source": "take",
+        "target": "squeeze",
+        "count": 2,
+        "key": "take|||squeeze",
+        "occurrences": [
+          169,
+          187
+        ]
+      },
+      {
+        "source": "add",
+        "target": "move",
+        "count": 1,
+        "key": "add|||move",
+        "occurrences": [
+          90
+        ]
+      },
+      {
+        "source": "adjust",
+        "target": "put",
+        "count": 1,
+        "key": "adjust|||put",
+        "occurrences": [
+          117
+        ]
+      },
+      {
+        "source": "carry",
+        "target": "lift",
+        "count": 1,
+        "key": "carry|||lift",
+        "occurrences": [
+          50
+        ]
+      },
+      {
+        "source": "carry",
+        "target": "take",
+        "count": 1,
+        "key": "carry|||take",
+        "occurrences": [
+          186
+        ]
+      },
+      {
+        "source": "close",
+        "target": "put",
+        "count": 1,
+        "key": "close|||put",
+        "occurrences": [
+          10
+        ]
+      },
+      {
+        "source": "close",
+        "target": "take",
+        "count": 1,
+        "key": "close|||take",
+        "occurrences": [
+          76
+        ]
+      },
+      {
+        "source": "cut",
+        "target": "pat",
+        "count": 1,
+        "key": "cut|||pat",
+        "occurrences": [
+          29
+        ]
+      },
+      {
+        "source": "cut",
+        "target": "put",
+        "count": 1,
+        "key": "cut|||put",
+        "occurrences": [
+          34
+        ]
+      },
+      {
+        "source": "cut",
+        "target": "squeeze",
+        "count": 1,
+        "key": "cut|||squeeze",
+        "occurrences": [
+          204
+        ]
+      },
+      {
+        "source": "drop",
+        "target": "pour",
+        "count": 1,
+        "key": "drop|||pour",
+        "occurrences": [
+          134
+        ]
+      },
+      {
+        "source": "drop",
+        "target": "take",
+        "count": 1,
+        "key": "drop|||take",
+        "occurrences": [
+          119
+        ]
+      },
+      {
+        "source": "hold",
+        "target": "adjust",
+        "count": 1,
+        "key": "hold|||adjust",
+        "occurrences": [
+          116
+        ]
+      },
+      {
+        "source": "lift",
+        "target": "cut",
+        "count": 1,
+        "key": "lift|||cut",
+        "occurrences": [
+          203
+        ]
+      },
+      {
+        "source": "lift",
+        "target": "move",
+        "count": 1,
+        "key": "lift|||move",
+        "occurrences": [
+          53
+        ]
+      },
+      {
+        "source": "lift",
+        "target": "put",
+        "count": 1,
+        "key": "lift|||put",
+        "occurrences": [
+          111
+        ]
+      },
+      {
+        "source": "lift",
+        "target": "take",
+        "count": 1,
+        "key": "lift|||take",
+        "occurrences": [
+          66
+        ]
+      },
+      {
+        "source": "move",
+        "target": "cut",
+        "count": 1,
+        "key": "move|||cut",
+        "occurrences": [
+          55
+        ]
+      },
+      {
+        "source": "move",
+        "target": "lift",
+        "count": 1,
+        "key": "move|||lift",
+        "occurrences": [
+          62
+        ]
+      },
+      {
+        "source": "move",
+        "target": "put",
+        "count": 1,
+        "key": "move|||put",
+        "occurrences": [
+          178
+        ]
+      },
+      {
+        "source": "move",
+        "target": "scrape",
+        "count": 1,
+        "key": "move|||scrape",
+        "occurrences": [
+          182
+        ]
+      },
+      {
+        "source": "move",
+        "target": "throw",
+        "count": 1,
+        "key": "move|||throw",
+        "occurrences": [
+          101
+        ]
+      },
+      {
+        "source": "open",
+        "target": "carry",
+        "count": 1,
+        "key": "open|||carry",
+        "occurrences": [
+          185
+        ]
+      },
+      {
+        "source": "open",
+        "target": "lift",
+        "count": 1,
+        "key": "open|||lift",
+        "occurrences": [
+          52
+        ]
+      },
+      {
+        "source": "open",
+        "target": "move",
+        "count": 1,
+        "key": "open|||move",
+        "occurrences": [
+          180
+        ]
+      },
+      {
+        "source": "open",
+        "target": "open",
+        "count": 1,
+        "key": "open|||open",
+        "occurrences": [
+          1
+        ]
+      },
+      {
+        "source": "open",
+        "target": "pour",
+        "count": 1,
+        "key": "open|||pour",
+        "occurrences": [
+          130
+        ]
+      },
+      {
+        "source": "open",
+        "target": "put",
+        "count": 1,
+        "key": "open|||put",
+        "occurrences": [
+          214
+        ]
+      },
+      {
+        "source": "pat",
+        "target": "close",
+        "count": 1,
+        "key": "pat|||close",
+        "occurrences": [
+          75
+        ]
+      },
+      {
+        "source": "pat",
+        "target": "pull",
+        "count": 1,
+        "key": "pat|||pull",
+        "occurrences": [
+          192
+        ]
+      },
+      {
+        "source": "pat",
+        "target": "scoop",
+        "count": 1,
+        "key": "pat|||scoop",
+        "occurrences": [
+          20
+        ]
+      },
+      {
+        "source": "pat",
+        "target": "scrape",
+        "count": 1,
+        "key": "pat|||scrape",
+        "occurrences": [
+          148
+        ]
+      },
+      {
+        "source": "peel",
+        "target": "move",
+        "count": 1,
+        "key": "peel|||move",
+        "occurrences": [
+          100
+        ]
+      },
+      {
+        "source": "peel",
+        "target": "put",
+        "count": 1,
+        "key": "peel|||put",
+        "occurrences": [
+          98
+        ]
+      },
+      {
+        "source": "pour",
+        "target": "drop",
+        "count": 1,
+        "key": "pour|||drop",
+        "occurrences": [
+          133
+        ]
+      },
+      {
+        "source": "pour",
+        "target": "pour",
+        "count": 1,
+        "key": "pour|||pour",
+        "occurrences": [
+          135
+        ]
+      },
+      {
+        "source": "pour",
+        "target": "sprinkle",
+        "count": 1,
+        "key": "pour|||sprinkle",
+        "occurrences": [
+          171
+        ]
+      },
+      {
+        "source": "pour",
+        "target": "squeeze",
+        "count": 1,
+        "key": "pour|||squeeze",
+        "occurrences": [
+          153
+        ]
+      },
+      {
+        "source": "pull",
+        "target": "cut",
+        "count": 1,
+        "key": "pull|||cut",
+        "occurrences": [
+          28
+        ]
+      },
+      {
+        "source": "pull",
+        "target": "take",
+        "count": 1,
+        "key": "pull|||take",
+        "occurrences": [
+          193
+        ]
+      },
+      {
+        "source": "put",
+        "target": "drop",
+        "count": 1,
+        "key": "put|||drop",
+        "occurrences": [
+          118
+        ]
+      },
+      {
+        "source": "put",
+        "target": "move",
+        "count": 1,
+        "key": "put|||move",
+        "occurrences": [
+          142
+        ]
+      },
+      {
+        "source": "put",
+        "target": "scan",
+        "count": 1,
+        "key": "put|||scan",
+        "occurrences": [
+          78
+        ]
+      },
+      {
+        "source": "put",
+        "target": "scoop",
+        "count": 1,
+        "key": "put|||scoop",
+        "occurrences": [
+          81
+        ]
+      },
+      {
+        "source": "put",
+        "target": "turn",
+        "count": 1,
+        "key": "put|||turn",
+        "occurrences": [
+          35
+        ]
+      },
+      {
+        "source": "scan",
+        "target": "pat",
+        "count": 1,
+        "key": "scan|||pat",
+        "occurrences": [
+          79
+        ]
+      },
+      {
+        "source": "scan",
+        "target": "take",
+        "count": 1,
+        "key": "scan|||take",
+        "occurrences": [
+          26
+        ]
+      },
+      {
+        "source": "scoop",
+        "target": "cut",
+        "count": 1,
+        "key": "scoop|||cut",
+        "occurrences": [
+          38
+        ]
+      },
+      {
+        "source": "scoop",
+        "target": "hold",
+        "count": 1,
+        "key": "scoop|||hold",
+        "occurrences": [
+          115
+        ]
+      },
+      {
+        "source": "scoop",
+        "target": "scrape",
+        "count": 1,
+        "key": "scoop|||scrape",
+        "occurrences": [
+          88
+        ]
+      },
+      {
+        "source": "scoop",
+        "target": "take",
+        "count": 1,
+        "key": "scoop|||take",
+        "occurrences": [
+          18
+        ]
+      },
+      {
+        "source": "scrape",
+        "target": "add",
+        "count": 1,
+        "key": "scrape|||add",
+        "occurrences": [
+          89
+        ]
+      },
+      {
+        "source": "scrape",
+        "target": "lift",
+        "count": 1,
+        "key": "scrape|||lift",
+        "occurrences": [
+          183
+        ]
+      },
+      {
+        "source": "scrape",
+        "target": "scoop",
+        "count": 1,
+        "key": "scrape|||scoop",
+        "occurrences": [
+          87
+        ]
+      },
+      {
+        "source": "scrape",
+        "target": "squeeze",
+        "count": 1,
+        "key": "scrape|||squeeze",
+        "occurrences": [
+          42
+        ]
+      },
+      {
+        "source": "slide",
+        "target": "open",
+        "count": 1,
+        "key": "slide|||open",
+        "occurrences": [
+          0
+        ]
+      },
+      {
+        "source": "sprinkle",
+        "target": "pat",
+        "count": 1,
+        "key": "sprinkle|||pat",
+        "occurrences": [
+          172
+        ]
+      },
+      {
+        "source": "squeeze",
+        "target": "open",
+        "count": 1,
+        "key": "squeeze|||open",
+        "occurrences": [
+          205
+        ]
+      },
+      {
+        "source": "squeeze",
+        "target": "pour",
+        "count": 1,
+        "key": "squeeze|||pour",
+        "occurrences": [
+          170
+        ]
+      },
+      {
+        "source": "squeeze",
+        "target": "put",
+        "count": 1,
+        "key": "squeeze|||put",
+        "occurrences": [
+          154
+        ]
+      },
+      {
+        "source": "squeeze",
+        "target": "squeeze",
+        "count": 1,
+        "key": "squeeze|||squeeze",
+        "occurrences": [
+          43
+        ]
+      },
+      {
+        "source": "take",
+        "target": "carry",
+        "count": 1,
+        "key": "take|||carry",
+        "occurrences": [
+          49
+        ]
+      },
+      {
+        "source": "take",
+        "target": "close",
+        "count": 1,
+        "key": "take|||close",
+        "occurrences": [
+          9
+        ]
+      },
+      {
+        "source": "take",
+        "target": "pull",
+        "count": 1,
+        "key": "take|||pull",
+        "occurrences": [
+          27
+        ]
+      },
+      {
+        "source": "take",
+        "target": "scan",
+        "count": 1,
+        "key": "take|||scan",
+        "occurrences": [
+          25
+        ]
+      },
+      {
+        "source": "take",
+        "target": "unscrew",
+        "count": 1,
+        "key": "take|||unscrew",
+        "occurrences": [
+          125
+        ]
+      },
+      {
+        "source": "throw",
+        "target": "turn",
+        "count": 1,
+        "key": "throw|||turn",
+        "occurrences": [
+          102
+        ]
+      },
+      {
+        "source": "turn",
+        "target": "put",
+        "count": 1,
+        "key": "turn|||put",
+        "occurrences": [
+          196
+        ]
+      },
+      {
+        "source": "turn",
+        "target": "take",
+        "count": 1,
+        "key": "turn|||take",
+        "occurrences": [
+          36
+        ]
+      },
+      {
+        "source": "unscrew",
+        "target": "take",
+        "count": 1,
+        "key": "unscrew|||take",
+        "occurrences": [
+          126
+        ]
+      }
+    ]
+  }
+}

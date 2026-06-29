@@ -16,11 +16,14 @@ Usage:
   python 5_dataset_challenges.py
 
 Outputs (saved to ../outputs/figures/):
-  - dataset_challenge_overview.png   — per-recipe challenge profile (the main figure)
-  - dataset_challenge_distributions.png — histograms of each challenge metric
-  - dataset_recipe_recommendation.png  — top candidate recipes to visualize next
+  - dataset_challenge_overview.png        — per-recipe challenge profile (the main figure)
+  - dataset_challenge_distributions.png   — histograms of each challenge metric
+  - dataset_recipe_recommendation.png     — top candidate recipes to visualize next
+  - dataset_challenge_durations.png       — duration boxplots for top-20 recipes
+  - overlap_pairs.csv                     — one row per overlap pair, for verification
 """
 
+import csv
 import json
 import os
 import numpy as np
@@ -82,7 +85,7 @@ def analyze_capture(recipe_entry, capture_idx, capture):
         for w in windows:
             flat.append((sid, w['start'], w['end'], w.get('video', '')))
 
-    overlap_pairs = 0
+    overlap_pairs = []
     for i in range(len(flat)):
         for j in range(i + 1, len(flat)):
             s1, a1, b1, v1 = flat[i]
@@ -92,7 +95,14 @@ def analyze_capture(recipe_entry, capture_idx, capture):
             if v1 != v2:
                 continue
             if a1 < b2 and a2 < b1:
-                overlap_pairs += 1
+                overlap_pairs.append({
+                    'step_a': s1, 'a_start': a1, 'a_end': b1,
+                    'step_b': s2, 'b_start': a2, 'b_end': b2,
+                    'video': v1,
+                    'overlap_start': max(a1, a2),
+                    'overlap_end': min(b1, b2),
+                    'overlap_duration': min(b1, b2) - max(a1, a2),
+                })
 
     # ── 4. Duration stats ────────────────────────────────────────────────
     durations = []
@@ -123,7 +133,7 @@ def analyze_all(recipes):
 
         recipe_out_of_order = False
         recipe_max_revisit = 0
-        recipe_total_overlap = 0
+        recipe_overlap_pairs = []   # list of pair dicts, each tagged with its capture index
         recipe_total_windows = 0
         recipe_durations = []
 
@@ -132,7 +142,13 @@ def analyze_all(recipes):
             if res['out_of_order']:
                 recipe_out_of_order = True
             recipe_max_revisit = max(recipe_max_revisit, res['max_windows_per_step'])
-            recipe_total_overlap += res['overlap_pairs']
+
+            # tag each pair with its capture index so we can find it later
+            for pair in res['overlap_pairs']:
+                pair_with_ctx = dict(pair)
+                pair_with_ctx['capture'] = ci
+                recipe_overlap_pairs.append(pair_with_ctx)
+
             recipe_total_windows += res['total_windows']
             recipe_durations.extend(res['durations'])
             all_durations.extend(res['durations'])
@@ -152,7 +168,8 @@ def analyze_all(recipes):
             'n_captures': len(captures),
             'out_of_order': recipe_out_of_order,
             'max_revisit': recipe_max_revisit,
-            'overlap_pairs': recipe_total_overlap,
+            'overlap_pairs': recipe_overlap_pairs,            # list of pair dicts
+            'n_overlap_pairs': len(recipe_overlap_pairs),     # count for sorting/plotting
             'total_windows': recipe_total_windows,
             'dur_min': dur_range[0],
             'dur_max': dur_range[1],
@@ -162,7 +179,7 @@ def analyze_all(recipes):
 
     # Sort by challenge "interestingness" — recipes with more challenges first
     per_recipe.sort(key=lambda x: (
-        x['overlap_pairs'] > 0,       # has overlap
+        x['n_overlap_pairs'] > 0,      # has overlap
         x['out_of_order'],             # has reordering
         x['max_revisit'],              # revisitation depth
         x['n_steps'],                  # complexity
@@ -241,7 +258,7 @@ def plot_overview(per_recipe):
 
     # ── Col 5: Overlap pairs ────────────────────────────────────────────
     ax = axes[4]
-    overlaps = [r['overlap_pairs'] for r in per_recipe]
+    overlaps = [r['n_overlap_pairs'] for r in per_recipe]
     colors_ov = [C_RED if v > 0 else C_GRAY for v in overlaps]
     ax.barh(y, overlaps, color=colors_ov, edgecolor='white', linewidth=0.3)
     ax.set_yticks([])
@@ -312,7 +329,6 @@ def plot_distributions(per_recipe, all_durations, all_window_counts):
 
     # ── 2d: Challenge co-occurrence ──────────────────────────────────────
     ax = axes[1, 1]
-    # For each recipe, count how many of the 3 boolean challenges it has
     categories = {
         'None': 0,
         'Reorder only': 0,
@@ -326,7 +342,7 @@ def plot_distributions(per_recipe, all_durations, all_window_counts):
     for r in per_recipe:
         has_reorder = r['out_of_order']
         has_revisit = r['max_revisit'] >= 5
-        has_overlap = r['overlap_pairs'] > 0
+        has_overlap = r['n_overlap_pairs'] > 0
 
         if has_reorder and has_revisit and has_overlap:
             categories['All three'] += 1
@@ -345,7 +361,6 @@ def plot_distributions(per_recipe, all_durations, all_window_counts):
         else:
             categories['Other combo'] += 1
 
-    # Filter out zero categories
     cats = {k: v for k, v in categories.items() if v > 0}
     colors_pie = ['#BAB0AC', '#4E79A7', '#F28E2B', '#76B7B2',
                   '#E15759', '#8B5CF6', '#F97316', '#59A14F']
@@ -387,7 +402,7 @@ def plot_recommendation(per_recipe):
             color = '#2563EB'
             edge = '#1e40af'
             zorder = 10
-        elif r['overlap_pairs'] > 0:
+        elif r['n_overlap_pairs'] > 0:
             color = C_RED
             edge = '#991b1b'
             zorder = 5
@@ -404,7 +419,7 @@ def plot_recommendation(per_recipe):
                    alpha=0.8, zorder=zorder)
 
         # Label interesting recipes
-        is_interesting = (r['overlap_pairs'] > 0
+        is_interesting = (r['n_overlap_pairs'] > 0
                           or r['max_revisit'] >= 10
                           or r['n_steps'] >= 10
                           or r['id'] in already_visualized)
@@ -437,7 +452,6 @@ def plot_recommendation(per_recipe):
     ax.legend(handles=legend_elements, loc='upper left', fontsize=9,
               framealpha=0.9)
 
-    # Annotation: top-right = most complex + most revisited
     ax.text(0.97, 0.97,
             'Upper-right = most complex\n(many steps + deep revisitation)',
             transform=ax.transAxes, ha='right', va='top', fontsize=8,
@@ -453,7 +467,6 @@ def plot_recommendation(per_recipe):
 
 def plot_duration_boxplots(per_recipe, top_n=20):
     """Show duration heterogeneity per recipe for the most complex ones."""
-    # Sort by total windows descending
     by_windows = sorted(per_recipe, key=lambda r: r['total_windows'], reverse=True)
     subset = [r for r in by_windows if len(r['durations']) >= 5][:top_n]
 
@@ -477,7 +490,6 @@ def plot_duration_boxplots(per_recipe, top_n=20):
                  fontsize=13, fontweight='bold')
     ax.grid(axis='x', alpha=0.2)
 
-    # Reference lines
     ax.axvline(1, color='#E15759', linestyle=':', linewidth=1, alpha=0.5,
                label='1s (annotation artifact threshold)')
     ax.axvline(120, color='#E15759', linestyle='--', linewidth=1, alpha=0.5,
@@ -486,6 +498,34 @@ def plot_duration_boxplots(per_recipe, top_n=20):
 
     fig.tight_layout()
     return fig
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CSV export — one row per overlap pair, for video verification
+# ─────────────────────────────────────────────────────────────────────────────
+
+def write_overlap_csv(per_recipe, output_path):
+    """Dump every overlap pair to CSV for manual verification."""
+    with open(output_path, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow([
+            'recipe_id', 'recipe_name', 'capture', 'video',
+            'step_a', 'a_start', 'a_end',
+            'step_b', 'b_start', 'b_end',
+            'overlap_start', 'overlap_end', 'overlap_duration',
+            'verdict',  # blank column — fill in manually: error / genuine / ambiguous
+            'note',
+        ])
+        for r in per_recipe:
+            for p in r['overlap_pairs']:
+                writer.writerow([
+                    r['id'], r['name'], p['capture'], p['video'],
+                    p['step_a'], f"{p['a_start']:.2f}", f"{p['a_end']:.2f}",
+                    p['step_b'], f"{p['b_start']:.2f}", f"{p['b_end']:.2f}",
+                    f"{p['overlap_start']:.2f}", f"{p['overlap_end']:.2f}",
+                    f"{p['overlap_duration']:.2f}",
+                    '', '',
+                ])
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -508,11 +548,13 @@ def main():
 
     # Summary
     n_reorder = sum(1 for r in per_recipe if r['out_of_order'])
-    n_overlap = sum(1 for r in per_recipe if r['overlap_pairs'] > 0)
+    n_overlap = sum(1 for r in per_recipe if r['n_overlap_pairs'] > 0)
     n_heavy_revisit = sum(1 for r in per_recipe if r['max_revisit'] >= 5)
+    total_overlap_pairs = sum(r['n_overlap_pairs'] for r in per_recipe)
     print(f'\n  Out-of-order recipes:      {n_reorder} / {len(per_recipe)}')
     print(f'  Deep revisitation (>=5):   {n_heavy_revisit} / {len(per_recipe)}')
     print(f'  Recipes with overlap:      {n_overlap} / {len(per_recipe)}')
+    print(f'  Total overlap pairs:       {total_overlap_pairs}')
     print(f'  Total step-time windows:   {len(all_durations)}')
     print(f'  Median window duration:    {np.median(all_durations):.1f}s')
 
@@ -548,6 +590,12 @@ def main():
     plt.close(fig4)
     print(f'  Saved: {path4}')
 
+    # ── CSV: overlap pair details for verification ───────────────────────
+    print('Writing overlap pair details to CSV ...')
+    csv_path = os.path.join(output_dir, 'overlap_pairs.csv')
+    write_overlap_csv(per_recipe, csv_path)
+    print(f'  Saved: {csv_path}')
+
     # ── Print top candidates ─────────────────────────────────────────────
     print('\n' + '=' * 70)
     print('TOP RECIPE CANDIDATES TO VISUALIZE NEXT')
@@ -567,7 +615,7 @@ def main():
         print(f'{rank:<5} {r["id"]:<12} {r["name"][:20]:<22} '
               f'{r["n_steps"]:<6} {r["total_windows"]:<6} '
               f'{"yes" if r["out_of_order"] else "no":<6} '
-              f'{r["max_revisit"]:<7} {r["overlap_pairs"]:<8}')
+              f'{r["max_revisit"]:<7} {r["n_overlap_pairs"]:<8}')
 
     print('\nDone. All figures saved to:', output_dir)
 
