@@ -1,23 +1,35 @@
 // videoQueue.js
 //
-// Manages the main <video> element + N-1 thumbnail queue items in comparison
-// mode. Clicking a thumbnail swaps which session is the active video.
+// Renders N-1 thumbnail queue items in comparison mode. Clicking a thumbnail
+// fires onActiveChange(sessionIndex). The caller is responsible for driving
+// the actual <video> element (via captureController) — this module just
+// handles thumbnail rendering and which session is "active."
 //
-// Thumbnails are static <video preload=metadata> with poster behavior — we
-// load metadata only (not the full stream) so memory stays bounded.
+// Thumbnails are static <video preload=metadata> elements showing the first
+// video of each capture (sessions are captures; multi-video captures pick
+// their first video for the thumbnail).
 //
 // Public API:
-//   buildVideoQueue(mainVideoEl, queueContainerEl, sessions, options) → {
+//   buildVideoQueue(queueContainerEl, sessions, options) → {
 //     setActiveSession(sessionIndex),
 //     getActiveSession(),
 //   }
+//
+//   sessions: [{ index, videos: [{video_id, video_path, ...}, ...], ... }, ...]
 
-export function buildVideoQueue(mainVideoEl, queueContainerEl, sessions, options = {}) {
+export function buildVideoQueue(queueContainerEl, sessions, options = {}) {
   const onActiveChange = options.onActiveChange || (() => {});
   let activeSessionIndex = sessions[0].index;
 
   queueContainerEl.innerHTML = "";
-  const thumbElements = {}; // sessionIndex → wrapper
+
+  function getThumbSrc(session) {
+    // Each session has a `videos` array; thumbnail = first video.
+    if (session.videos && session.videos.length > 0) {
+      return session.videos[0].video_path;
+    }
+    return session.video_path; // back-compat fallback
+  }
 
   function renderQueue() {
     queueContainerEl.innerHTML = "";
@@ -30,7 +42,7 @@ export function buildVideoQueue(mainVideoEl, queueContainerEl, sessions, options
         wrap.title = `Session ${session.index + 1} — click to switch`;
 
         const vid = document.createElement("video");
-        vid.src = session.video_path;
+        vid.src = getThumbSrc(session);
         vid.preload = "metadata";
         vid.muted = true;
         vid.playsInline = true;
@@ -46,7 +58,6 @@ export function buildVideoQueue(mainVideoEl, queueContainerEl, sessions, options
         });
 
         queueContainerEl.appendChild(wrap);
-        thumbElements[session.index] = wrap;
       });
   }
 
@@ -54,10 +65,7 @@ export function buildVideoQueue(mainVideoEl, queueContainerEl, sessions, options
     if (sessionIndex === activeSessionIndex) return;
     const session = sessions.find((s) => s.index === sessionIndex);
     if (!session) return;
-
     activeSessionIndex = sessionIndex;
-    mainVideoEl.src = session.video_path;
-    mainVideoEl.currentTime = 0;
     renderQueue();
     onActiveChange(sessionIndex);
   }
@@ -66,10 +74,6 @@ export function buildVideoQueue(mainVideoEl, queueContainerEl, sessions, options
     return sessions.find((s) => s.index === activeSessionIndex);
   }
 
-  // Initialize: load first session into main video
-  const firstSession = sessions[0];
-  mainVideoEl.src = firstSession.video_path;
-  mainVideoEl.currentTime = 0;
   renderQueue();
 
   return { setActiveSession, getActiveSession };

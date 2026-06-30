@@ -23,6 +23,7 @@ import { buildBarcodeStack } from "./barcodeStack.js";
 import { buildVideoQueue } from "./videoQueue.js";
 import { buildThumbnailGraph } from "./thumbnailGraph.js";
 import { buildSwimlane } from "./swimlane.js";
+import { makeCaptureController } from "./captureController.js";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // DOM references
@@ -112,6 +113,8 @@ let swimlaneApi = null;
 // Comparison-mode state
 let barcodeApi = null;
 let videoQueueApi = null;
+let captureCtrl = null;        // drives single-mode <video>
+let cmpCaptureCtrl = null;     // drives comparison-mode <video>
 let comparisonSessionPayloads = [];
 let comparisonMergedPayload = null;
 let comparisonActiveSession = null;
@@ -154,7 +157,7 @@ function handleNodeClick(d, sequence) {
     occurrenceCycleIndex = (occurrenceCycleIndex + 1) % occurrences.length;
   }
   const target = occurrences[occurrenceCycleIndex];
-  video.currentTime = target.start;
+  if (captureCtrl) captureCtrl.seekUnified(target.start);
   d3.selectAll(".node").classed("selected", (n) => n.id === d.id);
   statusLabel.innerHTML =
     `Status: <strong>Selected ${d.id} (${occurrenceCycleIndex + 1}/${occurrences.length})</strong>`;
@@ -162,8 +165,9 @@ function handleNodeClick(d, sequence) {
 
 function refresh() {
   if (!cachedData || viewMode !== "single") return;
-  const item = currentSequenceItem(cachedData.sequence, video.currentTime || 0);
-  timeLabel.textContent = formatSeconds(video.currentTime || 0);
+  const t = captureCtrl ? captureCtrl.getUnifiedTime() : 0;
+  const item = currentSequenceItem(cachedData.sequence, t);
+  timeLabel.textContent = formatSeconds(t);
   actionLabel.textContent = item ? item.action : "-";
   if (lastClickedNodeId && item && item.action !== lastClickedNodeId) {
     lastClickedNodeId = null;
@@ -173,10 +177,10 @@ function refresh() {
   singleGraphController.updateActive(item);
   updateTimelineActive(timelineRows, footerPanel, item);
   if (annotationPlayheadEl && currentTotalDuration > 0) {
-    updateAnnotationPlayhead(annotationPlayheadEl, video.currentTime || 0, currentTotalDuration);
+    updateAnnotationPlayhead(annotationPlayheadEl, t, currentTotalDuration);
   }
   if (swimlaneApi) {
-    swimlaneApi.updatePlayhead(video.currentTime || 0);
+    swimlaneApi.updatePlayhead(t);
   }
 }
 
@@ -283,7 +287,7 @@ function rebuildAnnotationTimeline() {
     getCurrentColorFn(),
     {
       onSegmentClick: (item) => {
-        video.currentTime = item.start;
+        if (captureCtrl) captureCtrl.seekUnified(item.start);
         const node = d3.select(`.node[data-id="${CSS.escape(item.action)}"]`);
         if (!node.empty()) {
           d3.selectAll(".node").classed("selected", false);
@@ -300,7 +304,7 @@ function rebuildSwimlane() {
   const stepLabelLookup = buildStepLabelLookup(cachedData.steps || []);
   swimlaneApi = buildSwimlane(swimlaneContainer, cachedData, getCurrentColorFn(), {
     onSegmentClick: (item) => {
-      video.currentTime = item.start;
+      if (captureCtrl) captureCtrl.seekUnified(item.start);
       if (!item.synthetic) {
         const node = d3.select(`.node[data-id="${CSS.escape(item.action)}"]`);
         if (!node.empty()) {
@@ -433,8 +437,10 @@ async function loadSessionData() {
       `${data.graph.nodes.length} nodes · ` +
       `${data.graph.links.length} transitions · ` +
       `${data.sequence.length} actions`;
-    video.src = data.recipe.video_path;
-    video.currentTime = 0;
+    if (captureCtrl) captureCtrl.destroy();
+    captureCtrl = makeCaptureController(video, data.videos || [], {
+      onVideoChange: (v) => { videoLabel.textContent = v.video_id; },
+    });
     timelineRows = drawTimeline(timelineBody, data.sequence);
     singleGraphController.buildGraph(
       data.graph, data.sequence,
@@ -480,6 +486,7 @@ async function enterComparisonMode() {
           index: s.index,
           video_id: s.video_id,
           video_path: s.video_path,
+          videos: data.videos,  
           duration_s: s.duration_s,
           payload: data,
           sequence: data.sequence,
@@ -515,17 +522,28 @@ async function enterComparisonMode() {
 
 function buildComparisonVideoUI() {
   if (barcodeApi) { barcodeApi.destroy(); barcodeApi = null; }
+  if (cmpCaptureCtrl) { cmpCaptureCtrl.destroy(); cmpCaptureCtrl = null; }
   videoQueueApi = null;
   videoQueueEl.innerHTML = "";
   barcodeStackEl.innerHTML = "";
 
   const sessionsForQueue = comparisonSessionPayloads.map((s) => ({
     index: s.index,
-    video_path: s.video_path,
+    videos: s.videos,                 // full per-video layout
+    video_path: s.video_path,         // back-compat
   }));
-  videoQueueApi = buildVideoQueue(comparisonVideo, videoQueueEl, sessionsForQueue, {
+
+  // Initialize comparison-mode controller with first session's videos
+  const firstSession = comparisonSessionPayloads[0];
+  cmpCaptureCtrl = makeCaptureController(comparisonVideo, firstSession.videos || [], {});
+
+  videoQueueApi = buildVideoQueue(videoQueueEl, sessionsForQueue, {
     onActiveChange: (newIdx) => {
       comparisonActiveSession = newIdx;
+      const newSession = comparisonSessionPayloads.find((s) => s.index === newIdx);
+      if (newSession && cmpCaptureCtrl) {
+        cmpCaptureCtrl.load(newSession.videos || []);
+      }
       if (barcodeApi) barcodeApi.setActiveSession(newIdx);
       cmpSessionLabel.textContent = `${newIdx + 1} / ${comparisonSessionPayloads.length}`;
     },
@@ -543,12 +561,12 @@ function buildComparisonVideoUI() {
     onSegmentClick: (sessionIndex, item) => {
       if (sessionIndex !== comparisonActiveSession) {
         videoQueueApi.setActiveSession(sessionIndex);
-        comparisonVideo.addEventListener("loadedmetadata", function once() {
-          comparisonVideo.currentTime = item.start;
-          comparisonVideo.removeEventListener("loadedmetadata", once);
-        });
+        // setActiveSession → onActiveChange → cmpCaptureCtrl.load(newVideos).
+        // After that, queue the unified seek. The controller's pendingSeek
+        // mechanism handles the loadedmetadata race correctly.
+        if (cmpCaptureCtrl) cmpCaptureCtrl.seekUnified(item.start);
       } else {
-        comparisonVideo.currentTime = item.start;
+        if (cmpCaptureCtrl) cmpCaptureCtrl.seekUnified(item.start);
       }
     },
   });
@@ -667,12 +685,14 @@ function renderSmallMultiples() {
 
 comparisonVideo.addEventListener("timeupdate", () => {
   if (viewMode !== "comparison" || !barcodeApi) return;
-  cmpTimeLabel.textContent = formatSeconds(comparisonVideo.currentTime || 0);
-  barcodeApi.updatePlayhead(comparisonActiveSession, comparisonVideo.currentTime || 0);
+  const t = cmpCaptureCtrl ? cmpCaptureCtrl.getUnifiedTime() : 0;
+  cmpTimeLabel.textContent = formatSeconds(t);
+  barcodeApi.updatePlayhead(comparisonActiveSession, t);
 });
 comparisonVideo.addEventListener("seeked", () => {
   if (viewMode !== "comparison" || !barcodeApi) return;
-  barcodeApi.updatePlayhead(comparisonActiveSession, comparisonVideo.currentTime || 0);
+  const t = cmpCaptureCtrl ? cmpCaptureCtrl.getUnifiedTime() : 0;
+  barcodeApi.updatePlayhead(comparisonActiveSession, t);
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -855,7 +875,8 @@ async function init() {
     if (e.target === annotationTimeline) {
       const rect = annotationTimeline.getBoundingClientRect();
       const pct = (e.clientX - rect.left) / rect.width;
-      video.currentTime = pct * currentTotalDuration;
+      const t = pct * currentTotalDuration;
+      if (captureCtrl) captureCtrl.seekUnified(t);
     }
   });
 }

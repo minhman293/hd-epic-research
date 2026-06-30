@@ -121,11 +121,21 @@ Extreme cases: Cacio e Pepe (P01_R03) S03 has 20 separate time windows. Sfesiha 
 
 #### Challenge 3 — Temporal overlap between steps
 
-**25 overlapping pairs across 12 of 80 captures** in the same capture. This is real parallel task execution, not annotation error.
+**25 overlapping pairs across 12 of 80 captures** are flagged by the detector (`5_dataset_challenges.py`). The detection is restricted to same-video pairs: if two step windows overlap across a pause/resume boundary, they are not currently flagged. The 25 figure is therefore a lower bound on intra-capture overlap; cross-video overlap is not detected.
 
-Example: In Cacio e Pepe, S01 (cooking pasta) overlaps with S03 (making sauce) at 268.8s–274.4s. In Sfesiha, S01 (dough resting) overlaps with S02 (filling) at 242.6s–268.4s.
+**Verification (June 2026).** Of the 12 candidate captures, 11 were verified manually by watching the videos at the overlap timestamps. Results:
 
-**Implication:** A directed sequence graph (motion graph) structurally assumes one action follows another. It cannot represent two steps active in the same time span. For simple recipes like Nespresso this doesn't matter (no overlap). For complex recipes it fundamentally underrepresents the structure.
+- **9 confirmed annotation errors** — typically off-by-a-few-frames at action transitions, where the end of one annotation extends slightly past the start of the next. Spread across multiple participants (P09_R05, P05_R01, P09_R02, P01_R07, P02_R02, P05_R03, P08_R03, P08_R09, P08_R02).
+- **2 confirmed real overlaps** — genuine simultaneous activity:
+  - P09_R04 (Mangsho Bhuna): stirring food in the pan while closing a box.
+  - P06_R03 (Kadhai Paneer): holding a bowl while stirring onions in the pan.
+- **1 ambiguous** (P06_R01): pouring powder from a bowl into the pan — could be one action or two depending on annotation granularity.
+
+The two confirmed real overlaps are the analytically interesting cases — exactly the simultaneous-action data that supports the parallel-collaboration insight. They are kept in the data; the 9 errors are not currently corrected but their prevalence is small enough to not distort downstream analysis.
+
+To support verification, the detector now writes `overlap_pairs.csv` (one row per pair: recipe, capture, video, step_a, step_b, timestamps, overlap duration, blank `verdict` column for manual labeling).
+
+**Implication:** A directed sequence graph structurally assumes one action follows another. It cannot represent two steps active in the same time span. For simple recipes (Nespresso) this is moot. For the few real-overlap cases it underrepresents the structure; analysis of those moments is deferred to a future view.
 
 #### Challenge 4 — Step window duration heterogeneity
 
@@ -208,6 +218,7 @@ Where two steps run simultaneously in the same capture — the natural paralleli
 
 **Data source:** find pairs of `step_times` windows from different steps that overlap.
 **Dataset prevalence:** 25 overlapping pairs across 12 of 80 captures.
+**Verification status:** Of the 12 captures the detector flags, manual review found 2 genuine overlaps and 9 annotation errors (see Section 1.8 Challenge 3). The 2 real cases are kept in the data; the detector remains the entry point for surfacing this signal, but downstream views should be cautious about treating raw overlap counts as evidence of multitasking without verification.
 
 #### Insight D — Prep-vs-execution gaps
 
@@ -244,6 +255,7 @@ No frameworks (React/Vue/etc), no build step (webpack/vite/etc), no backend at r
 ```
 scripts/
   2_recipe_selector.py              Cache recipe data for a chosen recipe
+  5_dataset_challenges.py           Per-recipe challenge analysis + overlap CSV export
   6_prepare_dashboard_data.py       Generate per-session graph JSONs (3 detail modes)
   7_build_manifest.py               Scan outputs, build the dashboard's index
   8_aggregate_sessions.py           Aggregate multi-session into merged JSONs
@@ -256,27 +268,29 @@ outputs/
       session_{N}_smart.json        Per-session smart-merged graph
       session_{N}_abstracted.json   Per-session task-phase graph
       merged_{mode}.json            Cross-session aggregated graph (3 files)
+  figures/
+    overlap_pairs.csv               One row per detected overlap, for verification
   raw-video/
     {video_id}.mp4
 
 index.html
 assets/nespresso-dashboard/
   css/
-    dashboard.css                   ~750 lines
+    dashboard.css                   
   js/
     app.js                          Main controller, routes between views
     config.js                       Constants, URL builders, color palette
     graph.js                        Main motion graph renderer
     thumbnailGraph.js               Simplified renderer for small multiples
     barcodeStack.js                 Stacked color barcodes
-    videoQueue.js                   Main video + thumbnail queue
+    videoQueue.js                   Thumbnail queue (no longer owns main video)
+    captureController.js            Multi-video capture timeline controller
     legend.js                       Legend rendering
     annotationTimeline.js           Single-session annotation strip
     timeline.js                     Bottom-of-page action table
+    swimlane.js                     Step-by-step swimlane view
     utils.js                        Shared helpers
 ```
-
-Approximate sizes: ~600 lines Python, ~2,500 lines JavaScript, ~750 lines CSS.
 
 ### 3.3 Pipeline
 
@@ -291,6 +305,44 @@ merged_{mode}.json (3 merged files)
     ↓ (script 7: manifest build)
 manifest.json
 ```
+
+### 3.3.1 Multi-video capture stitching
+
+A capture in HD-EPIC may span multiple video files when the participant paused recording mid-cook. Each video starts its own timestamps at t=0, so the raw annotations live on per-video timelines, not on a unified "capture time" axis. The original pipeline used only the first video of every multi-video capture and silently dropped the rest — a limitation found to drop **589 of 1937 step-windows across the dataset (30.4%)**, affecting **31 of 80 captures**. For P05_R01 (one capture, four videos) this meant steps S06 through S12 vanished from the dashboard entirely.
+
+**Fix (June 2026).** The pipeline now stitches all videos of a capture onto a unified timeline.
+
+- A new input file `HD_EPIC_YouTube_URLs.csv` (columns: `video_id`, `youtube_url`, `duration`) provides exact per-video durations from the HD-EPIC YouTube metadata. The loader (`load_video_durations` in `utils.py`) returns `{video_id: duration_seconds}`.
+- `compute_video_layout` walks the capture's videos in order, assigning each one a cumulative `offset_s` on the unified timeline. If a video is missing from the CSV, the pipeline falls back to "max narration end timestamp" with a warning.
+- `collect_step_windows_stitched` re-stamps every `step_times` entry onto the unified timeline by adding its video's offset.
+- The build step iterates over every video in the capture, not just the first.
+
+**New JSON schema.** Each session JSON gains a top-level `videos` array and per-action provenance fields. Aggregates in the `recipe` block also gain `n_videos` and `total_capture_duration_s`. The legacy `recipe.video_id` and `recipe.video_path` are retained but now point to the first video only — they're for back-compat with anything that hasn't been updated; new code reads `data.videos` instead.
+
+```json
+{
+  "recipe": { "id": "P05_R01", "n_videos": 4, "total_capture_duration_s": 2788.97, ... },
+  "videos": [
+    { "video_id": "P05-20240423-170021", "offset_s": 0.0,    "duration_s": 1169.77, "video_path": "..." },
+    { "video_id": "P05-20240423-172243", "offset_s": 1169.77, "duration_s": 345.80, "video_path": "..." }
+  ],
+  "sequence": [
+    { "index": 250, "action": "...", "start": 1200.50, "end": 1202.00,
+      "video_id": "P05-20240423-172243", "video_start": 30.73, "video_end": 32.23,
+      "step_id": "P05_R01_S06", "is_primary": true }
+  ]
+}
+```
+
+For single-video captures, the schema degrades cleanly: `videos` has one entry with `offset_s=0`, and every sequence item's `start`/`end` equals its `video_start`/`video_end`.
+
+**Frontend.** A new module `captureController.js` wraps the `<video>` element. It accepts the `videos` array, watches the timeline cursor, and swaps the `<video>` element's `src` when the cursor crosses a video boundary. Auto-advances when one video ends. All seek operations in the dashboard now route through `captureCtrl.seekUnified(unifiedTime)` instead of writing `video.currentTime` directly. `videoQueue.js` no longer manages the main video element; it just renders thumbnails and delegates session switching back to `app.js` via the `onActiveChange` callback.
+
+**Result for P05_R01.** Narrations per session went from 415 (just video 1) to 963 (all 4 videos). Steps S06 through S12 are now visible in the swimlane with actions tagged correctly.
+
+**Remaining issues** (separate from the multi-video fix, not yet addressed):
+- **S03 nested-window problem in P05_R01.** S03 has a window inside the first video (1077.93–1080.23s), but that window is fully nested inside an S02 window (1077.82–1081.96s). The current step-tagging rule picks the step with maximum overlap, so S02 always wins for actions in the nested region and S03 receives no actions. This is a tagging-logic issue, not a stitching issue.
+- **Annotation-layer gap.** Across the dataset, 18 of 1937 step-windows (0.9%) are annotated as "doing this step" but have zero atomic-action narrations underneath them. The step-time annotations and the verb-noun narrations were created independently with different granularities; they don't always agree on what counts as activity. P08_R03 is an outlier with 5 of 22 step-windows empty (23%). These are kept in the data; the dashboard may render them as visible-but-empty step windows.
 
 ### 3.4 Detail-level modes
 
@@ -374,9 +426,21 @@ A separate, simpler renderer used in comparison view's "Small multiples" sub-mod
 
 Renders one horizontal color strip per session. Each strip uses normalized time [0,1] so sessions of different durations align. Colors come from the active "Color encodes" setting (category / phase / duration). Active session's strip has a thicker blue border. A playhead (vertical line) moves with video playback. Clicking a segment seeks; clicking a segment from a non-active session switches the main video first.
 
-#### `videoQueue.js` — main video plus thumbnail queue
+#### `captureController.js` — multi-video capture playback driver
 
-Manages the main `<video>` element plus N–1 thumbnail tiles for the inactive sessions. Clicking a thumbnail swaps it into the main slot.
+Wraps a single `<video>` element to play back a multi-video capture as one continuous timeline. Constructed with the session JSON's `videos` array and exposes:
+- `seekUnified(unifiedTime)` — picks the right underlying video, swaps `src` if needed, seeks within it.
+- `getUnifiedTime()` — returns the current playback position on the unified capture timeline.
+- `load(newVideos)` — rebinds the controller to a different capture's video layout (used when comparison mode switches active session).
+- `destroy()` — detaches event listeners and releases the video source.
+
+For single-video captures the controller is effectively a pass-through (no source switching, `getUnifiedTime()` returns `videoEl.currentTime`). For multi-video captures it auto-advances on the `ended` event so playback continues seamlessly across pause/resume boundaries.
+
+A single controller instance per `<video>` element. The dashboard creates two: `captureCtrl` for the single-session player, `cmpCaptureCtrl` for the comparison-mode player.
+
+#### `videoQueue.js` — thumbnail queue (revised)
+
+Renders N-1 thumbnail tiles for the inactive captures in comparison mode. Clicking a thumbnail fires `onActiveChange(sessionIndex)` and `app.js` responds by calling `cmpCaptureCtrl.load(newSession.videos)`. The queue no longer touches the main `<video>` element directly — that responsibility moved to `captureController.js`. Thumbnail src uses the first video of each capture's `videos` array.
 
 #### `legend.js` — legend rendering
 
@@ -444,7 +508,9 @@ Two-column layout:
 ### 3.10 Known limitations
 
 - **Time-axis honesty problem.** The temporal layout buckets nodes into ~90px columns based on mean onset across occurrences. This creates a misleading visual where nodes in the same column appear to happen at the same time when they don't. For actions that recur, the mean is a fabricated timestamp.
-- **Multi-video captures not handled.** The pipeline uses only the first video of a multi-video capture and logs a warning. This excludes ~43% of captures from analysis.
+- **Step-tagging picks one step per action even when step windows are nested.** When an action overlaps two step windows (e.g., S03 nested inside S02 in P05_R01), the rule picks the step with maximum overlap. The narrower step receives no actions. This is a design choice — one step per action keeps the swimlane unambiguous — but it can hide annotated step boundaries in a few specific captures.
+- **Annotation-layer gap.** Step-time annotations and atomic-action narrations were created independently and don't always agree on what counts as activity. About 0.9% of step-windows across the dataset have zero underlying narrations; P08_R03 has 23% (5 of 22). The dashboard renders these as visible-but-empty step windows.
+- **Cross-video overlap not detected.** The overlap detector (P3) only flags pairs within the same video file. If two step windows span a pause/resume boundary, they are not flagged. Adding cross-video overlap detection would require offset-aware time math; deferred.
 - **Cross-person comparison structurally impossible** with available data (63 of 69 recipes are single-participant).
 - **Zero of four intervention insights are surfaced.** The dashboard reveals frequency, transition structure, and consistency well. It does not reveal deviations from recipe order, revisitation hotspots, parallel overlaps, or prep-vs-execution gaps — which are the four insights that map to the collaboration research goal.
 
@@ -456,6 +522,7 @@ Two-column layout:
 - Dataset structure and challenges: complete
 - Research insights and direction: complete as of current understanding
 - Current dashboard components and tech: complete
+- Multi-video capture stitching architecture and the new JSON schema: complete
 
 **Not covered here:**
 - Detailed development history (delivery-by-delivery patch log)
@@ -467,6 +534,8 @@ Two-column layout:
 - The "5 multi-capture recipes" list (verified)
 - The "63% of captures have out-of-order execution" number (verified)
 - The "25 same-video overlap pairs in 12 of 80 captures" number (verified)
+- The "30.4% of step-windows" multi-video data-loss figure and the per-recipe distribution (verified)
+- The "9 errors, 2 real, 1 ambiguous" overlap verification breakdown (manual verification)
 
 ---
 
