@@ -5,8 +5,18 @@
     "session_index": 0,
     "video_id": "P01-20240202-110250",
     "video_path": "raw-video/P01-20240202-110250.mp4",
-    "narration_count": 224
+    "narration_count": 224,
+    "n_videos": 1,
+    "total_capture_duration_s": 396.266667
   },
+  "videos": [
+    {
+      "video_id": "P01-20240202-110250",
+      "video_path": "raw-video/P01-20240202-110250.mp4",
+      "offset_s": 0.0,
+      "duration_s": 396.266667
+    }
+  ],
   "steps": [
     {
       "id": "P01_R01_S01",
@@ -44,7 +54,10 @@
       "next_action": "stretch(hand)",
       "edge_key": "open(cupboard)|||stretch(hand)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 7.44,
+      "video_end": 8.75
     },
     {
       "index": 1,
@@ -55,7 +68,10 @@
       "next_action": "take(cup)",
       "edge_key": "stretch(hand)|||take(cup)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 8.85,
+      "video_end": 9.36
     },
     {
       "index": 2,
@@ -66,7 +82,10 @@
       "next_action": "turn(cup)",
       "edge_key": "take(cup)|||turn(cup)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 9.34,
+      "video_end": 11.16
     },
     {
       "index": 3,
@@ -77,7 +96,10 @@
       "next_action": "close(cupboard)",
       "edge_key": "turn(cup)|||close(cupboard)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 11.15,
+      "video_end": 11.6
     },
     {
       "index": 4,
@@ -88,7 +110,10 @@
       "next_action": "flip(maker:coffee)",
       "edge_key": "close(cupboard)|||flip(maker:coffee)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 11.5,
+      "video_end": 12.18
     },
     {
       "index": 5,
@@ -99,7 +124,10 @@
       "next_action": "put(cup)",
       "edge_key": "flip(maker:coffee)|||put(cup)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 13.73,
+      "video_end": 14.11
     },
     {
       "index": 6,
@@ -110,7 +138,10 @@
       "next_action": "take(coffee)",
       "edge_key": "put(cup)|||take(coffee)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 14.2,
+      "video_end": 14.55
     },
     {
       "index": 7,
@@ -121,7 +152,10 @@
       "next_action": "press(button)",
       "edge_key": "take(coffee)|||press(button)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 14.81,
+      "video_end": 15.08
     },
     {
       "index": 8,
@@ -132,7 +166,10 @@
       "next_action": "lift(handle)",
       "edge_key": "press(button)|||lift(handle)",
       "step_id": "P01_R01_S02",
-      "is_primary": true
+      "is_primary": true,
+      "video_id": "P01-20240202-110250",
+      "video_start": 15.36,
+      "video_end": 15.65
     },
     {
       "index": 9,
@@ -143,7 +180,10 @@
       "next_action": "slide(coffee)",
       "edge_key": "lift(handle)|||slide(coffee)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 16.06,
+      "video_end": 16.64
     },
     {
       "index": 10,
@@ -154,7 +194,10 @@
       "next_action": "pull(handle)",
       "edge_key": "slide(coffee)|||pull(handle)",
       "step_id": "P01_R01_S01",
-      "is_primary": true
+      "is_primary": true,
+      "video_id": "P01-20240202-110250",
+      "video_start": 16.08,
+      "video_end": 17.26
     },
     {
       "index": 11,
@@ -165,7 +208,10 @@
       "next_action": "open(fridge)",
       "edge_key": "pull(handle)|||open(fridge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 17.4,
+      "video_end": 18.02
     },
     {
       "index": 12,
@@ -176,7 +222,10 @@
       "next_action": "take(bottle)",
       "edge_key": "open(fridge)|||take(bottle)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 19.75,
+      "video_end": 21.1
     },
     {
       "index": 13,
@@ -187,7 +236,10 @@
       "next_action": "close(fridge)",
       "edge_key": "take(bottle)|||close(fridge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 21.4,
+      "video_end": 22.0
     },
     {
       "index": 14,
@@ -198,7 +250,10 @@
       "next_action": "slide(milk)",
       "edge_key": "close(fridge)|||slide(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 22.1,
+      "video_end": 23.47
     },
     {
       "index": 15,
@@ -209,7 +264,10 @@
       "next_action": "open(bottle)",
       "edge_key": "slide(milk)|||open(bottle)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 24.55,
+      "video_end": 25.5
     },
     {
       "index": 16,
@@ -220,7 +278,10 @@
       "next_action": "lift(bottle)",
       "edge_key": "open(bottle)|||lift(bottle)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 25.75,
+      "video_end": 26.8
     },
     {
       "index": 17,
@@ -231,7 +292,10 @@
       "next_action": "lift(bottle)",
       "edge_key": "lift(bottle)|||lift(bottle)",
       "step_id": "P01_R01_S03",
-      "is_primary": true
+      "is_primary": true,
+      "video_id": "P01-20240202-110250",
+      "video_start": 27.0,
+      "video_end": 27.5
     },
     {
       "index": 18,
@@ -242,7 +306,10 @@
       "next_action": "turn-on(milk)",
       "edge_key": "lift(bottle)|||turn-on(milk)",
       "step_id": "P01_R01_S03",
-      "is_primary": true
+      "is_primary": true,
+      "video_id": "P01-20240202-110250",
+      "video_start": 27.61,
+      "video_end": 33.79
     },
     {
       "index": 19,
@@ -253,7 +320,10 @@
       "next_action": "take(bottle)",
       "edge_key": "turn-on(milk)|||take(bottle)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 30.7,
+      "video_end": 32.4
     },
     {
       "index": 20,
@@ -264,7 +334,10 @@
       "next_action": "open(fridge)",
       "edge_key": "take(bottle)|||open(fridge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 34.14,
+      "video_end": 34.83
     },
     {
       "index": 21,
@@ -275,7 +348,10 @@
       "next_action": "put(bottle)",
       "edge_key": "open(fridge)|||put(bottle)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 36.07,
+      "video_end": 37.07
     },
     {
       "index": 22,
@@ -286,7 +362,10 @@
       "next_action": "close(fridge)",
       "edge_key": "put(bottle)|||close(fridge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 37.17,
+      "video_end": 38.09
     },
     {
       "index": 23,
@@ -297,7 +376,10 @@
       "next_action": "press(button)",
       "edge_key": "close(fridge)|||press(button)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 38.02,
+      "video_end": 38.64
     },
     {
       "index": 24,
@@ -308,7 +390,10 @@
       "next_action": "open(drawer)",
       "edge_key": "press(button)|||open(drawer)",
       "step_id": "P01_R01_S02",
-      "is_primary": true
+      "is_primary": true,
+      "video_id": "P01-20240202-110250",
+      "video_start": 41.19,
+      "video_end": 42.43
     },
     {
       "index": 25,
@@ -319,7 +404,10 @@
       "next_action": "take(scissors)",
       "edge_key": "open(drawer)|||take(scissors)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 48.28,
+      "video_end": 49.29
     },
     {
       "index": 26,
@@ -330,7 +418,10 @@
       "next_action": "remove(package)",
       "edge_key": "take(scissors)|||remove(package)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 49.54,
+      "video_end": 50.04
     },
     {
       "index": 27,
@@ -341,7 +432,10 @@
       "next_action": "open(scissors)",
       "edge_key": "remove(package)|||open(scissors)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 50.17,
+      "video_end": 51.04
     },
     {
       "index": 28,
@@ -352,7 +446,10 @@
       "next_action": "take(orange)",
       "edge_key": "open(scissors)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 51.41,
+      "video_end": 52.71
     },
     {
       "index": 29,
@@ -363,7 +460,10 @@
       "next_action": "take(orange)",
       "edge_key": "take(orange)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 53.31,
+      "video_end": 54.11
     },
     {
       "index": 30,
@@ -374,7 +474,10 @@
       "next_action": "take(orange)",
       "edge_key": "take(orange)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 55.26,
+      "video_end": 55.62
     },
     {
       "index": 31,
@@ -385,7 +488,10 @@
       "next_action": "wrap(scissors)",
       "edge_key": "take(orange)|||wrap(scissors)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 56.6,
+      "video_end": 57.98
     },
     {
       "index": 32,
@@ -396,7 +502,10 @@
       "next_action": "open(drawer)",
       "edge_key": "wrap(scissors)|||open(drawer)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 58.66,
+      "video_end": 60.48
     },
     {
       "index": 33,
@@ -407,7 +516,10 @@
       "next_action": "put(scissors)",
       "edge_key": "open(drawer)|||put(scissors)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 61.54,
+      "video_end": 62.54
     },
     {
       "index": 34,
@@ -418,7 +530,10 @@
       "next_action": "slide(board:chopping)",
       "edge_key": "put(scissors)|||slide(board:chopping)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 62.44,
+      "video_end": 62.78
     },
     {
       "index": 35,
@@ -429,7 +544,10 @@
       "next_action": "take(food)",
       "edge_key": "slide(board:chopping)|||take(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 64.86,
+      "video_end": 65.84
     },
     {
       "index": 36,
@@ -440,7 +558,10 @@
       "next_action": "hold(food)",
       "edge_key": "take(food)|||hold(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 66.2,
+      "video_end": 68.92
     },
     {
       "index": 37,
@@ -451,7 +572,10 @@
       "next_action": "remove(plug)",
       "edge_key": "hold(food)|||remove(plug)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 69.58,
+      "video_end": 69.91
     },
     {
       "index": 38,
@@ -462,7 +586,10 @@
       "next_action": "put(plug)",
       "edge_key": "remove(plug)|||put(plug)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 70.27,
+      "video_end": 70.55
     },
     {
       "index": 39,
@@ -473,7 +600,10 @@
       "next_action": "press(plug)",
       "edge_key": "put(plug)|||press(plug)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 71.03,
+      "video_end": 71.86
     },
     {
       "index": 40,
@@ -484,7 +614,10 @@
       "next_action": "turn(lid)",
       "edge_key": "press(plug)|||turn(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 71.93,
+      "video_end": 72.49
     },
     {
       "index": 41,
@@ -495,7 +628,10 @@
       "next_action": "put(lid)",
       "edge_key": "turn(lid)|||put(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 73.14,
+      "video_end": 73.94
     },
     {
       "index": 42,
@@ -506,7 +642,10 @@
       "next_action": "open(cupboard)",
       "edge_key": "put(lid)|||open(cupboard)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 74.16,
+      "video_end": 74.74
     },
     {
       "index": 43,
@@ -517,7 +656,10 @@
       "next_action": "move(package)",
       "edge_key": "open(cupboard)|||move(package)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 76.15,
+      "video_end": 78.0
     },
     {
       "index": 44,
@@ -528,7 +670,10 @@
       "next_action": "take(juicer)",
       "edge_key": "move(package)|||take(juicer)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 81.51,
+      "video_end": 82.59
     },
     {
       "index": 45,
@@ -539,7 +684,10 @@
       "next_action": "close(cupboard)",
       "edge_key": "take(juicer)|||close(cupboard)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 84.55,
+      "video_end": 85.23
     },
     {
       "index": 46,
@@ -550,7 +698,10 @@
       "next_action": "move(box)",
       "edge_key": "close(cupboard)|||move(box)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 85.85,
+      "video_end": 87.47
     },
     {
       "index": 47,
@@ -561,7 +712,10 @@
       "next_action": "slide(cupboard)",
       "edge_key": "move(box)|||slide(cupboard)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 87.21000000000001,
+      "video_end": 89.05
     },
     {
       "index": 48,
@@ -572,7 +726,10 @@
       "next_action": "press(cupboard)",
       "edge_key": "slide(cupboard)|||press(cupboard)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 89.36,
+      "video_end": 90.29
     },
     {
       "index": 49,
@@ -583,7 +740,10 @@
       "next_action": "put(juicer)",
       "edge_key": "press(cupboard)|||put(juicer)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 90.63,
+      "video_end": 91.38
     },
     {
       "index": 50,
@@ -594,7 +754,10 @@
       "next_action": "turn(juicer)",
       "edge_key": "put(juicer)|||turn(juicer)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 93.43,
+      "video_end": 94.65
     },
     {
       "index": 51,
@@ -605,7 +768,10 @@
       "next_action": "lift(cream)",
       "edge_key": "turn(juicer)|||lift(cream)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 94.49,
+      "video_end": 95.36
     },
     {
       "index": 52,
@@ -616,7 +782,10 @@
       "next_action": "turn(knob)",
       "edge_key": "lift(cream)|||turn(knob)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 95.46,
+      "video_end": 97.82
     },
     {
       "index": 53,
@@ -627,7 +796,10 @@
       "next_action": "switch(button)",
       "edge_key": "turn(knob)|||switch(button)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 97.92,
+      "video_end": 98.88
     },
     {
       "index": 54,
@@ -638,7 +810,10 @@
       "next_action": "turn(food)",
       "edge_key": "switch(button)|||turn(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 98.98,
+      "video_end": 100.14
     },
     {
       "index": 55,
@@ -649,7 +824,10 @@
       "next_action": "turn(knob)",
       "edge_key": "turn(food)|||turn(knob)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 100.09,
+      "video_end": 100.94
     },
     {
       "index": 56,
@@ -660,7 +838,10 @@
       "next_action": "take(orange)",
       "edge_key": "turn(knob)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 100.9,
+      "video_end": 101.71
     },
     {
       "index": 57,
@@ -671,7 +852,10 @@
       "next_action": "put(orange)",
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 101.81,
+      "video_end": 102.93
     },
     {
       "index": 58,
@@ -682,7 +866,10 @@
       "next_action": "open(drawer)",
       "edge_key": "put(orange)|||open(drawer)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 103.03,
+      "video_end": 103.78
     },
     {
       "index": 59,
@@ -693,7 +880,10 @@
       "next_action": "take(vegetable)",
       "edge_key": "open(drawer)|||take(vegetable)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 103.88,
+      "video_end": 104.92
     },
     {
       "index": 60,
@@ -704,7 +894,10 @@
       "next_action": "take(roll)",
       "edge_key": "take(vegetable)|||take(roll)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 105.13,
+      "video_end": 106.1
     },
     {
       "index": 61,
@@ -715,7 +908,10 @@
       "next_action": "feel(roll)",
       "edge_key": "take(roll)|||feel(roll)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 106.2,
+      "video_end": 108.67
     },
     {
       "index": 62,
@@ -726,7 +922,10 @@
       "next_action": "pull(bag)",
       "edge_key": "feel(roll)|||pull(bag)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 108.64,
+      "video_end": 116.04
     },
     {
       "index": 63,
@@ -737,7 +936,10 @@
       "next_action": "put(vegetable)",
       "edge_key": "pull(bag)|||put(vegetable)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 116.01,
+      "video_end": 116.68
     },
     {
       "index": 64,
@@ -748,7 +950,10 @@
       "next_action": "close(drawer)",
       "edge_key": "put(vegetable)|||close(drawer)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 116.76,
+      "video_end": 117.8
     },
     {
       "index": 65,
@@ -759,7 +964,10 @@
       "next_action": "pull(bag)",
       "edge_key": "close(drawer)|||pull(bag)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 117.89,
+      "video_end": 118.65
     },
     {
       "index": 66,
@@ -770,7 +978,10 @@
       "next_action": "shake(bag)",
       "edge_key": "pull(bag)|||shake(bag)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 119.51,
+      "video_end": 123.38
     },
     {
       "index": 67,
@@ -781,7 +992,10 @@
       "next_action": "open(lid)",
       "edge_key": "shake(bag)|||open(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 123.5,
+      "video_end": 124.14
     },
     {
       "index": 68,
@@ -792,7 +1006,10 @@
       "next_action": "put(bag)",
       "edge_key": "open(lid)|||put(bag)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 124.43,
+      "video_end": 125.09
     },
     {
       "index": 69,
@@ -803,7 +1020,10 @@
       "next_action": "close(lid)",
       "edge_key": "put(bag)|||close(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 125.19,
+      "video_end": 127.9
     },
     {
       "index": 70,
@@ -814,7 +1034,10 @@
       "next_action": "press(top)",
       "edge_key": "close(lid)|||press(top)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 127.89,
+      "video_end": 128.68
     },
     {
       "index": 71,
@@ -825,7 +1048,10 @@
       "next_action": "hold(kettle)",
       "edge_key": "press(top)|||hold(kettle)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 128.91,
+      "video_end": 129.68
     },
     {
       "index": 72,
@@ -836,7 +1062,10 @@
       "next_action": "press(button)",
       "edge_key": "hold(kettle)|||press(button)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 130.41,
+      "video_end": 131.13
     },
     {
       "index": 73,
@@ -847,7 +1076,10 @@
       "next_action": "close(kettle)",
       "edge_key": "press(button)|||close(kettle)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 130.81,
+      "video_end": 132.82
     },
     {
       "index": 74,
@@ -858,7 +1090,10 @@
       "next_action": "turn(cup)",
       "edge_key": "close(kettle)|||turn(cup)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 132.85,
+      "video_end": 133.86
     },
     {
       "index": 75,
@@ -869,7 +1104,10 @@
       "next_action": "take(milk)",
       "edge_key": "turn(cup)|||take(milk)",
       "step_id": "P01_R01_S04",
-      "is_primary": true
+      "is_primary": true,
+      "video_id": "P01-20240202-110250",
+      "video_start": 136.35,
+      "video_end": 137.31
     },
     {
       "index": 76,
@@ -880,7 +1118,10 @@
       "next_action": "pat(milk)",
       "edge_key": "take(milk)|||pat(milk)",
       "step_id": "P01_R01_S04",
-      "is_primary": true
+      "is_primary": true,
+      "video_id": "P01-20240202-110250",
+      "video_start": 136.72,
+      "video_end": 137.47
     },
     {
       "index": 77,
@@ -891,7 +1132,10 @@
       "next_action": "lift(milk)",
       "edge_key": "pat(milk)|||lift(milk)",
       "step_id": "P01_R01_S04",
-      "is_primary": true
+      "is_primary": true,
+      "video_id": "P01-20240202-110250",
+      "video_start": 137.25,
+      "video_end": 138.07
     },
     {
       "index": 78,
@@ -902,7 +1146,10 @@
       "next_action": "lift(milk)",
       "edge_key": "lift(milk)|||lift(milk)",
       "step_id": "P01_R01_S04",
-      "is_primary": true
+      "is_primary": true,
+      "video_id": "P01-20240202-110250",
+      "video_start": 137.7,
+      "video_end": 139.91
     },
     {
       "index": 79,
@@ -913,7 +1160,10 @@
       "next_action": "lift(milk)",
       "edge_key": "lift(milk)|||lift(milk)",
       "step_id": "P01_R01_S04",
-      "is_primary": true
+      "is_primary": true,
+      "video_id": "P01-20240202-110250",
+      "video_start": 139.92000000000002,
+      "video_end": 142.8
     },
     {
       "index": 80,
@@ -924,7 +1174,10 @@
       "next_action": "lift(lid)",
       "edge_key": "lift(milk)|||lift(lid)",
       "step_id": "P01_R01_S04",
-      "is_primary": true
+      "is_primary": true,
+      "video_id": "P01-20240202-110250",
+      "video_start": 141.14,
+      "video_end": 143.1
     },
     {
       "index": 81,
@@ -935,7 +1188,10 @@
       "next_action": "move(spoon)",
       "edge_key": "lift(lid)|||move(spoon)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 143.45,
+      "video_end": 144.89
     },
     {
       "index": 82,
@@ -946,7 +1202,10 @@
       "next_action": "mix(coffee)",
       "edge_key": "move(spoon)|||mix(coffee)",
       "step_id": "P01_R01_S05",
-      "is_primary": true
+      "is_primary": true,
+      "video_id": "P01-20240202-110250",
+      "video_start": 144.86,
+      "video_end": 145.16
     },
     {
       "index": 83,
@@ -957,7 +1216,10 @@
       "next_action": "mix(coffee)",
       "edge_key": "mix(coffee)|||mix(coffee)",
       "step_id": "P01_R01_S05",
-      "is_primary": true
+      "is_primary": true,
+      "video_id": "P01-20240202-110250",
+      "video_start": 145.29,
+      "video_end": 147.12
     },
     {
       "index": 84,
@@ -968,7 +1230,10 @@
       "next_action": "take(rest)",
       "edge_key": "mix(coffee)|||take(rest)",
       "step_id": "P01_R01_S05",
-      "is_primary": true
+      "is_primary": true,
+      "video_id": "P01-20240202-110250",
+      "video_start": 147.02,
+      "video_end": 149.77
     },
     {
       "index": 85,
@@ -979,7 +1244,10 @@
       "next_action": "shake(spoon)",
       "edge_key": "take(rest)|||shake(spoon)",
       "step_id": "P01_R01_S05",
-      "is_primary": true
+      "is_primary": true,
+      "video_id": "P01-20240202-110250",
+      "video_start": 149.86,
+      "video_end": 150.78
     },
     {
       "index": 86,
@@ -990,7 +1258,10 @@
       "next_action": "open(lid)",
       "edge_key": "shake(spoon)|||open(lid)",
       "step_id": "P01_R01_S05",
-      "is_primary": true
+      "is_primary": true,
+      "video_id": "P01-20240202-110250",
+      "video_start": 150.73,
+      "video_end": 151.61
     },
     {
       "index": 87,
@@ -1001,7 +1272,10 @@
       "next_action": "throw(spoon)",
       "edge_key": "open(lid)|||throw(spoon)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 153.12,
+      "video_end": 153.38
     },
     {
       "index": 88,
@@ -1012,7 +1286,10 @@
       "next_action": "close(bin)",
       "edge_key": "throw(spoon)|||close(bin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 153.63,
+      "video_end": 154.07999999999998
     },
     {
       "index": 89,
@@ -1023,7 +1300,10 @@
       "next_action": "take(milk)",
       "edge_key": "close(bin)|||take(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 154.06,
+      "video_end": 154.29
     },
     {
       "index": 90,
@@ -1034,7 +1314,10 @@
       "next_action": "open(tap)",
       "edge_key": "take(milk)|||open(tap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 155.41,
+      "video_end": 156.07999999999998
     },
     {
       "index": 91,
@@ -1045,7 +1328,10 @@
       "next_action": "move(milk)",
       "edge_key": "open(tap)|||move(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 157.91,
+      "video_end": 158.57
     },
     {
       "index": 92,
@@ -1056,7 +1342,10 @@
       "next_action": "wash(milk)",
       "edge_key": "move(milk)|||wash(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 158.37,
+      "video_end": 159.53
     },
     {
       "index": 93,
@@ -1067,7 +1356,10 @@
       "next_action": "turn(milk)",
       "edge_key": "wash(milk)|||turn(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 159.45,
+      "video_end": 160.94
     },
     {
       "index": 94,
@@ -1078,7 +1370,10 @@
       "next_action": "remove(cake)",
       "edge_key": "turn(milk)|||remove(cake)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 160.97,
+      "video_end": 161.81
     },
     {
       "index": 95,
@@ -1089,7 +1384,10 @@
       "next_action": "wash(milk)",
       "edge_key": "remove(cake)|||wash(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 161.4,
+      "video_end": 162.72
     },
     {
       "index": 96,
@@ -1100,7 +1398,10 @@
       "next_action": "wash(milk)",
       "edge_key": "wash(milk)|||wash(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 162.94,
+      "video_end": 163.36
     },
     {
       "index": 97,
@@ -1111,7 +1412,10 @@
       "next_action": "take(sponge)",
       "edge_key": "wash(milk)|||take(sponge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 163.57999999999998,
+      "video_end": 165.86
     },
     {
       "index": 98,
@@ -1122,7 +1426,10 @@
       "next_action": "scrub(sponge)",
       "edge_key": "take(sponge)|||scrub(sponge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 168.14,
+      "video_end": 168.81
     },
     {
       "index": 99,
@@ -1133,7 +1440,10 @@
       "next_action": "insert(sponge)",
       "edge_key": "scrub(sponge)|||insert(sponge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 168.7,
+      "video_end": 170.55
     },
     {
       "index": 100,
@@ -1144,7 +1454,10 @@
       "next_action": "wash(milk)",
       "edge_key": "insert(sponge)|||wash(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 168.74,
+      "video_end": 169.51
     },
     {
       "index": 101,
@@ -1155,7 +1468,10 @@
       "next_action": "take(tray)",
       "edge_key": "wash(milk)|||take(tray)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 170.35,
+      "video_end": 172.23
     },
     {
       "index": 102,
@@ -1166,7 +1482,10 @@
       "next_action": "close(tap)",
       "edge_key": "take(tray)|||close(tap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 172.24,
+      "video_end": 173.07999999999998
     },
     {
       "index": 103,
@@ -1177,7 +1496,10 @@
       "next_action": "lift(milk)",
       "edge_key": "close(tap)|||lift(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 173.24,
+      "video_end": 173.62
     },
     {
       "index": 104,
@@ -1188,7 +1510,10 @@
       "next_action": "put(cream)",
       "edge_key": "lift(milk)|||put(cream)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 174.12,
+      "video_end": 175.54
     },
     {
       "index": 105,
@@ -1199,7 +1524,10 @@
       "next_action": "put(milk)",
       "edge_key": "put(cream)|||put(milk)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 175.59,
+      "video_end": 176.51
     },
     {
       "index": 106,
@@ -1210,7 +1538,10 @@
       "next_action": "take(lid)",
       "edge_key": "put(milk)|||take(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 178.32999999999998,
+      "video_end": 178.72
     },
     {
       "index": 107,
@@ -1221,7 +1552,10 @@
       "next_action": "take(towel)",
       "edge_key": "take(lid)|||take(towel)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 179.06,
+      "video_end": 180.18
     },
     {
       "index": 108,
@@ -1232,7 +1566,10 @@
       "next_action": "take(knife)",
       "edge_key": "take(towel)|||take(knife)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 180.72,
+      "video_end": 182.56
     },
     {
       "index": 109,
@@ -1243,7 +1580,10 @@
       "next_action": "cut(orange)",
       "edge_key": "take(knife)|||cut(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 183.89,
+      "video_end": 184.12
     },
     {
       "index": 110,
@@ -1254,7 +1594,10 @@
       "next_action": "put(knife)",
       "edge_key": "cut(orange)|||put(knife)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 184.78,
+      "video_end": 186.73
     },
     {
       "index": 111,
@@ -1265,7 +1608,10 @@
       "next_action": "flip(orange)",
       "edge_key": "put(knife)|||flip(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 186.95,
+      "video_end": 187.53
     },
     {
       "index": 112,
@@ -1276,7 +1622,10 @@
       "next_action": "turn(food)",
       "edge_key": "flip(orange)|||turn(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 187.89,
+      "video_end": 188.28
     },
     {
       "index": 113,
@@ -1287,7 +1636,10 @@
       "next_action": "press(orange)",
       "edge_key": "turn(food)|||press(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 188.63,
+      "video_end": 189.03
     },
     {
       "index": 114,
@@ -1298,7 +1650,10 @@
       "next_action": "press(juicer)",
       "edge_key": "press(orange)|||press(juicer)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 189.37,
+      "video_end": 193.13
     },
     {
       "index": 115,
@@ -1309,7 +1664,10 @@
       "next_action": "turn-off(food)",
       "edge_key": "press(juicer)|||turn-off(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 193.02,
+      "video_end": 200.78
     },
     {
       "index": 116,
@@ -1320,7 +1678,10 @@
       "next_action": "remove(orange)",
       "edge_key": "turn-off(food)|||remove(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 200.91,
+      "video_end": 201.67
     },
     {
       "index": 117,
@@ -1331,7 +1692,10 @@
       "next_action": "lift(lid)",
       "edge_key": "remove(orange)|||lift(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 202.24,
+      "video_end": 202.65
     },
     {
       "index": 118,
@@ -1342,7 +1706,10 @@
       "next_action": "throw(skin)",
       "edge_key": "lift(lid)|||throw(skin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 203.0,
+      "video_end": 203.36
     },
     {
       "index": 119,
@@ -1353,7 +1720,10 @@
       "next_action": "take(orange)",
       "edge_key": "throw(skin)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 203.61,
+      "video_end": 203.82
     },
     {
       "index": 120,
@@ -1364,7 +1734,10 @@
       "next_action": "put(orange)",
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 204.23,
+      "video_end": 204.69
     },
     {
       "index": 121,
@@ -1375,7 +1748,10 @@
       "next_action": "turn-on(food)",
       "edge_key": "put(orange)|||turn-on(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 204.77,
+      "video_end": 205.41
     },
     {
       "index": 122,
@@ -1386,7 +1762,10 @@
       "next_action": "press(orange)",
       "edge_key": "turn-on(food)|||press(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 205.51,
+      "video_end": 206.2
     },
     {
       "index": 123,
@@ -1397,7 +1776,10 @@
       "next_action": "turn-off(food)",
       "edge_key": "press(orange)|||turn-off(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 206.38,
+      "video_end": 216.88
     },
     {
       "index": 124,
@@ -1408,7 +1790,10 @@
       "next_action": "flip(orange)",
       "edge_key": "turn-off(food)|||flip(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 217.02,
+      "video_end": 217.81
     },
     {
       "index": 125,
@@ -1419,7 +1804,10 @@
       "next_action": "open(lid)",
       "edge_key": "flip(orange)|||open(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 218.13,
+      "video_end": 218.48
     },
     {
       "index": 126,
@@ -1430,7 +1818,10 @@
       "next_action": "throw(skin)",
       "edge_key": "open(lid)|||throw(skin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 218.64,
+      "video_end": 219.53
     },
     {
       "index": 127,
@@ -1441,7 +1832,10 @@
       "next_action": "take(orange)",
       "edge_key": "throw(skin)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 219.42,
+      "video_end": 219.79
     },
     {
       "index": 128,
@@ -1452,7 +1846,10 @@
       "next_action": "put(orange)",
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 220.62,
+      "video_end": 221.0
     },
     {
       "index": 129,
@@ -1463,7 +1860,10 @@
       "next_action": "take(knife)",
       "edge_key": "put(orange)|||take(knife)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 221.17,
+      "video_end": 221.52
     },
     {
       "index": 130,
@@ -1474,7 +1874,10 @@
       "next_action": "cut(orange)",
       "edge_key": "take(knife)|||cut(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 221.79,
+      "video_end": 222.11
     },
     {
       "index": 131,
@@ -1485,7 +1888,10 @@
       "next_action": "put(knife)",
       "edge_key": "cut(orange)|||put(knife)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 222.27,
+      "video_end": 224.42
     },
     {
       "index": 132,
@@ -1496,7 +1902,10 @@
       "next_action": "take(orange)",
       "edge_key": "put(knife)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 224.56,
+      "video_end": 225.01
     },
     {
       "index": 133,
@@ -1507,7 +1916,10 @@
       "next_action": "flip(orange)",
       "edge_key": "take(orange)|||flip(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 225.14,
+      "video_end": 225.51
     },
     {
       "index": 134,
@@ -1518,7 +1930,10 @@
       "next_action": "turn-on(food)",
       "edge_key": "flip(orange)|||turn-on(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 225.69,
+      "video_end": 225.96
     },
     {
       "index": 135,
@@ -1529,7 +1944,10 @@
       "next_action": "press(orange)",
       "edge_key": "turn-on(food)|||press(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 226.22,
+      "video_end": 226.57
     },
     {
       "index": 136,
@@ -1540,7 +1958,10 @@
       "next_action": "turn-off(food)",
       "edge_key": "press(orange)|||turn-off(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 226.85,
+      "video_end": 235.75
     },
     {
       "index": 137,
@@ -1551,7 +1972,10 @@
       "next_action": "open(lid)",
       "edge_key": "turn-off(food)|||open(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 235.84,
+      "video_end": 237.27
     },
     {
       "index": 138,
@@ -1562,7 +1986,10 @@
       "next_action": "throw(orange)",
       "edge_key": "open(lid)|||throw(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 238.05,
+      "video_end": 238.77
     },
     {
       "index": 139,
@@ -1573,7 +2000,10 @@
       "next_action": "take(orange)",
       "edge_key": "throw(orange)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 238.72,
+      "video_end": 239.02
     },
     {
       "index": 140,
@@ -1584,7 +2014,10 @@
       "next_action": "put(orange)",
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 239.49,
+      "video_end": 240.39
     },
     {
       "index": 141,
@@ -1595,7 +2028,10 @@
       "next_action": "turn-on(food)",
       "edge_key": "put(orange)|||turn-on(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 240.5,
+      "video_end": 240.79
     },
     {
       "index": 142,
@@ -1606,7 +2042,10 @@
       "next_action": "press(orange)",
       "edge_key": "turn-on(food)|||press(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 241.05,
+      "video_end": 241.54
     },
     {
       "index": 143,
@@ -1617,7 +2056,10 @@
       "next_action": "turn-off(food)",
       "edge_key": "press(orange)|||turn-off(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 241.69,
+      "video_end": 250.28
     },
     {
       "index": 144,
@@ -1628,7 +2070,10 @@
       "next_action": "lift(lid)",
       "edge_key": "turn-off(food)|||lift(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 250.37,
+      "video_end": 251.32
     },
     {
       "index": 145,
@@ -1639,7 +2084,10 @@
       "next_action": "throw(skin)",
       "edge_key": "lift(lid)|||throw(skin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 251.67,
+      "video_end": 252.52
     },
     {
       "index": 146,
@@ -1650,7 +2098,10 @@
       "next_action": "take(orange)",
       "edge_key": "throw(skin)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 252.72,
+      "video_end": 253.07
     },
     {
       "index": 147,
@@ -1661,7 +2112,10 @@
       "next_action": "put(orange)",
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 253.67,
+      "video_end": 254.52
     },
     {
       "index": 148,
@@ -1672,7 +2126,10 @@
       "next_action": "take(knife)",
       "edge_key": "put(orange)|||take(knife)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 254.62,
+      "video_end": 255.02
     },
     {
       "index": 149,
@@ -1683,7 +2140,10 @@
       "next_action": "cut(orange)",
       "edge_key": "take(knife)|||cut(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 255.12,
+      "video_end": 255.62
     },
     {
       "index": 150,
@@ -1694,7 +2154,10 @@
       "next_action": "put(knife)",
       "edge_key": "cut(orange)|||put(knife)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 255.14,
+      "video_end": 258.7
     },
     {
       "index": 151,
@@ -1705,7 +2168,10 @@
       "next_action": "insert(top)",
       "edge_key": "put(knife)|||insert(top)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 258.71,
+      "video_end": 259.0
     },
     {
       "index": 152,
@@ -1716,7 +2182,10 @@
       "next_action": "take(orange)",
       "edge_key": "insert(top)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 259.1,
+      "video_end": 260.24
     },
     {
       "index": 153,
@@ -1727,7 +2196,10 @@
       "next_action": "put(orange)",
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 260.22,
+      "video_end": 260.57
     },
     {
       "index": 154,
@@ -1738,7 +2210,10 @@
       "next_action": "turn-on(food)",
       "edge_key": "put(orange)|||turn-on(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 260.67,
+      "video_end": 261.37
     },
     {
       "index": 155,
@@ -1749,7 +2224,10 @@
       "next_action": "press(orange)",
       "edge_key": "turn-on(food)|||press(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 261.77,
+      "video_end": 262.02
     },
     {
       "index": 156,
@@ -1760,7 +2238,10 @@
       "next_action": "turn-off(food)",
       "edge_key": "press(orange)|||turn-off(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 262.35,
+      "video_end": 273.07
     },
     {
       "index": 157,
@@ -1771,7 +2252,10 @@
       "next_action": "turn(orange)",
       "edge_key": "turn-off(food)|||turn(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 273.4,
+      "video_end": 274.16
     },
     {
       "index": 158,
@@ -1782,7 +2266,10 @@
       "next_action": "turn(orange)",
       "edge_key": "turn(orange)|||turn(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 274.81,
+      "video_end": 275.39
     },
     {
       "index": 159,
@@ -1793,7 +2280,10 @@
       "next_action": "turn(food)",
       "edge_key": "turn(orange)|||turn(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 275.5,
+      "video_end": 276.16
     },
     {
       "index": 160,
@@ -1804,7 +2294,10 @@
       "next_action": "turn-off(food)",
       "edge_key": "turn(food)|||turn-off(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 276.54,
+      "video_end": 277.88
     },
     {
       "index": 161,
@@ -1815,7 +2308,10 @@
       "next_action": "open(lid)",
       "edge_key": "turn-off(food)|||open(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 277.93,
+      "video_end": 278.83
     },
     {
       "index": 162,
@@ -1826,7 +2322,10 @@
       "next_action": "throw(skin)",
       "edge_key": "open(lid)|||throw(skin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 279.71,
+      "video_end": 280.39
     },
     {
       "index": 163,
@@ -1837,7 +2336,10 @@
       "next_action": "take(orange)",
       "edge_key": "throw(skin)|||take(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 280.47,
+      "video_end": 280.77
     },
     {
       "index": 164,
@@ -1848,7 +2350,10 @@
       "next_action": "put(orange)",
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 281.35,
+      "video_end": 281.85
     },
     {
       "index": 165,
@@ -1859,7 +2364,10 @@
       "next_action": "turn-on(machine:washing)",
       "edge_key": "put(orange)|||turn-on(machine:washing)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 282.15,
+      "video_end": 283.36
     },
     {
       "index": 166,
@@ -1870,7 +2378,10 @@
       "next_action": "press(orange)",
       "edge_key": "turn-on(machine:washing)|||press(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 283.07,
+      "video_end": 283.45
     },
     {
       "index": 167,
@@ -1881,7 +2392,10 @@
       "next_action": "turn-off(food)",
       "edge_key": "press(orange)|||turn-off(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 284.0,
+      "video_end": 292.8
     },
     {
       "index": 168,
@@ -1892,7 +2406,10 @@
       "next_action": "lift(orange)",
       "edge_key": "turn-off(food)|||lift(orange)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 292.98,
+      "video_end": 294.49
     },
     {
       "index": 169,
@@ -1903,7 +2420,10 @@
       "next_action": "turn-on(machine:washing)",
       "edge_key": "lift(orange)|||turn-on(machine:washing)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 295.08,
+      "video_end": 296.85
     },
     {
       "index": 170,
@@ -1914,7 +2434,10 @@
       "next_action": "turn-off(machine:washing)",
       "edge_key": "turn-on(machine:washing)|||turn-off(machine:washing)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 296.34000000000003,
+      "video_end": 297.9
     },
     {
       "index": 171,
@@ -1925,7 +2448,10 @@
       "next_action": "remove(skin)",
       "edge_key": "turn-off(machine:washing)|||remove(skin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 298.69,
+      "video_end": 299.8
     },
     {
       "index": 172,
@@ -1936,7 +2462,10 @@
       "next_action": "open(lid)",
       "edge_key": "remove(skin)|||open(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 300.2,
+      "video_end": 301.66
     },
     {
       "index": 173,
@@ -1947,7 +2476,10 @@
       "next_action": "throw(skin)",
       "edge_key": "open(lid)|||throw(skin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 301.6,
+      "video_end": 301.95
     },
     {
       "index": 174,
@@ -1958,7 +2490,10 @@
       "next_action": "take(knife)",
       "edge_key": "throw(skin)|||take(knife)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 302.05,
+      "video_end": 302.3
     },
     {
       "index": 175,
@@ -1969,7 +2504,10 @@
       "next_action": "move(food)",
       "edge_key": "take(knife)|||move(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 302.99,
+      "video_end": 303.72
     },
     {
       "index": 176,
@@ -1980,7 +2518,10 @@
       "next_action": "put(knife)",
       "edge_key": "move(food)|||put(knife)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 303.62,
+      "video_end": 314.83
     },
     {
       "index": 177,
@@ -1991,7 +2532,10 @@
       "next_action": "remove(cream)",
       "edge_key": "put(knife)|||remove(cream)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 315.35,
+      "video_end": 315.8
     },
     {
       "index": 178,
@@ -2002,7 +2546,10 @@
       "next_action": "shake(skin)",
       "edge_key": "remove(cream)|||shake(skin)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 317.05,
+      "video_end": 318.45
     },
     {
       "index": 179,
@@ -2013,7 +2560,10 @@
       "next_action": "put(cream)",
       "edge_key": "shake(skin)|||put(cream)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 318.55,
+      "video_end": 318.8
     },
     {
       "index": 180,
@@ -2024,7 +2574,10 @@
       "next_action": "wash(cream)",
       "edge_key": "put(cream)|||wash(cream)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 319.88,
+      "video_end": 320.61
     },
     {
       "index": 181,
@@ -2035,7 +2588,10 @@
       "next_action": "take(sponge)",
       "edge_key": "wash(cream)|||take(sponge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 320.71,
+      "video_end": 322.43
     },
     {
       "index": 182,
@@ -2046,7 +2602,10 @@
       "next_action": "wash(cream)",
       "edge_key": "take(sponge)|||wash(cream)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 322.51,
+      "video_end": 322.87
     },
     {
       "index": 183,
@@ -2057,7 +2616,10 @@
       "next_action": "put(sponge)",
       "edge_key": "wash(cream)|||put(sponge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 322.97,
+      "video_end": 324.61
     },
     {
       "index": 184,
@@ -2068,7 +2630,10 @@
       "next_action": "wash(cream)",
       "edge_key": "put(sponge)|||wash(cream)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 324.71,
+      "video_end": 325.24
     },
     {
       "index": 185,
@@ -2079,7 +2644,10 @@
       "next_action": "turn-off(tap)",
       "edge_key": "wash(cream)|||turn-off(tap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 325.24,
+      "video_end": 325.8
     },
     {
       "index": 186,
@@ -2090,7 +2658,10 @@
       "next_action": "put(cream)",
       "edge_key": "turn-off(tap)|||put(cream)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 325.91,
+      "video_end": 326.48
     },
     {
       "index": 187,
@@ -2101,7 +2672,10 @@
       "next_action": "turn(bowl)",
       "edge_key": "put(cream)|||turn(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 326.89,
+      "video_end": 327.39
     },
     {
       "index": 188,
@@ -2112,7 +2686,10 @@
       "next_action": "lift(bowl)",
       "edge_key": "turn(bowl)|||lift(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 329.17,
+      "video_end": 330.55
     },
     {
       "index": 189,
@@ -2123,7 +2700,10 @@
       "next_action": "open(lid)",
       "edge_key": "lift(bowl)|||open(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 330.32,
+      "video_end": 337.09000000000003
     },
     {
       "index": 190,
@@ -2134,7 +2714,10 @@
       "next_action": "throw(food)",
       "edge_key": "open(lid)|||throw(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 331.96,
+      "video_end": 333.19
     },
     {
       "index": 191,
@@ -2145,7 +2728,10 @@
       "next_action": "pat(bowl)",
       "edge_key": "throw(food)|||pat(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 333.57,
+      "video_end": 334.53
     },
     {
       "index": 192,
@@ -2156,7 +2742,10 @@
       "next_action": "close(lid)",
       "edge_key": "pat(bowl)|||close(lid)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 334.56,
+      "video_end": 336.72
     },
     {
       "index": 193,
@@ -2167,7 +2756,10 @@
       "next_action": "put(bowl)",
       "edge_key": "close(lid)|||put(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 337.2,
+      "video_end": 337.74
     },
     {
       "index": 194,
@@ -2178,7 +2770,10 @@
       "next_action": "open(tap)",
       "edge_key": "put(bowl)|||open(tap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 338.08,
+      "video_end": 338.79
     },
     {
       "index": 195,
@@ -2189,7 +2784,10 @@
       "next_action": "wash(bowl)",
       "edge_key": "open(tap)|||wash(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 338.79,
+      "video_end": 339.68
     },
     {
       "index": 196,
@@ -2200,7 +2798,10 @@
       "next_action": "turn(bowl)",
       "edge_key": "wash(bowl)|||turn(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 339.08,
+      "video_end": 341.62
     },
     {
       "index": 197,
@@ -2211,7 +2812,10 @@
       "next_action": "wash(juicer)",
       "edge_key": "turn(bowl)|||wash(juicer)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 341.41,
+      "video_end": 341.86
     },
     {
       "index": 198,
@@ -2222,7 +2826,10 @@
       "next_action": "close(tap)",
       "edge_key": "wash(juicer)|||close(tap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 341.73,
+      "video_end": 345.83
     },
     {
       "index": 199,
@@ -2233,7 +2840,10 @@
       "next_action": "put(bowl)",
       "edge_key": "close(tap)|||put(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 345.77,
+      "video_end": 346.26
     },
     {
       "index": 200,
@@ -2244,7 +2854,10 @@
       "next_action": "take(towel)",
       "edge_key": "put(bowl)|||take(towel)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 346.95,
+      "video_end": 347.5
     },
     {
       "index": 201,
@@ -2255,7 +2868,10 @@
       "next_action": "open(cupboard)",
       "edge_key": "take(towel)|||open(cupboard)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 349.64,
+      "video_end": 351.24
     },
     {
       "index": 202,
@@ -2266,7 +2882,10 @@
       "next_action": "take(glass)",
       "edge_key": "open(cupboard)|||take(glass)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 352.1,
+      "video_end": 352.89
     },
     {
       "index": 203,
@@ -2277,7 +2896,10 @@
       "next_action": "turn(glass)",
       "edge_key": "take(glass)|||turn(glass)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 353.33,
+      "video_end": 354.22
     },
     {
       "index": 204,
@@ -2288,7 +2910,10 @@
       "next_action": "put(glass)",
       "edge_key": "turn(glass)|||put(glass)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 355.72,
+      "video_end": 356.22
     },
     {
       "index": 205,
@@ -2299,7 +2924,10 @@
       "next_action": "turn(bowl)",
       "edge_key": "put(glass)|||turn(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 356.4,
+      "video_end": 357.02
     },
     {
       "index": 206,
@@ -2310,7 +2938,10 @@
       "next_action": "lift(bowl)",
       "edge_key": "turn(bowl)|||lift(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 357.51,
+      "video_end": 358.69
     },
     {
       "index": 207,
@@ -2321,7 +2952,10 @@
       "next_action": "take(glass)",
       "edge_key": "lift(bowl)|||take(glass)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 358.59000000000003,
+      "video_end": 359.31
     },
     {
       "index": 208,
@@ -2332,7 +2966,10 @@
       "next_action": "lift(bowl)",
       "edge_key": "take(glass)|||lift(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 359.63,
+      "video_end": 360.12
     },
     {
       "index": 209,
@@ -2343,7 +2980,10 @@
       "next_action": "put(glass)",
       "edge_key": "lift(bowl)|||put(glass)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 360.37,
+      "video_end": 364.0
     },
     {
       "index": 210,
@@ -2354,7 +2994,10 @@
       "next_action": "put(bowl)",
       "edge_key": "put(glass)|||put(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 367.3,
+      "video_end": 368.2
     },
     {
       "index": 211,
@@ -2365,7 +3008,10 @@
       "next_action": "open(cap)",
       "edge_key": "put(bowl)|||open(cap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 370.15,
+      "video_end": 370.65
     },
     {
       "index": 212,
@@ -2376,7 +3022,10 @@
       "next_action": "wash(food)",
       "edge_key": "open(cap)|||wash(food)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 370.47,
+      "video_end": 370.72
     },
     {
       "index": 213,
@@ -2387,7 +3036,10 @@
       "next_action": "close(tap)",
       "edge_key": "wash(food)|||close(tap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 370.77,
+      "video_end": 374.05
     },
     {
       "index": 214,
@@ -2398,7 +3050,10 @@
       "next_action": "take(sponge)",
       "edge_key": "close(tap)|||take(sponge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 373.5,
+      "video_end": 373.8
     },
     {
       "index": 215,
@@ -2409,7 +3064,10 @@
       "next_action": "scrub(bowl)",
       "edge_key": "take(sponge)|||scrub(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 374.15,
+      "video_end": 374.5
     },
     {
       "index": 216,
@@ -2420,7 +3078,10 @@
       "next_action": "put(sponge)",
       "edge_key": "scrub(bowl)|||put(sponge)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 374.6,
+      "video_end": 380.3
     },
     {
       "index": 217,
@@ -2431,7 +3092,10 @@
       "next_action": "open(tap)",
       "edge_key": "put(sponge)|||open(tap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 380.5,
+      "video_end": 380.85
     },
     {
       "index": 218,
@@ -2442,7 +3106,10 @@
       "next_action": "wash(bowl)",
       "edge_key": "open(tap)|||wash(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 381.05,
+      "video_end": 381.35
     },
     {
       "index": 219,
@@ -2453,7 +3120,10 @@
       "next_action": "turn-off(tap)",
       "edge_key": "wash(bowl)|||turn-off(tap)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 381.45,
+      "video_end": 386.4
     },
     {
       "index": 220,
@@ -2464,7 +3134,10 @@
       "next_action": "lift(bowl)",
       "edge_key": "turn-off(tap)|||lift(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 386.46,
+      "video_end": 387.1
     },
     {
       "index": 221,
@@ -2475,7 +3148,10 @@
       "next_action": "turn(bowl)",
       "edge_key": "lift(bowl)|||turn(bowl)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 386.66,
+      "video_end": 387.65
     },
     {
       "index": 222,
@@ -2486,7 +3162,10 @@
       "next_action": "take(towel)",
       "edge_key": "turn(bowl)|||take(towel)",
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 386.83,
+      "video_end": 389.94
     },
     {
       "index": 223,
@@ -2497,7 +3176,10 @@
       "next_action": null,
       "edge_key": null,
       "step_id": null,
-      "is_primary": false
+      "is_primary": false,
+      "video_id": "P01-20240202-110250",
+      "video_start": 391.66,
+      "video_end": 394.72
     }
   ],
   "graph": {

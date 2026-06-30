@@ -5,8 +5,18 @@
     "session_index": 0,
     "video_id": "P08-20240613-122900",
     "video_path": "raw-video/P08-20240613-122900.mp4",
-    "narration_count": 57
+    "narration_count": 57,
+    "n_videos": 1,
+    "total_capture_duration_s": 198.8
   },
+  "videos": [
+    {
+      "video_id": "P08-20240613-122900",
+      "video_path": "raw-video/P08-20240613-122900.mp4",
+      "offset_s": 0.0,
+      "duration_s": 198.8
+    }
+  ],
   "steps": [
     {
       "id": "P08_R01_S01",
@@ -35,6 +45,9 @@
       "edge_key": "slide(phone)|||open(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 3.31,
+      "video_end": 4.67,
       "raw_action": "slide(phone)",
       "raw_step_id": "unassigned"
     },
@@ -48,6 +61,9 @@
       "edge_key": "open(phone)|||move(scale)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 4.5,
+      "video_end": 7.92,
       "raw_action": "open(phone)",
       "raw_step_id": "unassigned"
     },
@@ -61,6 +77,9 @@
       "edge_key": "move(scale)|||take(cup)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 8.79,
+      "video_end": 11.04,
       "raw_action": "move(scale)",
       "raw_step_id": "unassigned"
     },
@@ -74,6 +93,9 @@
       "edge_key": "take(cup)|||turn-on(scale)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 15.5,
+      "video_end": 17.34,
       "raw_action": "take(cup)",
       "raw_step_id": "unassigned"
     },
@@ -87,6 +109,9 @@
       "edge_key": "turn-on(scale)|||adjust(scale)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 17.78,
+      "video_end": 19.23,
       "raw_action": "turn-on(scale)",
       "raw_step_id": "unassigned"
     },
@@ -100,6 +125,9 @@
       "edge_key": "adjust(scale)|||put(cup)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 18.85,
+      "video_end": 26.83,
       "raw_action": "adjust(scale)",
       "raw_step_id": "unassigned"
     },
@@ -113,6 +141,9 @@
       "edge_key": "put(cup)|||take(can)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 27.4,
+      "video_end": 28.74,
       "raw_action": "put(cup)",
       "raw_step_id": "P08_R01_S01"
     },
@@ -126,6 +157,9 @@
       "edge_key": "take(can)|||open(can)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 33.85,
+      "video_end": 35.16,
       "raw_action": "take(can)",
       "raw_step_id": "unassigned"
     },
@@ -139,6 +173,9 @@
       "edge_key": "open(can)|||pour(coffee)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 35.71,
+      "video_end": 36.87,
       "raw_action": "open(can)",
       "raw_step_id": "unassigned"
     },
@@ -152,6 +189,9 @@
       "edge_key": "pour(coffee)|||close(can)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 36.64,
+      "video_end": 41.37,
       "raw_action": "pour(coffee)",
       "raw_step_id": "P08_R01_S01"
     },
@@ -165,6 +205,9 @@
       "edge_key": "close(can)|||put(can)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 41.26,
+      "video_end": 44.71,
       "raw_action": "close(can)",
       "raw_step_id": "unassigned"
     },
@@ -178,6 +221,9 @@
       "edge_key": "put(can)|||carry(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 45.26,
+      "video_end": 46.7,
       "raw_action": "put(can)",
       "raw_step_id": "unassigned"
     },
@@ -191,6 +237,9 @@
       "edge_key": "carry(phone)|||write(coffee)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 46.28,
+      "video_end": 47.26,
       "raw_action": "carry(phone)",
       "raw_step_id": "unassigned"
     },
@@ -204,6 +253,9 @@
       "edge_key": "write(coffee)|||move(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 48.26,
+      "video_end": 67.23,
       "raw_action": "write(coffee)",
       "raw_step_id": "unassigned"
     },
@@ -217,6 +269,9 @@
       "edge_key": "move(phone)|||move(scale)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 67.39,
+      "video_end": 68.61,
       "raw_action": "move(phone)",
       "raw_step_id": "unassigned"
     },
@@ -230,6 +285,9 @@
       "edge_key": "move(scale)|||take(maker:coffee)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 69.72,
+      "video_end": 70.74,
       "raw_action": "move(scale)",
       "raw_step_id": "unassigned"
     },
@@ -243,6 +301,9 @@
       "edge_key": "take(maker:coffee)|||open(cap)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 72.85,
+      "video_end": 73.35,
       "raw_action": "take(maker:coffee)",
       "raw_step_id": "P08_R01_S01"
     },
@@ -256,6 +317,9 @@
       "edge_key": "open(cap)|||pour(coffee)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 73.44,
+      "video_end": 74.18,
       "raw_action": "open(cap)",
       "raw_step_id": "P08_R01_S01"
     },
@@ -269,6 +333,9 @@
       "edge_key": "pour(coffee)|||put(cup)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 75.72,
+      "video_end": 76.96000000000001,
       "raw_action": "pour(coffee)",
       "raw_step_id": "P08_R01_S01"
     },
@@ -282,6 +349,9 @@
       "edge_key": "put(cup)|||crush(coffee)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 77.41,
+      "video_end": 80.11,
       "raw_action": "put(cup)",
       "raw_step_id": "P08_R01_S01"
     },
@@ -295,6 +365,9 @@
       "edge_key": "crush(coffee)|||turn-on(machine:washing)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 79.89,
+      "video_end": 96.38,
       "raw_action": "crush(coffee)",
       "raw_step_id": "P08_R01_S01"
     },
@@ -308,6 +381,9 @@
       "edge_key": "turn-on(machine:washing)|||take(cup)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 97.41,
+      "video_end": 98.76,
       "raw_action": "turn-on(machine:washing)",
       "raw_step_id": "unassigned"
     },
@@ -321,6 +397,9 @@
       "edge_key": "take(cup)|||search(rack:drying)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 100.92,
+      "video_end": 101.6,
       "raw_action": "take(cup)",
       "raw_step_id": "unassigned"
     },
@@ -334,6 +413,9 @@
       "edge_key": "search(rack:drying)|||take(cup)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 103.17,
+      "video_end": 106.93,
       "raw_action": "search(rack:drying)",
       "raw_step_id": "unassigned"
     },
@@ -347,6 +429,9 @@
       "edge_key": "take(cup)|||take(cup)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 107.37,
+      "video_end": 107.81,
       "raw_action": "take(cup)",
       "raw_step_id": "unassigned"
     },
@@ -360,6 +445,9 @@
       "edge_key": "take(cup)|||screw(cup)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 109.05,
+      "video_end": 110.35,
       "raw_action": "take(cup)",
       "raw_step_id": "unassigned"
     },
@@ -373,6 +461,9 @@
       "edge_key": "screw(cup)|||put(cup)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 111.19,
+      "video_end": 114.51,
       "raw_action": "screw(cup)",
       "raw_step_id": "unassigned"
     },
@@ -386,6 +477,9 @@
       "edge_key": "put(cup)|||put(cup)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 114.38,
+      "video_end": 114.99,
       "raw_action": "put(cup)",
       "raw_step_id": "unassigned"
     },
@@ -399,6 +493,9 @@
       "edge_key": "put(cup)|||move(scale)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 115.55,
+      "video_end": 117.26,
       "raw_action": "put(cup)",
       "raw_step_id": "unassigned"
     },
@@ -412,6 +509,9 @@
       "edge_key": "move(scale)|||pat(maker:coffee)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 117.69,
+      "video_end": 118.96,
       "raw_action": "move(scale)",
       "raw_step_id": "unassigned"
     },
@@ -425,6 +525,9 @@
       "edge_key": "pat(maker:coffee)|||take(spoon)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 120.35,
+      "video_end": 121.44,
       "raw_action": "pat(maker:coffee)",
       "raw_step_id": "unassigned"
     },
@@ -438,6 +541,9 @@
       "edge_key": "take(spoon)|||mix(coffee)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 121.42,
+      "video_end": 122.39,
       "raw_action": "take(spoon)",
       "raw_step_id": "unassigned"
     },
@@ -451,6 +557,9 @@
       "edge_key": "mix(coffee)|||pat(maker:coffee)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 122.47,
+      "video_end": 125.8,
       "raw_action": "mix(coffee)",
       "raw_step_id": "unassigned"
     },
@@ -464,6 +573,9 @@
       "edge_key": "pat(maker:coffee)|||scoop(coffee)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 125.55,
+      "video_end": 128.0,
       "raw_action": "pat(maker:coffee)",
       "raw_step_id": "unassigned"
     },
@@ -477,6 +589,9 @@
       "edge_key": "scoop(coffee)|||put(coffee)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 127.75,
+      "video_end": 130.2,
       "raw_action": "scoop(coffee)",
       "raw_step_id": "unassigned"
     },
@@ -490,6 +605,9 @@
       "edge_key": "put(coffee)|||pat(maker:coffee)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 130.13,
+      "video_end": 131.6,
       "raw_action": "put(coffee)",
       "raw_step_id": "unassigned"
     },
@@ -503,6 +621,9 @@
       "edge_key": "pat(maker:coffee)|||crush(coffee)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 131.4,
+      "video_end": 133.15,
       "raw_action": "pat(maker:coffee)",
       "raw_step_id": "unassigned"
     },
@@ -516,6 +637,9 @@
       "edge_key": "crush(coffee)|||pat(maker:coffee)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 132.95,
+      "video_end": 135.95,
       "raw_action": "crush(coffee)",
       "raw_step_id": "unassigned"
     },
@@ -529,6 +653,9 @@
       "edge_key": "pat(maker:coffee)|||put(spoon)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 135.55,
+      "video_end": 137.62,
       "raw_action": "pat(maker:coffee)",
       "raw_step_id": "unassigned"
     },
@@ -542,6 +669,9 @@
       "edge_key": "put(spoon)|||pat(cup)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 139.5,
+      "video_end": 140.73,
       "raw_action": "put(spoon)",
       "raw_step_id": "unassigned"
     },
@@ -555,6 +685,9 @@
       "edge_key": "pat(cup)|||press(coffee)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 140.77,
+      "video_end": 142.18,
       "raw_action": "pat(cup)",
       "raw_step_id": "unassigned"
     },
@@ -568,6 +701,9 @@
       "edge_key": "press(coffee)|||put(presser)",
       "step_id": "P08_R01_S02",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 142.25,
+      "video_end": 151.13,
       "raw_action": "press(coffee)",
       "raw_step_id": "P08_R01_S02"
     },
@@ -581,6 +717,9 @@
       "edge_key": "put(presser)|||put(cup)",
       "step_id": "P08_R01_S02",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 150.79,
+      "video_end": 152.04,
       "raw_action": "put(presser)",
       "raw_step_id": "P08_R01_S02"
     },
@@ -594,6 +733,9 @@
       "edge_key": "put(cup)|||screw(cup)",
       "step_id": "P08_R01_S02",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 152.09,
+      "video_end": 153.82,
       "raw_action": "put(cup)",
       "raw_step_id": "P08_R01_S02"
     },
@@ -607,6 +749,9 @@
       "edge_key": "screw(cup)|||put(machine:washing)",
       "step_id": "P08_R01_S02",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 153.87,
+      "video_end": 154.9,
       "raw_action": "screw(cup)",
       "raw_step_id": "P08_R01_S02"
     },
@@ -620,6 +765,9 @@
       "edge_key": "put(machine:washing)|||move(phone)",
       "step_id": "P08_R01_S02",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 154.89,
+      "video_end": 156.27,
       "raw_action": "put(machine:washing)",
       "raw_step_id": "P08_R01_S02"
     },
@@ -633,6 +781,9 @@
       "edge_key": "move(phone)|||carry(cup)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 156.37,
+      "video_end": 160.13,
       "raw_action": "move(phone)",
       "raw_step_id": "unassigned"
     },
@@ -646,6 +797,9 @@
       "edge_key": "carry(cup)|||put(cup)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 160.23,
+      "video_end": 161.28,
       "raw_action": "carry(cup)",
       "raw_step_id": "unassigned"
     },
@@ -659,6 +813,9 @@
       "edge_key": "put(cup)|||turn-on(machine:washing)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 161.38,
+      "video_end": 162.5,
       "raw_action": "put(cup)",
       "raw_step_id": "unassigned"
     },
@@ -672,6 +829,9 @@
       "edge_key": "turn-on(machine:washing)|||check(coffee)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 163.4,
+      "video_end": 165.95,
       "raw_action": "turn-on(machine:washing)",
       "raw_step_id": "P08_R01_S03"
     },
@@ -685,6 +845,9 @@
       "edge_key": "check(coffee)|||open(drawer)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 166.32,
+      "video_end": 174.87,
       "raw_action": "check(coffee)",
       "raw_step_id": "P08_R01_S03"
     },
@@ -698,6 +861,9 @@
       "edge_key": "open(drawer)|||take(plate)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 174.97,
+      "video_end": 175.82,
       "raw_action": "open(drawer)",
       "raw_step_id": "P08_R01_S03"
     },
@@ -711,6 +877,9 @@
       "edge_key": "take(plate)|||finish(machine:washing)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 175.89,
+      "video_end": 176.32,
       "raw_action": "take(plate)",
       "raw_step_id": "P08_R01_S03"
     },
@@ -724,6 +893,9 @@
       "edge_key": "finish(machine:washing)|||wait(machine:washing)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 178.69,
+      "video_end": 180.39,
       "raw_action": "finish(machine:washing)",
       "raw_step_id": "P08_R01_S03"
     },
@@ -737,6 +909,9 @@
       "edge_key": "wait(machine:washing)|||squeeze(cup)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 180.55,
+      "video_end": 185.2,
       "raw_action": "wait(machine:washing)",
       "raw_step_id": "P08_R01_S03"
     },
@@ -750,6 +925,9 @@
       "edge_key": "squeeze(cup)|||turn-off(machine:washing)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "video_id": "P08-20240613-122900",
+      "video_start": 185.21,
+      "video_end": 191.15,
       "raw_action": "squeeze(cup)",
       "raw_step_id": "P08_R01_S03"
     },
@@ -763,6 +941,9 @@
       "edge_key": null,
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240613-122900",
+      "video_start": 192.17,
+      "video_end": 193.26,
       "raw_action": "turn-off(machine:washing)",
       "raw_step_id": "unassigned"
     }

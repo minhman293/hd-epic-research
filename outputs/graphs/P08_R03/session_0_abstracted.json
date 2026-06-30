@@ -5,8 +5,18 @@
     "session_index": 0,
     "video_id": "P08-20240614-085000",
     "video_path": "raw-video/P08-20240614-085000.mp4",
-    "narration_count": 319
+    "narration_count": 319,
+    "n_videos": 1,
+    "total_capture_duration_s": 1087.9
   },
+  "videos": [
+    {
+      "video_id": "P08-20240614-085000",
+      "video_path": "raw-video/P08-20240614-085000.mp4",
+      "offset_s": 0.0,
+      "duration_s": 1087.9
+    }
+  ],
   "steps": [
     {
       "id": "P08_R03_S01",
@@ -55,6 +65,9 @@
       "edge_key": "put(phone)|||open(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 6.06,
+      "video_end": 6.46,
       "raw_action": "put(phone)",
       "raw_step_id": "unassigned"
     },
@@ -68,6 +81,9 @@
       "edge_key": "open(cupboard)|||move(colander)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 8.59,
+      "video_end": 9.63,
       "raw_action": "open(cupboard)",
       "raw_step_id": "unassigned"
     },
@@ -81,6 +97,9 @@
       "edge_key": "move(colander)|||take(package)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 11.15,
+      "video_end": 11.92,
       "raw_action": "move(colander)",
       "raw_step_id": "unassigned"
     },
@@ -94,6 +113,9 @@
       "edge_key": "take(package)|||take(box)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 12.16,
+      "video_end": 12.87,
       "raw_action": "take(package)",
       "raw_step_id": "unassigned"
     },
@@ -107,6 +129,9 @@
       "edge_key": "take(box)|||take(recipe)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 13.57,
+      "video_end": 14.48,
       "raw_action": "take(box)",
       "raw_step_id": "unassigned"
     },
@@ -120,6 +145,9 @@
       "edge_key": "take(recipe)|||take(bag)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 16.69,
+      "video_end": 17.88,
       "raw_action": "take(recipe)",
       "raw_step_id": "unassigned"
     },
@@ -133,6 +161,9 @@
       "edge_key": "take(bag)|||close(drawer)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 17.89,
+      "video_end": 18.85,
       "raw_action": "take(bag)",
       "raw_step_id": "unassigned"
     },
@@ -146,6 +177,9 @@
       "edge_key": "close(drawer)|||take(recipe)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 19.48,
+      "video_end": 20.2,
       "raw_action": "close(drawer)",
       "raw_step_id": "unassigned"
     },
@@ -159,6 +193,9 @@
       "edge_key": "take(recipe)|||take(recipe)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 20.15,
+      "video_end": 24.22,
       "raw_action": "take(recipe)",
       "raw_step_id": "unassigned"
     },
@@ -172,6 +209,9 @@
       "edge_key": "take(recipe)|||open(drawer)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 24.88,
+      "video_end": 28.77,
       "raw_action": "take(recipe)",
       "raw_step_id": "unassigned"
     },
@@ -185,6 +225,9 @@
       "edge_key": "open(drawer)|||take(recipe)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 31.12,
+      "video_end": 32.05,
       "raw_action": "open(drawer)",
       "raw_step_id": "unassigned"
     },
@@ -198,6 +241,9 @@
       "edge_key": "take(recipe)|||close(drawer)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 32.15,
+      "video_end": 34.02,
       "raw_action": "take(recipe)",
       "raw_step_id": "unassigned"
     },
@@ -211,6 +257,9 @@
       "edge_key": "close(drawer)|||close(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 34.06,
+      "video_end": 35.02,
       "raw_action": "close(drawer)",
       "raw_step_id": "unassigned"
     },
@@ -224,6 +273,9 @@
       "edge_key": "close(cupboard)|||open(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 35.12,
+      "video_end": 37.75,
       "raw_action": "close(cupboard)",
       "raw_step_id": "unassigned"
     },
@@ -237,6 +289,9 @@
       "edge_key": "open(cupboard)|||pull(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 43.25,
+      "video_end": 43.9,
       "raw_action": "open(cupboard)",
       "raw_step_id": "unassigned"
     },
@@ -250,6 +305,9 @@
       "edge_key": "pull(cupboard)|||close(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 43.92,
+      "video_end": 46.55,
       "raw_action": "pull(cupboard)",
       "raw_step_id": "unassigned"
     },
@@ -263,6 +321,9 @@
       "edge_key": "close(cupboard)|||move(recipe)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 46.65,
+      "video_end": 49.44,
       "raw_action": "close(cupboard)",
       "raw_step_id": "unassigned"
     },
@@ -276,6 +337,9 @@
       "edge_key": "move(recipe)|||move(recipe)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 49.39,
+      "video_end": 50.64,
       "raw_action": "move(recipe)",
       "raw_step_id": "unassigned"
     },
@@ -289,6 +353,9 @@
       "edge_key": "move(recipe)|||take(knife)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 50.74,
+      "video_end": 53.18,
       "raw_action": "move(recipe)",
       "raw_step_id": "unassigned"
     },
@@ -302,6 +369,9 @@
       "edge_key": "take(knife)|||move(potato)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 53.31,
+      "video_end": 53.9,
       "raw_action": "take(knife)",
       "raw_step_id": "unassigned"
     },
@@ -315,6 +385,9 @@
       "edge_key": "move(potato)|||take(onion)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 54.36,
+      "video_end": 55.29,
       "raw_action": "move(potato)",
       "raw_step_id": "unassigned"
     },
@@ -328,6 +401,9 @@
       "edge_key": "take(onion)|||put(potato)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 55.06,
+      "video_end": 56.22,
       "raw_action": "take(onion)",
       "raw_step_id": "unassigned"
     },
@@ -341,6 +417,9 @@
       "edge_key": "put(potato)|||move(knife)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 56.36,
+      "video_end": 57.22,
       "raw_action": "put(potato)",
       "raw_step_id": "unassigned"
     },
@@ -354,6 +433,9 @@
       "edge_key": "move(knife)|||move(recipe)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 60.0,
+      "video_end": 61.78,
       "raw_action": "move(knife)",
       "raw_step_id": "unassigned"
     },
@@ -367,6 +449,9 @@
       "edge_key": "move(recipe)|||move(board:chopping)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 61.72,
+      "video_end": 63.56,
       "raw_action": "move(recipe)",
       "raw_step_id": "unassigned"
     },
@@ -380,6 +465,9 @@
       "edge_key": "move(board:chopping)|||search(hand)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 66.05,
+      "video_end": 66.68,
       "raw_action": "move(board:chopping)",
       "raw_step_id": "unassigned"
     },
@@ -393,6 +481,9 @@
       "edge_key": "search(hand)|||squeeze(onion)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 67.21,
+      "video_end": 69.05,
       "raw_action": "search(hand)",
       "raw_step_id": "unassigned"
     },
@@ -406,6 +497,9 @@
       "edge_key": "squeeze(onion)|||put(presser)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 69.01,
+      "video_end": 72.99,
       "raw_action": "squeeze(onion)",
       "raw_step_id": "unassigned"
     },
@@ -419,6 +513,9 @@
       "edge_key": "put(presser)|||take(onion)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 73.18,
+      "video_end": 73.88,
       "raw_action": "put(presser)",
       "raw_step_id": "unassigned"
     },
@@ -432,6 +529,9 @@
       "edge_key": "take(onion)|||pat(hand)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 74.49,
+      "video_end": 75.72,
       "raw_action": "take(onion)",
       "raw_step_id": "unassigned"
     },
@@ -445,6 +545,9 @@
       "edge_key": "pat(hand)|||take(onion)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 76.68,
+      "video_end": 79.41,
       "raw_action": "pat(hand)",
       "raw_step_id": "unassigned"
     },
@@ -458,6 +561,9 @@
       "edge_key": "take(onion)|||take(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 79.56,
+      "video_end": 80.69,
       "raw_action": "take(onion)",
       "raw_step_id": "unassigned"
     },
@@ -471,6 +577,9 @@
       "edge_key": "take(phone)|||pat(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 81.28,
+      "video_end": 82.75,
       "raw_action": "take(phone)",
       "raw_step_id": "unassigned"
     },
@@ -484,6 +593,9 @@
       "edge_key": "pat(phone)|||write(onion)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 83.74,
+      "video_end": 91.37,
       "raw_action": "pat(phone)",
       "raw_step_id": "unassigned"
     },
@@ -497,6 +609,9 @@
       "edge_key": "write(onion)|||put(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 91.24,
+      "video_end": 108.61,
       "raw_action": "write(onion)",
       "raw_step_id": "unassigned"
     },
@@ -510,6 +625,9 @@
       "edge_key": "put(phone)|||take(onion)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 109.12,
+      "video_end": 110.04,
       "raw_action": "put(phone)",
       "raw_step_id": "unassigned"
     },
@@ -523,6 +641,9 @@
       "edge_key": "take(onion)|||squeeze(onion)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 110.18,
+      "video_end": 111.0,
       "raw_action": "take(onion)",
       "raw_step_id": "unassigned"
     },
@@ -536,6 +657,9 @@
       "edge_key": "squeeze(onion)|||peel(onion)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 111.77,
+      "video_end": 113.53,
       "raw_action": "squeeze(onion)",
       "raw_step_id": "unassigned"
     },
@@ -549,6 +673,9 @@
       "edge_key": "peel(onion)|||put(onion)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 114.22,
+      "video_end": 129.41,
       "raw_action": "peel(onion)",
       "raw_step_id": "unassigned"
     },
@@ -562,6 +689,9 @@
       "edge_key": "put(onion)|||turn-on(knife)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 130.08,
+      "video_end": 132.32,
       "raw_action": "put(onion)",
       "raw_step_id": "unassigned"
     },
@@ -575,6 +705,9 @@
       "edge_key": "turn-on(knife)|||turn(onion)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 132.39,
+      "video_end": 139.32999999999998,
       "raw_action": "turn-on(knife)",
       "raw_step_id": "unassigned"
     },
@@ -588,6 +721,9 @@
       "edge_key": "turn(onion)|||squeeze(onion)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 139.38,
+      "video_end": 148.7,
       "raw_action": "turn(onion)",
       "raw_step_id": "unassigned"
     },
@@ -601,6 +737,9 @@
       "edge_key": "squeeze(onion)|||slide(knife)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 148.64,
+      "video_end": 152.1,
       "raw_action": "squeeze(onion)",
       "raw_step_id": "unassigned"
     },
@@ -614,6 +753,9 @@
       "edge_key": "slide(knife)|||scoop(onion)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 152.01,
+      "video_end": 152.66,
       "raw_action": "slide(knife)",
       "raw_step_id": "unassigned"
     },
@@ -627,6 +769,9 @@
       "edge_key": "scoop(onion)|||move(recipe)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 152.89,
+      "video_end": 155.3,
       "raw_action": "scoop(onion)",
       "raw_step_id": "unassigned"
     },
@@ -640,6 +785,9 @@
       "edge_key": "move(recipe)|||check(hand)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 157.04,
+      "video_end": 157.94,
       "raw_action": "move(recipe)",
       "raw_step_id": "unassigned"
     },
@@ -653,6 +801,9 @@
       "edge_key": "check(hand)|||put(pepper)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 160.0,
+      "video_end": 161.06,
       "raw_action": "check(hand)",
       "raw_step_id": "unassigned"
     },
@@ -666,6 +817,9 @@
       "edge_key": "put(pepper)|||search(hand)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 161.28,
+      "video_end": 161.57999999999998,
       "raw_action": "put(pepper)",
       "raw_step_id": "unassigned"
     },
@@ -679,6 +833,9 @@
       "edge_key": "search(hand)|||put(plate)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 161.9,
+      "video_end": 162.93,
       "raw_action": "search(hand)",
       "raw_step_id": "unassigned"
     },
@@ -692,6 +849,9 @@
       "edge_key": "put(plate)|||take(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 164.18,
+      "video_end": 164.61,
       "raw_action": "put(plate)",
       "raw_step_id": "unassigned"
     },
@@ -705,6 +865,9 @@
       "edge_key": "take(phone)|||pat(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 165.01,
+      "video_end": 166.47,
       "raw_action": "take(phone)",
       "raw_step_id": "unassigned"
     },
@@ -718,6 +881,9 @@
       "edge_key": "pat(phone)|||take(pepper)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 166.59,
+      "video_end": 178.05,
       "raw_action": "pat(phone)",
       "raw_step_id": "unassigned"
     },
@@ -731,6 +897,9 @@
       "edge_key": "take(pepper)|||take(pepper)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 178.5,
+      "video_end": 179.4,
       "raw_action": "take(pepper)",
       "raw_step_id": "unassigned"
     },
@@ -744,6 +913,9 @@
       "edge_key": "take(pepper)|||pat(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 180.71,
+      "video_end": 182.48,
       "raw_action": "take(pepper)",
       "raw_step_id": "unassigned"
     },
@@ -757,6 +929,9 @@
       "edge_key": "pat(phone)|||take(pepper)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 183.17,
+      "video_end": 189.7,
       "raw_action": "pat(phone)",
       "raw_step_id": "unassigned"
     },
@@ -770,6 +945,9 @@
       "edge_key": "take(pepper)|||put(pepper)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 189.8,
+      "video_end": 191.62,
       "raw_action": "take(pepper)",
       "raw_step_id": "unassigned"
     },
@@ -783,6 +961,9 @@
       "edge_key": "put(pepper)|||cut(pepper)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 195.52,
+      "video_end": 197.47,
       "raw_action": "put(pepper)",
       "raw_step_id": "unassigned"
     },
@@ -796,6 +977,9 @@
       "edge_key": "cut(pepper)|||squeeze(pepper)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 198.41,
+      "video_end": 199.89,
       "raw_action": "cut(pepper)",
       "raw_step_id": "unassigned"
     },
@@ -809,6 +993,9 @@
       "edge_key": "squeeze(pepper)|||scoop(food)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 200.03,
+      "video_end": 206.56,
       "raw_action": "squeeze(pepper)",
       "raw_step_id": "unassigned"
     },
@@ -822,6 +1009,9 @@
       "edge_key": "scoop(food)|||take(liquid:washing)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 207.16,
+      "video_end": 209.6,
       "raw_action": "scoop(food)",
       "raw_step_id": "unassigned"
     },
@@ -835,6 +1025,9 @@
       "edge_key": "take(liquid:washing)|||take(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 209.78,
+      "video_end": 211.32,
       "raw_action": "take(liquid:washing)",
       "raw_step_id": "unassigned"
     },
@@ -848,6 +1041,9 @@
       "edge_key": "take(phone)|||take(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 211.85,
+      "video_end": 212.93,
       "raw_action": "take(phone)",
       "raw_step_id": "unassigned"
     },
@@ -861,6 +1057,9 @@
       "edge_key": "take(phone)|||pat(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 213.19,
+      "video_end": 214.42,
       "raw_action": "take(phone)",
       "raw_step_id": "unassigned"
     },
@@ -874,6 +1073,9 @@
       "edge_key": "pat(phone)|||take(liquid:washing)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 214.89,
+      "video_end": 216.39,
       "raw_action": "pat(phone)",
       "raw_step_id": "unassigned"
     },
@@ -887,6 +1089,9 @@
       "edge_key": "take(liquid:washing)|||turn(bottle)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 216.89,
+      "video_end": 218.12,
       "raw_action": "take(liquid:washing)",
       "raw_step_id": "unassigned"
     },
@@ -900,6 +1105,9 @@
       "edge_key": "turn(bottle)|||scan(bar)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 218.56,
+      "video_end": 219.76,
       "raw_action": "turn(bottle)",
       "raw_step_id": "unassigned"
     },
@@ -913,6 +1121,9 @@
       "edge_key": "scan(bar)|||scan(bar)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 219.53,
+      "video_end": 229.18,
       "raw_action": "scan(bar)",
       "raw_step_id": "unassigned"
     },
@@ -926,6 +1137,9 @@
       "edge_key": "scan(bar)|||hold(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 228.13,
+      "video_end": 244.84,
       "raw_action": "scan(bar)",
       "raw_step_id": "unassigned"
     },
@@ -939,6 +1153,9 @@
       "edge_key": "hold(phone)|||pat(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 244.44,
+      "video_end": 255.82,
       "raw_action": "hold(phone)",
       "raw_step_id": "unassigned"
     },
@@ -952,6 +1169,9 @@
       "edge_key": "pat(phone)|||put(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 256.35,
+      "video_end": 262.26,
       "raw_action": "pat(phone)",
       "raw_step_id": "unassigned"
     },
@@ -965,6 +1185,9 @@
       "edge_key": "put(phone)|||take(pan)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 267.46,
+      "video_end": 267.99,
       "raw_action": "put(phone)",
       "raw_step_id": "unassigned"
     },
@@ -978,6 +1201,9 @@
       "edge_key": "take(pan)|||put(pan)",
       "step_id": "P08_R03_S02",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 268.86,
+      "video_end": 272.83,
       "raw_action": "take(pan)",
       "raw_step_id": "P08_R03_S02"
     },
@@ -991,6 +1217,9 @@
       "edge_key": "put(pan)|||take(liquid:washing)",
       "step_id": "P08_R03_S02",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 272.97,
+      "video_end": 273.92,
       "raw_action": "put(pan)",
       "raw_step_id": "P08_R03_S02"
     },
@@ -1004,6 +1233,9 @@
       "edge_key": "take(liquid:washing)|||take(liquid:washing)",
       "step_id": "P08_R03_S02",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 274.02,
+      "video_end": 274.96,
       "raw_action": "take(liquid:washing)",
       "raw_step_id": "P08_R03_S02"
     },
@@ -1017,6 +1249,9 @@
       "edge_key": "take(liquid:washing)|||press(hand)",
       "step_id": "P08_R03_S02",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 275.06,
+      "video_end": 276.8,
       "raw_action": "take(liquid:washing)",
       "raw_step_id": "P08_R03_S02"
     },
@@ -1030,6 +1265,9 @@
       "edge_key": "press(hand)|||put(cap)",
       "step_id": "P08_R03_S02",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 276.9,
+      "video_end": 278.39,
       "raw_action": "press(hand)",
       "raw_step_id": "P08_R03_S02"
     },
@@ -1043,6 +1281,9 @@
       "edge_key": "put(cap)|||pat(hand)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 278.49,
+      "video_end": 278.79,
       "raw_action": "put(cap)",
       "raw_step_id": "unassigned"
     },
@@ -1056,6 +1297,9 @@
       "edge_key": "pat(hand)|||move(knife)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 280.11,
+      "video_end": 297.44,
       "raw_action": "pat(hand)",
       "raw_step_id": "unassigned"
     },
@@ -1069,6 +1313,9 @@
       "edge_key": "move(knife)|||let-go(hand)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 297.55,
+      "video_end": 298.49,
       "raw_action": "move(knife)",
       "raw_step_id": "unassigned"
     },
@@ -1082,6 +1329,9 @@
       "edge_key": "let-go(hand)|||reach(hand)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 301.44,
+      "video_end": 301.89,
       "raw_action": "let-go(hand)",
       "raw_step_id": "unassigned"
     },
@@ -1095,6 +1345,9 @@
       "edge_key": "reach(hand)|||close(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 302.71,
+      "video_end": 302.99,
       "raw_action": "reach(hand)",
       "raw_step_id": "unassigned"
     },
@@ -1108,6 +1361,9 @@
       "edge_key": "close(cupboard)|||open(drawer)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 303.09,
+      "video_end": 303.78,
       "raw_action": "close(cupboard)",
       "raw_step_id": "unassigned"
     },
@@ -1121,6 +1377,9 @@
       "edge_key": "open(drawer)|||move(bowl)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 303.97,
+      "video_end": 304.81,
       "raw_action": "open(drawer)",
       "raw_step_id": "unassigned"
     },
@@ -1134,6 +1393,9 @@
       "edge_key": "move(bowl)|||move(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 305.2,
+      "video_end": 305.99,
       "raw_action": "move(bowl)",
       "raw_step_id": "unassigned"
     },
@@ -1147,6 +1409,9 @@
       "edge_key": "move(phone)|||take(plate)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 307.2,
+      "video_end": 307.7,
       "raw_action": "move(phone)",
       "raw_step_id": "unassigned"
     },
@@ -1160,6 +1425,9 @@
       "edge_key": "take(plate)|||take(onion)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 309.32,
+      "video_end": 310.37,
       "raw_action": "take(plate)",
       "raw_step_id": "unassigned"
     },
@@ -1173,6 +1441,9 @@
       "edge_key": "take(onion)|||take(cheese)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 310.21,
+      "video_end": 310.91,
       "raw_action": "take(onion)",
       "raw_step_id": "unassigned"
     },
@@ -1186,6 +1457,9 @@
       "edge_key": "take(cheese)|||open(package)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 311.22,
+      "video_end": 311.73,
       "raw_action": "take(cheese)",
       "raw_step_id": "unassigned"
     },
@@ -1199,6 +1473,9 @@
       "edge_key": "open(package)|||take(egg)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 312.08,
+      "video_end": 312.59,
       "raw_action": "open(package)",
       "raw_step_id": "unassigned"
     },
@@ -1212,6 +1489,9 @@
       "edge_key": "take(egg)|||break(egg)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 313.13,
+      "video_end": 313.51,
       "raw_action": "take(egg)",
       "raw_step_id": "unassigned"
     },
@@ -1225,6 +1505,9 @@
       "edge_key": "break(egg)|||pat(shell:egg)",
       "step_id": "P08_R03_S01",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 313.72,
+      "video_end": 314.76,
       "raw_action": "break(egg)",
       "raw_step_id": "P08_R03_S01"
     },
@@ -1238,6 +1521,9 @@
       "edge_key": "pat(shell:egg)|||pull(shell:egg)",
       "step_id": "P08_R03_S01",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 314.69,
+      "video_end": 315.03,
       "raw_action": "pat(shell:egg)",
       "raw_step_id": "P08_R03_S01"
     },
@@ -1251,6 +1537,9 @@
       "edge_key": "pull(shell:egg)|||put(shell:egg)",
       "step_id": "P08_R03_S01",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 315.13,
+      "video_end": 316.76,
       "raw_action": "pull(shell:egg)",
       "raw_step_id": "P08_R03_S01"
     },
@@ -1264,6 +1553,9 @@
       "edge_key": "put(shell:egg)|||put(shell:egg)",
       "step_id": "P08_R03_S01",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 316.86,
+      "video_end": 321.92,
       "raw_action": "put(shell:egg)",
       "raw_step_id": "P08_R03_S01"
     },
@@ -1277,6 +1569,9 @@
       "edge_key": "put(shell:egg)|||take(egg)",
       "step_id": "P08_R03_S01",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 322.02,
+      "video_end": 324.17,
       "raw_action": "put(shell:egg)",
       "raw_step_id": "P08_R03_S01"
     },
@@ -1290,6 +1585,9 @@
       "edge_key": "take(egg)|||break(egg)",
       "step_id": "P08_R03_S01",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 324.16,
+      "video_end": 324.67,
       "raw_action": "take(egg)",
       "raw_step_id": "P08_R03_S01"
     },
@@ -1303,6 +1601,9 @@
       "edge_key": "break(egg)|||pat(shell:egg)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 324.77,
+      "video_end": 326.06,
       "raw_action": "break(egg)",
       "raw_step_id": "unassigned"
     },
@@ -1316,6 +1617,9 @@
       "edge_key": "pat(shell:egg)|||pull(shell:egg)",
       "step_id": "P08_R03_S01",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 326.16,
+      "video_end": 327.74,
       "raw_action": "pat(shell:egg)",
       "raw_step_id": "P08_R03_S01"
     },
@@ -1329,6 +1633,9 @@
       "edge_key": "pull(shell:egg)|||put(shell:egg)",
       "step_id": "P08_R03_S01",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 327.84,
+      "video_end": 329.56,
       "raw_action": "pull(shell:egg)",
       "raw_step_id": "P08_R03_S01"
     },
@@ -1342,6 +1649,9 @@
       "edge_key": "put(shell:egg)|||put(shell:egg)",
       "step_id": "P08_R03_S01",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 329.66,
+      "video_end": 330.14,
       "raw_action": "put(shell:egg)",
       "raw_step_id": "P08_R03_S01"
     },
@@ -1355,6 +1665,9 @@
       "edge_key": "put(shell:egg)|||take(towel)",
       "step_id": "P08_R03_S01",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 329.67,
+      "video_end": 330.22,
       "raw_action": "put(shell:egg)",
       "raw_step_id": "P08_R03_S01"
     },
@@ -1368,6 +1681,9 @@
       "edge_key": "take(towel)|||take(board:chopping)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 331.53,
+      "video_end": 333.68,
       "raw_action": "take(towel)",
       "raw_step_id": "unassigned"
     },
@@ -1381,6 +1697,9 @@
       "edge_key": "take(board:chopping)|||put(board:chopping)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 334.28,
+      "video_end": 335.27,
       "raw_action": "take(board:chopping)",
       "raw_step_id": "unassigned"
     },
@@ -1394,6 +1713,9 @@
       "edge_key": "put(board:chopping)|||scrape(salad)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 335.08,
+      "video_end": 335.84000000000003,
       "raw_action": "put(board:chopping)",
       "raw_step_id": "unassigned"
     },
@@ -1407,6 +1729,9 @@
       "edge_key": "scrape(salad)|||put(knife)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 336.6,
+      "video_end": 339.32,
       "raw_action": "scrape(salad)",
       "raw_step_id": "unassigned"
     },
@@ -1420,6 +1745,9 @@
       "edge_key": "put(knife)|||close(package)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 340.48,
+      "video_end": 342.59000000000003,
       "raw_action": "put(knife)",
       "raw_step_id": "unassigned"
     },
@@ -1433,6 +1761,9 @@
       "edge_key": "close(package)|||take(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 342.93,
+      "video_end": 343.58,
       "raw_action": "close(package)",
       "raw_step_id": "unassigned"
     },
@@ -1446,6 +1777,9 @@
       "edge_key": "take(phone)|||write(egg)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 347.68,
+      "video_end": 349.15,
       "raw_action": "take(phone)",
       "raw_step_id": "unassigned"
     },
@@ -1459,6 +1793,9 @@
       "edge_key": "write(egg)|||adjust(package)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 351.51,
+      "video_end": 352.31,
       "raw_action": "write(egg)",
       "raw_step_id": "unassigned"
     },
@@ -1472,6 +1809,9 @@
       "edge_key": "adjust(package)|||scan(bar)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 353.12,
+      "video_end": 353.76,
       "raw_action": "adjust(package)",
       "raw_step_id": "unassigned"
     },
@@ -1485,6 +1825,9 @@
       "edge_key": "scan(bar)|||put(package)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 354.81,
+      "video_end": 366.56,
       "raw_action": "scan(bar)",
       "raw_step_id": "unassigned"
     },
@@ -1498,6 +1841,9 @@
       "edge_key": "put(package)|||pat(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 365.75,
+      "video_end": 367.36,
       "raw_action": "put(package)",
       "raw_step_id": "unassigned"
     },
@@ -1511,6 +1857,9 @@
       "edge_key": "pat(phone)|||put(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 367.44,
+      "video_end": 372.3,
       "raw_action": "pat(phone)",
       "raw_step_id": "unassigned"
     },
@@ -1524,6 +1873,9 @@
       "edge_key": "put(phone)|||take(spatula)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 372.31,
+      "video_end": 373.18,
       "raw_action": "put(phone)",
       "raw_step_id": "unassigned"
     },
@@ -1537,6 +1889,9 @@
       "edge_key": "take(spatula)|||check(spatula)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 373.28,
+      "video_end": 374.33,
       "raw_action": "take(spatula)",
       "raw_step_id": "unassigned"
     },
@@ -1550,6 +1905,9 @@
       "edge_key": "check(spatula)|||turn-on(tap)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 374.43,
+      "video_end": 375.72,
       "raw_action": "check(spatula)",
       "raw_step_id": "unassigned"
     },
@@ -1563,6 +1921,9 @@
       "edge_key": "turn-on(tap)|||wash(spatula)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 375.82,
+      "video_end": 378.27,
       "raw_action": "turn-on(tap)",
       "raw_step_id": "unassigned"
     },
@@ -1576,6 +1937,9 @@
       "edge_key": "wash(spatula)|||turn-off(sink)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 377.86,
+      "video_end": 379.62,
       "raw_action": "wash(spatula)",
       "raw_step_id": "unassigned"
     },
@@ -1589,6 +1953,9 @@
       "edge_key": "turn-off(sink)|||take(towel)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 379.72,
+      "video_end": 380.07,
       "raw_action": "turn-off(sink)",
       "raw_step_id": "unassigned"
     },
@@ -1602,6 +1969,9 @@
       "edge_key": "take(towel)|||take(spatula)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 380.17,
+      "video_end": 380.86,
       "raw_action": "take(towel)",
       "raw_step_id": "unassigned"
     },
@@ -1615,6 +1985,9 @@
       "edge_key": "take(spatula)|||mix(recipe)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 382.47,
+      "video_end": 382.75,
       "raw_action": "take(spatula)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -1628,6 +2001,9 @@
       "edge_key": "mix(recipe)|||take(onion)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 383.48,
+      "video_end": 387.6,
       "raw_action": "mix(recipe)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -1641,6 +2017,9 @@
       "edge_key": "take(onion)|||put(spatula)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 387.48,
+      "video_end": 390.56,
       "raw_action": "take(onion)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -1654,6 +2033,9 @@
       "edge_key": "put(spatula)|||take(liquid:washing)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 392.36,
+      "video_end": 392.61,
       "raw_action": "put(spatula)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -1667,6 +2049,9 @@
       "edge_key": "take(liquid:washing)|||press(hand)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 392.85,
+      "video_end": 393.56,
       "raw_action": "take(liquid:washing)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -1680,6 +2065,9 @@
       "edge_key": "press(hand)|||put(cap)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 394.01,
+      "video_end": 395.88,
       "raw_action": "press(hand)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -1693,6 +2081,9 @@
       "edge_key": "put(cap)|||take(phone)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 395.8,
+      "video_end": 396.37,
       "raw_action": "put(cap)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -1706,6 +2097,9 @@
       "edge_key": "take(phone)|||pat(hand)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 397.91,
+      "video_end": 398.26,
       "raw_action": "take(phone)",
       "raw_step_id": "unassigned"
     },
@@ -1719,6 +2113,9 @@
       "edge_key": "pat(hand)|||put(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 398.5,
+      "video_end": 408.48,
       "raw_action": "pat(hand)",
       "raw_step_id": "unassigned"
     },
@@ -1732,6 +2129,9 @@
       "edge_key": "put(phone)|||take(spatula)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 408.54,
+      "video_end": 410.36,
       "raw_action": "put(phone)",
       "raw_step_id": "unassigned"
     },
@@ -1745,6 +2145,9 @@
       "edge_key": "take(spatula)|||mix(recipe)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 410.59,
+      "video_end": 411.18,
       "raw_action": "take(spatula)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -1758,6 +2161,9 @@
       "edge_key": "mix(recipe)|||pat(spatula)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 411.35,
+      "video_end": 416.86,
       "raw_action": "mix(recipe)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -1771,6 +2177,9 @@
       "edge_key": "pat(spatula)|||put(spatula)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 416.94,
+      "video_end": 419.85,
       "raw_action": "pat(spatula)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -1784,6 +2193,9 @@
       "edge_key": "put(spatula)|||take(knife)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 419.85,
+      "video_end": 420.22,
       "raw_action": "put(spatula)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -1797,6 +2209,9 @@
       "edge_key": "take(knife)|||scoop(food)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 421.06,
+      "video_end": 421.68,
       "raw_action": "take(knife)",
       "raw_step_id": "unassigned"
     },
@@ -1810,6 +2225,9 @@
       "edge_key": "scoop(food)|||take(rubbish)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 422.79,
+      "video_end": 423.16,
       "raw_action": "scoop(food)",
       "raw_step_id": "unassigned"
     },
@@ -1823,6 +2241,9 @@
       "edge_key": "take(rubbish)|||open(rubbish)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 423.02,
+      "video_end": 430.82,
       "raw_action": "take(rubbish)",
       "raw_step_id": "unassigned"
     },
@@ -1836,6 +2257,9 @@
       "edge_key": "open(rubbish)|||drop(food)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 432.89,
+      "video_end": 433.37,
       "raw_action": "open(rubbish)",
       "raw_step_id": "unassigned"
     },
@@ -1849,6 +2273,9 @@
       "edge_key": "drop(food)|||move(knife)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 433.26,
+      "video_end": 434.17,
       "raw_action": "drop(food)",
       "raw_step_id": "unassigned"
     },
@@ -1862,6 +2289,9 @@
       "edge_key": "move(knife)|||open(drawer)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 436.62,
+      "video_end": 437.62,
       "raw_action": "move(knife)",
       "raw_step_id": "unassigned"
     },
@@ -1875,6 +2305,9 @@
       "edge_key": "open(drawer)|||take(fork)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 438.59,
+      "video_end": 439.6,
       "raw_action": "open(drawer)",
       "raw_step_id": "unassigned"
     },
@@ -1888,6 +2321,9 @@
       "edge_key": "take(fork)|||shake(pan)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 439.53,
+      "video_end": 442.67,
       "raw_action": "take(fork)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -1901,6 +2337,9 @@
       "edge_key": "shake(pan)|||mix(egg)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 442.77,
+      "video_end": 445.75,
       "raw_action": "shake(pan)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -1914,6 +2353,9 @@
       "edge_key": "mix(egg)|||take(shell:egg)",
       "step_id": "P08_R03_S01",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 445.85,
+      "video_end": 461.69,
       "raw_action": "mix(egg)",
       "raw_step_id": "P08_R03_S01"
     },
@@ -1927,6 +2369,9 @@
       "edge_key": "take(shell:egg)|||scoop(hand)",
       "step_id": "P08_R03_S01",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 461.67,
+      "video_end": 463.03,
       "raw_action": "take(shell:egg)",
       "raw_step_id": "P08_R03_S01"
     },
@@ -1940,6 +2385,9 @@
       "edge_key": "scoop(hand)|||throw(egg)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 462.7,
+      "video_end": 464.98,
       "raw_action": "scoop(hand)",
       "raw_step_id": "unassigned"
     },
@@ -1953,6 +2401,9 @@
       "edge_key": "throw(egg)|||wash(hand)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 464.8,
+      "video_end": 466.11,
       "raw_action": "throw(egg)",
       "raw_step_id": "unassigned"
     },
@@ -1966,6 +2417,9 @@
       "edge_key": "wash(hand)|||take(spatula)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 467.54,
+      "video_end": 468.07,
       "raw_action": "wash(hand)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -1979,6 +2433,9 @@
       "edge_key": "take(spatula)|||mix(recipe)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 468.15,
+      "video_end": 469.11,
       "raw_action": "take(spatula)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -1992,6 +2449,9 @@
       "edge_key": "mix(recipe)|||shake(pan)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 468.92,
+      "video_end": 474.43,
       "raw_action": "mix(recipe)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2005,6 +2465,9 @@
       "edge_key": "shake(pan)|||put(spatula)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 478.92,
+      "video_end": 479.86,
       "raw_action": "shake(pan)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2018,6 +2481,9 @@
       "edge_key": "put(spatula)|||wash(food)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 479.96,
+      "video_end": 480.39,
       "raw_action": "put(spatula)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2031,6 +2497,9 @@
       "edge_key": "wash(food)|||open(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 482.39,
+      "video_end": 483.1,
       "raw_action": "wash(food)",
       "raw_step_id": "unassigned"
     },
@@ -2044,6 +2513,9 @@
       "edge_key": "open(cupboard)|||put(food)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 484.82,
+      "video_end": 485.58,
       "raw_action": "open(cupboard)",
       "raw_step_id": "unassigned"
     },
@@ -2057,6 +2529,9 @@
       "edge_key": "put(food)|||close(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 485.57,
+      "video_end": 486.48,
       "raw_action": "put(food)",
       "raw_step_id": "unassigned"
     },
@@ -2070,6 +2545,9 @@
       "edge_key": "close(cupboard)|||move(board:chopping)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 486.57,
+      "video_end": 487.4,
       "raw_action": "close(cupboard)",
       "raw_step_id": "unassigned"
     },
@@ -2083,6 +2561,9 @@
       "edge_key": "move(board:chopping)|||move(scale)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 489.44,
+      "video_end": 489.98,
       "raw_action": "move(board:chopping)",
       "raw_step_id": "unassigned"
     },
@@ -2096,6 +2577,9 @@
       "edge_key": "move(scale)|||open(drawer)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 490.08,
+      "video_end": 491.62,
       "raw_action": "move(scale)",
       "raw_step_id": "unassigned"
     },
@@ -2109,6 +2593,9 @@
       "edge_key": "open(drawer)|||move(bowl)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 492.2,
+      "video_end": 493.46,
       "raw_action": "open(drawer)",
       "raw_step_id": "unassigned"
     },
@@ -2122,6 +2609,9 @@
       "edge_key": "move(bowl)|||put(plate)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 493.75,
+      "video_end": 495.56,
       "raw_action": "move(bowl)",
       "raw_step_id": "unassigned"
     },
@@ -2135,6 +2625,9 @@
       "edge_key": "put(plate)|||take(board:chopping)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 496.41,
+      "video_end": 496.85,
       "raw_action": "put(plate)",
       "raw_step_id": "unassigned"
     },
@@ -2148,6 +2641,9 @@
       "edge_key": "take(board:chopping)|||take(knife)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 496.75,
+      "video_end": 497.93,
       "raw_action": "take(board:chopping)",
       "raw_step_id": "unassigned"
     },
@@ -2161,6 +2657,9 @@
       "edge_key": "take(knife)|||move(scale)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 497.79,
+      "video_end": 499.23,
       "raw_action": "take(knife)",
       "raw_step_id": "unassigned"
     },
@@ -2174,6 +2673,9 @@
       "edge_key": "move(scale)|||turn-on(scale)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 498.98,
+      "video_end": 500.17,
       "raw_action": "move(scale)",
       "raw_step_id": "unassigned"
     },
@@ -2187,6 +2689,9 @@
       "edge_key": "turn-on(scale)|||take(box)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 500.2,
+      "video_end": 501.79,
       "raw_action": "turn-on(scale)",
       "raw_step_id": "unassigned"
     },
@@ -2200,6 +2705,9 @@
       "edge_key": "take(box)|||take(clothes)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 503.72,
+      "video_end": 504.61,
       "raw_action": "take(box)",
       "raw_step_id": "unassigned"
     },
@@ -2213,6 +2721,9 @@
       "edge_key": "take(clothes)|||pat(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 504.17,
+      "video_end": 506.51,
       "raw_action": "take(clothes)",
       "raw_step_id": "unassigned"
     },
@@ -2226,6 +2737,9 @@
       "edge_key": "pat(phone)|||take(box)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 506.58,
+      "video_end": 509.32,
       "raw_action": "pat(phone)",
       "raw_step_id": "unassigned"
     },
@@ -2239,6 +2753,9 @@
       "edge_key": "take(box)|||scan(bar)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 509.11,
+      "video_end": 510.12,
       "raw_action": "take(box)",
       "raw_step_id": "unassigned"
     },
@@ -2252,6 +2769,9 @@
       "edge_key": "scan(bar)|||put(phone)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 510.07,
+      "video_end": 514.81,
       "raw_action": "scan(bar)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2265,6 +2785,9 @@
       "edge_key": "put(phone)|||put(box)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 523.69,
+      "video_end": 524.84,
       "raw_action": "put(phone)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2278,6 +2801,9 @@
       "edge_key": "put(box)|||pat(phone)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 524.94,
+      "video_end": 525.34,
       "raw_action": "put(box)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2291,6 +2817,9 @@
       "edge_key": "pat(phone)|||put(phone)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 525.44,
+      "video_end": 532.76,
       "raw_action": "pat(phone)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2304,6 +2833,9 @@
       "edge_key": "put(phone)|||peel(box)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 532.86,
+      "video_end": 533.57,
       "raw_action": "put(phone)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2317,6 +2849,9 @@
       "edge_key": "peel(box)|||open(drawer)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 533.51,
+      "video_end": 534.2,
       "raw_action": "peel(box)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2330,6 +2865,9 @@
       "edge_key": "open(drawer)|||take(plate)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 535.11,
+      "video_end": 536.09,
       "raw_action": "open(drawer)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2343,6 +2881,9 @@
       "edge_key": "take(plate)|||put(plate)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 536.19,
+      "video_end": 537.63,
       "raw_action": "take(plate)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2356,6 +2897,9 @@
       "edge_key": "put(plate)|||pat(scale)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 538.51,
+      "video_end": 539.23,
       "raw_action": "put(plate)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2369,6 +2913,9 @@
       "edge_key": "pat(scale)|||open(drawer)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 540.24,
+      "video_end": 541.96,
       "raw_action": "pat(scale)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2382,6 +2929,9 @@
       "edge_key": "open(drawer)|||close(drawer)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 542.76,
+      "video_end": 543.86,
       "raw_action": "open(drawer)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2395,6 +2945,9 @@
       "edge_key": "close(drawer)|||take(box)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 543.44,
+      "video_end": 544.47,
       "raw_action": "close(drawer)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2408,6 +2961,9 @@
       "edge_key": "take(box)|||scoop(cheese)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 544.49,
+      "video_end": 545.99,
       "raw_action": "take(box)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2421,6 +2977,9 @@
       "edge_key": "scoop(cheese)|||pour(cheese)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 546.53,
+      "video_end": 546.97,
       "raw_action": "scoop(cheese)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2434,6 +2993,9 @@
       "edge_key": "pour(cheese)|||pour(cheese)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 547.73,
+      "video_end": 548.45,
       "raw_action": "pour(cheese)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2447,6 +3009,9 @@
       "edge_key": "pour(cheese)|||put(pot)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 550.76,
+      "video_end": 552.14,
       "raw_action": "pour(cheese)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2460,6 +3025,9 @@
       "edge_key": "put(pot)|||pat(pan)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 553.16,
+      "video_end": 553.37,
       "raw_action": "put(pot)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2473,6 +3041,9 @@
       "edge_key": "pat(pan)|||shake(pan)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 581.89,
+      "video_end": 582.59,
       "raw_action": "pat(pan)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2486,6 +3057,9 @@
       "edge_key": "shake(pan)|||take(oil)",
       "step_id": "P08_R03_S03",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 582.64,
+      "video_end": 583.37,
       "raw_action": "shake(pan)",
       "raw_step_id": "P08_R03_S03"
     },
@@ -2499,6 +3073,9 @@
       "edge_key": "take(oil)|||take(cap)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 603.83,
+      "video_end": 604.44,
       "raw_action": "take(oil)",
       "raw_step_id": "unassigned"
     },
@@ -2512,6 +3089,9 @@
       "edge_key": "take(cap)|||put(oil)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 621.74,
+      "video_end": 623.28,
       "raw_action": "take(cap)",
       "raw_step_id": "unassigned"
     },
@@ -2525,6 +3105,9 @@
       "edge_key": "put(oil)|||put(oil)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 623.34,
+      "video_end": 623.76,
       "raw_action": "put(oil)",
       "raw_step_id": "unassigned"
     },
@@ -2538,6 +3121,9 @@
       "edge_key": "put(oil)|||take(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 623.84,
+      "video_end": 624.92,
       "raw_action": "put(oil)",
       "raw_step_id": "unassigned"
     },
@@ -2551,6 +3137,9 @@
       "edge_key": "take(phone)|||put(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 626.34,
+      "video_end": 626.79,
       "raw_action": "take(phone)",
       "raw_step_id": "unassigned"
     },
@@ -2564,6 +3153,9 @@
       "edge_key": "put(phone)|||move(oil)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 628.47,
+      "video_end": 636.73,
       "raw_action": "put(phone)",
       "raw_step_id": "unassigned"
     },
@@ -2577,6 +3169,9 @@
       "edge_key": "move(oil)|||write(oil)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 636.87,
+      "video_end": 637.22,
       "raw_action": "move(oil)",
       "raw_step_id": "unassigned"
     },
@@ -2590,6 +3185,9 @@
       "edge_key": "write(oil)|||put(oil)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 637.89,
+      "video_end": 660.08,
       "raw_action": "write(oil)",
       "raw_step_id": "unassigned"
     },
@@ -2603,6 +3201,9 @@
       "edge_key": "put(oil)|||pat(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 660.18,
+      "video_end": 661.12,
       "raw_action": "put(oil)",
       "raw_step_id": "unassigned"
     },
@@ -2616,6 +3217,9 @@
       "edge_key": "pat(phone)|||scrape(egg)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 661.39,
+      "video_end": 686.64,
       "raw_action": "pat(phone)",
       "raw_step_id": "unassigned"
     },
@@ -2629,6 +3233,9 @@
       "edge_key": "scrape(egg)|||put(bowl)",
       "step_id": "P08_R03_S04",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 707.32,
+      "video_end": 711.38,
       "raw_action": "scrape(egg)",
       "raw_step_id": "P08_R03_S04"
     },
@@ -2642,6 +3249,9 @@
       "edge_key": "put(bowl)|||adjust(hob)",
       "step_id": "P08_R03_S04",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 712.13,
+      "video_end": 714.16,
       "raw_action": "put(bowl)",
       "raw_step_id": "P08_R03_S04"
     },
@@ -2655,6 +3265,9 @@
       "edge_key": "adjust(hob)|||mix(egg)",
       "step_id": "P08_R03_S05",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 724.0,
+      "video_end": 724.55,
       "raw_action": "adjust(hob)",
       "raw_step_id": "P08_R03_S05"
     },
@@ -2668,6 +3281,9 @@
       "edge_key": "mix(egg)|||mix(egg)",
       "step_id": "P08_R03_S05",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 724.65,
+      "video_end": 736.14,
       "raw_action": "mix(egg)",
       "raw_step_id": "P08_R03_S05"
     },
@@ -2681,6 +3297,9 @@
       "edge_key": "mix(egg)|||mix(egg)",
       "step_id": "P08_R03_S05",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 734.04,
+      "video_end": 747.77,
       "raw_action": "mix(egg)",
       "raw_step_id": "P08_R03_S05"
     },
@@ -2694,6 +3313,9 @@
       "edge_key": "mix(egg)|||pat(spatula)",
       "step_id": "P08_R03_S05",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 748.51,
+      "video_end": 752.9,
       "raw_action": "mix(egg)",
       "raw_step_id": "P08_R03_S05"
     },
@@ -2707,6 +3329,9 @@
       "edge_key": "pat(spatula)|||put(spatula)",
       "step_id": "P08_R03_S05",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 753.0,
+      "video_end": 754.42,
       "raw_action": "pat(spatula)",
       "raw_step_id": "P08_R03_S05"
     },
@@ -2720,6 +3345,9 @@
       "edge_key": "put(spatula)|||lift(oil)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 754.5,
+      "video_end": 755.65,
       "raw_action": "put(spatula)",
       "raw_step_id": "unassigned"
     },
@@ -2733,6 +3361,9 @@
       "edge_key": "lift(oil)|||take(fork)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 755.7,
+      "video_end": 756.87,
       "raw_action": "lift(oil)",
       "raw_step_id": "unassigned"
     },
@@ -2746,6 +3377,9 @@
       "edge_key": "take(fork)|||take(knife)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 758.2,
+      "video_end": 759.13,
       "raw_action": "take(fork)",
       "raw_step_id": "unassigned"
     },
@@ -2759,6 +3393,9 @@
       "edge_key": "take(knife)|||take(board:chopping)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 759.13,
+      "video_end": 760.99,
       "raw_action": "take(knife)",
       "raw_step_id": "unassigned"
     },
@@ -2772,6 +3409,9 @@
       "edge_key": "take(board:chopping)|||take(spatula)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 760.86,
+      "video_end": 764.39,
       "raw_action": "take(board:chopping)",
       "raw_step_id": "unassigned"
     },
@@ -2785,6 +3425,9 @@
       "edge_key": "take(spatula)|||scrape(spatula)",
       "step_id": "P08_R03_S05",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 768.04,
+      "video_end": 786.3,
       "raw_action": "take(spatula)",
       "raw_step_id": "P08_R03_S05"
     },
@@ -2798,6 +3441,9 @@
       "edge_key": "scrape(spatula)|||mix(egg)",
       "step_id": "P08_R03_S05",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 786.53,
+      "video_end": 788.03,
       "raw_action": "scrape(spatula)",
       "raw_step_id": "P08_R03_S05"
     },
@@ -2811,6 +3457,9 @@
       "edge_key": "mix(egg)|||put(spatula)",
       "step_id": "P08_R03_S05",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 788.71,
+      "video_end": 796.01,
       "raw_action": "mix(egg)",
       "raw_step_id": "P08_R03_S05"
     },
@@ -2824,6 +3473,9 @@
       "edge_key": "put(spatula)|||cook(egg)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 796.5,
+      "video_end": 797.24,
       "raw_action": "put(spatula)",
       "raw_step_id": "unassigned"
     },
@@ -2837,6 +3489,9 @@
       "edge_key": "cook(egg)|||take(spatula)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 797.39,
+      "video_end": 803.84,
       "raw_action": "cook(egg)",
       "raw_step_id": "unassigned"
     },
@@ -2850,6 +3505,9 @@
       "edge_key": "take(spatula)|||scrape(spatula)",
       "step_id": "P08_R03_S05",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 803.78,
+      "video_end": 815.67,
       "raw_action": "take(spatula)",
       "raw_step_id": "P08_R03_S05"
     },
@@ -2863,6 +3521,9 @@
       "edge_key": "scrape(spatula)|||turn-off(hob)",
       "step_id": "P08_R03_S05",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 815.45,
+      "video_end": 816.75,
       "raw_action": "scrape(spatula)",
       "raw_step_id": "P08_R03_S05"
     },
@@ -2876,6 +3537,9 @@
       "edge_key": "turn-off(hob)|||take(pan)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 817.61,
+      "video_end": 818.2,
       "raw_action": "turn-off(hob)",
       "raw_step_id": "unassigned"
     },
@@ -2889,6 +3553,9 @@
       "edge_key": "take(pan)|||move(plate)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 819.02,
+      "video_end": 819.42,
       "raw_action": "take(pan)",
       "raw_step_id": "unassigned"
     },
@@ -2902,6 +3569,9 @@
       "edge_key": "move(plate)|||scrape(egg)",
       "step_id": "P08_R03_S06",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 820.63,
+      "video_end": 821.58,
       "raw_action": "move(plate)",
       "raw_step_id": "P08_R03_S06"
     },
@@ -2915,6 +3585,9 @@
       "edge_key": "scrape(egg)|||put(pan)",
       "step_id": "P08_R03_S06",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 821.82,
+      "video_end": 830.73,
       "raw_action": "scrape(egg)",
       "raw_step_id": "P08_R03_S06"
     },
@@ -2928,6 +3601,9 @@
       "edge_key": "put(pan)|||turn-on(tap)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 832.55,
+      "video_end": 833.79,
       "raw_action": "put(pan)",
       "raw_step_id": "unassigned"
     },
@@ -2941,6 +3617,9 @@
       "edge_key": "turn-on(tap)|||turn-off(sink)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 834.13,
+      "video_end": 836.76,
       "raw_action": "turn-on(tap)",
       "raw_step_id": "unassigned"
     },
@@ -2954,6 +3633,9 @@
       "edge_key": "turn-off(sink)|||take(package)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 837.07,
+      "video_end": 838.13,
       "raw_action": "turn-off(sink)",
       "raw_step_id": "unassigned"
     },
@@ -2967,6 +3649,9 @@
       "edge_key": "take(package)|||put(egg)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 839.51,
+      "video_end": 839.97,
       "raw_action": "take(package)",
       "raw_step_id": "unassigned"
     },
@@ -2980,6 +3665,9 @@
       "edge_key": "put(egg)|||put(package)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 841.59,
+      "video_end": 842.52,
       "raw_action": "put(egg)",
       "raw_step_id": "unassigned"
     },
@@ -2993,6 +3681,9 @@
       "edge_key": "put(package)|||take(salt)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 842.55,
+      "video_end": 843.38,
       "raw_action": "put(package)",
       "raw_step_id": "unassigned"
     },
@@ -3006,6 +3697,9 @@
       "edge_key": "take(salt)|||take(plate)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 847.63,
+      "video_end": 848.41,
       "raw_action": "take(salt)",
       "raw_step_id": "unassigned"
     },
@@ -3019,6 +3713,9 @@
       "edge_key": "take(plate)|||take(bottle)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 850.7,
+      "video_end": 851.48,
       "raw_action": "take(plate)",
       "raw_step_id": "unassigned"
     },
@@ -3032,6 +3729,9 @@
       "edge_key": "take(bottle)|||take(pepper)",
       "step_id": "P08_R03_S07",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 852.72,
+      "video_end": 856.22,
       "raw_action": "take(bottle)",
       "raw_step_id": "P08_R03_S07"
     },
@@ -3045,6 +3745,9 @@
       "edge_key": "take(pepper)|||put(bottle)",
       "step_id": "P08_R03_S07",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 856.93,
+      "video_end": 859.64,
       "raw_action": "take(pepper)",
       "raw_step_id": "P08_R03_S07"
     },
@@ -3058,6 +3761,9 @@
       "edge_key": "put(bottle)|||squeeze(oregano)",
       "step_id": "P08_R03_S07",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 859.78,
+      "video_end": 861.33,
       "raw_action": "put(bottle)",
       "raw_step_id": "P08_R03_S07"
     },
@@ -3071,6 +3777,9 @@
       "edge_key": "squeeze(oregano)|||wash(hand)",
       "step_id": "P08_R03_S07",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 861.79,
+      "video_end": 864.99,
       "raw_action": "squeeze(oregano)",
       "raw_step_id": "P08_R03_S07"
     },
@@ -3084,6 +3793,9 @@
       "edge_key": "wash(hand)|||take(phone)",
       "step_id": "P08_R03_S07",
       "is_primary": true,
+      "video_id": "P08-20240614-085000",
+      "video_start": 865.19,
+      "video_end": 865.94,
       "raw_action": "wash(hand)",
       "raw_step_id": "P08_R03_S07"
     },
@@ -3097,6 +3809,9 @@
       "edge_key": "take(phone)|||put(hand)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 866.48,
+      "video_end": 867.89,
       "raw_action": "take(phone)",
       "raw_step_id": "unassigned"
     },
@@ -3110,6 +3825,9 @@
       "edge_key": "put(hand)|||put(hand)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 870.61,
+      "video_end": 874.54,
       "raw_action": "put(hand)",
       "raw_step_id": "unassigned"
     },
@@ -3123,6 +3841,9 @@
       "edge_key": "put(hand)|||take(salt)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 880.65,
+      "video_end": 890.36,
       "raw_action": "put(hand)",
       "raw_step_id": "unassigned"
     },
@@ -3136,6 +3857,9 @@
       "edge_key": "take(salt)|||take(plate)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 890.63,
+      "video_end": 892.75,
       "raw_action": "take(salt)",
       "raw_step_id": "unassigned"
     },
@@ -3149,6 +3873,9 @@
       "edge_key": "take(plate)|||turn-on(sink)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 893.26,
+      "video_end": 895.68,
       "raw_action": "take(plate)",
       "raw_step_id": "unassigned"
     },
@@ -3162,6 +3889,9 @@
       "edge_key": "turn-on(sink)|||take(sponge)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 896.69,
+      "video_end": 898.24,
       "raw_action": "turn-on(sink)",
       "raw_step_id": "unassigned"
     },
@@ -3175,6 +3905,9 @@
       "edge_key": "take(sponge)|||take(plate)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 898.01,
+      "video_end": 898.5,
       "raw_action": "take(sponge)",
       "raw_step_id": "unassigned"
     },
@@ -3188,6 +3921,9 @@
       "edge_key": "take(plate)|||take(sponge)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 900.22,
+      "video_end": 900.94,
       "raw_action": "take(plate)",
       "raw_step_id": "unassigned"
     },
@@ -3201,6 +3937,9 @@
       "edge_key": "take(sponge)|||adjust(sink)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 901.24,
+      "video_end": 901.65,
       "raw_action": "take(sponge)",
       "raw_step_id": "unassigned"
     },
@@ -3214,6 +3953,9 @@
       "edge_key": "adjust(sink)|||squeeze(bottle)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 902.53,
+      "video_end": 903.3,
       "raw_action": "adjust(sink)",
       "raw_step_id": "unassigned"
     },
@@ -3227,6 +3969,9 @@
       "edge_key": "squeeze(bottle)|||lift(spatula)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 905.3,
+      "video_end": 906.33,
       "raw_action": "squeeze(bottle)",
       "raw_step_id": "unassigned"
     },
@@ -3240,6 +3985,9 @@
       "edge_key": "lift(spatula)|||turn-on(sink)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 907.17,
+      "video_end": 913.75,
       "raw_action": "lift(spatula)",
       "raw_step_id": "unassigned"
     },
@@ -3253,6 +4001,9 @@
       "edge_key": "turn-on(sink)|||wash(spatula)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 913.85,
+      "video_end": 914.54,
       "raw_action": "turn-on(sink)",
       "raw_step_id": "unassigned"
     },
@@ -3266,6 +4017,9 @@
       "edge_key": "wash(spatula)|||turn-off(sink)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 915.35,
+      "video_end": 916.22,
       "raw_action": "wash(spatula)",
       "raw_step_id": "unassigned"
     },
@@ -3279,6 +4033,9 @@
       "edge_key": "turn-off(sink)|||turn-on(sink)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 916.49,
+      "video_end": 917.93,
       "raw_action": "turn-off(sink)",
       "raw_step_id": "unassigned"
     },
@@ -3292,6 +4049,9 @@
       "edge_key": "turn-on(sink)|||take(sponge)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 919.55,
+      "video_end": 920.15,
       "raw_action": "turn-on(sink)",
       "raw_step_id": "unassigned"
     },
@@ -3305,6 +4065,9 @@
       "edge_key": "take(sponge)|||put(bowl)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 920.32,
+      "video_end": 923.82,
       "raw_action": "take(sponge)",
       "raw_step_id": "unassigned"
     },
@@ -3318,6 +4081,9 @@
       "edge_key": "put(bowl)|||turn-off(sink)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 923.76,
+      "video_end": 931.41,
       "raw_action": "put(bowl)",
       "raw_step_id": "unassigned"
     },
@@ -3331,6 +4097,9 @@
       "edge_key": "turn-off(sink)|||take(spatula)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 931.47,
+      "video_end": 931.79,
       "raw_action": "turn-off(sink)",
       "raw_step_id": "unassigned"
     },
@@ -3344,6 +4113,9 @@
       "edge_key": "take(spatula)|||turn-on(sink)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 934.4,
+      "video_end": 935.11,
       "raw_action": "take(spatula)",
       "raw_step_id": "unassigned"
     },
@@ -3357,6 +4129,9 @@
       "edge_key": "turn-on(sink)|||wash(spatula)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 935.56,
+      "video_end": 936.68,
       "raw_action": "turn-on(sink)",
       "raw_step_id": "unassigned"
     },
@@ -3370,6 +4145,9 @@
       "edge_key": "wash(spatula)|||wash(spatula)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 936.73,
+      "video_end": 938.48,
       "raw_action": "wash(spatula)",
       "raw_step_id": "unassigned"
     },
@@ -3383,6 +4161,9 @@
       "edge_key": "wash(spatula)|||put(spatula)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 938.59,
+      "video_end": 940.24,
       "raw_action": "wash(spatula)",
       "raw_step_id": "unassigned"
     },
@@ -3396,6 +4177,9 @@
       "edge_key": "put(spatula)|||turn-off(sink)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 940.64,
+      "video_end": 941.24,
       "raw_action": "put(spatula)",
       "raw_step_id": "unassigned"
     },
@@ -3409,6 +4193,9 @@
       "edge_key": "turn-off(sink)|||take(board:chopping)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 940.94,
+      "video_end": 941.47,
       "raw_action": "turn-off(sink)",
       "raw_step_id": "unassigned"
     },
@@ -3422,6 +4209,9 @@
       "edge_key": "take(board:chopping)|||hold(board:chopping)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 942.01,
+      "video_end": 943.36,
       "raw_action": "take(board:chopping)",
       "raw_step_id": "unassigned"
     },
@@ -3435,6 +4225,9 @@
       "edge_key": "hold(board:chopping)|||turn-on(sink)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 943.74,
+      "video_end": 947.06,
       "raw_action": "hold(board:chopping)",
       "raw_step_id": "unassigned"
     },
@@ -3448,6 +4241,9 @@
       "edge_key": "turn-on(sink)|||squeeze(board:chopping)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 947.16,
+      "video_end": 949.4,
       "raw_action": "turn-on(sink)",
       "raw_step_id": "unassigned"
     },
@@ -3461,6 +4257,9 @@
       "edge_key": "squeeze(board:chopping)|||wash(board:chopping)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 949.5,
+      "video_end": 951.04,
       "raw_action": "squeeze(board:chopping)",
       "raw_step_id": "unassigned"
     },
@@ -3474,6 +4273,9 @@
       "edge_key": "wash(board:chopping)|||put(board:chopping)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 951.14,
+      "video_end": 952.47,
       "raw_action": "wash(board:chopping)",
       "raw_step_id": "unassigned"
     },
@@ -3487,6 +4289,9 @@
       "edge_key": "put(board:chopping)|||turn-off(sink)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 952.34,
+      "video_end": 954.55,
       "raw_action": "put(board:chopping)",
       "raw_step_id": "unassigned"
     },
@@ -3500,6 +4305,9 @@
       "edge_key": "turn-off(sink)|||put(board:chopping)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 954.65,
+      "video_end": 955.59,
       "raw_action": "turn-off(sink)",
       "raw_step_id": "unassigned"
     },
@@ -3513,6 +4321,9 @@
       "edge_key": "put(board:chopping)|||lift(plate)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 955.69,
+      "video_end": 958.45,
       "raw_action": "put(board:chopping)",
       "raw_step_id": "unassigned"
     },
@@ -3526,6 +4337,9 @@
       "edge_key": "lift(plate)|||wash(plate)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 958.55,
+      "video_end": 959.89,
       "raw_action": "lift(plate)",
       "raw_step_id": "unassigned"
     },
@@ -3539,6 +4353,9 @@
       "edge_key": "wash(plate)|||put(plate)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 959.99,
+      "video_end": 961.4,
       "raw_action": "wash(plate)",
       "raw_step_id": "unassigned"
     },
@@ -3552,6 +4369,9 @@
       "edge_key": "put(plate)|||turn-off(sink)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 961.5,
+      "video_end": 963.17,
       "raw_action": "put(plate)",
       "raw_step_id": "unassigned"
     },
@@ -3565,6 +4385,9 @@
       "edge_key": "turn-off(sink)|||put(plate)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 963.56,
+      "video_end": 963.96,
       "raw_action": "turn-off(sink)",
       "raw_step_id": "unassigned"
     },
@@ -3578,6 +4401,9 @@
       "edge_key": "put(plate)|||turn-on(sink)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 964.45,
+      "video_end": 964.98,
       "raw_action": "put(plate)",
       "raw_step_id": "unassigned"
     },
@@ -3591,6 +4417,9 @@
       "edge_key": "turn-on(sink)|||turn-off(sink)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 967.11,
+      "video_end": 968.85,
       "raw_action": "turn-on(sink)",
       "raw_step_id": "unassigned"
     },
@@ -3604,6 +4433,9 @@
       "edge_key": "turn-off(sink)|||wash(knife)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 968.95,
+      "video_end": 969.35,
       "raw_action": "turn-off(sink)",
       "raw_step_id": "unassigned"
     },
@@ -3617,6 +4449,9 @@
       "edge_key": "wash(knife)|||take(knife)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 969.26,
+      "video_end": 972.65,
       "raw_action": "wash(knife)",
       "raw_step_id": "unassigned"
     },
@@ -3630,6 +4465,9 @@
       "edge_key": "take(knife)|||wash(knife)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 973.57,
+      "video_end": 973.87,
       "raw_action": "take(knife)",
       "raw_step_id": "unassigned"
     },
@@ -3643,6 +4481,9 @@
       "edge_key": "wash(knife)|||turn-on(sink)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 973.71,
+      "video_end": 976.06,
       "raw_action": "wash(knife)",
       "raw_step_id": "unassigned"
     },
@@ -3656,6 +4497,9 @@
       "edge_key": "turn-on(sink)|||put(knife)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 976.5,
+      "video_end": 977.52,
       "raw_action": "turn-on(sink)",
       "raw_step_id": "unassigned"
     },
@@ -3669,6 +4513,9 @@
       "edge_key": "put(knife)|||put(knife)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 977.29,
+      "video_end": 984.23,
       "raw_action": "put(knife)",
       "raw_step_id": "unassigned"
     },
@@ -3682,6 +4529,9 @@
       "edge_key": "put(knife)|||rub(knife)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 984.33,
+      "video_end": 991.67,
       "raw_action": "put(knife)",
       "raw_step_id": "unassigned"
     },
@@ -3695,6 +4545,9 @@
       "edge_key": "rub(knife)|||put(knife)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 986.15,
+      "video_end": 987.82,
       "raw_action": "rub(knife)",
       "raw_step_id": "unassigned"
     },
@@ -3708,6 +4561,9 @@
       "edge_key": "put(knife)|||turn-off(tap)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 988.85,
+      "video_end": 989.64,
       "raw_action": "put(knife)",
       "raw_step_id": "unassigned"
     },
@@ -3721,6 +4577,9 @@
       "edge_key": "turn-off(tap)|||lift(cutlery)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 989.57,
+      "video_end": 991.58,
       "raw_action": "turn-off(tap)",
       "raw_step_id": "unassigned"
     },
@@ -3734,6 +4593,9 @@
       "edge_key": "lift(cutlery)|||turn-on(tap)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 992.01,
+      "video_end": 992.49,
       "raw_action": "lift(cutlery)",
       "raw_step_id": "unassigned"
     },
@@ -3747,6 +4609,9 @@
       "edge_key": "turn-on(tap)|||hold(cutlery)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 994.54,
+      "video_end": 995.85,
       "raw_action": "turn-on(tap)",
       "raw_step_id": "unassigned"
     },
@@ -3760,6 +4625,9 @@
       "edge_key": "hold(cutlery)|||put(cutlery)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 996.37,
+      "video_end": 997.81,
       "raw_action": "hold(cutlery)",
       "raw_step_id": "unassigned"
     },
@@ -3773,6 +4641,9 @@
       "edge_key": "put(cutlery)|||put(cutlery)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 999.26,
+      "video_end": 1002.03,
       "raw_action": "put(cutlery)",
       "raw_step_id": "unassigned"
     },
@@ -3786,6 +4657,9 @@
       "edge_key": "put(cutlery)|||flip(hand)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1002.08,
+      "video_end": 1004.37,
       "raw_action": "put(cutlery)",
       "raw_step_id": "unassigned"
     },
@@ -3799,6 +4673,9 @@
       "edge_key": "flip(hand)|||scrub(pan)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1004.89,
+      "video_end": 1005.43,
       "raw_action": "flip(hand)",
       "raw_step_id": "unassigned"
     },
@@ -3812,6 +4689,9 @@
       "edge_key": "scrub(pan)|||put(sponge)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1006.09,
+      "video_end": 1011.1,
       "raw_action": "scrub(pan)",
       "raw_step_id": "unassigned"
     },
@@ -3825,6 +4705,9 @@
       "edge_key": "put(sponge)|||hold(pan)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1011.77,
+      "video_end": 1013.07,
       "raw_action": "put(sponge)",
       "raw_step_id": "unassigned"
     },
@@ -3838,6 +4721,9 @@
       "edge_key": "hold(pan)|||turn-off(tap)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1012.7,
+      "video_end": 1014.45,
       "raw_action": "hold(pan)",
       "raw_step_id": "unassigned"
     },
@@ -3851,6 +4737,9 @@
       "edge_key": "turn-off(tap)|||hold(pan)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1014.95,
+      "video_end": 1015.78,
       "raw_action": "turn-off(tap)",
       "raw_step_id": "unassigned"
     },
@@ -3864,6 +4753,9 @@
       "edge_key": "hold(pan)|||flip(hand)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1015.8,
+      "video_end": 1021.17,
       "raw_action": "hold(pan)",
       "raw_step_id": "unassigned"
     },
@@ -3877,6 +4769,9 @@
       "edge_key": "flip(hand)|||put(pan)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1022.02,
+      "video_end": 1022.77,
       "raw_action": "flip(hand)",
       "raw_step_id": "unassigned"
     },
@@ -3890,6 +4785,9 @@
       "edge_key": "put(pan)|||turn-off(tap)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1022.87,
+      "video_end": 1033.34,
       "raw_action": "put(pan)",
       "raw_step_id": "unassigned"
     },
@@ -3903,6 +4801,9 @@
       "edge_key": "turn-off(tap)|||put(pan)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1033.44,
+      "video_end": 1033.69,
       "raw_action": "turn-off(tap)",
       "raw_step_id": "unassigned"
     },
@@ -3916,6 +4817,9 @@
       "edge_key": "put(pan)|||turn-on(tap)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1034.28,
+      "video_end": 1035.39,
       "raw_action": "put(pan)",
       "raw_step_id": "unassigned"
     },
@@ -3929,6 +4833,9 @@
       "edge_key": "turn-on(tap)|||adjust(tap)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1036.4,
+      "video_end": 1037.03,
       "raw_action": "turn-on(tap)",
       "raw_step_id": "unassigned"
     },
@@ -3942,6 +4849,9 @@
       "edge_key": "adjust(tap)|||wash(sponge)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1037.18,
+      "video_end": 1037.68,
       "raw_action": "adjust(tap)",
       "raw_step_id": "unassigned"
     },
@@ -3955,6 +4865,9 @@
       "edge_key": "wash(sponge)|||turn-off(tap)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1040.78,
+      "video_end": 1048.18,
       "raw_action": "wash(sponge)",
       "raw_step_id": "unassigned"
     },
@@ -3968,6 +4881,9 @@
       "edge_key": "turn-off(tap)|||take(towel)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1047.92,
+      "video_end": 1048.71,
       "raw_action": "turn-off(tap)",
       "raw_step_id": "unassigned"
     },
@@ -3981,6 +4897,9 @@
       "edge_key": "take(towel)|||take(plate)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1051.57,
+      "video_end": 1054.13,
       "raw_action": "take(towel)",
       "raw_step_id": "unassigned"
     },
@@ -3994,6 +4913,9 @@
       "edge_key": "take(plate)|||move(towel)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1054.23,
+      "video_end": 1056.51,
       "raw_action": "take(plate)",
       "raw_step_id": "unassigned"
     },
@@ -4007,6 +4929,9 @@
       "edge_key": "move(towel)|||take(scale)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1057.59,
+      "video_end": 1057.97,
       "raw_action": "move(towel)",
       "raw_step_id": "unassigned"
     },
@@ -4020,6 +4945,9 @@
       "edge_key": "take(scale)|||lift(salad)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1057.92,
+      "video_end": 1059.97,
       "raw_action": "take(scale)",
       "raw_step_id": "unassigned"
     },
@@ -4033,6 +4961,9 @@
       "edge_key": "lift(salad)|||open(fridge)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1060.25,
+      "video_end": 1060.49,
       "raw_action": "lift(salad)",
       "raw_step_id": "unassigned"
     },
@@ -4046,6 +4977,9 @@
       "edge_key": "open(fridge)|||open(drawer)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1061.73,
+      "video_end": 1062.59,
       "raw_action": "open(fridge)",
       "raw_step_id": "unassigned"
     },
@@ -4059,6 +4993,9 @@
       "edge_key": "open(drawer)|||close(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1062.69,
+      "video_end": 1064.78,
       "raw_action": "open(drawer)",
       "raw_step_id": "unassigned"
     },
@@ -4072,6 +5009,9 @@
       "edge_key": "close(cupboard)|||move(phone)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1065.41,
+      "video_end": 1066.61,
       "raw_action": "close(cupboard)",
       "raw_step_id": "unassigned"
     },
@@ -4085,6 +5025,9 @@
       "edge_key": "move(phone)|||wash(top)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1067.66,
+      "video_end": 1068.64,
       "raw_action": "move(phone)",
       "raw_step_id": "unassigned"
     },
@@ -4098,6 +5041,9 @@
       "edge_key": "wash(top)|||move(bowl)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1068.74,
+      "video_end": 1070.58,
       "raw_action": "wash(top)",
       "raw_step_id": "unassigned"
     },
@@ -4111,6 +5057,9 @@
       "edge_key": "move(bowl)|||gather(breadcrumb)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1070.38,
+      "video_end": 1072.32,
       "raw_action": "move(bowl)",
       "raw_step_id": "unassigned"
     },
@@ -4124,6 +5073,9 @@
       "edge_key": "gather(breadcrumb)|||empty(breadcrumb)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1073.62,
+      "video_end": 1075.66,
       "raw_action": "gather(breadcrumb)",
       "raw_step_id": "unassigned"
     },
@@ -4137,6 +5089,9 @@
       "edge_key": "empty(breadcrumb)|||fold(towel)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1076.13,
+      "video_end": 1076.87,
       "raw_action": "empty(breadcrumb)",
       "raw_step_id": "unassigned"
     },
@@ -4150,6 +5105,9 @@
       "edge_key": "fold(towel)|||move(kitchen)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1077.85,
+      "video_end": 1079.69,
       "raw_action": "fold(towel)",
       "raw_step_id": "unassigned"
     },
@@ -4163,6 +5121,9 @@
       "edge_key": "move(kitchen)|||take(plate)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1080.5,
+      "video_end": 1081.04,
       "raw_action": "move(kitchen)",
       "raw_step_id": "unassigned"
     },
@@ -4176,6 +5137,9 @@
       "edge_key": "take(plate)|||put(plate)",
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1082.95,
+      "video_end": 1083.4,
       "raw_action": "take(plate)",
       "raw_step_id": "unassigned"
     },
@@ -4189,6 +5153,9 @@
       "edge_key": null,
       "step_id": null,
       "is_primary": false,
+      "video_id": "P08-20240614-085000",
+      "video_start": 1084.17,
+      "video_end": 1085.3,
       "raw_action": "put(plate)",
       "raw_step_id": "unassigned"
     }
