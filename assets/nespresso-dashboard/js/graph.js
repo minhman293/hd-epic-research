@@ -1265,11 +1265,23 @@ export function createGraphController({
       } else if (graphMode === "smart") {
         lines.push(`Mean duration (all objects): ${stats.mean.toFixed(2)} s`);
         if (stats.n > 1) lines.push(`  range: ${stats.min.toFixed(2)}-${stats.max.toFixed(2)} s`);
+      } else if (graphMode === "categorical") {
+        lines.push(`Mean duration (all actions): ${stats.mean.toFixed(2)} s`);
+        if (stats.n > 1) lines.push(`  range: ${stats.min.toFixed(2)}-${stats.max.toFixed(2)} s`);
       }
     }
 
+    // Verbs that map to this category (categorical mode)
+    if (d.verbs && Object.keys(d.verbs).length > 0) {
+      const sortedVerbs = Object.entries(d.verbs).sort((a, b) => b[1] - a[1]).slice(0, 8);
+      const verbList = sortedVerbs.map(([v, c]) => `  ${v}: ${c}`).join("\n");
+      lines.push(`Verbs:\n${verbList}`);
+    }
+
+    // Top objects (sort + cap so long lists don't dominate the tooltip)
     if (d.objects && Object.keys(d.objects).length > 0) {
-      const objectList = Object.entries(d.objects).map(([o, c]) => `  ${o}: ${c}`).join("\n");
+      const sortedObjects = Object.entries(d.objects).sort((a, b) => b[1] - a[1]).slice(0, 10);
+      const objectList = sortedObjects.map(([o, c]) => `  ${o}: ${c}`).join("\n");
       lines.push(`Objects:\n${objectList}`);
     }
     // Show both the readable step label (if present) and the full step text.

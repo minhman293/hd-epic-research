@@ -318,6 +318,8 @@ def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
             "edge_key": edge_key,
             "step_id": item.get("step_id"),
             "is_primary": item.get("is_primary", True),
+            "verb_class": item.get("verb_class", -1),
+            "noun_class": item.get("noun_class", -1),
             # Per-video provenance — frontend uses these to drive playback.
             "video_id": item["video_id"],
             "video_start": item["video_start"],
@@ -493,6 +495,100 @@ def create_abstracted_graph(payload):
     result["graph"] = {"nodes": nodes, "links": links}
     return result
 
+def create_categorical_graph(payload, verb_classes, noun_classes):
+    """
+    Build a graph where each node is an HD-EPIC verb CATEGORY (13 categories
+    from HD_EPIC_verb_classes.csv: retrieve, leave, manipulate, access, etc.).
+
+    Each node carries:
+      - objects: frequency of specific nouns appearing with this verb category
+      - verbs: frequency of specific verb keys within this category
+      - noun_categories: frequency of noun categories with this verb category
+
+    Edges count transitions between verb categories. Self-loops are kept (a
+    "retrieve" followed by another "retrieve" increments the retrieve→retrieve
+    self-loop). Each edge carries both count and Markov probability
+    (P(B|A) = count(A→B) / out_degree(A)).
+
+    This is the "Markov chain" view: one state per verb category, observation-
+    driven, no external step annotations needed. Hits 10–13 nodes per recipe
+    consistently across the dataset.
+    """
+    UNKNOWN = "unknown"
+    verb_id_to_cat = dict(zip(verb_classes['id'].astype(int), verb_classes['category']))
+    verb_id_to_key = dict(zip(verb_classes['id'].astype(int), verb_classes['key']))
+    noun_id_to_cat = dict(zip(noun_classes['id'].astype(int), noun_classes['category']))
+    noun_id_to_key = dict(zip(noun_classes['id'].astype(int), noun_classes['key']))
+
+    categorical_sequence = []
+    for seq_item in payload["sequence"]:
+        v_id = seq_item.get("verb_class", -1)
+        category = verb_id_to_cat.get(v_id, UNKNOWN) if v_id >= 0 else UNKNOWN
+        m = seq_item.copy()  # preserves video_id, video_start, video_end, step_id, is_primary
+        m["raw_action"] = seq_item["action"]
+        m["action"] = category
+        categorical_sequence.append(m)
+
+    # Aggregate per-node stats for hover detail
+    node_counts = Counter(item["action"] for item in categorical_sequence)
+    node_objects = defaultdict(Counter)
+    node_verbs = defaultdict(Counter)
+    node_noun_categories = defaultdict(Counter)
+
+    for item in categorical_sequence:
+        cat = item["action"]
+        v_id = item.get("verb_class", -1)
+        n_id = item.get("noun_class", -1)
+        if v_id >= 0:
+            node_verbs[cat][verb_id_to_key.get(v_id, str(v_id))] += 1
+        if n_id >= 0:
+            node_objects[cat][noun_id_to_key.get(n_id, str(n_id))] += 1
+            node_noun_categories[cat][noun_id_to_cat.get(n_id, UNKNOWN)] += 1
+
+    # Edges with counts AND Markov transition probabilities
+    edge_counts = Counter()
+    edge_occurrences = defaultdict(list)
+    out_degree = Counter()
+    for idx, item in enumerate(categorical_sequence):
+        current = item["action"]
+        next_action = (categorical_sequence[idx + 1]["action"]
+                       if idx < len(categorical_sequence) - 1 else None)
+        if next_action:
+            edge_counts[(current, next_action)] += 1
+            edge_occurrences[f"{current}|||{next_action}"].append(idx)
+            out_degree[current] += 1
+
+    node_primary = compute_node_primary_majority(categorical_sequence)
+    nodes = [
+        {
+            "id": cat,
+            "count": int(c),
+            "is_primary": bool(node_primary.get(cat, True)),
+            "verb_category": cat,
+            "objects": dict(node_objects[cat]),
+            "verbs": dict(node_verbs[cat]),
+            "noun_categories": dict(node_noun_categories[cat]),
+        }
+        for cat, c in sorted(node_counts.items(), key=lambda x: (-x[1], x[0]))
+    ]
+
+    links = [
+        {
+            "source": src,
+            "target": dst,
+            "count": int(c),
+            "probability": c / out_degree[src] if out_degree[src] > 0 else 0.0,
+            "key": f"{src}|||{dst}",
+            "occurrences": edge_occurrences[f"{src}|||{dst}"],
+        }
+        for (src, dst), c in sorted(edge_counts.items(),
+                                    key=lambda x: (-x[1], x[0][0], x[0][1]))
+    ]
+
+    result = payload.copy()
+    result["sequence"] = categorical_sequence
+    result["graph"] = {"nodes": nodes, "links": links}
+    return result
 
 def main():
     parser = argparse.ArgumentParser(
@@ -539,11 +635,15 @@ def main():
         )
         payload_smart = create_smart_merged_graph(payload_full)
         payload_abstracted = create_abstracted_graph(payload_full)
+        payload_categorical = create_categorical_graph(
+            payload_full, data["verb_classes"], data["noun_classes"]
+        )
 
         for filename, payload, label in [
             (f"session_{s['index']}_full.json", payload_full, "Full Raw"),
             (f"session_{s['index']}_smart.json", payload_smart, "Smart-Merged"),
             (f"session_{s['index']}_abstracted.json", payload_abstracted, "Abstracted"),
+            (f"session_{s['index']}_categorical.json", payload_categorical, "Categorical"),
         ]:
             out_path = output_dir / filename
             with open(out_path, "w", encoding="utf-8") as f:

@@ -187,6 +187,9 @@ export async function loadVerbCategories(csvUrl = '../../../narrations-and-actio
 
       // 1. Map the primary key (e.g., 'take' -> 'retrieve')
       VERB_TO_CATEGORY[key] = category;
+      // Also map the category name to itself, so callers in categorical
+      // mode can pass either a verb key OR a category name.
+      VERB_TO_CATEGORY[category] = category;
 
       // 2. Extract and map all synonym instances securely
       // This catches verbs like 'collect-from' inside the array string

@@ -348,15 +348,41 @@ For single-video captures, the schema degrades cleanly: `videos` has one entry w
 
 Each per-session JSON exists in three modes representing different abstraction levels:
 
-- **Full Raw** (`*_full.json`) — every action with its full verb-noun label (`take(cup)`, `pour(milk)`). Most nodes, finest detail.
-- **Smart-Merged** (`*_smart.json`) — actions grouped by verb. `take(cup)` and `take(spoon)` become one `take` node with object info in a side map.
-- **Task Phases** (`*_abstracted.json`) — nodes are recipe steps. Each action is assigned to the step whose time window contains it.
+The pipeline produces four detail-level modes per session, each at a different granularity:
+
+- **Full Raw** (`session_{N}_full.json`) — every atomic action is a separate node, identified by `verb(noun)`. Node counts range from 39 (P08_R01 Coffee) to 424 (P03_R03 Drip Coffee). Useful for inspecting exact action sequences but visually dense.
+- **Smart-Merged** (`session_{N}_smart.json`) — nodes are specific verbs (the 32 verb keys from HD-EPIC), object information collapsed into a per-node `objects` distribution. ~30–80 nodes per recipe. Mid-granularity view.
+- **Categorical** (`session_{N}_categorical.json`) — nodes are the 13 HD-EPIC verb categories (`retrieve`, `leave`, `manipulate`, `access`, `block`, `clean`, `merge`, `transition`, `sense`, `split`, `monitor`, `distribute`, `order`). 10–13 nodes per recipe consistently. **This is the Markov-chain view in the Video Textures sense** — each state is a self-contained observable label, transitions count between consecutive observed states, and edge weights carry both raw `count` and Markov `probability` (outgoing probabilities sum to 1.0 per node). Each node carries `objects` (specific-noun frequency), `verbs` (specific-verb frequency), and `noun_categories` (frequency across noun categories) so the hover tooltip can surface object detail without putting it in the node identity.
+
+The three modes form a **granularity ladder** that the user can switch between via the dropdown selector. Each level answers a different analytical question: Categorical asks "what kind of action?", Smart-Merged asks "what verb?", and Full Raw asks "what action on what object?".
 
 #### Step labels
 
 Each step node carries a short **diagnostic label** (e.g., "insert capsule", "froth milk", "stir cappuccino") in addition to its raw step ID (`S01`). The labels are generated offline by an LLM-assisted pipeline (`9_generate_step_labels.py`) and hand-reviewed for recipe-recognizability: reading a recipe's labels in order should make the dish identifiable without watching the video. 
 
 Labels live in `outputs/step_labels.json` keyed by full step ID (`P01_R01_S01`), and ride the pipeline into each payload's `steps[].label` and onto abstracted nodes' `step_label`. The frontend (`config.js`'s `resolveStepLabel`) falls back gracefully to the raw step ID if a label is missing, so the view never breaks. Labels are generated once and committed — no LLM call at render time, which keeps the dashboard deterministic for demos.
+
+### 3.4.1 Picking the Categorical granularity — empirical check
+
+Prof. Lin's recommendation was to "merge actions by type so each node represents one action category." The naive reading of this — group by HD-EPIC verb categories — was tested empirically across the 7 coffee recipes before committing to an implementation.
+
+**Three abstraction schemes were measured on the same data** (all atomic narrations across each capture's videos):
+
+| Recipe | verb×noun (Full Raw) | verb_cat × noun_cat | verb_cat only |
+|---|---|---|---|
+| P01_R01 Nespresso | 163 | 83 | **11** |
+| P03_R03 Drip Coffee | 424 | 124 | **13** |
+| P06_R02 Cappuccino | 148 | 65 | **11** |
+| P06_R07 Cappuccino | 147 | 75 | **12** |
+| P07_R01 Coffee | 157 | 76 | **12** |
+| P07_R06 Coffee | 306 | 108 | **13** |
+| P08_R01 Coffee | 39 | 28 | **10** |
+
+The `verb_cat × noun_cat` scheme (the obvious "merge by category" reading) **does not** hit the target node count. The narrations are more verbose than expected — annotators record every micro-action including cleaning, drawer-opening, phone-handling — so the (verb-category × noun-category) space still produces 28–124 nodes per recipe. Adding a primary-action filter (only actions overlapping a `step_times` window) brings the count into range but throws away 67–97% of activity, including all prep, transitions, and cleanup. Adding a frequency-pruning cutoff (top-K nodes) introduces an arbitrary threshold.
+
+The **`verb_cat` only** scheme hits the 10–13 node target naturally across every recipe tested, preserves 100% of the data (no filter, no threshold), and is a clean Markov chain in the Video Textures sense. The trade-off is that object/material information is not in the node identity itself — it is preserved as a per-node distribution (`objects`, `verbs`, `noun_categories` fields) and surfaced in the hover tooltip.
+
+For coffee recipes, the top 5 verb categories (`retrieve`, `leave`, `manipulate`, `access`, `block`) cover roughly 85–90% of activity, with `clean`, `merge`, `transition`, `sense`, `split`, `monitor` making up the long tail. The Markov transition probabilities give a defensible state-machine description of cooking behavior at a level abstract enough to compare across participants.
 
 ### 3.5 Primary vs Secondary action lanes
 
@@ -458,6 +484,14 @@ A simple table at the bottom of the single-session view. One row per action: ind
 
 `nodeColor()` (delegates to `getVerbColor()` from config), `currentSequenceItem()` (find which sequence item contains the current time), `formatSeconds()` (display formatting), `renderDataError()` (error UI).
 
+#### Categorical-mode rendering — additions to `config.js` and `graph.js`
+
+- **`config.js`** — `loadVerbCategories()` now maps each category name to itself (in addition to mapping verb keys → categories). This lets `getVerbColor("retrieve")` resolve correctly when the node identity is a category name rather than a verb key. Without this, categorical-mode nodes would fall back to the default color.
+- **`graph.js`** — the node-hover tooltip gained a `Verbs:` block (top 8 specific verbs in this category) and the `Objects:` block now sorts by frequency and caps at top-10 so the tooltip stays readable in categorical mode (where a single node like `retrieve` can aggregate 30+ distinct nouns). The duration-stats block has a `categorical` case mirroring the `smart` case.
+- **`index.html`** — the `<select id="graphModeSelect">` element gained a fourth option (`<option value="categorical">Categorical (by verb category)</option>`).
+
+No new module was needed; the categorical mode plugs into the existing detail-mode infrastructure via the URL pattern `session_{N}_categorical.json` and reuses the same renderer.
+
 #### `9_generate_step_labels.py` — offline step labeling
 
 Standalone script that produces `outputs/step_labels.json`. Reads each recipe's step text from `complete_recipes.json`, sends it to an LLM (Gemini Flash-Lite via REST, with `.env`-based key loading) under a prompt that asks for a 1–3 word diagnostic label, and writes the result. Includes a heuristic fallback for dry-runs and tolerant UTF-8 / cp1252 reading so curly apostrophes in step text don't break the loader. Labels are hand-reviewed and a final pass ensures each recipe's set reads as the dish ("load coffee capsule → brew espresso → froth milk → pour foam in coffee → stir cappuccino"). 
@@ -536,6 +570,8 @@ Two-column layout:
 - The "25 same-video overlap pairs in 12 of 80 captures" number (verified)
 - The "30.4% of step-windows" multi-video data-loss figure and the per-recipe distribution (verified)
 - The "9 errors, 2 real, 1 ambiguous" overlap verification breakdown (manual verification)
+- Categorical detail mode added to the pipeline and dashboard (June 2026). Empirical check on 7 coffee recipes verified that `verb_cat` alone consistently produces 10–13 nodes; `verb_cat × noun_cat` produces 28–124 (too many) and was rejected.
+- Sequence items now carry `verb_class` and `noun_class` IDs in addition to the rendered `action` string, so downstream graph builders can group by category without re-parsing the action label.
 
 ---
 
