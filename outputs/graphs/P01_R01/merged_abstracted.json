@@ -37,23 +37,28 @@
   "steps": [
     {
       "id": "P01_R01_S01",
-      "text": "Put one capsule into the coffee machine."
+      "text": "Put one capsule into the coffee machine.",
+      "label": "load coffee capsule"
     },
     {
       "id": "P01_R01_S02",
-      "text": "Press the long coffee button"
+      "text": "Press the long coffee button",
+      "label": "brew espresso"
     },
     {
       "id": "P01_R01_S03",
-      "text": "Pour minimum amount of milk into the frother"
+      "text": "Pour minimum amount of milk into the frother",
+      "label": "froth milk"
     },
     {
       "id": "P01_R01_S04",
-      "text": "Add the frothed milk into the coffee"
+      "text": "Add the frothed milk into the coffee",
+      "label": "pour foam in coffee"
     },
     {
       "id": "P01_R01_S05",
-      "text": "Stir"
+      "text": "Stir",
+      "label": "stir"
     }
   ],
   "sequence": [
@@ -67,9 +72,15 @@
       "edge_key": "open(cupboard)|||stretch(hand)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 3,
+      "video_id": "P01-20240202-110250",
+      "video_start": 7.44,
+      "video_end": 8.75,
       "raw_action": "open(cupboard)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.0
     },
     {
       "index": 1,
@@ -81,9 +92,15 @@
       "edge_key": "stretch(hand)|||take(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 50,
+      "noun_class": 11,
+      "video_id": "P01-20240202-110250",
+      "video_start": 8.85,
+      "video_end": 9.36,
       "raw_action": "stretch(hand)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.00448
     },
     {
       "index": 2,
@@ -95,9 +112,15 @@
       "edge_key": "take(cup)|||turn(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 13,
+      "video_id": "P01-20240202-110250",
+      "video_start": 9.34,
+      "video_end": 11.16,
       "raw_action": "take(cup)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.00897
     },
     {
       "index": 3,
@@ -109,9 +132,15 @@
       "edge_key": "turn(cup)|||close(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 13,
+      "video_id": "P01-20240202-110250",
+      "video_start": 11.15,
+      "video_end": 11.6,
       "raw_action": "turn(cup)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.01345
     },
     {
       "index": 4,
@@ -123,9 +152,15 @@
       "edge_key": "close(cupboard)|||flip(maker:coffee)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 3,
+      "video_id": "P01-20240202-110250",
+      "video_start": 11.5,
+      "video_end": 12.18,
       "raw_action": "close(cupboard)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.01794
     },
     {
       "index": 5,
@@ -137,9 +172,15 @@
       "edge_key": "flip(maker:coffee)|||put(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 22,
+      "noun_class": 50,
+      "video_id": "P01-20240202-110250",
+      "video_start": 13.73,
+      "video_end": 14.11,
       "raw_action": "flip(maker:coffee)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.02242
     },
     {
       "index": 6,
@@ -151,9 +192,15 @@
       "edge_key": "put(cup)|||take(coffee)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 13,
+      "video_id": "P01-20240202-110250",
+      "video_start": 14.2,
+      "video_end": 14.55,
       "raw_action": "put(cup)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.02691
     },
     {
       "index": 7,
@@ -165,9 +212,15 @@
       "edge_key": "take(coffee)|||press(button)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 59,
+      "video_id": "P01-20240202-110250",
+      "video_start": 14.81,
+      "video_end": 15.08,
       "raw_action": "take(coffee)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.03139
     },
     {
       "index": 8,
@@ -179,9 +232,15 @@
       "edge_key": "press(button)|||lift(handle)",
       "step_id": "P01_R01_S02",
       "is_primary": true,
+      "verb_class": 21,
+      "noun_class": 92,
+      "video_id": "P01-20240202-110250",
+      "video_start": 15.36,
+      "video_end": 15.65,
       "raw_action": "press(button)",
       "raw_step_id": "P01_R01_S02",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.03587
     },
     {
       "index": 9,
@@ -193,9 +252,15 @@
       "edge_key": "lift(handle)|||slide(coffee)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 33,
+      "noun_class": 191,
+      "video_id": "P01-20240202-110250",
+      "video_start": 16.06,
+      "video_end": 16.64,
       "raw_action": "lift(handle)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.04036
     },
     {
       "index": 10,
@@ -207,9 +272,15 @@
       "edge_key": "slide(coffee)|||pull(handle)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
+      "verb_class": 61,
+      "noun_class": 59,
+      "video_id": "P01-20240202-110250",
+      "video_start": 16.08,
+      "video_end": 17.26,
       "raw_action": "slide(coffee)",
       "raw_step_id": "P01_R01_S01",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.04484
     },
     {
       "index": 11,
@@ -221,9 +292,15 @@
       "edge_key": "pull(handle)|||open(fridge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 31,
+      "noun_class": 191,
+      "video_id": "P01-20240202-110250",
+      "video_start": 17.4,
+      "video_end": 18.02,
       "raw_action": "pull(handle)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.04933
     },
     {
       "index": 12,
@@ -235,9 +312,15 @@
       "edge_key": "open(fridge)|||take(bottle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 12,
+      "video_id": "P01-20240202-110250",
+      "video_start": 19.75,
+      "video_end": 21.1,
       "raw_action": "open(fridge)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.05381
     },
     {
       "index": 13,
@@ -249,9 +332,15 @@
       "edge_key": "take(bottle)|||close(fridge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 15,
+      "video_id": "P01-20240202-110250",
+      "video_start": 21.4,
+      "video_end": 22.0,
       "raw_action": "take(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.0583
     },
     {
       "index": 14,
@@ -263,9 +352,15 @@
       "edge_key": "close(fridge)|||slide(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 12,
+      "video_id": "P01-20240202-110250",
+      "video_start": 22.1,
+      "video_end": 23.47,
       "raw_action": "close(fridge)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.06278
     },
     {
       "index": 15,
@@ -277,9 +372,15 @@
       "edge_key": "slide(milk)|||open(bottle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 61,
+      "noun_class": 64,
+      "video_id": "P01-20240202-110250",
+      "video_start": 24.55,
+      "video_end": 25.5,
       "raw_action": "slide(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.06726
     },
     {
       "index": 16,
@@ -291,9 +392,15 @@
       "edge_key": "open(bottle)|||lift(bottle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 15,
+      "video_id": "P01-20240202-110250",
+      "video_start": 25.75,
+      "video_end": 26.8,
       "raw_action": "open(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.07175
     },
     {
       "index": 17,
@@ -305,9 +412,15 @@
       "edge_key": "lift(bottle)|||lift(bottle)",
       "step_id": "P01_R01_S03",
       "is_primary": true,
+      "verb_class": 33,
+      "noun_class": 15,
+      "video_id": "P01-20240202-110250",
+      "video_start": 27.0,
+      "video_end": 27.5,
       "raw_action": "lift(bottle)",
       "raw_step_id": "P01_R01_S03",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.07623
     },
     {
       "index": 18,
@@ -319,9 +432,15 @@
       "edge_key": "lift(bottle)|||turn-on(milk)",
       "step_id": "P01_R01_S03",
       "is_primary": true,
+      "verb_class": 33,
+      "noun_class": 15,
+      "video_id": "P01-20240202-110250",
+      "video_start": 27.61,
+      "video_end": 33.79,
       "raw_action": "lift(bottle)",
       "raw_step_id": "P01_R01_S03",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.08072
     },
     {
       "index": 19,
@@ -333,9 +452,15 @@
       "edge_key": "turn-on(milk)|||take(bottle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 6,
+      "noun_class": 64,
+      "video_id": "P01-20240202-110250",
+      "video_start": 30.7,
+      "video_end": 32.4,
       "raw_action": "turn-on(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.0852
     },
     {
       "index": 20,
@@ -347,9 +472,15 @@
       "edge_key": "take(bottle)|||open(fridge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 15,
+      "video_id": "P01-20240202-110250",
+      "video_start": 34.14,
+      "video_end": 34.83,
       "raw_action": "take(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.08969
     },
     {
       "index": 21,
@@ -361,9 +492,15 @@
       "edge_key": "open(fridge)|||put(bottle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 12,
+      "video_id": "P01-20240202-110250",
+      "video_start": 36.07,
+      "video_end": 37.07,
       "raw_action": "open(fridge)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.09417
     },
     {
       "index": 22,
@@ -375,9 +512,15 @@
       "edge_key": "put(bottle)|||close(fridge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 15,
+      "video_id": "P01-20240202-110250",
+      "video_start": 37.17,
+      "video_end": 38.09,
       "raw_action": "put(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.09865
     },
     {
       "index": 23,
@@ -389,9 +532,15 @@
       "edge_key": "close(fridge)|||press(button)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 12,
+      "video_id": "P01-20240202-110250",
+      "video_start": 38.02,
+      "video_end": 38.64,
       "raw_action": "close(fridge)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.10314
     },
     {
       "index": 24,
@@ -403,9 +552,15 @@
       "edge_key": "press(button)|||open(drawer)",
       "step_id": "P01_R01_S02",
       "is_primary": true,
+      "verb_class": 21,
+      "noun_class": 92,
+      "video_id": "P01-20240202-110250",
+      "video_start": 41.19,
+      "video_end": 42.43,
       "raw_action": "press(button)",
       "raw_step_id": "P01_R01_S02",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.10762
     },
     {
       "index": 25,
@@ -417,9 +572,15 @@
       "edge_key": "open(drawer)|||take(scissors)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 8,
+      "video_id": "P01-20240202-110250",
+      "video_start": 48.28,
+      "video_end": 49.29,
       "raw_action": "open(drawer)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.11211
     },
     {
       "index": 26,
@@ -431,9 +592,15 @@
       "edge_key": "take(scissors)|||remove(package)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 79,
+      "video_id": "P01-20240202-110250",
+      "video_start": 49.54,
+      "video_end": 50.04,
       "raw_action": "take(scissors)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.11659
     },
     {
       "index": 27,
@@ -445,9 +612,15 @@
       "edge_key": "remove(package)|||open(scissors)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 12,
+      "noun_class": 26,
+      "video_id": "P01-20240202-110250",
+      "video_start": 50.17,
+      "video_end": 51.04,
       "raw_action": "remove(package)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.12108
     },
     {
       "index": 28,
@@ -459,9 +632,15 @@
       "edge_key": "open(scissors)|||take(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 79,
+      "video_id": "P01-20240202-110250",
+      "video_start": 51.41,
+      "video_end": 52.71,
       "raw_action": "open(scissors)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.12556
     },
     {
       "index": 29,
@@ -473,9 +652,15 @@
       "edge_key": "take(orange)|||take(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 53.31,
+      "video_end": 54.11,
       "raw_action": "take(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.13004
     },
     {
       "index": 30,
@@ -487,9 +672,15 @@
       "edge_key": "take(orange)|||take(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 55.26,
+      "video_end": 55.62,
       "raw_action": "take(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.13453
     },
     {
       "index": 31,
@@ -501,9 +692,15 @@
       "edge_key": "take(orange)|||wrap(scissors)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 56.6,
+      "video_end": 57.98,
       "raw_action": "take(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.13901
     },
     {
       "index": 32,
@@ -515,9 +712,15 @@
       "edge_key": "wrap(scissors)|||open(drawer)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 36,
+      "noun_class": 79,
+      "video_id": "P01-20240202-110250",
+      "video_start": 58.66,
+      "video_end": 60.48,
       "raw_action": "wrap(scissors)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.1435
     },
     {
       "index": 33,
@@ -529,9 +732,15 @@
       "edge_key": "open(drawer)|||put(scissors)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 8,
+      "video_id": "P01-20240202-110250",
+      "video_start": 61.54,
+      "video_end": 62.54,
       "raw_action": "open(drawer)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.14798
     },
     {
       "index": 34,
@@ -543,9 +752,15 @@
       "edge_key": "put(scissors)|||slide(board:chopping)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 79,
+      "video_id": "P01-20240202-110250",
+      "video_start": 62.44,
+      "video_end": 62.78,
       "raw_action": "put(scissors)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.15247
     },
     {
       "index": 35,
@@ -557,9 +772,15 @@
       "edge_key": "slide(board:chopping)|||take(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 61,
+      "noun_class": 18,
+      "video_id": "P01-20240202-110250",
+      "video_start": 64.86,
+      "video_end": 65.84,
       "raw_action": "slide(board:chopping)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.15695
     },
     {
       "index": 36,
@@ -571,9 +792,15 @@
       "edge_key": "take(food)|||hold(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 66.2,
+      "video_end": 68.92,
       "raw_action": "take(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.16143
     },
     {
       "index": 37,
@@ -585,9 +812,15 @@
       "edge_key": "hold(food)|||remove(plug)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 34,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 69.58,
+      "video_end": 69.91,
       "raw_action": "hold(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.16592
     },
     {
       "index": 38,
@@ -599,9 +832,15 @@
       "edge_key": "remove(plug)|||put(plug)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 12,
+      "noun_class": 153,
+      "video_id": "P01-20240202-110250",
+      "video_start": 70.27,
+      "video_end": 70.55,
       "raw_action": "remove(plug)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.1704
     },
     {
       "index": 39,
@@ -613,9 +852,15 @@
       "edge_key": "put(plug)|||press(plug)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 153,
+      "video_id": "P01-20240202-110250",
+      "video_start": 71.03,
+      "video_end": 71.86,
       "raw_action": "put(plug)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.17489
     },
     {
       "index": 40,
@@ -627,9 +872,15 @@
       "edge_key": "press(plug)|||turn(lid)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 21,
+      "noun_class": 153,
+      "video_id": "P01-20240202-110250",
+      "video_start": 71.93,
+      "video_end": 72.49,
       "raw_action": "press(plug)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.17937
     },
     {
       "index": 41,
@@ -641,9 +892,15 @@
       "edge_key": "turn(lid)|||put(lid)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 6,
+      "video_id": "P01-20240202-110250",
+      "video_start": 73.14,
+      "video_end": 73.94,
       "raw_action": "turn(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.18386
     },
     {
       "index": 42,
@@ -655,9 +912,15 @@
       "edge_key": "put(lid)|||open(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 6,
+      "video_id": "P01-20240202-110250",
+      "video_start": 74.16,
+      "video_end": 74.74,
       "raw_action": "put(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.18834
     },
     {
       "index": 43,
@@ -669,9 +932,15 @@
       "edge_key": "open(cupboard)|||move(package)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 3,
+      "video_id": "P01-20240202-110250",
+      "video_start": 76.15,
+      "video_end": 78.0,
       "raw_action": "open(cupboard)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.19283
     },
     {
       "index": 44,
@@ -683,9 +952,15 @@
       "edge_key": "move(package)|||take(juicer)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 11,
+      "noun_class": 26,
+      "video_id": "P01-20240202-110250",
+      "video_start": 81.51,
+      "video_end": 82.59,
       "raw_action": "move(package)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.19731
     },
     {
       "index": 45,
@@ -697,9 +972,15 @@
       "edge_key": "take(juicer)|||close(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 106,
+      "video_id": "P01-20240202-110250",
+      "video_start": 84.55,
+      "video_end": 85.23,
       "raw_action": "take(juicer)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.20179
     },
     {
       "index": 46,
@@ -711,9 +992,15 @@
       "edge_key": "close(cupboard)|||move(box)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 3,
+      "video_id": "P01-20240202-110250",
+      "video_start": 85.85,
+      "video_end": 87.47,
       "raw_action": "close(cupboard)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.20628
     },
     {
       "index": 47,
@@ -725,9 +1012,15 @@
       "edge_key": "move(box)|||slide(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 11,
+      "noun_class": 23,
+      "video_id": "P01-20240202-110250",
+      "video_start": 87.21000000000001,
+      "video_end": 89.05,
       "raw_action": "move(box)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.21076
     },
     {
       "index": 48,
@@ -739,9 +1032,15 @@
       "edge_key": "slide(cupboard)|||press(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 61,
+      "noun_class": 3,
+      "video_id": "P01-20240202-110250",
+      "video_start": 89.36,
+      "video_end": 90.29,
       "raw_action": "slide(cupboard)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.21525
     },
     {
       "index": 49,
@@ -753,9 +1052,15 @@
       "edge_key": "press(cupboard)|||put(juicer)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 21,
+      "noun_class": 3,
+      "video_id": "P01-20240202-110250",
+      "video_start": 90.63,
+      "video_end": 91.38,
       "raw_action": "press(cupboard)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.21973
     },
     {
       "index": 50,
@@ -767,9 +1072,15 @@
       "edge_key": "put(juicer)|||turn(juicer)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 106,
+      "video_id": "P01-20240202-110250",
+      "video_start": 93.43,
+      "video_end": 94.65,
       "raw_action": "put(juicer)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.22422
     },
     {
       "index": 51,
@@ -781,9 +1092,15 @@
       "edge_key": "turn(juicer)|||lift(cream)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 106,
+      "video_id": "P01-20240202-110250",
+      "video_start": 94.49,
+      "video_end": 95.36,
       "raw_action": "turn(juicer)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.2287
     },
     {
       "index": 52,
@@ -795,9 +1112,15 @@
       "edge_key": "lift(cream)|||turn(knob)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 33,
+      "noun_class": 143,
+      "video_id": "P01-20240202-110250",
+      "video_start": 95.46,
+      "video_end": 97.82,
       "raw_action": "lift(cream)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.23318
     },
     {
       "index": 53,
@@ -809,9 +1132,15 @@
       "edge_key": "turn(knob)|||switch(button)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 190,
+      "video_id": "P01-20240202-110250",
+      "video_start": 97.92,
+      "video_end": 98.88,
       "raw_action": "turn(knob)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.23767
     },
     {
       "index": 54,
@@ -823,9 +1152,15 @@
       "edge_key": "switch(button)|||turn(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 88,
+      "noun_class": 92,
+      "video_id": "P01-20240202-110250",
+      "video_start": 98.98,
+      "video_end": 100.14,
       "raw_action": "switch(button)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.24215
     },
     {
       "index": 55,
@@ -837,9 +1172,15 @@
       "edge_key": "turn(food)|||turn(knob)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 100.09,
+      "video_end": 100.94,
       "raw_action": "turn(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.24664
     },
     {
       "index": 56,
@@ -851,9 +1192,15 @@
       "edge_key": "turn(knob)|||take(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 190,
+      "video_id": "P01-20240202-110250",
+      "video_start": 100.9,
+      "video_end": 101.71,
       "raw_action": "turn(knob)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.25112
     },
     {
       "index": 57,
@@ -865,9 +1212,15 @@
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 101.81,
+      "video_end": 102.93,
       "raw_action": "take(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.25561
     },
     {
       "index": 58,
@@ -879,9 +1232,15 @@
       "edge_key": "put(orange)|||open(drawer)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 103.03,
+      "video_end": 103.78,
       "raw_action": "put(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.26009
     },
     {
       "index": 59,
@@ -893,9 +1252,15 @@
       "edge_key": "open(drawer)|||take(vegetable)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 8,
+      "video_id": "P01-20240202-110250",
+      "video_start": 103.88,
+      "video_end": 104.92,
       "raw_action": "open(drawer)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.26457
     },
     {
       "index": 60,
@@ -907,9 +1272,15 @@
       "edge_key": "take(vegetable)|||take(roll)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 94,
+      "video_id": "P01-20240202-110250",
+      "video_start": 105.13,
+      "video_end": 106.1,
       "raw_action": "take(vegetable)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.26906
     },
     {
       "index": 61,
@@ -921,9 +1292,15 @@
       "edge_key": "take(roll)|||feel(roll)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 227,
+      "video_id": "P01-20240202-110250",
+      "video_start": 106.2,
+      "video_end": 108.67,
       "raw_action": "take(roll)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.27354
     },
     {
       "index": 62,
@@ -935,9 +1312,15 @@
       "edge_key": "feel(roll)|||pull(bag)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 54,
+      "noun_class": 227,
+      "video_id": "P01-20240202-110250",
+      "video_start": 108.64,
+      "video_end": 116.04,
       "raw_action": "feel(roll)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.27803
     },
     {
       "index": 63,
@@ -949,9 +1332,15 @@
       "edge_key": "pull(bag)|||put(vegetable)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 31,
+      "noun_class": 19,
+      "video_id": "P01-20240202-110250",
+      "video_start": 116.01,
+      "video_end": 116.68,
       "raw_action": "pull(bag)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.28251
     },
     {
       "index": 64,
@@ -963,9 +1352,15 @@
       "edge_key": "put(vegetable)|||close(drawer)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 94,
+      "video_id": "P01-20240202-110250",
+      "video_start": 116.76,
+      "video_end": 117.8,
       "raw_action": "put(vegetable)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.287
     },
     {
       "index": 65,
@@ -977,9 +1372,15 @@
       "edge_key": "close(drawer)|||pull(bag)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 8,
+      "video_id": "P01-20240202-110250",
+      "video_start": 117.89,
+      "video_end": 118.65,
       "raw_action": "close(drawer)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.29148
     },
     {
       "index": 66,
@@ -991,9 +1392,15 @@
       "edge_key": "pull(bag)|||shake(bag)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 31,
+      "noun_class": 19,
+      "video_id": "P01-20240202-110250",
+      "video_start": 119.51,
+      "video_end": 123.38,
       "raw_action": "pull(bag)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.29596
     },
     {
       "index": 67,
@@ -1005,9 +1412,15 @@
       "edge_key": "shake(bag)|||open(lid)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 15,
+      "noun_class": 19,
+      "video_id": "P01-20240202-110250",
+      "video_start": 123.5,
+      "video_end": 124.14,
       "raw_action": "shake(bag)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.30045
     },
     {
       "index": 68,
@@ -1019,9 +1432,15 @@
       "edge_key": "open(lid)|||put(bag)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 6,
+      "video_id": "P01-20240202-110250",
+      "video_start": 124.43,
+      "video_end": 125.09,
       "raw_action": "open(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.30493
     },
     {
       "index": 69,
@@ -1033,9 +1452,15 @@
       "edge_key": "put(bag)|||close(lid)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 19,
+      "video_id": "P01-20240202-110250",
+      "video_start": 125.19,
+      "video_end": 127.9,
       "raw_action": "put(bag)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.30942
     },
     {
       "index": 70,
@@ -1047,9 +1472,15 @@
       "edge_key": "close(lid)|||press(top)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 6,
+      "video_id": "P01-20240202-110250",
+      "video_start": 127.89,
+      "video_end": 128.68,
       "raw_action": "close(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.3139
     },
     {
       "index": 71,
@@ -1061,9 +1492,15 @@
       "edge_key": "press(top)|||hold(kettle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 21,
+      "noun_class": 42,
+      "video_id": "P01-20240202-110250",
+      "video_start": 128.91,
+      "video_end": 129.68,
       "raw_action": "press(top)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.31839
     },
     {
       "index": 72,
@@ -1075,9 +1512,15 @@
       "edge_key": "hold(kettle)|||press(button)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 34,
+      "noun_class": 44,
+      "video_id": "P01-20240202-110250",
+      "video_start": 130.41,
+      "video_end": 131.13,
       "raw_action": "hold(kettle)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.32287
     },
     {
       "index": 73,
@@ -1089,9 +1532,15 @@
       "edge_key": "press(button)|||close(kettle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 21,
+      "noun_class": 92,
+      "video_id": "P01-20240202-110250",
+      "video_start": 130.81,
+      "video_end": 132.82,
       "raw_action": "press(button)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.32735
     },
     {
       "index": 74,
@@ -1103,9 +1552,15 @@
       "edge_key": "close(kettle)|||turn(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 44,
+      "video_id": "P01-20240202-110250",
+      "video_start": 132.85,
+      "video_end": 133.86,
       "raw_action": "close(kettle)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.33184
     },
     {
       "index": 75,
@@ -1117,9 +1572,15 @@
       "edge_key": "turn(cup)|||take(milk)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
+      "verb_class": 23,
+      "noun_class": 13,
+      "video_id": "P01-20240202-110250",
+      "video_start": 136.35,
+      "video_end": 137.31,
       "raw_action": "turn(cup)",
       "raw_step_id": "P01_R01_S04",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.33632
     },
     {
       "index": 76,
@@ -1131,9 +1592,15 @@
       "edge_key": "take(milk)|||pat(milk)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
+      "verb_class": 0,
+      "noun_class": 64,
+      "video_id": "P01-20240202-110250",
+      "video_start": 136.72,
+      "video_end": 137.47,
       "raw_action": "take(milk)",
       "raw_step_id": "P01_R01_S04",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.34081
     },
     {
       "index": 77,
@@ -1145,9 +1612,15 @@
       "edge_key": "pat(milk)|||lift(milk)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
+      "verb_class": 32,
+      "noun_class": 64,
+      "video_id": "P01-20240202-110250",
+      "video_start": 137.25,
+      "video_end": 138.07,
       "raw_action": "pat(milk)",
       "raw_step_id": "P01_R01_S04",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.34529
     },
     {
       "index": 78,
@@ -1159,9 +1632,15 @@
       "edge_key": "lift(milk)|||lift(milk)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
+      "verb_class": 33,
+      "noun_class": 64,
+      "video_id": "P01-20240202-110250",
+      "video_start": 137.7,
+      "video_end": 139.91,
       "raw_action": "lift(milk)",
       "raw_step_id": "P01_R01_S04",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.34978
     },
     {
       "index": 79,
@@ -1173,9 +1652,15 @@
       "edge_key": "lift(milk)|||lift(milk)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
+      "verb_class": 33,
+      "noun_class": 64,
+      "video_id": "P01-20240202-110250",
+      "video_start": 139.92000000000002,
+      "video_end": 142.8,
       "raw_action": "lift(milk)",
       "raw_step_id": "P01_R01_S04",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.35426
     },
     {
       "index": 80,
@@ -1187,9 +1672,15 @@
       "edge_key": "lift(milk)|||lift(lid)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
+      "verb_class": 33,
+      "noun_class": 64,
+      "video_id": "P01-20240202-110250",
+      "video_start": 141.14,
+      "video_end": 143.1,
       "raw_action": "lift(milk)",
       "raw_step_id": "P01_R01_S04",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.35874
     },
     {
       "index": 81,
@@ -1201,9 +1692,15 @@
       "edge_key": "lift(lid)|||move(spoon)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 33,
+      "noun_class": 6,
+      "video_id": "P01-20240202-110250",
+      "video_start": 143.45,
+      "video_end": 144.89,
       "raw_action": "lift(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.36323
     },
     {
       "index": 82,
@@ -1215,9 +1712,15 @@
       "edge_key": "move(spoon)|||mix(coffee)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "verb_class": 11,
+      "noun_class": 1,
+      "video_id": "P01-20240202-110250",
+      "video_start": 144.86,
+      "video_end": 145.16,
       "raw_action": "move(spoon)",
       "raw_step_id": "P01_R01_S05",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.36771
     },
     {
       "index": 83,
@@ -1229,9 +1732,15 @@
       "edge_key": "mix(coffee)|||mix(coffee)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "verb_class": 10,
+      "noun_class": 59,
+      "video_id": "P01-20240202-110250",
+      "video_start": 145.29,
+      "video_end": 147.12,
       "raw_action": "mix(coffee)",
       "raw_step_id": "P01_R01_S05",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.3722
     },
     {
       "index": 84,
@@ -1243,9 +1752,15 @@
       "edge_key": "mix(coffee)|||take(rest)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "verb_class": 10,
+      "noun_class": 59,
+      "video_id": "P01-20240202-110250",
+      "video_start": 147.02,
+      "video_end": 149.77,
       "raw_action": "mix(coffee)",
       "raw_step_id": "P01_R01_S05",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.37668
     },
     {
       "index": 85,
@@ -1257,9 +1772,15 @@
       "edge_key": "take(rest)|||shake(spoon)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "verb_class": 0,
+      "noun_class": 109,
+      "video_id": "P01-20240202-110250",
+      "video_start": 149.86,
+      "video_end": 150.78,
       "raw_action": "take(rest)",
       "raw_step_id": "P01_R01_S05",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.38117
     },
     {
       "index": 86,
@@ -1271,9 +1792,15 @@
       "edge_key": "shake(spoon)|||open(lid)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "verb_class": 15,
+      "noun_class": 1,
+      "video_id": "P01-20240202-110250",
+      "video_start": 150.73,
+      "video_end": 151.61,
       "raw_action": "shake(spoon)",
       "raw_step_id": "P01_R01_S05",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.38565
     },
     {
       "index": 87,
@@ -1285,9 +1812,15 @@
       "edge_key": "open(lid)|||throw(spoon)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 6,
+      "video_id": "P01-20240202-110250",
+      "video_start": 153.12,
+      "video_end": 153.38,
       "raw_action": "open(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.39013
     },
     {
       "index": 88,
@@ -1299,9 +1832,15 @@
       "edge_key": "throw(spoon)|||close(bin)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 13,
+      "noun_class": 1,
+      "video_id": "P01-20240202-110250",
+      "video_start": 153.63,
+      "video_end": 154.07999999999998,
       "raw_action": "throw(spoon)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.39462
     },
     {
       "index": 89,
@@ -1313,9 +1852,15 @@
       "edge_key": "close(bin)|||take(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 36,
+      "video_id": "P01-20240202-110250",
+      "video_start": 154.06,
+      "video_end": 154.29,
       "raw_action": "close(bin)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.3991
     },
     {
       "index": 90,
@@ -1327,9 +1872,15 @@
       "edge_key": "take(milk)|||open(tap)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 64,
+      "video_id": "P01-20240202-110250",
+      "video_start": 155.41,
+      "video_end": 156.07999999999998,
       "raw_action": "take(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.40359
     },
     {
       "index": 91,
@@ -1341,9 +1892,15 @@
       "edge_key": "open(tap)|||move(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 0,
+      "video_id": "P01-20240202-110250",
+      "video_start": 157.91,
+      "video_end": 158.57,
       "raw_action": "open(tap)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.40807
     },
     {
       "index": 92,
@@ -1355,9 +1912,15 @@
       "edge_key": "move(milk)|||wash(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 11,
+      "noun_class": 64,
+      "video_id": "P01-20240202-110250",
+      "video_start": 158.37,
+      "video_end": 159.53,
       "raw_action": "move(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.41256
     },
     {
       "index": 93,
@@ -1369,9 +1932,15 @@
       "edge_key": "wash(milk)|||turn(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 2,
+      "noun_class": 64,
+      "video_id": "P01-20240202-110250",
+      "video_start": 159.45,
+      "video_end": 160.94,
       "raw_action": "wash(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.41704
     },
     {
       "index": 94,
@@ -1383,9 +1952,15 @@
       "edge_key": "turn(milk)|||remove(cake)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 64,
+      "video_id": "P01-20240202-110250",
+      "video_start": 160.97,
+      "video_end": 161.81,
       "raw_action": "turn(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.42152
     },
     {
       "index": 95,
@@ -1397,9 +1972,15 @@
       "edge_key": "remove(cake)|||wash(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 12,
+      "noun_class": 175,
+      "video_id": "P01-20240202-110250",
+      "video_start": 161.4,
+      "video_end": 162.72,
       "raw_action": "remove(cake)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.42601
     },
     {
       "index": 96,
@@ -1411,9 +1992,15 @@
       "edge_key": "wash(milk)|||wash(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 2,
+      "noun_class": 64,
+      "video_id": "P01-20240202-110250",
+      "video_start": 162.94,
+      "video_end": 163.36,
       "raw_action": "wash(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.43049
     },
     {
       "index": 97,
@@ -1425,9 +2012,15 @@
       "edge_key": "wash(milk)|||take(sponge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 2,
+      "noun_class": 64,
+      "video_id": "P01-20240202-110250",
+      "video_start": 163.57999999999998,
+      "video_end": 165.86,
       "raw_action": "wash(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.43498
     },
     {
       "index": 98,
@@ -1439,9 +2032,15 @@
       "edge_key": "take(sponge)|||scrub(sponge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 9,
+      "video_id": "P01-20240202-110250",
+      "video_start": 168.14,
+      "video_end": 168.81,
       "raw_action": "take(sponge)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.43946
     },
     {
       "index": 99,
@@ -1453,9 +2052,15 @@
       "edge_key": "scrub(sponge)|||insert(sponge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 29,
+      "noun_class": 9,
+      "video_id": "P01-20240202-110250",
+      "video_start": 168.7,
+      "video_end": 170.55,
       "raw_action": "scrub(sponge)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.44395
     },
     {
       "index": 100,
@@ -1467,9 +2072,15 @@
       "edge_key": "insert(sponge)|||wash(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 5,
+      "noun_class": 9,
+      "video_id": "P01-20240202-110250",
+      "video_start": 168.74,
+      "video_end": 169.51,
       "raw_action": "insert(sponge)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.44843
     },
     {
       "index": 101,
@@ -1481,9 +2092,15 @@
       "edge_key": "wash(milk)|||take(tray)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 2,
+      "noun_class": 64,
+      "video_id": "P01-20240202-110250",
+      "video_start": 170.35,
+      "video_end": 172.23,
       "raw_action": "wash(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.45291
     },
     {
       "index": 102,
@@ -1495,9 +2112,15 @@
       "edge_key": "take(tray)|||close(tap)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 35,
+      "video_id": "P01-20240202-110250",
+      "video_start": 172.24,
+      "video_end": 173.07999999999998,
       "raw_action": "take(tray)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.4574
     },
     {
       "index": 103,
@@ -1509,9 +2132,15 @@
       "edge_key": "close(tap)|||lift(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 0,
+      "video_id": "P01-20240202-110250",
+      "video_start": 173.24,
+      "video_end": 173.62,
       "raw_action": "close(tap)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.46188
     },
     {
       "index": 104,
@@ -1523,9 +2152,15 @@
       "edge_key": "lift(milk)|||put(cream)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 33,
+      "noun_class": 64,
+      "video_id": "P01-20240202-110250",
+      "video_start": 174.12,
+      "video_end": 175.54,
       "raw_action": "lift(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.46637
     },
     {
       "index": 105,
@@ -1537,9 +2172,15 @@
       "edge_key": "put(cream)|||put(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 143,
+      "video_id": "P01-20240202-110250",
+      "video_start": 175.59,
+      "video_end": 176.51,
       "raw_action": "put(cream)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.47085
     },
     {
       "index": 106,
@@ -1551,9 +2192,15 @@
       "edge_key": "put(milk)|||take(lid)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 64,
+      "video_id": "P01-20240202-110250",
+      "video_start": 178.32999999999998,
+      "video_end": 178.72,
       "raw_action": "put(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.47534
     },
     {
       "index": 107,
@@ -1565,9 +2212,15 @@
       "edge_key": "take(lid)|||take(towel)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 6,
+      "video_id": "P01-20240202-110250",
+      "video_start": 179.06,
+      "video_end": 180.18,
       "raw_action": "take(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.47982
     },
     {
       "index": 108,
@@ -1579,9 +2232,15 @@
       "edge_key": "take(towel)|||take(knife)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 52,
+      "video_id": "P01-20240202-110250",
+      "video_start": 180.72,
+      "video_end": 182.56,
       "raw_action": "take(towel)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.4843
     },
     {
       "index": 109,
@@ -1593,9 +2252,15 @@
       "edge_key": "take(knife)|||cut(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 4,
+      "video_id": "P01-20240202-110250",
+      "video_start": 183.89,
+      "video_end": 184.12,
       "raw_action": "take(knife)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.48879
     },
     {
       "index": 110,
@@ -1607,9 +2272,15 @@
       "edge_key": "cut(orange)|||put(knife)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 7,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 184.78,
+      "video_end": 186.73,
       "raw_action": "cut(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.49327
     },
     {
       "index": 111,
@@ -1621,9 +2292,15 @@
       "edge_key": "put(knife)|||flip(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 4,
+      "video_id": "P01-20240202-110250",
+      "video_start": 186.95,
+      "video_end": 187.53,
       "raw_action": "put(knife)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.49776
     },
     {
       "index": 112,
@@ -1635,9 +2312,15 @@
       "edge_key": "flip(orange)|||turn(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 22,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 187.89,
+      "video_end": 188.28,
       "raw_action": "flip(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.50224
     },
     {
       "index": 113,
@@ -1649,9 +2332,15 @@
       "edge_key": "turn(food)|||press(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 188.63,
+      "video_end": 189.03,
       "raw_action": "turn(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.50673
     },
     {
       "index": 114,
@@ -1663,9 +2352,15 @@
       "edge_key": "press(orange)|||press(juicer)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 21,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 189.37,
+      "video_end": 193.13,
       "raw_action": "press(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.51121
     },
     {
       "index": 115,
@@ -1677,9 +2372,15 @@
       "edge_key": "press(juicer)|||turn-off(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 21,
+      "noun_class": 106,
+      "video_id": "P01-20240202-110250",
+      "video_start": 193.02,
+      "video_end": 200.78,
       "raw_action": "press(juicer)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.5157
     },
     {
       "index": 116,
@@ -1691,9 +2392,15 @@
       "edge_key": "turn-off(food)|||remove(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 8,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 200.91,
+      "video_end": 201.67,
       "raw_action": "turn-off(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.52018
     },
     {
       "index": 117,
@@ -1705,9 +2412,15 @@
       "edge_key": "remove(orange)|||lift(lid)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 12,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 202.24,
+      "video_end": 202.65,
       "raw_action": "remove(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.52466
     },
     {
       "index": 118,
@@ -1719,9 +2432,15 @@
       "edge_key": "lift(lid)|||throw(skin)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 33,
+      "noun_class": 6,
+      "video_id": "P01-20240202-110250",
+      "video_start": 203.0,
+      "video_end": 203.36,
       "raw_action": "lift(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.52915
     },
     {
       "index": 119,
@@ -1733,9 +2452,15 @@
       "edge_key": "throw(skin)|||take(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 13,
+      "noun_class": 48,
+      "video_id": "P01-20240202-110250",
+      "video_start": 203.61,
+      "video_end": 203.82,
       "raw_action": "throw(skin)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.53363
     },
     {
       "index": 120,
@@ -1747,9 +2472,15 @@
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 204.23,
+      "video_end": 204.69,
       "raw_action": "take(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.53812
     },
     {
       "index": 121,
@@ -1761,9 +2492,15 @@
       "edge_key": "put(orange)|||turn-on(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 204.77,
+      "video_end": 205.41,
       "raw_action": "put(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.5426
     },
     {
       "index": 122,
@@ -1775,9 +2512,15 @@
       "edge_key": "turn-on(food)|||press(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 6,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 205.51,
+      "video_end": 206.2,
       "raw_action": "turn-on(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.54709
     },
     {
       "index": 123,
@@ -1789,9 +2532,15 @@
       "edge_key": "press(orange)|||turn-off(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 21,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 206.38,
+      "video_end": 216.88,
       "raw_action": "press(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.55157
     },
     {
       "index": 124,
@@ -1803,9 +2552,15 @@
       "edge_key": "turn-off(food)|||flip(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 8,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 217.02,
+      "video_end": 217.81,
       "raw_action": "turn-off(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.55605
     },
     {
       "index": 125,
@@ -1817,9 +2572,15 @@
       "edge_key": "flip(orange)|||open(lid)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 22,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 218.13,
+      "video_end": 218.48,
       "raw_action": "flip(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.56054
     },
     {
       "index": 126,
@@ -1831,9 +2592,15 @@
       "edge_key": "open(lid)|||throw(skin)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 6,
+      "video_id": "P01-20240202-110250",
+      "video_start": 218.64,
+      "video_end": 219.53,
       "raw_action": "open(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.56502
     },
     {
       "index": 127,
@@ -1845,9 +2612,15 @@
       "edge_key": "throw(skin)|||take(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 13,
+      "noun_class": 48,
+      "video_id": "P01-20240202-110250",
+      "video_start": 219.42,
+      "video_end": 219.79,
       "raw_action": "throw(skin)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.56951
     },
     {
       "index": 128,
@@ -1859,9 +2632,15 @@
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 220.62,
+      "video_end": 221.0,
       "raw_action": "take(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.57399
     },
     {
       "index": 129,
@@ -1873,9 +2652,15 @@
       "edge_key": "put(orange)|||take(knife)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 221.17,
+      "video_end": 221.52,
       "raw_action": "put(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.57848
     },
     {
       "index": 130,
@@ -1887,9 +2672,15 @@
       "edge_key": "take(knife)|||cut(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 4,
+      "video_id": "P01-20240202-110250",
+      "video_start": 221.79,
+      "video_end": 222.11,
       "raw_action": "take(knife)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.58296
     },
     {
       "index": 131,
@@ -1901,9 +2692,15 @@
       "edge_key": "cut(orange)|||put(knife)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 7,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 222.27,
+      "video_end": 224.42,
       "raw_action": "cut(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.58744
     },
     {
       "index": 132,
@@ -1915,9 +2712,15 @@
       "edge_key": "put(knife)|||take(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 4,
+      "video_id": "P01-20240202-110250",
+      "video_start": 224.56,
+      "video_end": 225.01,
       "raw_action": "put(knife)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.59193
     },
     {
       "index": 133,
@@ -1929,9 +2732,15 @@
       "edge_key": "take(orange)|||flip(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 225.14,
+      "video_end": 225.51,
       "raw_action": "take(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.59641
     },
     {
       "index": 134,
@@ -1943,9 +2752,15 @@
       "edge_key": "flip(orange)|||turn-on(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 22,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 225.69,
+      "video_end": 225.96,
       "raw_action": "flip(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.6009
     },
     {
       "index": 135,
@@ -1957,9 +2772,15 @@
       "edge_key": "turn-on(food)|||press(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 6,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 226.22,
+      "video_end": 226.57,
       "raw_action": "turn-on(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.60538
     },
     {
       "index": 136,
@@ -1971,9 +2792,15 @@
       "edge_key": "press(orange)|||turn-off(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 21,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 226.85,
+      "video_end": 235.75,
       "raw_action": "press(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.60987
     },
     {
       "index": 137,
@@ -1985,9 +2812,15 @@
       "edge_key": "turn-off(food)|||open(lid)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 8,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 235.84,
+      "video_end": 237.27,
       "raw_action": "turn-off(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.61435
     },
     {
       "index": 138,
@@ -1999,9 +2832,15 @@
       "edge_key": "open(lid)|||throw(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 6,
+      "video_id": "P01-20240202-110250",
+      "video_start": 238.05,
+      "video_end": 238.77,
       "raw_action": "open(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.61883
     },
     {
       "index": 139,
@@ -2013,9 +2852,15 @@
       "edge_key": "throw(orange)|||take(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 13,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 238.72,
+      "video_end": 239.02,
       "raw_action": "throw(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.62332
     },
     {
       "index": 140,
@@ -2027,9 +2872,15 @@
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 239.49,
+      "video_end": 240.39,
       "raw_action": "take(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.6278
     },
     {
       "index": 141,
@@ -2041,9 +2892,15 @@
       "edge_key": "put(orange)|||turn-on(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 240.5,
+      "video_end": 240.79,
       "raw_action": "put(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.63229
     },
     {
       "index": 142,
@@ -2055,9 +2912,15 @@
       "edge_key": "turn-on(food)|||press(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 6,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 241.05,
+      "video_end": 241.54,
       "raw_action": "turn-on(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.63677
     },
     {
       "index": 143,
@@ -2069,9 +2932,15 @@
       "edge_key": "press(orange)|||turn-off(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 21,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 241.69,
+      "video_end": 250.28,
       "raw_action": "press(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.64126
     },
     {
       "index": 144,
@@ -2083,9 +2952,15 @@
       "edge_key": "turn-off(food)|||lift(lid)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 8,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 250.37,
+      "video_end": 251.32,
       "raw_action": "turn-off(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.64574
     },
     {
       "index": 145,
@@ -2097,9 +2972,15 @@
       "edge_key": "lift(lid)|||throw(skin)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 33,
+      "noun_class": 6,
+      "video_id": "P01-20240202-110250",
+      "video_start": 251.67,
+      "video_end": 252.52,
       "raw_action": "lift(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.65022
     },
     {
       "index": 146,
@@ -2111,9 +2992,15 @@
       "edge_key": "throw(skin)|||take(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 13,
+      "noun_class": 48,
+      "video_id": "P01-20240202-110250",
+      "video_start": 252.72,
+      "video_end": 253.07,
       "raw_action": "throw(skin)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.65471
     },
     {
       "index": 147,
@@ -2125,9 +3012,15 @@
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 253.67,
+      "video_end": 254.52,
       "raw_action": "take(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.65919
     },
     {
       "index": 148,
@@ -2139,9 +3032,15 @@
       "edge_key": "put(orange)|||take(knife)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 254.62,
+      "video_end": 255.02,
       "raw_action": "put(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.66368
     },
     {
       "index": 149,
@@ -2153,9 +3052,15 @@
       "edge_key": "take(knife)|||cut(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 4,
+      "video_id": "P01-20240202-110250",
+      "video_start": 255.12,
+      "video_end": 255.62,
       "raw_action": "take(knife)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.66816
     },
     {
       "index": 150,
@@ -2167,9 +3072,15 @@
       "edge_key": "cut(orange)|||put(knife)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 7,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 255.14,
+      "video_end": 258.7,
       "raw_action": "cut(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.67265
     },
     {
       "index": 151,
@@ -2181,9 +3092,15 @@
       "edge_key": "put(knife)|||insert(top)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 4,
+      "video_id": "P01-20240202-110250",
+      "video_start": 258.71,
+      "video_end": 259.0,
       "raw_action": "put(knife)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.67713
     },
     {
       "index": 152,
@@ -2195,9 +3112,15 @@
       "edge_key": "insert(top)|||take(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 5,
+      "noun_class": 42,
+      "video_id": "P01-20240202-110250",
+      "video_start": 259.1,
+      "video_end": 260.24,
       "raw_action": "insert(top)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.68161
     },
     {
       "index": 153,
@@ -2209,9 +3132,15 @@
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 260.22,
+      "video_end": 260.57,
       "raw_action": "take(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.6861
     },
     {
       "index": 154,
@@ -2223,9 +3152,15 @@
       "edge_key": "put(orange)|||turn-on(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 260.67,
+      "video_end": 261.37,
       "raw_action": "put(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.69058
     },
     {
       "index": 155,
@@ -2237,9 +3172,15 @@
       "edge_key": "turn-on(food)|||press(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 6,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 261.77,
+      "video_end": 262.02,
       "raw_action": "turn-on(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.69507
     },
     {
       "index": 156,
@@ -2251,9 +3192,15 @@
       "edge_key": "press(orange)|||turn-off(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 21,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 262.35,
+      "video_end": 273.07,
       "raw_action": "press(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.69955
     },
     {
       "index": 157,
@@ -2265,9 +3212,15 @@
       "edge_key": "turn-off(food)|||turn(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 8,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 273.4,
+      "video_end": 274.16,
       "raw_action": "turn-off(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.70404
     },
     {
       "index": 158,
@@ -2279,9 +3232,15 @@
       "edge_key": "turn(orange)|||turn(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 274.81,
+      "video_end": 275.39,
       "raw_action": "turn(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.70852
     },
     {
       "index": 159,
@@ -2293,9 +3252,15 @@
       "edge_key": "turn(orange)|||turn(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 275.5,
+      "video_end": 276.16,
       "raw_action": "turn(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.713
     },
     {
       "index": 160,
@@ -2307,9 +3272,15 @@
       "edge_key": "turn(food)|||turn-off(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 276.54,
+      "video_end": 277.88,
       "raw_action": "turn(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.71749
     },
     {
       "index": 161,
@@ -2321,9 +3292,15 @@
       "edge_key": "turn-off(food)|||open(lid)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 8,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 277.93,
+      "video_end": 278.83,
       "raw_action": "turn-off(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.72197
     },
     {
       "index": 162,
@@ -2335,9 +3312,15 @@
       "edge_key": "open(lid)|||throw(skin)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 6,
+      "video_id": "P01-20240202-110250",
+      "video_start": 279.71,
+      "video_end": 280.39,
       "raw_action": "open(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.72646
     },
     {
       "index": 163,
@@ -2349,9 +3332,15 @@
       "edge_key": "throw(skin)|||take(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 13,
+      "noun_class": 48,
+      "video_id": "P01-20240202-110250",
+      "video_start": 280.47,
+      "video_end": 280.77,
       "raw_action": "throw(skin)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.73094
     },
     {
       "index": 164,
@@ -2363,9 +3352,15 @@
       "edge_key": "take(orange)|||put(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 281.35,
+      "video_end": 281.85,
       "raw_action": "take(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.73543
     },
     {
       "index": 165,
@@ -2377,9 +3372,15 @@
       "edge_key": "put(orange)|||turn-on(machine:washing)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 282.15,
+      "video_end": 283.36,
       "raw_action": "put(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.73991
     },
     {
       "index": 166,
@@ -2391,9 +3392,15 @@
       "edge_key": "turn-on(machine:washing)|||press(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 6,
+      "noun_class": 124,
+      "video_id": "P01-20240202-110250",
+      "video_start": 283.07,
+      "video_end": 283.45,
       "raw_action": "turn-on(machine:washing)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.74439
     },
     {
       "index": 167,
@@ -2405,9 +3412,15 @@
       "edge_key": "press(orange)|||turn-off(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 21,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 284.0,
+      "video_end": 292.8,
       "raw_action": "press(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.74888
     },
     {
       "index": 168,
@@ -2419,9 +3432,15 @@
       "edge_key": "turn-off(food)|||lift(orange)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 8,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 292.98,
+      "video_end": 294.49,
       "raw_action": "turn-off(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.75336
     },
     {
       "index": 169,
@@ -2433,9 +3452,15 @@
       "edge_key": "lift(orange)|||turn-on(machine:washing)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 33,
+      "noun_class": 167,
+      "video_id": "P01-20240202-110250",
+      "video_start": 295.08,
+      "video_end": 296.85,
       "raw_action": "lift(orange)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.75785
     },
     {
       "index": 170,
@@ -2447,9 +3472,15 @@
       "edge_key": "turn-on(machine:washing)|||turn-off(machine:washing)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 6,
+      "noun_class": 124,
+      "video_id": "P01-20240202-110250",
+      "video_start": 296.34000000000003,
+      "video_end": 297.9,
       "raw_action": "turn-on(machine:washing)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.76233
     },
     {
       "index": 171,
@@ -2461,9 +3492,15 @@
       "edge_key": "turn-off(machine:washing)|||remove(skin)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 8,
+      "noun_class": 124,
+      "video_id": "P01-20240202-110250",
+      "video_start": 298.69,
+      "video_end": 299.8,
       "raw_action": "turn-off(machine:washing)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.76682
     },
     {
       "index": 172,
@@ -2475,9 +3512,15 @@
       "edge_key": "remove(skin)|||open(lid)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 12,
+      "noun_class": 48,
+      "video_id": "P01-20240202-110250",
+      "video_start": 300.2,
+      "video_end": 301.66,
       "raw_action": "remove(skin)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.7713
     },
     {
       "index": 173,
@@ -2489,9 +3532,15 @@
       "edge_key": "open(lid)|||throw(skin)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 6,
+      "video_id": "P01-20240202-110250",
+      "video_start": 301.6,
+      "video_end": 301.95,
       "raw_action": "open(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.77578
     },
     {
       "index": 174,
@@ -2503,9 +3552,15 @@
       "edge_key": "throw(skin)|||take(knife)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 13,
+      "noun_class": 48,
+      "video_id": "P01-20240202-110250",
+      "video_start": 302.05,
+      "video_end": 302.3,
       "raw_action": "throw(skin)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.78027
     },
     {
       "index": 175,
@@ -2517,9 +3572,15 @@
       "edge_key": "take(knife)|||move(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 4,
+      "video_id": "P01-20240202-110250",
+      "video_start": 302.99,
+      "video_end": 303.72,
       "raw_action": "take(knife)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.78475
     },
     {
       "index": 176,
@@ -2531,9 +3592,15 @@
       "edge_key": "move(food)|||put(knife)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 11,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 303.62,
+      "video_end": 314.83,
       "raw_action": "move(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.78924
     },
     {
       "index": 177,
@@ -2545,9 +3612,15 @@
       "edge_key": "put(knife)|||remove(cream)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 4,
+      "video_id": "P01-20240202-110250",
+      "video_start": 315.35,
+      "video_end": 315.8,
       "raw_action": "put(knife)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.79372
     },
     {
       "index": 178,
@@ -2559,9 +3632,15 @@
       "edge_key": "remove(cream)|||shake(skin)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 12,
+      "noun_class": 143,
+      "video_id": "P01-20240202-110250",
+      "video_start": 317.05,
+      "video_end": 318.45,
       "raw_action": "remove(cream)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.79821
     },
     {
       "index": 179,
@@ -2573,9 +3652,15 @@
       "edge_key": "shake(skin)|||put(cream)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 15,
+      "noun_class": 48,
+      "video_id": "P01-20240202-110250",
+      "video_start": 318.55,
+      "video_end": 318.8,
       "raw_action": "shake(skin)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.80269
     },
     {
       "index": 180,
@@ -2587,9 +3672,15 @@
       "edge_key": "put(cream)|||wash(cream)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 143,
+      "video_id": "P01-20240202-110250",
+      "video_start": 319.88,
+      "video_end": 320.61,
       "raw_action": "put(cream)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.80717
     },
     {
       "index": 181,
@@ -2601,9 +3692,15 @@
       "edge_key": "wash(cream)|||take(sponge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 2,
+      "noun_class": 143,
+      "video_id": "P01-20240202-110250",
+      "video_start": 320.71,
+      "video_end": 322.43,
       "raw_action": "wash(cream)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.81166
     },
     {
       "index": 182,
@@ -2615,9 +3712,15 @@
       "edge_key": "take(sponge)|||wash(cream)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 9,
+      "video_id": "P01-20240202-110250",
+      "video_start": 322.51,
+      "video_end": 322.87,
       "raw_action": "take(sponge)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.81614
     },
     {
       "index": 183,
@@ -2629,9 +3732,15 @@
       "edge_key": "wash(cream)|||put(sponge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 2,
+      "noun_class": 143,
+      "video_id": "P01-20240202-110250",
+      "video_start": 322.97,
+      "video_end": 324.61,
       "raw_action": "wash(cream)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.82063
     },
     {
       "index": 184,
@@ -2643,9 +3752,15 @@
       "edge_key": "put(sponge)|||wash(cream)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 9,
+      "video_id": "P01-20240202-110250",
+      "video_start": 324.71,
+      "video_end": 325.24,
       "raw_action": "put(sponge)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.82511
     },
     {
       "index": 185,
@@ -2657,9 +3772,15 @@
       "edge_key": "wash(cream)|||turn-off(tap)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 2,
+      "noun_class": 143,
+      "video_id": "P01-20240202-110250",
+      "video_start": 325.24,
+      "video_end": 325.8,
       "raw_action": "wash(cream)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.8296
     },
     {
       "index": 186,
@@ -2671,9 +3792,15 @@
       "edge_key": "turn-off(tap)|||put(cream)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 8,
+      "noun_class": 0,
+      "video_id": "P01-20240202-110250",
+      "video_start": 325.91,
+      "video_end": 326.48,
       "raw_action": "turn-off(tap)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.83408
     },
     {
       "index": 187,
@@ -2685,9 +3812,15 @@
       "edge_key": "put(cream)|||turn(bowl)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 143,
+      "video_id": "P01-20240202-110250",
+      "video_start": 326.89,
+      "video_end": 327.39,
       "raw_action": "put(cream)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.83857
     },
     {
       "index": 188,
@@ -2699,9 +3832,15 @@
       "edge_key": "turn(bowl)|||lift(bowl)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 7,
+      "video_id": "P01-20240202-110250",
+      "video_start": 329.17,
+      "video_end": 330.55,
       "raw_action": "turn(bowl)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.84305
     },
     {
       "index": 189,
@@ -2713,9 +3852,15 @@
       "edge_key": "lift(bowl)|||open(lid)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 33,
+      "noun_class": 7,
+      "video_id": "P01-20240202-110250",
+      "video_start": 330.32,
+      "video_end": 337.09000000000003,
       "raw_action": "lift(bowl)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.84753
     },
     {
       "index": 190,
@@ -2727,9 +3872,15 @@
       "edge_key": "open(lid)|||throw(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 6,
+      "video_id": "P01-20240202-110250",
+      "video_start": 331.96,
+      "video_end": 333.19,
       "raw_action": "open(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.85202
     },
     {
       "index": 191,
@@ -2741,9 +3892,15 @@
       "edge_key": "throw(food)|||pat(bowl)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 13,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 333.57,
+      "video_end": 334.53,
       "raw_action": "throw(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.8565
     },
     {
       "index": 192,
@@ -2755,9 +3912,15 @@
       "edge_key": "pat(bowl)|||close(lid)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 32,
+      "noun_class": 7,
+      "video_id": "P01-20240202-110250",
+      "video_start": 334.56,
+      "video_end": 336.72,
       "raw_action": "pat(bowl)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.86099
     },
     {
       "index": 193,
@@ -2769,9 +3932,15 @@
       "edge_key": "close(lid)|||put(bowl)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 6,
+      "video_id": "P01-20240202-110250",
+      "video_start": 337.2,
+      "video_end": 337.74,
       "raw_action": "close(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.86547
     },
     {
       "index": 194,
@@ -2783,9 +3952,15 @@
       "edge_key": "put(bowl)|||open(tap)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 7,
+      "video_id": "P01-20240202-110250",
+      "video_start": 338.08,
+      "video_end": 338.79,
       "raw_action": "put(bowl)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.86996
     },
     {
       "index": 195,
@@ -2797,9 +3972,15 @@
       "edge_key": "open(tap)|||wash(bowl)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 0,
+      "video_id": "P01-20240202-110250",
+      "video_start": 338.79,
+      "video_end": 339.68,
       "raw_action": "open(tap)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.87444
     },
     {
       "index": 196,
@@ -2811,9 +3992,15 @@
       "edge_key": "wash(bowl)|||turn(bowl)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 2,
+      "noun_class": 7,
+      "video_id": "P01-20240202-110250",
+      "video_start": 339.08,
+      "video_end": 341.62,
       "raw_action": "wash(bowl)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.87892
     },
     {
       "index": 197,
@@ -2825,9 +4012,15 @@
       "edge_key": "turn(bowl)|||wash(juicer)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 7,
+      "video_id": "P01-20240202-110250",
+      "video_start": 341.41,
+      "video_end": 341.86,
       "raw_action": "turn(bowl)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.88341
     },
     {
       "index": 198,
@@ -2839,9 +4032,15 @@
       "edge_key": "wash(juicer)|||close(tap)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 2,
+      "noun_class": 106,
+      "video_id": "P01-20240202-110250",
+      "video_start": 341.73,
+      "video_end": 345.83,
       "raw_action": "wash(juicer)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.88789
     },
     {
       "index": 199,
@@ -2853,9 +4052,15 @@
       "edge_key": "close(tap)|||put(bowl)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 0,
+      "video_id": "P01-20240202-110250",
+      "video_start": 345.77,
+      "video_end": 346.26,
       "raw_action": "close(tap)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.89238
     },
     {
       "index": 200,
@@ -2867,9 +4072,15 @@
       "edge_key": "put(bowl)|||take(towel)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 7,
+      "video_id": "P01-20240202-110250",
+      "video_start": 346.95,
+      "video_end": 347.5,
       "raw_action": "put(bowl)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.89686
     },
     {
       "index": 201,
@@ -2881,9 +4092,15 @@
       "edge_key": "take(towel)|||open(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 52,
+      "video_id": "P01-20240202-110250",
+      "video_start": 349.64,
+      "video_end": 351.24,
       "raw_action": "take(towel)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.90135
     },
     {
       "index": 202,
@@ -2895,9 +4112,15 @@
       "edge_key": "open(cupboard)|||take(glass)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 3,
+      "video_id": "P01-20240202-110250",
+      "video_start": 352.1,
+      "video_end": 352.89,
       "raw_action": "open(cupboard)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.90583
     },
     {
       "index": 203,
@@ -2909,9 +4132,15 @@
       "edge_key": "take(glass)|||turn(glass)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 10,
+      "video_id": "P01-20240202-110250",
+      "video_start": 353.33,
+      "video_end": 354.22,
       "raw_action": "take(glass)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.91031
     },
     {
       "index": 204,
@@ -2923,9 +4152,15 @@
       "edge_key": "turn(glass)|||put(glass)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 10,
+      "video_id": "P01-20240202-110250",
+      "video_start": 355.72,
+      "video_end": 356.22,
       "raw_action": "turn(glass)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.9148
     },
     {
       "index": 205,
@@ -2937,9 +4172,15 @@
       "edge_key": "put(glass)|||turn(bowl)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 10,
+      "video_id": "P01-20240202-110250",
+      "video_start": 356.4,
+      "video_end": 357.02,
       "raw_action": "put(glass)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.91928
     },
     {
       "index": 206,
@@ -2951,9 +4192,15 @@
       "edge_key": "turn(bowl)|||lift(bowl)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 7,
+      "video_id": "P01-20240202-110250",
+      "video_start": 357.51,
+      "video_end": 358.69,
       "raw_action": "turn(bowl)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.92377
     },
     {
       "index": 207,
@@ -2965,9 +4212,15 @@
       "edge_key": "lift(bowl)|||take(glass)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 33,
+      "noun_class": 7,
+      "video_id": "P01-20240202-110250",
+      "video_start": 358.59000000000003,
+      "video_end": 359.31,
       "raw_action": "lift(bowl)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.92825
     },
     {
       "index": 208,
@@ -2979,9 +4232,15 @@
       "edge_key": "take(glass)|||lift(bowl)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 10,
+      "video_id": "P01-20240202-110250",
+      "video_start": 359.63,
+      "video_end": 360.12,
       "raw_action": "take(glass)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.93274
     },
     {
       "index": 209,
@@ -2993,9 +4252,15 @@
       "edge_key": "lift(bowl)|||put(glass)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 33,
+      "noun_class": 7,
+      "video_id": "P01-20240202-110250",
+      "video_start": 360.37,
+      "video_end": 364.0,
       "raw_action": "lift(bowl)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.93722
     },
     {
       "index": 210,
@@ -3007,9 +4272,15 @@
       "edge_key": "put(glass)|||put(bowl)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 10,
+      "video_id": "P01-20240202-110250",
+      "video_start": 367.3,
+      "video_end": 368.2,
       "raw_action": "put(glass)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.9417
     },
     {
       "index": 211,
@@ -3021,9 +4292,15 @@
       "edge_key": "put(bowl)|||open(cap)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 7,
+      "video_id": "P01-20240202-110250",
+      "video_start": 370.15,
+      "video_end": 370.65,
       "raw_action": "put(bowl)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.94619
     },
     {
       "index": 212,
@@ -3035,9 +4312,15 @@
       "edge_key": "open(cap)|||wash(food)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 118,
+      "video_id": "P01-20240202-110250",
+      "video_start": 370.47,
+      "video_end": 370.72,
       "raw_action": "open(cap)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.95067
     },
     {
       "index": 213,
@@ -3049,9 +4332,15 @@
       "edge_key": "wash(food)|||close(tap)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 2,
+      "noun_class": 34,
+      "video_id": "P01-20240202-110250",
+      "video_start": 370.77,
+      "video_end": 374.05,
       "raw_action": "wash(food)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.95516
     },
     {
       "index": 214,
@@ -3063,9 +4352,15 @@
       "edge_key": "close(tap)|||take(sponge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 0,
+      "video_id": "P01-20240202-110250",
+      "video_start": 373.5,
+      "video_end": 373.8,
       "raw_action": "close(tap)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.95964
     },
     {
       "index": 215,
@@ -3077,9 +4372,15 @@
       "edge_key": "take(sponge)|||scrub(bowl)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 9,
+      "video_id": "P01-20240202-110250",
+      "video_start": 374.15,
+      "video_end": 374.5,
       "raw_action": "take(sponge)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.96413
     },
     {
       "index": 216,
@@ -3091,9 +4392,15 @@
       "edge_key": "scrub(bowl)|||put(sponge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 29,
+      "noun_class": 7,
+      "video_id": "P01-20240202-110250",
+      "video_start": 374.6,
+      "video_end": 380.3,
       "raw_action": "scrub(bowl)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.96861
     },
     {
       "index": 217,
@@ -3105,9 +4412,15 @@
       "edge_key": "put(sponge)|||open(tap)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 9,
+      "video_id": "P01-20240202-110250",
+      "video_start": 380.5,
+      "video_end": 380.85,
       "raw_action": "put(sponge)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.97309
     },
     {
       "index": 218,
@@ -3119,9 +4432,15 @@
       "edge_key": "open(tap)|||wash(bowl)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 0,
+      "video_id": "P01-20240202-110250",
+      "video_start": 381.05,
+      "video_end": 381.35,
       "raw_action": "open(tap)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.97758
     },
     {
       "index": 219,
@@ -3133,9 +4452,15 @@
       "edge_key": "wash(bowl)|||turn-off(tap)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 2,
+      "noun_class": 7,
+      "video_id": "P01-20240202-110250",
+      "video_start": 381.45,
+      "video_end": 386.4,
       "raw_action": "wash(bowl)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.98206
     },
     {
       "index": 220,
@@ -3147,9 +4472,15 @@
       "edge_key": "turn-off(tap)|||lift(bowl)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 8,
+      "noun_class": 0,
+      "video_id": "P01-20240202-110250",
+      "video_start": 386.46,
+      "video_end": 387.1,
       "raw_action": "turn-off(tap)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.98655
     },
     {
       "index": 221,
@@ -3161,9 +4492,15 @@
       "edge_key": "lift(bowl)|||turn(bowl)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 33,
+      "noun_class": 7,
+      "video_id": "P01-20240202-110250",
+      "video_start": 386.66,
+      "video_end": 387.65,
       "raw_action": "lift(bowl)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.99103
     },
     {
       "index": 222,
@@ -3175,9 +4512,15 @@
       "edge_key": "turn(bowl)|||take(towel)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 7,
+      "video_id": "P01-20240202-110250",
+      "video_start": 386.83,
+      "video_end": 389.94,
       "raw_action": "turn(bowl)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 0.99552
     },
     {
       "index": 223,
@@ -3189,9 +4532,15 @@
       "edge_key": null,
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 52,
+      "video_id": "P01-20240202-110250",
+      "video_start": 391.66,
+      "video_end": 394.72,
       "raw_action": "take(towel)",
       "raw_step_id": "unassigned",
-      "session_index": 0
+      "session_index": 0,
+      "normalized_rank": 1.0
     },
     {
       "index": 0,
@@ -3203,9 +4552,15 @@
       "edge_key": "put(plate)|||feel(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 2,
+      "video_id": "P01-20240203-093333",
+      "video_start": 7.74,
+      "video_end": 8.56,
       "raw_action": "put(plate)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.0
     },
     {
       "index": 1,
@@ -3217,9 +4572,15 @@
       "edge_key": "feel(cupboard)|||lift(pot)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 54,
+      "noun_class": 3,
+      "video_id": "P01-20240203-093333",
+      "video_start": 10.55,
+      "video_end": 11.07,
       "raw_action": "feel(cupboard)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.01493
     },
     {
       "index": 2,
@@ -3231,9 +4592,15 @@
       "edge_key": "lift(pot)|||take(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 33,
+      "noun_class": 29,
+      "video_id": "P01-20240203-093333",
+      "video_start": 12.4,
+      "video_end": 13.17,
       "raw_action": "lift(pot)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.02985
     },
     {
       "index": 3,
@@ -3245,9 +4612,15 @@
       "edge_key": "take(cup)|||put(pot)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 13,
+      "video_id": "P01-20240203-093333",
+      "video_start": 13.3,
+      "video_end": 14.1,
       "raw_action": "take(cup)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.04478
     },
     {
       "index": 4,
@@ -3259,9 +4632,15 @@
       "edge_key": "put(pot)|||turn(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 29,
+      "video_id": "P01-20240203-093333",
+      "video_start": 13.9,
+      "video_end": 14.76,
       "raw_action": "put(pot)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.0597
     },
     {
       "index": 5,
@@ -3273,9 +4652,15 @@
       "edge_key": "turn(cup)|||lift(shelf)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 13,
+      "video_id": "P01-20240203-093333",
+      "video_start": 14.96,
+      "video_end": 16.13,
       "raw_action": "turn(cup)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.07463
     },
     {
       "index": 6,
@@ -3287,9 +4672,15 @@
       "edge_key": "lift(shelf)|||put(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 33,
+      "noun_class": 247,
+      "video_id": "P01-20240203-093333",
+      "video_start": 17.82,
+      "video_end": 18.32,
       "raw_action": "lift(shelf)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.08955
     },
     {
       "index": 7,
@@ -3301,9 +4692,15 @@
       "edge_key": "put(cup)|||press(button)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 13,
+      "video_id": "P01-20240203-093333",
+      "video_start": 18.28,
+      "video_end": 18.53,
       "raw_action": "put(cup)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.10448
     },
     {
       "index": 8,
@@ -3315,9 +4712,15 @@
       "edge_key": "press(button)|||lift(lid)",
       "step_id": "P01_R01_S02",
       "is_primary": true,
+      "verb_class": 21,
+      "noun_class": 92,
+      "video_id": "P01-20240203-093333",
+      "video_start": 18.98,
+      "video_end": 19.25,
       "raw_action": "press(button)",
       "raw_step_id": "P01_R01_S02",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.1194
     },
     {
       "index": 9,
@@ -3329,9 +4732,15 @@
       "edge_key": "lift(lid)|||hold(water)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 33,
+      "noun_class": 6,
+      "video_id": "P01-20240203-093333",
+      "video_start": 19.36,
+      "video_end": 22.0,
       "raw_action": "lift(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.13433
     },
     {
       "index": 10,
@@ -3343,9 +4752,15 @@
       "edge_key": "hold(water)|||take(jug)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 34,
+      "noun_class": 27,
+      "video_id": "P01-20240203-093333",
+      "video_start": 22.84,
+      "video_end": 23.59,
       "raw_action": "hold(water)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.14925
     },
     {
       "index": 11,
@@ -3357,9 +4772,15 @@
       "edge_key": "take(jug)|||pour(water)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 66,
+      "video_id": "P01-20240203-093333",
+      "video_start": 23.63,
+      "video_end": 24.54,
       "raw_action": "take(jug)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.16418
     },
     {
       "index": 12,
@@ -3371,9 +4792,15 @@
       "edge_key": "pour(water)|||put(jug)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 9,
+      "noun_class": 27,
+      "video_id": "P01-20240203-093333",
+      "video_start": 24.64,
+      "video_end": 26.83,
       "raw_action": "pour(water)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.1791
     },
     {
       "index": 13,
@@ -3385,9 +4812,15 @@
       "edge_key": "put(jug)|||close(lid)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 66,
+      "video_id": "P01-20240203-093333",
+      "video_start": 26.67,
+      "video_end": 27.86,
       "raw_action": "put(jug)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.19403
     },
     {
       "index": 14,
@@ -3399,9 +4832,15 @@
       "edge_key": "close(lid)|||put(water)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 6,
+      "video_id": "P01-20240203-093333",
+      "video_start": 27.96,
+      "video_end": 29.15,
       "raw_action": "close(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.20896
     },
     {
       "index": 15,
@@ -3413,9 +4852,15 @@
       "edge_key": "put(water)|||take(box)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 27,
+      "video_id": "P01-20240203-093333",
+      "video_start": 29.25,
+      "video_end": 32.29,
       "raw_action": "put(water)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.22388
     },
     {
       "index": 16,
@@ -3427,9 +4872,15 @@
       "edge_key": "take(box)|||put(box)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 23,
+      "video_id": "P01-20240203-093333",
+      "video_start": 32.39,
+      "video_end": 36.76,
       "raw_action": "take(box)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.23881
     },
     {
       "index": 17,
@@ -3441,9 +4892,15 @@
       "edge_key": "put(box)|||open(box)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 23,
+      "video_id": "P01-20240203-093333",
+      "video_start": 36.86,
+      "video_end": 38.37,
       "raw_action": "put(box)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.25373
     },
     {
       "index": 18,
@@ -3455,9 +4912,15 @@
       "edge_key": "open(box)|||take(coffee)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 23,
+      "video_id": "P01-20240203-093333",
+      "video_start": 38.47,
+      "video_end": 43.66,
       "raw_action": "open(box)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.26866
     },
     {
       "index": 19,
@@ -3469,9 +4932,15 @@
       "edge_key": "take(coffee)|||open(drawer)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
+      "verb_class": 0,
+      "noun_class": 59,
+      "video_id": "P01-20240203-093333",
+      "video_start": 43.76,
+      "video_end": 45.51,
       "raw_action": "take(coffee)",
       "raw_step_id": "P01_R01_S01",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.28358
     },
     {
       "index": 20,
@@ -3483,9 +4952,15 @@
       "edge_key": "open(drawer)|||put(coffee)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
+      "verb_class": 3,
+      "noun_class": 8,
+      "video_id": "P01-20240203-093333",
+      "video_start": 45.6,
+      "video_end": 46.07,
       "raw_action": "open(drawer)",
       "raw_step_id": "P01_R01_S01",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.29851
     },
     {
       "index": 21,
@@ -3497,9 +4972,15 @@
       "edge_key": "put(coffee)|||close(machine:washing)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
+      "verb_class": 1,
+      "noun_class": 59,
+      "video_id": "P01-20240203-093333",
+      "video_start": 46.12,
+      "video_end": 46.74,
       "raw_action": "put(coffee)",
       "raw_step_id": "P01_R01_S01",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.31343
     },
     {
       "index": 22,
@@ -3511,9 +4992,15 @@
       "edge_key": "close(machine:washing)|||open(fridge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 124,
+      "video_id": "P01-20240203-093333",
+      "video_start": 46.84,
+      "video_end": 47.39,
       "raw_action": "close(machine:washing)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.32836
     },
     {
       "index": 23,
@@ -3525,9 +5012,15 @@
       "edge_key": "open(fridge)|||take(bottle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 12,
+      "video_id": "P01-20240203-093333",
+      "video_start": 49.82,
+      "video_end": 50.58,
       "raw_action": "open(fridge)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.34328
     },
     {
       "index": 24,
@@ -3539,9 +5032,15 @@
       "edge_key": "take(bottle)|||take(can)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 15,
+      "video_id": "P01-20240203-093333",
+      "video_start": 50.88,
+      "video_end": 51.54,
       "raw_action": "take(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.35821
     },
     {
       "index": 25,
@@ -3553,9 +5052,15 @@
       "edge_key": "take(can)|||turn(can)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 61,
+      "video_id": "P01-20240203-093333",
+      "video_start": 53.34,
+      "video_end": 55.35,
       "raw_action": "take(can)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.37313
     },
     {
       "index": 26,
@@ -3567,9 +5072,15 @@
       "edge_key": "turn(can)|||look(can)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 61,
+      "video_id": "P01-20240203-093333",
+      "video_start": 54.65,
+      "video_end": 56.06,
       "raw_action": "turn(can)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.38806
     },
     {
       "index": 27,
@@ -3581,9 +5092,15 @@
       "edge_key": "look(can)|||look(alarm)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 38,
+      "noun_class": 61,
+      "video_id": "P01-20240203-093333",
+      "video_start": 56.15,
+      "video_end": 56.85,
       "raw_action": "look(can)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.40299
     },
     {
       "index": 28,
@@ -3595,9 +5112,15 @@
       "edge_key": "look(alarm)|||close(fridge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 38,
+      "noun_class": 111,
+      "video_id": "P01-20240203-093333",
+      "video_start": 56.95,
+      "video_end": 63.68,
       "raw_action": "look(alarm)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.41791
     },
     {
       "index": 29,
@@ -3609,9 +5132,15 @@
       "edge_key": "close(fridge)|||open(bin)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 12,
+      "video_id": "P01-20240203-093333",
+      "video_start": 64.55,
+      "video_end": 66.51,
       "raw_action": "close(fridge)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.43284
     },
     {
       "index": 30,
@@ -3623,9 +5152,15 @@
       "edge_key": "open(bin)|||throw(can)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 36,
+      "video_id": "P01-20240203-093333",
+      "video_start": 67.69,
+      "video_end": 67.97,
       "raw_action": "open(bin)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.44776
     },
     {
       "index": 31,
@@ -3637,9 +5172,15 @@
       "edge_key": "throw(can)|||close(bin)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 13,
+      "noun_class": 61,
+      "video_id": "P01-20240203-093333",
+      "video_start": 68.07,
+      "video_end": 68.39,
       "raw_action": "throw(can)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.46269
     },
     {
       "index": 32,
@@ -3651,9 +5192,15 @@
       "edge_key": "close(bin)|||lift(lid)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 36,
+      "video_id": "P01-20240203-093333",
+      "video_start": 68.17,
+      "video_end": 68.42,
       "raw_action": "close(bin)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.47761
     },
     {
       "index": 33,
@@ -3665,9 +5212,15 @@
       "edge_key": "lift(lid)|||put(lid)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 33,
+      "noun_class": 6,
+      "video_id": "P01-20240203-093333",
+      "video_start": 70.28,
+      "video_end": 70.91,
       "raw_action": "lift(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.49254
     },
     {
       "index": 34,
@@ -3679,9 +5232,15 @@
       "edge_key": "put(lid)|||open(bottle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 6,
+      "video_id": "P01-20240203-093333",
+      "video_start": 71.01,
+      "video_end": 71.23,
       "raw_action": "put(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.50746
     },
     {
       "index": 35,
@@ -3693,9 +5252,15 @@
       "edge_key": "open(bottle)|||pour(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 15,
+      "video_id": "P01-20240203-093333",
+      "video_start": 71.65,
+      "video_end": 73.0,
       "raw_action": "open(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.52239
     },
     {
       "index": 36,
@@ -3707,9 +5272,15 @@
       "edge_key": "pour(milk)|||close(bottle)",
       "step_id": "P01_R01_S03",
       "is_primary": true,
+      "verb_class": 9,
+      "noun_class": 64,
+      "video_id": "P01-20240203-093333",
+      "video_start": 73.5,
+      "video_end": 76.57,
       "raw_action": "pour(milk)",
       "raw_step_id": "P01_R01_S03",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.53731
     },
     {
       "index": 37,
@@ -3721,9 +5292,15 @@
       "edge_key": "close(bottle)|||press(button)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 15,
+      "video_id": "P01-20240203-093333",
+      "video_start": 76.68,
+      "video_end": 77.9,
       "raw_action": "close(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.55224
     },
     {
       "index": 38,
@@ -3735,9 +5312,15 @@
       "edge_key": "press(button)|||press(button)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 21,
+      "noun_class": 92,
+      "video_id": "P01-20240203-093333",
+      "video_start": 78.2,
+      "video_end": 78.95,
       "raw_action": "press(button)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.56716
     },
     {
       "index": 39,
@@ -3749,9 +5332,15 @@
       "edge_key": "press(button)|||open(fridge)",
       "step_id": "P01_R01_S02",
       "is_primary": true,
+      "verb_class": 21,
+      "noun_class": 92,
+      "video_id": "P01-20240203-093333",
+      "video_start": 79.49,
+      "video_end": 80.06,
       "raw_action": "press(button)",
       "raw_step_id": "P01_R01_S02",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.58209
     },
     {
       "index": 40,
@@ -3763,9 +5352,15 @@
       "edge_key": "open(fridge)|||put(bottle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 12,
+      "video_id": "P01-20240203-093333",
+      "video_start": 82.82,
+      "video_end": 83.83,
       "raw_action": "open(fridge)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.59701
     },
     {
       "index": 41,
@@ -3777,9 +5372,15 @@
       "edge_key": "put(bottle)|||close(fridge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 15,
+      "video_id": "P01-20240203-093333",
+      "video_start": 84.07,
+      "video_end": 84.69,
       "raw_action": "put(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.61194
     },
     {
       "index": 42,
@@ -3791,9 +5392,15 @@
       "edge_key": "close(fridge)|||open(box)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 12,
+      "video_id": "P01-20240203-093333",
+      "video_start": 84.77,
+      "video_end": 86.2,
       "raw_action": "close(fridge)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.62687
     },
     {
       "index": 43,
@@ -3805,9 +5412,15 @@
       "edge_key": "open(box)|||take(spoon)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 23,
+      "video_id": "P01-20240203-093333",
+      "video_start": 88.47,
+      "video_end": 89.44,
       "raw_action": "open(box)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.64179
     },
     {
       "index": 44,
@@ -3819,9 +5432,15 @@
       "edge_key": "take(spoon)|||press(button)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 1,
+      "video_id": "P01-20240203-093333",
+      "video_start": 89.76,
+      "video_end": 90.38,
       "raw_action": "take(spoon)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.65672
     },
     {
       "index": 45,
@@ -3833,9 +5452,15 @@
       "edge_key": "press(button)|||take(cup)",
       "step_id": "P01_R01_S02",
       "is_primary": true,
+      "verb_class": 21,
+      "noun_class": 92,
+      "video_id": "P01-20240203-093333",
+      "video_start": 107.1,
+      "video_end": 108.36,
       "raw_action": "press(button)",
       "raw_step_id": "P01_R01_S02",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.67164
     },
     {
       "index": 46,
@@ -3847,9 +5472,15 @@
       "edge_key": "take(cup)|||take(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 13,
+      "video_id": "P01-20240203-093333",
+      "video_start": 109.01,
+      "video_end": 113.56,
       "raw_action": "take(cup)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.68657
     },
     {
       "index": 47,
@@ -3861,9 +5492,15 @@
       "edge_key": "take(milk)|||pour(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 64,
+      "video_id": "P01-20240203-093333",
+      "video_start": 113.86,
+      "video_end": 114.58,
       "raw_action": "take(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.70149
     },
     {
       "index": 48,
@@ -3875,9 +5512,15 @@
       "edge_key": "pour(milk)|||put(milk)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
+      "verb_class": 9,
+      "noun_class": 64,
+      "video_id": "P01-20240203-093333",
+      "video_start": 115.15,
+      "video_end": 127.78,
       "raw_action": "pour(milk)",
       "raw_step_id": "P01_R01_S04",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.71642
     },
     {
       "index": 49,
@@ -3889,9 +5532,15 @@
       "edge_key": "put(milk)|||open(tap)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 64,
+      "video_id": "P01-20240203-093333",
+      "video_start": 130.63,
+      "video_end": 131.03,
       "raw_action": "put(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.73134
     },
     {
       "index": 50,
@@ -3903,9 +5552,15 @@
       "edge_key": "open(tap)|||wash(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 0,
+      "video_id": "P01-20240203-093333",
+      "video_start": 131.18,
+      "video_end": 131.53,
       "raw_action": "open(tap)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.74627
     },
     {
       "index": 51,
@@ -3917,9 +5572,15 @@
       "edge_key": "wash(milk)|||remove(top)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 2,
+      "noun_class": 64,
+      "video_id": "P01-20240203-093333",
+      "video_start": 131.75,
+      "video_end": 134.09,
       "raw_action": "wash(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.76119
     },
     {
       "index": 52,
@@ -3931,9 +5592,15 @@
       "edge_key": "remove(top)|||put(plate)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 12,
+      "noun_class": 42,
+      "video_id": "P01-20240203-093333",
+      "video_start": 134.34,
+      "video_end": 135.17,
       "raw_action": "remove(top)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.77612
     },
     {
       "index": 53,
@@ -3945,9 +5612,15 @@
       "edge_key": "put(plate)|||take(sponge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 2,
+      "video_id": "P01-20240203-093333",
+      "video_start": 135.52,
+      "video_end": 135.75,
       "raw_action": "put(plate)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.79104
     },
     {
       "index": 54,
@@ -3959,9 +5632,15 @@
       "edge_key": "take(sponge)|||wash(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 9,
+      "video_id": "P01-20240203-093333",
+      "video_start": 136.07,
+      "video_end": 136.52,
       "raw_action": "take(sponge)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.80597
     },
     {
       "index": 55,
@@ -3973,9 +5652,15 @@
       "edge_key": "wash(milk)|||put(sponge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 2,
+      "noun_class": 64,
+      "video_id": "P01-20240203-093333",
+      "video_start": 136.62,
+      "video_end": 138.22,
       "raw_action": "wash(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.8209
     },
     {
       "index": 56,
@@ -3987,9 +5672,15 @@
       "edge_key": "put(sponge)|||wash(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 9,
+      "video_id": "P01-20240203-093333",
+      "video_start": 138.65,
+      "video_end": 138.88,
       "raw_action": "put(sponge)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.83582
     },
     {
       "index": 57,
@@ -4001,9 +5692,15 @@
       "edge_key": "wash(milk)|||close(tap)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 2,
+      "noun_class": 64,
+      "video_id": "P01-20240203-093333",
+      "video_start": 138.85,
+      "video_end": 140.82999999999998,
       "raw_action": "wash(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.85075
     },
     {
       "index": 58,
@@ -4015,9 +5712,15 @@
       "edge_key": "close(tap)|||take(top)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 0,
+      "video_id": "P01-20240203-093333",
+      "video_start": 140.72,
+      "video_end": 141.03,
       "raw_action": "close(tap)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.86567
     },
     {
       "index": 59,
@@ -4029,9 +5732,15 @@
       "edge_key": "take(top)|||put(top)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 42,
+      "video_id": "P01-20240203-093333",
+      "video_start": 141.54,
+      "video_end": 142.01,
       "raw_action": "take(top)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.8806
     },
     {
       "index": 60,
@@ -4043,9 +5752,15 @@
       "edge_key": "put(top)|||put(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 42,
+      "video_id": "P01-20240203-093333",
+      "video_start": 142.2,
+      "video_end": 142.57,
       "raw_action": "put(top)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.89552
     },
     {
       "index": 61,
@@ -4057,9 +5772,15 @@
       "edge_key": "put(milk)|||take(cup)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "verb_class": 1,
+      "noun_class": 64,
+      "video_id": "P01-20240203-093333",
+      "video_start": 144.75,
+      "video_end": 145.25,
       "raw_action": "put(milk)",
       "raw_step_id": "P01_R01_S05",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.91045
     },
     {
       "index": 62,
@@ -4071,9 +5792,15 @@
       "edge_key": "take(cup)|||mix(coffee)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "verb_class": 0,
+      "noun_class": 13,
+      "video_id": "P01-20240203-093333",
+      "video_start": 145.8,
+      "video_end": 146.35,
       "raw_action": "take(cup)",
       "raw_step_id": "P01_R01_S05",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.92537
     },
     {
       "index": 63,
@@ -4085,9 +5812,15 @@
       "edge_key": "mix(coffee)|||lift(colander)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "verb_class": 10,
+      "noun_class": 59,
+      "video_id": "P01-20240203-093333",
+      "video_start": 146.11,
+      "video_end": 149.72,
       "raw_action": "mix(coffee)",
       "raw_step_id": "P01_R01_S05",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.9403
     },
     {
       "index": 64,
@@ -4099,9 +5832,15 @@
       "edge_key": "lift(colander)|||open(bin)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "verb_class": 33,
+      "noun_class": 39,
+      "video_id": "P01-20240203-093333",
+      "video_start": 149.65,
+      "video_end": 150.51,
       "raw_action": "lift(colander)",
       "raw_step_id": "P01_R01_S05",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.95522
     },
     {
       "index": 65,
@@ -4113,9 +5852,15 @@
       "edge_key": "open(bin)|||throw(spoon)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 36,
+      "video_id": "P01-20240203-093333",
+      "video_start": 150.7,
+      "video_end": 151.02,
       "raw_action": "open(bin)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.97015
     },
     {
       "index": 66,
@@ -4127,9 +5872,15 @@
       "edge_key": "throw(spoon)|||close(bin)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 13,
+      "noun_class": 1,
+      "video_id": "P01-20240203-093333",
+      "video_start": 151.17000000000002,
+      "video_end": 151.77,
       "raw_action": "throw(spoon)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 0.98507
     },
     {
       "index": 67,
@@ -4141,9 +5892,15 @@
       "edge_key": null,
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 36,
+      "video_id": "P01-20240203-093333",
+      "video_start": 152.02,
+      "video_end": 152.93,
       "raw_action": "close(bin)",
       "raw_step_id": "unassigned",
-      "session_index": 1
+      "session_index": 1,
+      "normalized_rank": 1.0
     },
     {
       "index": 0,
@@ -4155,9 +5912,15 @@
       "edge_key": "open(fridge)|||take(bottle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 12,
+      "video_id": "P01-20240204-095114",
+      "video_start": 6.63,
+      "video_end": 7.88,
       "raw_action": "open(fridge)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.0
     },
     {
       "index": 1,
@@ -4169,9 +5932,15 @@
       "edge_key": "take(bottle)|||close(fridge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 15,
+      "video_id": "P01-20240204-095114",
+      "video_start": 7.93,
+      "video_end": 8.35,
       "raw_action": "take(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.0125
     },
     {
       "index": 2,
@@ -4183,9 +5952,15 @@
       "edge_key": "close(fridge)|||put(bottle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 12,
+      "video_id": "P01-20240204-095114",
+      "video_start": 8.61,
+      "video_end": 10.25,
       "raw_action": "close(fridge)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.025
     },
     {
       "index": 3,
@@ -4197,9 +5972,15 @@
       "edge_key": "put(bottle)|||take(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 15,
+      "video_id": "P01-20240204-095114",
+      "video_start": 10.7,
+      "video_end": 11.19,
       "raw_action": "put(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.0375
     },
     {
       "index": 4,
@@ -4211,9 +5992,15 @@
       "edge_key": "take(cup)|||lift(maker:coffee)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 13,
+      "video_id": "P01-20240204-095114",
+      "video_start": 13.41,
+      "video_end": 14.03,
       "raw_action": "take(cup)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.05
     },
     {
       "index": 5,
@@ -4225,9 +6012,15 @@
       "edge_key": "lift(maker:coffee)|||put(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 33,
+      "noun_class": 50,
+      "video_id": "P01-20240204-095114",
+      "video_start": 16.85,
+      "video_end": 17.25,
       "raw_action": "lift(maker:coffee)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.0625
     },
     {
       "index": 6,
@@ -4239,9 +6032,15 @@
       "edge_key": "put(cup)|||turn-on(machine:washing)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 13,
+      "video_id": "P01-20240204-095114",
+      "video_start": 17.4,
+      "video_end": 17.85,
       "raw_action": "put(cup)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.075
     },
     {
       "index": 7,
@@ -4253,9 +6052,15 @@
       "edge_key": "turn-on(machine:washing)|||move(milk)",
       "step_id": "P01_R01_S02",
       "is_primary": true,
+      "verb_class": 6,
+      "noun_class": 124,
+      "video_id": "P01-20240204-095114",
+      "video_start": 17.93,
+      "video_end": 18.5,
       "raw_action": "turn-on(machine:washing)",
       "raw_step_id": "P01_R01_S02",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.0875
     },
     {
       "index": 8,
@@ -4267,9 +6072,15 @@
       "edge_key": "move(milk)|||open(box)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 11,
+      "noun_class": 64,
+      "video_id": "P01-20240204-095114",
+      "video_start": 19.42,
+      "video_end": 20.26,
       "raw_action": "move(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.1
     },
     {
       "index": 9,
@@ -4281,9 +6092,15 @@
       "edge_key": "open(box)|||take(coffee)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 23,
+      "video_id": "P01-20240204-095114",
+      "video_start": 21.66,
+      "video_end": 22.01,
       "raw_action": "open(box)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.1125
     },
     {
       "index": 10,
@@ -4295,9 +6112,15 @@
       "edge_key": "take(coffee)|||close(box)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
+      "verb_class": 0,
+      "noun_class": 59,
+      "video_id": "P01-20240204-095114",
+      "video_start": 21.75,
+      "video_end": 23.23,
       "raw_action": "take(coffee)",
       "raw_step_id": "P01_R01_S01",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.125
     },
     {
       "index": 11,
@@ -4309,9 +6132,15 @@
       "edge_key": "close(box)|||open(drawer)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
+      "verb_class": 4,
+      "noun_class": 23,
+      "video_id": "P01-20240204-095114",
+      "video_start": 23.27,
+      "video_end": 23.58,
       "raw_action": "close(box)",
       "raw_step_id": "P01_R01_S01",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.1375
     },
     {
       "index": 12,
@@ -4323,9 +6152,15 @@
       "edge_key": "open(drawer)|||put(coffee)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
+      "verb_class": 3,
+      "noun_class": 8,
+      "video_id": "P01-20240204-095114",
+      "video_start": 23.61,
+      "video_end": 24.64,
       "raw_action": "open(drawer)",
       "raw_step_id": "P01_R01_S01",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.15
     },
     {
       "index": 13,
@@ -4337,9 +6172,15 @@
       "edge_key": "put(coffee)|||lock(coffee)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
+      "verb_class": 1,
+      "noun_class": 59,
+      "video_id": "P01-20240204-095114",
+      "video_start": 24.68,
+      "video_end": 25.51,
       "raw_action": "put(coffee)",
       "raw_step_id": "P01_R01_S01",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.1625
     },
     {
       "index": 14,
@@ -4351,9 +6192,15 @@
       "edge_key": "lock(coffee)|||take(bottle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 86,
+      "noun_class": 59,
+      "video_id": "P01-20240204-095114",
+      "video_start": 25.59,
+      "video_end": 26.04,
       "raw_action": "lock(coffee)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.175
     },
     {
       "index": 15,
@@ -4365,9 +6212,15 @@
       "edge_key": "take(bottle)|||open(bottle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 15,
+      "video_id": "P01-20240204-095114",
+      "video_start": 26.14,
+      "video_end": 26.55,
       "raw_action": "take(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.1875
     },
     {
       "index": 16,
@@ -4379,9 +6232,15 @@
       "edge_key": "open(bottle)|||pour(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 15,
+      "video_id": "P01-20240204-095114",
+      "video_start": 26.54,
+      "video_end": 27.83,
       "raw_action": "open(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.2
     },
     {
       "index": 17,
@@ -4393,9 +6252,15 @@
       "edge_key": "pour(milk)|||put(bottle)",
       "step_id": "P01_R01_S03",
       "is_primary": true,
+      "verb_class": 9,
+      "noun_class": 64,
+      "video_id": "P01-20240204-095114",
+      "video_start": 27.59,
+      "video_end": 31.35,
       "raw_action": "pour(milk)",
       "raw_step_id": "P01_R01_S03",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.2125
     },
     {
       "index": 18,
@@ -4407,9 +6272,15 @@
       "edge_key": "put(bottle)|||close(bottle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 15,
+      "video_id": "P01-20240204-095114",
+      "video_start": 31.23,
+      "video_end": 32.1,
       "raw_action": "put(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.225
     },
     {
       "index": 19,
@@ -4421,9 +6292,15 @@
       "edge_key": "close(bottle)|||turn-on(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 15,
+      "video_id": "P01-20240204-095114",
+      "video_start": 32.2,
+      "video_end": 33.31,
       "raw_action": "close(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.2375
     },
     {
       "index": 20,
@@ -4435,9 +6312,15 @@
       "edge_key": "turn-on(milk)|||attach(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 6,
+      "noun_class": 64,
+      "video_id": "P01-20240204-095114",
+      "video_start": 32.25,
+      "video_end": 32.97,
       "raw_action": "turn-on(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.25
     },
     {
       "index": 21,
@@ -4449,9 +6332,15 @@
       "edge_key": "attach(milk)|||turn-on(plug)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 64,
+      "noun_class": 64,
+      "video_id": "P01-20240204-095114",
+      "video_start": 35.42,
+      "video_end": 36.72,
       "raw_action": "attach(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.2625
     },
     {
       "index": 22,
@@ -4463,9 +6352,15 @@
       "edge_key": "turn-on(plug)|||turn-on(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 6,
+      "noun_class": 153,
+      "video_id": "P01-20240204-095114",
+      "video_start": 37.02,
+      "video_end": 38.32,
       "raw_action": "turn-on(plug)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.275
     },
     {
       "index": 23,
@@ -4477,9 +6372,15 @@
       "edge_key": "turn-on(milk)|||open(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 6,
+      "noun_class": 64,
+      "video_id": "P01-20240204-095114",
+      "video_start": 38.82,
+      "video_end": 39.84,
       "raw_action": "turn-on(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.2875
     },
     {
       "index": 24,
@@ -4491,9 +6392,15 @@
       "edge_key": "open(cupboard)|||take(bowl)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 3,
+      "video_id": "P01-20240204-095114",
+      "video_start": 41.76,
+      "video_end": 42.67,
       "raw_action": "open(cupboard)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.3
     },
     {
       "index": 25,
@@ -4505,9 +6412,15 @@
       "edge_key": "take(bowl)|||close(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 7,
+      "video_id": "P01-20240204-095114",
+      "video_start": 43.05,
+      "video_end": 43.8,
       "raw_action": "take(bowl)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.3125
     },
     {
       "index": 26,
@@ -4519,9 +6432,15 @@
       "edge_key": "close(cupboard)|||take(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 3,
+      "video_id": "P01-20240204-095114",
+      "video_start": 44.06,
+      "video_end": 44.74,
       "raw_action": "close(cupboard)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.325
     },
     {
       "index": 27,
@@ -4533,9 +6452,15 @@
       "edge_key": "take(milk)|||put(bowl)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 64,
+      "video_id": "P01-20240204-095114",
+      "video_start": 46.32,
+      "video_end": 46.78,
       "raw_action": "take(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.3375
     },
     {
       "index": 28,
@@ -4547,9 +6472,15 @@
       "edge_key": "put(bowl)|||open(bottle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 7,
+      "video_id": "P01-20240204-095114",
+      "video_start": 46.69,
+      "video_end": 47.14,
       "raw_action": "put(bowl)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.35
     },
     {
       "index": 29,
@@ -4561,9 +6492,15 @@
       "edge_key": "open(bottle)|||pour(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 15,
+      "video_id": "P01-20240204-095114",
+      "video_start": 48.04,
+      "video_end": 48.79,
       "raw_action": "open(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.3625
     },
     {
       "index": 30,
@@ -4575,9 +6512,15 @@
       "edge_key": "pour(milk)|||close(bottle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 9,
+      "noun_class": 64,
+      "video_id": "P01-20240204-095114",
+      "video_start": 48.88,
+      "video_end": 52.7,
       "raw_action": "pour(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.375
     },
     {
       "index": 31,
@@ -4589,9 +6532,15 @@
       "edge_key": "close(bottle)|||open(bottle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 15,
+      "video_id": "P01-20240204-095114",
+      "video_start": 53.31,
+      "video_end": 54.33,
       "raw_action": "close(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.3875
     },
     {
       "index": 32,
@@ -4603,9 +6552,15 @@
       "edge_key": "open(bottle)|||pour(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 15,
+      "video_id": "P01-20240204-095114",
+      "video_start": 54.35,
+      "video_end": 55.09,
       "raw_action": "open(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.4
     },
     {
       "index": 33,
@@ -4617,9 +6572,15 @@
       "edge_key": "pour(milk)|||close(bottle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 9,
+      "noun_class": 64,
+      "video_id": "P01-20240204-095114",
+      "video_start": 54.7,
+      "video_end": 55.93,
       "raw_action": "pour(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.4125
     },
     {
       "index": 34,
@@ -4631,9 +6592,15 @@
       "edge_key": "close(bottle)|||open(fridge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 15,
+      "video_id": "P01-20240204-095114",
+      "video_start": 56.11,
+      "video_end": 57.3,
       "raw_action": "close(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.425
     },
     {
       "index": 35,
@@ -4645,9 +6612,15 @@
       "edge_key": "open(fridge)|||put(bottle)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 12,
+      "video_id": "P01-20240204-095114",
+      "video_start": 58.1,
+      "video_end": 59.17,
       "raw_action": "open(fridge)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.4375
     },
     {
       "index": 36,
@@ -4659,9 +6632,15 @@
       "edge_key": "put(bottle)|||close(fridge)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 15,
+      "video_id": "P01-20240204-095114",
+      "video_start": 59.04,
+      "video_end": 60.02,
       "raw_action": "put(bottle)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.45
     },
     {
       "index": 37,
@@ -4673,9 +6652,15 @@
       "edge_key": "close(fridge)|||take(box)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 12,
+      "video_id": "P01-20240204-095114",
+      "video_start": 60.05,
+      "video_end": 61.21,
       "raw_action": "close(fridge)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.4625
     },
     {
       "index": 38,
@@ -4687,9 +6672,15 @@
       "edge_key": "take(box)|||open(box)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 23,
+      "video_id": "P01-20240204-095114",
+      "video_start": 63.38,
+      "video_end": 64.93,
       "raw_action": "take(box)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.475
     },
     {
       "index": 39,
@@ -4701,9 +6692,15 @@
       "edge_key": "open(box)|||press(button)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 23,
+      "video_id": "P01-20240204-095114",
+      "video_start": 66.09,
+      "video_end": 67.61,
       "raw_action": "open(box)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.4875
     },
     {
       "index": 40,
@@ -4715,9 +6712,15 @@
       "edge_key": "press(button)|||take(cereal)",
       "step_id": "P01_R01_S02",
       "is_primary": true,
+      "verb_class": 21,
+      "noun_class": 92,
+      "video_id": "P01-20240204-095114",
+      "video_start": 68.28,
+      "video_end": 68.75,
       "raw_action": "press(button)",
       "raw_step_id": "P01_R01_S02",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.5
     },
     {
       "index": 41,
@@ -4729,9 +6732,15 @@
       "edge_key": "take(cereal)|||put(cereal)",
       "step_id": "P01_R01_S02",
       "is_primary": true,
+      "verb_class": 0,
+      "noun_class": 99,
+      "video_id": "P01-20240204-095114",
+      "video_start": 69.3,
+      "video_end": 73.68,
       "raw_action": "take(cereal)",
       "raw_step_id": "P01_R01_S02",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.5125
     },
     {
       "index": 42,
@@ -4743,9 +6752,15 @@
       "edge_key": "put(cereal)|||take(cereal)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 99,
+      "video_id": "P01-20240204-095114",
+      "video_start": 73.74,
+      "video_end": 75.16,
       "raw_action": "put(cereal)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.525
     },
     {
       "index": 43,
@@ -4757,9 +6772,15 @@
       "edge_key": "take(cereal)|||put(cereal)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 99,
+      "video_id": "P01-20240204-095114",
+      "video_start": 75.23,
+      "video_end": 78.55,
       "raw_action": "take(cereal)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.5375
     },
     {
       "index": 44,
@@ -4771,9 +6792,15 @@
       "edge_key": "put(cereal)|||close(bag)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 99,
+      "video_id": "P01-20240204-095114",
+      "video_start": 78.42,
+      "video_end": 79.59,
       "raw_action": "put(cereal)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.55
     },
     {
       "index": 45,
@@ -4785,9 +6812,15 @@
       "edge_key": "close(bag)|||close(box)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 19,
+      "video_id": "P01-20240204-095114",
+      "video_start": 79.98,
+      "video_end": 82.0,
       "raw_action": "close(bag)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.5625
     },
     {
       "index": 46,
@@ -4799,9 +6832,15 @@
       "edge_key": "close(box)|||put(cereal)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 23,
+      "video_id": "P01-20240204-095114",
+      "video_start": 81.73,
+      "video_end": 83.0,
       "raw_action": "close(box)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.575
     },
     {
       "index": 47,
@@ -4813,9 +6852,15 @@
       "edge_key": "put(cereal)|||open(drawer)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 99,
+      "video_id": "P01-20240204-095114",
+      "video_start": 84.28,
+      "video_end": 85.69,
       "raw_action": "put(cereal)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.5875
     },
     {
       "index": 48,
@@ -4827,9 +6872,15 @@
       "edge_key": "open(drawer)|||take(spoon)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 8,
+      "video_id": "P01-20240204-095114",
+      "video_start": 88.28,
+      "video_end": 89.59,
       "raw_action": "open(drawer)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.6
     },
     {
       "index": 49,
@@ -4841,9 +6892,15 @@
       "edge_key": "take(spoon)|||pat(top)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 1,
+      "video_id": "P01-20240204-095114",
+      "video_start": 90.02,
+      "video_end": 91.22,
       "raw_action": "take(spoon)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.6125
     },
     {
       "index": 50,
@@ -4855,9 +6912,15 @@
       "edge_key": "pat(top)|||put(spoon)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 32,
+      "noun_class": 42,
+      "video_id": "P01-20240204-095114",
+      "video_start": 91.78,
+      "video_end": 100.6,
       "raw_action": "pat(top)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.625
     },
     {
       "index": 51,
@@ -4869,9 +6932,15 @@
       "edge_key": "put(spoon)|||open(box)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 1,
+      "video_id": "P01-20240204-095114",
+      "video_start": 100.23,
+      "video_end": 101.14,
       "raw_action": "put(spoon)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.6375
     },
     {
       "index": 52,
@@ -4883,9 +6952,15 @@
       "edge_key": "open(box)|||take(spoon)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 23,
+      "video_id": "P01-20240204-095114",
+      "video_start": 100.84,
+      "video_end": 101.88,
       "raw_action": "open(box)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.65
     },
     {
       "index": 53,
@@ -4897,9 +6972,15 @@
       "edge_key": "take(spoon)|||close(box)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 1,
+      "video_id": "P01-20240204-095114",
+      "video_start": 101.76,
+      "video_end": 103.4,
       "raw_action": "take(spoon)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.6625
     },
     {
       "index": 54,
@@ -4911,9 +6992,15 @@
       "edge_key": "close(box)|||move(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 23,
+      "video_id": "P01-20240204-095114",
+      "video_start": 103.34,
+      "video_end": 104.11,
       "raw_action": "close(box)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.675
     },
     {
       "index": 55,
@@ -4925,9 +7012,15 @@
       "edge_key": "move(cup)|||take(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 11,
+      "noun_class": 13,
+      "video_id": "P01-20240204-095114",
+      "video_start": 104.28,
+      "video_end": 106.45,
       "raw_action": "move(cup)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.6875
     },
     {
       "index": 56,
@@ -4939,9 +7032,15 @@
       "edge_key": "take(milk)|||pat(milk)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
+      "verb_class": 0,
+      "noun_class": 64,
+      "video_id": "P01-20240204-095114",
+      "video_start": 112.84,
+      "video_end": 113.69,
       "raw_action": "take(milk)",
       "raw_step_id": "P01_R01_S04",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.7
     },
     {
       "index": 57,
@@ -4953,9 +7052,15 @@
       "edge_key": "pat(milk)|||pour(milk)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
+      "verb_class": 32,
+      "noun_class": 64,
+      "video_id": "P01-20240204-095114",
+      "video_start": 114.94,
+      "video_end": 116.49,
       "raw_action": "pat(milk)",
       "raw_step_id": "P01_R01_S04",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.7125
     },
     {
       "index": 58,
@@ -4967,9 +7072,15 @@
       "edge_key": "pour(milk)|||lift(milk)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
+      "verb_class": 9,
+      "noun_class": 64,
+      "video_id": "P01-20240204-095114",
+      "video_start": 116.43,
+      "video_end": 123.16,
       "raw_action": "pour(milk)",
       "raw_step_id": "P01_R01_S04",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.725
     },
     {
       "index": 59,
@@ -4981,9 +7092,15 @@
       "edge_key": "lift(milk)|||put(spoon)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
+      "verb_class": 33,
+      "noun_class": 64,
+      "video_id": "P01-20240204-095114",
+      "video_start": 121.68,
+      "video_end": 130.84,
       "raw_action": "lift(milk)",
       "raw_step_id": "P01_R01_S04",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.7375
     },
     {
       "index": 60,
@@ -4995,9 +7112,15 @@
       "edge_key": "put(spoon)|||put(milk)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
+      "verb_class": 1,
+      "noun_class": 1,
+      "video_id": "P01-20240204-095114",
+      "video_start": 131.28,
+      "video_end": 132.03,
       "raw_action": "put(spoon)",
       "raw_step_id": "P01_R01_S04",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.75
     },
     {
       "index": 61,
@@ -5009,9 +7132,15 @@
       "edge_key": "put(milk)|||open(tap)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 64,
+      "video_id": "P01-20240204-095114",
+      "video_start": 134.45,
+      "video_end": 134.81,
       "raw_action": "put(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.7625
     },
     {
       "index": 62,
@@ -5023,9 +7152,15 @@
       "edge_key": "open(tap)|||wash(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 0,
+      "video_id": "P01-20240204-095114",
+      "video_start": 134.88,
+      "video_end": 135.21,
       "raw_action": "open(tap)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.775
     },
     {
       "index": 63,
@@ -5037,9 +7172,15 @@
       "edge_key": "wash(milk)|||close(tap)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 2,
+      "noun_class": 64,
+      "video_id": "P01-20240204-095114",
+      "video_start": 135.42,
+      "video_end": 138.94,
       "raw_action": "wash(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.7875
     },
     {
       "index": 64,
@@ -5051,9 +7192,15 @@
       "edge_key": "close(tap)|||turn(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 0,
+      "video_id": "P01-20240204-095114",
+      "video_start": 139.18,
+      "video_end": 139.46,
       "raw_action": "close(tap)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.8
     },
     {
       "index": 65,
@@ -5065,9 +7212,15 @@
       "edge_key": "turn(milk)|||open(tap)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 64,
+      "video_id": "P01-20240204-095114",
+      "video_start": 139.26,
+      "video_end": 140.04,
       "raw_action": "turn(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.8125
     },
     {
       "index": 66,
@@ -5079,9 +7232,15 @@
       "edge_key": "open(tap)|||wash(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 0,
+      "video_id": "P01-20240204-095114",
+      "video_start": 140.03,
+      "video_end": 140.52,
       "raw_action": "open(tap)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.825
     },
     {
       "index": 67,
@@ -5093,9 +7252,15 @@
       "edge_key": "wash(milk)|||close(tap)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 2,
+      "noun_class": 64,
+      "video_id": "P01-20240204-095114",
+      "video_start": 140.57,
+      "video_end": 141.71,
       "raw_action": "wash(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.8375
     },
     {
       "index": 68,
@@ -5107,9 +7272,15 @@
       "edge_key": "close(tap)|||turn(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 0,
+      "video_id": "P01-20240204-095114",
+      "video_start": 141.63,
+      "video_end": 142.13,
       "raw_action": "close(tap)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.85
     },
     {
       "index": 69,
@@ -5121,9 +7292,15 @@
       "edge_key": "turn(milk)|||put(milk)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 23,
+      "noun_class": 64,
+      "video_id": "P01-20240204-095114",
+      "video_start": 142.07,
+      "video_end": 142.86,
       "raw_action": "turn(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.8625
     },
     {
       "index": 70,
@@ -5135,9 +7312,15 @@
       "edge_key": "put(milk)|||dry(hand)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 64,
+      "video_id": "P01-20240204-095114",
+      "video_start": 145.82,
+      "video_end": 147.05,
       "raw_action": "put(milk)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.875
     },
     {
       "index": 71,
@@ -5149,9 +7332,15 @@
       "edge_key": "dry(hand)|||hold(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 14,
+      "noun_class": 11,
+      "video_id": "P01-20240204-095114",
+      "video_start": 147.61,
+      "video_end": 150.28,
       "raw_action": "dry(hand)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.8875
     },
     {
       "index": 72,
@@ -5163,9 +7352,15 @@
       "edge_key": "hold(cup)|||hold(spoon)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "verb_class": 34,
+      "noun_class": 13,
+      "video_id": "P01-20240204-095114",
+      "video_start": 150.57999999999998,
+      "video_end": 151.29,
       "raw_action": "hold(cup)",
       "raw_step_id": "P01_R01_S05",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.9
     },
     {
       "index": 73,
@@ -5177,9 +7372,15 @@
       "edge_key": "hold(spoon)|||take(cup)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "verb_class": 34,
+      "noun_class": 1,
+      "video_id": "P01-20240204-095114",
+      "video_start": 151.67000000000002,
+      "video_end": 152.49,
       "raw_action": "hold(spoon)",
       "raw_step_id": "P01_R01_S05",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.9125
     },
     {
       "index": 74,
@@ -5191,9 +7392,15 @@
       "edge_key": "take(cup)|||mix(coffee)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "verb_class": 0,
+      "noun_class": 13,
+      "video_id": "P01-20240204-095114",
+      "video_start": 152.01,
+      "video_end": 152.46,
       "raw_action": "take(cup)",
       "raw_step_id": "P01_R01_S05",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.925
     },
     {
       "index": 75,
@@ -5205,9 +7412,15 @@
       "edge_key": "mix(coffee)|||shake(spoon)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "verb_class": 10,
+      "noun_class": 59,
+      "video_id": "P01-20240204-095114",
+      "video_start": 152.25,
+      "video_end": 157.3,
       "raw_action": "mix(coffee)",
       "raw_step_id": "P01_R01_S05",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.9375
     },
     {
       "index": 76,
@@ -5219,9 +7432,15 @@
       "edge_key": "shake(spoon)|||open(lid)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "verb_class": 15,
+      "noun_class": 1,
+      "video_id": "P01-20240204-095114",
+      "video_start": 157.29,
+      "video_end": 158.56,
       "raw_action": "shake(spoon)",
       "raw_step_id": "P01_R01_S05",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.95
     },
     {
       "index": 77,
@@ -5233,9 +7452,15 @@
       "edge_key": "open(lid)|||throw(spoon)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 6,
+      "video_id": "P01-20240204-095114",
+      "video_start": 159.38,
+      "video_end": 160.11,
       "raw_action": "open(lid)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.9625
     },
     {
       "index": 78,
@@ -5247,9 +7472,15 @@
       "edge_key": "throw(spoon)|||close(bin)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 13,
+      "noun_class": 1,
+      "video_id": "P01-20240204-095114",
+      "video_start": 159.91,
+      "video_end": 160.63,
       "raw_action": "throw(spoon)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.975
     },
     {
       "index": 79,
@@ -5261,9 +7492,15 @@
       "edge_key": "close(bin)|||put(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 36,
+      "video_id": "P01-20240204-095114",
+      "video_start": 160.37,
+      "video_end": 161.25,
       "raw_action": "close(bin)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 0.9875
     },
     {
       "index": 80,
@@ -5275,9 +7512,15 @@
       "edge_key": null,
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 13,
+      "video_id": "P01-20240204-095114",
+      "video_start": 163.57,
+      "video_end": 164.47,
       "raw_action": "put(cup)",
       "raw_step_id": "unassigned",
-      "session_index": 2
+      "session_index": 2,
+      "normalized_rank": 1.0
     }
   ],
   "graph": {
@@ -6139,7 +8382,8 @@
             78,
             79
           ]
-        }
+        },
+        "probability": 0.9414
       },
       {
         "source": "S05",
@@ -6173,7 +8417,8 @@
             74,
             75
           ]
-        }
+        },
+        "probability": 0.7857
       },
       {
         "source": "S04",
@@ -6204,7 +8449,8 @@
             58,
             59
           ]
-        }
+        },
+        "probability": 0.75
       },
       {
         "source": "S02",
@@ -6234,7 +8480,8 @@
             7,
             41
           ]
-        }
+        },
+        "probability": 0.875
       },
       {
         "source": "unassigned",
@@ -6264,7 +8511,8 @@
             6,
             39
           ]
-        }
+        },
+        "probability": 0.0216
       },
       {
         "source": "S01",
@@ -6291,7 +8539,8 @@
             11,
             12
           ]
-        }
+        },
+        "probability": 0.625
       },
       {
         "source": "S01",
@@ -6317,7 +8566,8 @@
           "2": [
             13
           ]
-        }
+        },
+        "probability": 0.375
       },
       {
         "source": "S03",
@@ -6343,7 +8593,8 @@
           "2": [
             17
           ]
-        }
+        },
+        "probability": 0.75
       },
       {
         "source": "S04",
@@ -6369,7 +8620,8 @@
           "2": [
             60
           ]
-        }
+        },
+        "probability": 0.25
       },
       {
         "source": "S05",
@@ -6395,7 +8647,8 @@
           "2": [
             76
           ]
-        }
+        },
+        "probability": 0.2143
       },
       {
         "source": "unassigned",
@@ -6421,7 +8674,8 @@
           "2": [
             9
           ]
-        }
+        },
+        "probability": 0.0093
       },
       {
         "source": "unassigned",
@@ -6447,7 +8701,8 @@
           "2": [
             16
           ]
-        }
+        },
+        "probability": 0.0093
       },
       {
         "source": "unassigned",
@@ -6473,7 +8728,8 @@
           "2": [
             55
           ]
-        }
+        },
+        "probability": 0.0093
       },
       {
         "source": "unassigned",
@@ -6499,7 +8755,8 @@
           "2": [
             71
           ]
-        }
+        },
+        "probability": 0.0093
       },
       {
         "source": "S02",
@@ -6521,7 +8778,8 @@
           "2": [
             40
           ]
-        }
+        },
+        "probability": 0.125
       },
       {
         "source": "S03",
@@ -6543,7 +8801,8 @@
           ],
           "1": [],
           "2": []
-        }
+        },
+        "probability": 0.25
       }
     ]
   }

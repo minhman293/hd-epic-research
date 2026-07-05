@@ -60,7 +60,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 7.44,
       "video_end": 8.75,
-      "raw_action": "open(cupboard)"
+      "raw_action": "open(cupboard)",
+      "salient": false
     },
     {
       "index": 1,
@@ -77,7 +78,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 8.85,
       "video_end": 9.36,
-      "raw_action": "stretch(hand)"
+      "raw_action": "stretch(hand)",
+      "salient": false
     },
     {
       "index": 2,
@@ -94,7 +96,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 9.34,
       "video_end": 11.16,
-      "raw_action": "take(cup)"
+      "raw_action": "take(cup)",
+      "salient": false
     },
     {
       "index": 3,
@@ -111,7 +114,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 11.15,
       "video_end": 11.6,
-      "raw_action": "turn(cup)"
+      "raw_action": "turn(cup)",
+      "salient": false
     },
     {
       "index": 4,
@@ -128,7 +132,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 11.5,
       "video_end": 12.18,
-      "raw_action": "close(cupboard)"
+      "raw_action": "close(cupboard)",
+      "salient": false
     },
     {
       "index": 5,
@@ -145,7 +150,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 13.73,
       "video_end": 14.11,
-      "raw_action": "flip(maker:coffee)"
+      "raw_action": "flip(maker:coffee)",
+      "salient": false
     },
     {
       "index": 6,
@@ -162,11 +168,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 14.2,
       "video_end": 14.55,
-      "raw_action": "put(cup)"
+      "raw_action": "put(cup)",
+      "salient": false
     },
     {
       "index": 7,
-      "action": "retrieve",
+      "action": "retrieve(coffee)",
       "start": 14.81,
       "end": 15.08,
       "duration": 0.2699999999999996,
@@ -179,11 +186,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 14.81,
       "video_end": 15.08,
-      "raw_action": "take(coffee)"
+      "raw_action": "take(coffee)",
+      "salient": true
     },
     {
       "index": 8,
-      "action": "manipulate",
+      "action": "manipulate(button)",
       "start": 15.36,
       "end": 15.65,
       "duration": 0.2900000000000009,
@@ -196,7 +204,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 15.36,
       "video_end": 15.65,
-      "raw_action": "press(button)"
+      "raw_action": "press(button)",
+      "salient": true
     },
     {
       "index": 9,
@@ -213,7 +222,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 16.06,
       "video_end": 16.64,
-      "raw_action": "lift(handle)"
+      "raw_action": "lift(handle)",
+      "salient": false
     },
     {
       "index": 10,
@@ -230,7 +240,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 16.08,
       "video_end": 17.26,
-      "raw_action": "slide(coffee)"
+      "raw_action": "slide(coffee)",
+      "salient": false
     },
     {
       "index": 11,
@@ -247,7 +258,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 17.4,
       "video_end": 18.02,
-      "raw_action": "pull(handle)"
+      "raw_action": "pull(handle)",
+      "salient": false
     },
     {
       "index": 12,
@@ -264,7 +276,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 19.75,
       "video_end": 21.1,
-      "raw_action": "open(fridge)"
+      "raw_action": "open(fridge)",
+      "salient": false
     },
     {
       "index": 13,
@@ -281,7 +294,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 21.4,
       "video_end": 22.0,
-      "raw_action": "take(bottle)"
+      "raw_action": "take(bottle)",
+      "salient": false
     },
     {
       "index": 14,
@@ -298,11 +312,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 22.1,
       "video_end": 23.47,
-      "raw_action": "close(fridge)"
+      "raw_action": "close(fridge)",
+      "salient": false
     },
     {
       "index": 15,
-      "action": "manipulate",
+      "action": "manipulate(milk)",
       "start": 24.55,
       "end": 25.5,
       "duration": 0.9499999999999993,
@@ -315,7 +330,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 24.55,
       "video_end": 25.5,
-      "raw_action": "slide(milk)"
+      "raw_action": "slide(milk)",
+      "salient": true
     },
     {
       "index": 16,
@@ -332,7 +348,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 25.75,
       "video_end": 26.8,
-      "raw_action": "open(bottle)"
+      "raw_action": "open(bottle)",
+      "salient": false
     },
     {
       "index": 17,
@@ -349,7 +366,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 27.0,
       "video_end": 27.5,
-      "raw_action": "lift(bottle)"
+      "raw_action": "lift(bottle)",
+      "salient": false
     },
     {
       "index": 18,
@@ -366,11 +384,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 27.61,
       "video_end": 33.79,
-      "raw_action": "lift(bottle)"
+      "raw_action": "lift(bottle)",
+      "salient": false
     },
     {
       "index": 19,
-      "action": "access",
+      "action": "access(milk)",
       "start": 30.7,
       "end": 32.4,
       "duration": 1.6999999999999993,
@@ -383,7 +402,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 30.7,
       "video_end": 32.4,
-      "raw_action": "turn-on(milk)"
+      "raw_action": "turn-on(milk)",
+      "salient": true
     },
     {
       "index": 20,
@@ -400,7 +420,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 34.14,
       "video_end": 34.83,
-      "raw_action": "take(bottle)"
+      "raw_action": "take(bottle)",
+      "salient": false
     },
     {
       "index": 21,
@@ -417,7 +438,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 36.07,
       "video_end": 37.07,
-      "raw_action": "open(fridge)"
+      "raw_action": "open(fridge)",
+      "salient": false
     },
     {
       "index": 22,
@@ -434,7 +456,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 37.17,
       "video_end": 38.09,
-      "raw_action": "put(bottle)"
+      "raw_action": "put(bottle)",
+      "salient": false
     },
     {
       "index": 23,
@@ -451,11 +474,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 38.02,
       "video_end": 38.64,
-      "raw_action": "close(fridge)"
+      "raw_action": "close(fridge)",
+      "salient": false
     },
     {
       "index": 24,
-      "action": "manipulate",
+      "action": "manipulate(button)",
       "start": 41.19,
       "end": 42.43,
       "duration": 1.240000000000002,
@@ -468,7 +492,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 41.19,
       "video_end": 42.43,
-      "raw_action": "press(button)"
+      "raw_action": "press(button)",
+      "salient": true
     },
     {
       "index": 25,
@@ -485,7 +510,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 48.28,
       "video_end": 49.29,
-      "raw_action": "open(drawer)"
+      "raw_action": "open(drawer)",
+      "salient": false
     },
     {
       "index": 26,
@@ -502,7 +528,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 49.54,
       "video_end": 50.04,
-      "raw_action": "take(scissors)"
+      "raw_action": "take(scissors)",
+      "salient": false
     },
     {
       "index": 27,
@@ -519,7 +546,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 50.17,
       "video_end": 51.04,
-      "raw_action": "remove(package)"
+      "raw_action": "remove(package)",
+      "salient": false
     },
     {
       "index": 28,
@@ -536,7 +564,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 51.41,
       "video_end": 52.71,
-      "raw_action": "open(scissors)"
+      "raw_action": "open(scissors)",
+      "salient": false
     },
     {
       "index": 29,
@@ -553,7 +582,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 53.31,
       "video_end": 54.11,
-      "raw_action": "take(orange)"
+      "raw_action": "take(orange)",
+      "salient": false
     },
     {
       "index": 30,
@@ -570,7 +600,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 55.26,
       "video_end": 55.62,
-      "raw_action": "take(orange)"
+      "raw_action": "take(orange)",
+      "salient": false
     },
     {
       "index": 31,
@@ -587,7 +618,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 56.6,
       "video_end": 57.98,
-      "raw_action": "take(orange)"
+      "raw_action": "take(orange)",
+      "salient": false
     },
     {
       "index": 32,
@@ -604,7 +636,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 58.66,
       "video_end": 60.48,
-      "raw_action": "wrap(scissors)"
+      "raw_action": "wrap(scissors)",
+      "salient": false
     },
     {
       "index": 33,
@@ -621,7 +654,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 61.54,
       "video_end": 62.54,
-      "raw_action": "open(drawer)"
+      "raw_action": "open(drawer)",
+      "salient": false
     },
     {
       "index": 34,
@@ -638,7 +672,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 62.44,
       "video_end": 62.78,
-      "raw_action": "put(scissors)"
+      "raw_action": "put(scissors)",
+      "salient": false
     },
     {
       "index": 35,
@@ -655,7 +690,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 64.86,
       "video_end": 65.84,
-      "raw_action": "slide(board:chopping)"
+      "raw_action": "slide(board:chopping)",
+      "salient": false
     },
     {
       "index": 36,
@@ -672,7 +708,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 66.2,
       "video_end": 68.92,
-      "raw_action": "take(food)"
+      "raw_action": "take(food)",
+      "salient": false
     },
     {
       "index": 37,
@@ -689,7 +726,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 69.58,
       "video_end": 69.91,
-      "raw_action": "hold(food)"
+      "raw_action": "hold(food)",
+      "salient": false
     },
     {
       "index": 38,
@@ -706,7 +744,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 70.27,
       "video_end": 70.55,
-      "raw_action": "remove(plug)"
+      "raw_action": "remove(plug)",
+      "salient": false
     },
     {
       "index": 39,
@@ -723,7 +762,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 71.03,
       "video_end": 71.86,
-      "raw_action": "put(plug)"
+      "raw_action": "put(plug)",
+      "salient": false
     },
     {
       "index": 40,
@@ -740,7 +780,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 71.93,
       "video_end": 72.49,
-      "raw_action": "press(plug)"
+      "raw_action": "press(plug)",
+      "salient": false
     },
     {
       "index": 41,
@@ -757,7 +798,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 73.14,
       "video_end": 73.94,
-      "raw_action": "turn(lid)"
+      "raw_action": "turn(lid)",
+      "salient": false
     },
     {
       "index": 42,
@@ -774,7 +816,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 74.16,
       "video_end": 74.74,
-      "raw_action": "put(lid)"
+      "raw_action": "put(lid)",
+      "salient": false
     },
     {
       "index": 43,
@@ -791,7 +834,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 76.15,
       "video_end": 78.0,
-      "raw_action": "open(cupboard)"
+      "raw_action": "open(cupboard)",
+      "salient": false
     },
     {
       "index": 44,
@@ -808,7 +852,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 81.51,
       "video_end": 82.59,
-      "raw_action": "move(package)"
+      "raw_action": "move(package)",
+      "salient": false
     },
     {
       "index": 45,
@@ -825,7 +870,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 84.55,
       "video_end": 85.23,
-      "raw_action": "take(juicer)"
+      "raw_action": "take(juicer)",
+      "salient": false
     },
     {
       "index": 46,
@@ -842,7 +888,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 85.85,
       "video_end": 87.47,
-      "raw_action": "close(cupboard)"
+      "raw_action": "close(cupboard)",
+      "salient": false
     },
     {
       "index": 47,
@@ -859,7 +906,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 87.21000000000001,
       "video_end": 89.05,
-      "raw_action": "move(box)"
+      "raw_action": "move(box)",
+      "salient": false
     },
     {
       "index": 48,
@@ -876,7 +924,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 89.36,
       "video_end": 90.29,
-      "raw_action": "slide(cupboard)"
+      "raw_action": "slide(cupboard)",
+      "salient": false
     },
     {
       "index": 49,
@@ -893,7 +942,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 90.63,
       "video_end": 91.38,
-      "raw_action": "press(cupboard)"
+      "raw_action": "press(cupboard)",
+      "salient": false
     },
     {
       "index": 50,
@@ -910,7 +960,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 93.43,
       "video_end": 94.65,
-      "raw_action": "put(juicer)"
+      "raw_action": "put(juicer)",
+      "salient": false
     },
     {
       "index": 51,
@@ -927,7 +978,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 94.49,
       "video_end": 95.36,
-      "raw_action": "turn(juicer)"
+      "raw_action": "turn(juicer)",
+      "salient": false
     },
     {
       "index": 52,
@@ -944,7 +996,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 95.46,
       "video_end": 97.82,
-      "raw_action": "lift(cream)"
+      "raw_action": "lift(cream)",
+      "salient": false
     },
     {
       "index": 53,
@@ -961,7 +1014,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 97.92,
       "video_end": 98.88,
-      "raw_action": "turn(knob)"
+      "raw_action": "turn(knob)",
+      "salient": false
     },
     {
       "index": 54,
@@ -978,7 +1032,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 98.98,
       "video_end": 100.14,
-      "raw_action": "switch(button)"
+      "raw_action": "switch(button)",
+      "salient": false
     },
     {
       "index": 55,
@@ -995,7 +1050,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 100.09,
       "video_end": 100.94,
-      "raw_action": "turn(food)"
+      "raw_action": "turn(food)",
+      "salient": false
     },
     {
       "index": 56,
@@ -1012,7 +1068,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 100.9,
       "video_end": 101.71,
-      "raw_action": "turn(knob)"
+      "raw_action": "turn(knob)",
+      "salient": false
     },
     {
       "index": 57,
@@ -1029,7 +1086,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 101.81,
       "video_end": 102.93,
-      "raw_action": "take(orange)"
+      "raw_action": "take(orange)",
+      "salient": false
     },
     {
       "index": 58,
@@ -1046,7 +1104,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 103.03,
       "video_end": 103.78,
-      "raw_action": "put(orange)"
+      "raw_action": "put(orange)",
+      "salient": false
     },
     {
       "index": 59,
@@ -1063,7 +1122,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 103.88,
       "video_end": 104.92,
-      "raw_action": "open(drawer)"
+      "raw_action": "open(drawer)",
+      "salient": false
     },
     {
       "index": 60,
@@ -1080,7 +1140,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 105.13,
       "video_end": 106.1,
-      "raw_action": "take(vegetable)"
+      "raw_action": "take(vegetable)",
+      "salient": false
     },
     {
       "index": 61,
@@ -1097,7 +1158,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 106.2,
       "video_end": 108.67,
-      "raw_action": "take(roll)"
+      "raw_action": "take(roll)",
+      "salient": false
     },
     {
       "index": 62,
@@ -1114,7 +1176,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 108.64,
       "video_end": 116.04,
-      "raw_action": "feel(roll)"
+      "raw_action": "feel(roll)",
+      "salient": false
     },
     {
       "index": 63,
@@ -1131,7 +1194,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 116.01,
       "video_end": 116.68,
-      "raw_action": "pull(bag)"
+      "raw_action": "pull(bag)",
+      "salient": false
     },
     {
       "index": 64,
@@ -1148,7 +1212,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 116.76,
       "video_end": 117.8,
-      "raw_action": "put(vegetable)"
+      "raw_action": "put(vegetable)",
+      "salient": false
     },
     {
       "index": 65,
@@ -1165,7 +1230,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 117.89,
       "video_end": 118.65,
-      "raw_action": "close(drawer)"
+      "raw_action": "close(drawer)",
+      "salient": false
     },
     {
       "index": 66,
@@ -1182,7 +1248,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 119.51,
       "video_end": 123.38,
-      "raw_action": "pull(bag)"
+      "raw_action": "pull(bag)",
+      "salient": false
     },
     {
       "index": 67,
@@ -1199,7 +1266,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 123.5,
       "video_end": 124.14,
-      "raw_action": "shake(bag)"
+      "raw_action": "shake(bag)",
+      "salient": false
     },
     {
       "index": 68,
@@ -1216,7 +1284,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 124.43,
       "video_end": 125.09,
-      "raw_action": "open(lid)"
+      "raw_action": "open(lid)",
+      "salient": false
     },
     {
       "index": 69,
@@ -1233,7 +1302,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 125.19,
       "video_end": 127.9,
-      "raw_action": "put(bag)"
+      "raw_action": "put(bag)",
+      "salient": false
     },
     {
       "index": 70,
@@ -1250,7 +1320,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 127.89,
       "video_end": 128.68,
-      "raw_action": "close(lid)"
+      "raw_action": "close(lid)",
+      "salient": false
     },
     {
       "index": 71,
@@ -1267,7 +1338,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 128.91,
       "video_end": 129.68,
-      "raw_action": "press(top)"
+      "raw_action": "press(top)",
+      "salient": false
     },
     {
       "index": 72,
@@ -1284,11 +1356,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 130.41,
       "video_end": 131.13,
-      "raw_action": "hold(kettle)"
+      "raw_action": "hold(kettle)",
+      "salient": false
     },
     {
       "index": 73,
-      "action": "manipulate",
+      "action": "manipulate(button)",
       "start": 130.81,
       "end": 132.82,
       "duration": 2.009999999999991,
@@ -1301,7 +1374,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 130.81,
       "video_end": 132.82,
-      "raw_action": "press(button)"
+      "raw_action": "press(button)",
+      "salient": true
     },
     {
       "index": 74,
@@ -1318,7 +1392,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 132.85,
       "video_end": 133.86,
-      "raw_action": "close(kettle)"
+      "raw_action": "close(kettle)",
+      "salient": false
     },
     {
       "index": 75,
@@ -1335,11 +1410,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 136.35,
       "video_end": 137.31,
-      "raw_action": "turn(cup)"
+      "raw_action": "turn(cup)",
+      "salient": false
     },
     {
       "index": 76,
-      "action": "retrieve",
+      "action": "retrieve(milk)",
       "start": 136.72,
       "end": 137.47,
       "duration": 0.75,
@@ -1352,7 +1428,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 136.72,
       "video_end": 137.47,
-      "raw_action": "take(milk)"
+      "raw_action": "take(milk)",
+      "salient": true
     },
     {
       "index": 77,
@@ -1369,11 +1446,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 137.25,
       "video_end": 138.07,
-      "raw_action": "pat(milk)"
+      "raw_action": "pat(milk)",
+      "salient": false
     },
     {
       "index": 78,
-      "action": "retrieve",
+      "action": "retrieve(milk)",
       "start": 137.7,
       "end": 139.91,
       "duration": 2.210000000000008,
@@ -1386,11 +1464,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 137.7,
       "video_end": 139.91,
-      "raw_action": "lift(milk)"
+      "raw_action": "lift(milk)",
+      "salient": true
     },
     {
       "index": 79,
-      "action": "retrieve",
+      "action": "retrieve(milk)",
       "start": 139.92000000000002,
       "end": 142.8,
       "duration": 2.8799999999999955,
@@ -1403,11 +1482,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 139.92000000000002,
       "video_end": 142.8,
-      "raw_action": "lift(milk)"
+      "raw_action": "lift(milk)",
+      "salient": true
     },
     {
       "index": 80,
-      "action": "retrieve",
+      "action": "retrieve(milk)",
       "start": 141.14,
       "end": 143.1,
       "duration": 1.960000000000008,
@@ -1420,7 +1500,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 141.14,
       "video_end": 143.1,
-      "raw_action": "lift(milk)"
+      "raw_action": "lift(milk)",
+      "salient": true
     },
     {
       "index": 81,
@@ -1437,7 +1518,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 143.45,
       "video_end": 144.89,
-      "raw_action": "lift(lid)"
+      "raw_action": "lift(lid)",
+      "salient": false
     },
     {
       "index": 82,
@@ -1454,11 +1536,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 144.86,
       "video_end": 145.16,
-      "raw_action": "move(spoon)"
+      "raw_action": "move(spoon)",
+      "salient": false
     },
     {
       "index": 83,
-      "action": "merge",
+      "action": "merge(coffee)",
       "start": 145.29,
       "end": 147.12,
       "duration": 1.8300000000000125,
@@ -1471,11 +1554,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 145.29,
       "video_end": 147.12,
-      "raw_action": "mix(coffee)"
+      "raw_action": "mix(coffee)",
+      "salient": true
     },
     {
       "index": 84,
-      "action": "merge",
+      "action": "merge(coffee)",
       "start": 147.02,
       "end": 149.77,
       "duration": 2.75,
@@ -1488,7 +1572,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 147.02,
       "video_end": 149.77,
-      "raw_action": "mix(coffee)"
+      "raw_action": "mix(coffee)",
+      "salient": true
     },
     {
       "index": 85,
@@ -1505,7 +1590,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 149.86,
       "video_end": 150.78,
-      "raw_action": "take(rest)"
+      "raw_action": "take(rest)",
+      "salient": false
     },
     {
       "index": 86,
@@ -1522,7 +1608,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 150.73,
       "video_end": 151.61,
-      "raw_action": "shake(spoon)"
+      "raw_action": "shake(spoon)",
+      "salient": false
     },
     {
       "index": 87,
@@ -1539,7 +1626,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 153.12,
       "video_end": 153.38,
-      "raw_action": "open(lid)"
+      "raw_action": "open(lid)",
+      "salient": false
     },
     {
       "index": 88,
@@ -1556,7 +1644,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 153.63,
       "video_end": 154.07999999999998,
-      "raw_action": "throw(spoon)"
+      "raw_action": "throw(spoon)",
+      "salient": false
     },
     {
       "index": 89,
@@ -1573,11 +1662,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 154.06,
       "video_end": 154.29,
-      "raw_action": "close(bin)"
+      "raw_action": "close(bin)",
+      "salient": false
     },
     {
       "index": 90,
-      "action": "retrieve",
+      "action": "retrieve(milk)",
       "start": 155.41,
       "end": 156.07999999999998,
       "duration": 0.6699999999999875,
@@ -1590,7 +1680,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 155.41,
       "video_end": 156.07999999999998,
-      "raw_action": "take(milk)"
+      "raw_action": "take(milk)",
+      "salient": true
     },
     {
       "index": 91,
@@ -1607,7 +1698,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 157.91,
       "video_end": 158.57,
-      "raw_action": "open(tap)"
+      "raw_action": "open(tap)",
+      "salient": false
     },
     {
       "index": 92,
@@ -1624,11 +1716,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 158.37,
       "video_end": 159.53,
-      "raw_action": "move(milk)"
+      "raw_action": "move(milk)",
+      "salient": false
     },
     {
       "index": 93,
-      "action": "clean",
+      "action": "clean(milk)",
       "start": 159.45,
       "end": 160.94,
       "duration": 1.490000000000009,
@@ -1641,11 +1734,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 159.45,
       "video_end": 160.94,
-      "raw_action": "wash(milk)"
+      "raw_action": "wash(milk)",
+      "salient": true
     },
     {
       "index": 94,
-      "action": "manipulate",
+      "action": "manipulate(milk)",
       "start": 160.97,
       "end": 161.81,
       "duration": 0.8400000000000034,
@@ -1658,7 +1752,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 160.97,
       "video_end": 161.81,
-      "raw_action": "turn(milk)"
+      "raw_action": "turn(milk)",
+      "salient": true
     },
     {
       "index": 95,
@@ -1675,11 +1770,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 161.4,
       "video_end": 162.72,
-      "raw_action": "remove(cake)"
+      "raw_action": "remove(cake)",
+      "salient": false
     },
     {
       "index": 96,
-      "action": "clean",
+      "action": "clean(milk)",
       "start": 162.94,
       "end": 163.36,
       "duration": 0.4200000000000159,
@@ -1692,11 +1788,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 162.94,
       "video_end": 163.36,
-      "raw_action": "wash(milk)"
+      "raw_action": "wash(milk)",
+      "salient": true
     },
     {
       "index": 97,
-      "action": "clean",
+      "action": "clean(milk)",
       "start": 163.57999999999998,
       "end": 165.86,
       "duration": 2.2800000000000296,
@@ -1709,7 +1806,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 163.57999999999998,
       "video_end": 165.86,
-      "raw_action": "wash(milk)"
+      "raw_action": "wash(milk)",
+      "salient": true
     },
     {
       "index": 98,
@@ -1726,7 +1824,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 168.14,
       "video_end": 168.81,
-      "raw_action": "take(sponge)"
+      "raw_action": "take(sponge)",
+      "salient": false
     },
     {
       "index": 99,
@@ -1743,7 +1842,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 168.7,
       "video_end": 170.55,
-      "raw_action": "scrub(sponge)"
+      "raw_action": "scrub(sponge)",
+      "salient": false
     },
     {
       "index": 100,
@@ -1760,11 +1860,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 168.74,
       "video_end": 169.51,
-      "raw_action": "insert(sponge)"
+      "raw_action": "insert(sponge)",
+      "salient": false
     },
     {
       "index": 101,
-      "action": "clean",
+      "action": "clean(milk)",
       "start": 170.35,
       "end": 172.23,
       "duration": 1.8799999999999955,
@@ -1777,7 +1878,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 170.35,
       "video_end": 172.23,
-      "raw_action": "wash(milk)"
+      "raw_action": "wash(milk)",
+      "salient": true
     },
     {
       "index": 102,
@@ -1794,7 +1896,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 172.24,
       "video_end": 173.07999999999998,
-      "raw_action": "take(tray)"
+      "raw_action": "take(tray)",
+      "salient": false
     },
     {
       "index": 103,
@@ -1811,11 +1914,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 173.24,
       "video_end": 173.62,
-      "raw_action": "close(tap)"
+      "raw_action": "close(tap)",
+      "salient": false
     },
     {
       "index": 104,
-      "action": "retrieve",
+      "action": "retrieve(milk)",
       "start": 174.12,
       "end": 175.54,
       "duration": 1.4199999999999875,
@@ -1828,7 +1932,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 174.12,
       "video_end": 175.54,
-      "raw_action": "lift(milk)"
+      "raw_action": "lift(milk)",
+      "salient": true
     },
     {
       "index": 105,
@@ -1845,11 +1950,12 @@
       "video_id": "P01-20240202-110250",
       "video_start": 175.59,
       "video_end": 176.51,
-      "raw_action": "put(cream)"
+      "raw_action": "put(cream)",
+      "salient": false
     },
     {
       "index": 106,
-      "action": "leave",
+      "action": "leave(milk)",
       "start": 178.32999999999998,
       "end": 178.72,
       "duration": 0.3900000000000148,
@@ -1862,7 +1968,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 178.32999999999998,
       "video_end": 178.72,
-      "raw_action": "put(milk)"
+      "raw_action": "put(milk)",
+      "salient": true
     },
     {
       "index": 107,
@@ -1879,7 +1986,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 179.06,
       "video_end": 180.18,
-      "raw_action": "take(lid)"
+      "raw_action": "take(lid)",
+      "salient": false
     },
     {
       "index": 108,
@@ -1896,7 +2004,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 180.72,
       "video_end": 182.56,
-      "raw_action": "take(towel)"
+      "raw_action": "take(towel)",
+      "salient": false
     },
     {
       "index": 109,
@@ -1913,7 +2022,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 183.89,
       "video_end": 184.12,
-      "raw_action": "take(knife)"
+      "raw_action": "take(knife)",
+      "salient": false
     },
     {
       "index": 110,
@@ -1930,7 +2040,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 184.78,
       "video_end": 186.73,
-      "raw_action": "cut(orange)"
+      "raw_action": "cut(orange)",
+      "salient": false
     },
     {
       "index": 111,
@@ -1947,7 +2058,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 186.95,
       "video_end": 187.53,
-      "raw_action": "put(knife)"
+      "raw_action": "put(knife)",
+      "salient": false
     },
     {
       "index": 112,
@@ -1964,7 +2076,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 187.89,
       "video_end": 188.28,
-      "raw_action": "flip(orange)"
+      "raw_action": "flip(orange)",
+      "salient": false
     },
     {
       "index": 113,
@@ -1981,7 +2094,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 188.63,
       "video_end": 189.03,
-      "raw_action": "turn(food)"
+      "raw_action": "turn(food)",
+      "salient": false
     },
     {
       "index": 114,
@@ -1998,7 +2112,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 189.37,
       "video_end": 193.13,
-      "raw_action": "press(orange)"
+      "raw_action": "press(orange)",
+      "salient": false
     },
     {
       "index": 115,
@@ -2015,7 +2130,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 193.02,
       "video_end": 200.78,
-      "raw_action": "press(juicer)"
+      "raw_action": "press(juicer)",
+      "salient": false
     },
     {
       "index": 116,
@@ -2032,7 +2148,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 200.91,
       "video_end": 201.67,
-      "raw_action": "turn-off(food)"
+      "raw_action": "turn-off(food)",
+      "salient": false
     },
     {
       "index": 117,
@@ -2049,7 +2166,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 202.24,
       "video_end": 202.65,
-      "raw_action": "remove(orange)"
+      "raw_action": "remove(orange)",
+      "salient": false
     },
     {
       "index": 118,
@@ -2066,7 +2184,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 203.0,
       "video_end": 203.36,
-      "raw_action": "lift(lid)"
+      "raw_action": "lift(lid)",
+      "salient": false
     },
     {
       "index": 119,
@@ -2083,7 +2202,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 203.61,
       "video_end": 203.82,
-      "raw_action": "throw(skin)"
+      "raw_action": "throw(skin)",
+      "salient": false
     },
     {
       "index": 120,
@@ -2100,7 +2220,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 204.23,
       "video_end": 204.69,
-      "raw_action": "take(orange)"
+      "raw_action": "take(orange)",
+      "salient": false
     },
     {
       "index": 121,
@@ -2117,7 +2238,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 204.77,
       "video_end": 205.41,
-      "raw_action": "put(orange)"
+      "raw_action": "put(orange)",
+      "salient": false
     },
     {
       "index": 122,
@@ -2134,7 +2256,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 205.51,
       "video_end": 206.2,
-      "raw_action": "turn-on(food)"
+      "raw_action": "turn-on(food)",
+      "salient": false
     },
     {
       "index": 123,
@@ -2151,7 +2274,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 206.38,
       "video_end": 216.88,
-      "raw_action": "press(orange)"
+      "raw_action": "press(orange)",
+      "salient": false
     },
     {
       "index": 124,
@@ -2168,7 +2292,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 217.02,
       "video_end": 217.81,
-      "raw_action": "turn-off(food)"
+      "raw_action": "turn-off(food)",
+      "salient": false
     },
     {
       "index": 125,
@@ -2185,7 +2310,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 218.13,
       "video_end": 218.48,
-      "raw_action": "flip(orange)"
+      "raw_action": "flip(orange)",
+      "salient": false
     },
     {
       "index": 126,
@@ -2202,7 +2328,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 218.64,
       "video_end": 219.53,
-      "raw_action": "open(lid)"
+      "raw_action": "open(lid)",
+      "salient": false
     },
     {
       "index": 127,
@@ -2219,7 +2346,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 219.42,
       "video_end": 219.79,
-      "raw_action": "throw(skin)"
+      "raw_action": "throw(skin)",
+      "salient": false
     },
     {
       "index": 128,
@@ -2236,7 +2364,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 220.62,
       "video_end": 221.0,
-      "raw_action": "take(orange)"
+      "raw_action": "take(orange)",
+      "salient": false
     },
     {
       "index": 129,
@@ -2253,7 +2382,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 221.17,
       "video_end": 221.52,
-      "raw_action": "put(orange)"
+      "raw_action": "put(orange)",
+      "salient": false
     },
     {
       "index": 130,
@@ -2270,7 +2400,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 221.79,
       "video_end": 222.11,
-      "raw_action": "take(knife)"
+      "raw_action": "take(knife)",
+      "salient": false
     },
     {
       "index": 131,
@@ -2287,7 +2418,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 222.27,
       "video_end": 224.42,
-      "raw_action": "cut(orange)"
+      "raw_action": "cut(orange)",
+      "salient": false
     },
     {
       "index": 132,
@@ -2304,7 +2436,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 224.56,
       "video_end": 225.01,
-      "raw_action": "put(knife)"
+      "raw_action": "put(knife)",
+      "salient": false
     },
     {
       "index": 133,
@@ -2321,7 +2454,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 225.14,
       "video_end": 225.51,
-      "raw_action": "take(orange)"
+      "raw_action": "take(orange)",
+      "salient": false
     },
     {
       "index": 134,
@@ -2338,7 +2472,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 225.69,
       "video_end": 225.96,
-      "raw_action": "flip(orange)"
+      "raw_action": "flip(orange)",
+      "salient": false
     },
     {
       "index": 135,
@@ -2355,7 +2490,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 226.22,
       "video_end": 226.57,
-      "raw_action": "turn-on(food)"
+      "raw_action": "turn-on(food)",
+      "salient": false
     },
     {
       "index": 136,
@@ -2372,7 +2508,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 226.85,
       "video_end": 235.75,
-      "raw_action": "press(orange)"
+      "raw_action": "press(orange)",
+      "salient": false
     },
     {
       "index": 137,
@@ -2389,7 +2526,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 235.84,
       "video_end": 237.27,
-      "raw_action": "turn-off(food)"
+      "raw_action": "turn-off(food)",
+      "salient": false
     },
     {
       "index": 138,
@@ -2406,7 +2544,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 238.05,
       "video_end": 238.77,
-      "raw_action": "open(lid)"
+      "raw_action": "open(lid)",
+      "salient": false
     },
     {
       "index": 139,
@@ -2423,7 +2562,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 238.72,
       "video_end": 239.02,
-      "raw_action": "throw(orange)"
+      "raw_action": "throw(orange)",
+      "salient": false
     },
     {
       "index": 140,
@@ -2440,7 +2580,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 239.49,
       "video_end": 240.39,
-      "raw_action": "take(orange)"
+      "raw_action": "take(orange)",
+      "salient": false
     },
     {
       "index": 141,
@@ -2457,7 +2598,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 240.5,
       "video_end": 240.79,
-      "raw_action": "put(orange)"
+      "raw_action": "put(orange)",
+      "salient": false
     },
     {
       "index": 142,
@@ -2474,7 +2616,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 241.05,
       "video_end": 241.54,
-      "raw_action": "turn-on(food)"
+      "raw_action": "turn-on(food)",
+      "salient": false
     },
     {
       "index": 143,
@@ -2491,7 +2634,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 241.69,
       "video_end": 250.28,
-      "raw_action": "press(orange)"
+      "raw_action": "press(orange)",
+      "salient": false
     },
     {
       "index": 144,
@@ -2508,7 +2652,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 250.37,
       "video_end": 251.32,
-      "raw_action": "turn-off(food)"
+      "raw_action": "turn-off(food)",
+      "salient": false
     },
     {
       "index": 145,
@@ -2525,7 +2670,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 251.67,
       "video_end": 252.52,
-      "raw_action": "lift(lid)"
+      "raw_action": "lift(lid)",
+      "salient": false
     },
     {
       "index": 146,
@@ -2542,7 +2688,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 252.72,
       "video_end": 253.07,
-      "raw_action": "throw(skin)"
+      "raw_action": "throw(skin)",
+      "salient": false
     },
     {
       "index": 147,
@@ -2559,7 +2706,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 253.67,
       "video_end": 254.52,
-      "raw_action": "take(orange)"
+      "raw_action": "take(orange)",
+      "salient": false
     },
     {
       "index": 148,
@@ -2576,7 +2724,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 254.62,
       "video_end": 255.02,
-      "raw_action": "put(orange)"
+      "raw_action": "put(orange)",
+      "salient": false
     },
     {
       "index": 149,
@@ -2593,7 +2742,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 255.12,
       "video_end": 255.62,
-      "raw_action": "take(knife)"
+      "raw_action": "take(knife)",
+      "salient": false
     },
     {
       "index": 150,
@@ -2610,7 +2760,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 255.14,
       "video_end": 258.7,
-      "raw_action": "cut(orange)"
+      "raw_action": "cut(orange)",
+      "salient": false
     },
     {
       "index": 151,
@@ -2627,7 +2778,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 258.71,
       "video_end": 259.0,
-      "raw_action": "put(knife)"
+      "raw_action": "put(knife)",
+      "salient": false
     },
     {
       "index": 152,
@@ -2644,7 +2796,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 259.1,
       "video_end": 260.24,
-      "raw_action": "insert(top)"
+      "raw_action": "insert(top)",
+      "salient": false
     },
     {
       "index": 153,
@@ -2661,7 +2814,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 260.22,
       "video_end": 260.57,
-      "raw_action": "take(orange)"
+      "raw_action": "take(orange)",
+      "salient": false
     },
     {
       "index": 154,
@@ -2678,7 +2832,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 260.67,
       "video_end": 261.37,
-      "raw_action": "put(orange)"
+      "raw_action": "put(orange)",
+      "salient": false
     },
     {
       "index": 155,
@@ -2695,7 +2850,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 261.77,
       "video_end": 262.02,
-      "raw_action": "turn-on(food)"
+      "raw_action": "turn-on(food)",
+      "salient": false
     },
     {
       "index": 156,
@@ -2712,7 +2868,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 262.35,
       "video_end": 273.07,
-      "raw_action": "press(orange)"
+      "raw_action": "press(orange)",
+      "salient": false
     },
     {
       "index": 157,
@@ -2729,7 +2886,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 273.4,
       "video_end": 274.16,
-      "raw_action": "turn-off(food)"
+      "raw_action": "turn-off(food)",
+      "salient": false
     },
     {
       "index": 158,
@@ -2746,7 +2904,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 274.81,
       "video_end": 275.39,
-      "raw_action": "turn(orange)"
+      "raw_action": "turn(orange)",
+      "salient": false
     },
     {
       "index": 159,
@@ -2763,7 +2922,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 275.5,
       "video_end": 276.16,
-      "raw_action": "turn(orange)"
+      "raw_action": "turn(orange)",
+      "salient": false
     },
     {
       "index": 160,
@@ -2780,7 +2940,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 276.54,
       "video_end": 277.88,
-      "raw_action": "turn(food)"
+      "raw_action": "turn(food)",
+      "salient": false
     },
     {
       "index": 161,
@@ -2797,7 +2958,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 277.93,
       "video_end": 278.83,
-      "raw_action": "turn-off(food)"
+      "raw_action": "turn-off(food)",
+      "salient": false
     },
     {
       "index": 162,
@@ -2814,7 +2976,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 279.71,
       "video_end": 280.39,
-      "raw_action": "open(lid)"
+      "raw_action": "open(lid)",
+      "salient": false
     },
     {
       "index": 163,
@@ -2831,7 +2994,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 280.47,
       "video_end": 280.77,
-      "raw_action": "throw(skin)"
+      "raw_action": "throw(skin)",
+      "salient": false
     },
     {
       "index": 164,
@@ -2848,7 +3012,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 281.35,
       "video_end": 281.85,
-      "raw_action": "take(orange)"
+      "raw_action": "take(orange)",
+      "salient": false
     },
     {
       "index": 165,
@@ -2865,7 +3030,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 282.15,
       "video_end": 283.36,
-      "raw_action": "put(orange)"
+      "raw_action": "put(orange)",
+      "salient": false
     },
     {
       "index": 166,
@@ -2882,7 +3048,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 283.07,
       "video_end": 283.45,
-      "raw_action": "turn-on(machine:washing)"
+      "raw_action": "turn-on(machine:washing)",
+      "salient": false
     },
     {
       "index": 167,
@@ -2899,7 +3066,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 284.0,
       "video_end": 292.8,
-      "raw_action": "press(orange)"
+      "raw_action": "press(orange)",
+      "salient": false
     },
     {
       "index": 168,
@@ -2916,7 +3084,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 292.98,
       "video_end": 294.49,
-      "raw_action": "turn-off(food)"
+      "raw_action": "turn-off(food)",
+      "salient": false
     },
     {
       "index": 169,
@@ -2933,7 +3102,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 295.08,
       "video_end": 296.85,
-      "raw_action": "lift(orange)"
+      "raw_action": "lift(orange)",
+      "salient": false
     },
     {
       "index": 170,
@@ -2950,7 +3120,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 296.34000000000003,
       "video_end": 297.9,
-      "raw_action": "turn-on(machine:washing)"
+      "raw_action": "turn-on(machine:washing)",
+      "salient": false
     },
     {
       "index": 171,
@@ -2967,7 +3138,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 298.69,
       "video_end": 299.8,
-      "raw_action": "turn-off(machine:washing)"
+      "raw_action": "turn-off(machine:washing)",
+      "salient": false
     },
     {
       "index": 172,
@@ -2984,7 +3156,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 300.2,
       "video_end": 301.66,
-      "raw_action": "remove(skin)"
+      "raw_action": "remove(skin)",
+      "salient": false
     },
     {
       "index": 173,
@@ -3001,7 +3174,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 301.6,
       "video_end": 301.95,
-      "raw_action": "open(lid)"
+      "raw_action": "open(lid)",
+      "salient": false
     },
     {
       "index": 174,
@@ -3018,7 +3192,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 302.05,
       "video_end": 302.3,
-      "raw_action": "throw(skin)"
+      "raw_action": "throw(skin)",
+      "salient": false
     },
     {
       "index": 175,
@@ -3035,7 +3210,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 302.99,
       "video_end": 303.72,
-      "raw_action": "take(knife)"
+      "raw_action": "take(knife)",
+      "salient": false
     },
     {
       "index": 176,
@@ -3052,7 +3228,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 303.62,
       "video_end": 314.83,
-      "raw_action": "move(food)"
+      "raw_action": "move(food)",
+      "salient": false
     },
     {
       "index": 177,
@@ -3069,7 +3246,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 315.35,
       "video_end": 315.8,
-      "raw_action": "put(knife)"
+      "raw_action": "put(knife)",
+      "salient": false
     },
     {
       "index": 178,
@@ -3086,7 +3264,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 317.05,
       "video_end": 318.45,
-      "raw_action": "remove(cream)"
+      "raw_action": "remove(cream)",
+      "salient": false
     },
     {
       "index": 179,
@@ -3103,7 +3282,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 318.55,
       "video_end": 318.8,
-      "raw_action": "shake(skin)"
+      "raw_action": "shake(skin)",
+      "salient": false
     },
     {
       "index": 180,
@@ -3120,7 +3300,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 319.88,
       "video_end": 320.61,
-      "raw_action": "put(cream)"
+      "raw_action": "put(cream)",
+      "salient": false
     },
     {
       "index": 181,
@@ -3137,7 +3318,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 320.71,
       "video_end": 322.43,
-      "raw_action": "wash(cream)"
+      "raw_action": "wash(cream)",
+      "salient": false
     },
     {
       "index": 182,
@@ -3154,7 +3336,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 322.51,
       "video_end": 322.87,
-      "raw_action": "take(sponge)"
+      "raw_action": "take(sponge)",
+      "salient": false
     },
     {
       "index": 183,
@@ -3171,7 +3354,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 322.97,
       "video_end": 324.61,
-      "raw_action": "wash(cream)"
+      "raw_action": "wash(cream)",
+      "salient": false
     },
     {
       "index": 184,
@@ -3188,7 +3372,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 324.71,
       "video_end": 325.24,
-      "raw_action": "put(sponge)"
+      "raw_action": "put(sponge)",
+      "salient": false
     },
     {
       "index": 185,
@@ -3205,7 +3390,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 325.24,
       "video_end": 325.8,
-      "raw_action": "wash(cream)"
+      "raw_action": "wash(cream)",
+      "salient": false
     },
     {
       "index": 186,
@@ -3222,7 +3408,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 325.91,
       "video_end": 326.48,
-      "raw_action": "turn-off(tap)"
+      "raw_action": "turn-off(tap)",
+      "salient": false
     },
     {
       "index": 187,
@@ -3239,7 +3426,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 326.89,
       "video_end": 327.39,
-      "raw_action": "put(cream)"
+      "raw_action": "put(cream)",
+      "salient": false
     },
     {
       "index": 188,
@@ -3256,7 +3444,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 329.17,
       "video_end": 330.55,
-      "raw_action": "turn(bowl)"
+      "raw_action": "turn(bowl)",
+      "salient": false
     },
     {
       "index": 189,
@@ -3273,7 +3462,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 330.32,
       "video_end": 337.09000000000003,
-      "raw_action": "lift(bowl)"
+      "raw_action": "lift(bowl)",
+      "salient": false
     },
     {
       "index": 190,
@@ -3290,7 +3480,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 331.96,
       "video_end": 333.19,
-      "raw_action": "open(lid)"
+      "raw_action": "open(lid)",
+      "salient": false
     },
     {
       "index": 191,
@@ -3307,7 +3498,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 333.57,
       "video_end": 334.53,
-      "raw_action": "throw(food)"
+      "raw_action": "throw(food)",
+      "salient": false
     },
     {
       "index": 192,
@@ -3324,7 +3516,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 334.56,
       "video_end": 336.72,
-      "raw_action": "pat(bowl)"
+      "raw_action": "pat(bowl)",
+      "salient": false
     },
     {
       "index": 193,
@@ -3341,7 +3534,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 337.2,
       "video_end": 337.74,
-      "raw_action": "close(lid)"
+      "raw_action": "close(lid)",
+      "salient": false
     },
     {
       "index": 194,
@@ -3358,7 +3552,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 338.08,
       "video_end": 338.79,
-      "raw_action": "put(bowl)"
+      "raw_action": "put(bowl)",
+      "salient": false
     },
     {
       "index": 195,
@@ -3375,7 +3570,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 338.79,
       "video_end": 339.68,
-      "raw_action": "open(tap)"
+      "raw_action": "open(tap)",
+      "salient": false
     },
     {
       "index": 196,
@@ -3392,7 +3588,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 339.08,
       "video_end": 341.62,
-      "raw_action": "wash(bowl)"
+      "raw_action": "wash(bowl)",
+      "salient": false
     },
     {
       "index": 197,
@@ -3409,7 +3606,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 341.41,
       "video_end": 341.86,
-      "raw_action": "turn(bowl)"
+      "raw_action": "turn(bowl)",
+      "salient": false
     },
     {
       "index": 198,
@@ -3426,7 +3624,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 341.73,
       "video_end": 345.83,
-      "raw_action": "wash(juicer)"
+      "raw_action": "wash(juicer)",
+      "salient": false
     },
     {
       "index": 199,
@@ -3443,7 +3642,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 345.77,
       "video_end": 346.26,
-      "raw_action": "close(tap)"
+      "raw_action": "close(tap)",
+      "salient": false
     },
     {
       "index": 200,
@@ -3460,7 +3660,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 346.95,
       "video_end": 347.5,
-      "raw_action": "put(bowl)"
+      "raw_action": "put(bowl)",
+      "salient": false
     },
     {
       "index": 201,
@@ -3477,7 +3678,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 349.64,
       "video_end": 351.24,
-      "raw_action": "take(towel)"
+      "raw_action": "take(towel)",
+      "salient": false
     },
     {
       "index": 202,
@@ -3494,7 +3696,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 352.1,
       "video_end": 352.89,
-      "raw_action": "open(cupboard)"
+      "raw_action": "open(cupboard)",
+      "salient": false
     },
     {
       "index": 203,
@@ -3511,7 +3714,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 353.33,
       "video_end": 354.22,
-      "raw_action": "take(glass)"
+      "raw_action": "take(glass)",
+      "salient": false
     },
     {
       "index": 204,
@@ -3528,7 +3732,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 355.72,
       "video_end": 356.22,
-      "raw_action": "turn(glass)"
+      "raw_action": "turn(glass)",
+      "salient": false
     },
     {
       "index": 205,
@@ -3545,7 +3750,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 356.4,
       "video_end": 357.02,
-      "raw_action": "put(glass)"
+      "raw_action": "put(glass)",
+      "salient": false
     },
     {
       "index": 206,
@@ -3562,7 +3768,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 357.51,
       "video_end": 358.69,
-      "raw_action": "turn(bowl)"
+      "raw_action": "turn(bowl)",
+      "salient": false
     },
     {
       "index": 207,
@@ -3579,7 +3786,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 358.59000000000003,
       "video_end": 359.31,
-      "raw_action": "lift(bowl)"
+      "raw_action": "lift(bowl)",
+      "salient": false
     },
     {
       "index": 208,
@@ -3596,7 +3804,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 359.63,
       "video_end": 360.12,
-      "raw_action": "take(glass)"
+      "raw_action": "take(glass)",
+      "salient": false
     },
     {
       "index": 209,
@@ -3613,7 +3822,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 360.37,
       "video_end": 364.0,
-      "raw_action": "lift(bowl)"
+      "raw_action": "lift(bowl)",
+      "salient": false
     },
     {
       "index": 210,
@@ -3630,7 +3840,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 367.3,
       "video_end": 368.2,
-      "raw_action": "put(glass)"
+      "raw_action": "put(glass)",
+      "salient": false
     },
     {
       "index": 211,
@@ -3647,7 +3858,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 370.15,
       "video_end": 370.65,
-      "raw_action": "put(bowl)"
+      "raw_action": "put(bowl)",
+      "salient": false
     },
     {
       "index": 212,
@@ -3664,7 +3876,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 370.47,
       "video_end": 370.72,
-      "raw_action": "open(cap)"
+      "raw_action": "open(cap)",
+      "salient": false
     },
     {
       "index": 213,
@@ -3681,7 +3894,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 370.77,
       "video_end": 374.05,
-      "raw_action": "wash(food)"
+      "raw_action": "wash(food)",
+      "salient": false
     },
     {
       "index": 214,
@@ -3698,7 +3912,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 373.5,
       "video_end": 373.8,
-      "raw_action": "close(tap)"
+      "raw_action": "close(tap)",
+      "salient": false
     },
     {
       "index": 215,
@@ -3715,7 +3930,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 374.15,
       "video_end": 374.5,
-      "raw_action": "take(sponge)"
+      "raw_action": "take(sponge)",
+      "salient": false
     },
     {
       "index": 216,
@@ -3732,7 +3948,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 374.6,
       "video_end": 380.3,
-      "raw_action": "scrub(bowl)"
+      "raw_action": "scrub(bowl)",
+      "salient": false
     },
     {
       "index": 217,
@@ -3749,7 +3966,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 380.5,
       "video_end": 380.85,
-      "raw_action": "put(sponge)"
+      "raw_action": "put(sponge)",
+      "salient": false
     },
     {
       "index": 218,
@@ -3766,7 +3984,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 381.05,
       "video_end": 381.35,
-      "raw_action": "open(tap)"
+      "raw_action": "open(tap)",
+      "salient": false
     },
     {
       "index": 219,
@@ -3783,7 +4002,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 381.45,
       "video_end": 386.4,
-      "raw_action": "wash(bowl)"
+      "raw_action": "wash(bowl)",
+      "salient": false
     },
     {
       "index": 220,
@@ -3800,7 +4020,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 386.46,
       "video_end": 387.1,
-      "raw_action": "turn-off(tap)"
+      "raw_action": "turn-off(tap)",
+      "salient": false
     },
     {
       "index": 221,
@@ -3817,7 +4038,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 386.66,
       "video_end": 387.65,
-      "raw_action": "lift(bowl)"
+      "raw_action": "lift(bowl)",
+      "salient": false
     },
     {
       "index": 222,
@@ -3834,7 +4056,8 @@
       "video_id": "P01-20240202-110250",
       "video_start": 386.83,
       "video_end": 389.94,
-      "raw_action": "turn(bowl)"
+      "raw_action": "turn(bowl)",
+      "salient": false
     },
     {
       "index": 223,
@@ -3851,19 +4074,19 @@
       "video_id": "P01-20240202-110250",
       "video_start": 391.66,
       "video_end": 394.72,
-      "raw_action": "take(towel)"
+      "raw_action": "take(towel)",
+      "salient": false
     }
   ],
   "graph": {
     "nodes": [
       {
         "id": "retrieve",
-        "count": 59,
+        "count": 52,
         "is_primary": false,
-        "verb_category": "retrieve",
+        "salient": false,
         "objects": {
           "cup": 1,
-          "coffee": 1,
           "handle": 1,
           "bottle": 4,
           "scissors": 1,
@@ -3875,7 +4098,6 @@
           "cream": 2,
           "vegetable": 1,
           "roll": 1,
-          "milk": 6,
           "lid": 4,
           "rest": 1,
           "cake": 1,
@@ -3888,42 +4110,22 @@
           "glass": 2
         },
         "verbs": {
-          "take": 37,
-          "lift": 16,
+          "take": 34,
+          "lift": 12,
           "remove": 6
-        },
-        "noun_categories": {
-          "crockery": 7,
-          "drinks": 1,
-          "cookware": 2,
-          "containers": 9,
-          "utensils": 2,
-          "fruits and nuts": 13,
-          "prepared food": 1,
-          "appliances": 1,
-          "dairy and eggs": 8,
-          "vegetables": 1,
-          "baked goods and grains": 2,
-          "other": 1,
-          "cleaning equipment and material": 3,
-          "materials": 3,
-          "cutlery": 4,
-          "rubbish": 1
         }
       },
       {
         "id": "manipulate",
-        "count": 47,
+        "count": 42,
         "is_primary": false,
-        "verb_category": "manipulate",
+        "salient": false,
         "objects": {
           "hand": 1,
           "cup": 2,
           "maker:coffee": 1,
-          "button": 3,
           "coffee": 1,
           "handle": 1,
-          "milk": 2,
           "board:chopping": 1,
           "food": 4,
           "plug": 1,
@@ -3942,36 +4144,20 @@
         },
         "verbs": {
           "stretch": 1,
-          "turn": 17,
+          "turn": 16,
           "flip": 4,
-          "press": 13,
-          "slide": 4,
+          "slide": 3,
           "pull": 3,
           "hold": 2,
+          "press": 10,
           "shake": 3
-        },
-        "noun_categories": {
-          "hand": 1,
-          "crockery": 7,
-          "appliances": 8,
-          "drinks": 1,
-          "cookware": 1,
-          "dairy and eggs": 2,
-          "utensils": 3,
-          "prepared food": 4,
-          "containers": 4,
-          "storage": 2,
-          "furniture": 1,
-          "cutlery": 1,
-          "fruits and nuts": 11,
-          "rubbish": 1
         }
       },
       {
         "id": "leave",
-        "count": 40,
+        "count": 39,
         "is_primary": false,
-        "verb_category": "leave",
+        "salient": false,
         "objects": {
           "cup": 1,
           "bottle": 1,
@@ -3985,7 +4171,6 @@
           "spoon": 1,
           "sponge": 3,
           "cream": 3,
-          "milk": 1,
           "knife": 4,
           "skin": 5,
           "top": 1,
@@ -3994,35 +4179,20 @@
           "glass": 2
         },
         "verbs": {
-          "put": 30,
+          "put": 29,
           "throw": 8,
           "insert": 2
-        },
-        "noun_categories": {
-          "crockery": 6,
-          "containers": 3,
-          "utensils": 2,
-          "appliances": 1,
-          "fruits and nuts": 8,
-          "vegetables": 1,
-          "cutlery": 5,
-          "cleaning equipment and material": 3,
-          "dairy and eggs": 4,
-          "rubbish": 5,
-          "furniture": 1,
-          "prepared food": 1
         }
       },
       {
         "id": "access",
-        "count": 29,
+        "count": 28,
         "is_primary": false,
-        "verb_category": "access",
+        "salient": false,
         "objects": {
           "cupboard": 3,
           "fridge": 2,
           "bottle": 1,
-          "milk": 1,
           "drawer": 3,
           "scissors": 1,
           "button": 1,
@@ -4034,24 +4204,15 @@
         },
         "verbs": {
           "open": 21,
-          "turn-on": 7,
-          "switch": 1
-        },
-        "noun_categories": {
-          "storage": 3,
-          "appliances": 8,
-          "containers": 9,
-          "dairy and eggs": 1,
-          "furniture": 3,
-          "utensils": 1,
-          "prepared food": 4
+          "switch": 1,
+          "turn-on": 6
         }
       },
       {
         "id": "block",
         "count": 23,
         "is_primary": false,
-        "verb_category": "block",
+        "salient": false,
         "objects": {
           "cupboard": 2,
           "fridge": 2,
@@ -4068,24 +4229,14 @@
           "close": 12,
           "wrap": 1,
           "turn-off": 10
-        },
-        "noun_categories": {
-          "storage": 2,
-          "appliances": 9,
-          "utensils": 1,
-          "furniture": 1,
-          "containers": 2,
-          "rubbish": 1,
-          "prepared food": 7
         }
       },
       {
         "id": "clean",
-        "count": 13,
+        "count": 9,
         "is_primary": false,
-        "verb_category": "clean",
+        "salient": false,
         "objects": {
-          "milk": 4,
           "sponge": 1,
           "cream": 3,
           "bowl": 3,
@@ -4093,22 +4244,28 @@
           "food": 1
         },
         "verbs": {
-          "wash": 11,
-          "scrub": 2
+          "scrub": 2,
+          "wash": 7
+        }
+      },
+      {
+        "id": "retrieve(milk)",
+        "count": 6,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "milk": 6
         },
-        "noun_categories": {
-          "dairy and eggs": 7,
-          "cleaning equipment and material": 1,
-          "crockery": 3,
-          "utensils": 1,
-          "prepared food": 1
+        "verbs": {
+          "take": 2,
+          "lift": 4
         }
       },
       {
         "id": "transition",
         "count": 5,
         "is_primary": false,
-        "verb_category": "transition",
+        "salient": false,
         "objects": {
           "package": 1,
           "box": 1,
@@ -4118,19 +4275,37 @@
         },
         "verbs": {
           "move": 5
+        }
+      },
+      {
+        "id": "clean(milk)",
+        "count": 4,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "milk": 4
         },
-        "noun_categories": {
-          "containers": 2,
-          "cutlery": 1,
-          "dairy and eggs": 1,
-          "prepared food": 1
+        "verbs": {
+          "wash": 4
+        }
+      },
+      {
+        "id": "manipulate(button)",
+        "count": 3,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "button": 3
+        },
+        "verbs": {
+          "press": 3
         }
       },
       {
         "id": "sense",
         "count": 3,
         "is_primary": false,
-        "verb_category": "sense",
+        "salient": false,
         "objects": {
           "roll": 1,
           "milk": 1,
@@ -4139,41 +4314,79 @@
         "verbs": {
           "feel": 1,
           "pat": 2
-        },
-        "noun_categories": {
-          "baked goods and grains": 1,
-          "dairy and eggs": 1,
-          "crockery": 1
         }
       },
       {
         "id": "split",
         "count": 3,
         "is_primary": false,
-        "verb_category": "split",
+        "salient": false,
         "objects": {
           "orange": 3
         },
         "verbs": {
           "cut": 3
-        },
-        "noun_categories": {
-          "fruits and nuts": 3
         }
       },
       {
-        "id": "merge",
+        "id": "manipulate(milk)",
+        "count": 2,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "milk": 2
+        },
+        "verbs": {
+          "slide": 1,
+          "turn": 1
+        }
+      },
+      {
+        "id": "merge(coffee)",
         "count": 2,
         "is_primary": true,
-        "verb_category": "merge",
+        "salient": true,
         "objects": {
           "coffee": 2
         },
         "verbs": {
           "mix": 2
+        }
+      },
+      {
+        "id": "access(milk)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "milk": 1
         },
-        "noun_categories": {
-          "drinks": 2
+        "verbs": {
+          "turn-on": 1
+        }
+      },
+      {
+        "id": "leave(milk)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "milk": 1
+        },
+        "verbs": {
+          "put": 1
+        }
+      },
+      {
+        "id": "retrieve(coffee)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "coffee": 1
+        },
+        "verbs": {
+          "take": 1
         }
       }
     ],
@@ -4181,12 +4394,10 @@
       {
         "source": "leave",
         "target": "retrieve",
-        "count": 14,
-        "probability": 0.35,
+        "count": 12,
+        "probability": 0.3077,
         "key": "leave|||retrieve",
         "occurrences": [
-          6,
-          106,
           119,
           127,
           129,
@@ -4202,32 +4413,10 @@
         ]
       },
       {
-        "source": "retrieve",
-        "target": "retrieve",
-        "count": 13,
-        "probability": 0.2241,
-        "key": "retrieve|||retrieve",
-        "occurrences": [
-          17,
-          26,
-          29,
-          30,
-          60,
-          78,
-          79,
-          80,
-          107,
-          108,
-          117,
-          207,
-          208
-        ]
-      },
-      {
         "source": "manipulate",
         "target": "manipulate",
-        "count": 12,
-        "probability": 0.2553,
+        "count": 11,
+        "probability": 0.2619,
         "key": "manipulate|||manipulate",
         "occurrences": [
           10,
@@ -4236,7 +4425,6 @@
           55,
           66,
           71,
-          72,
           112,
           113,
           114,
@@ -4247,13 +4435,12 @@
       {
         "source": "retrieve",
         "target": "leave",
-        "count": 12,
-        "probability": 0.2069,
+        "count": 11,
+        "probability": 0.2157,
         "key": "retrieve|||leave",
         "occurrences": [
           38,
           57,
-          104,
           118,
           120,
           128,
@@ -4266,49 +4453,29 @@
         ]
       },
       {
-        "source": "manipulate",
-        "target": "retrieve",
-        "count": 11,
-        "probability": 0.234,
-        "key": "manipulate|||retrieve",
-        "occurrences": [
-          1,
-          8,
-          35,
-          37,
-          51,
-          56,
-          75,
-          94,
-          188,
-          206,
-          222
-        ]
-      },
-      {
         "source": "retrieve",
-        "target": "manipulate",
+        "target": "retrieve",
         "count": 10,
-        "probability": 0.1724,
-        "key": "retrieve|||manipulate",
+        "probability": 0.1961,
+        "key": "retrieve|||retrieve",
         "occurrences": [
-          2,
-          7,
-          9,
-          36,
-          52,
-          85,
-          133,
-          178,
-          203,
-          221
+          17,
+          26,
+          29,
+          30,
+          60,
+          107,
+          108,
+          117,
+          207,
+          208
         ]
       },
       {
         "source": "access",
         "target": "leave",
         "count": 9,
-        "probability": 0.3103,
+        "probability": 0.3214,
         "key": "access|||leave",
         "occurrences": [
           21,
@@ -4326,7 +4493,7 @@
         "source": "leave",
         "target": "access",
         "count": 9,
-        "probability": 0.225,
+        "probability": 0.2308,
         "key": "leave|||access",
         "occurrences": [
           42,
@@ -4341,14 +4508,31 @@
         ]
       },
       {
+        "source": "retrieve",
+        "target": "manipulate",
+        "count": 9,
+        "probability": 0.1765,
+        "key": "retrieve|||manipulate",
+        "occurrences": [
+          2,
+          9,
+          36,
+          52,
+          85,
+          133,
+          178,
+          203,
+          221
+        ]
+      },
+      {
         "source": "manipulate",
         "target": "block",
-        "count": 9,
-        "probability": 0.1915,
+        "count": 8,
+        "probability": 0.1905,
         "key": "manipulate|||block",
         "occurrences": [
           3,
-          73,
           115,
           123,
           136,
@@ -4359,78 +4543,27 @@
         ]
       },
       {
-        "source": "block",
-        "target": "manipulate",
-        "count": 8,
-        "probability": 0.3478,
-        "key": "block|||manipulate",
-        "occurrences": [
-          4,
-          14,
-          23,
-          65,
-          70,
-          74,
-          124,
-          157
-        ]
-      },
-      {
-        "source": "block",
+        "source": "manipulate",
         "target": "retrieve",
         "count": 8,
-        "probability": 0.3478,
-        "key": "block|||retrieve",
+        "probability": 0.1905,
+        "key": "manipulate|||retrieve",
         "occurrences": [
-          89,
-          103,
-          116,
-          144,
-          168,
-          171,
-          214,
-          220
-        ]
-      },
-      {
-        "source": "manipulate",
-        "target": "access",
-        "count": 8,
-        "probability": 0.1702,
-        "key": "manipulate|||access",
-        "occurrences": [
-          11,
-          15,
-          24,
-          53,
-          67,
-          86,
-          125,
-          134
-        ]
-      },
-      {
-        "source": "retrieve",
-        "target": "access",
-        "count": 8,
-        "probability": 0.1379,
-        "key": "retrieve|||access",
-        "occurrences": [
-          18,
-          20,
-          27,
-          90,
-          169,
-          172,
-          189,
-          201
+          1,
+          35,
+          37,
+          51,
+          56,
+          188,
+          206,
+          222
         ]
       },
       {
         "source": "access",
         "target": "manipulate",
         "count": 7,
-        "probability": 0.2414,
+        "probability": 0.25,
         "key": "access|||manipulate",
         "occurrences": [
           0,
@@ -4445,13 +4578,12 @@
       {
         "source": "access",
         "target": "retrieve",
-        "count": 7,
-        "probability": 0.2414,
+        "count": 6,
+        "probability": 0.2143,
         "key": "access|||retrieve",
         "occurrences": [
           12,
           16,
-          19,
           25,
           28,
           59,
@@ -4459,10 +4591,40 @@
         ]
       },
       {
+        "source": "block",
+        "target": "manipulate",
+        "count": 6,
+        "probability": 0.2609,
+        "key": "block|||manipulate",
+        "occurrences": [
+          4,
+          65,
+          70,
+          74,
+          124,
+          157
+        ]
+      },
+      {
+        "source": "block",
+        "target": "retrieve",
+        "count": 6,
+        "probability": 0.2609,
+        "key": "block|||retrieve",
+        "occurrences": [
+          116,
+          144,
+          168,
+          171,
+          214,
+          220
+        ]
+      },
+      {
         "source": "leave",
         "target": "manipulate",
         "count": 6,
-        "probability": 0.15,
+        "probability": 0.1538,
         "key": "leave|||manipulate",
         "occurrences": [
           34,
@@ -4475,9 +4637,24 @@
       },
       {
         "source": "manipulate",
+        "target": "access",
+        "count": 6,
+        "probability": 0.1429,
+        "key": "manipulate|||access",
+        "occurrences": [
+          11,
+          53,
+          67,
+          86,
+          125,
+          134
+        ]
+      },
+      {
+        "source": "manipulate",
         "target": "leave",
         "count": 6,
-        "probability": 0.1277,
+        "probability": 0.1429,
         "key": "manipulate|||leave",
         "occurrences": [
           5,
@@ -4489,10 +4666,25 @@
         ]
       },
       {
+        "source": "retrieve",
+        "target": "access",
+        "count": 6,
+        "probability": 0.1176,
+        "key": "retrieve|||access",
+        "occurrences": [
+          20,
+          27,
+          169,
+          172,
+          189,
+          201
+        ]
+      },
+      {
         "source": "clean",
         "target": "block",
         "count": 4,
-        "probability": 0.3077,
+        "probability": 0.4444,
         "key": "clean|||block",
         "occurrences": [
           185,
@@ -4505,7 +4697,7 @@
         "source": "leave",
         "target": "block",
         "count": 4,
-        "probability": 0.1,
+        "probability": 0.1026,
         "key": "leave|||block",
         "occurrences": [
           22,
@@ -4518,7 +4710,7 @@
         "source": "retrieve",
         "target": "block",
         "count": 4,
-        "probability": 0.069,
+        "probability": 0.0784,
         "key": "retrieve|||block",
         "occurrences": [
           13,
@@ -4528,23 +4720,10 @@
         ]
       },
       {
-        "source": "retrieve",
-        "target": "clean",
-        "count": 4,
-        "probability": 0.069,
-        "key": "retrieve|||clean",
-        "occurrences": [
-          95,
-          98,
-          182,
-          215
-        ]
-      },
-      {
         "source": "access",
         "target": "clean",
         "count": 3,
-        "probability": 0.1034,
+        "probability": 0.1071,
         "key": "access|||clean",
         "occurrences": [
           195,
@@ -4580,7 +4759,7 @@
         "source": "clean",
         "target": "leave",
         "count": 3,
-        "probability": 0.2308,
+        "probability": 0.3333,
         "key": "clean|||leave",
         "occurrences": [
           99,
@@ -4589,46 +4768,22 @@
         ]
       },
       {
-        "source": "clean",
-        "target": "retrieve",
-        "count": 3,
-        "probability": 0.2308,
-        "key": "clean|||retrieve",
-        "occurrences": [
-          97,
-          101,
-          181
-        ]
-      },
-      {
-        "source": "leave",
+        "source": "retrieve",
         "target": "clean",
         "count": 3,
-        "probability": 0.075,
-        "key": "leave|||clean",
+        "probability": 0.0588,
+        "key": "retrieve|||clean",
         "occurrences": [
-          100,
-          180,
-          184
-        ]
-      },
-      {
-        "source": "leave",
-        "target": "leave",
-        "count": 3,
-        "probability": 0.075,
-        "key": "leave|||leave",
-        "occurrences": [
-          105,
-          151,
-          210
+          98,
+          182,
+          215
         ]
       },
       {
         "source": "retrieve",
         "target": "split",
         "count": 3,
-        "probability": 0.0517,
+        "probability": 0.0588,
         "key": "retrieve|||split",
         "occurrences": [
           109,
@@ -4652,7 +4807,7 @@
         "source": "access",
         "target": "transition",
         "count": 2,
-        "probability": 0.069,
+        "probability": 0.0714,
         "key": "access|||transition",
         "occurrences": [
           43,
@@ -4660,32 +4815,54 @@
         ]
       },
       {
-        "source": "clean",
-        "target": "manipulate",
+        "source": "block",
+        "target": "retrieve(milk)",
         "count": 2,
-        "probability": 0.1538,
-        "key": "clean|||manipulate",
+        "probability": 0.087,
+        "key": "block|||retrieve(milk)",
         "occurrences": [
-          93,
-          196
+          89,
+          103
         ]
       },
       {
-        "source": "retrieve",
-        "target": "sense",
+        "source": "clean(milk)",
+        "target": "retrieve",
         "count": 2,
-        "probability": 0.0345,
-        "key": "retrieve|||sense",
+        "probability": 0.5,
+        "key": "clean(milk)|||retrieve",
         "occurrences": [
-          61,
-          76
+          97,
+          101
+        ]
+      },
+      {
+        "source": "leave",
+        "target": "clean",
+        "count": 2,
+        "probability": 0.0513,
+        "key": "leave|||clean",
+        "occurrences": [
+          180,
+          184
+        ]
+      },
+      {
+        "source": "leave",
+        "target": "leave",
+        "count": 2,
+        "probability": 0.0513,
+        "key": "leave|||leave",
+        "occurrences": [
+          151,
+          210
         ]
       },
       {
         "source": "retrieve",
         "target": "transition",
         "count": 2,
-        "probability": 0.0345,
+        "probability": 0.0392,
         "key": "retrieve|||transition",
         "occurrences": [
           81,
@@ -4693,13 +4870,54 @@
         ]
       },
       {
+        "source": "retrieve(milk)",
+        "target": "retrieve(milk)",
+        "count": 2,
+        "probability": 0.3333,
+        "key": "retrieve(milk)|||retrieve(milk)",
+        "occurrences": [
+          78,
+          79
+        ]
+      },
+      {
         "source": "access",
         "target": "block",
         "count": 1,
-        "probability": 0.0345,
+        "probability": 0.0357,
         "key": "access|||block",
         "occurrences": [
           170
+        ]
+      },
+      {
+        "source": "access(milk)",
+        "target": "retrieve",
+        "count": 1,
+        "probability": 1.0,
+        "key": "access(milk)|||retrieve",
+        "occurrences": [
+          19
+        ]
+      },
+      {
+        "source": "block",
+        "target": "manipulate(button)",
+        "count": 1,
+        "probability": 0.0435,
+        "key": "block|||manipulate(button)",
+        "occurrences": [
+          23
+        ]
+      },
+      {
+        "source": "block",
+        "target": "manipulate(milk)",
+        "count": 1,
+        "probability": 0.0435,
+        "key": "block|||manipulate(milk)",
+        "occurrences": [
+          14
         ]
       },
       {
@@ -4714,52 +4932,272 @@
       },
       {
         "source": "clean",
-        "target": "clean",
+        "target": "manipulate",
         "count": 1,
-        "probability": 0.0769,
-        "key": "clean|||clean",
+        "probability": 0.1111,
+        "key": "clean|||manipulate",
+        "occurrences": [
+          196
+        ]
+      },
+      {
+        "source": "clean",
+        "target": "retrieve",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "clean|||retrieve",
+        "occurrences": [
+          181
+        ]
+      },
+      {
+        "source": "clean(milk)",
+        "target": "clean(milk)",
+        "count": 1,
+        "probability": 0.25,
+        "key": "clean(milk)|||clean(milk)",
         "occurrences": [
           96
+        ]
+      },
+      {
+        "source": "clean(milk)",
+        "target": "manipulate(milk)",
+        "count": 1,
+        "probability": 0.25,
+        "key": "clean(milk)|||manipulate(milk)",
+        "occurrences": [
+          93
+        ]
+      },
+      {
+        "source": "leave",
+        "target": "clean(milk)",
+        "count": 1,
+        "probability": 0.0256,
+        "key": "leave|||clean(milk)",
+        "occurrences": [
+          100
+        ]
+      },
+      {
+        "source": "leave",
+        "target": "leave(milk)",
+        "count": 1,
+        "probability": 0.0256,
+        "key": "leave|||leave(milk)",
+        "occurrences": [
+          105
+        ]
+      },
+      {
+        "source": "leave",
+        "target": "retrieve(coffee)",
+        "count": 1,
+        "probability": 0.0256,
+        "key": "leave|||retrieve(coffee)",
+        "occurrences": [
+          6
         ]
       },
       {
         "source": "leave",
         "target": "sense",
         "count": 1,
-        "probability": 0.025,
+        "probability": 0.0256,
         "key": "leave|||sense",
         "occurrences": [
           191
         ]
       },
       {
+        "source": "leave(milk)",
+        "target": "retrieve",
+        "count": 1,
+        "probability": 1.0,
+        "key": "leave(milk)|||retrieve",
+        "occurrences": [
+          106
+        ]
+      },
+      {
         "source": "manipulate",
         "target": "clean",
         "count": 1,
-        "probability": 0.0213,
+        "probability": 0.0238,
         "key": "manipulate|||clean",
         "occurrences": [
           197
         ]
       },
       {
-        "source": "merge",
-        "target": "merge",
+        "source": "manipulate",
+        "target": "manipulate(button)",
+        "count": 1,
+        "probability": 0.0238,
+        "key": "manipulate|||manipulate(button)",
+        "occurrences": [
+          72
+        ]
+      },
+      {
+        "source": "manipulate",
+        "target": "retrieve(milk)",
+        "count": 1,
+        "probability": 0.0238,
+        "key": "manipulate|||retrieve(milk)",
+        "occurrences": [
+          75
+        ]
+      },
+      {
+        "source": "manipulate(button)",
+        "target": "access",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "manipulate(button)|||access",
+        "occurrences": [
+          24
+        ]
+      },
+      {
+        "source": "manipulate(button)",
+        "target": "block",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "manipulate(button)|||block",
+        "occurrences": [
+          73
+        ]
+      },
+      {
+        "source": "manipulate(button)",
+        "target": "retrieve",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "manipulate(button)|||retrieve",
+        "occurrences": [
+          8
+        ]
+      },
+      {
+        "source": "manipulate(milk)",
+        "target": "access",
         "count": 1,
         "probability": 0.5,
-        "key": "merge|||merge",
+        "key": "manipulate(milk)|||access",
+        "occurrences": [
+          15
+        ]
+      },
+      {
+        "source": "manipulate(milk)",
+        "target": "retrieve",
+        "count": 1,
+        "probability": 0.5,
+        "key": "manipulate(milk)|||retrieve",
+        "occurrences": [
+          94
+        ]
+      },
+      {
+        "source": "merge(coffee)",
+        "target": "merge(coffee)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "merge(coffee)|||merge(coffee)",
         "occurrences": [
           83
         ]
       },
       {
-        "source": "merge",
+        "source": "merge(coffee)",
         "target": "retrieve",
         "count": 1,
         "probability": 0.5,
-        "key": "merge|||retrieve",
+        "key": "merge(coffee)|||retrieve",
         "occurrences": [
           84
+        ]
+      },
+      {
+        "source": "retrieve",
+        "target": "access(milk)",
+        "count": 1,
+        "probability": 0.0196,
+        "key": "retrieve|||access(milk)",
+        "occurrences": [
+          18
+        ]
+      },
+      {
+        "source": "retrieve",
+        "target": "clean(milk)",
+        "count": 1,
+        "probability": 0.0196,
+        "key": "retrieve|||clean(milk)",
+        "occurrences": [
+          95
+        ]
+      },
+      {
+        "source": "retrieve",
+        "target": "sense",
+        "count": 1,
+        "probability": 0.0196,
+        "key": "retrieve|||sense",
+        "occurrences": [
+          61
+        ]
+      },
+      {
+        "source": "retrieve(coffee)",
+        "target": "manipulate(button)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "retrieve(coffee)|||manipulate(button)",
+        "occurrences": [
+          7
+        ]
+      },
+      {
+        "source": "retrieve(milk)",
+        "target": "access",
+        "count": 1,
+        "probability": 0.1667,
+        "key": "retrieve(milk)|||access",
+        "occurrences": [
+          90
+        ]
+      },
+      {
+        "source": "retrieve(milk)",
+        "target": "leave",
+        "count": 1,
+        "probability": 0.1667,
+        "key": "retrieve(milk)|||leave",
+        "occurrences": [
+          104
+        ]
+      },
+      {
+        "source": "retrieve(milk)",
+        "target": "retrieve",
+        "count": 1,
+        "probability": 0.1667,
+        "key": "retrieve(milk)|||retrieve",
+        "occurrences": [
+          80
+        ]
+      },
+      {
+        "source": "retrieve(milk)",
+        "target": "sense",
+        "count": 1,
+        "probability": 0.1667,
+        "key": "retrieve(milk)|||sense",
+        "occurrences": [
+          76
         ]
       },
       {
@@ -4784,20 +5222,20 @@
       },
       {
         "source": "sense",
-        "target": "retrieve",
+        "target": "retrieve(milk)",
         "count": 1,
         "probability": 0.3333,
-        "key": "sense|||retrieve",
+        "key": "sense|||retrieve(milk)",
         "occurrences": [
           77
         ]
       },
       {
         "source": "transition",
-        "target": "clean",
+        "target": "clean(milk)",
         "count": 1,
         "probability": 0.2,
-        "key": "transition|||clean",
+        "key": "transition|||clean(milk)",
         "occurrences": [
           92
         ]
@@ -4824,10 +5262,10 @@
       },
       {
         "source": "transition",
-        "target": "merge",
+        "target": "merge(coffee)",
         "count": 1,
         "probability": 0.2,
-        "key": "transition|||merge",
+        "key": "transition|||merge(coffee)",
         "occurrences": [
           82
         ]
@@ -4841,6 +5279,40 @@
         "occurrences": [
           44
         ]
+      }
+    ]
+  },
+  "salient_config": {
+    "k": 6,
+    "min_count": 2,
+    "node_min": 3,
+    "salient_nouns": [
+      "button",
+      "coffee",
+      "maker:coffee",
+      "milk"
+    ],
+    "vocab_scope": "recipe",
+    "match_report": [
+      {
+        "noun": "milk",
+        "count": 42,
+        "salient": true
+      },
+      {
+        "noun": "coffee",
+        "count": 11,
+        "salient": true
+      },
+      {
+        "noun": "button",
+        "count": 9,
+        "salient": true
+      },
+      {
+        "noun": "maker:coffee",
+        "count": 2,
+        "salient": true
       }
     ]
   }

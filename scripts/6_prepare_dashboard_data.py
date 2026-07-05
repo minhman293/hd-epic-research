@@ -4,29 +4,40 @@
 Step 6: Export dashboard data for D3 — one session per CAPTURE, stitching
 all videos of a multi-video capture onto a unified capture timeline.
 
-Each action carries:
-  - start, end        — unified capture timeline (sums of preceding video durations)
-  - video_id          — which source video this action came from
-  - video_start, end  — within-video timestamps (= unified − offset_of_that_video)
-  - step_id           — recipe step whose stitched window this action overlaps
-  - is_primary        — True iff step_id is set
+Detail-level modes produced per session (a granularity ladder):
+  full         verb(noun) atomic nodes            (~40-420 nodes)
+  smart        verb nodes, objects as attribute   (~30-80 nodes)
+  hybrid       RECIPE-SALIENT verb_cat(noun) for  (~16-28 nodes)  <- Markov view
+               recipe-text objects; verb_cat for
+               background activity
+  categorical  verb-category nodes                (10-13 nodes)
+  abstracted   recipe-step nodes                  (3-16 nodes)
 
-The payload also contains a "videos" array listing each video's offset and
-duration on the unified timeline, so the frontend can map any unified
-timestamp back to {video_id, within_video_offset} and drive the player.
+The hybrid mode implements the "Recipe-Salient Hybrid States" design:
+  - A noun is SALIENT if it lexically matches the recipe's own name/step text
+    (author-grounded vocabulary; Elmqvist & Fekete 2010, aggregation guideline
+    G4 — aggregates must convey information about their content).
+  - Salient vocabulary is capped at the top-K salient nouns by frequency
+    (aggregation dial, not a data filter: background actions are aggregated
+    into their verb category, never dropped).
+  - Edges carry both count and Markov probability P(B|A) = count(A->B) /
+    out_degree(A), Schodl et al. 2000 (Video Textures) style, self-loops kept.
 
 Usage:
   python 6_prepare_dashboard_data.py P01_R01
-  python 6_prepare_dashboard_data.py P05_R01
+  python 6_prepare_dashboard_data.py P05_R01 --salient-k 6
 
 Output layout:
-  outputs/graphs/{recipe_id}/session_{N}_smart.json
   outputs/graphs/{recipe_id}/session_{N}_full.json
+  outputs/graphs/{recipe_id}/session_{N}_smart.json
   outputs/graphs/{recipe_id}/session_{N}_abstracted.json
+  outputs/graphs/{recipe_id}/session_{N}_categorical.json
+  outputs/graphs/{recipe_id}/session_{N}_hybrid.json
 """
 
 import argparse
 import json
+import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -36,11 +47,28 @@ from utils import get_action_name, load_hd_epic_data
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Tuning parameter — see earlier research notes on step-window buffering.
-# 0 = strict (only annotated step moments count as primary)
-# 10–30 = moderate (catches immediate setup/wrap-up around each step)
+# Tuning parameters
 # ─────────────────────────────────────────────────────────────────────────────
+
 STEP_WINDOW_BUFFER_S = 0
+
+# Hybrid mode: how many recipe-salient nouns keep individual node identity.
+# This is an aggregation dial (Munzner 2014, "reduce" design choice), not a
+# data filter — actions on non-salient nouns collapse into their verb
+# category, they are never dropped.
+DEFAULT_SALIENT_K = 6
+
+# Hybrid mode: minimum times a salient noun must occur to earn identity.
+# Guards against a single stray match (e.g. recipe text mentions "water"
+# once, one wash(water) action) creating a near-empty node.
+SALIENT_MIN_COUNT = 2
+
+# Hybrid mode: minimum times a salient STATE (verb_cat, noun) must be observed
+# to earn its own node; rarer combinations fall back to the background tier.
+# Empirically (7 coffee recipes): min=1 gives 16-46 nodes, min=3 gives 11-31.
+# "Identity requires evidence" — same aggregation logic as SALIENT_MIN_COUNT,
+# applied at state level.
+SALIENT_NODE_MIN_COUNT = 3
 
 
 def load_recipe_context(recipe_id, outputs_dir="../outputs"):
@@ -137,9 +165,6 @@ def collect_step_windows_stitched(capture, video_layout, buffer_s=STEP_WINDOW_BU
     """
     Returns step windows on the unified capture timeline. Each entry:
         (unified_start, unified_end, step_id, video_id, video_start, video_end)
-
-    Step entries whose 'video' field doesn't match any video in this capture
-    are silently skipped (they belong to a different capture).
     """
     offsets = {v["video_id"]: v["offset_s"] for v in video_layout}
     windows = []
@@ -173,10 +198,6 @@ def discover_sessions(recipe_meta, available_video_ids):
     """
     Each capture in the recipe metadata = one session, regardless of how many
     videos it contains. Multi-video captures are stitched downstream.
-
-    A capture is skipped only if NONE of its videos appear in the narration
-    data; videos that are listed in the capture but have no narrations are
-    kept (they'll show up as gaps in the timeline).
     """
     captures = recipe_meta.get("captures", [])
     sessions = []
@@ -212,6 +233,39 @@ def compute_node_primary_majority(sequence):
     return {a: p >= s for a, (p, s) in votes.items()}
 
 
+def markov_links(sequence, key_field="action"):
+    """
+    Build directed edges with counts AND Markov transition probabilities from
+    a sequence of state-mapped items. Self-loops are kept.
+
+    P(B|A) = count(A->B) / out_degree(A); outgoing probabilities per node sum
+    to 1.0 (Schodl et al. 2000).
+    """
+    edge_counts = Counter()
+    edge_occurrences = defaultdict(list)
+    out_degree = Counter()
+    for idx in range(len(sequence)):
+        current = sequence[idx][key_field]
+        if idx < len(sequence) - 1:
+            nxt = sequence[idx + 1][key_field]
+            edge_counts[(current, nxt)] += 1
+            edge_occurrences[f"{current}|||{nxt}"].append(idx)
+            out_degree[current] += 1
+    links = [
+        {
+            "source": src,
+            "target": dst,
+            "count": int(c),
+            "probability": round(c / out_degree[src], 4) if out_degree[src] else 0.0,
+            "key": f"{src}|||{dst}",
+            "occurrences": edge_occurrences[f"{src}|||{dst}"],
+        }
+        for (src, dst), c in sorted(edge_counts.items(),
+                                    key=lambda x: (-x[1], x[0][0], x[0][1]))
+    ]
+    return links
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 # Payload builders
 # ─────────────────────────────────────────────────────────────────────────────
@@ -226,11 +280,11 @@ def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
     capture = session["capture"]
     videos = session["videos"]
 
-    # 1. Compute the unified-timeline layout for all videos in this capture
+    # 1. Unified-timeline layout for all videos in this capture
     video_layout = compute_video_layout(videos, durations_map, narrations_df)
     total_capture_duration = sum(v["duration_s"] for v in video_layout)
 
-    # 2. Stitch narrations from all videos in this capture onto a unified timeline
+    # 2. Stitch narrations from all videos onto the unified timeline
     offsets = {v["video_id"]: v["offset_s"] for v in video_layout}
 
     action_items = []
@@ -258,23 +312,20 @@ def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
                 "action": get_action_name(v, n, verb_classes, noun_classes),
                 "verb_class": int(v) if str(v).isdigit() else -1,
                 "noun_class": int(n) if str(n).isdigit() else -1,
-                "start": v_start + off,        # unified
-                "end": v_end + off,            # unified
+                "start": v_start + off,
+                "end": v_end + off,
                 "duration": v_end - v_start,
                 "video_id": vid,
-                "video_start": v_start,        # within-video
-                "video_end": v_end,            # within-video
+                "video_start": v_start,
+                "video_end": v_end,
             })
 
-    # Sort by unified start. Within each video the rows were already sorted,
-    # and videos were appended in playback order, so this is effectively a
-    # stability check.
     action_items.sort(key=lambda r: r["start"])
 
     if len(action_items) < 2:
         raise ValueError(f"Session {session['index']} has <2 actions")
 
-    # 3. Build step windows on the unified timeline
+    # 3. Step windows on the unified timeline
     step_windows = collect_step_windows_stitched(capture, video_layout)
 
     # 4. Tag each action with its overlapping step
@@ -295,19 +346,13 @@ def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
             f"({100 * secondary / len(action_items):.1f}% secondary)"
         )
 
-    # 5. Build node/edge counts and the sequence array
+    # 5. Nodes/edges + sequence
     node_counts = Counter(item["action"] for item in action_items)
-    edge_counts = Counter()
-    edge_occurrences = defaultdict(list)
     sequence = []
     for idx, item in enumerate(action_items):
         current = item["action"]
         next_action = action_items[idx + 1]["action"] if idx < len(action_items) - 1 else None
-        edge_key = None
-        if next_action:
-            edge_counts[(current, next_action)] += 1
-            edge_key = f"{current}|||{next_action}"
-            edge_occurrences[edge_key].append(idx)
+        edge_key = f"{current}|||{next_action}" if next_action else None
         sequence.append({
             "index": idx,
             "action": current,
@@ -320,7 +365,6 @@ def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
             "is_primary": item.get("is_primary", True),
             "verb_class": item.get("verb_class", -1),
             "noun_class": item.get("noun_class", -1),
-            # Per-video provenance — frontend uses these to drive playback.
             "video_id": item["video_id"],
             "video_start": item["video_start"],
             "video_end": item["video_end"],
@@ -331,12 +375,7 @@ def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
         {"id": a, "count": int(c), "is_primary": bool(node_primary.get(a, True))}
         for a, c in sorted(node_counts.items(), key=lambda x: (-x[1], x[0]))
     ]
-    links = [
-        {"source": src, "target": dst, "count": int(c),
-         "key": f"{src}|||{dst}",
-         "occurrences": edge_occurrences[f"{src}|||{dst}"]}
-        for (src, dst), c in sorted(edge_counts.items(), key=lambda x: (-x[1], x[0][0], x[0][1]))
-    ]
+    links = markov_links(sequence)
     step_text = [
         {
             "id": sid,
@@ -346,7 +385,6 @@ def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
         for sid, text in recipe_meta.get("steps", {}).items()
     ]
 
-    # 6. Per-video payload block: tells the frontend how to drive the <video> element
     videos_payload = [
         {
             "video_id": v["video_id"],
@@ -364,9 +402,6 @@ def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
             "id": recipe_id,
             "name": recipe_meta.get("name", recipe_id),
             "session_index": session["index"],
-            # Legacy fields point to the FIRST video so older frontends that
-            # haven't been updated yet don't blow up — they just see video 1.
-            # New frontends should use the "videos" array below instead.
             "video_id": first_video,
             "video_path": f"{video_relative_dir}/{first_video}.mp4" if first_video else None,
             "narration_count": len(sequence),
@@ -393,21 +428,12 @@ def create_smart_merged_graph(payload):
         noun = nof(seq_item["action"])
         if noun:
             verb_objects[verb][noun] += 1
-        m = seq_item.copy()  # preserves video_id, video_start, video_end
+        m = seq_item.copy()
         m["raw_action"] = seq_item["action"]
         m["action"] = verb
         merged_sequence.append(m)
 
     node_counts = Counter(item["action"] for item in merged_sequence)
-    edge_counts = Counter()
-    edge_occurrences = defaultdict(list)
-    for idx, item in enumerate(merged_sequence):
-        current = item["action"]
-        next_action = merged_sequence[idx + 1]["action"] if idx < len(merged_sequence) - 1 else None
-        if next_action:
-            edge_counts[(current, next_action)] += 1
-            edge_occurrences[f"{current}|||{next_action}"].append(idx)
-
     node_primary = compute_node_primary_majority(merged_sequence)
     nodes = [
         {"id": a, "count": int(c),
@@ -415,12 +441,7 @@ def create_smart_merged_graph(payload):
          "objects": dict(verb_objects[a]) if a in verb_objects else {}}
         for a, c in sorted(node_counts.items(), key=lambda x: (-x[1], x[0]))
     ]
-    links = [
-        {"source": src, "target": dst, "count": int(c),
-         "key": f"{src}|||{dst}",
-         "occurrences": edge_occurrences[f"{src}|||{dst}"]}
-        for (src, dst), c in sorted(edge_counts.items(), key=lambda x: (-x[1], x[0][0], x[0][1]))
-    ]
+    links = markov_links(merged_sequence)
 
     result = payload.copy()
     result["sequence"] = merged_sequence
@@ -441,23 +462,16 @@ def create_abstracted_graph(payload):
         else:
             parts = raw_step.rsplit("_", 1)
             display = parts[1] if len(parts) == 2 and parts[1].startswith("S") else raw_step
-        m = seq_item.copy()  # preserves video_id, video_start, video_end
+        m = seq_item.copy()
         m["action"] = display
         m["raw_action"] = seq_item["action"]
         m["raw_step_id"] = raw_step
         abstracted_sequence.append(m)
 
     node_counts = Counter(item["action"] for item in abstracted_sequence)
-    edge_counts = Counter()
-    edge_occurrences = defaultdict(list)
     step_actions = defaultdict(Counter)
-    for idx, item in enumerate(abstracted_sequence):
+    for item in abstracted_sequence:
         step_actions[item["action"]][item["raw_action"]] += 1
-        current = item["action"]
-        next_action = abstracted_sequence[idx + 1]["action"] if idx < len(abstracted_sequence) - 1 else None
-        if next_action:
-            edge_counts[(current, next_action)] += 1
-            edge_occurrences[f"{current}|||{next_action}"].append(idx)
 
     node_primary = compute_node_primary_majority(abstracted_sequence)
 
@@ -483,36 +497,19 @@ def create_abstracted_graph(payload):
             "raw_actions": dict(step_actions[display_step]),
         })
 
-    links = [
-        {"source": src, "target": dst, "count": int(c),
-         "key": f"{src}|||{dst}",
-         "occurrences": edge_occurrences[f"{src}|||{dst}"]}
-        for (src, dst), c in sorted(edge_counts.items(), key=lambda x: (-x[1], x[0][0], x[0][1]))
-    ]
+    links = markov_links(abstracted_sequence)
 
     result = payload.copy()
     result["sequence"] = abstracted_sequence
     result["graph"] = {"nodes": nodes, "links": links}
     return result
 
+
 def create_categorical_graph(payload, verb_classes, noun_classes):
     """
-    Build a graph where each node is an HD-EPIC verb CATEGORY (13 categories
-    from HD_EPIC_verb_classes.csv: retrieve, leave, manipulate, access, etc.).
-
-    Each node carries:
-      - objects: frequency of specific nouns appearing with this verb category
-      - verbs: frequency of specific verb keys within this category
-      - noun_categories: frequency of noun categories with this verb category
-
-    Edges count transitions between verb categories. Self-loops are kept (a
-    "retrieve" followed by another "retrieve" increments the retrieve→retrieve
-    self-loop). Each edge carries both count and Markov probability
-    (P(B|A) = count(A→B) / out_degree(A)).
-
-    This is the "Markov chain" view: one state per verb category, observation-
-    driven, no external step annotations needed. Hits 10–13 nodes per recipe
-    consistently across the dataset.
+    Nodes = the 13 HD-EPIC verb categories. Pure observation-driven Markov
+    chain; recipe-blind by construction (kept as the "what kind of action?"
+    analytical view).
     """
     UNKNOWN = "unknown"
     verb_id_to_cat = dict(zip(verb_classes['id'].astype(int), verb_classes['category']))
@@ -524,12 +521,11 @@ def create_categorical_graph(payload, verb_classes, noun_classes):
     for seq_item in payload["sequence"]:
         v_id = seq_item.get("verb_class", -1)
         category = verb_id_to_cat.get(v_id, UNKNOWN) if v_id >= 0 else UNKNOWN
-        m = seq_item.copy()  # preserves video_id, video_start, video_end, step_id, is_primary
+        m = seq_item.copy()
         m["raw_action"] = seq_item["action"]
         m["action"] = category
         categorical_sequence.append(m)
 
-    # Aggregate per-node stats for hover detail
     node_counts = Counter(item["action"] for item in categorical_sequence)
     node_objects = defaultdict(Counter)
     node_verbs = defaultdict(Counter)
@@ -545,19 +541,6 @@ def create_categorical_graph(payload, verb_classes, noun_classes):
             node_objects[cat][noun_id_to_key.get(n_id, str(n_id))] += 1
             node_noun_categories[cat][noun_id_to_cat.get(n_id, UNKNOWN)] += 1
 
-    # Edges with counts AND Markov transition probabilities
-    edge_counts = Counter()
-    edge_occurrences = defaultdict(list)
-    out_degree = Counter()
-    for idx, item in enumerate(categorical_sequence):
-        current = item["action"]
-        next_action = (categorical_sequence[idx + 1]["action"]
-                       if idx < len(categorical_sequence) - 1 else None)
-        if next_action:
-            edge_counts[(current, next_action)] += 1
-            edge_occurrences[f"{current}|||{next_action}"].append(idx)
-            out_degree[current] += 1
-
     node_primary = compute_node_primary_majority(categorical_sequence)
     nodes = [
         {
@@ -571,24 +554,232 @@ def create_categorical_graph(payload, verb_classes, noun_classes):
         }
         for cat, c in sorted(node_counts.items(), key=lambda x: (-x[1], x[0]))
     ]
-
-    links = [
-        {
-            "source": src,
-            "target": dst,
-            "count": int(c),
-            "probability": c / out_degree[src] if out_degree[src] > 0 else 0.0,
-            "key": f"{src}|||{dst}",
-            "occurrences": edge_occurrences[f"{src}|||{dst}"],
-        }
-        for (src, dst), c in sorted(edge_counts.items(),
-                                    key=lambda x: (-x[1], x[0][0], x[0][1]))
-    ]
+    links = markov_links(categorical_sequence)
 
     result = payload.copy()
     result["sequence"] = categorical_sequence
     result["graph"] = {"nodes": nodes, "links": links}
     return result
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Recipe-Salient Hybrid mode
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _recipe_text_words(recipe_meta):
+    """Word set from the recipe's own name + step text (lowercased)."""
+    text = (recipe_meta.get("name", "") + " "
+            + " ".join(recipe_meta.get("steps", {}).values())).lower()
+    return set(re.findall(r"[a-z]+", text))
+
+
+def _noun_matches_words(noun_key, words):
+    """
+    Lexical match of an HD-EPIC noun key against the recipe word set.
+
+    HD-EPIC compound keys follow the EPIC-KITCHENS 'head:modifier' convention
+    (e.g. 'machine:washing' = washing machine): the head is a generic category
+    word, the modifier is the discriminative one (Levi 1978). For compound
+    keys we therefore match ONLY the modifier tokens — otherwise a generic
+    head like 'machine' fires on unrelated recipe words ('coffee machine')
+    and promotes background objects to recipe-salient.
+    Single-word keys are matched as before.
+    """
+    parts = [p for p in re.split(r"[:_\s]+", str(noun_key).lower()) if p]
+    if not parts:
+        return False
+    match_parts = parts[1:] if len(parts) > 1 else parts
+    for p in match_parts:
+        for w in words:
+            if p == w or p == w + "s" or w == p + "s":
+                return True
+            if len(p) > 4 and len(w) > 4 and p[:5] == w[:5]:
+                return True
+    return False
+
+
+def extract_salient_nouns(recipe_meta, sequence, noun_classes,
+                          k=DEFAULT_SALIENT_K, min_count=SALIENT_MIN_COUNT):
+    """
+    Determine which nouns are recipe-salient for this session.
+
+    A noun earns individual node identity iff:
+      (1) it lexically matches the recipe's own name/step text, AND
+      (2) it occurs at least `min_count` times in the sequence, AND
+      (3) it is among the top-`k` such nouns by frequency.
+
+    Returns (salient_set, salient_report) where salient_report lists all
+    matched nouns with counts and whether they made the cut — stored in the
+    payload for transparency/debugging.
+    """
+    noun_id_to_key = dict(zip(noun_classes['id'].astype(int), noun_classes['key']))
+    words = _recipe_text_words(recipe_meta)
+
+    matched_counts = Counter()
+    for item in sequence:
+        n_id = item.get("noun_class", -1)
+        if n_id < 0:
+            continue
+        nk = noun_id_to_key.get(n_id)
+        if nk is None:
+            continue
+        if _noun_matches_words(nk, words):
+            matched_counts[nk] += 1
+
+    eligible = [(nk, c) for nk, c in matched_counts.most_common() if c >= min_count]
+    salient = set(nk for nk, _ in eligible[:k])
+
+    report = [
+        {"noun": nk, "count": int(c), "salient": nk in salient}
+        for nk, c in matched_counts.most_common()
+    ]
+    return salient, report
+
+def build_shared_hybrid_vocab(payload_fulls, recipe_meta, verb_classes, noun_classes,
+                              k=DEFAULT_SALIENT_K, node_min=SALIENT_NODE_MIN_COUNT):
+    """
+    Recipe-level salient vocabulary: pool the sequences of ALL sessions, then
+    run the same salience + evidence rules once. Guarantees every session of
+    this recipe maps actions onto the SAME state alphabet — the precondition
+    for pooling Markov transition counts across trials (Anderson & Goodman 1957).
+    """
+    UNKNOWN = "unknown"
+    verb_id_to_cat = dict(zip(verb_classes['id'].astype(int), verb_classes['category']))
+    noun_id_to_key = dict(zip(noun_classes['id'].astype(int), noun_classes['key']))
+
+    pooled = []
+    for p in payload_fulls:
+        pooled.extend(p["sequence"])
+
+    salient_nouns, report = extract_salient_nouns(recipe_meta, pooled, noun_classes, k=k)
+
+    candidate_counts = Counter()
+    for item in pooled:
+        v_id = item.get("verb_class", -1)
+        n_id = item.get("noun_class", -1)
+        v_cat = verb_id_to_cat.get(v_id, UNKNOWN) if v_id >= 0 else UNKNOWN
+        n_key = noun_id_to_key.get(n_id) if n_id >= 0 else None
+        if n_key is not None and n_key in salient_nouns:
+            candidate_counts[(v_cat, n_key)] += 1
+    kept_states = set(s for s, c in candidate_counts.items() if c >= node_min)
+
+    return {"salient_nouns": salient_nouns, "kept_states": kept_states,
+            "match_report": report, "pooled_actions": len(pooled)}
+
+def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes,
+                        k=DEFAULT_SALIENT_K,
+                        node_min=SALIENT_NODE_MIN_COUNT,
+                        shared_vocab=None):
+    """
+    Recipe-Salient Hybrid states (two-pass):
+      Pass 1: count candidate salient states (verb_cat, salient_noun).
+      Pass 2: state = f"{verb_cat}({noun})" iff the noun is recipe-salient
+              AND that (verb_cat, noun) pair was observed >= node_min times;
+              otherwise state = verb_cat (background tier).
+
+    The mapping is a deterministic function of (verb class, noun class,
+    recipe text, sequence) — observation-driven in the Video Textures sense,
+    no manual annotation, no dependence on step_times.
+    """
+    UNKNOWN = "unknown"
+    verb_id_to_cat = dict(zip(verb_classes['id'].astype(int), verb_classes['category']))
+    verb_id_to_key = dict(zip(verb_classes['id'].astype(int), verb_classes['key']))
+    noun_id_to_key = dict(zip(noun_classes['id'].astype(int), noun_classes['key']))
+
+    if shared_vocab is not None:
+        salient_nouns = shared_vocab["salient_nouns"]
+        salient_report = shared_vocab.get("match_report", [])
+        kept_states = shared_vocab["kept_states"]
+        vocab_scope = "recipe"
+    else:
+        salient_nouns, salient_report = extract_salient_nouns(
+            recipe_meta, payload["sequence"], noun_classes, k=k
+        )
+        candidate_counts = Counter()
+        for seq_item in payload["sequence"]:
+            v_id = seq_item.get("verb_class", -1)
+            n_id = seq_item.get("noun_class", -1)
+            v_cat = verb_id_to_cat.get(v_id, UNKNOWN) if v_id >= 0 else UNKNOWN
+            n_key = noun_id_to_key.get(n_id) if n_id >= 0 else None
+            if n_key is not None and n_key in salient_nouns:
+                candidate_counts[(v_cat, n_key)] += 1
+        kept_states = set(s for s, c in candidate_counts.items() if c >= node_min)
+        vocab_scope = "session"
+
+    # Pass 2 — map every action to its state
+    hybrid_sequence = []
+    for seq_item in payload["sequence"]:
+        v_id = seq_item.get("verb_class", -1)
+        n_id = seq_item.get("noun_class", -1)
+        v_cat = verb_id_to_cat.get(v_id, UNKNOWN) if v_id >= 0 else UNKNOWN
+        n_key = noun_id_to_key.get(n_id) if n_id >= 0 else None
+
+        if (n_key is not None and n_key in salient_nouns
+                and (v_cat, n_key) in kept_states):
+            state = f"{v_cat}({n_key})"
+            is_salient = True
+        else:
+            state = v_cat
+            is_salient = False
+
+        m = seq_item.copy()
+        m["raw_action"] = seq_item["action"]
+        m["action"] = state
+        m["salient"] = is_salient
+        hybrid_sequence.append(m)
+
+    # Per-node aggregates for the hover tooltip
+    node_counts = Counter(item["action"] for item in hybrid_sequence)
+    node_objects = defaultdict(Counter)
+    node_verbs = defaultdict(Counter)
+    node_salient = {}
+
+    for item in hybrid_sequence:
+        state = item["action"]
+        v_id = item.get("verb_class", -1)
+        n_id = item.get("noun_class", -1)
+        if v_id >= 0:
+            node_verbs[state][verb_id_to_key.get(v_id, str(v_id))] += 1
+        if n_id >= 0:
+            node_objects[state][noun_id_to_key.get(n_id, str(n_id))] += 1
+        node_salient[state] = item["salient"]
+
+    node_primary = compute_node_primary_majority(hybrid_sequence)
+    nodes = [
+        {
+            "id": state,
+            "count": int(c),
+            "is_primary": bool(node_primary.get(state, True)),
+            "salient": bool(node_salient.get(state, False)),
+            "objects": dict(node_objects[state]),
+            "verbs": dict(node_verbs[state]),
+        }
+        for state, c in sorted(node_counts.items(), key=lambda x: (-x[1], x[0]))
+    ]
+    links = markov_links(hybrid_sequence)
+
+    n_salient_nodes = sum(1 for n in nodes if n["salient"])
+    print(f"    Hybrid: {len(nodes)} nodes "
+          f"({n_salient_nodes} salient, {len(nodes) - n_salient_nodes} background); "
+          f"salient nouns: {sorted(salient_nouns)}")
+
+    result = payload.copy()
+    result["sequence"] = hybrid_sequence
+    result["graph"] = {"nodes": nodes, "links": links}
+    result["salient_config"] = {
+        "k": k,
+        "min_count": SALIENT_MIN_COUNT,
+        "node_min": node_min,
+        "salient_nouns": sorted(salient_nouns),
+        "vocab_scope": vocab_scope,
+        "match_report": salient_report,
+    }
+    return result
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Main
+# ─────────────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser(
@@ -597,6 +788,13 @@ def main():
     parser.add_argument("recipe_id", help="Recipe ID (e.g. P01_R01)")
     parser.add_argument("--outputs-dir", default="../outputs")
     parser.add_argument("--video-relative-dir", default="raw-video")
+    parser.add_argument("--salient-k", type=int, default=DEFAULT_SALIENT_K,
+                        help="Hybrid mode: max recipe-salient nouns that keep "
+                             "individual node identity (default 6).")
+    parser.add_argument("--salient-node-min", type=int, default=SALIENT_NODE_MIN_COUNT,
+                        help="Hybrid mode: min observations for a salient "
+                             "(verb_cat, noun) state to earn its own node "
+                             "(default 3).")
     args = parser.parse_args()
 
     recipe_id = args.recipe_id
@@ -626,17 +824,36 @@ def main():
     output_dir = Path(args.outputs_dir) / "graphs" / recipe_id
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    # Phase 1: full payloads for every session
+    payload_fulls = []
     for s in sessions:
-        print(f"\n[Session {s['index']}]")
-        payload_full = build_full_payload(
+        print(f"\n[Session {s['index']}] building full payload")
+        payload_fulls.append(build_full_payload(
             data, recipe_id, recipe_meta, s, recipe_narrations,
-            step_labels=step_labels,
-            video_relative_dir=args.video_relative_dir,
-        )
+            step_labels=step_labels, video_relative_dir=args.video_relative_dir,
+        ))
+
+    # Recipe-level hybrid vocabulary (shared state space across sessions)
+    shared_vocab = build_shared_hybrid_vocab(
+        payload_fulls, recipe_meta, data["verb_classes"], data["noun_classes"],
+        k=args.salient_k, node_min=args.salient_node_min,
+    )
+    print(f"\nShared hybrid vocabulary ({shared_vocab['pooled_actions']} pooled actions): "
+          f"{sorted(shared_vocab['salient_nouns'])}")
+
+    # Phase 2: per-session mode files
+    for s, payload_full in zip(sessions, payload_fulls):
+        print(f"\n[Session {s['index']}]")
         payload_smart = create_smart_merged_graph(payload_full)
         payload_abstracted = create_abstracted_graph(payload_full)
         payload_categorical = create_categorical_graph(
             payload_full, data["verb_classes"], data["noun_classes"]
+        )
+        payload_hybrid = create_hybrid_graph(
+            payload_full, recipe_meta,
+            data["verb_classes"], data["noun_classes"],
+            k=args.salient_k, node_min=args.salient_node_min,
+            shared_vocab=shared_vocab,
         )
 
         for filename, payload, label in [
@@ -644,13 +861,14 @@ def main():
             (f"session_{s['index']}_smart.json", payload_smart, "Smart-Merged"),
             (f"session_{s['index']}_abstracted.json", payload_abstracted, "Abstracted"),
             (f"session_{s['index']}_categorical.json", payload_categorical, "Categorical"),
+            (f"session_{s['index']}_hybrid.json", payload_hybrid, "Hybrid (Salient)"),
         ]:
             out_path = output_dir / filename
             with open(out_path, "w", encoding="utf-8") as f:
                 json.dump(payload, f, indent=2)
             n = len(payload["graph"]["nodes"])
             pri = sum(1 for x in payload["graph"]["nodes"] if x.get("is_primary"))
-            print(f"  ✓ {label:<14} {out_path.name}  "
+            print(f"  ✓ {label:<16} {out_path.name}  "
                   f"({len(payload['sequence'])} actions, {n} nodes, {pri} primary)")
 
     print("\n" + "=" * 80)

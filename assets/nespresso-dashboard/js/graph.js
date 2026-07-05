@@ -143,6 +143,61 @@ function computeTemporalLayout(nodes, sequence, { maxRadius = 18 } = {}) {
   return { layout, totalDuration, xScale, secondaryLaneTop };
 }
 
+function computeRankLayout(nodes, sequence, { maxRadius = 18 } = {}) {
+  // Median normalized rank per state: 0 = always first, 1 = always last.
+  const positions = {};
+  const L = Math.max(sequence.length - 1, 1);
+  sequence.forEach((item, i) => {
+    const r = (typeof item.normalized_rank === "number") ? item.normalized_rank : i / L;
+    (positions[item.action] = positions[item.action] || []).push(r);
+  });
+  const medianRank = {};
+  Object.entries(positions).forEach(([id, arr]) => {
+    arr.sort((a, b) => a - b);
+    medianRank[id] = arr[Math.floor(arr.length / 2)];
+  });
+  medianRank.START = 0;
+  medianRank.END = 1;
+
+  // Ordinal spacing: evenly spaced rank ORDER, not raw rank values.
+  const realNodes = nodes.filter((n) => !n.isSpecial);
+  const ordered = [...realNodes].sort(
+    (a, b) => (medianRank[a.id] ?? 0.5) - (medianRank[b.id] ?? 0.5)
+  );
+  const SPACING = Math.max(64, Math.round(maxRadius * 1.4));
+  const xOf = {};
+  const orderIdx = {};
+  ordered.forEach((n, i) => {
+    xOf[n.id] = (i + 1) * SPACING;
+    orderIdx[n.id] = i;
+  });
+  xOf.START = 0;
+  xOf.END = (ordered.length + 1) * SPACING;
+
+  const STAGGER = [-90, 0, 90];               // deterministic 3-level offsets
+  const SALIENT_Y = 0, BACKGROUND_Y = 340;    // bands are taller now
+  const laneY = (n) => (n.isSpecial || n.salient ? SALIENT_Y : BACKGROUND_Y);
+
+  const simNodes = nodes.map((n) => ({
+    id: n.id,
+    x: xOf[n.id] ?? 0,
+    // Deterministic seed: stagger by rank order, specials stay on centerline.
+    y: laneY(n) + (n.isSpecial ? 0 : STAGGER[(orderIdx[n.id] ?? 0) % 3]),
+    lane: laneY(n),
+    r: 40,
+  }));
+  const sim = d3.forceSimulation(simNodes)
+    .force("x", d3.forceX((d) => xOf[d.id] ?? 0).strength(0.9))
+    .force("y", d3.forceY((d) => d.lane).strength(0.05))   // was 0.15 — let stagger survive
+    .force("collide", d3.forceCollide((d) => d.r + Math.max(14, maxRadius * 0.4)))
+    .stop();
+  for (let i = 0; i < 150; i++) sim.tick();
+
+  const layout = {};
+  simNodes.forEach((d) => { layout[d.id] = { x: d.x, y: d.y }; });
+  return { layout, secondaryLaneTop: BACKGROUND_Y };
+}
+
 function computeCategoryLayout(nodes, sequence, graphMode) {
   const nodeLookup = makeNodeLookup(nodes);
 
@@ -373,6 +428,19 @@ function getArcPath(link, layout, radiusMap) {
   return `M${x1},${y1} Q${mx},${cy} ${x2},${y2}`;
 }
 
+function getCurvedPath(link, layout, radiusMap, curvature = 0.18) {
+  const s = layout[link.source] || { x: 0, y: 0 };
+  const t = layout[link.target] || { x: 0, y: 0 };
+  const dx = t.x - s.x, dy = t.y - s.y;
+  const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+  const rS = radiusMap[link.source] || 18, rT = radiusMap[link.target] || 18;
+  const sx = s.x + (dx / dist) * rS, sy = s.y + (dy / dist) * rS;
+  const tx = t.x - (dx / dist) * (rT + 6), ty = t.y - (dy / dist) * (rT + 6);
+  const mx = (sx + tx) / 2 - dy * curvature;
+  const my = (sy + ty) / 2 + dx * curvature;
+  return `M ${sx} ${sy} Q ${mx} ${my} ${tx} ${ty}`;
+}
+
 function getNodeLabel(node, mode) {
   if (node.isSpecial) return node.id;
   if (mode === "abstracted") {
@@ -380,6 +448,7 @@ function getNodeLabel(node, mode) {
     // fall back to the step id ("S01") so the node is never blank.
     return node.step_label || node.id;
   }
+  if (mode === "hybrid") return node.id;   // full label; renderer splits at "("
   const verb = node.id.split("(")[0];
   return verb.length > 7 ? verb.slice(0, 6) + "..." : verb;
 }
@@ -523,6 +592,10 @@ export function createGraphController({
   zoomOutSelector,
   zoomResetSelector,
 }) {
+  const MARKER_NS = svgSelector.replace(/[^a-zA-Z0-9]/g, "");   // "graphSvg" | "mergedGraphSvg"
+  const markerId = (base) => `${base}-${MARKER_NS}`;
+  const markerUrl = (base) => `url(#${base}-${MARKER_NS})`;
+
   const svg = d3.select(svgSelector);
   const graphWrapEl = document.querySelector(graphWrapSelector);
   let bgLayer = null;
@@ -590,7 +663,7 @@ export function createGraphController({
   let edgeWidthScale = null;
   let edgeOpacityScale = null;
   let edgeMetricFn = (d) => d.count || 1;   // updated per render
-  let currentMode = "smart";
+  let currentMode = "hybrid";
   let currentSequenceCache = [];
   let nodeDurationStatsCache = null;
   let autoZoomEnabled = true;
@@ -599,7 +672,7 @@ export function createGraphController({
   let lastGraph = null;
   let lastSequence = null;
   let lastMinCount = 1;
-  let lastMode = "smart";
+  let lastMode = "hybrid";
   let lastColorMode = "category";
   let lastSizeMode = "frequency";
   let lastLayoutMode = "temporal";
@@ -610,7 +683,7 @@ export function createGraphController({
     graph,
     sequence,
     minCount = 1,
-    mode = "smart",
+    mode = "hybrid",
     colorMode = "category",
     sizeMode = "frequency",
     layoutMode = "temporal",
@@ -716,18 +789,18 @@ export function createGraphController({
     const maxCount = d3.max(filteredNodes, (d) => d.count) || 1;
     const nodeRadiusByCount = d3.scaleSqrt()
       .domain([1, Math.max(maxCount, 2)])
-      .range([18, 36]);
+      .range(mode === "hybrid" ? [26, 46] : [18, 36]);
 
     enrichedLinksCache = enrichedLinks;
 
     const defs = svg.append("defs");
     [["arrow", "#94a3b8"], ["arrowActive", "#ea580c"]].forEach(([id, color]) => {
-      defs.append("marker").attr("id", id)
+      defs.append("marker").attr("id", markerId(id))
         .attr("viewBox", "0 -4 10 8").attr("refX", 9).attr("refY", 0)
         .attr("markerWidth", 5).attr("markerHeight", 5).attr("orient", "auto")
         .append("path").attr("d", "M0,-4L10,0L0,4Z").attr("fill", color);
     });
-    defs.append("marker").attr("id", "arrowReverse")
+    defs.append("marker").attr("id", markerId("arrowReverse"))
       .attr("viewBox", "0 -4 10 8").attr("refX", 1).attr("refY", 0)
       .attr("markerWidth", 5).attr("markerHeight", 5).attr("orient", "auto-start-reverse")
       .append("path").attr("d", "M0,-4L10,0L0,4Z").attr("fill", "#94a3b8");
@@ -742,6 +815,16 @@ export function createGraphController({
     const radiusMap = makeNodeSizeMap(
       filteredNodes, nodeDurationStatsCache, sizeMode, nodeRadiusByCount, mode
     );
+    if (mode === "hybrid") {
+      filteredNodes.forEach((d) => {
+        const label = nodeLabels.get(d.id) || d.id;
+        const verbPart = label.includes("(") ? label.split("(")[0] : label;
+        const nounPart = label.includes("(") ? "(" + label.split("(")[1] : "";
+        const widest = Math.max(verbPart.length, nounPart.length);
+        const fitR = Math.min(48, widest * 2.9 + 10);
+        radiusMap[d.id] = Math.max(radiusMap[d.id], fitR);
+      });
+    }
     radiusMapCache = radiusMap;
 
     const maxRadius = d3.max(Object.values(radiusMap)) || 18;
@@ -750,7 +833,14 @@ export function createGraphController({
     let totalDuration = sequence[sequence.length - 1]?.end || 1;
     let xScale = null;
 
-    if (layoutMode === "temporal") {
+    if (mode === "hybrid" && layoutMode === "temporal") {
+      // Markov view: relative order, no absolute-time axis (rank layout).
+      drawHRIBackgrounds(false);
+      zoomGroup.selectAll(".hri-backgrounds").selectAll("*").remove();
+      const t = computeRankLayout(filteredNodes, sequence, { maxRadius });
+      layout = t.layout;
+      xScale = null; // suppresses the time ruler block below
+    } else if (layoutMode === "temporal") {
       drawHRIBackgrounds(false);
       const t = computeTemporalLayout(filteredNodes, sequence, { maxRadius });
       layout = t.layout; totalDuration = t.totalDuration; xScale = t.xScale;
@@ -874,7 +964,7 @@ export function createGraphController({
     if (layoutMode === "category" && clusters) {
       drawClusterHulls(zoomGroup, clusters, layout, radiusMap, mode);
     }
-    if (layoutMode === "temporal") {
+    if (layoutMode === "temporal" && mode !== "hybrid") {
       drawLanes(zoomGroup, filteredNodes, layout, radiusMap);
     }
 
@@ -894,6 +984,10 @@ export function createGraphController({
         edgeWidthScale = d3.scaleLinear().domain([minSup, maxSup]).range([0.8, 5]);
         edgeOpacityScale = (support) => supportToOpacity(support, nSessionsHint || 1);
       }
+    } else if (mode === "hybrid") {
+      edgeMetricFn = (d) => (typeof d.probability === "number" ? d.probability : 0);
+      edgeWidthScale = d3.scaleLinear().domain([0, 1]).range([0.8, 6]);
+      edgeOpacityScale = d3.scaleLinear().domain([0, 1]).range([0.2, 0.9]);
     } else {
       edgeMetricFn = (d) => d.count || 1;
       const maxLinkCount = d3.max(enrichedLinks, edgeMetricFn) || 1;
@@ -904,13 +998,22 @@ export function createGraphController({
     const forwardEdges = [];
     const backEdges = [];
     const selfLoops = [];
+    const HYBRID_MIN_PROB = 0.08;
+    let hiddenEdges = 0;
     enrichedLinks.forEach((link) => {
+      if (mode === "hybrid" && typeof link.probability === "number"
+          && link.probability < HYBRID_MIN_PROB
+          && link.source !== "START" && link.target !== "END") {
+        hiddenEdges += 1; return;
+      }
       if (link.source === link.target) { selfLoops.push(link); return; }
       if (link.source === "START" || link.target === "END") { forwardEdges.push(link); return; }
       const sx = (layout[link.source] || { x: 0 }).x;
       const tx = (layout[link.target] || { x: 0 }).x;
       if (tx >= sx) forwardEdges.push(link); else backEdges.push(link);
     });
+
+    
 
     const medianCount = d3.median(forwardEdges, (d) => d.count || 1) || 1;
 
@@ -971,8 +1074,8 @@ export function createGraphController({
         if (c === medianCount) return 0.4;
         return 0.15;
       })
-      .attr("marker-end", "url(#arrow)")
-      .attr("d", (d) => getStraightPath(d, layout, radiusMap))
+      .attr("marker-end", markerUrl("arrow"))
+      .attr("d", (d) => currentMode === "hybrid" ? getCurvedPath(d, layout, radiusMap) : getStraightPath(d, layout, radiusMap))
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
       .on("mouseout", hideEdgeTooltip);
 
@@ -983,9 +1086,9 @@ export function createGraphController({
       .attr("data-pair-key", (d) => d.pairKey)
       .attr("stroke-width", (d) => edgeWidthScale(edgeMetricFn(d)))
       .attr("stroke-opacity", showSupportBadges ? (d) => edgeOpacityScale(edgeMetricFn(d)) : 0.6)
-      .attr("marker-end", "url(#arrow)")
-      .attr("marker-start", "url(#arrowReverse)")
-      .attr("d", (d) => getStraightPath(d, layout, radiusMap))
+      .attr("marker-end", markerUrl("arrow"))
+      .attr("marker-start", markerUrl("arrowReverse"))
+      .attr("d", (d) => currentMode === "hybrid" ? getCurvedPath(d, layout, radiusMap) : getStraightPath(d, layout, radiusMap))
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
       .on("mouseout", hideEdgeTooltip);
 
@@ -1012,6 +1115,8 @@ export function createGraphController({
     nodeGroups.append("circle")
       .attr("r", (d) => radiusMap[d.id] || 18)
       .style("fill", colorFn)
+      .style("stroke", (d) => (d.salient ? "#1e293b" : "none"))
+      .style("stroke-width", (d) => (d.salient ? 2.5 : 0))
       .style("opacity", (d) => isSecondaryNode(d) ? 0.55 : 1.0);
 
     // Inside label
@@ -1029,9 +1134,29 @@ export function createGraphController({
       .attr("font-weight", "bold")
       .attr("fill", (d) => (d.isSpecial ? "#4b5563" : "white"))
       .attr("pointer-events", "none")
-      .attr("textLength", (d) => Math.max(20, (radiusMap[d.id] || 18) * 1.55))
-      .attr("lengthAdjust", "spacingAndGlyphs")
-      .text((d) => nodeLabels.get(d.id) || d.id);
+      .each(function(d) {
+        const label = nodeLabels.get(d.id) || d.id;
+        const isHybridSplit = currentMode === "hybrid" && label.includes("(");
+        const text = d3.select(this);
+        text.text(null);
+        if (isHybridSplit) {
+          const verbPart = label.split("(")[0];
+          const nounPart = "(" + label.split("(")[1];
+          text.append("tspan")
+            .attr("x", 0)
+            .attr("dy", "-0.35em")
+            .text(verbPart);
+          text.append("tspan")
+            .attr("x", 0)
+            .attr("dy", "1.15em")
+            .text(nounPart);
+        } else {
+          text
+            .attr("textLength", Math.max(20, (radiusMap[d.id] || 18) * 1.55))
+            .attr("lengthAdjust", "spacingAndGlyphs")
+            .text(label);
+        }
+      });
 
     // Subtitle
     nodeGroups.append("text")
@@ -1103,26 +1228,58 @@ export function createGraphController({
       });
     nodeGroups.call(dragBehavior);
 
-    // Self loops
-    const selfLoopIndicators = zoomGroup
-      .append("g").attr("class", "self-loop-indicators")
-      .selectAll("g.self-loop-indicator")
-      .data(selfLoopSummary.filter((d) => d.source !== "START" && d.source !== "END"))
-      .enter().append("g").attr("class", "self-loop-indicator")
-      .attr("data-key", (d) => d.key)
-      .attr("transform", (d) => {
-        const p = layout[d.source] || { x: 0, y: 0 };
-        return `translate(${p.x},${p.y})`;
-      });
-    selfLoopIndicators.append("text")
-      .attr("class", "self-loop-indicator-glyph")
-      .attr("x", (d) => (radiusMap[d.source] || 18) * 0.7)
-      .attr("y", (d) => -(radiusMap[d.source] || 18) - 4)
-      .attr("text-anchor", "middle").attr("dy", "0.35em")
-      .text("⟳");
-    selfLoopIndicators
-      .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
-      .on("mouseout", hideEdgeTooltip);
+      if (mode === "hybrid") {
+        // Node-local self-loops: drawn inside each node group so they inherit
+        // the node's transform and follow drags automatically.
+        const loopInfo = {};
+        selfLoopSummary.forEach((d) => {
+          if (d.source === "START" || d.source === "END") return;
+          const e = (d.edges && d.edges[0]) || {};
+          loopInfo[d.source] = (typeof e.probability === "number") ? e.probability : null;
+        });
+
+        const loopNodes = nodeGroups.filter((d) => d.id in loopInfo);
+        loopNodes.append("path")
+          .attr("class", "self-loop-arc")
+          .attr("d", (d) => {
+            const r = radiusMap[d.id] || 18;
+            return `M ${-r * 0.5} ${-r * 0.85} A ${r * 0.55} ${r * 0.55} 0 1 1 ${r * 0.5} ${-r * 0.85}`;
+          })
+          .attr("fill", "none")
+          .attr("stroke", "#993C1D")
+          .attr("stroke-width", 1.2)
+          .attr("marker-end", markerUrl("arrow"));
+
+        loopNodes.append("text")
+          .attr("class", "self-loop-prob")
+          .attr("y", (d) => -(radiusMap[d.id] || 18) - 14)
+          .attr("text-anchor", "middle")
+          .attr("font-size", "9px")
+          .attr("fill", "#993C1D")
+          .text((d) => (loopInfo[d.id] !== null ? loopInfo[d.id].toFixed(2) : ""));
+      } else {
+      // Self loops
+      const selfLoopIndicators = zoomGroup
+        .append("g").attr("class", "self-loop-indicators")
+        .selectAll("g.self-loop-indicator")
+        .data(selfLoopSummary.filter((d) => d.source !== "START" && d.source !== "END"))
+        .enter().append("g").attr("class", "self-loop-indicator")
+        .attr("data-key", (d) => d.key)
+        .attr("transform", (d) => {
+          const p = layout[d.source] || { x: 0, y: 0 };
+          return `translate(${p.x},${p.y})`;
+        });
+      selfLoopIndicators.append("text")
+        .attr("class", "self-loop-indicator-glyph")
+        .attr("x", (d) => (radiusMap[d.source] || 18) * 0.7)
+        .attr("y", (d) => -(radiusMap[d.source] || 18) - 4)
+        .attr("text-anchor", "middle").attr("dy", "0.35em")
+        .text("⟳");
+      selfLoopIndicators
+        .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
+        .on("mouseout", hideEdgeTooltip);
+    }
+    
 
     nodeGroups
       .on("mouseover", function(event, d) {
@@ -1224,6 +1381,9 @@ export function createGraphController({
 
     const tooltip = document.getElementById("edgeTooltip");
     let txt = `${d.source} → ${d.target}\nCount: ${d.count} (${pct}% of outgoing)`;
+    if (typeof d.probability === "number") {
+      txt += `\nP(${d.target} | ${d.source}) = ${d.probability.toFixed(2)}`;
+    }
     if (d.support !== undefined && d.n_sessions !== undefined) {
       txt += `\nSupport: ${d.support}/${d.n_sessions}`;
     }
@@ -1251,6 +1411,8 @@ export function createGraphController({
     }
     if (d.is_primary === false) lines.push(`Lane: secondary (outside recipe steps)`);
     else if (d.is_primary === true) lines.push(`Lane: primary (recipe action)`);
+    if (d.salient === true) lines.push(`Tier: recipe-salient`);
+    else if (d.salient === false) lines.push(`Tier: background activity`);
 
     if (stats) {
       if (graphMode === "abstracted") {
@@ -1359,7 +1521,7 @@ export function createGraphController({
     if (linkSelection) {
       linkSelection
         .classed("active", (d) => d && (d.key === activeEdge || d.pairKey === activeEdge))
-        .attr("marker-end", (d) => (d && (d.key === activeEdge || d.pairKey === activeEdge) ? "url(#arrowActive)" : "url(#arrow)"));
+        .attr("marker-end", (d) => (d && (d.key === activeEdge || d.pairKey === activeEdge) ? markerUrl("arrowActive") : markerUrl("arrow")));
     }
     if (selfLoopSelection) selfLoopSelection.classed("active", (d) => d && d.key === activeEdge);
   }

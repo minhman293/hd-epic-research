@@ -1639,7 +1639,7 @@
         "source": "access",
         "target": "retrieve",
         "count": 5,
-        "probability": 0.2777777777777778,
+        "probability": 0.2778,
         "key": "access|||retrieve",
         "occurrences": [
           0,
@@ -1653,7 +1653,7 @@
         "source": "leave",
         "target": "access",
         "count": 5,
-        "probability": 0.35714285714285715,
+        "probability": 0.3571,
         "key": "leave|||access",
         "occurrences": [
           6,
@@ -1667,7 +1667,7 @@
         "source": "leave",
         "target": "block",
         "count": 5,
-        "probability": 0.35714285714285715,
+        "probability": 0.3571,
         "key": "leave|||block",
         "occurrences": [
           13,
@@ -1681,7 +1681,7 @@
         "source": "retrieve",
         "target": "leave",
         "count": 5,
-        "probability": 0.3333333333333333,
+        "probability": 0.3333,
         "key": "retrieve|||leave",
         "occurrences": [
           5,
@@ -1695,7 +1695,7 @@
         "source": "access",
         "target": "merge",
         "count": 4,
-        "probability": 0.2222222222222222,
+        "probability": 0.2222,
         "key": "access|||merge",
         "occurrences": [
           16,
@@ -1708,7 +1708,7 @@
         "source": "block",
         "target": "access",
         "count": 4,
-        "probability": 0.2857142857142857,
+        "probability": 0.2857,
         "key": "block|||access",
         "occurrences": [
           11,
@@ -1721,7 +1721,7 @@
         "source": "retrieve",
         "target": "block",
         "count": 4,
-        "probability": 0.26666666666666666,
+        "probability": 0.2667,
         "key": "retrieve|||block",
         "occurrences": [
           1,
@@ -1734,7 +1734,7 @@
         "source": "access",
         "target": "leave",
         "count": 3,
-        "probability": 0.16666666666666666,
+        "probability": 0.1667,
         "key": "access|||leave",
         "occurrences": [
           12,
@@ -1746,7 +1746,7 @@
         "source": "block",
         "target": "leave",
         "count": 3,
-        "probability": 0.21428571428571427,
+        "probability": 0.2143,
         "key": "block|||leave",
         "occurrences": [
           2,
@@ -1758,7 +1758,7 @@
         "source": "block",
         "target": "retrieve",
         "count": 3,
-        "probability": 0.21428571428571427,
+        "probability": 0.2143,
         "key": "block|||retrieve",
         "occurrences": [
           14,
@@ -1770,7 +1770,7 @@
         "source": "access",
         "target": "access",
         "count": 2,
-        "probability": 0.1111111111111111,
+        "probability": 0.1111,
         "key": "access|||access",
         "occurrences": [
           22,
@@ -1781,7 +1781,7 @@
         "source": "access",
         "target": "clean",
         "count": 2,
-        "probability": 0.1111111111111111,
+        "probability": 0.1111,
         "key": "access|||clean",
         "occurrences": [
           62,
@@ -1792,7 +1792,7 @@
         "source": "block",
         "target": "manipulate",
         "count": 2,
-        "probability": 0.14285714285714285,
+        "probability": 0.1429,
         "key": "block|||manipulate",
         "occurrences": [
           64,
@@ -1803,7 +1803,7 @@
         "source": "clean",
         "target": "block",
         "count": 2,
-        "probability": 0.6666666666666666,
+        "probability": 0.6667,
         "key": "clean|||block",
         "occurrences": [
           63,
@@ -1814,7 +1814,7 @@
         "source": "leave",
         "target": "retrieve",
         "count": 2,
-        "probability": 0.14285714285714285,
+        "probability": 0.1429,
         "key": "leave|||retrieve",
         "occurrences": [
           3,
@@ -1825,7 +1825,7 @@
         "source": "manipulate",
         "target": "access",
         "count": 2,
-        "probability": 0.3333333333333333,
+        "probability": 0.3333,
         "key": "manipulate|||access",
         "occurrences": [
           65,
@@ -1836,7 +1836,7 @@
         "source": "manipulate",
         "target": "retrieve",
         "count": 2,
-        "probability": 0.3333333333333333,
+        "probability": 0.3333,
         "key": "manipulate|||retrieve",
         "occurrences": [
           40,
@@ -1847,7 +1847,7 @@
         "source": "merge",
         "target": "block",
         "count": 2,
-        "probability": 0.3333333333333333,
+        "probability": 0.3333,
         "key": "merge|||block",
         "occurrences": [
           30,
@@ -1858,7 +1858,7 @@
         "source": "retrieve",
         "target": "access",
         "count": 2,
-        "probability": 0.13333333333333333,
+        "probability": 0.1333,
         "key": "retrieve|||access",
         "occurrences": [
           15,
@@ -1869,7 +1869,7 @@
         "source": "retrieve",
         "target": "sense",
         "count": 2,
-        "probability": 0.13333333333333333,
+        "probability": 0.1333,
         "key": "retrieve|||sense",
         "occurrences": [
           49,
@@ -1880,7 +1880,7 @@
         "source": "access",
         "target": "manipulate",
         "count": 1,
-        "probability": 0.05555555555555555,
+        "probability": 0.0556,
         "key": "access|||manipulate",
         "occurrences": [
           39
@@ -1890,7 +1890,7 @@
         "source": "access",
         "target": "transition",
         "count": 1,
-        "probability": 0.05555555555555555,
+        "probability": 0.0556,
         "key": "access|||transition",
         "occurrences": [
           7
@@ -1900,7 +1900,7 @@
         "source": "block",
         "target": "block",
         "count": 1,
-        "probability": 0.07142857142857142,
+        "probability": 0.0714,
         "key": "block|||block",
         "occurrences": [
           45
@@ -1910,7 +1910,7 @@
         "source": "block",
         "target": "transition",
         "count": 1,
-        "probability": 0.07142857142857142,
+        "probability": 0.0714,
         "key": "block|||transition",
         "occurrences": [
           54
@@ -1920,7 +1920,7 @@
         "source": "clean",
         "target": "manipulate",
         "count": 1,
-        "probability": 0.3333333333333333,
+        "probability": 0.3333,
         "key": "clean|||manipulate",
         "occurrences": [
           71
@@ -1930,7 +1930,7 @@
         "source": "leave",
         "target": "clean",
         "count": 1,
-        "probability": 0.07142857142857142,
+        "probability": 0.0714,
         "key": "leave|||clean",
         "occurrences": [
           70
@@ -1940,7 +1940,7 @@
         "source": "leave",
         "target": "leave",
         "count": 1,
-        "probability": 0.07142857142857142,
+        "probability": 0.0714,
         "key": "leave|||leave",
         "occurrences": [
           60
@@ -1950,7 +1950,7 @@
         "source": "manipulate",
         "target": "leave",
         "count": 1,
-        "probability": 0.16666666666666666,
+        "probability": 0.1667,
         "key": "manipulate|||leave",
         "occurrences": [
           69
@@ -1960,7 +1960,7 @@
         "source": "manipulate",
         "target": "manipulate",
         "count": 1,
-        "probability": 0.16666666666666666,
+        "probability": 0.1667,
         "key": "manipulate|||manipulate",
         "occurrences": [
           72
@@ -1970,7 +1970,7 @@
         "source": "merge",
         "target": "access",
         "count": 1,
-        "probability": 0.16666666666666666,
+        "probability": 0.1667,
         "key": "merge|||access",
         "occurrences": [
           21
@@ -1980,7 +1980,7 @@
         "source": "merge",
         "target": "leave",
         "count": 1,
-        "probability": 0.16666666666666666,
+        "probability": 0.1667,
         "key": "merge|||leave",
         "occurrences": [
           17
@@ -1990,7 +1990,7 @@
         "source": "merge",
         "target": "manipulate",
         "count": 1,
-        "probability": 0.16666666666666666,
+        "probability": 0.1667,
         "key": "merge|||manipulate",
         "occurrences": [
           75
@@ -2000,7 +2000,7 @@
         "source": "merge",
         "target": "retrieve",
         "count": 1,
-        "probability": 0.16666666666666666,
+        "probability": 0.1667,
         "key": "merge|||retrieve",
         "occurrences": [
           58
@@ -2010,7 +2010,7 @@
         "source": "retrieve",
         "target": "merge",
         "count": 1,
-        "probability": 0.06666666666666667,
+        "probability": 0.0667,
         "key": "retrieve|||merge",
         "occurrences": [
           74
@@ -2020,7 +2020,7 @@
         "source": "retrieve",
         "target": "retrieve",
         "count": 1,
-        "probability": 0.06666666666666667,
+        "probability": 0.0667,
         "key": "retrieve|||retrieve",
         "occurrences": [
           4

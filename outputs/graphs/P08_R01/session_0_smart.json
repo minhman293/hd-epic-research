@@ -45,6 +45,8 @@
       "edge_key": "slide(phone)|||open(phone)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 61,
+      "noun_class": 165,
       "video_id": "P08-20240613-122900",
       "video_start": 3.31,
       "video_end": 4.67,
@@ -60,6 +62,8 @@
       "edge_key": "open(phone)|||move(scale)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 165,
       "video_id": "P08-20240613-122900",
       "video_start": 4.5,
       "video_end": 7.92,
@@ -75,6 +79,8 @@
       "edge_key": "move(scale)|||take(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 11,
+      "noun_class": 108,
       "video_id": "P08-20240613-122900",
       "video_start": 8.79,
       "video_end": 11.04,
@@ -90,6 +96,8 @@
       "edge_key": "take(cup)|||turn-on(scale)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 13,
       "video_id": "P08-20240613-122900",
       "video_start": 15.5,
       "video_end": 17.34,
@@ -105,6 +113,8 @@
       "edge_key": "turn-on(scale)|||adjust(scale)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 6,
+      "noun_class": 108,
       "video_id": "P08-20240613-122900",
       "video_start": 17.78,
       "video_end": 19.23,
@@ -120,6 +130,8 @@
       "edge_key": "adjust(scale)|||put(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 17,
+      "noun_class": 108,
       "video_id": "P08-20240613-122900",
       "video_start": 18.85,
       "video_end": 26.83,
@@ -135,6 +147,8 @@
       "edge_key": "put(cup)|||take(can)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "verb_class": 1,
+      "noun_class": 13,
       "video_id": "P08-20240613-122900",
       "video_start": 27.4,
       "video_end": 28.74,
@@ -150,6 +164,8 @@
       "edge_key": "take(can)|||open(can)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 61,
       "video_id": "P08-20240613-122900",
       "video_start": 33.85,
       "video_end": 35.16,
@@ -165,6 +181,8 @@
       "edge_key": "open(can)|||pour(coffee)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 3,
+      "noun_class": 61,
       "video_id": "P08-20240613-122900",
       "video_start": 35.71,
       "video_end": 36.87,
@@ -180,6 +198,8 @@
       "edge_key": "pour(coffee)|||close(can)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "verb_class": 9,
+      "noun_class": 59,
       "video_id": "P08-20240613-122900",
       "video_start": 36.64,
       "video_end": 41.37,
@@ -195,6 +215,8 @@
       "edge_key": "close(can)|||put(can)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 4,
+      "noun_class": 61,
       "video_id": "P08-20240613-122900",
       "video_start": 41.26,
       "video_end": 44.71,
@@ -210,6 +232,8 @@
       "edge_key": "put(can)|||carry(phone)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 61,
       "video_id": "P08-20240613-122900",
       "video_start": 45.26,
       "video_end": 46.7,
@@ -225,6 +249,8 @@
       "edge_key": "carry(phone)|||write(coffee)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 89,
+      "noun_class": 165,
       "video_id": "P08-20240613-122900",
       "video_start": 46.28,
       "video_end": 47.26,
@@ -240,6 +266,8 @@
       "edge_key": "write(coffee)|||move(phone)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 97,
+      "noun_class": 59,
       "video_id": "P08-20240613-122900",
       "video_start": 48.26,
       "video_end": 67.23,
@@ -255,6 +283,8 @@
       "edge_key": "move(phone)|||move(scale)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 11,
+      "noun_class": 165,
       "video_id": "P08-20240613-122900",
       "video_start": 67.39,
       "video_end": 68.61,
@@ -270,6 +300,8 @@
       "edge_key": "move(scale)|||take(maker:coffee)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 11,
+      "noun_class": 108,
       "video_id": "P08-20240613-122900",
       "video_start": 69.72,
       "video_end": 70.74,
@@ -285,6 +317,8 @@
       "edge_key": "take(maker:coffee)|||open(cap)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "verb_class": 0,
+      "noun_class": 50,
       "video_id": "P08-20240613-122900",
       "video_start": 72.85,
       "video_end": 73.35,
@@ -300,6 +334,8 @@
       "edge_key": "open(cap)|||pour(coffee)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "verb_class": 3,
+      "noun_class": 118,
       "video_id": "P08-20240613-122900",
       "video_start": 73.44,
       "video_end": 74.18,
@@ -315,6 +351,8 @@
       "edge_key": "pour(coffee)|||put(cup)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "verb_class": 9,
+      "noun_class": 59,
       "video_id": "P08-20240613-122900",
       "video_start": 75.72,
       "video_end": 76.96000000000001,
@@ -330,6 +368,8 @@
       "edge_key": "put(cup)|||crush(coffee)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "verb_class": 1,
+      "noun_class": 13,
       "video_id": "P08-20240613-122900",
       "video_start": 77.41,
       "video_end": 80.11,
@@ -345,6 +385,8 @@
       "edge_key": "crush(coffee)|||turn-on(machine:washing)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "verb_class": 49,
+      "noun_class": 59,
       "video_id": "P08-20240613-122900",
       "video_start": 79.89,
       "video_end": 96.38,
@@ -360,6 +402,8 @@
       "edge_key": "turn-on(machine:washing)|||take(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 6,
+      "noun_class": 124,
       "video_id": "P08-20240613-122900",
       "video_start": 97.41,
       "video_end": 98.76,
@@ -375,6 +419,8 @@
       "edge_key": "take(cup)|||search(rack:drying)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 13,
       "video_id": "P08-20240613-122900",
       "video_start": 100.92,
       "video_end": 101.6,
@@ -390,6 +436,8 @@
       "edge_key": "search(rack:drying)|||take(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 48,
+      "noun_class": 110,
       "video_id": "P08-20240613-122900",
       "video_start": 103.17,
       "video_end": 106.93,
@@ -405,6 +453,8 @@
       "edge_key": "take(cup)|||take(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 13,
       "video_id": "P08-20240613-122900",
       "video_start": 107.37,
       "video_end": 107.81,
@@ -420,6 +470,8 @@
       "edge_key": "take(cup)|||screw(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 13,
       "video_id": "P08-20240613-122900",
       "video_start": 109.05,
       "video_end": 110.35,
@@ -435,6 +487,8 @@
       "edge_key": "screw(cup)|||put(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 78,
+      "noun_class": 13,
       "video_id": "P08-20240613-122900",
       "video_start": 111.19,
       "video_end": 114.51,
@@ -450,6 +504,8 @@
       "edge_key": "put(cup)|||put(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 13,
       "video_id": "P08-20240613-122900",
       "video_start": 114.38,
       "video_end": 114.99,
@@ -465,6 +521,8 @@
       "edge_key": "put(cup)|||move(scale)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 13,
       "video_id": "P08-20240613-122900",
       "video_start": 115.55,
       "video_end": 117.26,
@@ -480,6 +538,8 @@
       "edge_key": "move(scale)|||pat(maker:coffee)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 11,
+      "noun_class": 108,
       "video_id": "P08-20240613-122900",
       "video_start": 117.69,
       "video_end": 118.96,
@@ -495,6 +555,8 @@
       "edge_key": "pat(maker:coffee)|||take(spoon)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 32,
+      "noun_class": 50,
       "video_id": "P08-20240613-122900",
       "video_start": 120.35,
       "video_end": 121.44,
@@ -510,6 +572,8 @@
       "edge_key": "take(spoon)|||mix(coffee)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 0,
+      "noun_class": 1,
       "video_id": "P08-20240613-122900",
       "video_start": 121.42,
       "video_end": 122.39,
@@ -525,6 +589,8 @@
       "edge_key": "mix(coffee)|||pat(maker:coffee)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 10,
+      "noun_class": 59,
       "video_id": "P08-20240613-122900",
       "video_start": 122.47,
       "video_end": 125.8,
@@ -540,6 +606,8 @@
       "edge_key": "pat(maker:coffee)|||scoop(coffee)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 32,
+      "noun_class": 50,
       "video_id": "P08-20240613-122900",
       "video_start": 125.55,
       "video_end": 128.0,
@@ -555,6 +623,8 @@
       "edge_key": "scoop(coffee)|||put(coffee)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 16,
+      "noun_class": 59,
       "video_id": "P08-20240613-122900",
       "video_start": 127.75,
       "video_end": 130.2,
@@ -570,6 +640,8 @@
       "edge_key": "put(coffee)|||pat(maker:coffee)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 59,
       "video_id": "P08-20240613-122900",
       "video_start": 130.13,
       "video_end": 131.6,
@@ -585,6 +657,8 @@
       "edge_key": "pat(maker:coffee)|||crush(coffee)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 32,
+      "noun_class": 50,
       "video_id": "P08-20240613-122900",
       "video_start": 131.4,
       "video_end": 133.15,
@@ -600,6 +674,8 @@
       "edge_key": "crush(coffee)|||pat(maker:coffee)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 49,
+      "noun_class": 59,
       "video_id": "P08-20240613-122900",
       "video_start": 132.95,
       "video_end": 135.95,
@@ -615,6 +691,8 @@
       "edge_key": "pat(maker:coffee)|||put(spoon)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 32,
+      "noun_class": 50,
       "video_id": "P08-20240613-122900",
       "video_start": 135.55,
       "video_end": 137.62,
@@ -630,6 +708,8 @@
       "edge_key": "put(spoon)|||pat(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 1,
       "video_id": "P08-20240613-122900",
       "video_start": 139.5,
       "video_end": 140.73,
@@ -645,6 +725,8 @@
       "edge_key": "pat(cup)|||press(coffee)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 32,
+      "noun_class": 13,
       "video_id": "P08-20240613-122900",
       "video_start": 140.77,
       "video_end": 142.18,
@@ -660,6 +742,8 @@
       "edge_key": "press(coffee)|||put(presser)",
       "step_id": "P08_R01_S02",
       "is_primary": true,
+      "verb_class": 21,
+      "noun_class": 59,
       "video_id": "P08-20240613-122900",
       "video_start": 142.25,
       "video_end": 151.13,
@@ -675,6 +759,8 @@
       "edge_key": "put(presser)|||put(cup)",
       "step_id": "P08_R01_S02",
       "is_primary": true,
+      "verb_class": 1,
+      "noun_class": 172,
       "video_id": "P08-20240613-122900",
       "video_start": 150.79,
       "video_end": 152.04,
@@ -690,6 +776,8 @@
       "edge_key": "put(cup)|||screw(cup)",
       "step_id": "P08_R01_S02",
       "is_primary": true,
+      "verb_class": 1,
+      "noun_class": 13,
       "video_id": "P08-20240613-122900",
       "video_start": 152.09,
       "video_end": 153.82,
@@ -705,6 +793,8 @@
       "edge_key": "screw(cup)|||put(machine:washing)",
       "step_id": "P08_R01_S02",
       "is_primary": true,
+      "verb_class": 78,
+      "noun_class": 13,
       "video_id": "P08-20240613-122900",
       "video_start": 153.87,
       "video_end": 154.9,
@@ -720,6 +810,8 @@
       "edge_key": "put(machine:washing)|||move(phone)",
       "step_id": "P08_R01_S02",
       "is_primary": true,
+      "verb_class": 1,
+      "noun_class": 124,
       "video_id": "P08-20240613-122900",
       "video_start": 154.89,
       "video_end": 156.27,
@@ -735,6 +827,8 @@
       "edge_key": "move(phone)|||carry(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 11,
+      "noun_class": 165,
       "video_id": "P08-20240613-122900",
       "video_start": 156.37,
       "video_end": 160.13,
@@ -750,6 +844,8 @@
       "edge_key": "carry(cup)|||put(cup)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 89,
+      "noun_class": 13,
       "video_id": "P08-20240613-122900",
       "video_start": 160.23,
       "video_end": 161.28,
@@ -765,6 +861,8 @@
       "edge_key": "put(cup)|||turn-on(machine:washing)",
       "step_id": null,
       "is_primary": false,
+      "verb_class": 1,
+      "noun_class": 13,
       "video_id": "P08-20240613-122900",
       "video_start": 161.38,
       "video_end": 162.5,
@@ -780,6 +878,8 @@
       "edge_key": "turn-on(machine:washing)|||check(coffee)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "verb_class": 6,
+      "noun_class": 124,
       "video_id": "P08-20240613-122900",
       "video_start": 163.4,
       "video_end": 165.95,
@@ -795,6 +895,8 @@
       "edge_key": "check(coffee)|||open(drawer)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "verb_class": 24,
+      "noun_class": 59,
       "video_id": "P08-20240613-122900",
       "video_start": 166.32,
       "video_end": 174.87,
@@ -810,6 +912,8 @@
       "edge_key": "open(drawer)|||take(plate)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "verb_class": 3,
+      "noun_class": 8,
       "video_id": "P08-20240613-122900",
       "video_start": 174.97,
       "video_end": 175.82,
@@ -825,6 +929,8 @@
       "edge_key": "take(plate)|||finish(machine:washing)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "verb_class": 0,
+      "noun_class": 2,
       "video_id": "P08-20240613-122900",
       "video_start": 175.89,
       "video_end": 176.32,
@@ -840,6 +946,8 @@
       "edge_key": "finish(machine:washing)|||wait(machine:washing)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "verb_class": 80,
+      "noun_class": 124,
       "video_id": "P08-20240613-122900",
       "video_start": 178.69,
       "video_end": 180.39,
@@ -855,6 +963,8 @@
       "edge_key": "wait(machine:washing)|||squeeze(cup)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "verb_class": 72,
+      "noun_class": 124,
       "video_id": "P08-20240613-122900",
       "video_start": 180.55,
       "video_end": 185.2,
@@ -870,6 +980,8 @@
       "edge_key": "squeeze(cup)|||turn-off(machine:washing)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "verb_class": 18,
+      "noun_class": 13,
       "video_id": "P08-20240613-122900",
       "video_start": 185.21,
       "video_end": 191.15,
@@ -885,6 +997,8 @@
       "edge_key": null,
       "step_id": null,
       "is_primary": false,
+      "verb_class": 8,
+      "noun_class": 124,
       "video_id": "P08-20240613-122900",
       "video_start": 192.17,
       "video_end": 193.26,
@@ -1099,6 +1213,7 @@
         "source": "move",
         "target": "take",
         "count": 2,
+        "probability": 0.4,
         "key": "move|||take",
         "occurrences": [
           2,
@@ -1109,6 +1224,7 @@
         "source": "open",
         "target": "pour",
         "count": 2,
+        "probability": 0.5,
         "key": "open|||pour",
         "occurrences": [
           8,
@@ -1119,6 +1235,7 @@
         "source": "put",
         "target": "move",
         "count": 2,
+        "probability": 0.1818,
         "key": "put|||move",
         "occurrences": [
           28,
@@ -1129,6 +1246,7 @@
         "source": "put",
         "target": "pat",
         "count": 2,
+        "probability": 0.1818,
         "key": "put|||pat",
         "occurrences": [
           35,
@@ -1139,6 +1257,7 @@
         "source": "put",
         "target": "put",
         "count": 2,
+        "probability": 0.1818,
         "key": "put|||put",
         "occurrences": [
           27,
@@ -1149,6 +1268,7 @@
         "source": "screw",
         "target": "put",
         "count": 2,
+        "probability": 1.0,
         "key": "screw|||put",
         "occurrences": [
           26,
@@ -1159,6 +1279,7 @@
         "source": "take",
         "target": "open",
         "count": 2,
+        "probability": 0.25,
         "key": "take|||open",
         "occurrences": [
           7,
@@ -1169,6 +1290,7 @@
         "source": "adjust",
         "target": "put",
         "count": 1,
+        "probability": 1.0,
         "key": "adjust|||put",
         "occurrences": [
           5
@@ -1178,6 +1300,7 @@
         "source": "carry",
         "target": "put",
         "count": 1,
+        "probability": 0.5,
         "key": "carry|||put",
         "occurrences": [
           47
@@ -1187,6 +1310,7 @@
         "source": "carry",
         "target": "write",
         "count": 1,
+        "probability": 0.5,
         "key": "carry|||write",
         "occurrences": [
           12
@@ -1196,6 +1320,7 @@
         "source": "check",
         "target": "open",
         "count": 1,
+        "probability": 1.0,
         "key": "check|||open",
         "occurrences": [
           50
@@ -1205,6 +1330,7 @@
         "source": "close",
         "target": "put",
         "count": 1,
+        "probability": 1.0,
         "key": "close|||put",
         "occurrences": [
           10
@@ -1214,6 +1340,7 @@
         "source": "crush",
         "target": "pat",
         "count": 1,
+        "probability": 0.5,
         "key": "crush|||pat",
         "occurrences": [
           37
@@ -1223,6 +1350,7 @@
         "source": "crush",
         "target": "turn-on",
         "count": 1,
+        "probability": 0.5,
         "key": "crush|||turn-on",
         "occurrences": [
           20
@@ -1232,6 +1360,7 @@
         "source": "finish",
         "target": "wait",
         "count": 1,
+        "probability": 1.0,
         "key": "finish|||wait",
         "occurrences": [
           53
@@ -1241,6 +1370,7 @@
         "source": "mix",
         "target": "pat",
         "count": 1,
+        "probability": 1.0,
         "key": "mix|||pat",
         "occurrences": [
           32
@@ -1250,6 +1380,7 @@
         "source": "move",
         "target": "carry",
         "count": 1,
+        "probability": 0.2,
         "key": "move|||carry",
         "occurrences": [
           46
@@ -1259,6 +1390,7 @@
         "source": "move",
         "target": "move",
         "count": 1,
+        "probability": 0.2,
         "key": "move|||move",
         "occurrences": [
           14
@@ -1268,6 +1400,7 @@
         "source": "move",
         "target": "pat",
         "count": 1,
+        "probability": 0.2,
         "key": "move|||pat",
         "occurrences": [
           29
@@ -1277,6 +1410,7 @@
         "source": "open",
         "target": "move",
         "count": 1,
+        "probability": 0.25,
         "key": "open|||move",
         "occurrences": [
           1
@@ -1286,6 +1420,7 @@
         "source": "open",
         "target": "take",
         "count": 1,
+        "probability": 0.25,
         "key": "open|||take",
         "occurrences": [
           51
@@ -1295,6 +1430,7 @@
         "source": "pat",
         "target": "crush",
         "count": 1,
+        "probability": 0.2,
         "key": "pat|||crush",
         "occurrences": [
           36
@@ -1304,6 +1440,7 @@
         "source": "pat",
         "target": "press",
         "count": 1,
+        "probability": 0.2,
         "key": "pat|||press",
         "occurrences": [
           40
@@ -1313,6 +1450,7 @@
         "source": "pat",
         "target": "put",
         "count": 1,
+        "probability": 0.2,
         "key": "pat|||put",
         "occurrences": [
           38
@@ -1322,6 +1460,7 @@
         "source": "pat",
         "target": "scoop",
         "count": 1,
+        "probability": 0.2,
         "key": "pat|||scoop",
         "occurrences": [
           33
@@ -1331,6 +1470,7 @@
         "source": "pat",
         "target": "take",
         "count": 1,
+        "probability": 0.2,
         "key": "pat|||take",
         "occurrences": [
           30
@@ -1340,6 +1480,7 @@
         "source": "pour",
         "target": "close",
         "count": 1,
+        "probability": 0.5,
         "key": "pour|||close",
         "occurrences": [
           9
@@ -1349,6 +1490,7 @@
         "source": "pour",
         "target": "put",
         "count": 1,
+        "probability": 0.5,
         "key": "pour|||put",
         "occurrences": [
           18
@@ -1358,6 +1500,7 @@
         "source": "press",
         "target": "put",
         "count": 1,
+        "probability": 1.0,
         "key": "press|||put",
         "occurrences": [
           41
@@ -1367,6 +1510,7 @@
         "source": "put",
         "target": "carry",
         "count": 1,
+        "probability": 0.0909,
         "key": "put|||carry",
         "occurrences": [
           11
@@ -1376,6 +1520,7 @@
         "source": "put",
         "target": "crush",
         "count": 1,
+        "probability": 0.0909,
         "key": "put|||crush",
         "occurrences": [
           19
@@ -1385,6 +1530,7 @@
         "source": "put",
         "target": "screw",
         "count": 1,
+        "probability": 0.0909,
         "key": "put|||screw",
         "occurrences": [
           43
@@ -1394,6 +1540,7 @@
         "source": "put",
         "target": "take",
         "count": 1,
+        "probability": 0.0909,
         "key": "put|||take",
         "occurrences": [
           6
@@ -1403,6 +1550,7 @@
         "source": "put",
         "target": "turn-on",
         "count": 1,
+        "probability": 0.0909,
         "key": "put|||turn-on",
         "occurrences": [
           48
@@ -1412,6 +1560,7 @@
         "source": "scoop",
         "target": "put",
         "count": 1,
+        "probability": 1.0,
         "key": "scoop|||put",
         "occurrences": [
           34
@@ -1421,6 +1570,7 @@
         "source": "search",
         "target": "take",
         "count": 1,
+        "probability": 1.0,
         "key": "search|||take",
         "occurrences": [
           23
@@ -1430,6 +1580,7 @@
         "source": "slide",
         "target": "open",
         "count": 1,
+        "probability": 1.0,
         "key": "slide|||open",
         "occurrences": [
           0
@@ -1439,6 +1590,7 @@
         "source": "squeeze",
         "target": "turn-off",
         "count": 1,
+        "probability": 1.0,
         "key": "squeeze|||turn-off",
         "occurrences": [
           55
@@ -1448,6 +1600,7 @@
         "source": "take",
         "target": "finish",
         "count": 1,
+        "probability": 0.125,
         "key": "take|||finish",
         "occurrences": [
           52
@@ -1457,6 +1610,7 @@
         "source": "take",
         "target": "mix",
         "count": 1,
+        "probability": 0.125,
         "key": "take|||mix",
         "occurrences": [
           31
@@ -1466,6 +1620,7 @@
         "source": "take",
         "target": "screw",
         "count": 1,
+        "probability": 0.125,
         "key": "take|||screw",
         "occurrences": [
           25
@@ -1475,6 +1630,7 @@
         "source": "take",
         "target": "search",
         "count": 1,
+        "probability": 0.125,
         "key": "take|||search",
         "occurrences": [
           22
@@ -1484,6 +1640,7 @@
         "source": "take",
         "target": "take",
         "count": 1,
+        "probability": 0.125,
         "key": "take|||take",
         "occurrences": [
           24
@@ -1493,6 +1650,7 @@
         "source": "take",
         "target": "turn-on",
         "count": 1,
+        "probability": 0.125,
         "key": "take|||turn-on",
         "occurrences": [
           3
@@ -1502,6 +1660,7 @@
         "source": "turn-on",
         "target": "adjust",
         "count": 1,
+        "probability": 0.3333,
         "key": "turn-on|||adjust",
         "occurrences": [
           4
@@ -1511,6 +1670,7 @@
         "source": "turn-on",
         "target": "check",
         "count": 1,
+        "probability": 0.3333,
         "key": "turn-on|||check",
         "occurrences": [
           49
@@ -1520,6 +1680,7 @@
         "source": "turn-on",
         "target": "take",
         "count": 1,
+        "probability": 0.3333,
         "key": "turn-on|||take",
         "occurrences": [
           21
@@ -1529,6 +1690,7 @@
         "source": "wait",
         "target": "squeeze",
         "count": 1,
+        "probability": 1.0,
         "key": "wait|||squeeze",
         "occurrences": [
           54
@@ -1538,6 +1700,7 @@
         "source": "write",
         "target": "move",
         "count": 1,
+        "probability": 1.0,
         "key": "write|||move",
         "occurrences": [
           13

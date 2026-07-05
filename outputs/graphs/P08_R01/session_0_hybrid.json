@@ -37,7 +37,7 @@
   "sequence": [
     {
       "index": 0,
-      "action": "unassigned",
+      "action": "manipulate",
       "start": 3.31,
       "end": 4.67,
       "duration": 1.3599999999999999,
@@ -51,11 +51,11 @@
       "video_start": 3.31,
       "video_end": 4.67,
       "raw_action": "slide(phone)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 1,
-      "action": "unassigned",
+      "action": "access",
       "start": 4.5,
       "end": 7.92,
       "duration": 3.42,
@@ -69,11 +69,11 @@
       "video_start": 4.5,
       "video_end": 7.92,
       "raw_action": "open(phone)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 2,
-      "action": "unassigned",
+      "action": "transition",
       "start": 8.79,
       "end": 11.04,
       "duration": 2.25,
@@ -87,11 +87,11 @@
       "video_start": 8.79,
       "video_end": 11.04,
       "raw_action": "move(scale)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 3,
-      "action": "unassigned",
+      "action": "retrieve",
       "start": 15.5,
       "end": 17.34,
       "duration": 1.8399999999999999,
@@ -105,11 +105,11 @@
       "video_start": 15.5,
       "video_end": 17.34,
       "raw_action": "take(cup)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 4,
-      "action": "unassigned",
+      "action": "access",
       "start": 17.78,
       "end": 19.23,
       "duration": 1.4499999999999993,
@@ -123,11 +123,11 @@
       "video_start": 17.78,
       "video_end": 19.23,
       "raw_action": "turn-on(scale)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 5,
-      "action": "unassigned",
+      "action": "monitor",
       "start": 18.85,
       "end": 26.83,
       "duration": 7.979999999999997,
@@ -141,11 +141,11 @@
       "video_start": 18.85,
       "video_end": 26.83,
       "raw_action": "adjust(scale)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 6,
-      "action": "S01",
+      "action": "leave",
       "start": 27.4,
       "end": 28.74,
       "duration": 1.3399999999999999,
@@ -159,11 +159,11 @@
       "video_start": 27.4,
       "video_end": 28.74,
       "raw_action": "put(cup)",
-      "raw_step_id": "P08_R01_S01"
+      "salient": false
     },
     {
       "index": 7,
-      "action": "unassigned",
+      "action": "retrieve",
       "start": 33.85,
       "end": 35.16,
       "duration": 1.3099999999999952,
@@ -177,11 +177,11 @@
       "video_start": 33.85,
       "video_end": 35.16,
       "raw_action": "take(can)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 8,
-      "action": "unassigned",
+      "action": "access",
       "start": 35.71,
       "end": 36.87,
       "duration": 1.1599999999999966,
@@ -195,11 +195,11 @@
       "video_start": 35.71,
       "video_end": 36.87,
       "raw_action": "open(can)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 9,
-      "action": "S01",
+      "action": "merge(coffee)",
       "start": 36.64,
       "end": 41.37,
       "duration": 4.729999999999997,
@@ -213,11 +213,11 @@
       "video_start": 36.64,
       "video_end": 41.37,
       "raw_action": "pour(coffee)",
-      "raw_step_id": "P08_R01_S01"
+      "salient": true
     },
     {
       "index": 10,
-      "action": "unassigned",
+      "action": "block",
       "start": 41.26,
       "end": 44.71,
       "duration": 3.450000000000003,
@@ -231,11 +231,11 @@
       "video_start": 41.26,
       "video_end": 44.71,
       "raw_action": "close(can)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 11,
-      "action": "unassigned",
+      "action": "leave",
       "start": 45.26,
       "end": 46.7,
       "duration": 1.4400000000000048,
@@ -249,11 +249,11 @@
       "video_start": 45.26,
       "video_end": 46.7,
       "raw_action": "put(can)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 12,
-      "action": "unassigned",
+      "action": "transition",
       "start": 46.28,
       "end": 47.26,
       "duration": 0.9799999999999969,
@@ -267,11 +267,11 @@
       "video_start": 46.28,
       "video_end": 47.26,
       "raw_action": "carry(phone)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 13,
-      "action": "unassigned",
+      "action": "manipulate",
       "start": 48.26,
       "end": 67.23,
       "duration": 18.970000000000006,
@@ -285,11 +285,11 @@
       "video_start": 48.26,
       "video_end": 67.23,
       "raw_action": "write(coffee)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 14,
-      "action": "unassigned",
+      "action": "transition",
       "start": 67.39,
       "end": 68.61,
       "duration": 1.2199999999999989,
@@ -303,11 +303,11 @@
       "video_start": 67.39,
       "video_end": 68.61,
       "raw_action": "move(phone)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 15,
-      "action": "unassigned",
+      "action": "transition",
       "start": 69.72,
       "end": 70.74,
       "duration": 1.019999999999996,
@@ -321,11 +321,11 @@
       "video_start": 69.72,
       "video_end": 70.74,
       "raw_action": "move(scale)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 16,
-      "action": "S01",
+      "action": "retrieve",
       "start": 72.85,
       "end": 73.35,
       "duration": 0.5,
@@ -339,11 +339,11 @@
       "video_start": 72.85,
       "video_end": 73.35,
       "raw_action": "take(maker:coffee)",
-      "raw_step_id": "P08_R01_S01"
+      "salient": false
     },
     {
       "index": 17,
-      "action": "S01",
+      "action": "access",
       "start": 73.44,
       "end": 74.18,
       "duration": 0.7400000000000091,
@@ -357,11 +357,11 @@
       "video_start": 73.44,
       "video_end": 74.18,
       "raw_action": "open(cap)",
-      "raw_step_id": "P08_R01_S01"
+      "salient": false
     },
     {
       "index": 18,
-      "action": "S01",
+      "action": "merge(coffee)",
       "start": 75.72,
       "end": 76.96000000000001,
       "duration": 1.240000000000009,
@@ -375,11 +375,11 @@
       "video_start": 75.72,
       "video_end": 76.96000000000001,
       "raw_action": "pour(coffee)",
-      "raw_step_id": "P08_R01_S01"
+      "salient": true
     },
     {
       "index": 19,
-      "action": "S01",
+      "action": "leave",
       "start": 77.41,
       "end": 80.11,
       "duration": 2.700000000000003,
@@ -393,11 +393,11 @@
       "video_start": 77.41,
       "video_end": 80.11,
       "raw_action": "put(cup)",
-      "raw_step_id": "P08_R01_S01"
+      "salient": false
     },
     {
       "index": 20,
-      "action": "S01",
+      "action": "split",
       "start": 79.89,
       "end": 96.38,
       "duration": 16.489999999999995,
@@ -411,11 +411,11 @@
       "video_start": 79.89,
       "video_end": 96.38,
       "raw_action": "crush(coffee)",
-      "raw_step_id": "P08_R01_S01"
+      "salient": false
     },
     {
       "index": 21,
-      "action": "unassigned",
+      "action": "access",
       "start": 97.41,
       "end": 98.76,
       "duration": 1.3500000000000085,
@@ -429,11 +429,11 @@
       "video_start": 97.41,
       "video_end": 98.76,
       "raw_action": "turn-on(machine:washing)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 22,
-      "action": "unassigned",
+      "action": "retrieve",
       "start": 100.92,
       "end": 101.6,
       "duration": 0.6799999999999926,
@@ -447,11 +447,11 @@
       "video_start": 100.92,
       "video_end": 101.6,
       "raw_action": "take(cup)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 23,
-      "action": "unassigned",
+      "action": "monitor",
       "start": 103.17,
       "end": 106.93,
       "duration": 3.760000000000005,
@@ -465,11 +465,11 @@
       "video_start": 103.17,
       "video_end": 106.93,
       "raw_action": "search(rack:drying)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 24,
-      "action": "unassigned",
+      "action": "retrieve",
       "start": 107.37,
       "end": 107.81,
       "duration": 0.4399999999999977,
@@ -483,11 +483,11 @@
       "video_start": 107.37,
       "video_end": 107.81,
       "raw_action": "take(cup)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 25,
-      "action": "unassigned",
+      "action": "retrieve",
       "start": 109.05,
       "end": 110.35,
       "duration": 1.2999999999999972,
@@ -501,11 +501,11 @@
       "video_start": 109.05,
       "video_end": 110.35,
       "raw_action": "take(cup)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 26,
-      "action": "unassigned",
+      "action": "manipulate",
       "start": 111.19,
       "end": 114.51,
       "duration": 3.3200000000000074,
@@ -519,11 +519,11 @@
       "video_start": 111.19,
       "video_end": 114.51,
       "raw_action": "screw(cup)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 27,
-      "action": "unassigned",
+      "action": "leave",
       "start": 114.38,
       "end": 114.99,
       "duration": 0.6099999999999994,
@@ -537,11 +537,11 @@
       "video_start": 114.38,
       "video_end": 114.99,
       "raw_action": "put(cup)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 28,
-      "action": "unassigned",
+      "action": "leave",
       "start": 115.55,
       "end": 117.26,
       "duration": 1.710000000000008,
@@ -555,11 +555,11 @@
       "video_start": 115.55,
       "video_end": 117.26,
       "raw_action": "put(cup)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 29,
-      "action": "unassigned",
+      "action": "transition",
       "start": 117.69,
       "end": 118.96,
       "duration": 1.269999999999996,
@@ -573,11 +573,11 @@
       "video_start": 117.69,
       "video_end": 118.96,
       "raw_action": "move(scale)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 30,
-      "action": "unassigned",
+      "action": "sense(maker:coffee)",
       "start": 120.35,
       "end": 121.44,
       "duration": 1.0900000000000034,
@@ -591,11 +591,11 @@
       "video_start": 120.35,
       "video_end": 121.44,
       "raw_action": "pat(maker:coffee)",
-      "raw_step_id": "unassigned"
+      "salient": true
     },
     {
       "index": 31,
-      "action": "unassigned",
+      "action": "retrieve",
       "start": 121.42,
       "end": 122.39,
       "duration": 0.9699999999999989,
@@ -609,11 +609,11 @@
       "video_start": 121.42,
       "video_end": 122.39,
       "raw_action": "take(spoon)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 32,
-      "action": "unassigned",
+      "action": "merge(coffee)",
       "start": 122.47,
       "end": 125.8,
       "duration": 3.3299999999999983,
@@ -627,11 +627,11 @@
       "video_start": 122.47,
       "video_end": 125.8,
       "raw_action": "mix(coffee)",
-      "raw_step_id": "unassigned"
+      "salient": true
     },
     {
       "index": 33,
-      "action": "unassigned",
+      "action": "sense(maker:coffee)",
       "start": 125.55,
       "end": 128.0,
       "duration": 2.450000000000003,
@@ -645,11 +645,11 @@
       "video_start": 125.55,
       "video_end": 128.0,
       "raw_action": "pat(maker:coffee)",
-      "raw_step_id": "unassigned"
+      "salient": true
     },
     {
       "index": 34,
-      "action": "unassigned",
+      "action": "retrieve",
       "start": 127.75,
       "end": 130.2,
       "duration": 2.4499999999999886,
@@ -663,11 +663,11 @@
       "video_start": 127.75,
       "video_end": 130.2,
       "raw_action": "scoop(coffee)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 35,
-      "action": "unassigned",
+      "action": "leave",
       "start": 130.13,
       "end": 131.6,
       "duration": 1.4699999999999989,
@@ -681,11 +681,11 @@
       "video_start": 130.13,
       "video_end": 131.6,
       "raw_action": "put(coffee)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 36,
-      "action": "unassigned",
+      "action": "sense(maker:coffee)",
       "start": 131.4,
       "end": 133.15,
       "duration": 1.75,
@@ -699,11 +699,11 @@
       "video_start": 131.4,
       "video_end": 133.15,
       "raw_action": "pat(maker:coffee)",
-      "raw_step_id": "unassigned"
+      "salient": true
     },
     {
       "index": 37,
-      "action": "unassigned",
+      "action": "split",
       "start": 132.95,
       "end": 135.95,
       "duration": 3.0,
@@ -717,11 +717,11 @@
       "video_start": 132.95,
       "video_end": 135.95,
       "raw_action": "crush(coffee)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 38,
-      "action": "unassigned",
+      "action": "sense(maker:coffee)",
       "start": 135.55,
       "end": 137.62,
       "duration": 2.069999999999993,
@@ -735,11 +735,11 @@
       "video_start": 135.55,
       "video_end": 137.62,
       "raw_action": "pat(maker:coffee)",
-      "raw_step_id": "unassigned"
+      "salient": true
     },
     {
       "index": 39,
-      "action": "unassigned",
+      "action": "leave",
       "start": 139.5,
       "end": 140.73,
       "duration": 1.2299999999999898,
@@ -753,11 +753,11 @@
       "video_start": 139.5,
       "video_end": 140.73,
       "raw_action": "put(spoon)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 40,
-      "action": "unassigned",
+      "action": "sense",
       "start": 140.77,
       "end": 142.18,
       "duration": 1.4099999999999966,
@@ -771,11 +771,11 @@
       "video_start": 140.77,
       "video_end": 142.18,
       "raw_action": "pat(cup)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 41,
-      "action": "S02",
+      "action": "manipulate",
       "start": 142.25,
       "end": 151.13,
       "duration": 8.879999999999995,
@@ -789,11 +789,11 @@
       "video_start": 142.25,
       "video_end": 151.13,
       "raw_action": "press(coffee)",
-      "raw_step_id": "P08_R01_S02"
+      "salient": false
     },
     {
       "index": 42,
-      "action": "S02",
+      "action": "leave",
       "start": 150.79,
       "end": 152.04,
       "duration": 1.25,
@@ -807,11 +807,11 @@
       "video_start": 150.79,
       "video_end": 152.04,
       "raw_action": "put(presser)",
-      "raw_step_id": "P08_R01_S02"
+      "salient": false
     },
     {
       "index": 43,
-      "action": "S02",
+      "action": "leave",
       "start": 152.09,
       "end": 153.82,
       "duration": 1.7299999999999898,
@@ -825,11 +825,11 @@
       "video_start": 152.09,
       "video_end": 153.82,
       "raw_action": "put(cup)",
-      "raw_step_id": "P08_R01_S02"
+      "salient": false
     },
     {
       "index": 44,
-      "action": "S02",
+      "action": "manipulate",
       "start": 153.87,
       "end": 154.9,
       "duration": 1.0300000000000011,
@@ -843,11 +843,11 @@
       "video_start": 153.87,
       "video_end": 154.9,
       "raw_action": "screw(cup)",
-      "raw_step_id": "P08_R01_S02"
+      "salient": false
     },
     {
       "index": 45,
-      "action": "S02",
+      "action": "leave",
       "start": 154.89,
       "end": 156.27,
       "duration": 1.3800000000000239,
@@ -861,11 +861,11 @@
       "video_start": 154.89,
       "video_end": 156.27,
       "raw_action": "put(machine:washing)",
-      "raw_step_id": "P08_R01_S02"
+      "salient": false
     },
     {
       "index": 46,
-      "action": "unassigned",
+      "action": "transition",
       "start": 156.37,
       "end": 160.13,
       "duration": 3.759999999999991,
@@ -879,11 +879,11 @@
       "video_start": 156.37,
       "video_end": 160.13,
       "raw_action": "move(phone)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 47,
-      "action": "unassigned",
+      "action": "transition",
       "start": 160.23,
       "end": 161.28,
       "duration": 1.0500000000000114,
@@ -897,11 +897,11 @@
       "video_start": 160.23,
       "video_end": 161.28,
       "raw_action": "carry(cup)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 48,
-      "action": "unassigned",
+      "action": "leave",
       "start": 161.38,
       "end": 162.5,
       "duration": 1.1200000000000045,
@@ -915,11 +915,11 @@
       "video_start": 161.38,
       "video_end": 162.5,
       "raw_action": "put(cup)",
-      "raw_step_id": "unassigned"
+      "salient": false
     },
     {
       "index": 49,
-      "action": "S03",
+      "action": "access",
       "start": 163.4,
       "end": 165.95,
       "duration": 2.549999999999983,
@@ -933,11 +933,11 @@
       "video_start": 163.4,
       "video_end": 165.95,
       "raw_action": "turn-on(machine:washing)",
-      "raw_step_id": "P08_R01_S03"
+      "salient": false
     },
     {
       "index": 50,
-      "action": "S03",
+      "action": "monitor",
       "start": 166.32,
       "end": 174.87,
       "duration": 8.550000000000011,
@@ -951,11 +951,11 @@
       "video_start": 166.32,
       "video_end": 174.87,
       "raw_action": "check(coffee)",
-      "raw_step_id": "P08_R01_S03"
+      "salient": false
     },
     {
       "index": 51,
-      "action": "S03",
+      "action": "access",
       "start": 174.97,
       "end": 175.82,
       "duration": 0.8499999999999943,
@@ -969,11 +969,11 @@
       "video_start": 174.97,
       "video_end": 175.82,
       "raw_action": "open(drawer)",
-      "raw_step_id": "P08_R01_S03"
+      "salient": false
     },
     {
       "index": 52,
-      "action": "S03",
+      "action": "retrieve",
       "start": 175.89,
       "end": 176.32,
       "duration": 0.4300000000000068,
@@ -987,11 +987,11 @@
       "video_start": 175.89,
       "video_end": 176.32,
       "raw_action": "take(plate)",
-      "raw_step_id": "P08_R01_S03"
+      "salient": false
     },
     {
       "index": 53,
-      "action": "S03",
+      "action": "manipulate",
       "start": 178.69,
       "end": 180.39,
       "duration": 1.6999999999999886,
@@ -1005,11 +1005,11 @@
       "video_start": 178.69,
       "video_end": 180.39,
       "raw_action": "finish(machine:washing)",
-      "raw_step_id": "P08_R01_S03"
+      "salient": false
     },
     {
       "index": 54,
-      "action": "S03",
+      "action": "monitor",
       "start": 180.55,
       "end": 185.2,
       "duration": 4.649999999999977,
@@ -1023,11 +1023,11 @@
       "video_start": 180.55,
       "video_end": 185.2,
       "raw_action": "wait(machine:washing)",
-      "raw_step_id": "P08_R01_S03"
+      "salient": false
     },
     {
       "index": 55,
-      "action": "S03",
+      "action": "manipulate",
       "start": 185.21,
       "end": 191.15,
       "duration": 5.939999999999998,
@@ -1041,11 +1041,11 @@
       "video_start": 185.21,
       "video_end": 191.15,
       "raw_action": "squeeze(cup)",
-      "raw_step_id": "P08_R01_S03"
+      "salient": false
     },
     {
       "index": 56,
-      "action": "unassigned",
+      "action": "block",
       "start": 192.17,
       "end": 193.26,
       "duration": 1.0900000000000034,
@@ -1059,242 +1059,636 @@
       "video_start": 192.17,
       "video_end": 193.26,
       "raw_action": "turn-off(machine:washing)",
-      "raw_step_id": "unassigned"
+      "salient": false
     }
   ],
   "graph": {
     "nodes": [
       {
-        "id": "S01",
-        "count": 7,
-        "is_primary": true,
-        "step_id": "P08_R01_S01",
-        "step_text": "GRIND AND WEIGH YOUR COFFEE.",
-        "step_label": "grind weigh coffee",
-        "raw_actions": {
-          "put(cup)": 2,
-          "pour(coffee)": 2,
-          "take(maker:coffee)": 1,
-          "open(cap)": 1,
-          "crush(coffee)": 1
-        }
-      },
-      {
-        "id": "S02",
-        "count": 5,
-        "is_primary": true,
-        "step_id": "P08_R01_S02",
-        "step_text": "DISTRIBUTE AND TAMP YOUR SHOT.",
-        "step_label": "distribute tamp shot",
-        "raw_actions": {
-          "press(coffee)": 1,
-          "put(presser)": 1,
-          "put(cup)": 1,
-          "screw(cup)": 1,
-          "put(machine:washing)": 1
-        }
-      },
-      {
-        "id": "S03",
-        "count": 7,
-        "is_primary": true,
-        "step_id": "P08_R01_S03",
-        "step_text": "PULL YOUR SHOT.",
-        "step_label": "pull espresso shot",
-        "raw_actions": {
-          "turn-on(machine:washing)": 1,
-          "check(coffee)": 1,
-          "open(drawer)": 1,
-          "take(plate)": 1,
-          "finish(machine:washing)": 1,
-          "wait(machine:washing)": 1,
-          "squeeze(cup)": 1
-        }
-      },
-      {
-        "id": "unassigned",
-        "count": 38,
+        "id": "leave",
+        "count": 11,
         "is_primary": false,
-        "step_id": "unassigned",
-        "step_text": null,
-        "step_label": null,
-        "raw_actions": {
-          "slide(phone)": 1,
-          "open(phone)": 1,
-          "move(scale)": 3,
-          "take(cup)": 4,
-          "turn-on(scale)": 1,
-          "adjust(scale)": 1,
-          "take(can)": 1,
-          "open(can)": 1,
-          "close(can)": 1,
-          "put(can)": 1,
-          "carry(phone)": 1,
-          "write(coffee)": 1,
-          "move(phone)": 2,
-          "turn-on(machine:washing)": 1,
-          "search(rack:drying)": 1,
-          "screw(cup)": 1,
-          "put(cup)": 3,
-          "pat(maker:coffee)": 4,
-          "take(spoon)": 1,
-          "mix(coffee)": 1,
-          "scoop(coffee)": 1,
-          "put(coffee)": 1,
-          "crush(coffee)": 1,
-          "put(spoon)": 1,
-          "pat(cup)": 1,
-          "carry(cup)": 1,
-          "turn-off(machine:washing)": 1
+        "salient": false,
+        "objects": {
+          "cup": 6,
+          "can": 1,
+          "coffee": 1,
+          "spoon": 1,
+          "presser": 1,
+          "machine:washing": 1
+        },
+        "verbs": {
+          "put": 11
+        }
+      },
+      {
+        "id": "retrieve",
+        "count": 9,
+        "is_primary": false,
+        "salient": false,
+        "objects": {
+          "cup": 4,
+          "can": 1,
+          "maker:coffee": 1,
+          "spoon": 1,
+          "coffee": 1,
+          "plate": 1
+        },
+        "verbs": {
+          "take": 8,
+          "scoop": 1
+        }
+      },
+      {
+        "id": "access",
+        "count": 7,
+        "is_primary": false,
+        "salient": false,
+        "objects": {
+          "phone": 1,
+          "scale": 1,
+          "can": 1,
+          "cap": 1,
+          "machine:washing": 2,
+          "drawer": 1
+        },
+        "verbs": {
+          "open": 4,
+          "turn-on": 3
+        }
+      },
+      {
+        "id": "manipulate",
+        "count": 7,
+        "is_primary": true,
+        "salient": false,
+        "objects": {
+          "phone": 1,
+          "coffee": 2,
+          "cup": 3,
+          "machine:washing": 1
+        },
+        "verbs": {
+          "slide": 1,
+          "write": 1,
+          "screw": 2,
+          "press": 1,
+          "finish": 1,
+          "squeeze": 1
+        }
+      },
+      {
+        "id": "transition",
+        "count": 7,
+        "is_primary": false,
+        "salient": false,
+        "objects": {
+          "scale": 3,
+          "phone": 3,
+          "cup": 1
+        },
+        "verbs": {
+          "move": 5,
+          "carry": 2
+        }
+      },
+      {
+        "id": "monitor",
+        "count": 4,
+        "is_primary": true,
+        "salient": false,
+        "objects": {
+          "scale": 1,
+          "rack:drying": 1,
+          "coffee": 1,
+          "machine:washing": 1
+        },
+        "verbs": {
+          "adjust": 1,
+          "search": 1,
+          "check": 1,
+          "wait": 1
+        }
+      },
+      {
+        "id": "sense(maker:coffee)",
+        "count": 4,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "maker:coffee": 4
+        },
+        "verbs": {
+          "pat": 4
+        }
+      },
+      {
+        "id": "merge(coffee)",
+        "count": 3,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "coffee": 3
+        },
+        "verbs": {
+          "pour": 2,
+          "mix": 1
+        }
+      },
+      {
+        "id": "block",
+        "count": 2,
+        "is_primary": false,
+        "salient": false,
+        "objects": {
+          "can": 1,
+          "machine:washing": 1
+        },
+        "verbs": {
+          "close": 1,
+          "turn-off": 1
+        }
+      },
+      {
+        "id": "split",
+        "count": 2,
+        "is_primary": true,
+        "salient": false,
+        "objects": {
+          "coffee": 2
+        },
+        "verbs": {
+          "crush": 2
+        }
+      },
+      {
+        "id": "sense",
+        "count": 1,
+        "is_primary": false,
+        "salient": false,
+        "objects": {
+          "cup": 1
+        },
+        "verbs": {
+          "pat": 1
         }
       }
     ],
     "links": [
       {
-        "source": "unassigned",
-        "target": "unassigned",
-        "count": 32,
-        "probability": 0.8649,
-        "key": "unassigned|||unassigned",
+        "source": "leave",
+        "target": "transition",
+        "count": 3,
+        "probability": 0.2727,
+        "key": "leave|||transition",
         "occurrences": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          7,
-          10,
           11,
-          12,
-          13,
-          14,
-          21,
-          22,
-          23,
-          24,
-          25,
-          26,
-          27,
           28,
-          29,
-          30,
-          31,
-          32,
-          33,
-          34,
-          35,
-          36,
-          37,
-          38,
-          39,
-          46,
-          47
-        ]
-      },
-      {
-        "source": "S03",
-        "target": "S03",
-        "count": 6,
-        "probability": 0.8571,
-        "key": "S03|||S03",
-        "occurrences": [
-          49,
-          50,
-          51,
-          52,
-          53,
-          54
-        ]
-      },
-      {
-        "source": "S01",
-        "target": "S01",
-        "count": 4,
-        "probability": 0.5714,
-        "key": "S01|||S01",
-        "occurrences": [
-          16,
-          17,
-          18,
-          19
-        ]
-      },
-      {
-        "source": "S02",
-        "target": "S02",
-        "count": 4,
-        "probability": 0.8,
-        "key": "S02|||S02",
-        "occurrences": [
-          41,
-          42,
-          43,
-          44
-        ]
-      },
-      {
-        "source": "S01",
-        "target": "unassigned",
-        "count": 3,
-        "probability": 0.4286,
-        "key": "S01|||unassigned",
-        "occurrences": [
-          6,
-          9,
-          20
-        ]
-      },
-      {
-        "source": "unassigned",
-        "target": "S01",
-        "count": 3,
-        "probability": 0.0811,
-        "key": "unassigned|||S01",
-        "occurrences": [
-          5,
-          8,
-          15
-        ]
-      },
-      {
-        "source": "S02",
-        "target": "unassigned",
-        "count": 1,
-        "probability": 0.2,
-        "key": "S02|||unassigned",
-        "occurrences": [
           45
         ]
       },
       {
-        "source": "S03",
-        "target": "unassigned",
+        "source": "manipulate",
+        "target": "leave",
+        "count": 3,
+        "probability": 0.4286,
+        "key": "manipulate|||leave",
+        "occurrences": [
+          26,
+          41,
+          44
+        ]
+      },
+      {
+        "source": "retrieve",
+        "target": "access",
+        "count": 3,
+        "probability": 0.3333,
+        "key": "retrieve|||access",
+        "occurrences": [
+          3,
+          7,
+          16
+        ]
+      },
+      {
+        "source": "access",
+        "target": "merge(coffee)",
+        "count": 2,
+        "probability": 0.2857,
+        "key": "access|||merge(coffee)",
+        "occurrences": [
+          8,
+          17
+        ]
+      },
+      {
+        "source": "access",
+        "target": "monitor",
+        "count": 2,
+        "probability": 0.2857,
+        "key": "access|||monitor",
+        "occurrences": [
+          4,
+          49
+        ]
+      },
+      {
+        "source": "access",
+        "target": "retrieve",
+        "count": 2,
+        "probability": 0.2857,
+        "key": "access|||retrieve",
+        "occurrences": [
+          21,
+          51
+        ]
+      },
+      {
+        "source": "leave",
+        "target": "leave",
+        "count": 2,
+        "probability": 0.1818,
+        "key": "leave|||leave",
+        "occurrences": [
+          27,
+          42
+        ]
+      },
+      {
+        "source": "retrieve",
+        "target": "manipulate",
+        "count": 2,
+        "probability": 0.2222,
+        "key": "retrieve|||manipulate",
+        "occurrences": [
+          25,
+          52
+        ]
+      },
+      {
+        "source": "sense(maker:coffee)",
+        "target": "retrieve",
+        "count": 2,
+        "probability": 0.5,
+        "key": "sense(maker:coffee)|||retrieve",
+        "occurrences": [
+          30,
+          33
+        ]
+      },
+      {
+        "source": "transition",
+        "target": "retrieve",
+        "count": 2,
+        "probability": 0.2857,
+        "key": "transition|||retrieve",
+        "occurrences": [
+          2,
+          15
+        ]
+      },
+      {
+        "source": "transition",
+        "target": "transition",
+        "count": 2,
+        "probability": 0.2857,
+        "key": "transition|||transition",
+        "occurrences": [
+          14,
+          46
+        ]
+      },
+      {
+        "source": "access",
+        "target": "transition",
         "count": 1,
         "probability": 0.1429,
-        "key": "S03|||unassigned",
+        "key": "access|||transition",
+        "occurrences": [
+          1
+        ]
+      },
+      {
+        "source": "block",
+        "target": "leave",
+        "count": 1,
+        "probability": 1.0,
+        "key": "block|||leave",
+        "occurrences": [
+          10
+        ]
+      },
+      {
+        "source": "leave",
+        "target": "access",
+        "count": 1,
+        "probability": 0.0909,
+        "key": "leave|||access",
+        "occurrences": [
+          48
+        ]
+      },
+      {
+        "source": "leave",
+        "target": "manipulate",
+        "count": 1,
+        "probability": 0.0909,
+        "key": "leave|||manipulate",
+        "occurrences": [
+          43
+        ]
+      },
+      {
+        "source": "leave",
+        "target": "retrieve",
+        "count": 1,
+        "probability": 0.0909,
+        "key": "leave|||retrieve",
+        "occurrences": [
+          6
+        ]
+      },
+      {
+        "source": "leave",
+        "target": "sense",
+        "count": 1,
+        "probability": 0.0909,
+        "key": "leave|||sense",
+        "occurrences": [
+          39
+        ]
+      },
+      {
+        "source": "leave",
+        "target": "sense(maker:coffee)",
+        "count": 1,
+        "probability": 0.0909,
+        "key": "leave|||sense(maker:coffee)",
+        "occurrences": [
+          35
+        ]
+      },
+      {
+        "source": "leave",
+        "target": "split",
+        "count": 1,
+        "probability": 0.0909,
+        "key": "leave|||split",
+        "occurrences": [
+          19
+        ]
+      },
+      {
+        "source": "manipulate",
+        "target": "access",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "manipulate|||access",
+        "occurrences": [
+          0
+        ]
+      },
+      {
+        "source": "manipulate",
+        "target": "block",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "manipulate|||block",
         "occurrences": [
           55
         ]
       },
       {
-        "source": "unassigned",
-        "target": "S02",
+        "source": "manipulate",
+        "target": "monitor",
         "count": 1,
-        "probability": 0.027,
-        "key": "unassigned|||S02",
+        "probability": 0.1429,
+        "key": "manipulate|||monitor",
+        "occurrences": [
+          53
+        ]
+      },
+      {
+        "source": "manipulate",
+        "target": "transition",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "manipulate|||transition",
+        "occurrences": [
+          13
+        ]
+      },
+      {
+        "source": "merge(coffee)",
+        "target": "block",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "merge(coffee)|||block",
+        "occurrences": [
+          9
+        ]
+      },
+      {
+        "source": "merge(coffee)",
+        "target": "leave",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "merge(coffee)|||leave",
+        "occurrences": [
+          18
+        ]
+      },
+      {
+        "source": "merge(coffee)",
+        "target": "sense(maker:coffee)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "merge(coffee)|||sense(maker:coffee)",
+        "occurrences": [
+          32
+        ]
+      },
+      {
+        "source": "monitor",
+        "target": "access",
+        "count": 1,
+        "probability": 0.25,
+        "key": "monitor|||access",
+        "occurrences": [
+          50
+        ]
+      },
+      {
+        "source": "monitor",
+        "target": "leave",
+        "count": 1,
+        "probability": 0.25,
+        "key": "monitor|||leave",
+        "occurrences": [
+          5
+        ]
+      },
+      {
+        "source": "monitor",
+        "target": "manipulate",
+        "count": 1,
+        "probability": 0.25,
+        "key": "monitor|||manipulate",
+        "occurrences": [
+          54
+        ]
+      },
+      {
+        "source": "monitor",
+        "target": "retrieve",
+        "count": 1,
+        "probability": 0.25,
+        "key": "monitor|||retrieve",
+        "occurrences": [
+          23
+        ]
+      },
+      {
+        "source": "retrieve",
+        "target": "leave",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "retrieve|||leave",
+        "occurrences": [
+          34
+        ]
+      },
+      {
+        "source": "retrieve",
+        "target": "merge(coffee)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "retrieve|||merge(coffee)",
+        "occurrences": [
+          31
+        ]
+      },
+      {
+        "source": "retrieve",
+        "target": "monitor",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "retrieve|||monitor",
+        "occurrences": [
+          22
+        ]
+      },
+      {
+        "source": "retrieve",
+        "target": "retrieve",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "retrieve|||retrieve",
+        "occurrences": [
+          24
+        ]
+      },
+      {
+        "source": "sense",
+        "target": "manipulate",
+        "count": 1,
+        "probability": 1.0,
+        "key": "sense|||manipulate",
         "occurrences": [
           40
         ]
       },
       {
-        "source": "unassigned",
-        "target": "S03",
+        "source": "sense(maker:coffee)",
+        "target": "leave",
         "count": 1,
-        "probability": 0.027,
-        "key": "unassigned|||S03",
+        "probability": 0.25,
+        "key": "sense(maker:coffee)|||leave",
         "occurrences": [
-          48
+          38
         ]
+      },
+      {
+        "source": "sense(maker:coffee)",
+        "target": "split",
+        "count": 1,
+        "probability": 0.25,
+        "key": "sense(maker:coffee)|||split",
+        "occurrences": [
+          36
+        ]
+      },
+      {
+        "source": "split",
+        "target": "access",
+        "count": 1,
+        "probability": 0.5,
+        "key": "split|||access",
+        "occurrences": [
+          20
+        ]
+      },
+      {
+        "source": "split",
+        "target": "sense(maker:coffee)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "split|||sense(maker:coffee)",
+        "occurrences": [
+          37
+        ]
+      },
+      {
+        "source": "transition",
+        "target": "leave",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "transition|||leave",
+        "occurrences": [
+          47
+        ]
+      },
+      {
+        "source": "transition",
+        "target": "manipulate",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "transition|||manipulate",
+        "occurrences": [
+          12
+        ]
+      },
+      {
+        "source": "transition",
+        "target": "sense(maker:coffee)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "transition|||sense(maker:coffee)",
+        "occurrences": [
+          29
+        ]
+      }
+    ]
+  },
+  "salient_config": {
+    "k": 6,
+    "min_count": 2,
+    "node_min": 3,
+    "salient_nouns": [
+      "coffee",
+      "maker:coffee"
+    ],
+    "match_report": [
+      {
+        "noun": "coffee",
+        "count": 10,
+        "salient": true
+      },
+      {
+        "noun": "maker:coffee",
+        "count": 5,
+        "salient": true
       }
     ]
   }

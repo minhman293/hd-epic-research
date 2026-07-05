@@ -23,16 +23,16 @@ export function getManifestUrl() {
   return `${GRAPHS_BASE}/manifest.json`;
 }
 
-export function getSessionDataUrl(recipeId, sessionIndex, mode = "smart") {
+export function getSessionDataUrl(recipeId, sessionIndex, mode = "hybrid") {
   return `${GRAPHS_BASE}/${recipeId}/session_${sessionIndex}_${mode}.json`;
 }
 
-export function getMergedDataUrl(recipeId, mode = "smart") {
+export function getMergedDataUrl(recipeId, mode = "hybrid") {
   return `${GRAPHS_BASE}/${recipeId}/merged_${mode}.json`;
 }
 
 // Legacy alias
-export function getDataUrl(mode = "smart", recipeId = null, sessionIndex = 0) {
+export function getDataUrl(mode = "hybrid", recipeId = null, sessionIndex = 0) {
   if (!recipeId) {
     console.warn("getDataUrl called without recipeId; defaulting to P08_R01.");
     return getSessionDataUrl("P08_R01", 0, mode);
@@ -40,7 +40,7 @@ export function getDataUrl(mode = "smart", recipeId = null, sessionIndex = 0) {
   return getSessionDataUrl(recipeId, sessionIndex, mode);
 }
 
-export const DEFAULT_DATA_MODE = "smart";
+export const DEFAULT_DATA_MODE = "hybrid";
 export const DEFAULT_COLOR_ENCODE_MODE = "category";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -413,7 +413,7 @@ export const ACTION_TO_PHASE = {};
 export function getLegendItems(
   colorMode = "category",
   sizeMode = "frequency",
-  graphMode = "smart",
+  graphMode = "hybrid",
   sequence = [],          // active sequence (used to filter categories)
   stepLabelLookup = null  // NEW: optional {stepId -> label} for the phase legend
 ) {

@@ -121,6 +121,8 @@ def aggregate_nodes(session_payloads):
     per_session_node_primary = defaultdict(dict)  # action -> {session_idx: bool}
     per_session_node_step = defaultdict(dict)     # action -> {session_idx: step_id or None}
     per_session_node_objects = defaultdict(lambda: defaultdict(Counter))  # action -> session -> Counter
+    per_session_node_verbs = defaultdict(lambda: defaultdict(Counter))
+    per_session_node_salient = defaultdict(list)
     per_session_node_durations = defaultdict(lambda: defaultdict(list))  # action -> session -> [duration]
     raw_onsets_by_action = defaultdict(list)      # action -> [absolute start times]
     normalized_onsets_by_action = defaultdict(list)  # action -> [start/duration ratios]
@@ -137,6 +139,11 @@ def aggregate_nodes(session_payloads):
             if "objects" in n and isinstance(n["objects"], dict):
                 for obj, c in n["objects"].items():
                     per_session_node_objects[action][si][obj] += c
+            if "verbs" in n and isinstance(n["verbs"], dict):
+                for vkey, c in n["verbs"].items():
+                    per_session_node_verbs[action][si][vkey] += c
+            if "salient" in n:
+                per_session_node_salient[action].append(bool(n["salient"]))
 
     # Collect per-occurrence data from each session's sequence
     for si, payload in session_payloads:
@@ -196,6 +203,10 @@ def aggregate_nodes(session_payloads):
             for obj, c in per_session_node_objects[action].get(si, {}).items():
                 union_objects[obj] += c
 
+        union_verbs = Counter()
+        for c in per_session_node_verbs[action].values():
+            union_verbs.update(c)
+
         # Duration stats aggregated across sessions
         all_durations = []
         for si in session_indices:
@@ -228,6 +239,10 @@ def aggregate_nodes(session_payloads):
         }
         if union_objects:
             node["objects"] = dict(union_objects)
+        if union_verbs:
+            node["verbs"] = dict(union_verbs)
+        if per_session_node_salient[action]:
+            node["salient"] = any(per_session_node_salient[action])
 
         merged_nodes.append(node)
 
@@ -245,6 +260,11 @@ def aggregate_edges(session_payloads, session_indices, n_sessions):
             key = (link["source"], link["target"])
             per_session_edge_counts[key][si] = link.get("count", 0)
             per_session_edge_occurrences[key][si] = link.get("occurrences", [])
+
+    # Pooled out-degree per source state, for merged Markov probabilities.
+    out_totals = Counter()
+    for (src, dst), by_session in per_session_edge_counts.items():
+        out_totals[src] += sum(by_session.values())
 
     merged_links = []
     for (src, dst), by_session in per_session_edge_counts.items():
@@ -269,6 +289,7 @@ def aggregate_edges(session_payloads, session_indices, n_sessions):
             "n_sessions": n_sessions,
             "key": f"{src}|||{dst}",
             "per_session_occurrences": per_session_occ,
+            "probability": round(total_count / out_totals[src], 4) if out_totals[src] else 0.0,
         })
 
     # Sort by total count descending, then alphabetical
@@ -303,9 +324,12 @@ def build_merged_payload(recipe_id, mode, session_payloads):
     # Build the multi-session sequence (each item tagged with its session)
     multi_sequence = []
     for si, payload in session_payloads:
-        for item in payload.get("sequence", []):
+        seq = payload.get("sequence", [])
+        L = max(len(seq) - 1, 1)
+        for j, item in enumerate(seq):
             tagged = dict(item)
             tagged["session_index"] = si
+            tagged["normalized_rank"] = round(j / L, 5)
             multi_sequence.append(tagged)
 
     # Recipe metadata — pull from first session, but mark as merged
@@ -345,7 +369,7 @@ def build_merged_payload(recipe_id, mode, session_payloads):
 # Main
 # ─────────────────────────────────────────────────────────────────────────────
 
-MODES = ["full", "smart", "abstracted"]
+MODES = ["full", "smart", "abstracted", "categorical", "hybrid"]
 
 
 def main():

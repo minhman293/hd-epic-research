@@ -1402,6 +1402,7 @@
         "source": "close(bin)",
         "target": "lift(lid)",
         "count": 1,
+        "probability": 1.0,
         "key": "close(bin)|||lift(lid)",
         "occurrences": [
           32
@@ -1411,6 +1412,7 @@
         "source": "close(bottle)",
         "target": "press(button)",
         "count": 1,
+        "probability": 1.0,
         "key": "close(bottle)|||press(button)",
         "occurrences": [
           37
@@ -1420,6 +1422,7 @@
         "source": "close(fridge)",
         "target": "open(bin)",
         "count": 1,
+        "probability": 0.5,
         "key": "close(fridge)|||open(bin)",
         "occurrences": [
           29
@@ -1429,6 +1432,7 @@
         "source": "close(fridge)",
         "target": "open(box)",
         "count": 1,
+        "probability": 0.5,
         "key": "close(fridge)|||open(box)",
         "occurrences": [
           42
@@ -1438,6 +1442,7 @@
         "source": "close(lid)",
         "target": "put(water)",
         "count": 1,
+        "probability": 1.0,
         "key": "close(lid)|||put(water)",
         "occurrences": [
           14
@@ -1447,6 +1452,7 @@
         "source": "close(machine:washing)",
         "target": "open(fridge)",
         "count": 1,
+        "probability": 1.0,
         "key": "close(machine:washing)|||open(fridge)",
         "occurrences": [
           22
@@ -1456,6 +1462,7 @@
         "source": "close(tap)",
         "target": "take(top)",
         "count": 1,
+        "probability": 1.0,
         "key": "close(tap)|||take(top)",
         "occurrences": [
           58
@@ -1465,6 +1472,7 @@
         "source": "feel(cupboard)",
         "target": "lift(pot)",
         "count": 1,
+        "probability": 1.0,
         "key": "feel(cupboard)|||lift(pot)",
         "occurrences": [
           1
@@ -1474,6 +1482,7 @@
         "source": "hold(water)",
         "target": "take(jug)",
         "count": 1,
+        "probability": 1.0,
         "key": "hold(water)|||take(jug)",
         "occurrences": [
           10
@@ -1483,6 +1492,7 @@
         "source": "lift(colander)",
         "target": "open(bin)",
         "count": 1,
+        "probability": 1.0,
         "key": "lift(colander)|||open(bin)",
         "occurrences": [
           64
@@ -1492,6 +1502,7 @@
         "source": "lift(lid)",
         "target": "hold(water)",
         "count": 1,
+        "probability": 0.5,
         "key": "lift(lid)|||hold(water)",
         "occurrences": [
           9
@@ -1501,6 +1512,7 @@
         "source": "lift(lid)",
         "target": "put(lid)",
         "count": 1,
+        "probability": 0.5,
         "key": "lift(lid)|||put(lid)",
         "occurrences": [
           33
@@ -1510,6 +1522,7 @@
         "source": "lift(pot)",
         "target": "take(cup)",
         "count": 1,
+        "probability": 1.0,
         "key": "lift(pot)|||take(cup)",
         "occurrences": [
           2
@@ -1519,6 +1532,7 @@
         "source": "lift(shelf)",
         "target": "put(cup)",
         "count": 1,
+        "probability": 1.0,
         "key": "lift(shelf)|||put(cup)",
         "occurrences": [
           6
@@ -1528,6 +1542,7 @@
         "source": "look(alarm)",
         "target": "close(fridge)",
         "count": 1,
+        "probability": 1.0,
         "key": "look(alarm)|||close(fridge)",
         "occurrences": [
           28
@@ -1537,6 +1552,7 @@
         "source": "look(can)",
         "target": "look(alarm)",
         "count": 1,
+        "probability": 1.0,
         "key": "look(can)|||look(alarm)",
         "occurrences": [
           27
@@ -1546,6 +1562,7 @@
         "source": "mix(coffee)",
         "target": "lift(colander)",
         "count": 1,
+        "probability": 1.0,
         "key": "mix(coffee)|||lift(colander)",
         "occurrences": [
           63
@@ -1555,6 +1572,7 @@
         "source": "open(bin)",
         "target": "throw(can)",
         "count": 1,
+        "probability": 0.5,
         "key": "open(bin)|||throw(can)",
         "occurrences": [
           30
@@ -1564,6 +1582,7 @@
         "source": "open(bin)",
         "target": "throw(spoon)",
         "count": 1,
+        "probability": 0.5,
         "key": "open(bin)|||throw(spoon)",
         "occurrences": [
           65
@@ -1573,6 +1592,7 @@
         "source": "open(bottle)",
         "target": "pour(milk)",
         "count": 1,
+        "probability": 1.0,
         "key": "open(bottle)|||pour(milk)",
         "occurrences": [
           35
@@ -1582,6 +1602,7 @@
         "source": "open(box)",
         "target": "take(coffee)",
         "count": 1,
+        "probability": 0.5,
         "key": "open(box)|||take(coffee)",
         "occurrences": [
           18
@@ -1591,6 +1612,7 @@
         "source": "open(box)",
         "target": "take(spoon)",
         "count": 1,
+        "probability": 0.5,
         "key": "open(box)|||take(spoon)",
         "occurrences": [
           43
@@ -1600,6 +1622,7 @@
         "source": "open(drawer)",
         "target": "put(coffee)",
         "count": 1,
+        "probability": 1.0,
         "key": "open(drawer)|||put(coffee)",
         "occurrences": [
           20
@@ -1609,6 +1632,7 @@
         "source": "open(fridge)",
         "target": "put(bottle)",
         "count": 1,
+        "probability": 0.5,
         "key": "open(fridge)|||put(bottle)",
         "occurrences": [
           40
@@ -1618,6 +1642,7 @@
         "source": "open(fridge)",
         "target": "take(bottle)",
         "count": 1,
+        "probability": 0.5,
         "key": "open(fridge)|||take(bottle)",
         "occurrences": [
           23
@@ -1627,6 +1652,7 @@
         "source": "open(tap)",
         "target": "wash(milk)",
         "count": 1,
+        "probability": 1.0,
         "key": "open(tap)|||wash(milk)",
         "occurrences": [
           50
@@ -1636,6 +1662,7 @@
         "source": "pour(milk)",
         "target": "close(bottle)",
         "count": 1,
+        "probability": 0.5,
         "key": "pour(milk)|||close(bottle)",
         "occurrences": [
           36
@@ -1645,6 +1672,7 @@
         "source": "pour(milk)",
         "target": "put(milk)",
         "count": 1,
+        "probability": 0.5,
         "key": "pour(milk)|||put(milk)",
         "occurrences": [
           48
@@ -1654,6 +1682,7 @@
         "source": "pour(water)",
         "target": "put(jug)",
         "count": 1,
+        "probability": 1.0,
         "key": "pour(water)|||put(jug)",
         "occurrences": [
           12
@@ -1663,6 +1692,7 @@
         "source": "press(button)",
         "target": "lift(lid)",
         "count": 1,
+        "probability": 0.25,
         "key": "press(button)|||lift(lid)",
         "occurrences": [
           8
@@ -1672,6 +1702,7 @@
         "source": "press(button)",
         "target": "open(fridge)",
         "count": 1,
+        "probability": 0.25,
         "key": "press(button)|||open(fridge)",
         "occurrences": [
           39
@@ -1681,6 +1712,7 @@
         "source": "press(button)",
         "target": "press(button)",
         "count": 1,
+        "probability": 0.25,
         "key": "press(button)|||press(button)",
         "occurrences": [
           38
@@ -1690,6 +1722,7 @@
         "source": "press(button)",
         "target": "take(cup)",
         "count": 1,
+        "probability": 0.25,
         "key": "press(button)|||take(cup)",
         "occurrences": [
           45
@@ -1699,6 +1732,7 @@
         "source": "put(bottle)",
         "target": "close(fridge)",
         "count": 1,
+        "probability": 1.0,
         "key": "put(bottle)|||close(fridge)",
         "occurrences": [
           41
@@ -1708,6 +1742,7 @@
         "source": "put(box)",
         "target": "open(box)",
         "count": 1,
+        "probability": 1.0,
         "key": "put(box)|||open(box)",
         "occurrences": [
           17
@@ -1717,6 +1752,7 @@
         "source": "put(coffee)",
         "target": "close(machine:washing)",
         "count": 1,
+        "probability": 1.0,
         "key": "put(coffee)|||close(machine:washing)",
         "occurrences": [
           21
@@ -1726,6 +1762,7 @@
         "source": "put(cup)",
         "target": "press(button)",
         "count": 1,
+        "probability": 1.0,
         "key": "put(cup)|||press(button)",
         "occurrences": [
           7
@@ -1735,6 +1772,7 @@
         "source": "put(jug)",
         "target": "close(lid)",
         "count": 1,
+        "probability": 1.0,
         "key": "put(jug)|||close(lid)",
         "occurrences": [
           13
@@ -1744,6 +1782,7 @@
         "source": "put(lid)",
         "target": "open(bottle)",
         "count": 1,
+        "probability": 1.0,
         "key": "put(lid)|||open(bottle)",
         "occurrences": [
           34
@@ -1753,6 +1792,7 @@
         "source": "put(milk)",
         "target": "open(tap)",
         "count": 1,
+        "probability": 0.5,
         "key": "put(milk)|||open(tap)",
         "occurrences": [
           49
@@ -1762,6 +1802,7 @@
         "source": "put(milk)",
         "target": "take(cup)",
         "count": 1,
+        "probability": 0.5,
         "key": "put(milk)|||take(cup)",
         "occurrences": [
           61
@@ -1771,6 +1812,7 @@
         "source": "put(plate)",
         "target": "feel(cupboard)",
         "count": 1,
+        "probability": 0.5,
         "key": "put(plate)|||feel(cupboard)",
         "occurrences": [
           0
@@ -1780,6 +1822,7 @@
         "source": "put(plate)",
         "target": "take(sponge)",
         "count": 1,
+        "probability": 0.5,
         "key": "put(plate)|||take(sponge)",
         "occurrences": [
           53
@@ -1789,6 +1832,7 @@
         "source": "put(pot)",
         "target": "turn(cup)",
         "count": 1,
+        "probability": 1.0,
         "key": "put(pot)|||turn(cup)",
         "occurrences": [
           4
@@ -1798,6 +1842,7 @@
         "source": "put(sponge)",
         "target": "wash(milk)",
         "count": 1,
+        "probability": 1.0,
         "key": "put(sponge)|||wash(milk)",
         "occurrences": [
           56
@@ -1807,6 +1852,7 @@
         "source": "put(top)",
         "target": "put(milk)",
         "count": 1,
+        "probability": 1.0,
         "key": "put(top)|||put(milk)",
         "occurrences": [
           60
@@ -1816,6 +1862,7 @@
         "source": "put(water)",
         "target": "take(box)",
         "count": 1,
+        "probability": 1.0,
         "key": "put(water)|||take(box)",
         "occurrences": [
           15
@@ -1825,6 +1872,7 @@
         "source": "remove(top)",
         "target": "put(plate)",
         "count": 1,
+        "probability": 1.0,
         "key": "remove(top)|||put(plate)",
         "occurrences": [
           52
@@ -1834,6 +1882,7 @@
         "source": "take(bottle)",
         "target": "take(can)",
         "count": 1,
+        "probability": 1.0,
         "key": "take(bottle)|||take(can)",
         "occurrences": [
           24
@@ -1843,6 +1892,7 @@
         "source": "take(box)",
         "target": "put(box)",
         "count": 1,
+        "probability": 1.0,
         "key": "take(box)|||put(box)",
         "occurrences": [
           16
@@ -1852,6 +1902,7 @@
         "source": "take(can)",
         "target": "turn(can)",
         "count": 1,
+        "probability": 1.0,
         "key": "take(can)|||turn(can)",
         "occurrences": [
           25
@@ -1861,6 +1912,7 @@
         "source": "take(coffee)",
         "target": "open(drawer)",
         "count": 1,
+        "probability": 1.0,
         "key": "take(coffee)|||open(drawer)",
         "occurrences": [
           19
@@ -1870,6 +1922,7 @@
         "source": "take(cup)",
         "target": "mix(coffee)",
         "count": 1,
+        "probability": 0.3333,
         "key": "take(cup)|||mix(coffee)",
         "occurrences": [
           62
@@ -1879,6 +1932,7 @@
         "source": "take(cup)",
         "target": "put(pot)",
         "count": 1,
+        "probability": 0.3333,
         "key": "take(cup)|||put(pot)",
         "occurrences": [
           3
@@ -1888,6 +1942,7 @@
         "source": "take(cup)",
         "target": "take(milk)",
         "count": 1,
+        "probability": 0.3333,
         "key": "take(cup)|||take(milk)",
         "occurrences": [
           46
@@ -1897,6 +1952,7 @@
         "source": "take(jug)",
         "target": "pour(water)",
         "count": 1,
+        "probability": 1.0,
         "key": "take(jug)|||pour(water)",
         "occurrences": [
           11
@@ -1906,6 +1962,7 @@
         "source": "take(milk)",
         "target": "pour(milk)",
         "count": 1,
+        "probability": 1.0,
         "key": "take(milk)|||pour(milk)",
         "occurrences": [
           47
@@ -1915,6 +1972,7 @@
         "source": "take(sponge)",
         "target": "wash(milk)",
         "count": 1,
+        "probability": 1.0,
         "key": "take(sponge)|||wash(milk)",
         "occurrences": [
           54
@@ -1924,6 +1982,7 @@
         "source": "take(spoon)",
         "target": "press(button)",
         "count": 1,
+        "probability": 1.0,
         "key": "take(spoon)|||press(button)",
         "occurrences": [
           44
@@ -1933,6 +1992,7 @@
         "source": "take(top)",
         "target": "put(top)",
         "count": 1,
+        "probability": 1.0,
         "key": "take(top)|||put(top)",
         "occurrences": [
           59
@@ -1942,6 +2002,7 @@
         "source": "throw(can)",
         "target": "close(bin)",
         "count": 1,
+        "probability": 1.0,
         "key": "throw(can)|||close(bin)",
         "occurrences": [
           31
@@ -1951,6 +2012,7 @@
         "source": "throw(spoon)",
         "target": "close(bin)",
         "count": 1,
+        "probability": 1.0,
         "key": "throw(spoon)|||close(bin)",
         "occurrences": [
           66
@@ -1960,6 +2022,7 @@
         "source": "turn(can)",
         "target": "look(can)",
         "count": 1,
+        "probability": 1.0,
         "key": "turn(can)|||look(can)",
         "occurrences": [
           26
@@ -1969,6 +2032,7 @@
         "source": "turn(cup)",
         "target": "lift(shelf)",
         "count": 1,
+        "probability": 1.0,
         "key": "turn(cup)|||lift(shelf)",
         "occurrences": [
           5
@@ -1978,6 +2042,7 @@
         "source": "wash(milk)",
         "target": "close(tap)",
         "count": 1,
+        "probability": 0.3333,
         "key": "wash(milk)|||close(tap)",
         "occurrences": [
           57
@@ -1987,6 +2052,7 @@
         "source": "wash(milk)",
         "target": "put(sponge)",
         "count": 1,
+        "probability": 0.3333,
         "key": "wash(milk)|||put(sponge)",
         "occurrences": [
           55
@@ -1996,6 +2062,7 @@
         "source": "wash(milk)",
         "target": "remove(top)",
         "count": 1,
+        "probability": 0.3333,
         "key": "wash(milk)|||remove(top)",
         "occurrences": [
           51
