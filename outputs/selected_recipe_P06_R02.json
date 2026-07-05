@@ -1,0 +1,295 @@
+{
+  "recipe_id": "P06_R02",
+  "recipe_data": {
+    "participant": "P06",
+    "name": "Cappuccino",
+    "type": "modified",
+    "source": "https://kitchendocs.com/indian-whipped-coffee-desi-cappuccino/",
+    "steps": {
+      "P06_R02_S01": "Fill a cup with whole milk and heat it in the microwave for 3-4 minutes. Stir the heated milk with a milk frother to make the cappuccino frothier.",
+      "P06_R02_S02": "Take another empty cup and put 2 teaspoons of sugar and coffee in the cup. Add 2 teaspoons of water and slowly add more until the ingredients are just wet so that you can beat the mixture.",
+      "P06_R02_S03": "Add more water if needed, whipping it vigorously with the spoon.",
+      "P06_R02_S04": "Once the mixture in nicely thickened, smooth, and almost shiny, your Indian whipped coffee is mixture is ready.",
+      "P06_R02_S05": "Pour the heated milk in the golden-brown paste and stir it well until all ingredients are uniformly mixed. Heat the cappuccino again in microwave for 30 seconds and it is ready to drink."
+    },
+    "captures": [
+      {
+        "videos": [
+          "P06-20240510-100047"
+        ],
+        "ingredients": {
+          "P06_R02_I01": {
+            "name": "whole milk",
+            "amount": 252,
+            "amount_unit": "ml",
+            "calories": 156,
+            "fat": 8.4,
+            "carbs": 13,
+            "protein": 8.4,
+            "weigh": [
+              {
+                "video": "P06-20240510-100047",
+                "start": 368.0,
+                "end": 383.99
+              }
+            ],
+            "add": [
+              {
+                "video": "P06-20240510-100047",
+                "start": 601.941,
+                "end": 608.954
+              }
+            ]
+          },
+          "P06_R02_I02": {
+            "name": "sugar",
+            "amount": 11.33,
+            "amount_unit": "g",
+            "calories": 43,
+            "fat": 0,
+            "carbs": 11,
+            "protein": 0,
+            "weigh": [
+              {
+                "video": "P06-20240510-100047",
+                "start": 162.0,
+                "end": 180.99
+              }
+            ],
+            "add": [
+              {
+                "video": "P06-20240510-100047",
+                "start": 187.081,
+                "end": 196.065
+              }
+            ]
+          },
+          "P06_R02_I03": {
+            "name": "coffee",
+            "amount": 5.66,
+            "amount_unit": "g",
+            "calories": 6.96,
+            "fat": 0,
+            "carbs": 0.3,
+            "protein": 0.1,
+            "weigh": [
+              {
+                "video": "P06-20240510-100047",
+                "start": 206.048,
+                "end": 211.049
+              }
+            ],
+            "add": [
+              {
+                "video": "P06-20240510-100047",
+                "start": 217.036,
+                "end": 236.071
+              }
+            ]
+          },
+          "P06_R02_I04": {
+            "name": "water",
+            "amount": 5.68,
+            "amount_unit": "ml",
+            "calories": 0,
+            "fat": 0,
+            "carbs": 0,
+            "protein": 0,
+            "weigh": [],
+            "add": []
+          }
+        },
+        "step_times": {
+          "P06_R02_S01": [
+            {
+              "video": "P06-20240510-100047",
+              "start": 91.545,
+              "end": 98.898
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 375.053,
+              "end": 381.599
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 574.487,
+              "end": 580.1
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 580.033,
+              "end": 593.157
+            }
+          ],
+          "P06_R02_S02": [
+            {
+              "video": "P06-20240510-100047",
+              "start": 187.661,
+              "end": 188.437
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 195.589,
+              "end": 196.152
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 217.098,
+              "end": 218.043
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 235.906,
+              "end": 236.62
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 265.171,
+              "end": 281.033
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 281.033,
+              "end": 283.628
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 288.518,
+              "end": 358.865
+            }
+          ],
+          "P06_R02_S03": [],
+          "P06_R02_S04": [],
+          "P06_R02_S05": [
+            {
+              "video": "P06-20240510-100047",
+              "start": 602.926,
+              "end": 642.355
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 1388.009,
+              "end": 1393.334
+            }
+          ]
+        },
+        "prep_times": {
+          "P06_R02_S01": [
+            {
+              "video": "P06-20240510-100047",
+              "start": 80.494,
+              "end": 85.152
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 87.049,
+              "end": 91.498
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 362.402,
+              "end": 369.518
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 432.987,
+              "end": 435.067
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 435.033,
+              "end": 444.716
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 504.071,
+              "end": 508.681
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 373.437,
+              "end": 375.014
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 581.322,
+              "end": 584.81
+            }
+          ],
+          "P06_R02_S02": [
+            {
+              "video": "P06-20240510-100047",
+              "start": 31.703,
+              "end": 45.952
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 59.161,
+              "end": 67.461
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 75.589,
+              "end": 78.243
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 111.496,
+              "end": 163.879
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 168.721,
+              "end": 177.098
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 188.476,
+              "end": 195.476
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 257.661,
+              "end": 265.171
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 186.553,
+              "end": 187.553
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 196.168,
+              "end": 210.514
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 213.245,
+              "end": 217.014
+            },
+            {
+              "video": "P06-20240510-100047",
+              "start": 231.935,
+              "end": 235.239
+            }
+          ],
+          "P06_R02_S03": [],
+          "P06_R02_S04": [],
+          "P06_R02_S05": [
+            {
+              "video": "P06-20240510-100047",
+              "start": 599.429,
+              "end": 602.614
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "video_ids": [
+    "P06-20240510-100047",
+    "P06-20240510-100047"
+  ],
+  "narrations_count": 459
+}

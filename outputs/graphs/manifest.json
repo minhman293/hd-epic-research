@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-04T22:00:05",
+  "generated_at": "2026-07-05T14:36:05",
   "recipes": [
     {
       "id": "P01_R01",
@@ -122,6 +122,74 @@
           "node_count": 56,
           "primary_count": 15,
           "secondary_count": 41
+        }
+      ],
+      "has_merged": false
+    },
+    {
+      "id": "P06_R02",
+      "name": "Cappuccino",
+      "sessions": [
+        {
+          "index": 0,
+          "video_id": "P06-20240510-100047",
+          "video_path": "raw-video/P06-20240510-100047.mp4",
+          "action_count": 459,
+          "duration_s": 1461.21,
+          "node_count": 31,
+          "primary_count": 2,
+          "secondary_count": 29
+        }
+      ],
+      "has_merged": false
+    },
+    {
+      "id": "P06_R07",
+      "name": "Cappuccino",
+      "sessions": [
+        {
+          "index": 0,
+          "video_id": "P06-20240511-102207",
+          "video_path": "raw-video/P06-20240511-102207.mp4",
+          "action_count": 761,
+          "duration_s": 2531.37,
+          "node_count": 29,
+          "primary_count": 2,
+          "secondary_count": 27
+        }
+      ],
+      "has_merged": false
+    },
+    {
+      "id": "P07_R01",
+      "name": "Coffee",
+      "sessions": [
+        {
+          "index": 0,
+          "video_id": "P07-20240529-102652",
+          "video_path": "raw-video/P07-20240529-102652.mp4",
+          "action_count": 378,
+          "duration_s": 923.86,
+          "node_count": 34,
+          "primary_count": 0,
+          "secondary_count": 34
+        }
+      ],
+      "has_merged": false
+    },
+    {
+      "id": "P07_R06",
+      "name": "Coffee",
+      "sessions": [
+        {
+          "index": 0,
+          "video_id": "P07-20240531-101357",
+          "video_path": "raw-video/P07-20240531-101357.mp4",
+          "action_count": 699,
+          "duration_s": 2575.67,
+          "node_count": 46,
+          "primary_count": 0,
+          "secondary_count": 46
         }
       ],
       "has_merged": false
