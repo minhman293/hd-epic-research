@@ -177,6 +177,65 @@ export function buildSwimlane(containerEl, payload, colorFn, options) {
   var viewStart = 0;
   var viewEnd = tMax;
 
+  // ── duration color quantiles (for `duration` colorMode) -------------
+  var _durs = sequence.map(function (it) { return it.duration; })
+                      .filter(function (d) { return d > 0; })
+                      .sort(function (a, b) { return a - b; });
+  function _q(p) {
+    if (_durs.length === 0) return 0;
+    return _durs[Math.min(_durs.length - 1, Math.floor(p * _durs.length))];
+  }
+  var _durQs   = [_q(0.2), _q(0.4), _q(0.6), _q(0.8)];
+  var DUR_RAMP = ["#E1F5EE", "#9FE1CB", "#5DCAA5", "#1D9E75", "#085041"];
+  function durationColor(d) {
+    for (var k = 0; k < _durQs.length; k++) if (d <= _durQs[k]) return DUR_RAMP[k];
+    return DUR_RAMP[4];
+  }
+
+  // ── duration legend (show when swimlane is in `duration` mode) -------
+  if (colorMode === "duration") {
+    var durLegend = document.createElement("div");
+    durLegend.className = "swimlane-legend";
+    durLegend.style.display = "flex";
+    durLegend.style.alignItems = "center";
+    durLegend.style.gap = "10px";
+    durLegend.style.margin = "0 0 6px 0";
+    durLegend.style.fontSize = "12px";
+    durLegend.style.color = "#475569";
+
+    var rampWrap = document.createElement("div");
+    rampWrap.style.display = "inline-flex";
+    rampWrap.style.gap = "8px";
+
+    var qLabels = [
+      "≤" + Math.round(_durQs[0]) + "s",
+      "≤" + Math.round(_durQs[1]) + "s",
+      "≤" + Math.round(_durQs[2]) + "s",
+      "≤" + Math.round(_durQs[3]) + "s",
+      ">" + Math.round(_durQs[3]) + "s"
+    ];
+
+    for (var ri = 0; ri < DUR_RAMP.length; ri++) {
+      var item = document.createElement("div");
+      item.style.display = "inline-flex";
+      item.style.alignItems = "center";
+      item.style.gap = "6px";
+      var sw = document.createElement("span");
+      sw.style.display = "inline-block";
+      sw.style.width = "12px";
+      sw.style.height = "12px";
+      sw.style.background = DUR_RAMP[ri];
+      sw.style.border = "1px solid #334155";
+      item.appendChild(sw);
+      var text = document.createElement("span");
+      text.textContent = qLabels[ri];
+      item.appendChild(text);
+      rampWrap.appendChild(item);
+    }
+    durLegend.appendChild(rampWrap);
+    containerEl.appendChild(durLegend);
+  }
+
   function setViewRange(nextStart, nextEnd) {
     var span = Math.max(ZOOM_MIN_SPAN, Math.min(tMax, nextEnd - nextStart));
     var start = Math.max(0, nextStart);
@@ -341,9 +400,15 @@ export function buildSwimlane(containerEl, payload, colorFn, options) {
         var bw = Math.max(tScale(item.end) - bx, MIN_BAR_PX);
         var actionKey = item.raw_action || item.action;
         var isPrep = item.phase === "prep" && !isSec;
-        var barColor = colorFn(actionKey);
-        if (isPrep && (!barColor || barColor === "#94A3B8" || barColor === "gray")) {
-          console.log("swimlane prep color fallback", actionKey, barColor, item);
+        var barColor;
+        if (colorMode === "step" || colorMode === "phase") {
+          barColor = (!isSec && item.step_id)
+            ? getStepPhaseColor(localStepId(item.step_id) || item.step_id)
+            : UNASSIGNED_PHASE_COLOR;
+        } else if (colorMode === "duration") {
+          barColor = durationColor(item.duration);
+        } else {
+          barColor = colorFn(actionKey);
         }
         var barY = isPrep ? prepY + 2 : execY + 3;
         var barH = isPrep ? Math.max(prepH - 4, 6) : Math.max(execH - 6, 6);
@@ -352,7 +417,7 @@ export function buildSwimlane(containerEl, payload, colorFn, options) {
           rx: 2,
           "class": "swimlane-bar",
           fill: barColor,
-          "fill-opacity": isPrep ? 0.45 : 1.0,
+          "fill-opacity": (isPrep && colorMode !== "duration") ? 0.45 : 1.0,
           stroke: isPrep ? barColor : "none",
           "stroke-width": isPrep ? 1 : 0
         });
