@@ -161,26 +161,26 @@ def compute_video_layout(videos, durations_map, narrations_df):
     return layout
 
 
-def collect_step_windows_stitched(capture, video_layout, buffer_s=STEP_WINDOW_BUFFER_S):
-    """
-    Returns step windows on the unified capture timeline. Each entry:
-        (unified_start, unified_end, step_id, video_id, video_start, video_end)
-    """
+def collect_windows_stitched(capture, video_layout, field, buffer_s=STEP_WINDOW_BUFFER_S):
+    """Unified-timeline windows for step_times OR prep_times."""
     offsets = {v["video_id"]: v["offset_s"] for v in video_layout}
     windows = []
-    for step_id, time_entries in capture.get("step_times", {}).items():
+    for step_id, time_entries in (capture.get(field, {}) or {}).items():
         for entry in time_entries:
             vid = entry.get("video")
             if vid not in offsets:
                 continue
             off = offsets[vid]
-            v_start = float(entry["start"])
-            v_end = float(entry["end"])
-            u_start = max(0.0, v_start + off - buffer_s)
-            u_end = v_end + off + buffer_s
-            windows.append((u_start, u_end, step_id, vid, v_start, v_end))
+            u_start = max(0.0, float(entry["start"]) + off - buffer_s)
+            u_end = float(entry["end"]) + off + buffer_s
+            windows.append((u_start, u_end, step_id, vid,
+                            float(entry["start"]), float(entry["end"])))
     windows.sort(key=lambda w: w[0])
     return windows
+
+
+def collect_step_windows_stitched(capture, video_layout, buffer_s=STEP_WINDOW_BUFFER_S):
+    return collect_windows_stitched(capture, video_layout, "step_times", buffer_s)
 
 
 def find_overlapping_step(a_start, a_end, step_windows):
@@ -327,18 +327,27 @@ def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
 
     # 3. Step windows on the unified timeline
     step_windows = collect_step_windows_stitched(capture, video_layout)
+    prep_windows = collect_windows_stitched(capture, video_layout, "prep_times")
 
     # 4. Tag each action with its overlapping step
-    if not step_windows:
+    if not step_windows and not prep_windows:
         print(f"    ⚠ No step_times for capture {session['index']}. All actions → primary.")
         for item in action_items:
             item["step_id"] = None
             item["is_primary"] = True
+            item["phase"] = None
     else:
         for item in action_items:
             sid = find_overlapping_step(item["start"], item["end"], step_windows)
-            item["step_id"] = sid
-            item["is_primary"] = sid is not None
+            if sid is not None:
+                item["step_id"] = sid
+                item["is_primary"] = True
+                item["phase"] = "exec"
+            else:
+                pid = find_overlapping_step(item["start"], item["end"], prep_windows)
+                item["step_id"] = pid            # may be None
+                item["is_primary"] = False        # UNCHANGED semantics
+                item["phase"] = "prep" if pid is not None else None
         primary = sum(1 for a in action_items if a["is_primary"])
         secondary = len(action_items) - primary
         print(
@@ -363,6 +372,7 @@ def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
             "edge_key": edge_key,
             "step_id": item.get("step_id"),
             "is_primary": item.get("is_primary", True),
+            "phase": item.get("phase"),
             "verb_class": item.get("verb_class", -1),
             "noun_class": item.get("noun_class", -1),
             "video_id": item["video_id"],
@@ -384,6 +394,27 @@ def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
         }
         for sid, text in recipe_meta.get("steps", {}).items()
     ]
+
+    step_ids = {step["id"] for step in step_text}
+    prep_gaps_by_step = defaultdict(list)
+    exec_windows_by_step = defaultdict(list)
+    for s_start, s_end, sid, *_ in step_windows:
+        exec_windows_by_step[sid].append((s_start, s_end))
+    for p_start, p_end, sid, *_ in prep_windows:
+        if sid not in step_ids:
+            continue
+        future_exec_starts = [s for s, _ in exec_windows_by_step.get(sid, []) if s >= p_end]
+        if not future_exec_starts:
+            continue
+        exec_start = min(future_exec_starts)
+        prep_gaps_by_step[sid].append({
+            "prep_end": round(p_end, 3),
+            "exec_start": round(exec_start, 3),
+            "gap": round(exec_start - p_end, 3),
+        })
+
+    for step in step_text:
+        step["prep_gaps"] = prep_gaps_by_step.get(step["id"], [])
 
     videos_payload = [
         {
@@ -410,6 +441,12 @@ def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
         },
         "videos": videos_payload,
         "steps": step_text,
+        "step_windows": (
+            [{"step_id": sid, "start": s, "end": e, "phase": "exec"}
+             for (s, e, sid, *_ ) in step_windows]
+          + [{"step_id": sid, "start": s, "end": e, "phase": "prep"}
+             for (s, e, sid, *_ ) in prep_windows]
+        ),
         "sequence": sequence,
         "graph": {"nodes": nodes, "links": links},
     }

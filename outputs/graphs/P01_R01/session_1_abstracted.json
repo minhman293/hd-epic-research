@@ -21,27 +21,157 @@
     {
       "id": "P01_R01_S01",
       "text": "Put one capsule into the coffee machine.",
-      "label": "load coffee capsule"
+      "label": "load coffee capsule",
+      "prep_gaps": [
+        {
+          "prep_end": 18.432,
+          "exec_start": 44.496,
+          "gap": 26.064
+        },
+        {
+          "prep_end": 31.153,
+          "exec_start": 44.496,
+          "gap": 13.343
+        },
+        {
+          "prep_end": 44.344,
+          "exec_start": 44.496,
+          "gap": 0.152
+        }
+      ]
     },
     {
       "id": "P01_R01_S02",
       "text": "Press the long coffee button",
-      "label": "brew espresso"
+      "label": "brew espresso",
+      "prep_gaps": []
     },
     {
       "id": "P01_R01_S03",
       "text": "Pour minimum amount of milk into the frother",
-      "label": "froth milk"
+      "label": "froth milk",
+      "prep_gaps": [
+        {
+          "prep_end": 73.382,
+          "exec_start": 73.445,
+          "gap": 0.063
+        }
+      ]
     },
     {
       "id": "P01_R01_S04",
       "text": "Add the frothed milk into the coffee",
-      "label": "pour foam in coffee"
+      "label": "pour foam in coffee",
+      "prep_gaps": [
+        {
+          "prep_end": 18.182,
+          "exec_start": 115.284,
+          "gap": 97.102
+        },
+        {
+          "prep_end": 114.904,
+          "exec_start": 115.284,
+          "gap": 0.38
+        }
+      ]
     },
     {
       "id": "P01_R01_S05",
       "text": "Stir",
-      "label": "stir"
+      "label": "stir",
+      "prep_gaps": [
+        {
+          "prep_end": 90.99,
+          "exec_start": 145.0,
+          "gap": 54.01
+        }
+      ]
+    }
+  ],
+  "step_windows": [
+    {
+      "step_id": "P01_R01_S02",
+      "start": 18.878,
+      "end": 19.202,
+      "phase": "exec"
+    },
+    {
+      "step_id": "P01_R01_S01",
+      "start": 44.496,
+      "end": 46.653,
+      "phase": "exec"
+    },
+    {
+      "step_id": "P01_R01_S03",
+      "start": 73.445,
+      "end": 76.315,
+      "phase": "exec"
+    },
+    {
+      "step_id": "P01_R01_S02",
+      "start": 79.614,
+      "end": 79.991,
+      "phase": "exec"
+    },
+    {
+      "step_id": "P01_R01_S02",
+      "start": 106.822,
+      "end": 108.09,
+      "phase": "exec"
+    },
+    {
+      "step_id": "P01_R01_S04",
+      "start": 115.284,
+      "end": 127.755,
+      "phase": "exec"
+    },
+    {
+      "step_id": "P01_R01_S05",
+      "start": 145.0,
+      "end": 149.99,
+      "phase": "exec"
+    },
+    {
+      "step_id": "P01_R01_S04",
+      "start": 13.471,
+      "end": 18.182,
+      "phase": "prep"
+    },
+    {
+      "step_id": "P01_R01_S01",
+      "start": 17.547,
+      "end": 18.432,
+      "phase": "prep"
+    },
+    {
+      "step_id": "P01_R01_S01",
+      "start": 19.421,
+      "end": 31.153,
+      "phase": "prep"
+    },
+    {
+      "step_id": "P01_R01_S01",
+      "start": 34.917,
+      "end": 44.344,
+      "phase": "prep"
+    },
+    {
+      "step_id": "P01_R01_S03",
+      "start": 50.947,
+      "end": 73.382,
+      "phase": "prep"
+    },
+    {
+      "step_id": "P01_R01_S05",
+      "start": 89.0,
+      "end": 90.99,
+      "phase": "prep"
+    },
+    {
+      "step_id": "P01_R01_S04",
+      "start": 108.81,
+      "end": 114.904,
+      "phase": "prep"
     }
   ],
   "sequence": [
@@ -55,6 +185,7 @@
       "edge_key": "put(plate)|||feel(cupboard)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 1,
       "noun_class": 2,
       "video_id": "P01-20240203-093333",
@@ -73,6 +204,7 @@
       "edge_key": "feel(cupboard)|||lift(pot)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 54,
       "noun_class": 3,
       "video_id": "P01-20240203-093333",
@@ -91,6 +223,7 @@
       "edge_key": "lift(pot)|||take(cup)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 33,
       "noun_class": 29,
       "video_id": "P01-20240203-093333",
@@ -101,93 +234,98 @@
     },
     {
       "index": 3,
-      "action": "unassigned",
+      "action": "S04",
       "start": 13.3,
       "end": 14.1,
       "duration": 0.7999999999999989,
       "next_action": "put(pot)",
       "edge_key": "take(cup)|||put(pot)",
-      "step_id": null,
+      "step_id": "P01_R01_S04",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 0,
       "noun_class": 13,
       "video_id": "P01-20240203-093333",
       "video_start": 13.3,
       "video_end": 14.1,
       "raw_action": "take(cup)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S04"
     },
     {
       "index": 4,
-      "action": "unassigned",
+      "action": "S04",
       "start": 13.9,
       "end": 14.76,
       "duration": 0.8599999999999994,
       "next_action": "turn(cup)",
       "edge_key": "put(pot)|||turn(cup)",
-      "step_id": null,
+      "step_id": "P01_R01_S04",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 1,
       "noun_class": 29,
       "video_id": "P01-20240203-093333",
       "video_start": 13.9,
       "video_end": 14.76,
       "raw_action": "put(pot)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S04"
     },
     {
       "index": 5,
-      "action": "unassigned",
+      "action": "S04",
       "start": 14.96,
       "end": 16.13,
       "duration": 1.1699999999999982,
       "next_action": "lift(shelf)",
       "edge_key": "turn(cup)|||lift(shelf)",
-      "step_id": null,
+      "step_id": "P01_R01_S04",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 23,
       "noun_class": 13,
       "video_id": "P01-20240203-093333",
       "video_start": 14.96,
       "video_end": 16.13,
       "raw_action": "turn(cup)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S04"
     },
     {
       "index": 6,
-      "action": "unassigned",
+      "action": "S01",
       "start": 17.82,
       "end": 18.32,
       "duration": 0.5,
       "next_action": "put(cup)",
       "edge_key": "lift(shelf)|||put(cup)",
-      "step_id": null,
+      "step_id": "P01_R01_S01",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 33,
       "noun_class": 247,
       "video_id": "P01-20240203-093333",
       "video_start": 17.82,
       "video_end": 18.32,
       "raw_action": "lift(shelf)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S01"
     },
     {
       "index": 7,
-      "action": "unassigned",
+      "action": "S01",
       "start": 18.28,
       "end": 18.53,
       "duration": 0.25,
       "next_action": "press(button)",
       "edge_key": "put(cup)|||press(button)",
-      "step_id": null,
+      "step_id": "P01_R01_S01",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 1,
       "noun_class": 13,
       "video_id": "P01-20240203-093333",
       "video_start": 18.28,
       "video_end": 18.53,
       "raw_action": "put(cup)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S01"
     },
     {
       "index": 8,
@@ -199,6 +337,7 @@
       "edge_key": "press(button)|||lift(lid)",
       "step_id": "P01_R01_S02",
       "is_primary": true,
+      "phase": "exec",
       "verb_class": 21,
       "noun_class": 92,
       "video_id": "P01-20240203-093333",
@@ -209,183 +348,193 @@
     },
     {
       "index": 9,
-      "action": "unassigned",
+      "action": "S01",
       "start": 19.36,
       "end": 22.0,
       "duration": 2.6400000000000006,
       "next_action": "hold(water)",
       "edge_key": "lift(lid)|||hold(water)",
-      "step_id": null,
+      "step_id": "P01_R01_S01",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 33,
       "noun_class": 6,
       "video_id": "P01-20240203-093333",
       "video_start": 19.36,
       "video_end": 22.0,
       "raw_action": "lift(lid)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S01"
     },
     {
       "index": 10,
-      "action": "unassigned",
+      "action": "S01",
       "start": 22.84,
       "end": 23.59,
       "duration": 0.75,
       "next_action": "take(jug)",
       "edge_key": "hold(water)|||take(jug)",
-      "step_id": null,
+      "step_id": "P01_R01_S01",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 34,
       "noun_class": 27,
       "video_id": "P01-20240203-093333",
       "video_start": 22.84,
       "video_end": 23.59,
       "raw_action": "hold(water)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S01"
     },
     {
       "index": 11,
-      "action": "unassigned",
+      "action": "S01",
       "start": 23.63,
       "end": 24.54,
       "duration": 0.9100000000000001,
       "next_action": "pour(water)",
       "edge_key": "take(jug)|||pour(water)",
-      "step_id": null,
+      "step_id": "P01_R01_S01",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 0,
       "noun_class": 66,
       "video_id": "P01-20240203-093333",
       "video_start": 23.63,
       "video_end": 24.54,
       "raw_action": "take(jug)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S01"
     },
     {
       "index": 12,
-      "action": "unassigned",
+      "action": "S01",
       "start": 24.64,
       "end": 26.83,
       "duration": 2.1899999999999977,
       "next_action": "put(jug)",
       "edge_key": "pour(water)|||put(jug)",
-      "step_id": null,
+      "step_id": "P01_R01_S01",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 9,
       "noun_class": 27,
       "video_id": "P01-20240203-093333",
       "video_start": 24.64,
       "video_end": 26.83,
       "raw_action": "pour(water)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S01"
     },
     {
       "index": 13,
-      "action": "unassigned",
+      "action": "S01",
       "start": 26.67,
       "end": 27.86,
       "duration": 1.1899999999999977,
       "next_action": "close(lid)",
       "edge_key": "put(jug)|||close(lid)",
-      "step_id": null,
+      "step_id": "P01_R01_S01",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 1,
       "noun_class": 66,
       "video_id": "P01-20240203-093333",
       "video_start": 26.67,
       "video_end": 27.86,
       "raw_action": "put(jug)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S01"
     },
     {
       "index": 14,
-      "action": "unassigned",
+      "action": "S01",
       "start": 27.96,
       "end": 29.15,
       "duration": 1.1899999999999977,
       "next_action": "put(water)",
       "edge_key": "close(lid)|||put(water)",
-      "step_id": null,
+      "step_id": "P01_R01_S01",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 4,
       "noun_class": 6,
       "video_id": "P01-20240203-093333",
       "video_start": 27.96,
       "video_end": 29.15,
       "raw_action": "close(lid)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S01"
     },
     {
       "index": 15,
-      "action": "unassigned",
+      "action": "S01",
       "start": 29.25,
       "end": 32.29,
       "duration": 3.039999999999999,
       "next_action": "take(box)",
       "edge_key": "put(water)|||take(box)",
-      "step_id": null,
+      "step_id": "P01_R01_S01",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 1,
       "noun_class": 27,
       "video_id": "P01-20240203-093333",
       "video_start": 29.25,
       "video_end": 32.29,
       "raw_action": "put(water)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S01"
     },
     {
       "index": 16,
-      "action": "unassigned",
+      "action": "S01",
       "start": 32.39,
       "end": 36.76,
       "duration": 4.369999999999997,
       "next_action": "put(box)",
       "edge_key": "take(box)|||put(box)",
-      "step_id": null,
+      "step_id": "P01_R01_S01",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 0,
       "noun_class": 23,
       "video_id": "P01-20240203-093333",
       "video_start": 32.39,
       "video_end": 36.76,
       "raw_action": "take(box)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S01"
     },
     {
       "index": 17,
-      "action": "unassigned",
+      "action": "S01",
       "start": 36.86,
       "end": 38.37,
       "duration": 1.509999999999998,
       "next_action": "open(box)",
       "edge_key": "put(box)|||open(box)",
-      "step_id": null,
+      "step_id": "P01_R01_S01",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 1,
       "noun_class": 23,
       "video_id": "P01-20240203-093333",
       "video_start": 36.86,
       "video_end": 38.37,
       "raw_action": "put(box)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S01"
     },
     {
       "index": 18,
-      "action": "unassigned",
+      "action": "S01",
       "start": 38.47,
       "end": 43.66,
       "duration": 5.189999999999998,
       "next_action": "take(coffee)",
       "edge_key": "open(box)|||take(coffee)",
-      "step_id": null,
+      "step_id": "P01_R01_S01",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 3,
       "noun_class": 23,
       "video_id": "P01-20240203-093333",
       "video_start": 38.47,
       "video_end": 43.66,
       "raw_action": "open(box)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S01"
     },
     {
       "index": 19,
@@ -397,6 +546,7 @@
       "edge_key": "take(coffee)|||open(drawer)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
+      "phase": "exec",
       "verb_class": 0,
       "noun_class": 59,
       "video_id": "P01-20240203-093333",
@@ -415,6 +565,7 @@
       "edge_key": "open(drawer)|||put(coffee)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
+      "phase": "exec",
       "verb_class": 3,
       "noun_class": 8,
       "video_id": "P01-20240203-093333",
@@ -433,6 +584,7 @@
       "edge_key": "put(coffee)|||close(machine:washing)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
+      "phase": "exec",
       "verb_class": 1,
       "noun_class": 59,
       "video_id": "P01-20240203-093333",
@@ -451,6 +603,7 @@
       "edge_key": "close(machine:washing)|||open(fridge)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 4,
       "noun_class": 124,
       "video_id": "P01-20240203-093333",
@@ -469,6 +622,7 @@
       "edge_key": "open(fridge)|||take(bottle)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 3,
       "noun_class": 12,
       "video_id": "P01-20240203-093333",
@@ -479,219 +633,231 @@
     },
     {
       "index": 24,
-      "action": "unassigned",
+      "action": "S03",
       "start": 50.88,
       "end": 51.54,
       "duration": 0.6599999999999966,
       "next_action": "take(can)",
       "edge_key": "take(bottle)|||take(can)",
-      "step_id": null,
+      "step_id": "P01_R01_S03",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 0,
       "noun_class": 15,
       "video_id": "P01-20240203-093333",
       "video_start": 50.88,
       "video_end": 51.54,
       "raw_action": "take(bottle)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S03"
     },
     {
       "index": 25,
-      "action": "unassigned",
+      "action": "S03",
       "start": 53.34,
       "end": 55.35,
       "duration": 2.009999999999998,
       "next_action": "turn(can)",
       "edge_key": "take(can)|||turn(can)",
-      "step_id": null,
+      "step_id": "P01_R01_S03",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 0,
       "noun_class": 61,
       "video_id": "P01-20240203-093333",
       "video_start": 53.34,
       "video_end": 55.35,
       "raw_action": "take(can)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S03"
     },
     {
       "index": 26,
-      "action": "unassigned",
+      "action": "S03",
       "start": 54.65,
       "end": 56.06,
       "duration": 1.4100000000000037,
       "next_action": "look(can)",
       "edge_key": "turn(can)|||look(can)",
-      "step_id": null,
+      "step_id": "P01_R01_S03",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 23,
       "noun_class": 61,
       "video_id": "P01-20240203-093333",
       "video_start": 54.65,
       "video_end": 56.06,
       "raw_action": "turn(can)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S03"
     },
     {
       "index": 27,
-      "action": "unassigned",
+      "action": "S03",
       "start": 56.15,
       "end": 56.85,
       "duration": 0.7000000000000028,
       "next_action": "look(alarm)",
       "edge_key": "look(can)|||look(alarm)",
-      "step_id": null,
+      "step_id": "P01_R01_S03",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 38,
       "noun_class": 61,
       "video_id": "P01-20240203-093333",
       "video_start": 56.15,
       "video_end": 56.85,
       "raw_action": "look(can)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S03"
     },
     {
       "index": 28,
-      "action": "unassigned",
+      "action": "S03",
       "start": 56.95,
       "end": 63.68,
       "duration": 6.729999999999997,
       "next_action": "close(fridge)",
       "edge_key": "look(alarm)|||close(fridge)",
-      "step_id": null,
+      "step_id": "P01_R01_S03",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 38,
       "noun_class": 111,
       "video_id": "P01-20240203-093333",
       "video_start": 56.95,
       "video_end": 63.68,
       "raw_action": "look(alarm)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S03"
     },
     {
       "index": 29,
-      "action": "unassigned",
+      "action": "S03",
       "start": 64.55,
       "end": 66.51,
       "duration": 1.960000000000008,
       "next_action": "open(bin)",
       "edge_key": "close(fridge)|||open(bin)",
-      "step_id": null,
+      "step_id": "P01_R01_S03",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 4,
       "noun_class": 12,
       "video_id": "P01-20240203-093333",
       "video_start": 64.55,
       "video_end": 66.51,
       "raw_action": "close(fridge)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S03"
     },
     {
       "index": 30,
-      "action": "unassigned",
+      "action": "S03",
       "start": 67.69,
       "end": 67.97,
       "duration": 0.28000000000000114,
       "next_action": "throw(can)",
       "edge_key": "open(bin)|||throw(can)",
-      "step_id": null,
+      "step_id": "P01_R01_S03",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 3,
       "noun_class": 36,
       "video_id": "P01-20240203-093333",
       "video_start": 67.69,
       "video_end": 67.97,
       "raw_action": "open(bin)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S03"
     },
     {
       "index": 31,
-      "action": "unassigned",
+      "action": "S03",
       "start": 68.07,
       "end": 68.39,
       "duration": 0.3200000000000074,
       "next_action": "close(bin)",
       "edge_key": "throw(can)|||close(bin)",
-      "step_id": null,
+      "step_id": "P01_R01_S03",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 13,
       "noun_class": 61,
       "video_id": "P01-20240203-093333",
       "video_start": 68.07,
       "video_end": 68.39,
       "raw_action": "throw(can)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S03"
     },
     {
       "index": 32,
-      "action": "unassigned",
+      "action": "S03",
       "start": 68.17,
       "end": 68.42,
       "duration": 0.25,
       "next_action": "lift(lid)",
       "edge_key": "close(bin)|||lift(lid)",
-      "step_id": null,
+      "step_id": "P01_R01_S03",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 4,
       "noun_class": 36,
       "video_id": "P01-20240203-093333",
       "video_start": 68.17,
       "video_end": 68.42,
       "raw_action": "close(bin)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S03"
     },
     {
       "index": 33,
-      "action": "unassigned",
+      "action": "S03",
       "start": 70.28,
       "end": 70.91,
       "duration": 0.6299999999999955,
       "next_action": "put(lid)",
       "edge_key": "lift(lid)|||put(lid)",
-      "step_id": null,
+      "step_id": "P01_R01_S03",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 33,
       "noun_class": 6,
       "video_id": "P01-20240203-093333",
       "video_start": 70.28,
       "video_end": 70.91,
       "raw_action": "lift(lid)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S03"
     },
     {
       "index": 34,
-      "action": "unassigned",
+      "action": "S03",
       "start": 71.01,
       "end": 71.23,
       "duration": 0.21999999999999886,
       "next_action": "open(bottle)",
       "edge_key": "put(lid)|||open(bottle)",
-      "step_id": null,
+      "step_id": "P01_R01_S03",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 1,
       "noun_class": 6,
       "video_id": "P01-20240203-093333",
       "video_start": 71.01,
       "video_end": 71.23,
       "raw_action": "put(lid)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S03"
     },
     {
       "index": 35,
-      "action": "unassigned",
+      "action": "S03",
       "start": 71.65,
       "end": 73.0,
       "duration": 1.3499999999999943,
       "next_action": "pour(milk)",
       "edge_key": "open(bottle)|||pour(milk)",
-      "step_id": null,
+      "step_id": "P01_R01_S03",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 3,
       "noun_class": 15,
       "video_id": "P01-20240203-093333",
       "video_start": 71.65,
       "video_end": 73.0,
       "raw_action": "open(bottle)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S03"
     },
     {
       "index": 36,
@@ -703,6 +869,7 @@
       "edge_key": "pour(milk)|||close(bottle)",
       "step_id": "P01_R01_S03",
       "is_primary": true,
+      "phase": "exec",
       "verb_class": 9,
       "noun_class": 64,
       "video_id": "P01-20240203-093333",
@@ -721,6 +888,7 @@
       "edge_key": "close(bottle)|||press(button)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 4,
       "noun_class": 15,
       "video_id": "P01-20240203-093333",
@@ -739,6 +907,7 @@
       "edge_key": "press(button)|||press(button)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 21,
       "noun_class": 92,
       "video_id": "P01-20240203-093333",
@@ -757,6 +926,7 @@
       "edge_key": "press(button)|||open(fridge)",
       "step_id": "P01_R01_S02",
       "is_primary": true,
+      "phase": "exec",
       "verb_class": 21,
       "noun_class": 92,
       "video_id": "P01-20240203-093333",
@@ -775,6 +945,7 @@
       "edge_key": "open(fridge)|||put(bottle)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 3,
       "noun_class": 12,
       "video_id": "P01-20240203-093333",
@@ -793,6 +964,7 @@
       "edge_key": "put(bottle)|||close(fridge)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 1,
       "noun_class": 15,
       "video_id": "P01-20240203-093333",
@@ -811,6 +983,7 @@
       "edge_key": "close(fridge)|||open(box)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 4,
       "noun_class": 12,
       "video_id": "P01-20240203-093333",
@@ -821,39 +994,41 @@
     },
     {
       "index": 43,
-      "action": "unassigned",
+      "action": "S05",
       "start": 88.47,
       "end": 89.44,
       "duration": 0.9699999999999989,
       "next_action": "take(spoon)",
       "edge_key": "open(box)|||take(spoon)",
-      "step_id": null,
+      "step_id": "P01_R01_S05",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 3,
       "noun_class": 23,
       "video_id": "P01-20240203-093333",
       "video_start": 88.47,
       "video_end": 89.44,
       "raw_action": "open(box)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S05"
     },
     {
       "index": 44,
-      "action": "unassigned",
+      "action": "S05",
       "start": 89.76,
       "end": 90.38,
       "duration": 0.6199999999999903,
       "next_action": "press(button)",
       "edge_key": "take(spoon)|||press(button)",
-      "step_id": null,
+      "step_id": "P01_R01_S05",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 0,
       "noun_class": 1,
       "video_id": "P01-20240203-093333",
       "video_start": 89.76,
       "video_end": 90.38,
       "raw_action": "take(spoon)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S05"
     },
     {
       "index": 45,
@@ -865,6 +1040,7 @@
       "edge_key": "press(button)|||take(cup)",
       "step_id": "P01_R01_S02",
       "is_primary": true,
+      "phase": "exec",
       "verb_class": 21,
       "noun_class": 92,
       "video_id": "P01-20240203-093333",
@@ -875,39 +1051,41 @@
     },
     {
       "index": 46,
-      "action": "unassigned",
+      "action": "S04",
       "start": 109.01,
       "end": 113.56,
       "duration": 4.549999999999997,
       "next_action": "take(milk)",
       "edge_key": "take(cup)|||take(milk)",
-      "step_id": null,
+      "step_id": "P01_R01_S04",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 0,
       "noun_class": 13,
       "video_id": "P01-20240203-093333",
       "video_start": 109.01,
       "video_end": 113.56,
       "raw_action": "take(cup)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S04"
     },
     {
       "index": 47,
-      "action": "unassigned",
+      "action": "S04",
       "start": 113.86,
       "end": 114.58,
       "duration": 0.7199999999999989,
       "next_action": "pour(milk)",
       "edge_key": "take(milk)|||pour(milk)",
-      "step_id": null,
+      "step_id": "P01_R01_S04",
       "is_primary": false,
+      "phase": "prep",
       "verb_class": 0,
       "noun_class": 64,
       "video_id": "P01-20240203-093333",
       "video_start": 113.86,
       "video_end": 114.58,
       "raw_action": "take(milk)",
-      "raw_step_id": "unassigned"
+      "raw_step_id": "P01_R01_S04"
     },
     {
       "index": 48,
@@ -919,6 +1097,7 @@
       "edge_key": "pour(milk)|||put(milk)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
+      "phase": "exec",
       "verb_class": 9,
       "noun_class": 64,
       "video_id": "P01-20240203-093333",
@@ -937,6 +1116,7 @@
       "edge_key": "put(milk)|||open(tap)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 1,
       "noun_class": 64,
       "video_id": "P01-20240203-093333",
@@ -955,6 +1135,7 @@
       "edge_key": "open(tap)|||wash(milk)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 3,
       "noun_class": 0,
       "video_id": "P01-20240203-093333",
@@ -973,6 +1154,7 @@
       "edge_key": "wash(milk)|||remove(top)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 2,
       "noun_class": 64,
       "video_id": "P01-20240203-093333",
@@ -991,6 +1173,7 @@
       "edge_key": "remove(top)|||put(plate)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 12,
       "noun_class": 42,
       "video_id": "P01-20240203-093333",
@@ -1009,6 +1192,7 @@
       "edge_key": "put(plate)|||take(sponge)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 1,
       "noun_class": 2,
       "video_id": "P01-20240203-093333",
@@ -1027,6 +1211,7 @@
       "edge_key": "take(sponge)|||wash(milk)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 0,
       "noun_class": 9,
       "video_id": "P01-20240203-093333",
@@ -1045,6 +1230,7 @@
       "edge_key": "wash(milk)|||put(sponge)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 2,
       "noun_class": 64,
       "video_id": "P01-20240203-093333",
@@ -1063,6 +1249,7 @@
       "edge_key": "put(sponge)|||wash(milk)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 1,
       "noun_class": 9,
       "video_id": "P01-20240203-093333",
@@ -1081,6 +1268,7 @@
       "edge_key": "wash(milk)|||close(tap)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 2,
       "noun_class": 64,
       "video_id": "P01-20240203-093333",
@@ -1099,6 +1287,7 @@
       "edge_key": "close(tap)|||take(top)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 4,
       "noun_class": 0,
       "video_id": "P01-20240203-093333",
@@ -1117,6 +1306,7 @@
       "edge_key": "take(top)|||put(top)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 0,
       "noun_class": 42,
       "video_id": "P01-20240203-093333",
@@ -1135,6 +1325,7 @@
       "edge_key": "put(top)|||put(milk)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 1,
       "noun_class": 42,
       "video_id": "P01-20240203-093333",
@@ -1153,6 +1344,7 @@
       "edge_key": "put(milk)|||take(cup)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "phase": "exec",
       "verb_class": 1,
       "noun_class": 64,
       "video_id": "P01-20240203-093333",
@@ -1171,6 +1363,7 @@
       "edge_key": "take(cup)|||mix(coffee)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "phase": "exec",
       "verb_class": 0,
       "noun_class": 13,
       "video_id": "P01-20240203-093333",
@@ -1189,6 +1382,7 @@
       "edge_key": "mix(coffee)|||lift(colander)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "phase": "exec",
       "verb_class": 10,
       "noun_class": 59,
       "video_id": "P01-20240203-093333",
@@ -1207,6 +1401,7 @@
       "edge_key": "lift(colander)|||open(bin)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "phase": "exec",
       "verb_class": 33,
       "noun_class": 39,
       "video_id": "P01-20240203-093333",
@@ -1225,6 +1420,7 @@
       "edge_key": "open(bin)|||throw(spoon)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 3,
       "noun_class": 36,
       "video_id": "P01-20240203-093333",
@@ -1243,6 +1439,7 @@
       "edge_key": "throw(spoon)|||close(bin)",
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 13,
       "noun_class": 1,
       "video_id": "P01-20240203-093333",
@@ -1261,6 +1458,7 @@
       "edge_key": null,
       "step_id": null,
       "is_primary": false,
+      "phase": null,
       "verb_class": 4,
       "noun_class": 36,
       "video_id": "P01-20240203-093333",
@@ -1274,12 +1472,24 @@
     "nodes": [
       {
         "id": "S01",
-        "count": 3,
-        "is_primary": true,
+        "count": 15,
+        "is_primary": false,
         "step_id": "P01_R01_S01",
         "step_text": "Put one capsule into the coffee machine.",
         "step_label": "load coffee capsule",
         "raw_actions": {
+          "lift(shelf)": 1,
+          "put(cup)": 1,
+          "lift(lid)": 1,
+          "hold(water)": 1,
+          "take(jug)": 1,
+          "pour(water)": 1,
+          "put(jug)": 1,
+          "close(lid)": 1,
+          "put(water)": 1,
+          "take(box)": 1,
+          "put(box)": 1,
+          "open(box)": 1,
           "take(coffee)": 1,
           "open(drawer)": 1,
           "put(coffee)": 1
@@ -1298,34 +1508,52 @@
       },
       {
         "id": "S03",
-        "count": 1,
-        "is_primary": true,
+        "count": 13,
+        "is_primary": false,
         "step_id": "P01_R01_S03",
         "step_text": "Pour minimum amount of milk into the frother",
         "step_label": "froth milk",
         "raw_actions": {
+          "take(bottle)": 1,
+          "take(can)": 1,
+          "turn(can)": 1,
+          "look(can)": 1,
+          "look(alarm)": 1,
+          "close(fridge)": 1,
+          "open(bin)": 1,
+          "throw(can)": 1,
+          "close(bin)": 1,
+          "lift(lid)": 1,
+          "put(lid)": 1,
+          "open(bottle)": 1,
           "pour(milk)": 1
         }
       },
       {
         "id": "S04",
-        "count": 1,
-        "is_primary": true,
+        "count": 6,
+        "is_primary": false,
         "step_id": "P01_R01_S04",
         "step_text": "Add the frothed milk into the coffee",
         "step_label": "pour foam in coffee",
         "raw_actions": {
+          "take(cup)": 2,
+          "put(pot)": 1,
+          "turn(cup)": 1,
+          "take(milk)": 1,
           "pour(milk)": 1
         }
       },
       {
         "id": "S05",
-        "count": 4,
+        "count": 6,
         "is_primary": true,
         "step_id": "P01_R01_S05",
         "step_text": "Stir",
         "step_label": "stir",
         "raw_actions": {
+          "open(box)": 1,
+          "take(spoon)": 1,
           "put(milk)": 1,
           "take(cup)": 1,
           "mix(coffee)": 1,
@@ -1334,7 +1562,7 @@
       },
       {
         "id": "unassigned",
-        "count": 56,
+        "count": 25,
         "is_primary": false,
         "step_id": "unassigned",
         "step_text": null,
@@ -1343,39 +1571,12 @@
           "put(plate)": 2,
           "feel(cupboard)": 1,
           "lift(pot)": 1,
-          "take(cup)": 2,
-          "put(pot)": 1,
-          "turn(cup)": 1,
-          "lift(shelf)": 1,
-          "put(cup)": 1,
-          "lift(lid)": 2,
-          "hold(water)": 1,
-          "take(jug)": 1,
-          "pour(water)": 1,
-          "put(jug)": 1,
-          "close(lid)": 1,
-          "put(water)": 1,
-          "take(box)": 1,
-          "put(box)": 1,
-          "open(box)": 2,
           "close(machine:washing)": 1,
           "open(fridge)": 2,
-          "take(bottle)": 1,
-          "take(can)": 1,
-          "turn(can)": 1,
-          "look(can)": 1,
-          "look(alarm)": 1,
-          "close(fridge)": 2,
-          "open(bin)": 2,
-          "throw(can)": 1,
-          "close(bin)": 2,
-          "put(lid)": 1,
-          "open(bottle)": 1,
           "close(bottle)": 1,
           "press(button)": 1,
           "put(bottle)": 1,
-          "take(spoon)": 1,
-          "take(milk)": 1,
+          "close(fridge)": 1,
           "put(milk)": 1,
           "open(tap)": 1,
           "wash(milk)": 3,
@@ -1385,7 +1586,9 @@
           "close(tap)": 1,
           "take(top)": 1,
           "put(top)": 1,
-          "throw(spoon)": 1
+          "open(bin)": 1,
+          "throw(spoon)": 1,
+          "close(bin)": 1
         }
       }
     ],
@@ -1393,45 +1596,16 @@
       {
         "source": "unassigned",
         "target": "unassigned",
-        "count": 48,
-        "probability": 0.8727,
+        "count": 19,
+        "probability": 0.7917,
         "key": "unassigned|||unassigned",
         "occurrences": [
           0,
           1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          9,
-          10,
-          11,
-          12,
-          13,
-          14,
-          15,
-          16,
-          17,
           22,
-          23,
-          24,
-          25,
-          26,
-          27,
-          28,
-          29,
-          30,
-          31,
-          32,
-          33,
-          34,
           37,
           40,
           41,
-          42,
-          43,
-          46,
           49,
           50,
           51,
@@ -1448,24 +1622,69 @@
         ]
       },
       {
-        "source": "S02",
-        "target": "unassigned",
-        "count": 3,
-        "probability": 1.0,
-        "key": "S02|||unassigned",
+        "source": "S01",
+        "target": "S01",
+        "count": 13,
+        "probability": 0.8667,
+        "key": "S01|||S01",
         "occurrences": [
-          8,
-          39,
-          45
+          6,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ]
+      },
+      {
+        "source": "S03",
+        "target": "S03",
+        "count": 12,
+        "probability": 0.9231,
+        "key": "S03|||S03",
+        "occurrences": [
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35
+        ]
+      },
+      {
+        "source": "S04",
+        "target": "S04",
+        "count": 4,
+        "probability": 0.6667,
+        "key": "S04|||S04",
+        "occurrences": [
+          3,
+          4,
+          46,
+          47
         ]
       },
       {
         "source": "S05",
         "target": "S05",
-        "count": 3,
-        "probability": 0.75,
+        "count": 4,
+        "probability": 0.6667,
         "key": "S05|||S05",
         "occurrences": [
+          43,
           61,
           62,
           63
@@ -1473,42 +1692,70 @@
       },
       {
         "source": "unassigned",
-        "target": "S02",
-        "count": 3,
-        "probability": 0.0545,
-        "key": "unassigned|||S02",
+        "target": "S05",
+        "count": 2,
+        "probability": 0.0833,
+        "key": "unassigned|||S05",
         "occurrences": [
-          7,
-          38,
-          44
+          42,
+          60
         ]
       },
       {
         "source": "S01",
-        "target": "S01",
-        "count": 2,
-        "probability": 0.6667,
-        "key": "S01|||S01",
+        "target": "S02",
+        "count": 1,
+        "probability": 0.0667,
+        "key": "S01|||S02",
         "occurrences": [
-          19,
-          20
+          7
         ]
       },
       {
         "source": "S01",
         "target": "unassigned",
         "count": 1,
-        "probability": 0.3333,
+        "probability": 0.0667,
         "key": "S01|||unassigned",
         "occurrences": [
           21
         ]
       },
       {
+        "source": "S02",
+        "target": "S01",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "S02|||S01",
+        "occurrences": [
+          8
+        ]
+      },
+      {
+        "source": "S02",
+        "target": "S04",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "S02|||S04",
+        "occurrences": [
+          45
+        ]
+      },
+      {
+        "source": "S02",
+        "target": "unassigned",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "S02|||unassigned",
+        "occurrences": [
+          39
+        ]
+      },
+      {
         "source": "S03",
         "target": "unassigned",
         "count": 1,
-        "probability": 1.0,
+        "probability": 0.0769,
         "key": "S03|||unassigned",
         "occurrences": [
           36
@@ -1516,9 +1763,19 @@
       },
       {
         "source": "S04",
+        "target": "S01",
+        "count": 1,
+        "probability": 0.1667,
+        "key": "S04|||S01",
+        "occurrences": [
+          5
+        ]
+      },
+      {
+        "source": "S04",
         "target": "unassigned",
         "count": 1,
-        "probability": 1.0,
+        "probability": 0.1667,
         "key": "S04|||unassigned",
         "occurrences": [
           48
@@ -1526,9 +1783,19 @@
       },
       {
         "source": "S05",
+        "target": "S02",
+        "count": 1,
+        "probability": 0.1667,
+        "key": "S05|||S02",
+        "occurrences": [
+          44
+        ]
+      },
+      {
+        "source": "S05",
         "target": "unassigned",
         "count": 1,
-        "probability": 0.25,
+        "probability": 0.1667,
         "key": "S05|||unassigned",
         "occurrences": [
           64
@@ -1536,42 +1803,32 @@
       },
       {
         "source": "unassigned",
-        "target": "S01",
+        "target": "S02",
         "count": 1,
-        "probability": 0.0182,
-        "key": "unassigned|||S01",
+        "probability": 0.0417,
+        "key": "unassigned|||S02",
         "occurrences": [
-          18
+          38
         ]
       },
       {
         "source": "unassigned",
         "target": "S03",
         "count": 1,
-        "probability": 0.0182,
+        "probability": 0.0417,
         "key": "unassigned|||S03",
         "occurrences": [
-          35
+          23
         ]
       },
       {
         "source": "unassigned",
         "target": "S04",
         "count": 1,
-        "probability": 0.0182,
+        "probability": 0.0417,
         "key": "unassigned|||S04",
         "occurrences": [
-          47
-        ]
-      },
-      {
-        "source": "unassigned",
-        "target": "S05",
-        "count": 1,
-        "probability": 0.0182,
-        "key": "unassigned|||S05",
-        "occurrences": [
-          60
+          2
         ]
       }
     ]

@@ -27,15 +27,18 @@ import { resolveStepLabel, getStepPhaseColor, UNASSIGNED_PHASE_COLOR } from "./c
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
-const LANE_HEIGHT    = 28;
+const LANE_HEIGHT    = 44;
 const LANE_GAP       = 4;
+var PREP_TRACK_RATIO = 0.32;   // upper slice of each primary lane
+var TRACK_GAP = 1;             // px between tracks
 const AXIS_HEIGHT    = 28;
 const LABEL_WIDTH    = 170;
 const RIGHT_PAD      = 16;
 const TOP_PAD        = 8;
 const BOTTOM_PAD     = 8;
 const LABEL_MAX_CHARS = 25;
-const MIN_BAR_PX     = 2;        // minimum bar width so sub-second actions stay visible
+const MIN_BAR_PX     = 3;        // minimum bar width so sub-second actions stay visible
+const ZOOM_MIN_SPAN  = 5;
 
 function mk(tag, attrs) {
   const el = document.createElementNS(SVG_NS, tag);
@@ -93,6 +96,9 @@ export function buildSwimlane(containerEl, payload, colorFn, options) {
 
   const steps    = payload.steps    || [];
   const sequence = payload.sequence || [];
+  const hasPrepPhase = sequence.some(function (item) {
+    return item.phase === "prep";
+  });
 
   // ── empty state ──────────────────────────────────────────────────────────
   if (sequence.length === 0) {
@@ -126,19 +132,69 @@ export function buildSwimlane(containerEl, payload, colorFn, options) {
   });
   if (hasSecondary) laneIds.push(SECONDARY);
 
+  if (hasPrepPhase) {
+    var prepLegend = document.createElement("div");
+    prepLegend.className = "swimlane-legend";
+    prepLegend.style.display = "flex";
+    prepLegend.style.alignItems = "center";
+    prepLegend.style.gap = "14px";
+    prepLegend.style.margin = "0 0 6px 0";
+    prepLegend.style.fontSize = "12px";
+    prepLegend.style.color = "#475569";
+    prepLegend.style.flexWrap = "wrap";
+
+    function addLegendItem(opacity, labelText) {
+      var item = document.createElement("div");
+      item.style.display = "inline-flex";
+      item.style.alignItems = "center";
+      item.style.gap = "6px";
+      var swatch = document.createElement("span");
+      swatch.style.display = "inline-block";
+      swatch.style.width = "14px";
+      swatch.style.height = "10px";
+      swatch.style.boxSizing = "border-box";
+      swatch.style.background = "#334155";
+      swatch.style.opacity = String(opacity);
+      swatch.style.border = "1px solid #334155";
+      item.appendChild(swatch);
+      var text = document.createElement("span");
+      text.textContent = labelText;
+      item.appendChild(text);
+      prepLegend.appendChild(item);
+    }
+
+    addLegendItem(0.45, "upper track = preparation");
+    addLegendItem(1.0, "lower track = execution");
+    containerEl.appendChild(prepLegend);
+  }
+
   var laneCount = laneIds.length;
 
   // ── time extent ──────────────────────────────────────────────────────────
   var tMax = 0;
   sequence.forEach(function (item) { if (item.end > tMax) tMax = item.end; });
   if (tMax <= 0) tMax = 1;
+  var viewStart = 0;
+  var viewEnd = tMax;
+
+  function setViewRange(nextStart, nextEnd) {
+    var span = Math.max(ZOOM_MIN_SPAN, Math.min(tMax, nextEnd - nextStart));
+    var start = Math.max(0, nextStart);
+    var end = start + span;
+    if (end > tMax) {
+      end = tMax;
+      start = Math.max(0, end - span);
+    }
+    viewStart = start;
+    viewEnd = end;
+  }
 
   // ── bucket items into lanes ──────────────────────────────────────────────
   var itemsByLane = {};
   laneIds.forEach(function (id) { itemsByLane[id] = []; });
 
   sequence.forEach(function (item) {
-    if (item.is_primary && item.step_id) {
+    if ((item.is_primary || item.phase === "prep") && item.step_id) {
       var local = localStepId(item.step_id);
       if (local && itemsByLane[local]) {
         itemsByLane[local].push(item);
@@ -176,9 +232,22 @@ export function buildSwimlane(containerEl, payload, colorFn, options) {
     svg.innerHTML = "";
 
     var chartLeft = LABEL_WIDTH;
+    var clipId = "swimlane-clip-" + (containerEl.id || "default");
+    var defs = mk("defs");
+    var clip = mk("clipPath", { id: clipId });
+    clip.appendChild(mk("rect", {
+      x: chartLeft, y: 0, width: chartWidth, height: svgHeight
+    }));
+    defs.appendChild(clip);
+    svg.appendChild(defs);
+
+    var chartG = mk("g", { "clip-path": "url(#" + clipId + ")" });
 
     function tScale(t) {
-      return chartLeft + (t / tMax) * chartWidth;
+      return chartLeft + ((t - viewStart) / (viewEnd - viewStart)) * chartWidth;
+    }
+    function tInvert(px) {
+      return viewStart + ((px - chartLeft) / chartWidth) * (viewEnd - viewStart);
     }
     _tScale = tScale;
 
@@ -189,8 +258,8 @@ export function buildSwimlane(containerEl, payload, colorFn, options) {
       "class": "swimlane-axis-line"
     }));
 
-    var tickInterval = chooseTickInterval(tMax);
-    for (var t = 0; t <= tMax; t += tickInterval) {
+    var tickInterval = chooseTickInterval(viewEnd - viewStart);
+    for (var t = Math.ceil(viewStart / tickInterval) * tickInterval; t <= viewEnd; t += tickInterval) {
       var tx = tScale(t);
       if (tx < chartLeft - 1 || tx > chartLeft + chartWidth + 1) continue;
       svg.appendChild(mk("line", {
@@ -211,6 +280,10 @@ export function buildSwimlane(containerEl, payload, colorFn, options) {
       var laneId = laneIds[i];
       var y = TOP_PAD + AXIS_HEIGHT + i * (LANE_HEIGHT + LANE_GAP);
       var isSec = laneId === SECONDARY;
+      var prepY = y;
+      var prepH = isSec ? 0 : Math.max(0, Math.round(LANE_HEIGHT * PREP_TRACK_RATIO) - TRACK_GAP);
+      var execY = isSec ? y : y + Math.round(LANE_HEIGHT * PREP_TRACK_RATIO);
+      var execH = isSec ? LANE_HEIGHT : LANE_HEIGHT - Math.round(LANE_HEIGHT * PREP_TRACK_RATIO);
 
       // background
       var bg = mk("rect", {
@@ -222,8 +295,8 @@ export function buildSwimlane(containerEl, payload, colorFn, options) {
         bgEl.addEventListener("click", function (e) {
           var rect = svg.getBoundingClientRect();
           var svgX = (e.clientX - rect.left) * (totalWidth / rect.width);
-          var clickT = ((svgX - chartLeft) / chartWidth) * tMax;
-          if (clickT >= 0 && clickT <= tMax) {
+          var clickT = tInvert(svgX);
+          if (clickT >= viewStart && clickT <= viewEnd) {
             onSegmentClick({
               start: clickT, end: clickT,
               action: "(swimlane-seek)", synthetic: true
@@ -232,6 +305,16 @@ export function buildSwimlane(containerEl, payload, colorFn, options) {
         });
       })(bg);
       svg.appendChild(bg);
+
+      if (!isSec) {
+        svg.appendChild(mk("line", {
+          x1: chartLeft, y1: execY, x2: chartLeft + chartWidth, y2: execY,
+          "class": "swimlane-track-separator",
+          stroke: "#cbd5d1",
+          "stroke-width": 0.5,
+          "stroke-dasharray": "2 3"
+        }));
+      }
 
       // label
       var label = mk("text", {
@@ -257,22 +340,21 @@ export function buildSwimlane(containerEl, payload, colorFn, options) {
         var bx = tScale(item.start);
         var bw = Math.max(tScale(item.end) - bx, MIN_BAR_PX);
         var actionKey = item.raw_action || item.action;
-        // In phase mode, color by LANE membership (not by the action's
-        // majority-vote step) so each lane shows one consistent color.
-        // This prevents a revisited action from carrying its "home step"
-        // color into a different lane — which would falsely suggest that
-        // step is active at that time.
-        var barFill;
-        if (colorMode === "phase") {
-          barFill = isSec ? UNASSIGNED_PHASE_COLOR : getStepPhaseColor(laneId);
-        } else {
-          barFill = colorFn(actionKey);
+        var isPrep = item.phase === "prep" && !isSec;
+        var barColor = colorFn(actionKey);
+        if (isPrep && (!barColor || barColor === "#94A3B8" || barColor === "gray")) {
+          console.log("swimlane prep color fallback", actionKey, barColor, item);
         }
+        var barY = isPrep ? prepY + 2 : execY + 3;
+        var barH = isPrep ? Math.max(prepH - 4, 6) : Math.max(execH - 6, 6);
         var bar = mk("rect", {
-          x: bx, y: y + 1, width: bw, height: LANE_HEIGHT - 2,
+          x: bx, y: barY, width: bw, height: barH,
           rx: 2,
           "class": "swimlane-bar",
-          fill: barFill
+          fill: barColor,
+          "fill-opacity": isPrep ? 0.45 : 1.0,
+          stroke: isPrep ? barColor : "none",
+          "stroke-width": isPrep ? 1 : 0
         });
         // tooltip via <title>
         var tip = mk("title");
@@ -283,6 +365,66 @@ export function buildSwimlane(containerEl, payload, colorFn, options) {
           + "\nClick to seek";
         bar.appendChild(tip);
 
+        if (isPrep) {
+          (function (hoverItem, hoverLaneId, hoverBarY, hoverBarH, hoverColor, hoverBx, hoverBw, hoverExecY) {
+            var hoverGroup = null;
+
+            function clearHover() {
+              if (hoverGroup && hoverGroup.parentNode) {
+                hoverGroup.parentNode.removeChild(hoverGroup);
+              }
+              hoverGroup = null;
+            }
+
+            function showHoverConnector() {
+              clearHover();
+              var laneItems = itemsByLane[hoverLaneId] || [];
+              var execItem = null;
+              for (var k = 0; k < laneItems.length; k++) {
+                var candidate = laneItems[k];
+                if (candidate.phase !== "exec") continue;
+                if (candidate.start >= hoverItem.end && (!execItem || candidate.start < execItem.start)) {
+                  execItem = candidate;
+                }
+              }
+              if (!execItem) return;
+
+              var execBx = tScale(execItem.start);
+              var execBarY = hoverExecY + 3;
+
+              hoverGroup = mk("g", { "class": "swimlane-hover-connector" });
+              hoverGroup.appendChild(mk("line", {
+                x1: hoverBx + hoverBw,
+                y1: hoverBarY + hoverBarH,
+                x2: execBx,
+                y2: execBarY,
+                stroke: hoverColor,
+                "stroke-width": 1.2,
+                "stroke-dasharray": "4 3",
+                "stroke-opacity": 0.85
+              }));
+              var midX = (hoverBx + hoverBw + execBx) / 2;
+              var midY = (hoverBarY + hoverBarH + execBarY) / 2 - 4;
+              var gapText = mk("text", {
+                x: midX,
+                y: midY,
+                "text-anchor": "middle",
+                "font-size": "9px",
+                fill: hoverColor,
+                "paint-order": "stroke",
+                stroke: "white",
+                "stroke-width": 3
+              });
+              gapText.textContent = "gap " + Math.max(0, Math.round(execItem.start - hoverItem.end)) + "s";
+              hoverGroup.appendChild(gapText);
+              chartG.appendChild(hoverGroup);
+            }
+
+            bar.addEventListener("mouseenter", showHoverConnector);
+            bar.addEventListener("mouseleave", clearHover);
+          })(item, laneId, barY, barH, barColor, bx, bw, execY);
+        }
+
         (function (clickItem) {
           bar.addEventListener("click", function (e) {
             e.stopPropagation();
@@ -290,9 +432,11 @@ export function buildSwimlane(containerEl, payload, colorFn, options) {
           });
         })(item);
 
-        svg.appendChild(bar);
+        chartG.appendChild(bar);
       }
     }
+
+    svg.appendChild(chartG);
 
     // ── playhead ─────────────────────────────────────────────────────────
     var phY1 = TOP_PAD + AXIS_HEIGHT;
@@ -301,11 +445,55 @@ export function buildSwimlane(containerEl, payload, colorFn, options) {
       x1: chartLeft, y1: phY1, x2: chartLeft, y2: phY2,
       "class": "swimlane-playhead"
     });
-    svg.appendChild(_playhead);
+    chartG.appendChild(_playhead);
   }
 
   // Initial render
   render();
+
+  var raf = null;
+  function scheduleRender() {
+    if (raf) return;
+    raf = requestAnimationFrame(function () {
+      raf = null;
+      render();
+    });
+  }
+
+  svg.addEventListener("wheel", function (e) {
+    e.preventDefault();
+    var rect = svg.getBoundingClientRect();
+    var px = (e.clientX - rect.left) * (svg.viewBox.baseVal.width / rect.width);
+    var span = viewEnd - viewStart;
+    var factor = e.deltaY < 0 ? 1 / 1.15 : 1.15;
+    var newSpan = Math.min(tMax, Math.max(ZOOM_MIN_SPAN, span * factor));
+    var anchor = viewStart + ((px - LABEL_WIDTH) / (rect.width - LABEL_WIDTH - RIGHT_PAD)) * span;
+    var frac = (anchor - viewStart) / span;
+    setViewRange(anchor - frac * newSpan, anchor - frac * newSpan + newSpan);
+    scheduleRender();
+  }, { passive: false });
+
+  var dragT0 = null, dragMoved = false;
+  svg.addEventListener("pointerdown", function (e) {
+    dragT0 = e.clientX; dragMoved = false;
+  });
+  svg.addEventListener("pointermove", function (e) {
+    if (dragT0 === null) return;
+    var dx = e.clientX - dragT0;
+    if (Math.abs(dx) < 4 && !dragMoved) return;
+    dragMoved = true;
+    var rect = svg.getBoundingClientRect();
+    var dt = (dx / (rect.width - LABEL_WIDTH - RIGHT_PAD)) * (viewEnd - viewStart);
+    var span = viewEnd - viewStart;
+    setViewRange(viewStart - dt, viewStart - dt + span);
+    dragT0 = e.clientX;
+    scheduleRender();
+  });
+  svg.addEventListener("pointerup", function () { dragT0 = null; });
+  svg.addEventListener("dblclick", function () {
+    setViewRange(0, tMax);
+    scheduleRender();
+  });
 
   // Re-render on container resize so the time axis rescales
   var ro = new ResizeObserver(function () { render(); });
@@ -314,7 +502,12 @@ export function buildSwimlane(containerEl, payload, colorFn, options) {
   // ── public API ─────────────────────────────────────────────────────────
   function updatePlayhead(currentTime) {
     if (!_playhead || !_tScale) return;
-    var x = _tScale(Math.min(currentTime, tMax));
+    if (currentTime < viewStart || currentTime > viewEnd) {
+      _playhead.setAttribute("opacity", "0");
+      return;
+    }
+    _playhead.setAttribute("opacity", "1");
+    var x = _tScale(currentTime);
     _playhead.setAttribute("x1", x);
     _playhead.setAttribute("x2", x);
   }
