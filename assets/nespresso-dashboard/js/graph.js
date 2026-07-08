@@ -448,7 +448,7 @@ function getNodeLabel(node, mode) {
     // fall back to the step id ("S01") so the node is never blank.
     return node.step_label || node.id;
   }
-  if (mode === "hybrid") return node.id;   // full label; renderer splits at "("
+  if (mode === "hybrid") return node.id.split("(")[0];   // was: return node.id;
   const verb = node.id.split("(")[0];
   return verb.length > 7 ? verb.slice(0, 6) + "..." : verb;
 }
@@ -660,6 +660,7 @@ export function createGraphController({
   let lastActiveNode = null;
   let radiusMapCache = null;
   let enrichedLinksCache = null;
+  let enrichedLinksFullCache = null;   // NEW — fixed, pre-filter link list
   let edgeWidthScale = null;
   let edgeOpacityScale = null;
   let edgeMetricFn = (d) => d.count || 1;   // updated per render
@@ -750,6 +751,7 @@ export function createGraphController({
       });
     }
 
+    const enrichedLinksFull = enrichedLinks.slice();   // NEW — save before filtering
     enrichedLinks = enrichedLinks.filter(l => (l.count || 1) >= minCount);
 
     const activeNodeIds = new Set();
@@ -791,7 +793,8 @@ export function createGraphController({
       .domain([1, Math.max(maxCount, 2)])
       .range(mode === "hybrid" ? [26, 46] : [18, 36]);
 
-    enrichedLinksCache = enrichedLinks;
+    enrichedLinksCache = enrichedLinks;          // filtered — still used for rendering, line 1296's neighbor check
+    enrichedLinksFullCache = enrichedLinksFull;  // NEW — fixed — used only for percentage math
 
     const defs = svg.append("defs");
     [["arrow", "#94a3b8"], ["arrowActive", "#ea580c"]].forEach(([id, color]) => {
@@ -1355,7 +1358,7 @@ export function createGraphController({
   }
 
   function showEdgeTooltip(event, d) {
-    const totalOutgoing = enrichedLinksCache
+    const totalOutgoing = enrichedLinksFullCache
       .filter(l => l.source === d.source)
       .reduce((sum, l) => sum + (l.count || 1), 0);
     const pct = ((d.count || 1) / totalOutgoing * 100).toFixed(0);

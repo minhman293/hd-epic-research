@@ -495,13 +495,11 @@ export function getLegendItems(
       ...nodeColorItems,
       { type: "badge",  dashed: false, label: nodeSizeLabel },
       { type: "badge1", label: "Top-left badge: backward connection count" },
-      { type: "ring",   label: "Top-right ring: self-loop" },
       { type: "label",  label: "Inside label: action" },
     ],
     edge: [
       { type: "line",  dashed: false, label: "Solid line: transition" },
       { type: "line",  dashed: true,  label: "Dashed line: transition while video plays" },
-      { type: "arrow", label: "Bidirectional arrow: two-way transition" },
     ],
   };
 }
