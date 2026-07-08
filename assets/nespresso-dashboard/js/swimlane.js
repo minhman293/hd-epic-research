@@ -207,12 +207,22 @@ export function buildSwimlane(containerEl, payload, colorFn, options) {
     rampWrap.style.display = "inline-flex";
     rampWrap.style.gap = "8px";
 
+    function _fmtSec(v) {
+      // Use 1 decimal whenever integer rounding would collide two adjacent
+      // quantile boundaries onto the same displayed number.
+      var r = _durQs.map(function (x) { return Math.round(x); });
+      var collide = false;
+      for (var i = 1; i < r.length; i++) if (r[i] === r[i - 1]) collide = true;
+      var p = collide ? 1 : 0;
+      return v.toFixed(p);
+    }
+    var qb = _durQs.map(_fmtSec); // formatted boundary strings, guaranteed distinct when possible
     var qLabels = [
-      "≤" + Math.round(_durQs[0]) + "s",
-      "≤" + Math.round(_durQs[1]) + "s",
-      "≤" + Math.round(_durQs[2]) + "s",
-      "≤" + Math.round(_durQs[3]) + "s",
-      ">" + Math.round(_durQs[3]) + "s"
+      "≤" + qb[0] + "s",
+      qb[0] + "–" + qb[1] + "s",
+      qb[1] + "–" + qb[2] + "s",
+      qb[2] + "–" + qb[3] + "s",
+      ">" + qb[3] + "s"
     ];
 
     for (var ri = 0; ri < DUR_RAMP.length; ri++) {

@@ -823,7 +823,7 @@ async function init() {
     return;
   }
 
-  await loadVerbCategories('../../../narrations-and-action-segments/HD_EPIC_verb_classes.csv');
+  await loadVerbCategories('narrations-and-action-segments/HD_EPIC_verb_classes.csv');
 
   graphModeSelect.value = DEFAULT_DATA_MODE;
   colorEncodeSelect.value = DEFAULT_COLOR_ENCODE_MODE;

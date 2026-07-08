@@ -142,7 +142,7 @@ export const VERB_COLORS = {}; // Kept for backward compatibility
  * color mappings and categories for the dashboard.
  * * @param {string} csvUrl - Path to your HD_EPIC_verb_classes.csv file
  */
-export async function loadVerbCategories(csvUrl = '../../../narrations-and-action-segments/HD_EPIC_verb_classes.csv') {
+export async function loadVerbCategories(csvUrl = 'narrations-and-action-segments/HD_EPIC_verb_classes.csv') {
   try {
     const response = await fetch(csvUrl);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
