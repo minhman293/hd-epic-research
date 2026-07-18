@@ -9,29 +9,18 @@ import {
   supportToOpacity,
   HRI_ROLES,
   HRI_CENTERS,
+  SESSION_PALETTE,
 } from "./config.js";
 
 const d3 = window.d3;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // HRI role time-budget
-//
-// Computed from the SEQUENCE by summed DURATION, so the role percentages are
-// INVARIANT across detail levels (full / smart / abstracted). The previous
-// node-count basis drifted when smart-merge collapsed nodes, and broke entirely
-// in abstracted mode (node ids are step labels like "S01", not verbs, so every
-// node fell through to the "human" default → ~100% human-led). See research
-// notes on counting by time, not node count (cf. Hart & Staveland 1988).
-//
-// Each sequence item carries the real verb-noun action: directly in `action`
-// for full/smart, and in `raw_action` for abstracted (where `action` is "S01").
 // ─────────────────────────────────────────────────────────────────────────────
 function computeHriDurationBudget(sequence) {
   const roleSeconds = { robot: 0, collab: 0, human: 0 };
 
   (sequence || []).forEach((item) => {
-    // Prefer the real verb-noun action; in abstracted mode item.action is "S01"
-    // but item.raw_action carries the underlying "verb(noun)".
     const actionStr = item.raw_action || item.action || "";
     if (!actionStr) return;
 
@@ -39,7 +28,6 @@ function computeHriDurationBudget(sequence) {
     const category = getVerbCategory(verb) || "unknown";
     const role = HRI_ROLES[category] || "human";
 
-    // Guard against missing/NaN durations so one bad item can't poison totals.
     const dur = Number.isFinite(item.duration) ? item.duration : 0;
     roleSeconds[role] = (roleSeconds[role] || 0) + dur;
   });
@@ -48,18 +36,35 @@ function computeHriDurationBudget(sequence) {
   return { roleSeconds, total };
 }
 
-// Round a {key: percent} object so the integer percents sum to exactly 100.
-// Avoids "44 + 36 + 20" sometimes displaying as 99 or 101 from independent
-// rounding. Largest-remainder (Hamilton) method.
 function largestRemainderRound(pctObj) {
   const entries = Object.entries(pctObj);
   const floors = entries.map(([k, v]) => [k, Math.floor(v), v - Math.floor(v)]);
   const used = floors.reduce((s, [, f]) => s + f, 0);
   const remaining = Math.max(0, 100 - used);
-  floors.sort((a, b) => b[2] - a[2]); // largest fractional parts first
+  floors.sort((a, b) => b[2] - a[2]); 
   const out = {};
   floors.forEach(([k, f], i) => { out[k] = f + (i < remaining ? 1 : 0); });
   return out;
+}
+
+const SPECIAL_ID_RE = /^(START|END)(::|$)/;
+ 
+function isSpecialId(id) {
+  return typeof id === "string" && SPECIAL_ID_RE.test(id);
+}
+ 
+function isStartId(id) {
+  return typeof id === "string" && (id === "START" || id.startsWith("Start:"));
+}
+
+function isEndId(id) {
+  return typeof id === "string" && (id === "END" || id.startsWith("End:"));
+}
+
+function specialLabel(id) {
+  if (isStartId(id)) return "START";
+  if (isEndId(id))   return "END";
+  return id;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -90,8 +95,8 @@ function computeTemporalLayout(nodes, sequence, { maxRadius = 18 } = {}) {
   const totalDuration = sequence[sequence.length - 1]?.end || 1;
   const meanOnset = {};
   nodes.forEach((n) => {
-    if (n.id === "START") { meanOnset.START = 0; return; }
-    if (n.id === "END") { meanOnset.END = totalDuration; return; }
+    if (isStartId(n.id)) { meanOnset[n.id] = 0; return; }
+    if (isEndId(n.id))   { meanOnset[n.id] = totalDuration; return; }
     const times = onsetMap[n.id] || [0];
     meanOnset[n.id] = times.reduce((sum, v) => sum + v, 0) / times.length;
   });
@@ -134,7 +139,7 @@ function computeTemporalLayout(nodes, sequence, { maxRadius = 18 } = {}) {
   const START_X = layout.START?.x || 0;
   const START_R = 18;
   Object.entries(layout).forEach(([id, pos]) => {
-    if (id === "START" || id === "END") return;
+    if (isStartId(id) || isEndId(id)) return;
     const r = 18;
     const MIN_GAP = START_R + r + 60;
     if (Math.abs(pos.x - START_X) < MIN_GAP) pos.x = START_X + MIN_GAP;
@@ -144,7 +149,6 @@ function computeTemporalLayout(nodes, sequence, { maxRadius = 18 } = {}) {
 }
 
 function computeRankLayout(nodes, sequence, { maxRadius = 18 } = {}) {
-  // Median normalized rank per state: 0 = always first, 1 = always last.
   const positions = {};
   const L = Math.max(sequence.length - 1, 1);
   sequence.forEach((item, i) => {
@@ -156,10 +160,11 @@ function computeRankLayout(nodes, sequence, { maxRadius = 18 } = {}) {
     arr.sort((a, b) => a - b);
     medianRank[id] = arr[Math.floor(arr.length / 2)];
   });
-  medianRank.START = 0;
-  medianRank.END = 1;
+  nodes.forEach((n) => {
+    if (isStartId(n.id)) medianRank[n.id] = 0;
+    if (isEndId(n.id))   medianRank[n.id] = 1;
+  });
 
-  // Ordinal spacing: evenly spaced rank ORDER, not raw rank values.
   const realNodes = nodes.filter((n) => !n.isSpecial);
   const ordered = [...realNodes].sort(
     (a, b) => (medianRank[a.id] ?? 0.5) - (medianRank[b.id] ?? 0.5)
@@ -171,24 +176,25 @@ function computeRankLayout(nodes, sequence, { maxRadius = 18 } = {}) {
     xOf[n.id] = (i + 1) * SPACING;
     orderIdx[n.id] = i;
   });
-  xOf.START = 0;
-  xOf.END = (ordered.length + 1) * SPACING;
+  nodes.forEach((n) => {
+    if (isStartId(n.id)) xOf[n.id] = 0;
+    if (isEndId(n.id))   xOf[n.id] = (ordered.length + 1) * SPACING;
+  });
 
-  const STAGGER = [-90, 0, 90];               // deterministic 3-level offsets
-  const SALIENT_Y = 0, BACKGROUND_Y = 340;    // bands are taller now
+  const STAGGER = [-90, 0, 90];              
+  const SALIENT_Y = 0, BACKGROUND_Y = 340;   
   const laneY = (n) => (n.isSpecial || n.salient ? SALIENT_Y : BACKGROUND_Y);
 
   const simNodes = nodes.map((n) => ({
     id: n.id,
     x: xOf[n.id] ?? 0,
-    // Deterministic seed: stagger by rank order, specials stay on centerline.
     y: laneY(n) + (n.isSpecial ? 0 : STAGGER[(orderIdx[n.id] ?? 0) % 3]),
     lane: laneY(n),
     r: 40,
   }));
   const sim = d3.forceSimulation(simNodes)
     .force("x", d3.forceX((d) => xOf[d.id] ?? 0).strength(0.9))
-    .force("y", d3.forceY((d) => d.lane).strength(0.05))   // was 0.15 — let stagger survive
+    .force("y", d3.forceY((d) => d.lane).strength(0.05))   
     .force("collide", d3.forceCollide((d) => d.r + Math.max(14, maxRadius * 0.4)))
     .stop();
   for (let i = 0; i < 150; i++) sim.tick();
@@ -202,8 +208,8 @@ function computeCategoryLayout(nodes, sequence, graphMode) {
   const nodeLookup = makeNodeLookup(nodes);
 
   function getClusterCenter(nodeId) {
-    if (nodeId === "START") return { cx: -400, cy: 0 };
-    if (nodeId === "END") return { cx: 400, cy: 0 };
+    if (isStartId(nodeId)) return { cx: -400, cy: 0 };
+    if (isEndId(nodeId))   return { cx:  400, cy: 0 };
     if (graphMode === "abstracted") return PHASE_CLUSTER_CENTERS[nodeId] || { cx: 0, cy: 0 };
     if (graphMode === "smart") return CATEGORY_CLUSTER_CENTERS[nodeId.toLowerCase()] || { cx: 0, cy: 0 };
     const verb = nodeId.split("(")[0].toLowerCase();
@@ -229,8 +235,8 @@ function computeCategoryLayout(nodes, sequence, graphMode) {
 
   const meanOnset = {};
   nodes.forEach((node) => {
-    if (node.id === "START") { meanOnset[node.id] = 0; return; }
-    if (node.id === "END") { meanOnset[node.id] = sequence[sequence.length - 1]?.end || 0; return; }
+    if (isStartId(node.id)) { meanOnset[node.id] = 0; return; }
+    if (isEndId(node.id)) { meanOnset[node.id] = sequence[sequence.length - 1]?.end || 0; return; }
     const times = onsetMap[node.id] || [0];
     meanOnset[node.id] = times.reduce((s, v) => s + v, 0) / times.length;
   });
@@ -282,7 +288,7 @@ function drawClusterHulls(zoomGroup, clusters, layout, radiusMap, graphMode) {
   const clusterLayer = zoomGroup.insert("g", ":first-child").attr("class", "cluster-layer");
   Object.values(clusters).forEach(({ center, ids, isSecondary }) => {
     if (ids.length === 0) return;
-    const repNode = ids.find((id) => id !== "START" && id !== "END");
+    const repNode = ids.find((id) => !isSpecialId(id));
     if (!repNode) return;
     const clusterColor = isSecondary
       ? "#94A3B8"
@@ -442,13 +448,11 @@ function getCurvedPath(link, layout, radiusMap, curvature = 0.18) {
 }
 
 function getNodeLabel(node, mode) {
-  if (node.isSpecial) return node.id;
+  if (node.isSpecial) return specialLabel(node.id);
   if (mode === "abstracted") {
-    // Prefer the LLM/human step label (carried on the node as `step_label`);
-    // fall back to the step id ("S01") so the node is never blank.
     return node.step_label || node.id;
   }
-  if (mode === "hybrid") return node.id.split("(")[0];   // was: return node.id;
+  if (mode === "hybrid") return node.id.split("(")[0];   
   const verb = node.id.split("(")[0];
   return verb.length > 7 ? verb.slice(0, 6) + "..." : verb;
 }
@@ -533,18 +537,9 @@ function makeNodeColorFn(filteredNodes, sequence, colorMode, graphMode) {
     return (d) => d.isSpecial ? "#d1d5db" : nodeColor(d.id);
   }
   if (colorMode === "phase") {
-    // Path B: phase = recipe step. Path C will replace this with semantic phases.
-    //
-    // For abstracted (Task Phases) graph mode, node.id is already a step label
-    // like "S01" / "unassigned" — use the step palette directly.
     if (graphMode === "abstracted") {
       return (d) => d.isSpecial ? "#d1d5db" : getStepPhaseColor(d.id);
     }
-    // For smart-merged / full-raw graph modes, the node.id is a verb-noun
-    // string. Look at every occurrence of this action in the sequence, find
-    // the majority step it belongs to, and color by that step's palette
-    // entry. This mirrors the barcode coloring in app.js so the two stay
-    // visually consistent.
     const stepVotes = {};
     sequence.forEach((item) => {
       if (!stepVotes[item.action]) stepVotes[item.action] = {};
@@ -592,7 +587,7 @@ export function createGraphController({
   zoomOutSelector,
   zoomResetSelector,
 }) {
-  const MARKER_NS = svgSelector.replace(/[^a-zA-Z0-9]/g, "");   // "graphSvg" | "mergedGraphSvg"
+  const MARKER_NS = svgSelector.replace(/[^a-zA-Z0-9]/g, "");   
   const markerId = (base) => `${base}-${MARKER_NS}`;
   const markerUrl = (base) => `url(#${base}-${MARKER_NS})`;
 
@@ -600,6 +595,43 @@ export function createGraphController({
   const graphWrapEl = document.querySelector(graphWrapSelector);
   let bgLayer = null;
   let gLinks = null;
+  
+  // State variables for dynamic styling / highlighting
+  let linkSelection = null;
+  let nodeSelection = null;
+  let selfLoopSelection = null;
+  let zoomBehavior = null;
+  let fitTransform = null;
+  let nodeLayout = null;
+  let lastActiveEdge = null;
+  let lastActiveNode = null;
+  let radiusMapCache = null;
+  let enrichedLinksCache = null;
+  let enrichedLinksFullCache = null;   
+  let edgeWidthScale = null;
+  let edgeOpacityScale = null;
+  let edgeMetricFn = (d) => d.count || 1;   
+  let currentMode = "hybrid";
+  let currentSequenceCache = [];
+  let nodeDurationStatsCache = null;
+  let autoZoomEnabled = true;
+  let userPositions = {};
+  let selectedNodeId = null;
+  let lastGraph = null;
+  let lastSequence = null;
+  let lastMinCount = 1;
+  let lastMode = "hybrid";
+  let lastColorMode = "category";
+  let lastSizeMode = "frequency";
+  let lastLayoutMode = "temporal";
+  let lastOptions = { onNodeClick: null };
+  let lastExtras = {};
+
+  // Highlight State Trackers
+  let currentShowSupportBadges = false;
+  let currentExternalColorFn = null;
+  let currentFilteredNodes = [];
+  let activeHighlight = null; // null | { type: 'session', value: idx } | { type: 'spine', value: arr }
 
   function drawHRIBackgrounds(show, counts = {}, totalNodes = 1) {
     bgLayer.selectAll("*").remove();
@@ -630,9 +662,6 @@ export function createGraphController({
       .style("font-size", "14px")
       .style("fill", "#334155")
       .text((d) => {
-        // counts[] now carries integer PERCENTAGES (duration-based) and
-        // totalNodes is passed as 100, so this arithmetic yields the percent
-        // directly. See computeHriDurationBudget() + largestRemainderRound().
         const count = counts[d.id] || 0;
         const pct = totalNodes > 0 ? Math.round((count / totalNodes) * 100) : 0;
         return `${d.title} — ${pct}%`;
@@ -649,36 +678,6 @@ export function createGraphController({
       .style("fill", "#64748b")
       .text((d) => d.subtitle);
   }
-
-  let linkSelection = null;
-  let nodeSelection = null;
-  let selfLoopSelection = null;
-  let zoomBehavior = null;
-  let fitTransform = null;
-  let nodeLayout = null;
-  let lastActiveEdge = null;
-  let lastActiveNode = null;
-  let radiusMapCache = null;
-  let enrichedLinksCache = null;
-  let enrichedLinksFullCache = null;   // NEW — fixed, pre-filter link list
-  let edgeWidthScale = null;
-  let edgeOpacityScale = null;
-  let edgeMetricFn = (d) => d.count || 1;   // updated per render
-  let currentMode = "hybrid";
-  let currentSequenceCache = [];
-  let nodeDurationStatsCache = null;
-  let autoZoomEnabled = true;
-  let userPositions = {};
-  let selectedNodeId = null;
-  let lastGraph = null;
-  let lastSequence = null;
-  let lastMinCount = 1;
-  let lastMode = "hybrid";
-  let lastColorMode = "category";
-  let lastSizeMode = "frequency";
-  let lastLayoutMode = "temporal";
-  let lastOptions = { onNodeClick: null };
-  let lastExtras = {};
 
   function buildGraph(
     graph,
@@ -702,9 +701,10 @@ export function createGraphController({
     lastOptions = options;
     lastExtras = extras;
 
-    // NEW: extras for merged-graph rendering
-    const showSupportBadges = !!extras.showSupportBadges;
-    const externalColorFn = extras.colorFn || null;
+    currentShowSupportBadges = !!extras.showSupportBadges;
+    currentExternalColorFn = extras.colorFn || null;
+    activeHighlight = null; // reset highlight state on new build
+
     const supportFilter = extras.supportFilter || 1;
     const nSessionsHint = extras.nSessions || 0;
 
@@ -724,8 +724,7 @@ export function createGraphController({
     let enrichedNodes = [...graph.nodes];
     let enrichedLinks = [...graph.links];
 
-    // NEW: support filter for merged graph (drop low-support nodes and their edges)
-    if (showSupportBadges && supportFilter > 1) {
+    if (currentShowSupportBadges && supportFilter > 1) {
       enrichedNodes = enrichedNodes.filter(
         (n) => (n.support || nSessionsHint || 1) >= supportFilter
       );
@@ -735,12 +734,25 @@ export function createGraphController({
       );
     }
 
-    // Inject START / END only in single-session mode (not merged)
-    if (sequence.length > 0 && !showSupportBadges) {
+    const dataHasStart = enrichedNodes.some((n) => isStartId(n.id));
+    const dataHasEnd   = enrichedNodes.some((n) => isEndId(n.id));
+ 
+    enrichedNodes.forEach((n) => {
+      if (isSpecialId(n.id) || isStartId(n.id) || isEndId(n.id)) {
+        n.isSpecial = true;
+        n.kind = isStartId(n.id) ? "start" : "end";
+      }
+    });
+ 
+    if (sequence.length > 0 && !currentShowSupportBadges && !dataHasStart && !dataHasEnd) {
       const firstAction = sequence[0].action;
-      const lastAction = sequence[sequence.length - 1].action;
-      enrichedNodes.unshift({ id: "START", count: 1, isSpecial: true, is_primary: true });
-      enrichedNodes.push({ id: "END", count: 1, isSpecial: true, is_primary: true });
+      const lastAction  = sequence[sequence.length - 1].action;
+      enrichedNodes.unshift({
+        id: "START", count: 1, isSpecial: true, kind: "start", is_primary: true
+      });
+      enrichedNodes.push({
+        id: "END",   count: 1, isSpecial: true, kind: "end",   is_primary: true
+      });
       enrichedLinks.unshift({
         source: "START", target: firstAction, count: 1, probability: 1.0,
         key: "START-" + firstAction,
@@ -751,18 +763,19 @@ export function createGraphController({
       });
     }
 
-    const enrichedLinksFull = enrichedLinks.slice();   // NEW — save before filtering
+    const enrichedLinksFull = enrichedLinks.slice();   
     enrichedLinks = enrichedLinks.filter(l => (l.count || 1) >= minCount);
 
     const activeNodeIds = new Set();
     enrichedLinks.forEach(l => { activeNodeIds.add(l.source); activeNodeIds.add(l.target); });
     let filteredNodes;
-    if (showSupportBadges) {
-      // Keep all support-filtered nodes even if some have no edges within minCount
+    if (currentShowSupportBadges) {
       filteredNodes = enrichedNodes;
     } else {
       filteredNodes = enrichedNodes.filter(n => activeNodeIds.has(n.id));
     }
+    
+    currentFilteredNodes = filteredNodes;
 
     function computeNodeDurationStats(nodes, seq) {
       const durationMap = {};
@@ -793,8 +806,8 @@ export function createGraphController({
       .domain([1, Math.max(maxCount, 2)])
       .range(mode === "hybrid" ? [26, 46] : [18, 36]);
 
-    enrichedLinksCache = enrichedLinks;          // filtered — still used for rendering, line 1296's neighbor check
-    enrichedLinksFullCache = enrichedLinksFull;  // NEW — fixed — used only for percentage math
+    enrichedLinksCache = enrichedLinks;          
+    enrichedLinksFullCache = enrichedLinksFull;  
 
     const defs = svg.append("defs");
     [["arrow", "#94a3b8"], ["arrowActive", "#ea580c"]].forEach(([id, color]) => {
@@ -837,24 +850,19 @@ export function createGraphController({
     let xScale = null;
 
     if (mode === "hybrid" && layoutMode === "temporal") {
-      // Markov view: relative order, no absolute-time axis (rank layout).
       drawHRIBackgrounds(false);
       zoomGroup.selectAll(".hri-backgrounds").selectAll("*").remove();
       const t = computeRankLayout(filteredNodes, sequence, { maxRadius });
       layout = t.layout;
-      xScale = null; // suppresses the time ruler block below
+      xScale = null; 
     } else if (layoutMode === "temporal") {
       drawHRIBackgrounds(false);
       const t = computeTemporalLayout(filteredNodes, sequence, { maxRadius });
       layout = t.layout; totalDuration = t.totalDuration; xScale = t.xScale;
     } else {
-      // Group nodes by role for LAYOUT positioning.
       const roleNodes = { robot: [], collab: [], human: [] };
       filteredNodes.forEach((n) => {
         if (n.isSpecial) return;
-        // In abstracted mode n.id is "S01"; recover a representative verb from
-        // the node's raw_actions (most frequent underlying action) so the node
-        // lands in the right role cluster. Otherwise read the verb off the id.
         let verb;
         if (mode === "abstracted" && n.raw_actions) {
           const top = Object.entries(n.raw_actions).sort((a, b) => b[1] - a[1])[0];
@@ -869,10 +877,6 @@ export function createGraphController({
         roleNodes[role].push(n);
       });
 
-      // Header PERCENTAGES come from DURATION, computed off the sequence —
-      // invariant across detail levels (full / smart / abstracted). Convert to
-      // integer percents that sum to exactly 100, then pass with total=100 so
-      // drawHRIBackgrounds' (count/total*100) arithmetic yields the percent.
       const { roleSeconds, total } = computeHriDurationBudget(sequence);
       const pct = (s) => (total > 0 ? (s / total) * 100 : 0);
       const rawPct = {
@@ -954,8 +958,7 @@ export function createGraphController({
           .attr("x1", x).attr("x2", x)
           .attr("y1", rulerY - 4).attr("y2", rulerY + 4)
           .attr("stroke", "#94a3b8").attr("stroke-width", 1);
-        // For merged graph, label as percent (since sequence is synthetic 0-100 normalized)
-        const label = showSupportBadges ? t + "%" : t + "s";
+        const label = currentShowSupportBadges ? t + "%" : t + "s";
         rulerG.append("text")
           .attr("x", x).attr("y", rulerY - 8)
           .attr("text-anchor", "middle")
@@ -971,11 +974,7 @@ export function createGraphController({
       drawLanes(zoomGroup, filteredNodes, layout, radiusMap);
     }
 
-    // Edge width / opacity scales.
-    // In merged-graph mode (showSupportBadges), drive both by support so
-    // edges are consistent with the node size encoding. In single-session
-    // mode, keep the original count-based scaling.
-    if (showSupportBadges) {
+    if (currentShowSupportBadges) {
       edgeMetricFn = (d) => d.support || 1;
       const supports = enrichedLinks.map(edgeMetricFn);
       const minSup = supports.length > 0 ? Math.min(...supports) : 1;
@@ -1006,17 +1005,15 @@ export function createGraphController({
     enrichedLinks.forEach((link) => {
       if (mode === "hybrid" && typeof link.probability === "number"
           && link.probability < HYBRID_MIN_PROB
-          && link.source !== "START" && link.target !== "END") {
+          && !isStartId(link.source) && !isEndId(link.target)) {
         hiddenEdges += 1; return;
       }
       if (link.source === link.target) { selfLoops.push(link); return; }
-      if (link.source === "START" || link.target === "END") { forwardEdges.push(link); return; }
+      if (isStartId(link.source) || isEndId(link.target)) { forwardEdges.push(link); return; }
       const sx = (layout[link.source] || { x: 0 }).x;
       const tx = (layout[link.target] || { x: 0 }).x;
       if (tx >= sx) forwardEdges.push(link); else backEdges.push(link);
     });
-
-    
 
     const medianCount = d3.median(forwardEdges, (d) => d.count || 1) || 1;
 
@@ -1030,7 +1027,7 @@ export function createGraphController({
     const backEdgesBySource = d3.group(backEdges, (d) => d.source);
     zoomGroup.append("g").attr("class", "back-indicators")
       .selectAll("g.back-indicator")
-      .data([...backEdgesBySource.entries()].filter(([sid]) => sid !== "START" && sid !== "END"))
+      .data([...backEdgesBySource.entries()].filter(([sid]) => !isSpecialId(sid)))
       .enter().append("g").attr("class", "back-indicator")
       .attr("transform", ([sid]) => {
         const p = layout[sid] || { x: 0, y: 0 };
@@ -1065,13 +1062,16 @@ export function createGraphController({
       }
     });
 
-    gLinks.append("g").selectAll("path.unidir")
-      .data(unidirectionalForward).enter().append("path")
+    const unidirGroups = gLinks.append("g").selectAll(".unidir-group")
+      .data(unidirectionalForward).enter().append("g").attr("class", "unidir-group");
+
+    unidirGroups.append("path")
+      .attr("id", d => `path-${MARKER_NS}-${d.key.replace(/[^a-zA-Z0-9_-]/g, '_')}`)
       .attr("class", (d) => `link fwd-edge ${(d.count || 1) > medianCount ? "dominant" : "minor"}`)
       .attr("data-key", (d) => d.key)
       .attr("stroke-width", (d) => edgeWidthScale(edgeMetricFn(d)))
       .attr("stroke-opacity", (d) => {
-        if (showSupportBadges) return edgeOpacityScale(edgeMetricFn(d));
+        if (currentShowSupportBadges) return edgeOpacityScale(edgeMetricFn(d));
         const c = d.count || 1;
         if (c > medianCount) return 0.75;
         if (c === medianCount) return 0.4;
@@ -1082,18 +1082,49 @@ export function createGraphController({
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
       .on("mouseout", hideEdgeTooltip);
 
-    gLinks.append("g").selectAll("path.bidir")
-      .data(bidirectionalForward).enter().append("path")
+    unidirGroups.filter(d => typeof d.probability === 'number' && d.probability > 0)
+      .append("text")
+      .attr("class", "edge-prob-text")
+      .attr("dy", -4)
+      .attr("font-size", "10px")
+      .attr("font-weight", "bold")
+      .attr("fill", "#64748b")
+      .attr("pointer-events", "none")
+      .append("textPath")
+      .attr("href", d => `#path-${MARKER_NS}-${d.key.replace(/[^a-zA-Z0-9_-]/g, '_')}`)
+      .attr("startOffset", "50%")
+      .attr("text-anchor", "middle")
+      .text(d => d.probability.toFixed(2));
+
+    const bidirGroups = gLinks.append("g").selectAll(".bidir-group")
+      .data(bidirectionalForward).enter().append("g").attr("class", "bidir-group");
+
+    bidirGroups.append("path")
+      .attr("id", d => `path-${MARKER_NS}-${d.key.replace(/[^a-zA-Z0-9_-]/g, '_')}`)
       .attr("class", "link bidir-edge")
       .attr("data-key", (d) => d.key)
       .attr("data-pair-key", (d) => d.pairKey)
       .attr("stroke-width", (d) => edgeWidthScale(edgeMetricFn(d)))
-      .attr("stroke-opacity", showSupportBadges ? (d) => edgeOpacityScale(edgeMetricFn(d)) : 0.6)
+      .attr("stroke-opacity", currentShowSupportBadges ? (d) => edgeOpacityScale(edgeMetricFn(d)) : 0.6)
       .attr("marker-end", markerUrl("arrow"))
       .attr("marker-start", markerUrl("arrowReverse"))
       .attr("d", (d) => currentMode === "hybrid" ? getCurvedPath(d, layout, radiusMap) : getStraightPath(d, layout, radiusMap))
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
       .on("mouseout", hideEdgeTooltip);
+
+    bidirGroups.filter(d => typeof d.probability === 'number' && d.probability > 0)
+      .append("text")
+      .attr("class", "edge-prob-text")
+      .attr("dy", -4)
+      .attr("font-size", "10px")
+      .attr("font-weight", "bold")
+      .attr("fill", "#64748b")
+      .attr("pointer-events", "none")
+      .append("textPath")
+      .attr("href", d => `#path-${MARKER_NS}-${d.key.replace(/[^a-zA-Z0-9_-]/g, '_')}`)
+      .attr("startOffset", "50%")
+      .attr("text-anchor", "middle")
+      .text(d => d.probability.toFixed(2));
 
     const nodeGroups = zoomGroup.append("g").selectAll(".node")
       .data(filteredNodes).enter().append("g")
@@ -1103,18 +1134,15 @@ export function createGraphController({
         return `translate(${p.x},${p.y})`;
       });
 
-    // NEW: use externalColorFn if provided (comparison view passes its own)
-    const colorFn = externalColorFn
-      ? (d) => d.isSpecial ? "#d1d5db" : externalColorFn(d.id)
+    const colorFn = currentExternalColorFn
+      ? (d) => d.isSpecial ? "#d1d5db" : currentExternalColorFn(d.id)
       : makeNodeColorFn(filteredNodes, sequence, colorMode, mode);
 
-    // Selection ring
     nodeGroups.append("circle").attr("class", "selection-ring")
       .attr("r", (d) => (radiusMap[d.id] || 18) + 6)
       .attr("fill", "none").attr("stroke", "#2563EB").attr("stroke-width", 3)
       .attr("opacity", 0).attr("pointer-events", "none");
 
-    // Main fill circle
     nodeGroups.append("circle")
       .attr("r", (d) => radiusMap[d.id] || 18)
       .style("fill", colorFn)
@@ -1122,7 +1150,29 @@ export function createGraphController({
       .style("stroke-width", (d) => (d.salient ? 2.5 : 0))
       .style("opacity", (d) => isSecondaryNode(d) ? 0.55 : 1.0);
 
-    // Inside label
+    const nSessions = (extras && extras.nSessions) || 1;
+ 
+    nodeGroups
+      .filter((d) => !d.isSpecial && nSessions >= 2 && (d.support === nSessions))
+      .append("circle")
+        .attr("class", "mandatory-ring")
+        .attr("r", (d) => (radiusMap[d.id] || 18) + 4)
+        .attr("fill", "none")
+        .attr("stroke", "#16A34A")
+        .attr("stroke-width", 2.25)
+        .attr("pointer-events", "none");
+ 
+    nodeGroups
+      .filter((d) => !d.isSpecial && (d.dead_end_score || 0) >= 0.7)
+      .append("circle")
+        .attr("class", "dead-end-ring")
+        .attr("r", (d) => (radiusMap[d.id] || 18) + 8)
+        .attr("fill", "none")
+        .attr("stroke", "#B45309")
+        .attr("stroke-width", 1.5)
+        .attr("stroke-dasharray", "4 3")
+        .attr("pointer-events", "none");
+
     nodeGroups.append("text")
       .attr("text-anchor", "middle")
       .attr("dy", (d) => (getNodeSubtitle(d, currentMode) ? "-0.12em" : "0.35em"))
@@ -1161,7 +1211,6 @@ export function createGraphController({
         }
       });
 
-    // Subtitle
     nodeGroups.append("text")
       .attr("text-anchor", "middle")
       .attr("dy", (d) => (radiusMap[d.id] || 18) + 14)
@@ -1170,12 +1219,6 @@ export function createGraphController({
       .attr("pointer-events", "none")
       .text((d) => getNodeSubtitle(d, currentMode));
 
-    // NOTE (Delivery 4): support badges removed. Node size in merged-graph
-    // mode now encodes support (via sizeMode === "support" passed from
-    // app.js), making the k/N badge redundant. The information remains
-    // available in the hover tooltip.
-
-    // Drag behavior (unchanged)
     const DRAG_THRESHOLD_PX = 4;
     const dragBehavior = d3.drag()
       .on("start", function(event, d) {
@@ -1231,41 +1274,38 @@ export function createGraphController({
       });
     nodeGroups.call(dragBehavior);
 
-      if (mode === "hybrid") {
-        // Node-local self-loops: drawn inside each node group so they inherit
-        // the node's transform and follow drags automatically.
-        const loopInfo = {};
-        selfLoopSummary.forEach((d) => {
-          if (d.source === "START" || d.source === "END") return;
-          const e = (d.edges && d.edges[0]) || {};
-          loopInfo[d.source] = (typeof e.probability === "number") ? e.probability : null;
-        });
+    if (mode === "hybrid") {
+      const loopInfo = {};
+      selfLoopSummary.forEach((d) => {
+        if (isSpecialId(d.source)) return;
+        const e = (d.edges && d.edges[0]) || {};
+        loopInfo[d.source] = (typeof e.probability === "number") ? e.probability : null;
+      });
 
-        const loopNodes = nodeGroups.filter((d) => d.id in loopInfo);
-        loopNodes.append("path")
-          .attr("class", "self-loop-arc")
-          .attr("d", (d) => {
-            const r = radiusMap[d.id] || 18;
-            return `M ${-r * 0.5} ${-r * 0.85} A ${r * 0.55} ${r * 0.55} 0 1 1 ${r * 0.5} ${-r * 0.85}`;
-          })
-          .attr("fill", "none")
-          .attr("stroke", "#993C1D")
-          .attr("stroke-width", 1.2)
-          .attr("marker-end", markerUrl("arrow"));
+      const loopNodes = nodeGroups.filter((d) => d.id in loopInfo);
+      loopNodes.append("path")
+        .attr("class", "self-loop-arc")
+        .attr("d", (d) => {
+          const r = radiusMap[d.id] || 18;
+          return `M ${-r * 0.5} ${-r * 0.85} A ${r * 0.55} ${r * 0.55} 0 1 1 ${r * 0.5} ${-r * 0.85}`;
+        })
+        .attr("fill", "none")
+        .attr("stroke", "#993C1D")
+        .attr("stroke-width", 1.2)
+        .attr("marker-end", markerUrl("arrow"));
 
-        loopNodes.append("text")
-          .attr("class", "self-loop-prob")
-          .attr("y", (d) => -(radiusMap[d.id] || 18) - 14)
-          .attr("text-anchor", "middle")
-          .attr("font-size", "9px")
-          .attr("fill", "#993C1D")
-          .text((d) => (loopInfo[d.id] !== null ? loopInfo[d.id].toFixed(2) : ""));
-      } else {
-      // Self loops
+      loopNodes.append("text")
+        .attr("class", "self-loop-prob")
+        .attr("y", (d) => -(radiusMap[d.id] || 18) - 14)
+        .attr("text-anchor", "middle")
+        .attr("font-size", "9px")
+        .attr("fill", "#993C1D")
+        .text((d) => (loopInfo[d.id] !== null ? loopInfo[d.id].toFixed(2) : ""));
+    } else {
       const selfLoopIndicators = zoomGroup
         .append("g").attr("class", "self-loop-indicators")
         .selectAll("g.self-loop-indicator")
-        .data(selfLoopSummary.filter((d) => d.source !== "START" && d.source !== "END"))
+        .data(selfLoopSummary.filter((d) => !isSpecialId(d.source)))
         .enter().append("g").attr("class", "self-loop-indicator")
         .attr("data-key", (d) => d.key)
         .attr("transform", (d) => {
@@ -1283,7 +1323,6 @@ export function createGraphController({
         .on("mouseout", hideEdgeTooltip);
     }
     
-
     nodeGroups
       .on("mouseover", function(event, d) {
         showNodeTooltip(event, d, currentMode);
@@ -1305,12 +1344,8 @@ export function createGraphController({
       })
       .on("mouseout", function() {
         hideNodeTooltip();
-        linkSelection
-          .attr("stroke-opacity", d => edgeOpacityScale(edgeMetricFn(d)))
-          .attr("stroke-width", d => edgeWidthScale(edgeMetricFn(d)))
-          .attr("stroke", null);
-        nodeSelection.style("opacity", 1);
         hideEdgeTooltip();
+        applyHighlightState();
       })
       .on("click", function(event, d) {
         if (d.__dragMoved) { d.__dragMoved = false; return; }
@@ -1342,7 +1377,6 @@ export function createGraphController({
     svg.call(zoomBehavior);
     svg.call(zoomBehavior.transform, fitTransform);
 
-    // Wire zoom buttons (gracefully — if selectors point at nothing, skip)
     if (zoomInSelector) {
       const el = document.querySelector(zoomInSelector);
       if (el) el.onclick = () => svg.transition().duration(250).call(zoomBehavior.scaleBy, 1.5);
@@ -1436,20 +1470,17 @@ export function createGraphController({
       }
     }
 
-    // Verbs that map to this category (categorical mode)
     if (d.verbs && Object.keys(d.verbs).length > 0) {
       const sortedVerbs = Object.entries(d.verbs).sort((a, b) => b[1] - a[1]).slice(0, 8);
       const verbList = sortedVerbs.map(([v, c]) => `  ${v}: ${c}`).join("\n");
       lines.push(`Verbs:\n${verbList}`);
     }
 
-    // Top objects (sort + cap so long lists don't dominate the tooltip)
     if (d.objects && Object.keys(d.objects).length > 0) {
       const sortedObjects = Object.entries(d.objects).sort((a, b) => b[1] - a[1]).slice(0, 10);
       const objectList = sortedObjects.map(([o, c]) => `  ${o}: ${c}`).join("\n");
       lines.push(`Objects:\n${objectList}`);
     }
-    // Show both the readable step label (if present) and the full step text.
     if (d.step_label) lines.push(`Step: ${d.step_label}`);
     if (d.step_text) lines.push(`Step text: ${d.step_text}`);
 
@@ -1540,5 +1571,195 @@ export function createGraphController({
     );
   }
 
-  return { buildGraph, updateActive, setAutoZoom, resetLayout };
+  // ─────────────────────────────────────────────────────────────────────────────
+  // Dynamic Highlight Functions
+  // ─────────────────────────────────────────────────────────────────────────────
+
+  function highlightSession(sessionIndex) {
+    if (sessionIndex === null || sessionIndex === undefined || sessionIndex === "Merged") {
+      activeHighlight = null;
+      resetHighlight();
+      return;
+    }
+    activeHighlight = { type: 'session', value: sessionIndex };
+    applyHighlightState();
+  }
+
+  function highlightSpine(canonicalArray) {
+    if (!canonicalArray || canonicalArray.length === 0) {
+      activeHighlight = null;
+      resetHighlight();
+      return;
+    }
+    activeHighlight = { type: 'spine', value: canonicalArray };
+    applyHighlightState();
+  }
+
+  function clearHighlight() {
+    activeHighlight = null;
+    resetHighlight();
+  }
+
+  function applyHighlightState() {
+    if (!activeHighlight) {
+      resetHighlight();
+      return;
+    }
+
+    if (activeHighlight.type === 'session') {
+      const sessionIndex = activeHighlight.value;
+      const palette = typeof SESSION_PALETTE !== 'undefined' ? SESSION_PALETTE : ["#3b82f6", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6"];
+      const color = palette[sessionIndex % palette.length];
+
+      nodeSelection.each(function(d) {
+        const isActive = d.per_session_counts && d.per_session_counts[sessionIndex] > 0;
+        const el = d3.select(this);
+        el.style("opacity", isActive ? 1.0 : 0.1);
+
+        if (isActive && !d.isSpecial) {
+          el.select("circle:not(.selection-ring):not(.mandatory-ring):not(.dead-end-ring)")
+            .style("fill", color)
+            .style("stroke", d.salient ? "#1e293b" : "none")
+            .style("stroke-width", d.salient ? 2.5 : 0);
+        } else if (!isActive && !d.isSpecial) {
+          const colorFn = currentExternalColorFn ? (n) => n.isSpecial ? "#d1d5db" : currentExternalColorFn(n.id) : makeNodeColorFn(currentFilteredNodes, currentSequenceCache, lastColorMode, lastMode);
+          el.select("circle:not(.selection-ring):not(.mandatory-ring):not(.dead-end-ring)")
+            .style("fill", colorFn(d))
+            .style("stroke", d.salient ? "#1e293b" : "none")
+            .style("stroke-width", d.salient ? 2.5 : 0);
+        }
+      });
+
+      linkSelection.each(function(d) {
+        const isActive = d.per_session_counts && d.per_session_counts[sessionIndex] > 0;
+        const el = d3.select(this);
+        el.style("stroke-opacity", isActive ? 1.0 : 0.05);
+        el.style("stroke", isActive ? color : null);
+        el.style("stroke-width", edgeWidthScale(edgeMetricFn(d)));
+      });
+
+      svg.selectAll("#zoomGroup .edge-prob-text").style("opacity", function(d) {
+        const isActive = d.per_session_counts && d.per_session_counts[sessionIndex] > 0;
+        return isActive ? 1.0 : 0.05;
+      });
+
+      if (selfLoopSelection) {
+        selfLoopSelection.style("opacity", function(d) {
+          const nData = currentFilteredNodes.find(n => n.id === d.source);
+          const isActive = nData && nData.per_session_counts && nData.per_session_counts[sessionIndex] > 0;
+          return isActive ? 1.0 : 0.05;
+        });
+      }
+      svg.selectAll("#zoomGroup .self-loop-arc, #zoomGroup .self-loop-prob").style("opacity", function(d) {
+        const isActive = d.per_session_counts && d.per_session_counts[sessionIndex] > 0;
+        return isActive ? 1.0 : 0.05;
+      });
+
+    } 
+    else if (activeHighlight.type === 'spine') {
+      const canonicalArray = activeHighlight.value;
+      const spineNodes = new Set(canonicalArray);
+      const spineEdges = new Set();
+      for (let i = 0; i < canonicalArray.length - 1; i++) {
+        spineEdges.add(canonicalArray[i] + "|||" + canonicalArray[i + 1]);
+      }
+
+      nodeSelection.each(function(d) {
+        const isActive = spineNodes.has(d.id);
+        const el = d3.select(this);
+        el.style("opacity", isActive ? 1.0 : 0.1);
+
+        const colorFn = currentExternalColorFn ? (n) => n.isSpecial ? "#d1d5db" : currentExternalColorFn(n.id) : makeNodeColorFn(currentFilteredNodes, currentSequenceCache, lastColorMode, lastMode);
+        
+        if (isActive && !d.isSpecial) {
+          el.select("circle:not(.selection-ring):not(.mandatory-ring):not(.dead-end-ring)")
+            .style("fill", colorFn(d))
+            .style("stroke", "#B8362A")
+            .style("stroke-width", d.salient ? 4 : 3);
+        } else if (!isActive && !d.isSpecial) {
+          el.select("circle:not(.selection-ring):not(.mandatory-ring):not(.dead-end-ring)")
+            .style("fill", colorFn(d))
+            .style("stroke", d.salient ? "#1e293b" : "none")
+            .style("stroke-width", d.salient ? 2.5 : 0);
+        }
+      });
+
+      linkSelection.each(function(d) {
+        const isActive = spineEdges.has(d.key) || spineEdges.has(d.pairKey);
+        const el = d3.select(this);
+        el.style("stroke-opacity", isActive ? 1.0 : 0.05);
+        
+        if (isActive) {
+          el.style("stroke", "#B8362A")
+            .style("stroke-width", (edgeWidthScale(edgeMetricFn(d))) + 2);
+          this.parentNode.appendChild(this); 
+        } else {
+          el.style("stroke", null)
+            .style("stroke-width", edgeWidthScale(edgeMetricFn(d)));
+        }
+      });
+
+      svg.selectAll("#zoomGroup .edge-prob-text").style("opacity", function(d) {
+        const isActive = spineEdges.has(d.key) || spineEdges.has(d.pairKey);
+        return isActive ? 1.0 : 0.05;
+      });
+
+      if (selfLoopSelection) {
+        selfLoopSelection.style("opacity", function(d) {
+          const isActive = spineEdges.has(d.key);
+          return isActive ? 1.0 : 0.05;
+        });
+      }
+      svg.selectAll("#zoomGroup .self-loop-arc, #zoomGroup .self-loop-prob").style("opacity", function(d) {
+        const k = `${d.id}|||${d.id}`;
+        const isActive = spineEdges.has(k);
+        return isActive ? 1.0 : 0.05;
+      });
+    }
+  }
+
+  function resetHighlight() {
+    if (!nodeSelection || !linkSelection) return;
+    
+    nodeSelection.each(function(d) {
+      const el = d3.select(this);
+      el.style("opacity", isSecondaryNode(d) ? 0.55 : 1.0);
+      
+      const colorFn = currentExternalColorFn
+        ? (n) => n.isSpecial ? "#d1d5db" : currentExternalColorFn(n.id)
+        : makeNodeColorFn(currentFilteredNodes, currentSequenceCache, lastColorMode, lastMode);
+        
+      el.select("circle:not(.selection-ring):not(.mandatory-ring):not(.dead-end-ring)")
+        .style("fill", colorFn(d))
+        .style("stroke", d.salient ? "#1e293b" : "none")
+        .style("stroke-width", d.salient ? 2.5 : 0);
+    });
+
+    linkSelection.each(function(d) {
+      const el = d3.select(this);
+      el.style("stroke", null)
+        .style("stroke-width", edgeWidthScale(edgeMetricFn(d)));
+        
+      if (el.classed("fwd-edge")) {
+        el.style("stroke-opacity", () => {
+          if (currentShowSupportBadges) return edgeOpacityScale(edgeMetricFn(d));
+          const medianCount = d3.median(linkSelection.data(), l => l.count || 1) || 1;
+          const c = d.count || 1;
+          if (c > medianCount) return 0.75;
+          if (c === medianCount) return 0.4;
+          return 0.15;
+        });
+      } else if (el.classed("bidir-edge")) {
+        el.style("stroke-opacity", currentShowSupportBadges ? edgeOpacityScale(edgeMetricFn(d)) : 0.6);
+      } else {
+        el.style("stroke-opacity", null);
+      }
+    });
+
+    svg.selectAll("#zoomGroup .edge-prob-text").style("opacity", 1.0);
+    if (selfLoopSelection) selfLoopSelection.style("opacity", 1.0);
+    svg.selectAll("#zoomGroup .self-loop-arc, #zoomGroup .self-loop-prob").style("opacity", 1.0);
+  }
+
+  return { buildGraph, updateActive, setAutoZoom, resetLayout, highlightSession, highlightSpine, clearHighlight };
 }

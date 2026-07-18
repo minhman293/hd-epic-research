@@ -1,5 +1,3 @@
-// app.js
-
 import {
   getManifestUrl,
   getSessionDataUrl,
@@ -9,8 +7,7 @@ import {
   loadVerbCategories,
   getLegendItems,
   getStepPhaseColor,
-  buildStepLabelLookup,
-  resolveStepLabel
+  buildStepLabelLookup
 } from "./config.js";
 
 import { createGraphController } from "./graph.js";
@@ -21,7 +18,6 @@ import { currentSequenceItem, formatSeconds, renderDataError, nodeColor } from "
 
 import { buildBarcodeStack } from "./barcodeStack.js";
 import { buildVideoQueue } from "./videoQueue.js";
-import { buildThumbnailGraph } from "./thumbnailGraph.js";
 import { buildSwimlane } from "./swimlane.js";
 import { makeCaptureController } from "./captureController.js";
 
@@ -34,62 +30,48 @@ const dashboardTitle = document.getElementById("dashboardTitle");
 const summaryPill = document.getElementById("summaryPill");
 const header = document.querySelector(".header");
 
-const singleSessionView = document.getElementById("singleSessionView");
 const recipeLabel = document.getElementById("recipeLabel");
 const sessionLabel = document.getElementById("sessionLabel");
 const videoLabel = document.getElementById("videoLabel");
 const timeLabel = document.getElementById("timeLabel");
 const actionLabel = document.getElementById("actionLabel");
 const statusLabel = document.getElementById("statusLabel");
+
 const timelineBody = document.getElementById("timelineBody");
 const footerPanel = document.getElementById("footerPanel");
 const legendStrip = document.getElementById("legendStrip");
 const video = document.getElementById("video");
+
+const annotationTimelineWrap = document.getElementById("annotationTimelineWrap");
 const annotationTimeline = document.getElementById("annotationTimeline");
+const swimlanePanel = document.getElementById("swimlanePanel");
 const swimlaneContainer = document.getElementById("swimlaneContainer");
 
-const comparisonView = document.getElementById("comparisonView");
-const comparisonVideo = document.getElementById("comparisonVideo");
+const videoQueueRow = document.getElementById("videoQueueRow");
 const videoQueueEl = document.getElementById("videoQueue");
+const barcodeStackWrap = document.getElementById("barcodeStackWrap");
 const barcodeStackEl = document.getElementById("barcodeStack");
-const cmpRecipeLabel = document.getElementById("cmpRecipeLabel");
-const cmpSessionLabel = document.getElementById("cmpSessionLabel");
-const cmpTimeLabel = document.getElementById("cmpTimeLabel");
-const mergedGraphWrap = document.getElementById("mergedGraphWrap");
-const mergedGraphSvg = document.getElementById("mergedGraphSvg");
-const smallMultiplesContainer = document.getElementById("smallMultiplesContainer");
-const mergedSubmodeRow = document.getElementById("mergedSubmodeRow");
-const supportFilter = document.getElementById("supportFilter");
-const supportFilterLabel = document.getElementById("supportFilterLabel");
 
 const recipeSelect = document.getElementById("recipeSelect");
 const sessionPickerRow = document.getElementById("sessionPickerRow");
 const sessionPickerTabs = document.getElementById("sessionPickerTabs");
+
 const graphModeSelect = document.getElementById("graphModeSelect");
-const edgeThreshold = document.getElementById("edgeThreshold");
-const thresholdLabel = document.getElementById("thresholdLabel");
 const colorEncodeSelect = document.getElementById("colorEncodeSelect");
 const sizeEncodeSelect = document.getElementById("sizeEncodeSelect");
 const layoutModeSelect = document.getElementById("layoutModeSelect");
+const highlightSpineBtn = document.getElementById("highlightSpineBtn");
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Two graph controllers — one per SVG
+// Graph controller
 // ─────────────────────────────────────────────────────────────────────────────
 
-const singleGraphController = createGraphController({
+const graphController = createGraphController({
   svgSelector: "#graphSvg",
   graphWrapSelector: "#graphWrap",
   zoomInSelector: "#zoomIn",
   zoomOutSelector: "#zoomOut",
   zoomResetSelector: "#zoomReset",
-});
-
-const mergedGraphController = createGraphController({
-  svgSelector: "#mergedGraphSvg",
-  graphWrapSelector: "#mergedGraphWrap",
-  zoomInSelector: null,
-  zoomOutSelector: null,
-  zoomResetSelector: null,
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -98,56 +80,59 @@ const mergedGraphController = createGraphController({
 
 let manifest = null;
 let currentRecipeId = null;
-let currentSessionIndex = 0;
-let viewMode = "single";
-let mergedSubmode = "merged";
+let currentSessionIndex = 'all';
 
-let cachedData = null;
+let mergedGraphPayload = null;
+let sessionPayloadsMap = {};
+
+let activeVideoSession = 0; 
 let timelineRows = [];
 let annotationPlayheadEl = null;
-let currentTotalDuration = 0;
-let lastClickedNodeId = null;
-let occurrenceCycleIndex = 0;
-let swimlaneApi = null;
 
-// Comparison-mode state
+let swimlaneApi = null;
 let barcodeApi = null;
 let videoQueueApi = null;
-let captureCtrl = null;        // drives single-mode <video>
-let cmpCaptureCtrl = null;     // drives comparison-mode <video>
-let comparisonSessionPayloads = [];
-let comparisonMergedPayload = null;
-let comparisonActiveSession = null;
-let thumbnailInstances = [];
+let captureCtrl = null;        
+
+let lastClickedNodeId = null;
+let occurrenceCycleIndex = 0;
 
 // ─────────────────────────────────────────────────────────────────────────────
-// View-mode switching
+// Graph Settings & Refresh
 // ─────────────────────────────────────────────────────────────────────────────
 
-function showSingleView() {
-  viewMode = "single";
-  document.body.classList.remove("comparison-mode");
-  singleSessionView.style.display = "";
-  comparisonView.style.display = "none";
-  mergedSubmodeRow.style.display = "none";
-  footerPanel.style.display = "";
+function reapplyGraphSettings(resetPositions = false) {
+  if (!mergedGraphPayload) return;
+  const nSessions = mergedGraphPayload.recipe.n_sessions;
+  
+  graphController.buildGraph(
+    mergedGraphPayload.graph,
+    mergedGraphPayload.sequence,
+    1, 
+    graphModeSelect.value, 
+    colorEncodeSelect.value, 
+    sizeEncodeSelect.value,
+    layoutModeSelect.value,
+    { onNodeClick: handleNodeClick },
+    resetPositions,
+    {
+      showSupportBadges: nSessions > 1,
+      supportFilter: 1, 
+      nSessions: nSessions,
+      canonicalSpine: mergedGraphPayload.analysis?.canonical_spine || []
+    }
+  );
+
+  rebuildLegend();
+  selectSession(currentSessionIndex);
 }
-
-function showComparisonView() {
-  viewMode = "comparison";
-  document.body.classList.add("comparison-mode");
-  singleSessionView.style.display = "none";
-  comparisonView.style.display = "";
-  mergedSubmodeRow.style.display = "";
-  footerPanel.style.display = "none";
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Single-session controller
-// ─────────────────────────────────────────────────────────────────────────────
 
 function handleNodeClick(d, sequence) {
-  const occurrences = sequence.filter((item) => item.action === d.id);
+  const seqToSearch = currentSessionIndex === 'all' 
+    ? sessionPayloadsMap[activeVideoSession]?.sequence || []
+    : sessionPayloadsMap[currentSessionIndex]?.sequence || [];
+    
+  const occurrences = seqToSearch.filter((item) => item.action === d.id);
   if (occurrences.length === 0) return;
 
   if (lastClickedNodeId !== d.id) {
@@ -158,75 +143,65 @@ function handleNodeClick(d, sequence) {
   }
   const target = occurrences[occurrenceCycleIndex];
   if (captureCtrl) captureCtrl.seekUnified(target.start);
+  
   d3.selectAll(".node").classed("selected", (n) => n.id === d.id);
   statusLabel.innerHTML =
     `Status: <strong>Selected ${d.id} (${occurrenceCycleIndex + 1}/${occurrences.length})</strong>`;
 }
 
 function refresh() {
-  if (!cachedData || viewMode !== "single") return;
+  if (!mergedGraphPayload) return;
   const t = captureCtrl ? captureCtrl.getUnifiedTime() : 0;
-  const item = currentSequenceItem(cachedData.sequence, t);
+  
+  const seqToSearch = currentSessionIndex === 'all' 
+    ? sessionPayloadsMap[activeVideoSession]?.sequence || []
+    : sessionPayloadsMap[currentSessionIndex]?.sequence || [];
+    
+  const item = currentSequenceItem(seqToSearch, t);
   timeLabel.textContent = formatSeconds(t);
   actionLabel.textContent = item ? item.action : "-";
+  
   if (lastClickedNodeId && item && item.action !== lastClickedNodeId) {
     lastClickedNodeId = null;
     occurrenceCycleIndex = 0;
     d3.selectAll(".node").classed("selected", false);
   }
-  singleGraphController.updateActive(item);
+  
+  graphController.updateActive(item);
   updateTimelineActive(timelineRows, footerPanel, item);
-  if (annotationPlayheadEl && currentTotalDuration > 0) {
-    updateAnnotationPlayhead(annotationPlayheadEl, t, currentTotalDuration);
-  }
-  if (swimlaneApi) {
-    swimlaneApi.updatePlayhead(t);
+  
+  if (currentSessionIndex !== 'all') {
+    if (annotationPlayheadEl) {
+      const dur = sessionPayloadsMap[activeVideoSession]?.recipe?.total_capture_duration_s || 1;
+      updateAnnotationPlayhead(annotationPlayheadEl, t, dur);
+    }
+    if (swimlaneApi) swimlaneApi.updatePlayhead(t);
+  } else {
+    if (barcodeApi) barcodeApi.updatePlayhead(activeVideoSession, t);
   }
 }
 
 function rebuildLegend() {
-  const singleSeq = cachedData?.sequence || [];
-  const singleStepLabelLookup = buildStepLabelLookup(cachedData?.steps || []);
+  const seq = mergedGraphPayload?.sequence || [];
+  const stepLabelLookup = buildStepLabelLookup(mergedGraphPayload?.steps || []);
   buildLegend(
     legendStrip,
     getLegendItems(
       colorEncodeSelect.value,
       sizeEncodeSelect.value,
       graphModeSelect.value,
-      singleSeq,
-      singleStepLabelLookup
+      seq,
+      stepLabelLookup
     ),
     colorEncodeSelect.value,
-    singleSeq
+    seq
   );
-
-  const comparisonLegendStrip = document.getElementById("comparisonLegendStrip");
-  if (comparisonLegendStrip && comparisonSessionPayloads.length > 0) {
-    let combinedSeq = [];
-    comparisonSessionPayloads.forEach((sessionData) => {
-      if (sessionData.sequence) combinedSeq = combinedSeq.concat(sessionData.sequence);
-    });
-    const firstPayload = comparisonSessionPayloads[0]?.payload;
-    const comparisonStepLabelLookup = buildStepLabelLookup(firstPayload?.steps || []);
-    buildLegend(
-      comparisonLegendStrip,
-      getLegendItems(
-        colorEncodeSelect.value,
-        sizeEncodeSelect.value,
-        graphModeSelect.value,
-        combinedSeq,
-        comparisonStepLabelLookup
-      ),
-      colorEncodeSelect.value,
-      combinedSeq
-    );
-  }
 }
 
 function getCurrentColorFn(seqOverride) {
   const colorMode = colorEncodeSelect.value;
   const graphMode = graphModeSelect.value;
-  const seq = seqOverride || cachedData?.sequence || [];
+  const seq = seqOverride || mergedGraphPayload?.sequence || [];
 
   if (colorMode === "category") return (action) => nodeColor(action);
 
@@ -277,15 +252,12 @@ function getCurrentColorFn(seqOverride) {
   return (action) => nodeColor(action);
 }
 
-function rebuildAnnotationTimeline() {
-  if (!cachedData || !annotationTimeline) return;
-  currentTotalDuration = cachedData.sequence[cachedData.sequence.length - 1]?.end || 1;
+function rebuildAnnotationTimeline(payload) {
+  const el = document.getElementById('annotationTimeline');
+  if (!payload || !el) return;
+  const dur = payload.recipe?.total_capture_duration_s || 1;
   annotationPlayheadEl = buildAnnotationTimeline(
-    annotationTimeline,
-    cachedData.sequence,
-    currentTotalDuration,
-    getCurrentColorFn(),
-    {
+    el, payload.sequence, dur, getCurrentColorFn(), {
       onSegmentClick: (item) => {
         if (captureCtrl) captureCtrl.seekUnified(item.start);
         const node = d3.select(`.node[data-id="${CSS.escape(item.action)}"]`);
@@ -298,11 +270,12 @@ function rebuildAnnotationTimeline() {
   );
 }
 
-function rebuildSwimlane() {
+function rebuildSwimlane(payload) {
   if (swimlaneApi) { swimlaneApi.destroy(); swimlaneApi = null; }
-  if (!cachedData || !swimlaneContainer) return;
-  const stepLabelLookup = buildStepLabelLookup(cachedData.steps || []);
-  swimlaneApi = buildSwimlane(swimlaneContainer, cachedData, getCurrentColorFn(), {
+  const el = document.getElementById('swimlaneContainer');
+  if (!payload || !el) return;
+  const lookup = buildStepLabelLookup(payload.steps || []);
+  swimlaneApi = buildSwimlane(el, payload, getCurrentColorFn(), {
     onSegmentClick: (item) => {
       if (captureCtrl) captureCtrl.seekUnified(item.start);
       if (!item.synthetic) {
@@ -313,33 +286,47 @@ function rebuildSwimlane() {
         }
       }
     },
-    stepLabelLookup,
+    stepLabelLookup: lookup,
     colorMode: colorEncodeSelect.value,
   });
 }
 
+function updateMetaLabels(idx) {
+  const recipe = getCurrentRecipe();
+  recipeLabel.textContent = `${recipe.name} (${recipe.id})`;
+  sessionLabel.textContent = `${idx + 1} / ${recipe.sessions.length}`;
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
-// Manifest + recipe / session selection
+// Data Fetch & Core Logic
 // ─────────────────────────────────────────────────────────────────────────────
 
 async function loadManifest() {
   try {
     const response = await fetch(getManifestUrl());
     if (!response.ok) throw new Error("HTTP " + response.status);
-    manifest = await response.json();
-  } catch (error) {
-    renderDataError(
-      summaryPill, header,
-      `Failed to load manifest.json. (${error.message})`
+    let fullManifest = await response.json();
+
+    // ─────────────────────────────────────────────────────────────────
+    // TEMPORARY FILTER: Only keep the recipes you want to visualize now
+    // ─────────────────────────────────────────────────────────────────
+    const targetRecipes = ["P01_R01", "P03_R03", "P08_R01"];
+    
+    fullManifest.recipes = fullManifest.recipes.filter(r => 
+      targetRecipes.includes(r.id)
     );
-    console.error(error);
+
+    manifest = fullManifest;
+  } catch (error) {
+    renderDataError(summaryPill, header, `Failed to load manifest.json. (${error.message})`);
     return false;
   }
+  
   if (!manifest.recipes || manifest.recipes.length === 0) {
-    renderDataError(summaryPill, header,
-      "Manifest is empty. Run `python 6_prepare_dashboard_data.py <recipe>` first.");
+    renderDataError(summaryPill, header, "No target recipes found in the manifest.");
     return false;
   }
+  
   return true;
 }
 
@@ -348,358 +335,237 @@ function populateRecipeDropdown() {
   manifest.recipes.forEach((recipe) => {
     const opt = document.createElement("option");
     opt.value = recipe.id;
-    const mergedNote = recipe.has_merged ? " · merged available" : "";
-    opt.textContent = `${recipe.name} (${recipe.id}) — ${recipe.sessions.length} session${
-      recipe.sessions.length === 1 ? "" : "s"
-    }${mergedNote}`;
+    opt.textContent = `${recipe.name} (${recipe.id}) — ${recipe.sessions.length} session${recipe.sessions.length === 1 ? "" : "s"}`;
     recipeSelect.appendChild(opt);
   });
 }
 
 function populateSessionTabs(recipe) {
   sessionPickerTabs.innerHTML = "";
+  
+  if (recipe.sessions.length > 1) {
+    const allBtn = document.createElement("button");
+    allBtn.className = "session-tab merged-tab";
+    allBtn.dataset.sessionIndex = "all";
+    allBtn.textContent = "All Sessions";
+    allBtn.addEventListener("click", () => selectSession("all"));
+    sessionPickerTabs.appendChild(allBtn);
+  }
+
   recipe.sessions.forEach((session) => {
     const btn = document.createElement("button");
     btn.className = "session-tab";
     btn.dataset.sessionIndex = String(session.index);
     btn.textContent = `Session ${session.index + 1}`;
-    btn.title = `${session.video_id} · ${session.action_count} actions · ${session.duration_s.toFixed(1)}s`;
     btn.addEventListener("click", () => selectSession(session.index));
     sessionPickerTabs.appendChild(btn);
   });
-  if (recipe.has_merged && recipe.sessions.length >= 2) {
-    const mergedBtn = document.createElement("button");
-    mergedBtn.className = "session-tab merged-tab";
-    mergedBtn.dataset.sessionIndex = "merged";
-    mergedBtn.textContent = "Merged";
-    mergedBtn.title = "Comparison view across all sessions";
-    mergedBtn.addEventListener("click", () => enterComparisonMode());
-    sessionPickerTabs.appendChild(mergedBtn);
-  }
-  sessionPickerRow.style.display = "";
-  updateSessionTabHighlight();
-}
 
-function updateSessionTabHighlight() {
-  Array.from(sessionPickerTabs.children).forEach((btn) => {
-    const idx = btn.dataset.sessionIndex;
-    if (idx === "merged") {
-      btn.classList.toggle("active", viewMode === "comparison");
-    } else if (viewMode === "single") {
-      btn.classList.toggle("active", parseInt(idx, 10) === currentSessionIndex);
-    } else {
-      btn.classList.remove("active");
-    }
-  });
+  sessionPickerRow.style.display = "";
 }
 
 function getCurrentRecipe() {
   return manifest.recipes.find((r) => r.id === currentRecipeId);
 }
 
-function selectRecipe(recipeId, sessionIndex = 0) {
-  const recipe = manifest.recipes.find((r) => r.id === recipeId);
-  if (!recipe) return;
-  currentRecipeId = recipeId;
-  const availableIndices = recipe.sessions.map((s) => s.index);
-  currentSessionIndex = availableIndices.includes(sessionIndex) ? sessionIndex : availableIndices[0];
-
-  populateSessionTabs(recipe);
-  dashboardTitle.textContent = `${recipe.name} Motion Dashboard — ${recipe.id}`;
-  showSingleView();
-  updateSessionTabHighlight();
-  loadSessionData();
-}
-
-function selectSession(sessionIndex) {
-  currentSessionIndex = sessionIndex;
-  showSingleView();
-  updateSessionTabHighlight();
-  loadSessionData();
-}
-
-async function loadSessionData() {
+async function loadRecipeData() {
   if (!currentRecipeId) return;
   const recipe = getCurrentRecipe();
-  const session = recipe.sessions.find((s) => s.index === currentSessionIndex);
-  if (!session) return;
   const mode = graphModeSelect.value;
-  const dataUrl = getSessionDataUrl(currentRecipeId, currentSessionIndex, mode);
+  
   try {
-    const response = await fetch(dataUrl);
-    if (!response.ok) throw new Error("HTTP " + response.status);
-    const data = await response.json();
-    cachedData = data;
-    recipeLabel.textContent = `${data.recipe.name} (${data.recipe.id})`;
-    sessionLabel.textContent = `${session.index + 1} / ${recipe.sessions.length}`;
-    videoLabel.textContent = data.recipe.video_id;
-    summaryPill.textContent =
-      `${data.graph.nodes.length} nodes · ` +
-      `${data.graph.links.length} transitions · ` +
-      `${data.sequence.length} actions`;
-    if (captureCtrl) captureCtrl.destroy();
-    captureCtrl = makeCaptureController(video, data.videos || [], {
-      onVideoChange: (v) => { videoLabel.textContent = v.video_id; },
-    });
-    timelineRows = drawTimeline(timelineBody, data.sequence);
-    singleGraphController.buildGraph(
-      data.graph, data.sequence,
-      parseInt(edgeThreshold.value, 10),
-      mode, colorEncodeSelect.value, sizeEncodeSelect.value,
-      layoutModeSelect ? layoutModeSelect.value : "temporal",
-      { onNodeClick: handleNodeClick }
-    );
-    rebuildAnnotationTimeline();
-    rebuildLegend();
-    rebuildSwimlane();
-    statusLabel.innerHTML = "Status: <strong>Ready</strong>";
-    actionLabel.textContent = "-";
-  } catch (error) {
-    renderDataError(summaryPill, header,
-      "Failed to load session data: " + error.message + ` (${dataUrl})`);
-    console.error(error);
-  }
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Comparison view
-// ─────────────────────────────────────────────────────────────────────────────
-
-async function enterComparisonMode() {
-  if (!currentRecipeId) return;
-  const recipe = getCurrentRecipe();
-  if (!recipe.has_merged) {
-    alert("This recipe has no merged data. Pick a recipe with multiple sessions.");
-    return;
-  }
-
-  showComparisonView();
-  updateSessionTabHighlight();
-
-  const mode = graphModeSelect.value;
-
-  try {
-    const sessionFetches = recipe.sessions.map((s) =>
-      fetch(getSessionDataUrl(currentRecipeId, s.index, mode))
-        .then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-        .then((data) => ({
-          index: s.index,
-          video_id: s.video_id,
-          video_path: s.video_path,
-          videos: data.videos,  
-          duration_s: s.duration_s,
-          payload: data,
-          sequence: data.sequence,
-        }))
-    );
-    const mergedFetch = fetch(getMergedDataUrl(currentRecipeId, mode))
-      .then((r) => { if (!r.ok) throw new Error("Merged: HTTP " + r.status); return r.json(); });
-
-    comparisonSessionPayloads = await Promise.all(sessionFetches);
-    comparisonMergedPayload = await mergedFetch;
-  } catch (error) {
-    renderDataError(summaryPill, header, "Failed to load comparison data: " + error.message);
-    console.error(error);
-    return;
-  }
-
-  cmpRecipeLabel.textContent = `${recipe.name} (${recipe.id})`;
-  cmpSessionLabel.textContent = `1 / ${recipe.sessions.length}`;
-  summaryPill.textContent =
-    `${recipe.sessions.length} sessions merged · ` +
-    `${comparisonMergedPayload.graph.nodes.length} merged nodes · ` +
-    `${comparisonMergedPayload.graph.links.length} merged transitions`;
-
-  supportFilter.min = "1";
-  supportFilter.max = String(recipe.sessions.length);
-  supportFilter.value = "1";
-  supportFilterLabel.textContent = "1";
-
-  buildComparisonVideoUI();
-  renderMergedSubmode();
-  rebuildLegend();
-}
-
-function buildComparisonVideoUI() {
-  if (barcodeApi) { barcodeApi.destroy(); barcodeApi = null; }
-  if (cmpCaptureCtrl) { cmpCaptureCtrl.destroy(); cmpCaptureCtrl = null; }
-  videoQueueApi = null;
-  videoQueueEl.innerHTML = "";
-  barcodeStackEl.innerHTML = "";
-
-  const sessionsForQueue = comparisonSessionPayloads.map((s) => ({
-    index: s.index,
-    videos: s.videos,                 // full per-video layout
-    video_path: s.video_path,         // back-compat
-  }));
-
-  // Initialize comparison-mode controller with first session's videos
-  const firstSession = comparisonSessionPayloads[0];
-  cmpCaptureCtrl = makeCaptureController(comparisonVideo, firstSession.videos || [], {});
-
-  videoQueueApi = buildVideoQueue(videoQueueEl, sessionsForQueue, {
-    onActiveChange: (newIdx) => {
-      comparisonActiveSession = newIdx;
-      const newSession = comparisonSessionPayloads.find((s) => s.index === newIdx);
-      if (newSession && cmpCaptureCtrl) {
-        cmpCaptureCtrl.load(newSession.videos || []);
-      }
-      if (barcodeApi) barcodeApi.setActiveSession(newIdx);
-      cmpSessionLabel.textContent = `${newIdx + 1} / ${comparisonSessionPayloads.length}`;
-    },
-  });
-  comparisonActiveSession = comparisonSessionPayloads[0].index;
-
-  const sessionsForBarcode = comparisonSessionPayloads.map((s) => ({
-    index: s.index,
-    label: `Session ${s.index + 1}`,
-    sequence: s.sequence,
-    duration_s: s.duration_s,
-  }));
-  const colorFn = getCurrentColorFn(comparisonSessionPayloads[0].sequence);
-  barcodeApi = buildBarcodeStack(barcodeStackEl, sessionsForBarcode, colorFn, {
-    onSegmentClick: (sessionIndex, item) => {
-      if (sessionIndex !== comparisonActiveSession) {
-        videoQueueApi.setActiveSession(sessionIndex);
-        // setActiveSession → onActiveChange → cmpCaptureCtrl.load(newVideos).
-        // After that, queue the unified seek. The controller's pendingSeek
-        // mechanism handles the loadedmetadata race correctly.
-        if (cmpCaptureCtrl) cmpCaptureCtrl.seekUnified(item.start);
-      } else {
-        if (cmpCaptureCtrl) cmpCaptureCtrl.seekUnified(item.start);
-      }
-    },
-  });
-  barcodeApi.setActiveSession(comparisonActiveSession);
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Sub-mode rendering: merged graph OR small multiples
-// ─────────────────────────────────────────────────────────────────────────────
-
-function renderMergedSubmode() {
-  if (!comparisonMergedPayload || !comparisonSessionPayloads.length) return;
-
-  thumbnailInstances.forEach((t) => t.destroy && t.destroy());
-  thumbnailInstances = [];
-  smallMultiplesContainer.innerHTML = "";
-
-  if (mergedSubmode === "merged") {
-    mergedGraphWrap.style.display = "";
-    smallMultiplesContainer.style.display = "none";
-    supportFilter.parentElement.style.display = "";
-    renderMergedGraph();
-  } else {
-    mergedGraphWrap.style.display = "none";
-    smallMultiplesContainer.style.display = "";
-    supportFilter.parentElement.style.display = "none";
-    renderSmallMultiples();
-  }
-}
-
-function renderMergedGraph() {
-  if (!comparisonMergedPayload) return;
-  const recipe = getCurrentRecipe();
-  const nSessions = recipe.sessions.length;
-  const supportFilterVal = parseInt(supportFilter.value, 10);
-
-  const firstPayload = comparisonSessionPayloads[0]?.payload;
-  const stepLabelLookup = buildStepLabelLookup(firstPayload?.steps || []);
-  comparisonMergedPayload.graph.nodes.forEach((n) => {
-    if (n.step_label) return;
-    const sid = n.merged_step_id || n.id;
-    const label = resolveStepLabel(sid, stepLabelLookup);
-    if (label && label !== sid) n.step_label = label;
-  });
-
-  const synthesizedSequence = comparisonMergedPayload.graph.nodes.map((n, i) => ({
-    index: i,
-    action: n.id,
-    start: (n.mean_normalized_onset || 0) * 100,
-    end: (n.mean_normalized_onset || 0) * 100 + 1,
-    duration: 1,
-    step_id: n.merged_step_id || null,
-    is_primary: n.is_primary !== false,
-    next_action: null,
-    edge_key: null,
-  })).sort((a, b) => a.start - b.start)
-    .map((item, i) => ({ ...item, index: i }));
-
-  const colorFn = getCurrentColorFn(synthesizedSequence);
-  const mergedSizeMode = sizeEncodeSelect.value === "frequency" ? "support" : "duration";
-
-  mergedGraphController.buildGraph(
-    comparisonMergedPayload.graph,
-    synthesizedSequence,
-    1,
-    graphModeSelect.value,
-    colorEncodeSelect.value,
-    mergedSizeMode,
-    "temporal",
-    { onNodeClick: null },
-    true,
-    {
-      showSupportBadges: true,
-      colorFn,
-      supportFilter: supportFilterVal,
-      nSessions,
-    }
-  );
-}
-
-function renderSmallMultiples() {
-  smallMultiplesContainer.innerHTML = "";
-  thumbnailInstances.forEach((t) => t.destroy && t.destroy());
-  thumbnailInstances = [];
-
-  comparisonSessionPayloads.forEach((s) => {
-    const row = document.createElement("div");
-    row.className = "thumbnail-graph-wrap";
-
-    const heading = document.createElement("div");
-    heading.className = "thumbnail-graph-heading";
-    heading.textContent =
-      `Session ${s.index + 1} — ${s.payload.graph.nodes.length} nodes · ` +
-      `${s.payload.graph.links.length} transitions · ` +
-      `${s.duration_s.toFixed(1)}s`;
-    row.appendChild(heading);
-
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.classList.add("thumbnail-graph-svg");
-    row.appendChild(svg);
-
-    smallMultiplesContainer.appendChild(row);
-
-    requestAnimationFrame(() => {
-      const inst = buildThumbnailGraph(svg, s.payload.graph, s.payload.sequence, {
-        colorFn: getCurrentColorFn(s.payload.sequence),
+    // 1. Fetch Merged Graph (or synthesize from Session 0)
+    if (recipe.has_merged) {
+      const res = await fetch(getMergedDataUrl(currentRecipeId, mode));
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      mergedGraphPayload = await res.json();
+    } else {
+      const res = await fetch(getSessionDataUrl(currentRecipeId, 0, mode));
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+      
+      // Inject fields to make single-session data behave like merged data
+      data.graph.nodes.forEach(n => {
+          n.per_session_counts = [n.count];
+          n.support = 1;
       });
-      thumbnailInstances.push(inst);
-    });
-  });
+      data.graph.links.forEach(l => {
+          l.per_session_counts = [l.count];
+          l.support = 1;
+      });
+      
+      // Synthesize a canonical spine (the exact sequence)
+      const spine = [];
+      data.sequence.forEach(item => {
+         if (spine.length === 0 || spine[spine.length-1] !== item.action) {
+             spine.push(item.action);
+         }
+      });
+
+      mergedGraphPayload = {
+        recipe: { ...data.recipe, n_sessions: 1, session_indices: [0] },
+        graph: data.graph,
+        sequence: data.sequence.map(s => ({...s, session_index: 0})),
+        analysis: {
+           ...data.analysis,
+           canonical_spine: spine
+        },
+        steps: data.steps
+      };
+    }
+
+    // 2. Fetch individual session payloads
+    sessionPayloadsMap = {};
+    const fetches = recipe.sessions.map(s => 
+      fetch(getSessionDataUrl(currentRecipeId, s.index, mode))
+        .then(r => r.json())
+        .then(d => { sessionPayloadsMap[s.index] = d; })
+    );
+    await Promise.all(fetches);
+    
+    // 3. Update UI & Build Base Graph
+    populateSessionTabs(recipe);
+    reapplyGraphSettings(true);
+    selectSession(recipe.has_merged ? 'all' : 0);
+
+  } catch (error) {
+    console.error(error);
+    renderDataError(summaryPill, header, "Failed to load recipe data.");
+  }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Comparison-video event handlers
-// ─────────────────────────────────────────────────────────────────────────────
+function selectSession(idx) {
+  currentSessionIndex = idx;
+  const recipe = getCurrentRecipe();
+  
+  // 1. Update Tab styling
+  Array.from(sessionPickerTabs.children).forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.sessionIndex == String(idx));
+  });
 
-comparisonVideo.addEventListener("timeupdate", () => {
-  if (viewMode !== "comparison" || !barcodeApi) return;
-  const t = cmpCaptureCtrl ? cmpCaptureCtrl.getUnifiedTime() : 0;
-  cmpTimeLabel.textContent = formatSeconds(t);
-  barcodeApi.updatePlayhead(comparisonActiveSession, t);
-});
-comparisonVideo.addEventListener("seeked", () => {
-  if (viewMode !== "comparison" || !barcodeApi) return;
-  const t = cmpCaptureCtrl ? cmpCaptureCtrl.getUnifiedTime() : 0;
-  barcodeApi.updatePlayhead(comparisonActiveSession, t);
-});
+  // 2. Update Graph Highlights
+  // FIX: If it's the "All" tab OR there's only 1 session, clear highlights
+  if (idx === 'all' || recipe.sessions.length === 1) {
+      graphController.clearHighlight();
+      highlightSpineBtn.classList.remove('active');
+  } else {
+      graphController.highlightSession(idx);
+      highlightSpineBtn.classList.remove('active');
+  }
+
+  // 3. Update Panels & Player
+  if (idx === 'all') {
+      barcodeStackWrap.style.display = '';
+      annotationTimelineWrap.style.display = 'none';
+      videoQueueRow.style.display = '';
+      swimlanePanel.style.display = 'none';
+
+      const sessionsForQueue = recipe.sessions.map(s => ({
+          index: s.index,
+          videos: sessionPayloadsMap[s.index].videos,
+          video_path: s.video_path
+      }));
+      
+      if (videoQueueApi) videoQueueApi = null;
+      videoQueueEl.innerHTML = '';
+      videoQueueApi = buildVideoQueue(videoQueueEl, sessionsForQueue, {
+          onActiveChange: (newIdx) => {
+              activeVideoSession = newIdx;
+              if (captureCtrl) captureCtrl.load(sessionPayloadsMap[newIdx].videos || []);
+              if (barcodeApi) barcodeApi.setActiveSession(newIdx);
+              updateMetaLabels(newIdx);
+          }
+      });
+
+      const sessionsForBarcode = recipe.sessions.map(s => ({
+          index: s.index,
+          label: `Session ${s.index + 1}`,
+          sequence: sessionPayloadsMap[s.index].sequence,
+          duration_s: s.duration_s
+      }));
+
+      if (barcodeApi) barcodeApi.destroy();
+      barcodeApi = buildBarcodeStack(barcodeStackEl, sessionsForBarcode, getCurrentColorFn(), {
+          onSegmentClick: (sIdx, item) => {
+              if (captureCtrl && activeVideoSession !== sIdx) {
+                  activeVideoSession = sIdx;
+                  captureCtrl.load(sessionPayloadsMap[sIdx].videos || []);
+                  if(videoQueueApi) videoQueueApi.setActiveSession(sIdx);
+                  updateMetaLabels(sIdx);
+              }
+              if (captureCtrl) captureCtrl.seekUnified(item.start);
+          }
+      });
+      
+      activeVideoSession = 0;
+      if (captureCtrl) captureCtrl.destroy();
+      captureCtrl = makeCaptureController(video, sessionPayloadsMap[0].videos || [], {
+          onVideoChange: (v) => { videoLabel.textContent = v.video_id; }
+      });
+      
+      barcodeApi.setActiveSession(0);
+      videoQueueApi.setActiveSession(0);
+      updateMetaLabels(0);
+
+      timelineRows = drawTimeline(timelineBody, mergedGraphPayload.sequence);
+      const mandatoryCount = (mergedGraphPayload.analysis?.mandatory_nodes || []).length;
+      summaryPill.textContent = `${recipe.sessions.length} sessions merged · ${mergedGraphPayload.graph.nodes.length} nodes · ${mandatoryCount} mandatory`;
+
+  } else {
+      barcodeStackWrap.style.display = 'none';
+      annotationTimelineWrap.style.display = '';
+      videoQueueRow.style.display = 'none';
+      swimlanePanel.style.display = '';
+
+      const payload = sessionPayloadsMap[idx];
+      activeVideoSession = idx;
+      
+      if (captureCtrl) captureCtrl.destroy();
+      captureCtrl = makeCaptureController(video, payload.videos || [], {
+          onVideoChange: (v) => { videoLabel.textContent = v.video_id; }
+      });
+
+      timelineRows = drawTimeline(timelineBody, payload.sequence);
+      rebuildAnnotationTimeline(payload);
+      rebuildSwimlane(payload);
+      updateMetaLabels(idx);
+
+      summaryPill.textContent = `Session ${idx + 1} · ${payload.graph.nodes.length} unique nodes · ${payload.sequence.length} actions`;
+  }
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Control event listeners
 // ─────────────────────────────────────────────────────────────────────────────
 
-recipeSelect.addEventListener("change", () => selectRecipe(recipeSelect.value, 0));
+recipeSelect.addEventListener("change", () => {
+  currentRecipeId = recipeSelect.value;
+  dashboardTitle.textContent = `${getCurrentRecipe().name} Motion Dashboard — ${currentRecipeId}`;
+  loadRecipeData();
+});
+
+highlightSpineBtn.addEventListener('click', function() {
+  const isActive = this.classList.contains('active');
+  if (isActive) {
+      this.classList.remove('active');
+      graphController.clearHighlight();
+      if (mergedGraphPayload.recipe.n_sessions > 1) {
+        selectSession('all'); 
+      } else {
+        selectSession(0);
+      }
+  } else {
+      this.classList.add('active');
+      graphController.highlightSpine(mergedGraphPayload.analysis?.canonical_spine || []);
+      
+      // Ensure UI is in 'all' mode to explore the spine globally
+      if (currentSessionIndex !== 'all' && mergedGraphPayload.recipe.n_sessions > 1) {
+          selectSession('all');
+          this.classList.add('active'); // Re-apply class because selectSession removes it
+          graphController.highlightSpine(mergedGraphPayload.analysis?.canonical_spine || []);
+      }
+  }
+});
 
 function updateColorEncodeAvailability() {
   const isAbstracted = graphModeSelect.value === "abstracted";
@@ -708,11 +574,9 @@ function updateColorEncodeAvailability() {
 
   categoryOption.disabled = isAbstracted;
   if (isAbstracted) {
-    categoryOption.title = "Action category doesn't apply in Task Phases level " +
-                           "(node IDs are recipe steps, not actions).";
+    categoryOption.title = "Action category doesn't apply in Task Phases level.";
     if (colorEncodeSelect.value === "category") {
       colorEncodeSelect.value = "phase";
-      colorEncodeSelect.dispatchEvent(new Event("change"));
     }
   } else {
     categoryOption.title = "";
@@ -721,96 +585,16 @@ function updateColorEncodeAvailability() {
 
 graphModeSelect.addEventListener("change", () => {
   updateColorEncodeAvailability();
-  if (viewMode === "single") loadSessionData();
-  else enterComparisonMode();
+  loadRecipeData();
 });
 
-edgeThreshold.addEventListener("input", () => {
-  thresholdLabel.textContent = edgeThreshold.value;
-  if (viewMode !== "single" || !cachedData) return;
-  singleGraphController.buildGraph(
-    cachedData.graph, cachedData.sequence,
-    parseInt(edgeThreshold.value, 10),
-    graphModeSelect.value, colorEncodeSelect.value, sizeEncodeSelect.value,
-    layoutModeSelect ? layoutModeSelect.value : "temporal",
-    { onNodeClick: handleNodeClick }
-  );
-  rebuildAnnotationTimeline();
-  rebuildLegend();
-});
-
-colorEncodeSelect.addEventListener("change", () => {
-  if (viewMode === "single") {
-    rebuildLegend();
-    rebuildAnnotationTimeline();
-    rebuildSwimlane();
-    if (!cachedData) return;
-    singleGraphController.buildGraph(
-      cachedData.graph, cachedData.sequence,
-      parseInt(edgeThreshold.value, 10),
-      graphModeSelect.value, colorEncodeSelect.value, sizeEncodeSelect.value,
-      layoutModeSelect ? layoutModeSelect.value : "temporal",
-      { onNodeClick: handleNodeClick }, false
-    );
-  } else {
-    buildComparisonVideoUI();
-    renderMergedSubmode();
-    rebuildLegend();
-  }
-});
-
-sizeEncodeSelect.addEventListener("input", () => {
-  if (viewMode === "single") {
-    rebuildLegend();
-    rebuildAnnotationTimeline();
-    if (!cachedData) return;
-    singleGraphController.buildGraph(
-      cachedData.graph, cachedData.sequence,
-      parseInt(edgeThreshold.value, 10),
-      graphModeSelect.value, colorEncodeSelect.value, sizeEncodeSelect.value,
-      layoutModeSelect ? layoutModeSelect.value : "temporal",
-      { onNodeClick: handleNodeClick }, false
-    );
-  } else {
-    if (mergedSubmode === "merged") renderMergedGraph();
-    rebuildLegend();
-  }
-});
-
-if (layoutModeSelect) {
-  layoutModeSelect.addEventListener("change", () => {
-    if (viewMode !== "single" || !cachedData) return;
-    singleGraphController.buildGraph(
-      cachedData.graph, cachedData.sequence,
-      parseInt(edgeThreshold.value, 10),
-      graphModeSelect.value, colorEncodeSelect.value, sizeEncodeSelect.value,
-      layoutModeSelect.value,
-      { onNodeClick: handleNodeClick }
-    );
-    rebuildAnnotationTimeline();
-    rebuildLegend();
-  });
-}
-
-document.querySelectorAll("#mergedSubmodeTabs .submode-tab").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll("#mergedSubmodeTabs .submode-tab").forEach((b) =>
-      b.classList.toggle("active", b === btn));
-    mergedSubmode = btn.dataset.submode;
-    if (viewMode === "comparison") renderMergedSubmode();
-  });
-});
-
-supportFilter.addEventListener("input", () => {
-  supportFilterLabel.textContent = supportFilter.value;
-  if (viewMode === "comparison" && mergedSubmode === "merged") {
-    renderMergedGraph();
-  }
-});
+colorEncodeSelect.addEventListener("change", () => reapplyGraphSettings(false));
+sizeEncodeSelect.addEventListener("change", () => reapplyGraphSettings(false));
+if (layoutModeSelect) layoutModeSelect.addEventListener("change", () => reapplyGraphSettings(false));
 
 const resetLayoutButton = document.querySelector("#resetLayout");
 if (resetLayoutButton) {
-  resetLayoutButton.onclick = () => singleGraphController.resetLayout();
+  resetLayoutButton.onclick = () => graphController.resetLayout();
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -827,7 +611,7 @@ async function init() {
 
   graphModeSelect.value = DEFAULT_DATA_MODE;
   colorEncodeSelect.value = DEFAULT_COLOR_ENCODE_MODE;
-  sizeEncodeSelect.value = "frequency";
+  sizeEncodeSelect.value = "support";
   if (layoutModeSelect) layoutModeSelect.value = "temporal";
 
   updateColorEncodeAvailability();
@@ -836,20 +620,23 @@ async function init() {
   if (!ok) return;
 
   populateRecipeDropdown();
-  rebuildLegend();
 
   const firstRecipe = manifest.recipes[0];
   recipeSelect.value = firstRecipe.id;
-  selectRecipe(firstRecipe.id, 0);
+  currentRecipeId = firstRecipe.id;
+  dashboardTitle.textContent = `${firstRecipe.name} Motion Dashboard — ${firstRecipe.id}`;
+  
+  loadRecipeData();
 
+  // Video Events
   video.addEventListener("play", () => {
-    singleGraphController.setAutoZoom(false);
+    graphController.setAutoZoom(false);
     appRoot.classList.remove("paused");
     statusLabel.innerHTML = "Status: <strong>Playing</strong>";
     refresh();
   });
   video.addEventListener("pause", () => {
-    singleGraphController.setAutoZoom(true);
+    graphController.setAutoZoom(true);
     appRoot.classList.add("paused");
     statusLabel.innerHTML = "Status: <strong>Paused</strong>";
     refresh();
@@ -857,7 +644,7 @@ async function init() {
   video.addEventListener("timeupdate", refresh);
   video.addEventListener("seeked", refresh);
   video.addEventListener("ended", () => {
-    singleGraphController.setAutoZoom(true);
+    graphController.setAutoZoom(true);
     appRoot.classList.add("paused");
     statusLabel.innerHTML = "Status: <strong>Ended</strong>";
     refresh();
@@ -871,14 +658,17 @@ async function init() {
     }
   });
 
-  annotationTimeline.addEventListener("click", (e) => {
-    if (e.target === annotationTimeline) {
-      const rect = annotationTimeline.getBoundingClientRect();
-      const pct = (e.clientX - rect.left) / rect.width;
-      const t = pct * currentTotalDuration;
-      if (captureCtrl) captureCtrl.seekUnified(t);
-    }
-  });
+  if (annotationTimeline) {
+    annotationTimeline.addEventListener("click", (e) => {
+      if (e.target === annotationTimeline) {
+        const rect = annotationTimeline.getBoundingClientRect();
+        const pct = (e.clientX - rect.left) / rect.width;
+        const dur = sessionPayloadsMap[activeVideoSession]?.recipe?.total_capture_duration_s || 1;
+        const t = pct * dur;
+        if (captureCtrl) captureCtrl.seekUnified(t);
+      }
+    });
+  }
 }
 
 init();

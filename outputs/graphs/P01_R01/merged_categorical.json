@@ -7566,6 +7566,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S04",
         "per_session_step_ids": [
           "P01_R01_S04",
@@ -7725,6 +7726,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           "P01_R01_S01",
@@ -7856,6 +7858,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           "P01_R01_S01",
@@ -7978,6 +7981,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           "P01_R01_S03",
@@ -8082,6 +8086,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           "P01_R01_S01",
@@ -8175,6 +8180,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8234,6 +8240,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           "P01_R01_S05",
@@ -8282,6 +8289,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           "P01_R01_S05",
@@ -8326,6 +8334,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S04",
         "per_session_step_ids": [
           "P01_R01_S04",
@@ -8369,6 +8378,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8404,6 +8414,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           null,
@@ -10243,6 +10254,190 @@
         },
         "probability": 0.1429
       }
+    ]
+  },
+  "analysis": {
+    "mandatory_nodes": [
+      "retrieve",
+      "leave",
+      "manipulate",
+      "access",
+      "block",
+      "clean",
+      "merge",
+      "sense"
+    ],
+    "canonical_spine": [],
+    "canonical_spine_score": -1.0,
+    "dead_ends": [],
+    "session_similarity": [
+      [
+        1.0,
+        0.259,
+        0.272
+      ],
+      [
+        0.259,
+        1.0,
+        0.395
+      ],
+      [
+        0.272,
+        0.395,
+        1.0
+      ]
+    ],
+    "session_shared_prefix": [],
+    "session_shared_suffix": [],
+    "loops": [
+      [
+        "retrieve",
+        "block",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "transition",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "manipulate",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "manipulate",
+        "leave",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "manipulate",
+        "leave",
+        "access",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "manipulate",
+        "leave",
+        "clean",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "manipulate",
+        "leave",
+        "sense",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "manipulate",
+        "access",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "manipulate",
+        "access",
+        "clean",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "manipulate",
+        "access",
+        "merge",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "manipulate",
+        "access",
+        "transition",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "leave",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "leave",
+        "access",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "leave",
+        "access",
+        "clean",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "leave",
+        "access",
+        "merge",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "leave",
+        "access",
+        "transition",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "leave",
+        "clean",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "leave",
+        "sense",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "access",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "access",
+        "leave",
+        "sense",
+        "retrieve"
+      ]
+    ],
+    "session_singleton_nodes": [
+      "split",
+      "monitor"
     ]
   }
 }

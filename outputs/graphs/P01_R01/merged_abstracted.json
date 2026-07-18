@@ -7939,6 +7939,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8231,6 +8232,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           "P01_R01_S01",
@@ -8286,6 +8288,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           "P01_R01_S03",
@@ -8339,6 +8342,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S05",
         "per_session_step_ids": [
           "P01_R01_S05",
@@ -8387,6 +8391,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S04",
         "per_session_step_ids": [
           "P01_R01_S04",
@@ -8434,6 +8439,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S02",
         "per_session_step_ids": [
           "P01_R01_S02",
@@ -9449,5 +9455,75 @@
         "probability": 0.0038
       }
     ]
+  },
+  "analysis": {
+    "mandatory_nodes": [
+      "unassigned",
+      "S01",
+      "S03",
+      "S05",
+      "S04",
+      "S02"
+    ],
+    "canonical_spine": [],
+    "canonical_spine_score": -1.0,
+    "dead_ends": [],
+    "session_similarity": [
+      [
+        1.0,
+        0.143,
+        0.254
+      ],
+      [
+        0.143,
+        1.0,
+        0.469
+      ],
+      [
+        0.254,
+        0.469,
+        1.0
+      ]
+    ],
+    "session_shared_prefix": [],
+    "session_shared_suffix": [
+      "unassigned",
+      "unassigned",
+      "unassigned"
+    ],
+    "loops": [
+      [
+        "unassigned",
+        "S05",
+        "unassigned"
+      ],
+      [
+        "unassigned",
+        "S02",
+        "unassigned"
+      ],
+      [
+        "unassigned",
+        "S02",
+        "S01",
+        "unassigned"
+      ],
+      [
+        "unassigned",
+        "S04",
+        "unassigned"
+      ],
+      [
+        "unassigned",
+        "S03",
+        "unassigned"
+      ],
+      [
+        "S01",
+        "S02",
+        "S01"
+      ]
+    ],
+    "session_singleton_nodes": []
   }
 }

@@ -26,35 +26,20 @@
       </div>
     </section>
 
+    <!-- Session Picker Row -->
     <section class="session-picker-row" id="sessionPickerRow" style="display:none;">
-      <label class="control-label">Session:</label>
+      <label class="control-label">Highlight View:</label>
       <div class="session-picker-tabs" id="sessionPickerTabs"></div>
-
-      <!-- Sub-mode toggle: shown only when Merged tab is active -->
-      <div class="submode-row" id="mergedSubmodeRow" style="display:none;">
-        <label class="control-label">View:</label>
-        <div class="submode-tabs" id="mergedSubmodeTabs">
-          <button class="submode-tab active" data-submode="merged">Merged graph</button>
-          <button class="submode-tab" data-submode="small_multiples">Small multiples</button>
-        </div>
-
-        <!-- Support filter slider: visible in merged sub-mode -->
-        <div class="support-filter-wrap" id="supportFilterWrap">
-          <label class="control-label">Min. support:</label>
-          <input type="range" id="supportFilter" min="1" max="3" value="1" class="control-slider" />
-          <span id="supportFilterLabel" class="threshold-label">1</span>
-        </div>
-      </div>
     </section>
 
     <!-- ENCODING CONTROLS — shared across both views ──────────────────────────── -->
     <section class="encoding-controls-row" id="encodingControlsRow">
       <label class="control-label">Detail Level:</label>
       <select id="graphModeSelect" class="control-select">
+        <option value="hybrid">Abstraction</option>
         <!-- <option value="smart">Smart-Merged (Clear)</option>
         <option value="full">Full Raw (Complete)</option>
         <option value="categorical">Categorical (Verb)</option> -->
-        <option value="hybrid">Recipe-salient (Markov)</option>
       </select>
 
       <span class="encoding-controls-sep"></span>
@@ -68,30 +53,33 @@
 
       <label class="control-label">Node size:</label>
       <select id="sizeEncodeSelect" class="control-select">
-        <option value="frequency">Frequency</option>
+        <option value="support">Frequency</option>
         <option value="duration">Duration</option>
       </select>
 
-      <!-- Layout: hidden in comparison view via CSS (data-comparison-hide) -->
-      <label class="control-label" id="layoutLabel" data-comparison-hide>Layout:</label>
-      <select id="layoutModeSelect" class="control-select" data-comparison-hide>
-        <option value="temporal">Graph</option>
+      <label class="control-label" id="layoutLabel">Layout:</label>
+      <select id="layoutModeSelect" class="control-select">
+        <option value="temporal">Sequence Flow</option>
         <option value="category">HRC Category</option>
       </select>
+
+      <span class="encoding-controls-sep"></span>
+      
+      <!-- Canonical Spine Button -->
+      <button id="highlightSpineBtn" class="control-btn" style="border-color: #ea580c; color: #B8362A; background-color: #fff; font-weight: bold; border: 1px solid #d1d5db; padding: 4px 8px; border-radius: 4px; cursor: pointer;">
+        Highlight Pattern
+      </button>
     </section>
 
-    <!-- SINGLE-SESSION VIEW (default) ─────────────────────────────────────────── -->
-    <section class="layout" id="singleSessionView">
+    <!-- SINGLE UNIFIED VIEW ─────────────────────────────────────────── -->
+    <section class="layout" id="unifiedSessionView">
+      
+      <!-- LEFT PANEL: Unified Graph -->
       <article class="panel">
         <h2>
-          Motion Graph
+          Merged Motion Graph
           <span class="graph-hint">— scroll to zoom · drag to pan</span>
         </h2>
-        <div class="controls-row">
-          <label class="control-label">Min. Transition Count:</label>
-          <input type="range" id="edgeThreshold" min="1" max="10" value="1" class="control-slider" />
-          <span id="thresholdLabel" class="threshold-label">1</span>
-        </div>
         <div id="graphWrap">
           <svg id="graphSvg"></svg>
           <div class="zoom-controls">
@@ -104,21 +92,37 @@
         <div class="legend-strip" id="legendStrip"></div>
       </article>
 
+      <!-- RIGHT PANEL: Video & Timelines -->
       <article class="panel">
         <h2>Video Player</h2>
         <video id="video" controls preload="metadata"></video>
-        <div id="annotationTimeline" class="annotation-timeline"></div>
+        
+        <!-- Shown ONLY in "All Sessions" mode -->
+        <div id="videoQueueRow" class="video-queue-row" style="display:none;">
+          <span class="video-queue-label-prefix">Switch to:</span>
+          <div id="videoQueue" class="video-queue"></div>
+        </div>
+        <div id="barcodeStackWrap" style="display:none; margin-top: 10px;">
+          <h3 class="barcode-stack-heading" style="font-size: 11px; margin-bottom: 5px; color:#475569;">Action sequences (normalized time)</h3>
+          <div id="barcodeStack" class="barcode-stack-container"></div>
+        </div>
+
+        <!-- Shown ONLY in "Single Session" mode -->
+        <div id="annotationTimelineWrap">
+          <div id="annotationTimeline" class="annotation-timeline"></div>
+        </div>
+
         <div class="meta">
           <div class="row"><span>Recipe</span><span id="recipeLabel">-</span></div>
-          <div class="row"><span>Session</span><span id="sessionLabel">-</span></div>
-          <div class="row"><span>Video</span><span id="videoLabel">-</span></div>
+          <div class="row"><span>Active Video</span><span id="sessionLabel">-</span></div>
+          <div class="row"><span>Video ID</span><span id="videoLabel">-</span></div>
           <div class="row"><span>Time</span><span id="timeLabel">0.00 s</span></div>
           <div class="row"><span>Current Action</span><span id="actionLabel">-</span></div>
           <div class="status" id="statusLabel">Status: <strong>Idle</strong></div>
         </div>
       </article>
 
-      <!-- SWIMLANE — full-width row below graph + video ──────────────────────── -->
+      <!-- SWIMLANE (Shown ONLY in "Single Session" mode) -->
       <article class="panel swimlane-panel" id="swimlanePanel">
         <h2>
           Swimlane
@@ -128,48 +132,7 @@
       </article>
     </section>
 
-    <!-- COMPARISON VIEW ────────────────────────────────────────────────────────── -->
-    <section class="comparison-layout" id="comparisonView" style="display:none;">
-
-      <!-- LEFT: motion graph (merged) OR small multiples -->
-      <article class="panel comparison-graph-panel">
-        <h2>
-          <span id="comparisonGraphHeading">Merged Motion Graph</span>
-        </h2>
-
-        <!-- Merged graph wrapper -->
-        <div id="mergedGraphWrap">
-          <svg id="mergedGraphSvg"></svg>
-        </div>
-
-        <!-- Small multiples container -->
-        <div id="smallMultiplesContainer" style="display:none;"></div>
-
-        <div class="legend-strip" id="comparisonLegendStrip"></div>
-      </article>
-
-      <!-- RIGHT: video queue + barcodes -->
-      <article class="panel comparison-video-panel">
-        <h2>Video Player &amp; Sessions</h2>
-
-        <video id="comparisonVideo" controls preload="metadata"></video>
-
-        <div class="video-queue-row">
-          <span class="video-queue-label-prefix">Switch to:</span>
-          <div id="videoQueue" class="video-queue"></div>
-        </div>
-
-        <h3 class="barcode-stack-heading">Action sequences (normalized time)</h3>
-        <div id="barcodeStack" class="barcode-stack-container"></div>
-
-        <div class="meta">
-          <div class="row"><span>Recipe</span><span id="cmpRecipeLabel">-</span></div>
-          <div class="row"><span>Active Session</span><span id="cmpSessionLabel">-</span></div>
-          <div class="row"><span>Time</span><span id="cmpTimeLabel">0.00 s</span></div>
-        </div>
-      </article>
-    </section>
-
+    <!-- FOOTER PANEL -->
     <section class="footerPanel" id="footerPanel">
       <table class="timeline">
         <thead>

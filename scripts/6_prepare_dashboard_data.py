@@ -7,25 +7,14 @@ all videos of a multi-video capture onto a unified capture timeline.
 Detail-level modes produced per session (a granularity ladder):
   full         verb(noun) atomic nodes            (~40-420 nodes)
   smart        verb nodes, objects as attribute   (~30-80 nodes)
-  hybrid       RECIPE-SALIENT verb_cat(noun) for  (~16-28 nodes)  <- Markov view
-               recipe-text objects; verb_cat for
-               background activity
+  hybrid       verb_key(noun_category) on primary (~15-40 nodes)  <- Markov view
+               actions only (filters noise), with 
+               explicit Start/End session anchors.
   categorical  verb-category nodes                (10-13 nodes)
   abstracted   recipe-step nodes                  (3-16 nodes)
 
-The hybrid mode implements the "Recipe-Salient Hybrid States" design:
-  - A noun is SALIENT if it lexically matches the recipe's own name/step text
-    (author-grounded vocabulary; Elmqvist & Fekete 2010, aggregation guideline
-    G4 — aggregates must convey information about their content).
-  - Salient vocabulary is capped at the top-K salient nouns by frequency
-    (aggregation dial, not a data filter: background actions are aggregated
-    into their verb category, never dropped).
-  - Edges carry both count and Markov probability P(B|A) = count(A->B) /
-    out_degree(A), Schodl et al. 2000 (Video Textures) style, self-loops kept.
-
 Usage:
   python 6_prepare_dashboard_data.py P01_R01
-  python 6_prepare_dashboard_data.py P05_R01 --salient-k 6
 
 Output layout:
   outputs/graphs/{recipe_id}/session_{N}_full.json
@@ -51,25 +40,6 @@ from utils import get_action_name, load_hd_epic_data
 # ─────────────────────────────────────────────────────────────────────────────
 
 STEP_WINDOW_BUFFER_S = 0
-
-# Hybrid mode: how many recipe-salient nouns keep individual node identity.
-# This is an aggregation dial (Munzner 2014, "reduce" design choice), not a
-# data filter — actions on non-salient nouns collapse into their verb
-# category, they are never dropped.
-DEFAULT_SALIENT_K = 6
-
-# Hybrid mode: minimum times a salient noun must occur to earn identity.
-# Guards against a single stray match (e.g. recipe text mentions "water"
-# once, one wash(water) action) creating a near-empty node.
-SALIENT_MIN_COUNT = 2
-
-# Hybrid mode: minimum times a salient STATE (verb_cat, noun) must be observed
-# to earn its own node; rarer combinations fall back to the background tier.
-# Empirically (7 coffee recipes): min=1 gives 16-46 nodes, min=3 gives 11-31.
-# "Identity requires evidence" — same aggregation logic as SALIENT_MIN_COUNT,
-# applied at state level.
-SALIENT_NODE_MIN_COUNT = 3
-
 
 def load_recipe_context(recipe_id, outputs_dir="../outputs"):
     outputs_path = Path(outputs_dir)
@@ -600,216 +570,193 @@ def create_categorical_graph(payload, verb_classes, noun_classes):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Recipe-Salient Hybrid mode
+# Hybrid mode (verb_key(noun_category) focused on primary recipe steps)
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _recipe_text_words(recipe_meta):
-    """Word set from the recipe's own name + step text (lowercased)."""
-    text = (recipe_meta.get("name", "") + " "
-            + " ".join(recipe_meta.get("steps", {}).values())).lower()
-    return set(re.findall(r"[a-z]+", text))
-
-
-def _noun_matches_words(noun_key, words):
+def _compute_dead_end_scores(hybrid_sequence, nodes):
     """
-    Lexical match of an HD-EPIC noun key against the recipe word set.
-
-    HD-EPIC compound keys follow the EPIC-KITCHENS 'head:modifier' convention
-    (e.g. 'machine:washing' = washing machine): the head is a generic category
-    word, the modifier is the discriminative one (Levi 1978). For compound
-    keys we therefore match ONLY the modifier tokens — otherwise a generic
-    head like 'machine' fires on unrelated recipe words ('coffee machine')
-    and promotes background objects to recipe-salient.
-    Single-word keys are matched as before.
+    Video Textures analog of 'anticipated future cost' at the semantic level.
+    dead_end_score(n) = 1 - max P(n -> t) for t not being an END token.
+    High score  =  most transitions out of n lead to termination.
     """
-    parts = [p for p in re.split(r"[:_\s]+", str(noun_key).lower()) if p]
-    if not parts:
-        return False
-    match_parts = parts[1:] if len(parts) > 1 else parts
-    for p in match_parts:
-        for w in words:
-            if p == w or p == w + "s" or w == p + "s":
-                return True
-            if len(p) > 4 and len(w) > 4 and p[:5] == w[:5]:
-                return True
-    return False
+    trans = Counter()
+    out_total = Counter()
+    for a, b in zip(hybrid_sequence[:-1], hybrid_sequence[1:]):
+        s, t = a["action"], b["action"]
+        trans[(s, t)] += 1
+        out_total[s] += 1
+
+    per_node = {}
+    for n in nodes:
+        nid = n["id"]
+        max_non_end = 0.0
+        for (s, t), c in trans.items():
+            if s != nid:
+                continue
+            if t.startswith("End:"):
+                continue
+            p = c / out_total[s] if out_total[s] else 0.0
+            if p > max_non_end:
+                max_non_end = p
+        per_node[nid] = round(1.0 - max_non_end, 3) if out_total[nid] else 1.0
+    return per_node
 
 
-def extract_salient_nouns(recipe_meta, sequence, noun_classes,
-                          k=DEFAULT_SALIENT_K, min_count=SALIENT_MIN_COUNT):
-    """
-    Determine which nouns are recipe-salient for this session.
+def _find_self_loops(hybrid_sequence):
+    """Nodes where two consecutive sequence items land on the same identity."""
+    loops = Counter()
+    for a, b in zip(hybrid_sequence[:-1], hybrid_sequence[1:]):
+        if a["action"] == b["action"]:
+            loops[a["action"]] += 1
+    return dict(loops)
 
-    A noun earns individual node identity iff:
-      (1) it lexically matches the recipe's own name/step text, AND
-      (2) it occurs at least `min_count` times in the sequence, AND
-      (3) it is among the top-`k` such nouns by frequency.
 
-    Returns (salient_set, salient_report) where salient_report lists all
-    matched nouns with counts and whether they made the cut — stored in the
-    payload for transparency/debugging.
-    """
-    noun_id_to_key = dict(zip(noun_classes['id'].astype(int), noun_classes['key']))
-    words = _recipe_text_words(recipe_meta)
-
-    matched_counts = Counter()
-    for item in sequence:
-        n_id = item.get("noun_class", -1)
-        if n_id < 0:
-            continue
-        nk = noun_id_to_key.get(n_id)
-        if nk is None:
-            continue
-        if _noun_matches_words(nk, words):
-            matched_counts[nk] += 1
-
-    eligible = [(nk, c) for nk, c in matched_counts.most_common() if c >= min_count]
-    salient = set(nk for nk, _ in eligible[:k])
-
-    report = [
-        {"noun": nk, "count": int(c), "salient": nk in salient}
-        for nk, c in matched_counts.most_common()
-    ]
-    return salient, report
-
-def build_shared_hybrid_vocab(payload_fulls, recipe_meta, verb_classes, noun_classes,
-                              k=DEFAULT_SALIENT_K, node_min=SALIENT_NODE_MIN_COUNT):
-    """
-    Recipe-level salient vocabulary: pool the sequences of ALL sessions, then
-    run the same salience + evidence rules once. Guarantees every session of
-    this recipe maps actions onto the SAME state alphabet — the precondition
-    for pooling Markov transition counts across trials (Anderson & Goodman 1957).
-    """
+def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes):
     UNKNOWN = "unknown"
-    verb_id_to_cat = dict(zip(verb_classes['id'].astype(int), verb_classes['category']))
-    noun_id_to_key = dict(zip(noun_classes['id'].astype(int), noun_classes['key']))
+    verb_id_to_key = dict(zip(verb_classes["id"].astype(int), verb_classes["key"]))
+    noun_id_to_cat = dict(zip(noun_classes["id"].astype(int), noun_classes["category"]))
 
-    pooled = []
-    for p in payload_fulls:
-        pooled.extend(p["sequence"])
-
-    salient_nouns, report = extract_salient_nouns(recipe_meta, pooled, noun_classes, k=k)
-
-    candidate_counts = Counter()
-    for item in pooled:
-        v_id = item.get("verb_class", -1)
-        n_id = item.get("noun_class", -1)
-        v_cat = verb_id_to_cat.get(v_id, UNKNOWN) if v_id >= 0 else UNKNOWN
-        n_key = noun_id_to_key.get(n_id) if n_id >= 0 else None
-        if n_key is not None and n_key in salient_nouns:
-            candidate_counts[(v_cat, n_key)] += 1
-    kept_states = set(s for s, c in candidate_counts.items() if c >= node_min)
-
-    return {"salient_nouns": salient_nouns, "kept_states": kept_states,
-            "match_report": report, "pooled_actions": len(pooled)}
-
-def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes,
-                        k=DEFAULT_SALIENT_K,
-                        node_min=SALIENT_NODE_MIN_COUNT,
-                        shared_vocab=None):
-    """
-    Recipe-Salient Hybrid states (two-pass):
-      Pass 1: count candidate salient states (verb_cat, salient_noun).
-      Pass 2: state = f"{verb_cat}({noun})" iff the noun is recipe-salient
-              AND that (verb_cat, noun) pair was observed >= node_min times;
-              otherwise state = verb_cat (background tier).
-
-    The mapping is a deterministic function of (verb class, noun class,
-    recipe text, sequence) — observation-driven in the Video Textures sense,
-    no manual annotation, no dependence on step_times.
-    """
-    UNKNOWN = "unknown"
-    verb_id_to_cat = dict(zip(verb_classes['id'].astype(int), verb_classes['category']))
-    verb_id_to_key = dict(zip(verb_classes['id'].astype(int), verb_classes['key']))
-    noun_id_to_key = dict(zip(noun_classes['id'].astype(int), noun_classes['key']))
-
-    if shared_vocab is not None:
-        salient_nouns = shared_vocab["salient_nouns"]
-        salient_report = shared_vocab.get("match_report", [])
-        kept_states = shared_vocab["kept_states"]
-        vocab_scope = "recipe"
-    else:
-        salient_nouns, salient_report = extract_salient_nouns(
-            recipe_meta, payload["sequence"], noun_classes, k=k
-        )
-        candidate_counts = Counter()
-        for seq_item in payload["sequence"]:
-            v_id = seq_item.get("verb_class", -1)
-            n_id = seq_item.get("noun_class", -1)
-            v_cat = verb_id_to_cat.get(v_id, UNKNOWN) if v_id >= 0 else UNKNOWN
-            n_key = noun_id_to_key.get(n_id) if n_id >= 0 else None
-            if n_key is not None and n_key in salient_nouns:
-                candidate_counts[(v_cat, n_key)] += 1
-        kept_states = set(s for s, c in candidate_counts.items() if c >= node_min)
-        vocab_scope = "session"
-
-    # Pass 2 — map every action to its state
     hybrid_sequence = []
+    
+    # ── Pipeline 1: Full Sequence (For Swimlane/Barcode) ────────────────
     for seq_item in payload["sequence"]:
         v_id = seq_item.get("verb_class", -1)
         n_id = seq_item.get("noun_class", -1)
-        v_cat = verb_id_to_cat.get(v_id, UNKNOWN) if v_id >= 0 else UNKNOWN
-        n_key = noun_id_to_key.get(n_id) if n_id >= 0 else None
-
-        if (n_key is not None and n_key in salient_nouns
-                and (v_cat, n_key) in kept_states):
-            state = f"{v_cat}({n_key})"
-            is_salient = True
-        else:
-            state = v_cat
-            is_salient = False
-
+        
+        v_key = verb_id_to_key.get(v_id, UNKNOWN) if v_id >= 0 else UNKNOWN
+        n_cat = noun_id_to_cat.get(n_id, UNKNOWN) if n_id >= 0 else UNKNOWN 
+        
+        state = f"{v_key}({n_cat})"
+        
         m = seq_item.copy()
         m["raw_action"] = seq_item["action"]
         m["action"] = state
-        m["salient"] = is_salient
+        m["salient"] = True
+        m["kind"] = "action"
         hybrid_sequence.append(m)
 
-    # Per-node aggregates for the hover tooltip
-    node_counts = Counter(item["action"] for item in hybrid_sequence)
+    # Inject pure START and END into the FULL sequence
+    if hybrid_sequence:
+        t0 = hybrid_sequence[0]["start"]
+        t1 = hybrid_sequence[-1]["end"]
+        
+        start_item = {
+            "action": "START",
+            "raw_action": "START",
+            "start": max(0.0, t0 - 0.001),
+            "end": t0,
+            "duration": 0.0,
+            "step_id": None,
+            "is_primary": True, # Ensure it survives the filter
+            "phase": None,
+            "verb_class": -1,
+            "noun_class": -1,
+            "video_id": hybrid_sequence[0].get("video_id"),
+            "video_start": 0.0,
+            "video_end": 0.0,
+            "salient": False,
+            "kind": "start",
+        }
+        end_item = {
+            "action": "END",
+            "raw_action": "END",
+            "start": t1,
+            "end": t1 + 0.001,
+            "duration": 0.0,
+            "step_id": None,
+            "is_primary": True, # Ensure it survives the filter
+            "phase": None,
+            "verb_class": -1,
+            "noun_class": -1,
+            "video_id": hybrid_sequence[-1].get("video_id"),
+            "video_start": 0.0,
+            "video_end": 0.0,
+            "salient": False,
+            "kind": "end",
+        }
+        
+        hybrid_sequence = [start_item] + hybrid_sequence + [end_item]
+        
+        for i in range(len(hybrid_sequence)):
+            hybrid_sequence[i]["index"] = i
+            if i < len(hybrid_sequence) - 1:
+                hybrid_sequence[i]["next_action"] = hybrid_sequence[i+1]["action"]
+                hybrid_sequence[i]["edge_key"] = f'{hybrid_sequence[i]["action"]}|||{hybrid_sequence[i+1]["action"]}'
+            else:
+                hybrid_sequence[i]["next_action"] = None
+                hybrid_sequence[i]["edge_key"] = None
+
+    # ── Pipeline 2: Primary Sequence (For Motion Graph) ─────────────────
+    # Create a FILTERED sequence specifically for building the graph nodes/edges
+    primary_sequence = [item.copy() for item in hybrid_sequence if item.get("is_primary", True)]
+    
+    # Re-link the primary sequence so edges skip over the deleted secondary noise
+    for i in range(len(primary_sequence)):
+        if i < len(primary_sequence) - 1:
+            primary_sequence[i]["next_action"] = primary_sequence[i+1]["action"]
+            primary_sequence[i]["edge_key"] = f'{primary_sequence[i]["action"]}|||{primary_sequence[i+1]["action"]}'
+        else:
+            primary_sequence[i]["next_action"] = None
+            primary_sequence[i]["edge_key"] = None
+
+    # Compile Aggregates from PRIMARY sequence only
+    node_counts = Counter(item["action"] for item in primary_sequence)
     node_objects = defaultdict(Counter)
     node_verbs = defaultdict(Counter)
-    node_salient = {}
+    node_kind = {item["action"]: item.get("kind", "action") for item in primary_sequence}
 
-    for item in hybrid_sequence:
+    noun_id_to_key = dict(zip(noun_classes["id"].astype(int), noun_classes["key"]))
+    for item in primary_sequence:
         state = item["action"]
+        if state == "START" or state == "END":
+            continue
         v_id = item.get("verb_class", -1)
         n_id = item.get("noun_class", -1)
         if v_id >= 0:
             node_verbs[state][verb_id_to_key.get(v_id, str(v_id))] += 1
         if n_id >= 0:
             node_objects[state][noun_id_to_key.get(n_id, str(n_id))] += 1
-        node_salient[state] = item["salient"]
 
-    node_primary = compute_node_primary_majority(hybrid_sequence)
-    nodes = [
-        {
+    nodes = []
+    for state, c in sorted(node_counts.items(), key=lambda x: (-x[1], x[0])):
+        kind = node_kind.get(state, "action")
+        nodes.append({
             "id": state,
             "count": int(c),
-            "is_primary": bool(node_primary.get(state, True)),
-            "salient": bool(node_salient.get(state, False)),
-            "objects": dict(node_objects[state]),
-            "verbs": dict(node_verbs[state]),
-        }
-        for state, c in sorted(node_counts.items(), key=lambda x: (-x[1], x[0]))
-    ]
-    links = markov_links(hybrid_sequence)
+            "is_primary": True,
+            "salient": True if kind == "action" else False,
+            "objects": dict(node_objects.get(state, {})),
+            "verbs": dict(node_verbs.get(state, {})),
+            "kind": kind,
+            "is_start": kind == "start",
+            "is_end": kind == "end",
+        })
 
-    n_salient_nodes = sum(1 for n in nodes if n["salient"])
-    print(f"    Hybrid: {len(nodes)} nodes "
-          f"({n_salient_nodes} salient, {len(nodes) - n_salient_nodes} background); "
-          f"salient nouns: {sorted(salient_nouns)}")
+    dead_scores = _compute_dead_end_scores(primary_sequence, nodes)
+    for n in nodes:
+        n["dead_end_score"] = dead_scores.get(n["id"], 0.0)
+        
+    self_loops = _find_self_loops(primary_sequence)
+    links = markov_links(primary_sequence)
 
     result = payload.copy()
-    result["sequence"] = hybrid_sequence
-    result["graph"] = {"nodes": nodes, "links": links}
+    result["sequence"] = hybrid_sequence  # The UI gets the FULL sequence
+    result["graph"] = {"nodes": nodes, "links": links}  # The UI gets the CLEAN graph
     result["salient_config"] = {
-        "k": k,
-        "min_count": SALIENT_MIN_COUNT,
-        "node_min": node_min,
-        "salient_nouns": sorted(salient_nouns),
-        "vocab_scope": vocab_scope,
-        "match_report": salient_report,
+        "identity_rule": "verb_key(noun_category). Graph filtered for primary actions. Sequence keeps all actions."
+    }
+    result["analysis"] = {
+        "dead_ends": [
+            {"id": n["id"], "score": n["dead_end_score"]}
+            for n in sorted(nodes, key=lambda x: -x["dead_end_score"])
+            if n["kind"] == "action" and n["dead_end_score"] >= 0.5
+        ][:10],
+        "self_loops": [
+            {"id": nid, "count": c}
+            for nid, c in sorted(self_loops.items(), key=lambda x: -x[1])
+        ],
+        "start_id": "START" if primary_sequence else None,
+        "end_id": "END" if primary_sequence else None,
     }
     return result
 
@@ -825,13 +772,6 @@ def main():
     parser.add_argument("recipe_id", help="Recipe ID (e.g. P01_R01)")
     parser.add_argument("--outputs-dir", default="../outputs")
     parser.add_argument("--video-relative-dir", default="raw-video")
-    parser.add_argument("--salient-k", type=int, default=DEFAULT_SALIENT_K,
-                        help="Hybrid mode: max recipe-salient nouns that keep "
-                             "individual node identity (default 6).")
-    parser.add_argument("--salient-node-min", type=int, default=SALIENT_NODE_MIN_COUNT,
-                        help="Hybrid mode: min observations for a salient "
-                             "(verb_cat, noun) state to earn its own node "
-                             "(default 3).")
     args = parser.parse_args()
 
     recipe_id = args.recipe_id
@@ -870,14 +810,6 @@ def main():
             step_labels=step_labels, video_relative_dir=args.video_relative_dir,
         ))
 
-    # Recipe-level hybrid vocabulary (shared state space across sessions)
-    shared_vocab = build_shared_hybrid_vocab(
-        payload_fulls, recipe_meta, data["verb_classes"], data["noun_classes"],
-        k=args.salient_k, node_min=args.salient_node_min,
-    )
-    print(f"\nShared hybrid vocabulary ({shared_vocab['pooled_actions']} pooled actions): "
-          f"{sorted(shared_vocab['salient_nouns'])}")
-
     # Phase 2: per-session mode files
     for s, payload_full in zip(sessions, payload_fulls):
         print(f"\n[Session {s['index']}]")
@@ -888,9 +820,7 @@ def main():
         )
         payload_hybrid = create_hybrid_graph(
             payload_full, recipe_meta,
-            data["verb_classes"], data["noun_classes"],
-            k=args.salient_k, node_min=args.salient_node_min,
-            shared_vocab=shared_vocab,
+            data["verb_classes"], data["noun_classes"]
         )
 
         for filename, payload, label in [
@@ -898,7 +828,7 @@ def main():
             (f"session_{s['index']}_smart.json", payload_smart, "Smart-Merged"),
             (f"session_{s['index']}_abstracted.json", payload_abstracted, "Abstracted"),
             (f"session_{s['index']}_categorical.json", payload_categorical, "Categorical"),
-            (f"session_{s['index']}_hybrid.json", payload_hybrid, "Hybrid (Salient)"),
+            (f"session_{s['index']}_hybrid.json", payload_hybrid, "Hybrid (Filtered)"),
         ]:
             out_path = output_dir / filename
             with open(out_path, "w", encoding="utf-8") as f:

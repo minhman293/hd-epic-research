@@ -7193,6 +7193,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -7230,6 +7231,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -7265,6 +7267,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -7299,6 +7302,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S02",
         "per_session_step_ids": [
           "P01_R01_S02",
@@ -7333,6 +7337,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -7366,6 +7371,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -7399,6 +7405,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           "P01_R01_S03",
@@ -7431,6 +7438,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -7463,6 +7471,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           null,
@@ -7495,6 +7504,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           null,
@@ -7527,6 +7537,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -7559,6 +7570,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           null,
@@ -7591,6 +7603,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -7623,6 +7636,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S04",
         "per_session_step_ids": [
           "P01_R01_S01",
@@ -7655,6 +7669,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           "P01_R01_S05",
@@ -7686,6 +7701,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S04",
         "per_session_step_ids": [
           "P01_R01_S04",
@@ -7717,6 +7733,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           "P01_R01_S03",
@@ -7748,6 +7765,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           null,
@@ -7779,6 +7797,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           null,
@@ -7810,6 +7829,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S05",
         "per_session_step_ids": [
           null,
@@ -7841,6 +7861,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           "P01_R01_S03",
@@ -7872,6 +7893,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S04",
         "per_session_step_ids": [
           "P01_R01_S04",
@@ -7903,6 +7925,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -7934,6 +7957,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           null,
@@ -7964,6 +7988,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -7994,6 +8019,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8024,6 +8050,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S05",
         "per_session_step_ids": [
           "P01_R01_S05",
@@ -8054,6 +8081,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8084,6 +8112,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8114,6 +8143,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           "P01_R01_S01",
@@ -8144,6 +8174,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8174,6 +8205,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8204,6 +8236,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8234,6 +8267,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8264,6 +8298,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8294,6 +8329,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           null,
@@ -8323,6 +8359,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           "P01_R01_S01",
@@ -8352,6 +8389,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           null,
@@ -8381,6 +8419,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8410,6 +8449,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8439,6 +8479,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8468,6 +8509,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8497,6 +8539,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8526,6 +8569,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": true,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           "P01_R01_S01",
@@ -8555,6 +8599,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S05",
         "per_session_step_ids": [
           null,
@@ -8584,6 +8629,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8613,6 +8659,7 @@
         "support_fraction": 1.0,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": true,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8642,6 +8689,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           "P01_R01_S01",
@@ -8671,6 +8719,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8700,6 +8749,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8729,6 +8779,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S02",
         "per_session_step_ids": [
           null,
@@ -8758,6 +8809,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8787,6 +8839,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8816,6 +8869,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           "P01_R01_S03",
@@ -8844,6 +8898,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           null,
@@ -8872,6 +8927,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           null,
@@ -8900,6 +8956,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S04",
         "per_session_step_ids": [
           "P01_R01_S04",
@@ -8928,6 +8985,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -8956,6 +9014,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           null,
@@ -8984,6 +9043,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9012,6 +9072,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           null,
@@ -9040,6 +9101,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9068,6 +9130,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S05",
         "per_session_step_ids": [
           null,
@@ -9096,6 +9159,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S05",
         "per_session_step_ids": [
           "P01_R01_S05",
@@ -9124,6 +9188,7 @@
         "support_fraction": 0.667,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           null,
@@ -9152,6 +9217,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S02",
         "per_session_step_ids": [
           null,
@@ -9180,6 +9246,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9208,6 +9275,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9236,6 +9304,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9264,6 +9333,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9292,6 +9362,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9320,6 +9391,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9347,6 +9419,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9374,6 +9447,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9401,6 +9475,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9428,6 +9503,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9455,6 +9531,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9482,6 +9559,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9509,6 +9587,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9536,6 +9615,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           "P01_R01_S01",
@@ -9563,6 +9643,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S05",
         "per_session_step_ids": [
           null,
@@ -9590,6 +9671,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9617,6 +9699,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9644,6 +9727,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S05",
         "per_session_step_ids": [
           null,
@@ -9671,6 +9755,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           null,
@@ -9698,6 +9783,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9725,6 +9811,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9752,6 +9839,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S05",
         "per_session_step_ids": [
           null,
@@ -9779,6 +9867,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9806,6 +9895,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           "P01_R01_S01",
@@ -9833,6 +9923,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S04",
         "per_session_step_ids": [
           null,
@@ -9860,6 +9951,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9887,6 +9979,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9914,6 +10007,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           null,
@@ -9941,6 +10035,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -9968,6 +10063,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           null,
@@ -9995,6 +10091,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           null,
@@ -10022,6 +10119,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10049,6 +10147,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S04",
         "per_session_step_ids": [
           null,
@@ -10076,6 +10175,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10103,6 +10203,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10130,6 +10231,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S05",
         "per_session_step_ids": [
           "P01_R01_S05",
@@ -10157,6 +10259,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10184,6 +10287,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10211,6 +10315,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10238,6 +10343,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S05",
         "per_session_step_ids": [
           null,
@@ -10265,6 +10371,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           null,
@@ -10292,6 +10399,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10319,6 +10427,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10346,6 +10455,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10373,6 +10483,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10400,6 +10511,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10427,6 +10539,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10454,6 +10567,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           null,
@@ -10481,6 +10595,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           null,
@@ -10508,6 +10623,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10535,6 +10651,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10562,6 +10679,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S04",
         "per_session_step_ids": [
           null,
@@ -10589,6 +10707,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10616,6 +10735,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10643,6 +10763,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10670,6 +10791,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           null,
@@ -10697,6 +10819,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10724,6 +10847,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10751,6 +10875,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10778,6 +10903,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10805,6 +10931,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10832,6 +10959,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10859,6 +10987,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10886,6 +11015,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10913,6 +11043,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10940,6 +11071,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10967,6 +11099,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -10994,6 +11127,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11021,6 +11155,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           "P01_R01_S01",
@@ -11048,6 +11183,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11075,6 +11211,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           "P01_R01_S03",
@@ -11102,6 +11239,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           "P01_R01_S01",
@@ -11129,6 +11267,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11156,6 +11295,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11183,6 +11323,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           null,
@@ -11210,6 +11351,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11237,6 +11379,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           null,
@@ -11264,6 +11407,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11291,6 +11435,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11318,6 +11463,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": true,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S05",
         "per_session_step_ids": [
           "P01_R01_S05",
@@ -11345,6 +11491,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11372,6 +11519,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11399,6 +11547,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11426,6 +11575,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11453,6 +11603,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11480,6 +11631,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           null,
@@ -11507,6 +11659,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11534,6 +11687,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11561,6 +11715,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           null,
@@ -11588,6 +11743,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11615,6 +11771,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11642,6 +11799,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11669,6 +11827,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11696,6 +11855,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11723,6 +11883,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11750,6 +11911,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -11777,6 +11939,7 @@
         "support_fraction": 0.333,
         "n_sessions": 3,
         "is_primary": false,
+        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
@@ -19026,6 +19189,175 @@
         },
         "probability": 1.0
       }
+    ]
+  },
+  "analysis": {
+    "mandatory_nodes": [
+      "wash(milk)",
+      "press(button)",
+      "close(fridge)",
+      "close(tap)",
+      "open(drawer)",
+      "open(fridge)",
+      "open(tap)",
+      "take(cup)",
+      "open(bottle)",
+      "put(bottle)",
+      "put(milk)",
+      "take(bottle)",
+      "take(milk)",
+      "close(bin)",
+      "mix(coffee)",
+      "put(cup)",
+      "take(coffee)",
+      "throw(spoon)"
+    ],
+    "canonical_spine": [],
+    "canonical_spine_score": -1.0,
+    "dead_ends": [],
+    "session_similarity": [
+      [
+        1.0,
+        0.054,
+        0.067
+      ],
+      [
+        0.054,
+        1.0,
+        0.173
+      ],
+      [
+        0.067,
+        0.173,
+        1.0
+      ]
+    ],
+    "session_shared_prefix": [],
+    "session_shared_suffix": [],
+    "loops": [],
+    "session_singleton_nodes": [
+      "take(orange)",
+      "put(orange)",
+      "turn-off(food)",
+      "press(orange)",
+      "throw(skin)",
+      "lift(bowl)",
+      "put(knife)",
+      "take(knife)",
+      "turn(bowl)",
+      "turn-on(food)",
+      "close(box)",
+      "cut(orange)",
+      "flip(orange)",
+      "put(cereal)",
+      "put(cream)",
+      "take(towel)",
+      "turn(food)",
+      "wash(cream)",
+      "lift(bottle)",
+      "open(bin)",
+      "pull(bag)",
+      "put(glass)",
+      "put(plate)",
+      "put(spoon)",
+      "take(cereal)",
+      "take(glass)",
+      "turn(knob)",
+      "turn(orange)",
+      "turn-off(tap)",
+      "wash(bowl)",
+      "attach(milk)",
+      "close(bag)",
+      "close(drawer)",
+      "close(kettle)",
+      "close(machine:washing)",
+      "dry(hand)",
+      "feel(cupboard)",
+      "feel(roll)",
+      "flip(maker:coffee)",
+      "hold(cup)",
+      "hold(food)",
+      "hold(kettle)",
+      "hold(spoon)",
+      "hold(water)",
+      "insert(sponge)",
+      "insert(top)",
+      "lift(colander)",
+      "lift(cream)",
+      "lift(handle)",
+      "lift(maker:coffee)",
+      "lift(orange)",
+      "lift(pot)",
+      "lift(shelf)",
+      "lock(coffee)",
+      "look(alarm)",
+      "look(can)",
+      "move(box)",
+      "move(cup)",
+      "move(food)",
+      "move(package)",
+      "move(spoon)",
+      "open(cap)",
+      "open(scissors)",
+      "pat(bowl)",
+      "pat(top)",
+      "pour(water)",
+      "press(cupboard)",
+      "press(juicer)",
+      "press(plug)",
+      "press(top)",
+      "pull(handle)",
+      "put(bag)",
+      "put(box)",
+      "put(jug)",
+      "put(juicer)",
+      "put(plug)",
+      "put(pot)",
+      "put(scissors)",
+      "put(top)",
+      "put(vegetable)",
+      "put(water)",
+      "remove(cake)",
+      "remove(cream)",
+      "remove(orange)",
+      "remove(package)",
+      "remove(plug)",
+      "remove(skin)",
+      "remove(top)",
+      "scrub(bowl)",
+      "scrub(sponge)",
+      "shake(bag)",
+      "shake(skin)",
+      "slide(board:chopping)",
+      "slide(coffee)",
+      "slide(cupboard)",
+      "slide(milk)",
+      "stretch(hand)",
+      "switch(button)",
+      "take(bowl)",
+      "take(can)",
+      "take(food)",
+      "take(jug)",
+      "take(juicer)",
+      "take(lid)",
+      "take(rest)",
+      "take(roll)",
+      "take(scissors)",
+      "take(top)",
+      "take(tray)",
+      "take(vegetable)",
+      "throw(can)",
+      "throw(food)",
+      "throw(orange)",
+      "turn(can)",
+      "turn(glass)",
+      "turn(juicer)",
+      "turn(lid)",
+      "turn-off(machine:washing)",
+      "turn-on(plug)",
+      "wash(food)",
+      "wash(juicer)",
+      "wrap(scissors)"
     ]
   }
 }

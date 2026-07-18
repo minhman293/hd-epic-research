@@ -148,13 +148,33 @@
   ],
   "sequence": [
     {
+      "action": "START",
+      "raw_action": "START",
+      "start": 7.439,
+      "end": 7.44,
+      "duration": 0.0,
+      "step_id": null,
+      "is_primary": true,
+      "phase": null,
+      "verb_class": -1,
+      "noun_class": -1,
+      "video_id": "P01-20240202-110250",
+      "video_start": 0.0,
+      "video_end": 0.0,
+      "salient": false,
+      "kind": "start",
       "index": 0,
-      "action": "access",
+      "next_action": "open(storage)",
+      "edge_key": "START|||open(storage)"
+    },
+    {
+      "index": 1,
+      "action": "open(storage)",
       "start": 7.44,
       "end": 8.75,
       "duration": 1.3099999999999996,
       "next_action": "stretch(hand)",
-      "edge_key": "open(cupboard)|||stretch(hand)",
+      "edge_key": "open(storage)|||stretch(hand)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -164,16 +184,17 @@
       "video_start": 7.44,
       "video_end": 8.75,
       "raw_action": "open(cupboard)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 1,
-      "action": "manipulate",
+      "index": 2,
+      "action": "stretch(hand)",
       "start": 8.85,
       "end": 9.36,
       "duration": 0.5099999999999998,
-      "next_action": "take(cup)",
-      "edge_key": "stretch(hand)|||take(cup)",
+      "next_action": "take(crockery)",
+      "edge_key": "stretch(hand)|||take(crockery)",
       "step_id": "P01_R01_S01",
       "is_primary": false,
       "phase": "prep",
@@ -183,16 +204,17 @@
       "video_start": 8.85,
       "video_end": 9.36,
       "raw_action": "stretch(hand)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 2,
-      "action": "retrieve",
+      "index": 3,
+      "action": "take(crockery)",
       "start": 9.34,
       "end": 11.16,
       "duration": 1.8200000000000003,
-      "next_action": "turn(cup)",
-      "edge_key": "take(cup)|||turn(cup)",
+      "next_action": "turn(crockery)",
+      "edge_key": "take(crockery)|||turn(crockery)",
       "step_id": "P01_R01_S01",
       "is_primary": false,
       "phase": "prep",
@@ -202,16 +224,17 @@
       "video_start": 9.34,
       "video_end": 11.16,
       "raw_action": "take(cup)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 3,
-      "action": "manipulate",
+      "index": 4,
+      "action": "turn(crockery)",
       "start": 11.15,
       "end": 11.6,
       "duration": 0.4499999999999993,
-      "next_action": "close(cupboard)",
-      "edge_key": "turn(cup)|||close(cupboard)",
+      "next_action": "close(storage)",
+      "edge_key": "turn(crockery)|||close(storage)",
       "step_id": "P01_R01_S01",
       "is_primary": false,
       "phase": "prep",
@@ -221,16 +244,17 @@
       "video_start": 11.15,
       "video_end": 11.6,
       "raw_action": "turn(cup)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 4,
-      "action": "block",
+      "index": 5,
+      "action": "close(storage)",
       "start": 11.5,
       "end": 12.18,
       "duration": 0.6799999999999997,
-      "next_action": "flip(maker:coffee)",
-      "edge_key": "close(cupboard)|||flip(maker:coffee)",
+      "next_action": "flip(appliances)",
+      "edge_key": "close(storage)|||flip(appliances)",
       "step_id": "P01_R01_S01",
       "is_primary": false,
       "phase": "prep",
@@ -240,16 +264,17 @@
       "video_start": 11.5,
       "video_end": 12.18,
       "raw_action": "close(cupboard)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 5,
-      "action": "manipulate",
+      "index": 6,
+      "action": "flip(appliances)",
       "start": 13.73,
       "end": 14.11,
       "duration": 0.379999999999999,
-      "next_action": "put(cup)",
-      "edge_key": "flip(maker:coffee)|||put(cup)",
+      "next_action": "put(crockery)",
+      "edge_key": "flip(appliances)|||put(crockery)",
       "step_id": "P01_R01_S01",
       "is_primary": false,
       "phase": "prep",
@@ -259,16 +284,17 @@
       "video_start": 13.73,
       "video_end": 14.11,
       "raw_action": "flip(maker:coffee)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 6,
-      "action": "leave",
+      "index": 7,
+      "action": "put(crockery)",
       "start": 14.2,
       "end": 14.55,
       "duration": 0.3500000000000014,
-      "next_action": "take(coffee)",
-      "edge_key": "put(cup)|||take(coffee)",
+      "next_action": "take(drinks)",
+      "edge_key": "put(crockery)|||take(drinks)",
       "step_id": "P01_R01_S01",
       "is_primary": false,
       "phase": "prep",
@@ -278,16 +304,17 @@
       "video_start": 14.2,
       "video_end": 14.55,
       "raw_action": "put(cup)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 7,
-      "action": "retrieve(coffee)",
+      "index": 8,
+      "action": "take(drinks)",
       "start": 14.81,
       "end": 15.08,
       "duration": 0.2699999999999996,
-      "next_action": "press(button)",
-      "edge_key": "take(coffee)|||press(button)",
+      "next_action": "press(appliances)",
+      "edge_key": "take(drinks)|||press(appliances)",
       "step_id": "P01_R01_S01",
       "is_primary": false,
       "phase": "prep",
@@ -297,16 +324,17 @@
       "video_start": 14.81,
       "video_end": 15.08,
       "raw_action": "take(coffee)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 8,
-      "action": "manipulate(button)",
+      "index": 9,
+      "action": "press(appliances)",
       "start": 15.36,
       "end": 15.65,
       "duration": 0.2900000000000009,
-      "next_action": "lift(handle)",
-      "edge_key": "press(button)|||lift(handle)",
+      "next_action": "lift(cookware)",
+      "edge_key": "press(appliances)|||lift(cookware)",
       "step_id": "P01_R01_S02",
       "is_primary": true,
       "phase": "exec",
@@ -316,16 +344,17 @@
       "video_start": 15.36,
       "video_end": 15.65,
       "raw_action": "press(button)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 9,
-      "action": "retrieve",
+      "index": 10,
+      "action": "lift(cookware)",
       "start": 16.06,
       "end": 16.64,
       "duration": 0.5800000000000018,
-      "next_action": "slide(coffee)",
-      "edge_key": "lift(handle)|||slide(coffee)",
+      "next_action": "slide(drinks)",
+      "edge_key": "lift(cookware)|||slide(drinks)",
       "step_id": "P01_R01_S01",
       "is_primary": false,
       "phase": "prep",
@@ -335,16 +364,17 @@
       "video_start": 16.06,
       "video_end": 16.64,
       "raw_action": "lift(handle)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 10,
-      "action": "manipulate",
+      "index": 11,
+      "action": "slide(drinks)",
       "start": 16.08,
       "end": 17.26,
       "duration": 1.1800000000000033,
-      "next_action": "pull(handle)",
-      "edge_key": "slide(coffee)|||pull(handle)",
+      "next_action": "pull(cookware)",
+      "edge_key": "slide(drinks)|||pull(cookware)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
       "phase": "exec",
@@ -354,16 +384,17 @@
       "video_start": 16.08,
       "video_end": 17.26,
       "raw_action": "slide(coffee)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 11,
-      "action": "manipulate",
+      "index": 12,
+      "action": "pull(cookware)",
       "start": 17.4,
       "end": 18.02,
       "duration": 0.620000000000001,
-      "next_action": "open(fridge)",
-      "edge_key": "pull(handle)|||open(fridge)",
+      "next_action": "open(appliances)",
+      "edge_key": "pull(cookware)|||open(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -373,16 +404,17 @@
       "video_start": 17.4,
       "video_end": 18.02,
       "raw_action": "pull(handle)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 12,
-      "action": "access",
+      "index": 13,
+      "action": "open(appliances)",
       "start": 19.75,
       "end": 21.1,
       "duration": 1.3500000000000014,
-      "next_action": "take(bottle)",
-      "edge_key": "open(fridge)|||take(bottle)",
+      "next_action": "take(containers)",
+      "edge_key": "open(appliances)|||take(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -392,16 +424,17 @@
       "video_start": 19.75,
       "video_end": 21.1,
       "raw_action": "open(fridge)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 13,
-      "action": "retrieve",
+      "index": 14,
+      "action": "take(containers)",
       "start": 21.4,
       "end": 22.0,
       "duration": 0.6000000000000014,
-      "next_action": "close(fridge)",
-      "edge_key": "take(bottle)|||close(fridge)",
+      "next_action": "close(appliances)",
+      "edge_key": "take(containers)|||close(appliances)",
       "step_id": "P01_R01_S03",
       "is_primary": false,
       "phase": "prep",
@@ -411,16 +444,17 @@
       "video_start": 21.4,
       "video_end": 22.0,
       "raw_action": "take(bottle)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 14,
-      "action": "block",
+      "index": 15,
+      "action": "close(appliances)",
       "start": 22.1,
       "end": 23.47,
       "duration": 1.3699999999999974,
-      "next_action": "slide(milk)",
-      "edge_key": "close(fridge)|||slide(milk)",
+      "next_action": "slide(dairy and eggs)",
+      "edge_key": "close(appliances)|||slide(dairy and eggs)",
       "step_id": "P01_R01_S03",
       "is_primary": false,
       "phase": "prep",
@@ -430,16 +464,17 @@
       "video_start": 22.1,
       "video_end": 23.47,
       "raw_action": "close(fridge)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 15,
-      "action": "manipulate(milk)",
+      "index": 16,
+      "action": "slide(dairy and eggs)",
       "start": 24.55,
       "end": 25.5,
       "duration": 0.9499999999999993,
-      "next_action": "open(bottle)",
-      "edge_key": "slide(milk)|||open(bottle)",
+      "next_action": "open(containers)",
+      "edge_key": "slide(dairy and eggs)|||open(containers)",
       "step_id": "P01_R01_S03",
       "is_primary": false,
       "phase": "prep",
@@ -449,16 +484,17 @@
       "video_start": 24.55,
       "video_end": 25.5,
       "raw_action": "slide(milk)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 16,
-      "action": "access",
+      "index": 17,
+      "action": "open(containers)",
       "start": 25.75,
       "end": 26.8,
       "duration": 1.0500000000000007,
-      "next_action": "lift(bottle)",
-      "edge_key": "open(bottle)|||lift(bottle)",
+      "next_action": "lift(containers)",
+      "edge_key": "open(containers)|||lift(containers)",
       "step_id": "P01_R01_S03",
       "is_primary": false,
       "phase": "prep",
@@ -468,16 +504,17 @@
       "video_start": 25.75,
       "video_end": 26.8,
       "raw_action": "open(bottle)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 17,
-      "action": "retrieve",
+      "index": 18,
+      "action": "lift(containers)",
       "start": 27.0,
       "end": 27.5,
       "duration": 0.5,
-      "next_action": "lift(bottle)",
-      "edge_key": "lift(bottle)|||lift(bottle)",
+      "next_action": "lift(containers)",
+      "edge_key": "lift(containers)|||lift(containers)",
       "step_id": "P01_R01_S03",
       "is_primary": true,
       "phase": "exec",
@@ -487,16 +524,17 @@
       "video_start": 27.0,
       "video_end": 27.5,
       "raw_action": "lift(bottle)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 18,
-      "action": "retrieve",
+      "index": 19,
+      "action": "lift(containers)",
       "start": 27.61,
       "end": 33.79,
       "duration": 6.18,
-      "next_action": "turn-on(milk)",
-      "edge_key": "lift(bottle)|||turn-on(milk)",
+      "next_action": "turn-on(dairy and eggs)",
+      "edge_key": "lift(containers)|||turn-on(dairy and eggs)",
       "step_id": "P01_R01_S03",
       "is_primary": true,
       "phase": "exec",
@@ -506,16 +544,17 @@
       "video_start": 27.61,
       "video_end": 33.79,
       "raw_action": "lift(bottle)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 19,
-      "action": "access(milk)",
+      "index": 20,
+      "action": "turn-on(dairy and eggs)",
       "start": 30.7,
       "end": 32.4,
       "duration": 1.6999999999999993,
-      "next_action": "take(bottle)",
-      "edge_key": "turn-on(milk)|||take(bottle)",
+      "next_action": "take(containers)",
+      "edge_key": "turn-on(dairy and eggs)|||take(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -525,16 +564,17 @@
       "video_start": 30.7,
       "video_end": 32.4,
       "raw_action": "turn-on(milk)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 20,
-      "action": "retrieve",
+      "index": 21,
+      "action": "take(containers)",
       "start": 34.14,
       "end": 34.83,
       "duration": 0.6899999999999977,
-      "next_action": "open(fridge)",
-      "edge_key": "take(bottle)|||open(fridge)",
+      "next_action": "open(appliances)",
+      "edge_key": "take(containers)|||open(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -544,16 +584,17 @@
       "video_start": 34.14,
       "video_end": 34.83,
       "raw_action": "take(bottle)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 21,
-      "action": "access",
+      "index": 22,
+      "action": "open(appliances)",
       "start": 36.07,
       "end": 37.07,
       "duration": 1.0,
-      "next_action": "put(bottle)",
-      "edge_key": "open(fridge)|||put(bottle)",
+      "next_action": "put(containers)",
+      "edge_key": "open(appliances)|||put(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -563,16 +604,17 @@
       "video_start": 36.07,
       "video_end": 37.07,
       "raw_action": "open(fridge)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 22,
-      "action": "leave",
+      "index": 23,
+      "action": "put(containers)",
       "start": 37.17,
       "end": 38.09,
       "duration": 0.9200000000000017,
-      "next_action": "close(fridge)",
-      "edge_key": "put(bottle)|||close(fridge)",
+      "next_action": "close(appliances)",
+      "edge_key": "put(containers)|||close(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -582,16 +624,17 @@
       "video_start": 37.17,
       "video_end": 38.09,
       "raw_action": "put(bottle)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 23,
-      "action": "block",
+      "index": 24,
+      "action": "close(appliances)",
       "start": 38.02,
       "end": 38.64,
       "duration": 0.6199999999999974,
-      "next_action": "press(button)",
-      "edge_key": "close(fridge)|||press(button)",
+      "next_action": "press(appliances)",
+      "edge_key": "close(appliances)|||press(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -601,16 +644,17 @@
       "video_start": 38.02,
       "video_end": 38.64,
       "raw_action": "close(fridge)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 24,
-      "action": "manipulate(button)",
+      "index": 25,
+      "action": "press(appliances)",
       "start": 41.19,
       "end": 42.43,
       "duration": 1.240000000000002,
-      "next_action": "open(drawer)",
-      "edge_key": "press(button)|||open(drawer)",
+      "next_action": "open(furniture)",
+      "edge_key": "press(appliances)|||open(furniture)",
       "step_id": "P01_R01_S02",
       "is_primary": true,
       "phase": "exec",
@@ -620,16 +664,17 @@
       "video_start": 41.19,
       "video_end": 42.43,
       "raw_action": "press(button)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 25,
-      "action": "access",
+      "index": 26,
+      "action": "open(furniture)",
       "start": 48.28,
       "end": 49.29,
       "duration": 1.009999999999998,
-      "next_action": "take(scissors)",
-      "edge_key": "open(drawer)|||take(scissors)",
+      "next_action": "take(utensils)",
+      "edge_key": "open(furniture)|||take(utensils)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -639,16 +684,17 @@
       "video_start": 48.28,
       "video_end": 49.29,
       "raw_action": "open(drawer)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 26,
-      "action": "retrieve",
+      "index": 27,
+      "action": "take(utensils)",
       "start": 49.54,
       "end": 50.04,
       "duration": 0.5,
-      "next_action": "remove(package)",
-      "edge_key": "take(scissors)|||remove(package)",
+      "next_action": "remove(containers)",
+      "edge_key": "take(utensils)|||remove(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -658,16 +704,17 @@
       "video_start": 49.54,
       "video_end": 50.04,
       "raw_action": "take(scissors)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 27,
-      "action": "retrieve",
+      "index": 28,
+      "action": "remove(containers)",
       "start": 50.17,
       "end": 51.04,
       "duration": 0.8699999999999974,
-      "next_action": "open(scissors)",
-      "edge_key": "remove(package)|||open(scissors)",
+      "next_action": "open(utensils)",
+      "edge_key": "remove(containers)|||open(utensils)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -677,16 +724,17 @@
       "video_start": 50.17,
       "video_end": 51.04,
       "raw_action": "remove(package)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 28,
-      "action": "access",
+      "index": 29,
+      "action": "open(utensils)",
       "start": 51.41,
       "end": 52.71,
       "duration": 1.3000000000000043,
-      "next_action": "take(orange)",
-      "edge_key": "open(scissors)|||take(orange)",
+      "next_action": "take(fruits and nuts)",
+      "edge_key": "open(utensils)|||take(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -696,16 +744,17 @@
       "video_start": 51.41,
       "video_end": 52.71,
       "raw_action": "open(scissors)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 29,
-      "action": "retrieve",
+      "index": 30,
+      "action": "take(fruits and nuts)",
       "start": 53.31,
       "end": 54.11,
       "duration": 0.7999999999999972,
-      "next_action": "take(orange)",
-      "edge_key": "take(orange)|||take(orange)",
+      "next_action": "take(fruits and nuts)",
+      "edge_key": "take(fruits and nuts)|||take(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -715,16 +764,17 @@
       "video_start": 53.31,
       "video_end": 54.11,
       "raw_action": "take(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 30,
-      "action": "retrieve",
+      "index": 31,
+      "action": "take(fruits and nuts)",
       "start": 55.26,
       "end": 55.62,
       "duration": 0.35999999999999943,
-      "next_action": "take(orange)",
-      "edge_key": "take(orange)|||take(orange)",
+      "next_action": "take(fruits and nuts)",
+      "edge_key": "take(fruits and nuts)|||take(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -734,16 +784,17 @@
       "video_start": 55.26,
       "video_end": 55.62,
       "raw_action": "take(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 31,
-      "action": "retrieve",
+      "index": 32,
+      "action": "take(fruits and nuts)",
       "start": 56.6,
       "end": 57.98,
       "duration": 1.3799999999999955,
-      "next_action": "wrap(scissors)",
-      "edge_key": "take(orange)|||wrap(scissors)",
+      "next_action": "wrap(utensils)",
+      "edge_key": "take(fruits and nuts)|||wrap(utensils)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -753,16 +804,17 @@
       "video_start": 56.6,
       "video_end": 57.98,
       "raw_action": "take(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 32,
-      "action": "block",
+      "index": 33,
+      "action": "wrap(utensils)",
       "start": 58.66,
       "end": 60.48,
       "duration": 1.8200000000000003,
-      "next_action": "open(drawer)",
-      "edge_key": "wrap(scissors)|||open(drawer)",
+      "next_action": "open(furniture)",
+      "edge_key": "wrap(utensils)|||open(furniture)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -772,16 +824,17 @@
       "video_start": 58.66,
       "video_end": 60.48,
       "raw_action": "wrap(scissors)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 33,
-      "action": "access",
+      "index": 34,
+      "action": "open(furniture)",
       "start": 61.54,
       "end": 62.54,
       "duration": 1.0,
-      "next_action": "put(scissors)",
-      "edge_key": "open(drawer)|||put(scissors)",
+      "next_action": "put(utensils)",
+      "edge_key": "open(furniture)|||put(utensils)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -791,16 +844,17 @@
       "video_start": 61.54,
       "video_end": 62.54,
       "raw_action": "open(drawer)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 34,
-      "action": "leave",
+      "index": 35,
+      "action": "put(utensils)",
       "start": 62.44,
       "end": 62.78,
       "duration": 0.3400000000000034,
-      "next_action": "slide(board:chopping)",
-      "edge_key": "put(scissors)|||slide(board:chopping)",
+      "next_action": "slide(utensils)",
+      "edge_key": "put(utensils)|||slide(utensils)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -810,16 +864,17 @@
       "video_start": 62.44,
       "video_end": 62.78,
       "raw_action": "put(scissors)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 35,
-      "action": "manipulate",
+      "index": 36,
+      "action": "slide(utensils)",
       "start": 64.86,
       "end": 65.84,
       "duration": 0.980000000000004,
-      "next_action": "take(food)",
-      "edge_key": "slide(board:chopping)|||take(food)",
+      "next_action": "take(prepared food)",
+      "edge_key": "slide(utensils)|||take(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -829,16 +884,17 @@
       "video_start": 64.86,
       "video_end": 65.84,
       "raw_action": "slide(board:chopping)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 36,
-      "action": "retrieve",
+      "index": 37,
+      "action": "take(prepared food)",
       "start": 66.2,
       "end": 68.92,
       "duration": 2.719999999999999,
-      "next_action": "hold(food)",
-      "edge_key": "take(food)|||hold(food)",
+      "next_action": "hold(prepared food)",
+      "edge_key": "take(prepared food)|||hold(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -848,16 +904,17 @@
       "video_start": 66.2,
       "video_end": 68.92,
       "raw_action": "take(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 37,
-      "action": "manipulate",
+      "index": 38,
+      "action": "hold(prepared food)",
       "start": 69.58,
       "end": 69.91,
       "duration": 0.3299999999999983,
-      "next_action": "remove(plug)",
-      "edge_key": "hold(food)|||remove(plug)",
+      "next_action": "remove(appliances)",
+      "edge_key": "hold(prepared food)|||remove(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -867,16 +924,17 @@
       "video_start": 69.58,
       "video_end": 69.91,
       "raw_action": "hold(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 38,
-      "action": "retrieve",
+      "index": 39,
+      "action": "remove(appliances)",
       "start": 70.27,
       "end": 70.55,
       "duration": 0.28000000000000114,
-      "next_action": "put(plug)",
-      "edge_key": "remove(plug)|||put(plug)",
+      "next_action": "put(appliances)",
+      "edge_key": "remove(appliances)|||put(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -886,16 +944,17 @@
       "video_start": 70.27,
       "video_end": 70.55,
       "raw_action": "remove(plug)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 39,
-      "action": "leave",
+      "index": 40,
+      "action": "put(appliances)",
       "start": 71.03,
       "end": 71.86,
       "duration": 0.8299999999999983,
-      "next_action": "press(plug)",
-      "edge_key": "put(plug)|||press(plug)",
+      "next_action": "press(appliances)",
+      "edge_key": "put(appliances)|||press(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -905,16 +964,17 @@
       "video_start": 71.03,
       "video_end": 71.86,
       "raw_action": "put(plug)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 40,
-      "action": "manipulate",
+      "index": 41,
+      "action": "press(appliances)",
       "start": 71.93,
       "end": 72.49,
       "duration": 0.5599999999999881,
-      "next_action": "turn(lid)",
-      "edge_key": "press(plug)|||turn(lid)",
+      "next_action": "turn(containers)",
+      "edge_key": "press(appliances)|||turn(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -924,16 +984,17 @@
       "video_start": 71.93,
       "video_end": 72.49,
       "raw_action": "press(plug)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 41,
-      "action": "manipulate",
+      "index": 42,
+      "action": "turn(containers)",
       "start": 73.14,
       "end": 73.94,
       "duration": 0.7999999999999972,
-      "next_action": "put(lid)",
-      "edge_key": "turn(lid)|||put(lid)",
+      "next_action": "put(containers)",
+      "edge_key": "turn(containers)|||put(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -943,16 +1004,17 @@
       "video_start": 73.14,
       "video_end": 73.94,
       "raw_action": "turn(lid)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 42,
-      "action": "leave",
+      "index": 43,
+      "action": "put(containers)",
       "start": 74.16,
       "end": 74.74,
       "duration": 0.5799999999999983,
-      "next_action": "open(cupboard)",
-      "edge_key": "put(lid)|||open(cupboard)",
+      "next_action": "open(storage)",
+      "edge_key": "put(containers)|||open(storage)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -962,16 +1024,17 @@
       "video_start": 74.16,
       "video_end": 74.74,
       "raw_action": "put(lid)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 43,
-      "action": "access",
+      "index": 44,
+      "action": "open(storage)",
       "start": 76.15,
       "end": 78.0,
       "duration": 1.8499999999999943,
-      "next_action": "move(package)",
-      "edge_key": "open(cupboard)|||move(package)",
+      "next_action": "move(containers)",
+      "edge_key": "open(storage)|||move(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -981,16 +1044,17 @@
       "video_start": 76.15,
       "video_end": 78.0,
       "raw_action": "open(cupboard)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 44,
-      "action": "transition",
+      "index": 45,
+      "action": "move(containers)",
       "start": 81.51,
       "end": 82.59,
       "duration": 1.0799999999999983,
-      "next_action": "take(juicer)",
-      "edge_key": "move(package)|||take(juicer)",
+      "next_action": "take(utensils)",
+      "edge_key": "move(containers)|||take(utensils)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1000,16 +1064,17 @@
       "video_start": 81.51,
       "video_end": 82.59,
       "raw_action": "move(package)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 45,
-      "action": "retrieve",
+      "index": 46,
+      "action": "take(utensils)",
       "start": 84.55,
       "end": 85.23,
       "duration": 0.6800000000000068,
-      "next_action": "close(cupboard)",
-      "edge_key": "take(juicer)|||close(cupboard)",
+      "next_action": "close(storage)",
+      "edge_key": "take(utensils)|||close(storage)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1019,16 +1084,17 @@
       "video_start": 84.55,
       "video_end": 85.23,
       "raw_action": "take(juicer)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 46,
-      "action": "block",
+      "index": 47,
+      "action": "close(storage)",
       "start": 85.85,
       "end": 87.47,
       "duration": 1.6200000000000045,
-      "next_action": "move(box)",
-      "edge_key": "close(cupboard)|||move(box)",
+      "next_action": "move(containers)",
+      "edge_key": "close(storage)|||move(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1038,16 +1104,17 @@
       "video_start": 85.85,
       "video_end": 87.47,
       "raw_action": "close(cupboard)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 47,
-      "action": "transition",
+      "index": 48,
+      "action": "move(containers)",
       "start": 87.21000000000001,
       "end": 89.05,
       "duration": 1.8399999999999892,
-      "next_action": "slide(cupboard)",
-      "edge_key": "move(box)|||slide(cupboard)",
+      "next_action": "slide(storage)",
+      "edge_key": "move(containers)|||slide(storage)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1057,16 +1124,17 @@
       "video_start": 87.21000000000001,
       "video_end": 89.05,
       "raw_action": "move(box)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 48,
-      "action": "manipulate",
+      "index": 49,
+      "action": "slide(storage)",
       "start": 89.36,
       "end": 90.29,
       "duration": 0.9300000000000068,
-      "next_action": "press(cupboard)",
-      "edge_key": "slide(cupboard)|||press(cupboard)",
+      "next_action": "press(storage)",
+      "edge_key": "slide(storage)|||press(storage)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1076,16 +1144,17 @@
       "video_start": 89.36,
       "video_end": 90.29,
       "raw_action": "slide(cupboard)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 49,
-      "action": "manipulate",
+      "index": 50,
+      "action": "press(storage)",
       "start": 90.63,
       "end": 91.38,
       "duration": 0.75,
-      "next_action": "put(juicer)",
-      "edge_key": "press(cupboard)|||put(juicer)",
+      "next_action": "put(utensils)",
+      "edge_key": "press(storage)|||put(utensils)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1095,16 +1164,17 @@
       "video_start": 90.63,
       "video_end": 91.38,
       "raw_action": "press(cupboard)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 50,
-      "action": "leave",
+      "index": 51,
+      "action": "put(utensils)",
       "start": 93.43,
       "end": 94.65,
       "duration": 1.2199999999999989,
-      "next_action": "turn(juicer)",
-      "edge_key": "put(juicer)|||turn(juicer)",
+      "next_action": "turn(utensils)",
+      "edge_key": "put(utensils)|||turn(utensils)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1114,16 +1184,17 @@
       "video_start": 93.43,
       "video_end": 94.65,
       "raw_action": "put(juicer)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 51,
-      "action": "manipulate",
+      "index": 52,
+      "action": "turn(utensils)",
       "start": 94.49,
       "end": 95.36,
       "duration": 0.8700000000000045,
-      "next_action": "lift(cream)",
-      "edge_key": "turn(juicer)|||lift(cream)",
+      "next_action": "lift(dairy and eggs)",
+      "edge_key": "turn(utensils)|||lift(dairy and eggs)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1133,16 +1204,17 @@
       "video_start": 94.49,
       "video_end": 95.36,
       "raw_action": "turn(juicer)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 52,
-      "action": "retrieve",
+      "index": 53,
+      "action": "lift(dairy and eggs)",
       "start": 95.46,
       "end": 97.82,
       "duration": 2.3599999999999994,
-      "next_action": "turn(knob)",
-      "edge_key": "lift(cream)|||turn(knob)",
+      "next_action": "turn(appliances)",
+      "edge_key": "lift(dairy and eggs)|||turn(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1152,16 +1224,17 @@
       "video_start": 95.46,
       "video_end": 97.82,
       "raw_action": "lift(cream)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 53,
-      "action": "manipulate",
+      "index": 54,
+      "action": "turn(appliances)",
       "start": 97.92,
       "end": 98.88,
       "duration": 0.9599999999999937,
-      "next_action": "switch(button)",
-      "edge_key": "turn(knob)|||switch(button)",
+      "next_action": "switch(appliances)",
+      "edge_key": "turn(appliances)|||switch(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1171,16 +1244,17 @@
       "video_start": 97.92,
       "video_end": 98.88,
       "raw_action": "turn(knob)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 54,
-      "action": "access",
+      "index": 55,
+      "action": "switch(appliances)",
       "start": 98.98,
       "end": 100.14,
       "duration": 1.1599999999999966,
-      "next_action": "turn(food)",
-      "edge_key": "switch(button)|||turn(food)",
+      "next_action": "turn(prepared food)",
+      "edge_key": "switch(appliances)|||turn(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1190,16 +1264,17 @@
       "video_start": 98.98,
       "video_end": 100.14,
       "raw_action": "switch(button)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 55,
-      "action": "manipulate",
+      "index": 56,
+      "action": "turn(prepared food)",
       "start": 100.09,
       "end": 100.94,
       "duration": 0.8499999999999943,
-      "next_action": "turn(knob)",
-      "edge_key": "turn(food)|||turn(knob)",
+      "next_action": "turn(appliances)",
+      "edge_key": "turn(prepared food)|||turn(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1209,16 +1284,17 @@
       "video_start": 100.09,
       "video_end": 100.94,
       "raw_action": "turn(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 56,
-      "action": "manipulate",
+      "index": 57,
+      "action": "turn(appliances)",
       "start": 100.9,
       "end": 101.71,
       "duration": 0.8099999999999881,
-      "next_action": "take(orange)",
-      "edge_key": "turn(knob)|||take(orange)",
+      "next_action": "take(fruits and nuts)",
+      "edge_key": "turn(appliances)|||take(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1228,16 +1304,17 @@
       "video_start": 100.9,
       "video_end": 101.71,
       "raw_action": "turn(knob)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 57,
-      "action": "retrieve",
+      "index": 58,
+      "action": "take(fruits and nuts)",
       "start": 101.81,
       "end": 102.93,
       "duration": 1.1200000000000045,
-      "next_action": "put(orange)",
-      "edge_key": "take(orange)|||put(orange)",
+      "next_action": "put(fruits and nuts)",
+      "edge_key": "take(fruits and nuts)|||put(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1247,16 +1324,17 @@
       "video_start": 101.81,
       "video_end": 102.93,
       "raw_action": "take(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 58,
-      "action": "leave",
+      "index": 59,
+      "action": "put(fruits and nuts)",
       "start": 103.03,
       "end": 103.78,
       "duration": 0.75,
-      "next_action": "open(drawer)",
-      "edge_key": "put(orange)|||open(drawer)",
+      "next_action": "open(furniture)",
+      "edge_key": "put(fruits and nuts)|||open(furniture)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1266,16 +1344,17 @@
       "video_start": 103.03,
       "video_end": 103.78,
       "raw_action": "put(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 59,
-      "action": "access",
+      "index": 60,
+      "action": "open(furniture)",
       "start": 103.88,
       "end": 104.92,
       "duration": 1.0400000000000063,
-      "next_action": "take(vegetable)",
-      "edge_key": "open(drawer)|||take(vegetable)",
+      "next_action": "take(vegetables)",
+      "edge_key": "open(furniture)|||take(vegetables)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1285,16 +1364,17 @@
       "video_start": 103.88,
       "video_end": 104.92,
       "raw_action": "open(drawer)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 60,
-      "action": "retrieve",
+      "index": 61,
+      "action": "take(vegetables)",
       "start": 105.13,
       "end": 106.1,
       "duration": 0.9699999999999989,
-      "next_action": "take(roll)",
-      "edge_key": "take(vegetable)|||take(roll)",
+      "next_action": "take(baked goods and grains)",
+      "edge_key": "take(vegetables)|||take(baked goods and grains)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1304,16 +1384,17 @@
       "video_start": 105.13,
       "video_end": 106.1,
       "raw_action": "take(vegetable)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 61,
-      "action": "retrieve",
+      "index": 62,
+      "action": "take(baked goods and grains)",
       "start": 106.2,
       "end": 108.67,
       "duration": 2.469999999999999,
-      "next_action": "feel(roll)",
-      "edge_key": "take(roll)|||feel(roll)",
+      "next_action": "feel(baked goods and grains)",
+      "edge_key": "take(baked goods and grains)|||feel(baked goods and grains)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1323,16 +1404,17 @@
       "video_start": 106.2,
       "video_end": 108.67,
       "raw_action": "take(roll)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 62,
-      "action": "sense",
+      "index": 63,
+      "action": "feel(baked goods and grains)",
       "start": 108.64,
       "end": 116.04,
       "duration": 7.400000000000006,
-      "next_action": "pull(bag)",
-      "edge_key": "feel(roll)|||pull(bag)",
+      "next_action": "pull(containers)",
+      "edge_key": "feel(baked goods and grains)|||pull(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1342,16 +1424,17 @@
       "video_start": 108.64,
       "video_end": 116.04,
       "raw_action": "feel(roll)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 63,
-      "action": "manipulate",
+      "index": 64,
+      "action": "pull(containers)",
       "start": 116.01,
       "end": 116.68,
       "duration": 0.6700000000000017,
-      "next_action": "put(vegetable)",
-      "edge_key": "pull(bag)|||put(vegetable)",
+      "next_action": "put(vegetables)",
+      "edge_key": "pull(containers)|||put(vegetables)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1361,16 +1444,17 @@
       "video_start": 116.01,
       "video_end": 116.68,
       "raw_action": "pull(bag)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 64,
-      "action": "leave",
+      "index": 65,
+      "action": "put(vegetables)",
       "start": 116.76,
       "end": 117.8,
       "duration": 1.039999999999992,
-      "next_action": "close(drawer)",
-      "edge_key": "put(vegetable)|||close(drawer)",
+      "next_action": "close(furniture)",
+      "edge_key": "put(vegetables)|||close(furniture)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1380,16 +1464,17 @@
       "video_start": 116.76,
       "video_end": 117.8,
       "raw_action": "put(vegetable)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 65,
-      "action": "block",
+      "index": 66,
+      "action": "close(furniture)",
       "start": 117.89,
       "end": 118.65,
       "duration": 0.7600000000000051,
-      "next_action": "pull(bag)",
-      "edge_key": "close(drawer)|||pull(bag)",
+      "next_action": "pull(containers)",
+      "edge_key": "close(furniture)|||pull(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1399,16 +1484,17 @@
       "video_start": 117.89,
       "video_end": 118.65,
       "raw_action": "close(drawer)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 66,
-      "action": "manipulate",
+      "index": 67,
+      "action": "pull(containers)",
       "start": 119.51,
       "end": 123.38,
       "duration": 3.8699999999999903,
-      "next_action": "shake(bag)",
-      "edge_key": "pull(bag)|||shake(bag)",
+      "next_action": "shake(containers)",
+      "edge_key": "pull(containers)|||shake(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1418,16 +1504,17 @@
       "video_start": 119.51,
       "video_end": 123.38,
       "raw_action": "pull(bag)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 67,
-      "action": "manipulate",
+      "index": 68,
+      "action": "shake(containers)",
       "start": 123.5,
       "end": 124.14,
       "duration": 0.6400000000000006,
-      "next_action": "open(lid)",
-      "edge_key": "shake(bag)|||open(lid)",
+      "next_action": "open(containers)",
+      "edge_key": "shake(containers)|||open(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1437,16 +1524,17 @@
       "video_start": 123.5,
       "video_end": 124.14,
       "raw_action": "shake(bag)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 68,
-      "action": "access",
+      "index": 69,
+      "action": "open(containers)",
       "start": 124.43,
       "end": 125.09,
       "duration": 0.6599999999999966,
-      "next_action": "put(bag)",
-      "edge_key": "open(lid)|||put(bag)",
+      "next_action": "put(containers)",
+      "edge_key": "open(containers)|||put(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1456,16 +1544,17 @@
       "video_start": 124.43,
       "video_end": 125.09,
       "raw_action": "open(lid)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 69,
-      "action": "leave",
+      "index": 70,
+      "action": "put(containers)",
       "start": 125.19,
       "end": 127.9,
       "duration": 2.710000000000008,
-      "next_action": "close(lid)",
-      "edge_key": "put(bag)|||close(lid)",
+      "next_action": "close(containers)",
+      "edge_key": "put(containers)|||close(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1475,16 +1564,17 @@
       "video_start": 125.19,
       "video_end": 127.9,
       "raw_action": "put(bag)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 70,
-      "action": "block",
+      "index": 71,
+      "action": "close(containers)",
       "start": 127.89,
       "end": 128.68,
       "duration": 0.7900000000000063,
-      "next_action": "press(top)",
-      "edge_key": "close(lid)|||press(top)",
+      "next_action": "press(furniture)",
+      "edge_key": "close(containers)|||press(furniture)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1494,16 +1584,17 @@
       "video_start": 127.89,
       "video_end": 128.68,
       "raw_action": "close(lid)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 71,
-      "action": "manipulate",
+      "index": 72,
+      "action": "press(furniture)",
       "start": 128.91,
       "end": 129.68,
       "duration": 0.7700000000000102,
-      "next_action": "hold(kettle)",
-      "edge_key": "press(top)|||hold(kettle)",
+      "next_action": "hold(appliances)",
+      "edge_key": "press(furniture)|||hold(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1513,16 +1604,17 @@
       "video_start": 128.91,
       "video_end": 129.68,
       "raw_action": "press(top)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 72,
-      "action": "manipulate",
+      "index": 73,
+      "action": "hold(appliances)",
       "start": 130.41,
       "end": 131.13,
       "duration": 0.7199999999999989,
-      "next_action": "press(button)",
-      "edge_key": "hold(kettle)|||press(button)",
+      "next_action": "press(appliances)",
+      "edge_key": "hold(appliances)|||press(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1532,16 +1624,17 @@
       "video_start": 130.41,
       "video_end": 131.13,
       "raw_action": "hold(kettle)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 73,
-      "action": "manipulate(button)",
+      "index": 74,
+      "action": "press(appliances)",
       "start": 130.81,
       "end": 132.82,
       "duration": 2.009999999999991,
-      "next_action": "close(kettle)",
-      "edge_key": "press(button)|||close(kettle)",
+      "next_action": "close(appliances)",
+      "edge_key": "press(appliances)|||close(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1551,16 +1644,17 @@
       "video_start": 130.81,
       "video_end": 132.82,
       "raw_action": "press(button)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 74,
-      "action": "block",
+      "index": 75,
+      "action": "close(appliances)",
       "start": 132.85,
       "end": 133.86,
       "duration": 1.0100000000000193,
-      "next_action": "turn(cup)",
-      "edge_key": "close(kettle)|||turn(cup)",
+      "next_action": "turn(crockery)",
+      "edge_key": "close(appliances)|||turn(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1570,16 +1664,17 @@
       "video_start": 132.85,
       "video_end": 133.86,
       "raw_action": "close(kettle)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 75,
-      "action": "manipulate",
+      "index": 76,
+      "action": "turn(crockery)",
       "start": 136.35,
       "end": 137.31,
       "duration": 0.960000000000008,
-      "next_action": "take(milk)",
-      "edge_key": "turn(cup)|||take(milk)",
+      "next_action": "take(dairy and eggs)",
+      "edge_key": "turn(crockery)|||take(dairy and eggs)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
       "phase": "exec",
@@ -1589,16 +1684,17 @@
       "video_start": 136.35,
       "video_end": 137.31,
       "raw_action": "turn(cup)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 76,
-      "action": "retrieve(milk)",
+      "index": 77,
+      "action": "take(dairy and eggs)",
       "start": 136.72,
       "end": 137.47,
       "duration": 0.75,
-      "next_action": "pat(milk)",
-      "edge_key": "take(milk)|||pat(milk)",
+      "next_action": "pat(dairy and eggs)",
+      "edge_key": "take(dairy and eggs)|||pat(dairy and eggs)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
       "phase": "exec",
@@ -1608,16 +1704,17 @@
       "video_start": 136.72,
       "video_end": 137.47,
       "raw_action": "take(milk)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 77,
-      "action": "sense",
+      "index": 78,
+      "action": "pat(dairy and eggs)",
       "start": 137.25,
       "end": 138.07,
       "duration": 0.8199999999999932,
-      "next_action": "lift(milk)",
-      "edge_key": "pat(milk)|||lift(milk)",
+      "next_action": "lift(dairy and eggs)",
+      "edge_key": "pat(dairy and eggs)|||lift(dairy and eggs)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
       "phase": "exec",
@@ -1627,16 +1724,17 @@
       "video_start": 137.25,
       "video_end": 138.07,
       "raw_action": "pat(milk)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 78,
-      "action": "retrieve(milk)",
+      "index": 79,
+      "action": "lift(dairy and eggs)",
       "start": 137.7,
       "end": 139.91,
       "duration": 2.210000000000008,
-      "next_action": "lift(milk)",
-      "edge_key": "lift(milk)|||lift(milk)",
+      "next_action": "lift(dairy and eggs)",
+      "edge_key": "lift(dairy and eggs)|||lift(dairy and eggs)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
       "phase": "exec",
@@ -1646,16 +1744,17 @@
       "video_start": 137.7,
       "video_end": 139.91,
       "raw_action": "lift(milk)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 79,
-      "action": "retrieve(milk)",
+      "index": 80,
+      "action": "lift(dairy and eggs)",
       "start": 139.92000000000002,
       "end": 142.8,
       "duration": 2.8799999999999955,
-      "next_action": "lift(milk)",
-      "edge_key": "lift(milk)|||lift(milk)",
+      "next_action": "lift(dairy and eggs)",
+      "edge_key": "lift(dairy and eggs)|||lift(dairy and eggs)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
       "phase": "exec",
@@ -1665,16 +1764,17 @@
       "video_start": 139.92000000000002,
       "video_end": 142.8,
       "raw_action": "lift(milk)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 80,
-      "action": "retrieve(milk)",
+      "index": 81,
+      "action": "lift(dairy and eggs)",
       "start": 141.14,
       "end": 143.1,
       "duration": 1.960000000000008,
-      "next_action": "lift(lid)",
-      "edge_key": "lift(milk)|||lift(lid)",
+      "next_action": "lift(containers)",
+      "edge_key": "lift(dairy and eggs)|||lift(containers)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
       "phase": "exec",
@@ -1684,16 +1784,17 @@
       "video_start": 141.14,
       "video_end": 143.1,
       "raw_action": "lift(milk)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 81,
-      "action": "retrieve",
+      "index": 82,
+      "action": "lift(containers)",
       "start": 143.45,
       "end": 144.89,
       "duration": 1.4399999999999977,
-      "next_action": "move(spoon)",
-      "edge_key": "lift(lid)|||move(spoon)",
+      "next_action": "move(cutlery)",
+      "edge_key": "lift(containers)|||move(cutlery)",
       "step_id": "P01_R01_S05",
       "is_primary": false,
       "phase": "prep",
@@ -1703,16 +1804,17 @@
       "video_start": 143.45,
       "video_end": 144.89,
       "raw_action": "lift(lid)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 82,
-      "action": "transition",
+      "index": 83,
+      "action": "move(cutlery)",
       "start": 144.86,
       "end": 145.16,
       "duration": 0.29999999999998295,
-      "next_action": "mix(coffee)",
-      "edge_key": "move(spoon)|||mix(coffee)",
+      "next_action": "mix(drinks)",
+      "edge_key": "move(cutlery)|||mix(drinks)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
       "phase": "exec",
@@ -1722,16 +1824,17 @@
       "video_start": 144.86,
       "video_end": 145.16,
       "raw_action": "move(spoon)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 83,
-      "action": "merge(coffee)",
+      "index": 84,
+      "action": "mix(drinks)",
       "start": 145.29,
       "end": 147.12,
       "duration": 1.8300000000000125,
-      "next_action": "mix(coffee)",
-      "edge_key": "mix(coffee)|||mix(coffee)",
+      "next_action": "mix(drinks)",
+      "edge_key": "mix(drinks)|||mix(drinks)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
       "phase": "exec",
@@ -1741,16 +1844,17 @@
       "video_start": 145.29,
       "video_end": 147.12,
       "raw_action": "mix(coffee)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 84,
-      "action": "merge(coffee)",
+      "index": 85,
+      "action": "mix(drinks)",
       "start": 147.02,
       "end": 149.77,
       "duration": 2.75,
-      "next_action": "take(rest)",
-      "edge_key": "mix(coffee)|||take(rest)",
+      "next_action": "take(other)",
+      "edge_key": "mix(drinks)|||take(other)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
       "phase": "exec",
@@ -1760,16 +1864,17 @@
       "video_start": 147.02,
       "video_end": 149.77,
       "raw_action": "mix(coffee)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 85,
-      "action": "retrieve",
+      "index": 86,
+      "action": "take(other)",
       "start": 149.86,
       "end": 150.78,
       "duration": 0.9199999999999875,
-      "next_action": "shake(spoon)",
-      "edge_key": "take(rest)|||shake(spoon)",
+      "next_action": "shake(cutlery)",
+      "edge_key": "take(other)|||shake(cutlery)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
       "phase": "exec",
@@ -1779,16 +1884,17 @@
       "video_start": 149.86,
       "video_end": 150.78,
       "raw_action": "take(rest)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 86,
-      "action": "manipulate",
+      "index": 87,
+      "action": "shake(cutlery)",
       "start": 150.73,
       "end": 151.61,
       "duration": 0.8800000000000239,
-      "next_action": "open(lid)",
-      "edge_key": "shake(spoon)|||open(lid)",
+      "next_action": "open(containers)",
+      "edge_key": "shake(cutlery)|||open(containers)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
       "phase": "exec",
@@ -1798,16 +1904,17 @@
       "video_start": 150.73,
       "video_end": 151.61,
       "raw_action": "shake(spoon)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 87,
-      "action": "access",
+      "index": 88,
+      "action": "open(containers)",
       "start": 153.12,
       "end": 153.38,
       "duration": 0.2599999999999909,
-      "next_action": "throw(spoon)",
-      "edge_key": "open(lid)|||throw(spoon)",
+      "next_action": "throw(cutlery)",
+      "edge_key": "open(containers)|||throw(cutlery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1817,16 +1924,17 @@
       "video_start": 153.12,
       "video_end": 153.38,
       "raw_action": "open(lid)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 88,
-      "action": "leave",
+      "index": 89,
+      "action": "throw(cutlery)",
       "start": 153.63,
       "end": 154.07999999999998,
       "duration": 0.44999999999998863,
-      "next_action": "close(bin)",
-      "edge_key": "throw(spoon)|||close(bin)",
+      "next_action": "close(rubbish)",
+      "edge_key": "throw(cutlery)|||close(rubbish)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1836,16 +1944,17 @@
       "video_start": 153.63,
       "video_end": 154.07999999999998,
       "raw_action": "throw(spoon)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 89,
-      "action": "block",
+      "index": 90,
+      "action": "close(rubbish)",
       "start": 154.06,
       "end": 154.29,
       "duration": 0.22999999999998977,
-      "next_action": "take(milk)",
-      "edge_key": "close(bin)|||take(milk)",
+      "next_action": "take(dairy and eggs)",
+      "edge_key": "close(rubbish)|||take(dairy and eggs)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1855,16 +1964,17 @@
       "video_start": 154.06,
       "video_end": 154.29,
       "raw_action": "close(bin)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 90,
-      "action": "retrieve(milk)",
+      "index": 91,
+      "action": "take(dairy and eggs)",
       "start": 155.41,
       "end": 156.07999999999998,
       "duration": 0.6699999999999875,
-      "next_action": "open(tap)",
-      "edge_key": "take(milk)|||open(tap)",
+      "next_action": "open(appliances)",
+      "edge_key": "take(dairy and eggs)|||open(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1874,16 +1984,17 @@
       "video_start": 155.41,
       "video_end": 156.07999999999998,
       "raw_action": "take(milk)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 91,
-      "action": "access",
+      "index": 92,
+      "action": "open(appliances)",
       "start": 157.91,
       "end": 158.57,
       "duration": 0.6599999999999966,
-      "next_action": "move(milk)",
-      "edge_key": "open(tap)|||move(milk)",
+      "next_action": "move(dairy and eggs)",
+      "edge_key": "open(appliances)|||move(dairy and eggs)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1893,16 +2004,17 @@
       "video_start": 157.91,
       "video_end": 158.57,
       "raw_action": "open(tap)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 92,
-      "action": "transition",
+      "index": 93,
+      "action": "move(dairy and eggs)",
       "start": 158.37,
       "end": 159.53,
       "duration": 1.1599999999999966,
-      "next_action": "wash(milk)",
-      "edge_key": "move(milk)|||wash(milk)",
+      "next_action": "wash(dairy and eggs)",
+      "edge_key": "move(dairy and eggs)|||wash(dairy and eggs)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1912,16 +2024,17 @@
       "video_start": 158.37,
       "video_end": 159.53,
       "raw_action": "move(milk)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 93,
-      "action": "clean(milk)",
+      "index": 94,
+      "action": "wash(dairy and eggs)",
       "start": 159.45,
       "end": 160.94,
       "duration": 1.490000000000009,
-      "next_action": "turn(milk)",
-      "edge_key": "wash(milk)|||turn(milk)",
+      "next_action": "turn(dairy and eggs)",
+      "edge_key": "wash(dairy and eggs)|||turn(dairy and eggs)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1931,16 +2044,17 @@
       "video_start": 159.45,
       "video_end": 160.94,
       "raw_action": "wash(milk)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 94,
-      "action": "manipulate(milk)",
+      "index": 95,
+      "action": "turn(dairy and eggs)",
       "start": 160.97,
       "end": 161.81,
       "duration": 0.8400000000000034,
-      "next_action": "remove(cake)",
-      "edge_key": "turn(milk)|||remove(cake)",
+      "next_action": "remove(baked goods and grains)",
+      "edge_key": "turn(dairy and eggs)|||remove(baked goods and grains)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1950,16 +2064,17 @@
       "video_start": 160.97,
       "video_end": 161.81,
       "raw_action": "turn(milk)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 95,
-      "action": "retrieve",
+      "index": 96,
+      "action": "remove(baked goods and grains)",
       "start": 161.4,
       "end": 162.72,
       "duration": 1.3199999999999932,
-      "next_action": "wash(milk)",
-      "edge_key": "remove(cake)|||wash(milk)",
+      "next_action": "wash(dairy and eggs)",
+      "edge_key": "remove(baked goods and grains)|||wash(dairy and eggs)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1969,16 +2084,17 @@
       "video_start": 161.4,
       "video_end": 162.72,
       "raw_action": "remove(cake)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 96,
-      "action": "clean(milk)",
+      "index": 97,
+      "action": "wash(dairy and eggs)",
       "start": 162.94,
       "end": 163.36,
       "duration": 0.4200000000000159,
-      "next_action": "wash(milk)",
-      "edge_key": "wash(milk)|||wash(milk)",
+      "next_action": "wash(dairy and eggs)",
+      "edge_key": "wash(dairy and eggs)|||wash(dairy and eggs)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -1988,16 +2104,17 @@
       "video_start": 162.94,
       "video_end": 163.36,
       "raw_action": "wash(milk)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 97,
-      "action": "clean(milk)",
+      "index": 98,
+      "action": "wash(dairy and eggs)",
       "start": 163.57999999999998,
       "end": 165.86,
       "duration": 2.2800000000000296,
-      "next_action": "take(sponge)",
-      "edge_key": "wash(milk)|||take(sponge)",
+      "next_action": "take(cleaning equipment and material)",
+      "edge_key": "wash(dairy and eggs)|||take(cleaning equipment and material)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2007,16 +2124,17 @@
       "video_start": 163.57999999999998,
       "video_end": 165.86,
       "raw_action": "wash(milk)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 98,
-      "action": "retrieve",
+      "index": 99,
+      "action": "take(cleaning equipment and material)",
       "start": 168.14,
       "end": 168.81,
       "duration": 0.6700000000000159,
-      "next_action": "scrub(sponge)",
-      "edge_key": "take(sponge)|||scrub(sponge)",
+      "next_action": "scrub(cleaning equipment and material)",
+      "edge_key": "take(cleaning equipment and material)|||scrub(cleaning equipment and material)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2026,16 +2144,17 @@
       "video_start": 168.14,
       "video_end": 168.81,
       "raw_action": "take(sponge)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 99,
-      "action": "clean",
+      "index": 100,
+      "action": "scrub(cleaning equipment and material)",
       "start": 168.7,
       "end": 170.55,
       "duration": 1.8500000000000227,
-      "next_action": "insert(sponge)",
-      "edge_key": "scrub(sponge)|||insert(sponge)",
+      "next_action": "insert(cleaning equipment and material)",
+      "edge_key": "scrub(cleaning equipment and material)|||insert(cleaning equipment and material)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2045,16 +2164,17 @@
       "video_start": 168.7,
       "video_end": 170.55,
       "raw_action": "scrub(sponge)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 100,
-      "action": "leave",
+      "index": 101,
+      "action": "insert(cleaning equipment and material)",
       "start": 168.74,
       "end": 169.51,
       "duration": 0.7699999999999818,
-      "next_action": "wash(milk)",
-      "edge_key": "insert(sponge)|||wash(milk)",
+      "next_action": "wash(dairy and eggs)",
+      "edge_key": "insert(cleaning equipment and material)|||wash(dairy and eggs)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2064,16 +2184,17 @@
       "video_start": 168.74,
       "video_end": 169.51,
       "raw_action": "insert(sponge)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 101,
-      "action": "clean(milk)",
+      "index": 102,
+      "action": "wash(dairy and eggs)",
       "start": 170.35,
       "end": 172.23,
       "duration": 1.8799999999999955,
-      "next_action": "take(tray)",
-      "edge_key": "wash(milk)|||take(tray)",
+      "next_action": "take(cookware)",
+      "edge_key": "wash(dairy and eggs)|||take(cookware)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2083,16 +2204,17 @@
       "video_start": 170.35,
       "video_end": 172.23,
       "raw_action": "wash(milk)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 102,
-      "action": "retrieve",
+      "index": 103,
+      "action": "take(cookware)",
       "start": 172.24,
       "end": 173.07999999999998,
       "duration": 0.839999999999975,
-      "next_action": "close(tap)",
-      "edge_key": "take(tray)|||close(tap)",
+      "next_action": "close(appliances)",
+      "edge_key": "take(cookware)|||close(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2102,16 +2224,17 @@
       "video_start": 172.24,
       "video_end": 173.07999999999998,
       "raw_action": "take(tray)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 103,
-      "action": "block",
+      "index": 104,
+      "action": "close(appliances)",
       "start": 173.24,
       "end": 173.62,
       "duration": 0.37999999999999545,
-      "next_action": "lift(milk)",
-      "edge_key": "close(tap)|||lift(milk)",
+      "next_action": "lift(dairy and eggs)",
+      "edge_key": "close(appliances)|||lift(dairy and eggs)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2121,16 +2244,17 @@
       "video_start": 173.24,
       "video_end": 173.62,
       "raw_action": "close(tap)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 104,
-      "action": "retrieve(milk)",
+      "index": 105,
+      "action": "lift(dairy and eggs)",
       "start": 174.12,
       "end": 175.54,
       "duration": 1.4199999999999875,
-      "next_action": "put(cream)",
-      "edge_key": "lift(milk)|||put(cream)",
+      "next_action": "put(dairy and eggs)",
+      "edge_key": "lift(dairy and eggs)|||put(dairy and eggs)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2140,16 +2264,17 @@
       "video_start": 174.12,
       "video_end": 175.54,
       "raw_action": "lift(milk)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 105,
-      "action": "leave",
+      "index": 106,
+      "action": "put(dairy and eggs)",
       "start": 175.59,
       "end": 176.51,
       "duration": 0.9199999999999875,
-      "next_action": "put(milk)",
-      "edge_key": "put(cream)|||put(milk)",
+      "next_action": "put(dairy and eggs)",
+      "edge_key": "put(dairy and eggs)|||put(dairy and eggs)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2159,16 +2284,17 @@
       "video_start": 175.59,
       "video_end": 176.51,
       "raw_action": "put(cream)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 106,
-      "action": "leave(milk)",
+      "index": 107,
+      "action": "put(dairy and eggs)",
       "start": 178.32999999999998,
       "end": 178.72,
       "duration": 0.3900000000000148,
-      "next_action": "take(lid)",
-      "edge_key": "put(milk)|||take(lid)",
+      "next_action": "take(containers)",
+      "edge_key": "put(dairy and eggs)|||take(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2178,16 +2304,17 @@
       "video_start": 178.32999999999998,
       "video_end": 178.72,
       "raw_action": "put(milk)",
-      "salient": true
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 107,
-      "action": "retrieve",
+      "index": 108,
+      "action": "take(containers)",
       "start": 179.06,
       "end": 180.18,
       "duration": 1.1200000000000045,
-      "next_action": "take(towel)",
-      "edge_key": "take(lid)|||take(towel)",
+      "next_action": "take(materials)",
+      "edge_key": "take(containers)|||take(materials)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2197,16 +2324,17 @@
       "video_start": 179.06,
       "video_end": 180.18,
       "raw_action": "take(lid)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 108,
-      "action": "retrieve",
+      "index": 109,
+      "action": "take(materials)",
       "start": 180.72,
       "end": 182.56,
       "duration": 1.8400000000000034,
-      "next_action": "take(knife)",
-      "edge_key": "take(towel)|||take(knife)",
+      "next_action": "take(cutlery)",
+      "edge_key": "take(materials)|||take(cutlery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2216,16 +2344,17 @@
       "video_start": 180.72,
       "video_end": 182.56,
       "raw_action": "take(towel)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 109,
-      "action": "retrieve",
+      "index": 110,
+      "action": "take(cutlery)",
       "start": 183.89,
       "end": 184.12,
       "duration": 0.2300000000000182,
-      "next_action": "cut(orange)",
-      "edge_key": "take(knife)|||cut(orange)",
+      "next_action": "cut(fruits and nuts)",
+      "edge_key": "take(cutlery)|||cut(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2235,16 +2364,17 @@
       "video_start": 183.89,
       "video_end": 184.12,
       "raw_action": "take(knife)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 110,
-      "action": "split",
+      "index": 111,
+      "action": "cut(fruits and nuts)",
       "start": 184.78,
       "end": 186.73,
       "duration": 1.9499999999999886,
-      "next_action": "put(knife)",
-      "edge_key": "cut(orange)|||put(knife)",
+      "next_action": "put(cutlery)",
+      "edge_key": "cut(fruits and nuts)|||put(cutlery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2254,16 +2384,17 @@
       "video_start": 184.78,
       "video_end": 186.73,
       "raw_action": "cut(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 111,
-      "action": "leave",
+      "index": 112,
+      "action": "put(cutlery)",
       "start": 186.95,
       "end": 187.53,
       "duration": 0.5800000000000125,
-      "next_action": "flip(orange)",
-      "edge_key": "put(knife)|||flip(orange)",
+      "next_action": "flip(fruits and nuts)",
+      "edge_key": "put(cutlery)|||flip(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2273,16 +2404,17 @@
       "video_start": 186.95,
       "video_end": 187.53,
       "raw_action": "put(knife)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 112,
-      "action": "manipulate",
+      "index": 113,
+      "action": "flip(fruits and nuts)",
       "start": 187.89,
       "end": 188.28,
       "duration": 0.3900000000000148,
-      "next_action": "turn(food)",
-      "edge_key": "flip(orange)|||turn(food)",
+      "next_action": "turn(prepared food)",
+      "edge_key": "flip(fruits and nuts)|||turn(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2292,16 +2424,17 @@
       "video_start": 187.89,
       "video_end": 188.28,
       "raw_action": "flip(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 113,
-      "action": "manipulate",
+      "index": 114,
+      "action": "turn(prepared food)",
       "start": 188.63,
       "end": 189.03,
       "duration": 0.4000000000000057,
-      "next_action": "press(orange)",
-      "edge_key": "turn(food)|||press(orange)",
+      "next_action": "press(fruits and nuts)",
+      "edge_key": "turn(prepared food)|||press(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2311,16 +2444,17 @@
       "video_start": 188.63,
       "video_end": 189.03,
       "raw_action": "turn(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 114,
-      "action": "manipulate",
+      "index": 115,
+      "action": "press(fruits and nuts)",
       "start": 189.37,
       "end": 193.13,
       "duration": 3.759999999999991,
-      "next_action": "press(juicer)",
-      "edge_key": "press(orange)|||press(juicer)",
+      "next_action": "press(utensils)",
+      "edge_key": "press(fruits and nuts)|||press(utensils)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2330,16 +2464,17 @@
       "video_start": 189.37,
       "video_end": 193.13,
       "raw_action": "press(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 115,
-      "action": "manipulate",
+      "index": 116,
+      "action": "press(utensils)",
       "start": 193.02,
       "end": 200.78,
       "duration": 7.759999999999991,
-      "next_action": "turn-off(food)",
-      "edge_key": "press(juicer)|||turn-off(food)",
+      "next_action": "turn-off(prepared food)",
+      "edge_key": "press(utensils)|||turn-off(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2349,16 +2484,17 @@
       "video_start": 193.02,
       "video_end": 200.78,
       "raw_action": "press(juicer)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 116,
-      "action": "block",
+      "index": 117,
+      "action": "turn-off(prepared food)",
       "start": 200.91,
       "end": 201.67,
       "duration": 0.7599999999999909,
-      "next_action": "remove(orange)",
-      "edge_key": "turn-off(food)|||remove(orange)",
+      "next_action": "remove(fruits and nuts)",
+      "edge_key": "turn-off(prepared food)|||remove(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2368,16 +2504,17 @@
       "video_start": 200.91,
       "video_end": 201.67,
       "raw_action": "turn-off(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 117,
-      "action": "retrieve",
+      "index": 118,
+      "action": "remove(fruits and nuts)",
       "start": 202.24,
       "end": 202.65,
       "duration": 0.4099999999999966,
-      "next_action": "lift(lid)",
-      "edge_key": "remove(orange)|||lift(lid)",
+      "next_action": "lift(containers)",
+      "edge_key": "remove(fruits and nuts)|||lift(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2387,16 +2524,17 @@
       "video_start": 202.24,
       "video_end": 202.65,
       "raw_action": "remove(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 118,
-      "action": "retrieve",
+      "index": 119,
+      "action": "lift(containers)",
       "start": 203.0,
       "end": 203.36,
       "duration": 0.36000000000001364,
-      "next_action": "throw(skin)",
-      "edge_key": "lift(lid)|||throw(skin)",
+      "next_action": "throw(rubbish)",
+      "edge_key": "lift(containers)|||throw(rubbish)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2406,16 +2544,17 @@
       "video_start": 203.0,
       "video_end": 203.36,
       "raw_action": "lift(lid)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 119,
-      "action": "leave",
+      "index": 120,
+      "action": "throw(rubbish)",
       "start": 203.61,
       "end": 203.82,
       "duration": 0.20999999999997954,
-      "next_action": "take(orange)",
-      "edge_key": "throw(skin)|||take(orange)",
+      "next_action": "take(fruits and nuts)",
+      "edge_key": "throw(rubbish)|||take(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2425,16 +2564,17 @@
       "video_start": 203.61,
       "video_end": 203.82,
       "raw_action": "throw(skin)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 120,
-      "action": "retrieve",
+      "index": 121,
+      "action": "take(fruits and nuts)",
       "start": 204.23,
       "end": 204.69,
       "duration": 0.46000000000000796,
-      "next_action": "put(orange)",
-      "edge_key": "take(orange)|||put(orange)",
+      "next_action": "put(fruits and nuts)",
+      "edge_key": "take(fruits and nuts)|||put(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2444,16 +2584,17 @@
       "video_start": 204.23,
       "video_end": 204.69,
       "raw_action": "take(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 121,
-      "action": "leave",
+      "index": 122,
+      "action": "put(fruits and nuts)",
       "start": 204.77,
       "end": 205.41,
       "duration": 0.6399999999999864,
-      "next_action": "turn-on(food)",
-      "edge_key": "put(orange)|||turn-on(food)",
+      "next_action": "turn-on(prepared food)",
+      "edge_key": "put(fruits and nuts)|||turn-on(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2463,16 +2604,17 @@
       "video_start": 204.77,
       "video_end": 205.41,
       "raw_action": "put(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 122,
-      "action": "access",
+      "index": 123,
+      "action": "turn-on(prepared food)",
       "start": 205.51,
       "end": 206.2,
       "duration": 0.6899999999999977,
-      "next_action": "press(orange)",
-      "edge_key": "turn-on(food)|||press(orange)",
+      "next_action": "press(fruits and nuts)",
+      "edge_key": "turn-on(prepared food)|||press(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2482,16 +2624,17 @@
       "video_start": 205.51,
       "video_end": 206.2,
       "raw_action": "turn-on(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 123,
-      "action": "manipulate",
+      "index": 124,
+      "action": "press(fruits and nuts)",
       "start": 206.38,
       "end": 216.88,
       "duration": 10.5,
-      "next_action": "turn-off(food)",
-      "edge_key": "press(orange)|||turn-off(food)",
+      "next_action": "turn-off(prepared food)",
+      "edge_key": "press(fruits and nuts)|||turn-off(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2501,16 +2644,17 @@
       "video_start": 206.38,
       "video_end": 216.88,
       "raw_action": "press(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 124,
-      "action": "block",
+      "index": 125,
+      "action": "turn-off(prepared food)",
       "start": 217.02,
       "end": 217.81,
       "duration": 0.789999999999992,
-      "next_action": "flip(orange)",
-      "edge_key": "turn-off(food)|||flip(orange)",
+      "next_action": "flip(fruits and nuts)",
+      "edge_key": "turn-off(prepared food)|||flip(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2520,16 +2664,17 @@
       "video_start": 217.02,
       "video_end": 217.81,
       "raw_action": "turn-off(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 125,
-      "action": "manipulate",
+      "index": 126,
+      "action": "flip(fruits and nuts)",
       "start": 218.13,
       "end": 218.48,
       "duration": 0.3499999999999943,
-      "next_action": "open(lid)",
-      "edge_key": "flip(orange)|||open(lid)",
+      "next_action": "open(containers)",
+      "edge_key": "flip(fruits and nuts)|||open(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2539,16 +2684,17 @@
       "video_start": 218.13,
       "video_end": 218.48,
       "raw_action": "flip(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 126,
-      "action": "access",
+      "index": 127,
+      "action": "open(containers)",
       "start": 218.64,
       "end": 219.53,
       "duration": 0.8900000000000148,
-      "next_action": "throw(skin)",
-      "edge_key": "open(lid)|||throw(skin)",
+      "next_action": "throw(rubbish)",
+      "edge_key": "open(containers)|||throw(rubbish)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2558,16 +2704,17 @@
       "video_start": 218.64,
       "video_end": 219.53,
       "raw_action": "open(lid)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 127,
-      "action": "leave",
+      "index": 128,
+      "action": "throw(rubbish)",
       "start": 219.42,
       "end": 219.79,
       "duration": 0.37000000000000455,
-      "next_action": "take(orange)",
-      "edge_key": "throw(skin)|||take(orange)",
+      "next_action": "take(fruits and nuts)",
+      "edge_key": "throw(rubbish)|||take(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2577,16 +2724,17 @@
       "video_start": 219.42,
       "video_end": 219.79,
       "raw_action": "throw(skin)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 128,
-      "action": "retrieve",
+      "index": 129,
+      "action": "take(fruits and nuts)",
       "start": 220.62,
       "end": 221.0,
       "duration": 0.37999999999999545,
-      "next_action": "put(orange)",
-      "edge_key": "take(orange)|||put(orange)",
+      "next_action": "put(fruits and nuts)",
+      "edge_key": "take(fruits and nuts)|||put(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2596,16 +2744,17 @@
       "video_start": 220.62,
       "video_end": 221.0,
       "raw_action": "take(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 129,
-      "action": "leave",
+      "index": 130,
+      "action": "put(fruits and nuts)",
       "start": 221.17,
       "end": 221.52,
       "duration": 0.35000000000002274,
-      "next_action": "take(knife)",
-      "edge_key": "put(orange)|||take(knife)",
+      "next_action": "take(cutlery)",
+      "edge_key": "put(fruits and nuts)|||take(cutlery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2615,16 +2764,17 @@
       "video_start": 221.17,
       "video_end": 221.52,
       "raw_action": "put(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 130,
-      "action": "retrieve",
+      "index": 131,
+      "action": "take(cutlery)",
       "start": 221.79,
       "end": 222.11,
       "duration": 0.3200000000000216,
-      "next_action": "cut(orange)",
-      "edge_key": "take(knife)|||cut(orange)",
+      "next_action": "cut(fruits and nuts)",
+      "edge_key": "take(cutlery)|||cut(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2634,16 +2784,17 @@
       "video_start": 221.79,
       "video_end": 222.11,
       "raw_action": "take(knife)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 131,
-      "action": "split",
+      "index": 132,
+      "action": "cut(fruits and nuts)",
       "start": 222.27,
       "end": 224.42,
       "duration": 2.1499999999999773,
-      "next_action": "put(knife)",
-      "edge_key": "cut(orange)|||put(knife)",
+      "next_action": "put(cutlery)",
+      "edge_key": "cut(fruits and nuts)|||put(cutlery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2653,16 +2804,17 @@
       "video_start": 222.27,
       "video_end": 224.42,
       "raw_action": "cut(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 132,
-      "action": "leave",
+      "index": 133,
+      "action": "put(cutlery)",
       "start": 224.56,
       "end": 225.01,
       "duration": 0.44999999999998863,
-      "next_action": "take(orange)",
-      "edge_key": "put(knife)|||take(orange)",
+      "next_action": "take(fruits and nuts)",
+      "edge_key": "put(cutlery)|||take(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2672,16 +2824,17 @@
       "video_start": 224.56,
       "video_end": 225.01,
       "raw_action": "put(knife)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 133,
-      "action": "retrieve",
+      "index": 134,
+      "action": "take(fruits and nuts)",
       "start": 225.14,
       "end": 225.51,
       "duration": 0.37000000000000455,
-      "next_action": "flip(orange)",
-      "edge_key": "take(orange)|||flip(orange)",
+      "next_action": "flip(fruits and nuts)",
+      "edge_key": "take(fruits and nuts)|||flip(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2691,16 +2844,17 @@
       "video_start": 225.14,
       "video_end": 225.51,
       "raw_action": "take(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 134,
-      "action": "manipulate",
+      "index": 135,
+      "action": "flip(fruits and nuts)",
       "start": 225.69,
       "end": 225.96,
       "duration": 0.27000000000001023,
-      "next_action": "turn-on(food)",
-      "edge_key": "flip(orange)|||turn-on(food)",
+      "next_action": "turn-on(prepared food)",
+      "edge_key": "flip(fruits and nuts)|||turn-on(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2710,16 +2864,17 @@
       "video_start": 225.69,
       "video_end": 225.96,
       "raw_action": "flip(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 135,
-      "action": "access",
+      "index": 136,
+      "action": "turn-on(prepared food)",
       "start": 226.22,
       "end": 226.57,
       "duration": 0.3499999999999943,
-      "next_action": "press(orange)",
-      "edge_key": "turn-on(food)|||press(orange)",
+      "next_action": "press(fruits and nuts)",
+      "edge_key": "turn-on(prepared food)|||press(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2729,16 +2884,17 @@
       "video_start": 226.22,
       "video_end": 226.57,
       "raw_action": "turn-on(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 136,
-      "action": "manipulate",
+      "index": 137,
+      "action": "press(fruits and nuts)",
       "start": 226.85,
       "end": 235.75,
       "duration": 8.900000000000006,
-      "next_action": "turn-off(food)",
-      "edge_key": "press(orange)|||turn-off(food)",
+      "next_action": "turn-off(prepared food)",
+      "edge_key": "press(fruits and nuts)|||turn-off(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2748,16 +2904,17 @@
       "video_start": 226.85,
       "video_end": 235.75,
       "raw_action": "press(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 137,
-      "action": "block",
+      "index": 138,
+      "action": "turn-off(prepared food)",
       "start": 235.84,
       "end": 237.27,
       "duration": 1.4300000000000068,
-      "next_action": "open(lid)",
-      "edge_key": "turn-off(food)|||open(lid)",
+      "next_action": "open(containers)",
+      "edge_key": "turn-off(prepared food)|||open(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2767,16 +2924,17 @@
       "video_start": 235.84,
       "video_end": 237.27,
       "raw_action": "turn-off(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 138,
-      "action": "access",
+      "index": 139,
+      "action": "open(containers)",
       "start": 238.05,
       "end": 238.77,
       "duration": 0.7199999999999989,
-      "next_action": "throw(orange)",
-      "edge_key": "open(lid)|||throw(orange)",
+      "next_action": "throw(fruits and nuts)",
+      "edge_key": "open(containers)|||throw(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2786,16 +2944,17 @@
       "video_start": 238.05,
       "video_end": 238.77,
       "raw_action": "open(lid)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 139,
-      "action": "leave",
+      "index": 140,
+      "action": "throw(fruits and nuts)",
       "start": 238.72,
       "end": 239.02,
       "duration": 0.30000000000001137,
-      "next_action": "take(orange)",
-      "edge_key": "throw(orange)|||take(orange)",
+      "next_action": "take(fruits and nuts)",
+      "edge_key": "throw(fruits and nuts)|||take(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2805,16 +2964,17 @@
       "video_start": 238.72,
       "video_end": 239.02,
       "raw_action": "throw(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 140,
-      "action": "retrieve",
+      "index": 141,
+      "action": "take(fruits and nuts)",
       "start": 239.49,
       "end": 240.39,
       "duration": 0.8999999999999773,
-      "next_action": "put(orange)",
-      "edge_key": "take(orange)|||put(orange)",
+      "next_action": "put(fruits and nuts)",
+      "edge_key": "take(fruits and nuts)|||put(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2824,16 +2984,17 @@
       "video_start": 239.49,
       "video_end": 240.39,
       "raw_action": "take(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 141,
-      "action": "leave",
+      "index": 142,
+      "action": "put(fruits and nuts)",
       "start": 240.5,
       "end": 240.79,
       "duration": 0.28999999999999204,
-      "next_action": "turn-on(food)",
-      "edge_key": "put(orange)|||turn-on(food)",
+      "next_action": "turn-on(prepared food)",
+      "edge_key": "put(fruits and nuts)|||turn-on(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2843,16 +3004,17 @@
       "video_start": 240.5,
       "video_end": 240.79,
       "raw_action": "put(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 142,
-      "action": "access",
+      "index": 143,
+      "action": "turn-on(prepared food)",
       "start": 241.05,
       "end": 241.54,
       "duration": 0.4899999999999807,
-      "next_action": "press(orange)",
-      "edge_key": "turn-on(food)|||press(orange)",
+      "next_action": "press(fruits and nuts)",
+      "edge_key": "turn-on(prepared food)|||press(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2862,16 +3024,17 @@
       "video_start": 241.05,
       "video_end": 241.54,
       "raw_action": "turn-on(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 143,
-      "action": "manipulate",
+      "index": 144,
+      "action": "press(fruits and nuts)",
       "start": 241.69,
       "end": 250.28,
       "duration": 8.590000000000003,
-      "next_action": "turn-off(food)",
-      "edge_key": "press(orange)|||turn-off(food)",
+      "next_action": "turn-off(prepared food)",
+      "edge_key": "press(fruits and nuts)|||turn-off(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2881,16 +3044,17 @@
       "video_start": 241.69,
       "video_end": 250.28,
       "raw_action": "press(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 144,
-      "action": "block",
+      "index": 145,
+      "action": "turn-off(prepared food)",
       "start": 250.37,
       "end": 251.32,
       "duration": 0.9499999999999886,
-      "next_action": "lift(lid)",
-      "edge_key": "turn-off(food)|||lift(lid)",
+      "next_action": "lift(containers)",
+      "edge_key": "turn-off(prepared food)|||lift(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2900,16 +3064,17 @@
       "video_start": 250.37,
       "video_end": 251.32,
       "raw_action": "turn-off(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 145,
-      "action": "retrieve",
+      "index": 146,
+      "action": "lift(containers)",
       "start": 251.67,
       "end": 252.52,
       "duration": 0.8500000000000227,
-      "next_action": "throw(skin)",
-      "edge_key": "lift(lid)|||throw(skin)",
+      "next_action": "throw(rubbish)",
+      "edge_key": "lift(containers)|||throw(rubbish)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2919,16 +3084,17 @@
       "video_start": 251.67,
       "video_end": 252.52,
       "raw_action": "lift(lid)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 146,
-      "action": "leave",
+      "index": 147,
+      "action": "throw(rubbish)",
       "start": 252.72,
       "end": 253.07,
       "duration": 0.3499999999999943,
-      "next_action": "take(orange)",
-      "edge_key": "throw(skin)|||take(orange)",
+      "next_action": "take(fruits and nuts)",
+      "edge_key": "throw(rubbish)|||take(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2938,16 +3104,17 @@
       "video_start": 252.72,
       "video_end": 253.07,
       "raw_action": "throw(skin)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 147,
-      "action": "retrieve",
+      "index": 148,
+      "action": "take(fruits and nuts)",
       "start": 253.67,
       "end": 254.52,
       "duration": 0.8500000000000227,
-      "next_action": "put(orange)",
-      "edge_key": "take(orange)|||put(orange)",
+      "next_action": "put(fruits and nuts)",
+      "edge_key": "take(fruits and nuts)|||put(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2957,16 +3124,17 @@
       "video_start": 253.67,
       "video_end": 254.52,
       "raw_action": "take(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 148,
-      "action": "leave",
+      "index": 149,
+      "action": "put(fruits and nuts)",
       "start": 254.62,
       "end": 255.02,
       "duration": 0.4000000000000057,
-      "next_action": "take(knife)",
-      "edge_key": "put(orange)|||take(knife)",
+      "next_action": "take(cutlery)",
+      "edge_key": "put(fruits and nuts)|||take(cutlery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2976,16 +3144,17 @@
       "video_start": 254.62,
       "video_end": 255.02,
       "raw_action": "put(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 149,
-      "action": "retrieve",
+      "index": 150,
+      "action": "take(cutlery)",
       "start": 255.12,
       "end": 255.62,
       "duration": 0.5,
-      "next_action": "cut(orange)",
-      "edge_key": "take(knife)|||cut(orange)",
+      "next_action": "cut(fruits and nuts)",
+      "edge_key": "take(cutlery)|||cut(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -2995,16 +3164,17 @@
       "video_start": 255.12,
       "video_end": 255.62,
       "raw_action": "take(knife)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 150,
-      "action": "split",
+      "index": 151,
+      "action": "cut(fruits and nuts)",
       "start": 255.14,
       "end": 258.7,
       "duration": 3.5600000000000023,
-      "next_action": "put(knife)",
-      "edge_key": "cut(orange)|||put(knife)",
+      "next_action": "put(cutlery)",
+      "edge_key": "cut(fruits and nuts)|||put(cutlery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3014,16 +3184,17 @@
       "video_start": 255.14,
       "video_end": 258.7,
       "raw_action": "cut(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 151,
-      "action": "leave",
+      "index": 152,
+      "action": "put(cutlery)",
       "start": 258.71,
       "end": 259.0,
       "duration": 0.29000000000002046,
-      "next_action": "insert(top)",
-      "edge_key": "put(knife)|||insert(top)",
+      "next_action": "insert(furniture)",
+      "edge_key": "put(cutlery)|||insert(furniture)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3033,16 +3204,17 @@
       "video_start": 258.71,
       "video_end": 259.0,
       "raw_action": "put(knife)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 152,
-      "action": "leave",
+      "index": 153,
+      "action": "insert(furniture)",
       "start": 259.1,
       "end": 260.24,
       "duration": 1.1399999999999864,
-      "next_action": "take(orange)",
-      "edge_key": "insert(top)|||take(orange)",
+      "next_action": "take(fruits and nuts)",
+      "edge_key": "insert(furniture)|||take(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3052,16 +3224,17 @@
       "video_start": 259.1,
       "video_end": 260.24,
       "raw_action": "insert(top)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 153,
-      "action": "retrieve",
+      "index": 154,
+      "action": "take(fruits and nuts)",
       "start": 260.22,
       "end": 260.57,
       "duration": 0.3499999999999659,
-      "next_action": "put(orange)",
-      "edge_key": "take(orange)|||put(orange)",
+      "next_action": "put(fruits and nuts)",
+      "edge_key": "take(fruits and nuts)|||put(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3071,16 +3244,17 @@
       "video_start": 260.22,
       "video_end": 260.57,
       "raw_action": "take(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 154,
-      "action": "leave",
+      "index": 155,
+      "action": "put(fruits and nuts)",
       "start": 260.67,
       "end": 261.37,
       "duration": 0.6999999999999886,
-      "next_action": "turn-on(food)",
-      "edge_key": "put(orange)|||turn-on(food)",
+      "next_action": "turn-on(prepared food)",
+      "edge_key": "put(fruits and nuts)|||turn-on(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3090,16 +3264,17 @@
       "video_start": 260.67,
       "video_end": 261.37,
       "raw_action": "put(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 155,
-      "action": "access",
+      "index": 156,
+      "action": "turn-on(prepared food)",
       "start": 261.77,
       "end": 262.02,
       "duration": 0.25,
-      "next_action": "press(orange)",
-      "edge_key": "turn-on(food)|||press(orange)",
+      "next_action": "press(fruits and nuts)",
+      "edge_key": "turn-on(prepared food)|||press(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3109,16 +3284,17 @@
       "video_start": 261.77,
       "video_end": 262.02,
       "raw_action": "turn-on(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 156,
-      "action": "manipulate",
+      "index": 157,
+      "action": "press(fruits and nuts)",
       "start": 262.35,
       "end": 273.07,
       "duration": 10.71999999999997,
-      "next_action": "turn-off(food)",
-      "edge_key": "press(orange)|||turn-off(food)",
+      "next_action": "turn-off(prepared food)",
+      "edge_key": "press(fruits and nuts)|||turn-off(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3128,16 +3304,17 @@
       "video_start": 262.35,
       "video_end": 273.07,
       "raw_action": "press(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 157,
-      "action": "block",
+      "index": 158,
+      "action": "turn-off(prepared food)",
       "start": 273.4,
       "end": 274.16,
       "duration": 0.7600000000000477,
-      "next_action": "turn(orange)",
-      "edge_key": "turn-off(food)|||turn(orange)",
+      "next_action": "turn(fruits and nuts)",
+      "edge_key": "turn-off(prepared food)|||turn(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3147,16 +3324,17 @@
       "video_start": 273.4,
       "video_end": 274.16,
       "raw_action": "turn-off(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 158,
-      "action": "manipulate",
+      "index": 159,
+      "action": "turn(fruits and nuts)",
       "start": 274.81,
       "end": 275.39,
       "duration": 0.5799999999999841,
-      "next_action": "turn(orange)",
-      "edge_key": "turn(orange)|||turn(orange)",
+      "next_action": "turn(fruits and nuts)",
+      "edge_key": "turn(fruits and nuts)|||turn(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3166,16 +3344,17 @@
       "video_start": 274.81,
       "video_end": 275.39,
       "raw_action": "turn(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 159,
-      "action": "manipulate",
+      "index": 160,
+      "action": "turn(fruits and nuts)",
       "start": 275.5,
       "end": 276.16,
       "duration": 0.660000000000025,
-      "next_action": "turn(food)",
-      "edge_key": "turn(orange)|||turn(food)",
+      "next_action": "turn(prepared food)",
+      "edge_key": "turn(fruits and nuts)|||turn(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3185,16 +3364,17 @@
       "video_start": 275.5,
       "video_end": 276.16,
       "raw_action": "turn(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 160,
-      "action": "manipulate",
+      "index": 161,
+      "action": "turn(prepared food)",
       "start": 276.54,
       "end": 277.88,
       "duration": 1.339999999999975,
-      "next_action": "turn-off(food)",
-      "edge_key": "turn(food)|||turn-off(food)",
+      "next_action": "turn-off(prepared food)",
+      "edge_key": "turn(prepared food)|||turn-off(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3204,16 +3384,17 @@
       "video_start": 276.54,
       "video_end": 277.88,
       "raw_action": "turn(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 161,
-      "action": "block",
+      "index": 162,
+      "action": "turn-off(prepared food)",
       "start": 277.93,
       "end": 278.83,
       "duration": 0.8999999999999773,
-      "next_action": "open(lid)",
-      "edge_key": "turn-off(food)|||open(lid)",
+      "next_action": "open(containers)",
+      "edge_key": "turn-off(prepared food)|||open(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3223,16 +3404,17 @@
       "video_start": 277.93,
       "video_end": 278.83,
       "raw_action": "turn-off(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 162,
-      "action": "access",
+      "index": 163,
+      "action": "open(containers)",
       "start": 279.71,
       "end": 280.39,
       "duration": 0.6800000000000068,
-      "next_action": "throw(skin)",
-      "edge_key": "open(lid)|||throw(skin)",
+      "next_action": "throw(rubbish)",
+      "edge_key": "open(containers)|||throw(rubbish)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3242,16 +3424,17 @@
       "video_start": 279.71,
       "video_end": 280.39,
       "raw_action": "open(lid)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 163,
-      "action": "leave",
+      "index": 164,
+      "action": "throw(rubbish)",
       "start": 280.47,
       "end": 280.77,
       "duration": 0.2999999999999545,
-      "next_action": "take(orange)",
-      "edge_key": "throw(skin)|||take(orange)",
+      "next_action": "take(fruits and nuts)",
+      "edge_key": "throw(rubbish)|||take(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3261,16 +3444,17 @@
       "video_start": 280.47,
       "video_end": 280.77,
       "raw_action": "throw(skin)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 164,
-      "action": "retrieve",
+      "index": 165,
+      "action": "take(fruits and nuts)",
       "start": 281.35,
       "end": 281.85,
       "duration": 0.5,
-      "next_action": "put(orange)",
-      "edge_key": "take(orange)|||put(orange)",
+      "next_action": "put(fruits and nuts)",
+      "edge_key": "take(fruits and nuts)|||put(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3280,16 +3464,17 @@
       "video_start": 281.35,
       "video_end": 281.85,
       "raw_action": "take(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 165,
-      "action": "leave",
+      "index": 166,
+      "action": "put(fruits and nuts)",
       "start": 282.15,
       "end": 283.36,
       "duration": 1.2100000000000364,
-      "next_action": "turn-on(machine:washing)",
-      "edge_key": "put(orange)|||turn-on(machine:washing)",
+      "next_action": "turn-on(appliances)",
+      "edge_key": "put(fruits and nuts)|||turn-on(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3299,16 +3484,17 @@
       "video_start": 282.15,
       "video_end": 283.36,
       "raw_action": "put(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 166,
-      "action": "access",
+      "index": 167,
+      "action": "turn-on(appliances)",
       "start": 283.07,
       "end": 283.45,
       "duration": 0.37999999999999545,
-      "next_action": "press(orange)",
-      "edge_key": "turn-on(machine:washing)|||press(orange)",
+      "next_action": "press(fruits and nuts)",
+      "edge_key": "turn-on(appliances)|||press(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3318,16 +3504,17 @@
       "video_start": 283.07,
       "video_end": 283.45,
       "raw_action": "turn-on(machine:washing)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 167,
-      "action": "manipulate",
+      "index": 168,
+      "action": "press(fruits and nuts)",
       "start": 284.0,
       "end": 292.8,
       "duration": 8.800000000000011,
-      "next_action": "turn-off(food)",
-      "edge_key": "press(orange)|||turn-off(food)",
+      "next_action": "turn-off(prepared food)",
+      "edge_key": "press(fruits and nuts)|||turn-off(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3337,16 +3524,17 @@
       "video_start": 284.0,
       "video_end": 292.8,
       "raw_action": "press(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 168,
-      "action": "block",
+      "index": 169,
+      "action": "turn-off(prepared food)",
       "start": 292.98,
       "end": 294.49,
       "duration": 1.509999999999991,
-      "next_action": "lift(orange)",
-      "edge_key": "turn-off(food)|||lift(orange)",
+      "next_action": "lift(fruits and nuts)",
+      "edge_key": "turn-off(prepared food)|||lift(fruits and nuts)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3356,16 +3544,17 @@
       "video_start": 292.98,
       "video_end": 294.49,
       "raw_action": "turn-off(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 169,
-      "action": "retrieve",
+      "index": 170,
+      "action": "lift(fruits and nuts)",
       "start": 295.08,
       "end": 296.85,
       "duration": 1.7700000000000387,
-      "next_action": "turn-on(machine:washing)",
-      "edge_key": "lift(orange)|||turn-on(machine:washing)",
+      "next_action": "turn-on(appliances)",
+      "edge_key": "lift(fruits and nuts)|||turn-on(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3375,16 +3564,17 @@
       "video_start": 295.08,
       "video_end": 296.85,
       "raw_action": "lift(orange)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 170,
-      "action": "access",
+      "index": 171,
+      "action": "turn-on(appliances)",
       "start": 296.34000000000003,
       "end": 297.9,
       "duration": 1.5599999999999454,
-      "next_action": "turn-off(machine:washing)",
-      "edge_key": "turn-on(machine:washing)|||turn-off(machine:washing)",
+      "next_action": "turn-off(appliances)",
+      "edge_key": "turn-on(appliances)|||turn-off(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3394,16 +3584,17 @@
       "video_start": 296.34000000000003,
       "video_end": 297.9,
       "raw_action": "turn-on(machine:washing)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 171,
-      "action": "block",
+      "index": 172,
+      "action": "turn-off(appliances)",
       "start": 298.69,
       "end": 299.8,
       "duration": 1.1100000000000136,
-      "next_action": "remove(skin)",
-      "edge_key": "turn-off(machine:washing)|||remove(skin)",
+      "next_action": "remove(rubbish)",
+      "edge_key": "turn-off(appliances)|||remove(rubbish)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3413,16 +3604,17 @@
       "video_start": 298.69,
       "video_end": 299.8,
       "raw_action": "turn-off(machine:washing)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 172,
-      "action": "retrieve",
+      "index": 173,
+      "action": "remove(rubbish)",
       "start": 300.2,
       "end": 301.66,
       "duration": 1.4600000000000364,
-      "next_action": "open(lid)",
-      "edge_key": "remove(skin)|||open(lid)",
+      "next_action": "open(containers)",
+      "edge_key": "remove(rubbish)|||open(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3432,16 +3624,17 @@
       "video_start": 300.2,
       "video_end": 301.66,
       "raw_action": "remove(skin)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 173,
-      "action": "access",
+      "index": 174,
+      "action": "open(containers)",
       "start": 301.6,
       "end": 301.95,
       "duration": 0.3499999999999659,
-      "next_action": "throw(skin)",
-      "edge_key": "open(lid)|||throw(skin)",
+      "next_action": "throw(rubbish)",
+      "edge_key": "open(containers)|||throw(rubbish)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3451,16 +3644,17 @@
       "video_start": 301.6,
       "video_end": 301.95,
       "raw_action": "open(lid)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 174,
-      "action": "leave",
+      "index": 175,
+      "action": "throw(rubbish)",
       "start": 302.05,
       "end": 302.3,
       "duration": 0.25,
-      "next_action": "take(knife)",
-      "edge_key": "throw(skin)|||take(knife)",
+      "next_action": "take(cutlery)",
+      "edge_key": "throw(rubbish)|||take(cutlery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3470,16 +3664,17 @@
       "video_start": 302.05,
       "video_end": 302.3,
       "raw_action": "throw(skin)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 175,
-      "action": "retrieve",
+      "index": 176,
+      "action": "take(cutlery)",
       "start": 302.99,
       "end": 303.72,
       "duration": 0.7300000000000182,
-      "next_action": "move(food)",
-      "edge_key": "take(knife)|||move(food)",
+      "next_action": "move(prepared food)",
+      "edge_key": "take(cutlery)|||move(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3489,16 +3684,17 @@
       "video_start": 302.99,
       "video_end": 303.72,
       "raw_action": "take(knife)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 176,
-      "action": "transition",
+      "index": 177,
+      "action": "move(prepared food)",
       "start": 303.62,
       "end": 314.83,
       "duration": 11.20999999999998,
-      "next_action": "put(knife)",
-      "edge_key": "move(food)|||put(knife)",
+      "next_action": "put(cutlery)",
+      "edge_key": "move(prepared food)|||put(cutlery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3508,16 +3704,17 @@
       "video_start": 303.62,
       "video_end": 314.83,
       "raw_action": "move(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 177,
-      "action": "leave",
+      "index": 178,
+      "action": "put(cutlery)",
       "start": 315.35,
       "end": 315.8,
       "duration": 0.44999999999998863,
-      "next_action": "remove(cream)",
-      "edge_key": "put(knife)|||remove(cream)",
+      "next_action": "remove(dairy and eggs)",
+      "edge_key": "put(cutlery)|||remove(dairy and eggs)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3527,16 +3724,17 @@
       "video_start": 315.35,
       "video_end": 315.8,
       "raw_action": "put(knife)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 178,
-      "action": "retrieve",
+      "index": 179,
+      "action": "remove(dairy and eggs)",
       "start": 317.05,
       "end": 318.45,
       "duration": 1.3999999999999773,
-      "next_action": "shake(skin)",
-      "edge_key": "remove(cream)|||shake(skin)",
+      "next_action": "shake(rubbish)",
+      "edge_key": "remove(dairy and eggs)|||shake(rubbish)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3546,16 +3744,17 @@
       "video_start": 317.05,
       "video_end": 318.45,
       "raw_action": "remove(cream)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 179,
-      "action": "manipulate",
+      "index": 180,
+      "action": "shake(rubbish)",
       "start": 318.55,
       "end": 318.8,
       "duration": 0.25,
-      "next_action": "put(cream)",
-      "edge_key": "shake(skin)|||put(cream)",
+      "next_action": "put(dairy and eggs)",
+      "edge_key": "shake(rubbish)|||put(dairy and eggs)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3565,16 +3764,17 @@
       "video_start": 318.55,
       "video_end": 318.8,
       "raw_action": "shake(skin)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 180,
-      "action": "leave",
+      "index": 181,
+      "action": "put(dairy and eggs)",
       "start": 319.88,
       "end": 320.61,
       "duration": 0.7300000000000182,
-      "next_action": "wash(cream)",
-      "edge_key": "put(cream)|||wash(cream)",
+      "next_action": "wash(dairy and eggs)",
+      "edge_key": "put(dairy and eggs)|||wash(dairy and eggs)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3584,16 +3784,17 @@
       "video_start": 319.88,
       "video_end": 320.61,
       "raw_action": "put(cream)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 181,
-      "action": "clean",
+      "index": 182,
+      "action": "wash(dairy and eggs)",
       "start": 320.71,
       "end": 322.43,
       "duration": 1.7200000000000273,
-      "next_action": "take(sponge)",
-      "edge_key": "wash(cream)|||take(sponge)",
+      "next_action": "take(cleaning equipment and material)",
+      "edge_key": "wash(dairy and eggs)|||take(cleaning equipment and material)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3603,16 +3804,17 @@
       "video_start": 320.71,
       "video_end": 322.43,
       "raw_action": "wash(cream)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 182,
-      "action": "retrieve",
+      "index": 183,
+      "action": "take(cleaning equipment and material)",
       "start": 322.51,
       "end": 322.87,
       "duration": 0.36000000000001364,
-      "next_action": "wash(cream)",
-      "edge_key": "take(sponge)|||wash(cream)",
+      "next_action": "wash(dairy and eggs)",
+      "edge_key": "take(cleaning equipment and material)|||wash(dairy and eggs)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3622,16 +3824,17 @@
       "video_start": 322.51,
       "video_end": 322.87,
       "raw_action": "take(sponge)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 183,
-      "action": "clean",
+      "index": 184,
+      "action": "wash(dairy and eggs)",
       "start": 322.97,
       "end": 324.61,
       "duration": 1.6399999999999864,
-      "next_action": "put(sponge)",
-      "edge_key": "wash(cream)|||put(sponge)",
+      "next_action": "put(cleaning equipment and material)",
+      "edge_key": "wash(dairy and eggs)|||put(cleaning equipment and material)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3641,16 +3844,17 @@
       "video_start": 322.97,
       "video_end": 324.61,
       "raw_action": "wash(cream)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 184,
-      "action": "leave",
+      "index": 185,
+      "action": "put(cleaning equipment and material)",
       "start": 324.71,
       "end": 325.24,
       "duration": 0.5300000000000296,
-      "next_action": "wash(cream)",
-      "edge_key": "put(sponge)|||wash(cream)",
+      "next_action": "wash(dairy and eggs)",
+      "edge_key": "put(cleaning equipment and material)|||wash(dairy and eggs)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3660,16 +3864,17 @@
       "video_start": 324.71,
       "video_end": 325.24,
       "raw_action": "put(sponge)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 185,
-      "action": "clean",
+      "index": 186,
+      "action": "wash(dairy and eggs)",
       "start": 325.24,
       "end": 325.8,
       "duration": 0.5600000000000023,
-      "next_action": "turn-off(tap)",
-      "edge_key": "wash(cream)|||turn-off(tap)",
+      "next_action": "turn-off(appliances)",
+      "edge_key": "wash(dairy and eggs)|||turn-off(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3679,16 +3884,17 @@
       "video_start": 325.24,
       "video_end": 325.8,
       "raw_action": "wash(cream)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 186,
-      "action": "block",
+      "index": 187,
+      "action": "turn-off(appliances)",
       "start": 325.91,
       "end": 326.48,
       "duration": 0.5699999999999932,
-      "next_action": "put(cream)",
-      "edge_key": "turn-off(tap)|||put(cream)",
+      "next_action": "put(dairy and eggs)",
+      "edge_key": "turn-off(appliances)|||put(dairy and eggs)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3698,16 +3904,17 @@
       "video_start": 325.91,
       "video_end": 326.48,
       "raw_action": "turn-off(tap)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 187,
-      "action": "leave",
+      "index": 188,
+      "action": "put(dairy and eggs)",
       "start": 326.89,
       "end": 327.39,
       "duration": 0.5,
-      "next_action": "turn(bowl)",
-      "edge_key": "put(cream)|||turn(bowl)",
+      "next_action": "turn(crockery)",
+      "edge_key": "put(dairy and eggs)|||turn(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3717,16 +3924,17 @@
       "video_start": 326.89,
       "video_end": 327.39,
       "raw_action": "put(cream)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 188,
-      "action": "manipulate",
+      "index": 189,
+      "action": "turn(crockery)",
       "start": 329.17,
       "end": 330.55,
       "duration": 1.3799999999999955,
-      "next_action": "lift(bowl)",
-      "edge_key": "turn(bowl)|||lift(bowl)",
+      "next_action": "lift(crockery)",
+      "edge_key": "turn(crockery)|||lift(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3736,16 +3944,17 @@
       "video_start": 329.17,
       "video_end": 330.55,
       "raw_action": "turn(bowl)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 189,
-      "action": "retrieve",
+      "index": 190,
+      "action": "lift(crockery)",
       "start": 330.32,
       "end": 337.09000000000003,
       "duration": 6.770000000000039,
-      "next_action": "open(lid)",
-      "edge_key": "lift(bowl)|||open(lid)",
+      "next_action": "open(containers)",
+      "edge_key": "lift(crockery)|||open(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3755,16 +3964,17 @@
       "video_start": 330.32,
       "video_end": 337.09000000000003,
       "raw_action": "lift(bowl)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 190,
-      "action": "access",
+      "index": 191,
+      "action": "open(containers)",
       "start": 331.96,
       "end": 333.19,
       "duration": 1.2300000000000182,
-      "next_action": "throw(food)",
-      "edge_key": "open(lid)|||throw(food)",
+      "next_action": "throw(prepared food)",
+      "edge_key": "open(containers)|||throw(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3774,16 +3984,17 @@
       "video_start": 331.96,
       "video_end": 333.19,
       "raw_action": "open(lid)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 191,
-      "action": "leave",
+      "index": 192,
+      "action": "throw(prepared food)",
       "start": 333.57,
       "end": 334.53,
       "duration": 0.9599999999999795,
-      "next_action": "pat(bowl)",
-      "edge_key": "throw(food)|||pat(bowl)",
+      "next_action": "pat(crockery)",
+      "edge_key": "throw(prepared food)|||pat(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3793,16 +4004,17 @@
       "video_start": 333.57,
       "video_end": 334.53,
       "raw_action": "throw(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 192,
-      "action": "sense",
+      "index": 193,
+      "action": "pat(crockery)",
       "start": 334.56,
       "end": 336.72,
       "duration": 2.160000000000025,
-      "next_action": "close(lid)",
-      "edge_key": "pat(bowl)|||close(lid)",
+      "next_action": "close(containers)",
+      "edge_key": "pat(crockery)|||close(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3812,16 +4024,17 @@
       "video_start": 334.56,
       "video_end": 336.72,
       "raw_action": "pat(bowl)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 193,
-      "action": "block",
+      "index": 194,
+      "action": "close(containers)",
       "start": 337.2,
       "end": 337.74,
       "duration": 0.5400000000000205,
-      "next_action": "put(bowl)",
-      "edge_key": "close(lid)|||put(bowl)",
+      "next_action": "put(crockery)",
+      "edge_key": "close(containers)|||put(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3831,16 +4044,17 @@
       "video_start": 337.2,
       "video_end": 337.74,
       "raw_action": "close(lid)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 194,
-      "action": "leave",
+      "index": 195,
+      "action": "put(crockery)",
       "start": 338.08,
       "end": 338.79,
       "duration": 0.7100000000000364,
-      "next_action": "open(tap)",
-      "edge_key": "put(bowl)|||open(tap)",
+      "next_action": "open(appliances)",
+      "edge_key": "put(crockery)|||open(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3850,16 +4064,17 @@
       "video_start": 338.08,
       "video_end": 338.79,
       "raw_action": "put(bowl)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 195,
-      "action": "access",
+      "index": 196,
+      "action": "open(appliances)",
       "start": 338.79,
       "end": 339.68,
       "duration": 0.8899999999999864,
-      "next_action": "wash(bowl)",
-      "edge_key": "open(tap)|||wash(bowl)",
+      "next_action": "wash(crockery)",
+      "edge_key": "open(appliances)|||wash(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3869,16 +4084,17 @@
       "video_start": 338.79,
       "video_end": 339.68,
       "raw_action": "open(tap)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 196,
-      "action": "clean",
+      "index": 197,
+      "action": "wash(crockery)",
       "start": 339.08,
       "end": 341.62,
       "duration": 2.5400000000000205,
-      "next_action": "turn(bowl)",
-      "edge_key": "wash(bowl)|||turn(bowl)",
+      "next_action": "turn(crockery)",
+      "edge_key": "wash(crockery)|||turn(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3888,16 +4104,17 @@
       "video_start": 339.08,
       "video_end": 341.62,
       "raw_action": "wash(bowl)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 197,
-      "action": "manipulate",
+      "index": 198,
+      "action": "turn(crockery)",
       "start": 341.41,
       "end": 341.86,
       "duration": 0.44999999999998863,
-      "next_action": "wash(juicer)",
-      "edge_key": "turn(bowl)|||wash(juicer)",
+      "next_action": "wash(utensils)",
+      "edge_key": "turn(crockery)|||wash(utensils)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3907,16 +4124,17 @@
       "video_start": 341.41,
       "video_end": 341.86,
       "raw_action": "turn(bowl)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 198,
-      "action": "clean",
+      "index": 199,
+      "action": "wash(utensils)",
       "start": 341.73,
       "end": 345.83,
       "duration": 4.099999999999966,
-      "next_action": "close(tap)",
-      "edge_key": "wash(juicer)|||close(tap)",
+      "next_action": "close(appliances)",
+      "edge_key": "wash(utensils)|||close(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3926,16 +4144,17 @@
       "video_start": 341.73,
       "video_end": 345.83,
       "raw_action": "wash(juicer)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 199,
-      "action": "block",
+      "index": 200,
+      "action": "close(appliances)",
       "start": 345.77,
       "end": 346.26,
       "duration": 0.4900000000000091,
-      "next_action": "put(bowl)",
-      "edge_key": "close(tap)|||put(bowl)",
+      "next_action": "put(crockery)",
+      "edge_key": "close(appliances)|||put(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3945,16 +4164,17 @@
       "video_start": 345.77,
       "video_end": 346.26,
       "raw_action": "close(tap)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 200,
-      "action": "leave",
+      "index": 201,
+      "action": "put(crockery)",
       "start": 346.95,
       "end": 347.5,
       "duration": 0.5500000000000114,
-      "next_action": "take(towel)",
-      "edge_key": "put(bowl)|||take(towel)",
+      "next_action": "take(materials)",
+      "edge_key": "put(crockery)|||take(materials)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3964,16 +4184,17 @@
       "video_start": 346.95,
       "video_end": 347.5,
       "raw_action": "put(bowl)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 201,
-      "action": "retrieve",
+      "index": 202,
+      "action": "take(materials)",
       "start": 349.64,
       "end": 351.24,
       "duration": 1.6000000000000227,
-      "next_action": "open(cupboard)",
-      "edge_key": "take(towel)|||open(cupboard)",
+      "next_action": "open(storage)",
+      "edge_key": "take(materials)|||open(storage)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -3983,16 +4204,17 @@
       "video_start": 349.64,
       "video_end": 351.24,
       "raw_action": "take(towel)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 202,
-      "action": "access",
+      "index": 203,
+      "action": "open(storage)",
       "start": 352.1,
       "end": 352.89,
       "duration": 0.7899999999999636,
-      "next_action": "take(glass)",
-      "edge_key": "open(cupboard)|||take(glass)",
+      "next_action": "take(crockery)",
+      "edge_key": "open(storage)|||take(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4002,16 +4224,17 @@
       "video_start": 352.1,
       "video_end": 352.89,
       "raw_action": "open(cupboard)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 203,
-      "action": "retrieve",
+      "index": 204,
+      "action": "take(crockery)",
       "start": 353.33,
       "end": 354.22,
       "duration": 0.8900000000000432,
-      "next_action": "turn(glass)",
-      "edge_key": "take(glass)|||turn(glass)",
+      "next_action": "turn(crockery)",
+      "edge_key": "take(crockery)|||turn(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4021,16 +4244,17 @@
       "video_start": 353.33,
       "video_end": 354.22,
       "raw_action": "take(glass)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 204,
-      "action": "manipulate",
+      "index": 205,
+      "action": "turn(crockery)",
       "start": 355.72,
       "end": 356.22,
       "duration": 0.5,
-      "next_action": "put(glass)",
-      "edge_key": "turn(glass)|||put(glass)",
+      "next_action": "put(crockery)",
+      "edge_key": "turn(crockery)|||put(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4040,16 +4264,17 @@
       "video_start": 355.72,
       "video_end": 356.22,
       "raw_action": "turn(glass)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 205,
-      "action": "leave",
+      "index": 206,
+      "action": "put(crockery)",
       "start": 356.4,
       "end": 357.02,
       "duration": 0.6200000000000045,
-      "next_action": "turn(bowl)",
-      "edge_key": "put(glass)|||turn(bowl)",
+      "next_action": "turn(crockery)",
+      "edge_key": "put(crockery)|||turn(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4059,16 +4284,17 @@
       "video_start": 356.4,
       "video_end": 357.02,
       "raw_action": "put(glass)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 206,
-      "action": "manipulate",
+      "index": 207,
+      "action": "turn(crockery)",
       "start": 357.51,
       "end": 358.69,
       "duration": 1.1800000000000068,
-      "next_action": "lift(bowl)",
-      "edge_key": "turn(bowl)|||lift(bowl)",
+      "next_action": "lift(crockery)",
+      "edge_key": "turn(crockery)|||lift(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4078,16 +4304,17 @@
       "video_start": 357.51,
       "video_end": 358.69,
       "raw_action": "turn(bowl)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 207,
-      "action": "retrieve",
+      "index": 208,
+      "action": "lift(crockery)",
       "start": 358.59000000000003,
       "end": 359.31,
       "duration": 0.7199999999999704,
-      "next_action": "take(glass)",
-      "edge_key": "lift(bowl)|||take(glass)",
+      "next_action": "take(crockery)",
+      "edge_key": "lift(crockery)|||take(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4097,16 +4324,17 @@
       "video_start": 358.59000000000003,
       "video_end": 359.31,
       "raw_action": "lift(bowl)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 208,
-      "action": "retrieve",
+      "index": 209,
+      "action": "take(crockery)",
       "start": 359.63,
       "end": 360.12,
       "duration": 0.4900000000000091,
-      "next_action": "lift(bowl)",
-      "edge_key": "take(glass)|||lift(bowl)",
+      "next_action": "lift(crockery)",
+      "edge_key": "take(crockery)|||lift(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4116,16 +4344,17 @@
       "video_start": 359.63,
       "video_end": 360.12,
       "raw_action": "take(glass)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 209,
-      "action": "retrieve",
+      "index": 210,
+      "action": "lift(crockery)",
       "start": 360.37,
       "end": 364.0,
       "duration": 3.6299999999999955,
-      "next_action": "put(glass)",
-      "edge_key": "lift(bowl)|||put(glass)",
+      "next_action": "put(crockery)",
+      "edge_key": "lift(crockery)|||put(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4135,16 +4364,17 @@
       "video_start": 360.37,
       "video_end": 364.0,
       "raw_action": "lift(bowl)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 210,
-      "action": "leave",
+      "index": 211,
+      "action": "put(crockery)",
       "start": 367.3,
       "end": 368.2,
       "duration": 0.8999999999999773,
-      "next_action": "put(bowl)",
-      "edge_key": "put(glass)|||put(bowl)",
+      "next_action": "put(crockery)",
+      "edge_key": "put(crockery)|||put(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4154,16 +4384,17 @@
       "video_start": 367.3,
       "video_end": 368.2,
       "raw_action": "put(glass)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 211,
-      "action": "leave",
+      "index": 212,
+      "action": "put(crockery)",
       "start": 370.15,
       "end": 370.65,
       "duration": 0.5,
-      "next_action": "open(cap)",
-      "edge_key": "put(bowl)|||open(cap)",
+      "next_action": "open(containers)",
+      "edge_key": "put(crockery)|||open(containers)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4173,16 +4404,17 @@
       "video_start": 370.15,
       "video_end": 370.65,
       "raw_action": "put(bowl)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 212,
-      "action": "access",
+      "index": 213,
+      "action": "open(containers)",
       "start": 370.47,
       "end": 370.72,
       "duration": 0.25,
-      "next_action": "wash(food)",
-      "edge_key": "open(cap)|||wash(food)",
+      "next_action": "wash(prepared food)",
+      "edge_key": "open(containers)|||wash(prepared food)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4192,16 +4424,17 @@
       "video_start": 370.47,
       "video_end": 370.72,
       "raw_action": "open(cap)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 213,
-      "action": "clean",
+      "index": 214,
+      "action": "wash(prepared food)",
       "start": 370.77,
       "end": 374.05,
       "duration": 3.2800000000000296,
-      "next_action": "close(tap)",
-      "edge_key": "wash(food)|||close(tap)",
+      "next_action": "close(appliances)",
+      "edge_key": "wash(prepared food)|||close(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4211,16 +4444,17 @@
       "video_start": 370.77,
       "video_end": 374.05,
       "raw_action": "wash(food)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 214,
-      "action": "block",
+      "index": 215,
+      "action": "close(appliances)",
       "start": 373.5,
       "end": 373.8,
       "duration": 0.30000000000001137,
-      "next_action": "take(sponge)",
-      "edge_key": "close(tap)|||take(sponge)",
+      "next_action": "take(cleaning equipment and material)",
+      "edge_key": "close(appliances)|||take(cleaning equipment and material)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4230,16 +4464,17 @@
       "video_start": 373.5,
       "video_end": 373.8,
       "raw_action": "close(tap)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 215,
-      "action": "retrieve",
+      "index": 216,
+      "action": "take(cleaning equipment and material)",
       "start": 374.15,
       "end": 374.5,
       "duration": 0.35000000000002274,
-      "next_action": "scrub(bowl)",
-      "edge_key": "take(sponge)|||scrub(bowl)",
+      "next_action": "scrub(crockery)",
+      "edge_key": "take(cleaning equipment and material)|||scrub(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4249,16 +4484,17 @@
       "video_start": 374.15,
       "video_end": 374.5,
       "raw_action": "take(sponge)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 216,
-      "action": "clean",
+      "index": 217,
+      "action": "scrub(crockery)",
       "start": 374.6,
       "end": 380.3,
       "duration": 5.699999999999989,
-      "next_action": "put(sponge)",
-      "edge_key": "scrub(bowl)|||put(sponge)",
+      "next_action": "put(cleaning equipment and material)",
+      "edge_key": "scrub(crockery)|||put(cleaning equipment and material)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4268,16 +4504,17 @@
       "video_start": 374.6,
       "video_end": 380.3,
       "raw_action": "scrub(bowl)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 217,
-      "action": "leave",
+      "index": 218,
+      "action": "put(cleaning equipment and material)",
       "start": 380.5,
       "end": 380.85,
       "duration": 0.35000000000002274,
-      "next_action": "open(tap)",
-      "edge_key": "put(sponge)|||open(tap)",
+      "next_action": "open(appliances)",
+      "edge_key": "put(cleaning equipment and material)|||open(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4287,16 +4524,17 @@
       "video_start": 380.5,
       "video_end": 380.85,
       "raw_action": "put(sponge)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 218,
-      "action": "access",
+      "index": 219,
+      "action": "open(appliances)",
       "start": 381.05,
       "end": 381.35,
       "duration": 0.30000000000001137,
-      "next_action": "wash(bowl)",
-      "edge_key": "open(tap)|||wash(bowl)",
+      "next_action": "wash(crockery)",
+      "edge_key": "open(appliances)|||wash(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4306,16 +4544,17 @@
       "video_start": 381.05,
       "video_end": 381.35,
       "raw_action": "open(tap)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 219,
-      "action": "clean",
+      "index": 220,
+      "action": "wash(crockery)",
       "start": 381.45,
       "end": 386.4,
       "duration": 4.949999999999989,
-      "next_action": "turn-off(tap)",
-      "edge_key": "wash(bowl)|||turn-off(tap)",
+      "next_action": "turn-off(appliances)",
+      "edge_key": "wash(crockery)|||turn-off(appliances)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4325,16 +4564,17 @@
       "video_start": 381.45,
       "video_end": 386.4,
       "raw_action": "wash(bowl)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 220,
-      "action": "block",
+      "index": 221,
+      "action": "turn-off(appliances)",
       "start": 386.46,
       "end": 387.1,
       "duration": 0.6400000000000432,
-      "next_action": "lift(bowl)",
-      "edge_key": "turn-off(tap)|||lift(bowl)",
+      "next_action": "lift(crockery)",
+      "edge_key": "turn-off(appliances)|||lift(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4344,16 +4584,17 @@
       "video_start": 386.46,
       "video_end": 387.1,
       "raw_action": "turn-off(tap)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 221,
-      "action": "retrieve",
+      "index": 222,
+      "action": "lift(crockery)",
       "start": 386.66,
       "end": 387.65,
       "duration": 0.9899999999999523,
-      "next_action": "turn(bowl)",
-      "edge_key": "lift(bowl)|||turn(bowl)",
+      "next_action": "turn(crockery)",
+      "edge_key": "lift(crockery)|||turn(crockery)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4363,16 +4604,17 @@
       "video_start": 386.66,
       "video_end": 387.65,
       "raw_action": "lift(bowl)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 222,
-      "action": "manipulate",
+      "index": 223,
+      "action": "turn(crockery)",
       "start": 386.83,
       "end": 389.94,
       "duration": 3.1100000000000136,
-      "next_action": "take(towel)",
-      "edge_key": "turn(bowl)|||take(towel)",
+      "next_action": "take(materials)",
+      "edge_key": "turn(crockery)|||take(materials)",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4382,16 +4624,17 @@
       "video_start": 386.83,
       "video_end": 389.94,
       "raw_action": "turn(bowl)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
     },
     {
-      "index": 223,
-      "action": "retrieve",
+      "index": 224,
+      "action": "take(materials)",
       "start": 391.66,
       "end": 394.72,
       "duration": 3.0600000000000023,
-      "next_action": null,
-      "edge_key": null,
+      "next_action": "END",
+      "edge_key": "take(materials)|||END",
       "step_id": null,
       "is_primary": false,
       "phase": null,
@@ -4401,274 +4644,66 @@
       "video_start": 391.66,
       "video_end": 394.72,
       "raw_action": "take(towel)",
-      "salient": false
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "action": "END",
+      "raw_action": "END",
+      "start": 394.72,
+      "end": 394.721,
+      "duration": 0.0,
+      "step_id": null,
+      "is_primary": true,
+      "phase": null,
+      "verb_class": -1,
+      "noun_class": -1,
+      "video_id": "P01-20240202-110250",
+      "video_start": 0.0,
+      "video_end": 0.0,
+      "salient": false,
+      "kind": "end",
+      "index": 225,
+      "next_action": null,
+      "edge_key": null
     }
   ],
   "graph": {
     "nodes": [
       {
-        "id": "retrieve",
-        "count": 52,
-        "is_primary": false,
-        "salient": false,
-        "objects": {
-          "cup": 1,
-          "handle": 1,
-          "bottle": 4,
-          "scissors": 1,
-          "package": 1,
-          "orange": 13,
-          "food": 1,
-          "plug": 1,
-          "juicer": 1,
-          "cream": 2,
-          "vegetable": 1,
-          "roll": 1,
-          "lid": 4,
-          "rest": 1,
-          "cake": 1,
-          "sponge": 3,
-          "tray": 1,
-          "towel": 3,
-          "knife": 4,
-          "skin": 1,
-          "bowl": 4,
-          "glass": 2
-        },
-        "verbs": {
-          "take": 34,
-          "lift": 12,
-          "remove": 6
-        }
-      },
-      {
-        "id": "manipulate",
-        "count": 42,
-        "is_primary": false,
-        "salient": false,
-        "objects": {
-          "hand": 1,
-          "cup": 2,
-          "maker:coffee": 1,
-          "coffee": 1,
-          "handle": 1,
-          "board:chopping": 1,
-          "food": 4,
-          "plug": 1,
-          "lid": 1,
-          "cupboard": 2,
-          "juicer": 2,
-          "knob": 2,
-          "bag": 3,
-          "top": 1,
-          "kettle": 1,
-          "spoon": 1,
-          "orange": 11,
-          "skin": 1,
-          "bowl": 4,
-          "glass": 1
-        },
-        "verbs": {
-          "stretch": 1,
-          "turn": 16,
-          "flip": 4,
-          "slide": 3,
-          "pull": 3,
-          "hold": 2,
-          "press": 10,
-          "shake": 3
-        }
-      },
-      {
-        "id": "leave",
-        "count": 39,
-        "is_primary": false,
-        "salient": false,
-        "objects": {
-          "cup": 1,
-          "bottle": 1,
-          "scissors": 1,
-          "plug": 1,
-          "lid": 1,
-          "juicer": 1,
-          "orange": 8,
-          "vegetable": 1,
-          "bag": 1,
-          "spoon": 1,
-          "sponge": 3,
-          "cream": 3,
-          "knife": 4,
-          "skin": 5,
-          "top": 1,
-          "food": 1,
-          "bowl": 3,
-          "glass": 2
-        },
-        "verbs": {
-          "put": 29,
-          "throw": 8,
-          "insert": 2
-        }
-      },
-      {
-        "id": "access",
-        "count": 28,
-        "is_primary": false,
-        "salient": false,
-        "objects": {
-          "cupboard": 3,
-          "fridge": 2,
-          "bottle": 1,
-          "drawer": 3,
-          "scissors": 1,
-          "button": 1,
-          "lid": 7,
-          "tap": 3,
-          "food": 4,
-          "machine:washing": 2,
-          "cap": 1
-        },
-        "verbs": {
-          "open": 21,
-          "switch": 1,
-          "turn-on": 6
-        }
-      },
-      {
-        "id": "block",
-        "count": 23,
-        "is_primary": false,
-        "salient": false,
-        "objects": {
-          "cupboard": 2,
-          "fridge": 2,
-          "scissors": 1,
-          "drawer": 1,
-          "lid": 2,
-          "kettle": 1,
-          "bin": 1,
-          "tap": 5,
-          "food": 7,
-          "machine:washing": 1
-        },
-        "verbs": {
-          "close": 12,
-          "wrap": 1,
-          "turn-off": 10
-        }
-      },
-      {
-        "id": "clean",
-        "count": 9,
-        "is_primary": false,
-        "salient": false,
-        "objects": {
-          "sponge": 1,
-          "cream": 3,
-          "bowl": 3,
-          "juicer": 1,
-          "food": 1
-        },
-        "verbs": {
-          "scrub": 2,
-          "wash": 7
-        }
-      },
-      {
-        "id": "retrieve(milk)",
-        "count": 6,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "milk": 6
-        },
-        "verbs": {
-          "take": 2,
-          "lift": 4
-        }
-      },
-      {
-        "id": "transition",
-        "count": 5,
-        "is_primary": false,
-        "salient": false,
-        "objects": {
-          "package": 1,
-          "box": 1,
-          "spoon": 1,
-          "milk": 1,
-          "food": 1
-        },
-        "verbs": {
-          "move": 5
-        }
-      },
-      {
-        "id": "clean(milk)",
-        "count": 4,
-        "is_primary": false,
-        "salient": true,
-        "objects": {
-          "milk": 4
-        },
-        "verbs": {
-          "wash": 4
-        }
-      },
-      {
-        "id": "manipulate(button)",
+        "id": "lift(dairy and eggs)",
         "count": 3,
         "is_primary": true,
         "salient": true,
         "objects": {
-          "button": 3
+          "milk": 3
         },
         "verbs": {
-          "press": 3
-        }
-      },
-      {
-        "id": "sense",
-        "count": 3,
-        "is_primary": false,
-        "salient": false,
-        "objects": {
-          "roll": 1,
-          "milk": 1,
-          "bowl": 1
+          "lift": 3
         },
-        "verbs": {
-          "feel": 1,
-          "pat": 2
-        }
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.333
       },
       {
-        "id": "split",
-        "count": 3,
-        "is_primary": false,
-        "salient": false,
-        "objects": {
-          "orange": 3
-        },
-        "verbs": {
-          "cut": 3
-        }
-      },
-      {
-        "id": "manipulate(milk)",
+        "id": "lift(containers)",
         "count": 2,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
-          "milk": 2
+          "bottle": 2
         },
         "verbs": {
-          "slide": 1,
-          "turn": 1
-        }
+          "lift": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.5
       },
       {
-        "id": "merge(coffee)",
+        "id": "mix(drinks)",
         "count": 2,
         "is_primary": true,
         "salient": true,
@@ -4677,969 +4712,362 @@
         },
         "verbs": {
           "mix": 2
-        }
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.5
       },
       {
-        "id": "access(milk)",
+        "id": "press(appliances)",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "button": 2
+        },
+        "verbs": {
+          "press": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "END",
         "count": 1,
-        "is_primary": false,
+        "is_primary": true,
+        "salient": false,
+        "objects": {},
+        "verbs": {},
+        "kind": "end",
+        "is_start": false,
+        "is_end": true,
+        "dead_end_score": 1.0
+      },
+      {
+        "id": "START",
+        "count": 1,
+        "is_primary": true,
+        "salient": false,
+        "objects": {},
+        "verbs": {},
+        "kind": "start",
+        "is_start": true,
+        "is_end": false,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "move(cutlery)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "spoon": 1
+        },
+        "verbs": {
+          "move": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "pat(dairy and eggs)",
+        "count": 1,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "milk": 1
         },
         "verbs": {
-          "turn-on": 1
-        }
+          "pat": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
       },
       {
-        "id": "leave(milk)",
+        "id": "shake(cutlery)",
         "count": 1,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
-          "milk": 1
+          "spoon": 1
         },
         "verbs": {
-          "put": 1
-        }
+          "shake": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
       },
       {
-        "id": "retrieve(coffee)",
+        "id": "slide(drinks)",
         "count": 1,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "coffee": 1
         },
         "verbs": {
+          "slide": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "take(dairy and eggs)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "milk": 1
+        },
+        "verbs": {
           "take": 1
-        }
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "take(other)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "rest": 1
+        },
+        "verbs": {
+          "take": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "turn(crockery)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "cup": 1
+        },
+        "verbs": {
+          "turn": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
       }
     ],
     "links": [
       {
-        "source": "leave",
-        "target": "retrieve",
-        "count": 12,
-        "probability": 0.3077,
-        "key": "leave|||retrieve",
+        "source": "lift(dairy and eggs)",
+        "target": "lift(dairy and eggs)",
+        "count": 2,
+        "probability": 0.6667,
+        "key": "lift(dairy and eggs)|||lift(dairy and eggs)",
         "occurrences": [
-          119,
-          127,
-          129,
-          132,
-          139,
-          146,
-          148,
-          152,
-          163,
-          174,
-          177,
-          200
-        ]
-      },
-      {
-        "source": "manipulate",
-        "target": "manipulate",
-        "count": 11,
-        "probability": 0.2619,
-        "key": "manipulate|||manipulate",
-        "occurrences": [
-          10,
-          40,
-          48,
-          55,
-          66,
-          71,
-          112,
-          113,
-          114,
-          158,
-          159
-        ]
-      },
-      {
-        "source": "retrieve",
-        "target": "leave",
-        "count": 11,
-        "probability": 0.2157,
-        "key": "retrieve|||leave",
-        "occurrences": [
-          38,
-          57,
-          118,
-          120,
-          128,
-          140,
-          145,
-          147,
-          153,
-          164,
-          209
-        ]
-      },
-      {
-        "source": "retrieve",
-        "target": "retrieve",
-        "count": 10,
-        "probability": 0.1961,
-        "key": "retrieve|||retrieve",
-        "occurrences": [
-          17,
-          26,
-          29,
-          30,
-          60,
-          107,
-          108,
-          117,
-          207,
-          208
-        ]
-      },
-      {
-        "source": "access",
-        "target": "leave",
-        "count": 9,
-        "probability": 0.3214,
-        "key": "access|||leave",
-        "occurrences": [
-          21,
-          33,
-          68,
-          87,
-          126,
-          138,
-          162,
-          173,
-          190
-        ]
-      },
-      {
-        "source": "leave",
-        "target": "access",
-        "count": 9,
-        "probability": 0.2308,
-        "key": "leave|||access",
-        "occurrences": [
-          42,
-          58,
-          121,
-          141,
-          154,
-          165,
-          194,
-          211,
-          217
-        ]
-      },
-      {
-        "source": "retrieve",
-        "target": "manipulate",
-        "count": 9,
-        "probability": 0.1765,
-        "key": "retrieve|||manipulate",
-        "occurrences": [
-          2,
           9,
-          36,
-          52,
-          85,
-          133,
-          178,
-          203,
-          221
+          10
         ]
       },
       {
-        "source": "manipulate",
-        "target": "block",
-        "count": 8,
-        "probability": 0.1905,
-        "key": "manipulate|||block",
-        "occurrences": [
-          3,
-          115,
-          123,
-          136,
-          143,
-          156,
-          160,
-          167
-        ]
-      },
-      {
-        "source": "manipulate",
-        "target": "retrieve",
-        "count": 8,
-        "probability": 0.1905,
-        "key": "manipulate|||retrieve",
-        "occurrences": [
-          1,
-          35,
-          37,
-          51,
-          56,
-          188,
-          206,
-          222
-        ]
-      },
-      {
-        "source": "access",
-        "target": "manipulate",
-        "count": 7,
-        "probability": 0.25,
-        "key": "access|||manipulate",
-        "occurrences": [
-          0,
-          54,
-          122,
-          135,
-          142,
-          155,
-          166
-        ]
-      },
-      {
-        "source": "access",
-        "target": "retrieve",
-        "count": 6,
-        "probability": 0.2143,
-        "key": "access|||retrieve",
-        "occurrences": [
-          12,
-          16,
-          25,
-          28,
-          59,
-          202
-        ]
-      },
-      {
-        "source": "block",
-        "target": "manipulate",
-        "count": 6,
-        "probability": 0.2609,
-        "key": "block|||manipulate",
-        "occurrences": [
-          4,
-          65,
-          70,
-          74,
-          124,
-          157
-        ]
-      },
-      {
-        "source": "block",
-        "target": "retrieve",
-        "count": 6,
-        "probability": 0.2609,
-        "key": "block|||retrieve",
-        "occurrences": [
-          116,
-          144,
-          168,
-          171,
-          214,
-          220
-        ]
-      },
-      {
-        "source": "leave",
-        "target": "manipulate",
-        "count": 6,
-        "probability": 0.1538,
-        "key": "leave|||manipulate",
-        "occurrences": [
-          34,
-          39,
-          50,
-          111,
-          187,
-          205
-        ]
-      },
-      {
-        "source": "manipulate",
-        "target": "access",
-        "count": 6,
-        "probability": 0.1429,
-        "key": "manipulate|||access",
-        "occurrences": [
-          11,
-          53,
-          67,
-          86,
-          125,
-          134
-        ]
-      },
-      {
-        "source": "manipulate",
-        "target": "leave",
-        "count": 6,
-        "probability": 0.1429,
-        "key": "manipulate|||leave",
-        "occurrences": [
-          5,
-          41,
-          49,
-          63,
-          179,
-          204
-        ]
-      },
-      {
-        "source": "retrieve",
-        "target": "access",
-        "count": 6,
-        "probability": 0.1176,
-        "key": "retrieve|||access",
-        "occurrences": [
-          20,
-          27,
-          169,
-          172,
-          189,
-          201
-        ]
-      },
-      {
-        "source": "clean",
-        "target": "block",
-        "count": 4,
-        "probability": 0.4444,
-        "key": "clean|||block",
-        "occurrences": [
-          185,
-          198,
-          213,
-          219
-        ]
-      },
-      {
-        "source": "leave",
-        "target": "block",
-        "count": 4,
-        "probability": 0.1026,
-        "key": "leave|||block",
-        "occurrences": [
-          22,
-          64,
-          69,
-          88
-        ]
-      },
-      {
-        "source": "retrieve",
-        "target": "block",
-        "count": 4,
-        "probability": 0.0784,
-        "key": "retrieve|||block",
-        "occurrences": [
-          13,
-          31,
-          45,
-          102
-        ]
-      },
-      {
-        "source": "access",
-        "target": "clean",
-        "count": 3,
-        "probability": 0.1071,
-        "key": "access|||clean",
-        "occurrences": [
-          195,
-          212,
-          218
-        ]
-      },
-      {
-        "source": "block",
-        "target": "access",
-        "count": 3,
-        "probability": 0.1304,
-        "key": "block|||access",
-        "occurrences": [
-          32,
-          137,
-          161
-        ]
-      },
-      {
-        "source": "block",
-        "target": "leave",
-        "count": 3,
-        "probability": 0.1304,
-        "key": "block|||leave",
-        "occurrences": [
-          186,
-          193,
-          199
-        ]
-      },
-      {
-        "source": "clean",
-        "target": "leave",
-        "count": 3,
-        "probability": 0.3333,
-        "key": "clean|||leave",
-        "occurrences": [
-          99,
-          183,
-          216
-        ]
-      },
-      {
-        "source": "retrieve",
-        "target": "clean",
-        "count": 3,
-        "probability": 0.0588,
-        "key": "retrieve|||clean",
-        "occurrences": [
-          98,
-          182,
-          215
-        ]
-      },
-      {
-        "source": "retrieve",
-        "target": "split",
-        "count": 3,
-        "probability": 0.0588,
-        "key": "retrieve|||split",
-        "occurrences": [
-          109,
-          130,
-          149
-        ]
-      },
-      {
-        "source": "split",
-        "target": "leave",
-        "count": 3,
+        "source": "START",
+        "target": "press(appliances)",
+        "count": 1,
         "probability": 1.0,
-        "key": "split|||leave",
+        "key": "START|||press(appliances)",
         "occurrences": [
-          110,
-          131,
-          150
+          0
         ]
       },
       {
-        "source": "access",
-        "target": "transition",
-        "count": 2,
-        "probability": 0.0714,
-        "key": "access|||transition",
-        "occurrences": [
-          43,
-          91
-        ]
-      },
-      {
-        "source": "block",
-        "target": "retrieve(milk)",
-        "count": 2,
-        "probability": 0.087,
-        "key": "block|||retrieve(milk)",
-        "occurrences": [
-          89,
-          103
-        ]
-      },
-      {
-        "source": "clean(milk)",
-        "target": "retrieve",
-        "count": 2,
+        "source": "lift(containers)",
+        "target": "lift(containers)",
+        "count": 1,
         "probability": 0.5,
-        "key": "clean(milk)|||retrieve",
+        "key": "lift(containers)|||lift(containers)",
         "occurrences": [
-          97,
-          101
+          3
         ]
       },
       {
-        "source": "leave",
-        "target": "clean",
-        "count": 2,
-        "probability": 0.0513,
-        "key": "leave|||clean",
+        "source": "lift(containers)",
+        "target": "press(appliances)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "lift(containers)|||press(appliances)",
         "occurrences": [
-          180,
-          184
+          4
         ]
       },
       {
-        "source": "leave",
-        "target": "leave",
-        "count": 2,
-        "probability": 0.0513,
-        "key": "leave|||leave",
-        "occurrences": [
-          151,
-          210
-        ]
-      },
-      {
-        "source": "retrieve",
-        "target": "transition",
-        "count": 2,
-        "probability": 0.0392,
-        "key": "retrieve|||transition",
-        "occurrences": [
-          81,
-          175
-        ]
-      },
-      {
-        "source": "retrieve(milk)",
-        "target": "retrieve(milk)",
-        "count": 2,
+        "source": "lift(dairy and eggs)",
+        "target": "move(cutlery)",
+        "count": 1,
         "probability": 0.3333,
-        "key": "retrieve(milk)|||retrieve(milk)",
+        "key": "lift(dairy and eggs)|||move(cutlery)",
         "occurrences": [
-          78,
-          79
+          11
         ]
       },
       {
-        "source": "access",
-        "target": "block",
+        "source": "mix(drinks)",
+        "target": "mix(drinks)",
         "count": 1,
-        "probability": 0.0357,
-        "key": "access|||block",
+        "probability": 0.5,
+        "key": "mix(drinks)|||mix(drinks)",
         "occurrences": [
-          170
+          13
         ]
       },
       {
-        "source": "access(milk)",
-        "target": "retrieve",
+        "source": "mix(drinks)",
+        "target": "take(other)",
         "count": 1,
-        "probability": 1.0,
-        "key": "access(milk)|||retrieve",
-        "occurrences": [
-          19
-        ]
-      },
-      {
-        "source": "block",
-        "target": "manipulate(button)",
-        "count": 1,
-        "probability": 0.0435,
-        "key": "block|||manipulate(button)",
-        "occurrences": [
-          23
-        ]
-      },
-      {
-        "source": "block",
-        "target": "manipulate(milk)",
-        "count": 1,
-        "probability": 0.0435,
-        "key": "block|||manipulate(milk)",
+        "probability": 0.5,
+        "key": "mix(drinks)|||take(other)",
         "occurrences": [
           14
         ]
       },
       {
-        "source": "block",
-        "target": "transition",
-        "count": 1,
-        "probability": 0.0435,
-        "key": "block|||transition",
-        "occurrences": [
-          46
-        ]
-      },
-      {
-        "source": "clean",
-        "target": "manipulate",
-        "count": 1,
-        "probability": 0.1111,
-        "key": "clean|||manipulate",
-        "occurrences": [
-          196
-        ]
-      },
-      {
-        "source": "clean",
-        "target": "retrieve",
-        "count": 1,
-        "probability": 0.1111,
-        "key": "clean|||retrieve",
-        "occurrences": [
-          181
-        ]
-      },
-      {
-        "source": "clean(milk)",
-        "target": "clean(milk)",
-        "count": 1,
-        "probability": 0.25,
-        "key": "clean(milk)|||clean(milk)",
-        "occurrences": [
-          96
-        ]
-      },
-      {
-        "source": "clean(milk)",
-        "target": "manipulate(milk)",
-        "count": 1,
-        "probability": 0.25,
-        "key": "clean(milk)|||manipulate(milk)",
-        "occurrences": [
-          93
-        ]
-      },
-      {
-        "source": "leave",
-        "target": "clean(milk)",
-        "count": 1,
-        "probability": 0.0256,
-        "key": "leave|||clean(milk)",
-        "occurrences": [
-          100
-        ]
-      },
-      {
-        "source": "leave",
-        "target": "leave(milk)",
-        "count": 1,
-        "probability": 0.0256,
-        "key": "leave|||leave(milk)",
-        "occurrences": [
-          105
-        ]
-      },
-      {
-        "source": "leave",
-        "target": "retrieve(coffee)",
-        "count": 1,
-        "probability": 0.0256,
-        "key": "leave|||retrieve(coffee)",
-        "occurrences": [
-          6
-        ]
-      },
-      {
-        "source": "leave",
-        "target": "sense",
-        "count": 1,
-        "probability": 0.0256,
-        "key": "leave|||sense",
-        "occurrences": [
-          191
-        ]
-      },
-      {
-        "source": "leave(milk)",
-        "target": "retrieve",
+        "source": "move(cutlery)",
+        "target": "mix(drinks)",
         "count": 1,
         "probability": 1.0,
-        "key": "leave(milk)|||retrieve",
+        "key": "move(cutlery)|||mix(drinks)",
         "occurrences": [
-          106
+          12
         ]
       },
       {
-        "source": "manipulate",
-        "target": "clean",
+        "source": "pat(dairy and eggs)",
+        "target": "lift(dairy and eggs)",
         "count": 1,
-        "probability": 0.0238,
-        "key": "manipulate|||clean",
-        "occurrences": [
-          197
-        ]
-      },
-      {
-        "source": "manipulate",
-        "target": "manipulate(button)",
-        "count": 1,
-        "probability": 0.0238,
-        "key": "manipulate|||manipulate(button)",
-        "occurrences": [
-          72
-        ]
-      },
-      {
-        "source": "manipulate",
-        "target": "retrieve(milk)",
-        "count": 1,
-        "probability": 0.0238,
-        "key": "manipulate|||retrieve(milk)",
-        "occurrences": [
-          75
-        ]
-      },
-      {
-        "source": "manipulate(button)",
-        "target": "access",
-        "count": 1,
-        "probability": 0.3333,
-        "key": "manipulate(button)|||access",
-        "occurrences": [
-          24
-        ]
-      },
-      {
-        "source": "manipulate(button)",
-        "target": "block",
-        "count": 1,
-        "probability": 0.3333,
-        "key": "manipulate(button)|||block",
-        "occurrences": [
-          73
-        ]
-      },
-      {
-        "source": "manipulate(button)",
-        "target": "retrieve",
-        "count": 1,
-        "probability": 0.3333,
-        "key": "manipulate(button)|||retrieve",
+        "probability": 1.0,
+        "key": "pat(dairy and eggs)|||lift(dairy and eggs)",
         "occurrences": [
           8
         ]
       },
       {
-        "source": "manipulate(milk)",
-        "target": "access",
+        "source": "press(appliances)",
+        "target": "slide(drinks)",
         "count": 1,
         "probability": 0.5,
-        "key": "manipulate(milk)|||access",
+        "key": "press(appliances)|||slide(drinks)",
         "occurrences": [
-          15
+          1
         ]
       },
       {
-        "source": "manipulate(milk)",
-        "target": "retrieve",
+        "source": "press(appliances)",
+        "target": "turn(crockery)",
         "count": 1,
         "probability": 0.5,
-        "key": "manipulate(milk)|||retrieve",
+        "key": "press(appliances)|||turn(crockery)",
         "occurrences": [
-          94
+          5
         ]
       },
       {
-        "source": "merge(coffee)",
-        "target": "merge(coffee)",
-        "count": 1,
-        "probability": 0.5,
-        "key": "merge(coffee)|||merge(coffee)",
-        "occurrences": [
-          83
-        ]
-      },
-      {
-        "source": "merge(coffee)",
-        "target": "retrieve",
-        "count": 1,
-        "probability": 0.5,
-        "key": "merge(coffee)|||retrieve",
-        "occurrences": [
-          84
-        ]
-      },
-      {
-        "source": "retrieve",
-        "target": "access(milk)",
-        "count": 1,
-        "probability": 0.0196,
-        "key": "retrieve|||access(milk)",
-        "occurrences": [
-          18
-        ]
-      },
-      {
-        "source": "retrieve",
-        "target": "clean(milk)",
-        "count": 1,
-        "probability": 0.0196,
-        "key": "retrieve|||clean(milk)",
-        "occurrences": [
-          95
-        ]
-      },
-      {
-        "source": "retrieve",
-        "target": "sense",
-        "count": 1,
-        "probability": 0.0196,
-        "key": "retrieve|||sense",
-        "occurrences": [
-          61
-        ]
-      },
-      {
-        "source": "retrieve(coffee)",
-        "target": "manipulate(button)",
+        "source": "shake(cutlery)",
+        "target": "END",
         "count": 1,
         "probability": 1.0,
-        "key": "retrieve(coffee)|||manipulate(button)",
+        "key": "shake(cutlery)|||END",
+        "occurrences": [
+          16
+        ]
+      },
+      {
+        "source": "slide(drinks)",
+        "target": "lift(containers)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "slide(drinks)|||lift(containers)",
+        "occurrences": [
+          2
+        ]
+      },
+      {
+        "source": "take(dairy and eggs)",
+        "target": "pat(dairy and eggs)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "take(dairy and eggs)|||pat(dairy and eggs)",
         "occurrences": [
           7
         ]
       },
       {
-        "source": "retrieve(milk)",
-        "target": "access",
+        "source": "take(other)",
+        "target": "shake(cutlery)",
         "count": 1,
-        "probability": 0.1667,
-        "key": "retrieve(milk)|||access",
+        "probability": 1.0,
+        "key": "take(other)|||shake(cutlery)",
         "occurrences": [
-          90
+          15
         ]
       },
       {
-        "source": "retrieve(milk)",
-        "target": "leave",
+        "source": "turn(crockery)",
+        "target": "take(dairy and eggs)",
         "count": 1,
-        "probability": 0.1667,
-        "key": "retrieve(milk)|||leave",
+        "probability": 1.0,
+        "key": "turn(crockery)|||take(dairy and eggs)",
         "occurrences": [
-          104
-        ]
-      },
-      {
-        "source": "retrieve(milk)",
-        "target": "retrieve",
-        "count": 1,
-        "probability": 0.1667,
-        "key": "retrieve(milk)|||retrieve",
-        "occurrences": [
-          80
-        ]
-      },
-      {
-        "source": "retrieve(milk)",
-        "target": "sense",
-        "count": 1,
-        "probability": 0.1667,
-        "key": "retrieve(milk)|||sense",
-        "occurrences": [
-          76
-        ]
-      },
-      {
-        "source": "sense",
-        "target": "block",
-        "count": 1,
-        "probability": 0.3333,
-        "key": "sense|||block",
-        "occurrences": [
-          192
-        ]
-      },
-      {
-        "source": "sense",
-        "target": "manipulate",
-        "count": 1,
-        "probability": 0.3333,
-        "key": "sense|||manipulate",
-        "occurrences": [
-          62
-        ]
-      },
-      {
-        "source": "sense",
-        "target": "retrieve(milk)",
-        "count": 1,
-        "probability": 0.3333,
-        "key": "sense|||retrieve(milk)",
-        "occurrences": [
-          77
-        ]
-      },
-      {
-        "source": "transition",
-        "target": "clean(milk)",
-        "count": 1,
-        "probability": 0.2,
-        "key": "transition|||clean(milk)",
-        "occurrences": [
-          92
-        ]
-      },
-      {
-        "source": "transition",
-        "target": "leave",
-        "count": 1,
-        "probability": 0.2,
-        "key": "transition|||leave",
-        "occurrences": [
-          176
-        ]
-      },
-      {
-        "source": "transition",
-        "target": "manipulate",
-        "count": 1,
-        "probability": 0.2,
-        "key": "transition|||manipulate",
-        "occurrences": [
-          47
-        ]
-      },
-      {
-        "source": "transition",
-        "target": "merge(coffee)",
-        "count": 1,
-        "probability": 0.2,
-        "key": "transition|||merge(coffee)",
-        "occurrences": [
-          82
-        ]
-      },
-      {
-        "source": "transition",
-        "target": "retrieve",
-        "count": 1,
-        "probability": 0.2,
-        "key": "transition|||retrieve",
-        "occurrences": [
-          44
+          6
         ]
       }
     ]
   },
   "salient_config": {
-    "k": 6,
-    "min_count": 2,
-    "node_min": 3,
-    "salient_nouns": [
-      "button",
-      "coffee",
-      "maker:coffee",
-      "milk"
-    ],
-    "vocab_scope": "recipe",
-    "match_report": [
+    "identity_rule": "verb_key(noun_category). Graph filtered for primary actions. Sequence keeps all actions."
+  },
+  "analysis": {
+    "dead_ends": [
       {
-        "noun": "milk",
-        "count": 42,
-        "salient": true
+        "id": "lift(containers)",
+        "score": 0.5
       },
       {
-        "noun": "coffee",
-        "count": 11,
-        "salient": true
+        "id": "mix(drinks)",
+        "score": 0.5
       },
       {
-        "noun": "button",
-        "count": 9,
-        "salient": true
-      },
-      {
-        "noun": "maker:coffee",
-        "count": 2,
-        "salient": true
+        "id": "press(appliances)",
+        "score": 0.5
       }
-    ]
+    ],
+    "self_loops": [
+      {
+        "id": "lift(dairy and eggs)",
+        "count": 2
+      },
+      {
+        "id": "lift(containers)",
+        "count": 1
+      },
+      {
+        "id": "mix(drinks)",
+        "count": 1
+      }
+    ],
+    "start_id": "START",
+    "end_id": "END"
   }
 }
