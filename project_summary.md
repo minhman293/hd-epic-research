@@ -224,8 +224,8 @@ Where two steps run simultaneously in the same capture — the natural paralleli
 
 The time gap between when the participant prepared for a step (`prep_times`) and when they actually executed it (`step_times`). Long gaps are candidate windows where a robot could bridge — pre-position a tool during prep, then the human executes when ready.
 
-**Data source:** `prep_times[step_id][0].start` vs `step_times[step_id][0].start`.
-**Dataset prevalence:** present in most captures; `prep_times` is currently unused in the dashboard.
+**Data source:** `prep_times[step_id][*].end` paired with the first future `step_times[step_id][*].start` on the unified capture timeline. As of the July 2026 pipeline update, `prep_times` is stitched onto the unified timeline alongside `step_times`, and per-step gap pairs (`prep_end`, `exec_start`, `gap`) are pre-computed into each session payload as `steps[].prep_gaps`. Every sequence item also carries a `phase` field (`exec` / `prep` / `None`). Frontend rendering of prep windows in the swimlane is the remaining piece.
+**Dataset prevalence:** present in most captures.
 
 ### 2.5 Honest scope statement
 
@@ -244,7 +244,7 @@ The dashboard's current value is not its findings — it's the demonstration tha
 | Markup / styling | HTML, CSS |
 | Build process | None — direct ES module loading |
 | Hosting | GitHub Pages |
-| Video hosting | Dropbox (currently — load slow; alternatives under evaluation) |
+| Video hosting | Lab's Server + TryCloudflare + Caddy |
 | Data preparation | Python (4 scripts) |
 | Data interchange | JSON |
 
@@ -264,10 +264,12 @@ outputs/
   graphs/
     manifest.json                   Frontend reads this first
     {recipe_id}/
-      session_{N}_full.json         Per-session detailed graph
-      session_{N}_smart.json        Per-session smart-merged graph
-      session_{N}_abstracted.json   Per-session task-phase graph
-      merged_{mode}.json            Cross-session aggregated graph (3 files)
+      session_{N}_full.json         Full Raw (verb(noun) atomic)
+      session_{N}_smart.json        Smart-Merged (verb-only)
+      session_{N}_abstracted.json   Recipe-step nodes (generated, not in UI)
+      session_{N}_categorical.json  13 verb-category nodes
+      session_{N}_hybrid.json       verb_key(noun_category), Markov view
+      merged_{mode}.json            Cross-session aggregated graph (up to 5 files)
   figures/
     overlap_pairs.csv               One row per detected overlap, for verification
   raw-video/
@@ -299,9 +301,9 @@ HD-EPIC raw data
     ↓ (script 2: recipe selection)
 selected_recipe_{recipe_id}.json + recipe_narrations.pkl
     ↓ (script 6: per-session preparation)
-session_{N}_{mode}.json (3 files per session)
+session_{N}_{mode}.json (5 files per session: full, smart, abstracted, categorical, hybrid)
     ↓ (script 8: aggregation if multi-session)
-merged_{mode}.json (3 merged files)
+merged_{mode}.json (up to 5 merged files, one per mode)
     ↓ (script 7: manifest build)
 manifest.json
 ```
@@ -348,28 +350,37 @@ For single-video captures, the schema degrades cleanly: `videos` has one entry w
 
 Prof. Lin's requirement: the motion graph should summarize action occurrences and frequencies ACROSS trials. Three statistical requirements were implemented:
 
-1. **Shared state space** — provided by the recipe-level vocabulary (§3.4.2); without it, pooling counts across sessions mixes incommensurable alphabets.
+1. **Shared state space** — the categorical (13 verb-category) and hybrid (`verb_key(noun_category)`) modes both use fixed identity functions that produce identical alphabets across sessions by construction (§3.4.2). Pooling counts across sessions therefore does not mix incommensurable alphabets.
 2. **Pooled probabilities** — merged edge probability is the pooled MLE: P(B|A) = Σ_sessions count(A→B) / Σ_sessions out-degree(A) (Anderson & Goodman 1957). Explicitly NOT the average of per-session probabilities (average-of-ratios weights a 2-transition session equally with a 40-transition one; Simpson-style bias, Blyth 1972). Example: 8/10 and 1/2 pool to 9/12 = 0.75, not (0.8+0.5)/2 = 0.65.
 3. **Session-respecting ranks** — each merged sequence item carries `normalized_rank` (index within its OWN session / session length), so the rank layout doesn't misread concatenation order as temporal order.
 
-Additional propagation: `salient` flag and `verbs` distribution now survive merging (mirroring the existing `objects` union); `MODES` extended to include `categorical` and `hybrid`. The existing `support` / `support_fraction` fields (in how many sessions an edge appears) are retained — support is the cross-trial consistency signal (habitual vs. idiosyncratic transitions), directly relevant to what an anticipatory robot should rely on.
+**Sentinel unification.** `normalize_special_nodes` coerces any variant of a start or end identity (`START`, `START:`, `START::…`, `END`, `END:…`) into the canonical `START` / `END` tokens before pooling, so all sessions merge cleanly at the root and tail of the graph. Applied consistently to node ids, sequence `action`, sequence `next_action`, `edge_key`, and link `source` / `target`.
 
-**Validation:** `9_validate_hybrid.py` runs per file: V1 node budget (≤30), V2 Markov property (Σ outgoing P = 1.0 per node, terminal-state aware), V3 data preservation (node counts sum = sequence length), V4 salient coverage, V5 recognizability report (prints salient labels for the manual "name the dish" test). Extended to also check `merged_hybrid.json` as a regression test for pooled probabilities.
+**Propagated fields.** `salient` flag, `verbs` distribution, and `objects` distribution survive merging (unions across sessions). `MODES` covers one per-session mode: `["hybrid"]`. The existing `support` / `support_fraction` fields (in how many sessions a node/edge appears) are retained — support is the cross-trial consistency signal (habitual vs. idiosyncratic transitions), directly relevant to what an anticipatory robot should rely on.
+
+**Additional merged-node fields.** Every merged node carries `total_count`, `per_session_counts`, `is_mandatory` (support == n_sessions, excluding START/END), `merged_step_id` (majority-vote across sessions), `per_session_step_ids`, `mean_normalized_onset`, `raw_onsets` (list across all sessions for downstream distribution plots), and `mean_duration` / `min_duration` / `max_duration`. Every merged link carries `per_session_counts`, `per_session_occurrences`, and the pooled `probability`.
+
+**Merged-graph analysis (`compute_merged_analysis`).** New in the July 2026 revision. Each merged JSON now ships an `analysis` block containing:
+
+- `mandatory_nodes` — actions present in every session; the operational core of the recipe.
+- `canonical_spine` and `canonical_spine_score` — a greedy walk from `START` choosing, at each step, the successor with highest support (breaking ties by highest pooled probability). This is a habit-weighted "most likely path" through the merged chain and is useful as an anticipatory-robot baseline: the plan a robot would follow if it always bet on what the person usually did.
+- `dead_ends` — top-10 nodes with pooled `dead_end_score ≥ 0.6`, i.e. states most transitions out of which lead directly to termination (Video Textures anticipated-cost analog, Schödl et al. 2000).
+- `session_similarity` — pairwise (1 − normalized Levenshtein) matrix on the START/END-stripped action sequences; a first-order handle on within-participant consistency.
+- `session_shared_prefix` and `session_shared_suffix` — the initial and final action runs identical across all sessions in the same positions. Structural signal for openings/closings that are stable across trials.
+- `loops` — up to 20 cycles (length ≤ 5) discovered in the strong-edge subgraph (support ≥ 2, non-self-loop). Structural signal for recurring behavioral motifs.
+- `session_singleton_nodes` — actions that appear in only one session (idiosyncratic behavior).
 
 ### 3.4 Detail-level modes
 
-Each per-session JSON exists in three modes representing different abstraction levels:
-
-The pipeline produces four detail-level modes per session, each at a different granularity:
+The pipeline produces **five** per-session JSONs, each at a different granularity:
 
 - **Full Raw** (`session_{N}_full.json`) — every atomic action is a separate node, identified by `verb(noun)`. Node counts range from 39 (P08_R01 Coffee) to 424 (P03_R03 Drip Coffee). Useful for inspecting exact action sequences but visually dense.
 - **Smart-Merged** (`session_{N}_smart.json`) — nodes are specific verbs (the 32 verb keys from HD-EPIC), object information collapsed into a per-node `objects` distribution. ~30–80 nodes per recipe. Mid-granularity view.
 - **Categorical** (`session_{N}_categorical.json`) — nodes are the 13 HD-EPIC verb categories (`retrieve`, `leave`, `manipulate`, `access`, `block`, `clean`, `merge`, `transition`, `sense`, `split`, `monitor`, `distribute`, `order`). 10–13 nodes per recipe consistently. **This is the Markov-chain view in the Video Textures sense** — each state is a self-contained observable label, transitions count between consecutive observed states, and edge weights carry both raw `count` and Markov `probability` (outgoing probabilities sum to 1.0 per node). Each node carries `objects` (specific-noun frequency), `verbs` (specific-verb frequency), and `noun_categories` (frequency across noun categories) so the hover tooltip can surface object detail without putting it in the node identity.
-- **Recipe-Salient Hybrid** (`session_{N}_hybrid.json`) — the primary Markov view. Two-tier states: actions on recipe-salient objects keep `verb_cat(noun)` identity (e.g. `merge(coffee)`, `manipulate(button)`); all other activity aggregates to its verb category. 11–31 nodes per coffee recipe. Edges carry both `count` and Markov `probability` (P(B|A) = count/out-degree, Σ = 1 per node, self-loops kept; Schödl et al. 2000). This mode satisfies both of Prof. Lin's requirements simultaneously: a proper Markov chain AND recipe-recognizability from the graph alone. See §3.4.2.
+- **Hybrid** (`session_{N}_hybrid.json`) — the primary Markov view. State identity is the fixed function `verb_key(noun_category)` (e.g. `pour(beverage)`, `press(button)`, `open(container)`). A dedicated two-pipeline architecture produces (a) a *full sequence* — every atomic action with `verb_key(noun_category)` identity plus injected `START` / `END` sentinel items — that feeds the swimlane and barcode views, and (b) a *primary sequence* — the same identity function applied to only the `is_primary=True` subset — that drives the motion graph's nodes and edges. Filtering the graph to primary actions makes the Markov chain about recipe execution rather than about the interleaved noise of drawer-opening, phone-checking, and cleanup. Node counts fall in the ~15–40 range in practice. Edges carry `count` and Markov `probability` (P(B|A) = count/out-degree, Σ = 1 per node, self-loops kept; Schödl et al. 2000). See §3.4.2.
+- **Abstracted** (`session_{N}_abstracted.json`) — nodes are recipe steps (S01, S02, …). 3–16 nodes per recipe. Still generated by the pipeline for downstream reuse. **Removed from the dashboard UI** in the June 2026 revision — the swimlane covers step structure and duplicate views fragment attention.
 
-Note: the **Task Phases (Abstracted) view has been removed from the dashboard UI** — the swimlane already shows recipe-step structure, and duplicate views fragment attention. The pipeline still generates `session_{N}_abstracted.json` for potential future use.
-
-The three modes form a **granularity ladder** that the user can switch between via the dropdown selector. Each level answers a different analytical question: Categorical asks "what kind of action?", Smart-Merged asks "what verb?", and Full Raw asks "what action on what object?".
+The four UI-exposed modes (Full Raw → Smart-Merged → Categorical → Hybrid) form a **granularity ladder** the user can switch between via the dropdown. Each level answers a different analytical question: Full Raw asks "what action on what object?", Smart-Merged asks "what verb?", Categorical asks "what kind of action?", and Hybrid asks "what verb on what kind of object, restricted to recipe execution?"
 
 #### Step labels
 
@@ -399,24 +410,39 @@ The **`verb_cat` only** scheme hits the 10–13 node target naturally across eve
 
 For coffee recipes, the top 5 verb categories (`retrieve`, `leave`, `manipulate`, `access`, `block`) cover roughly 85–90% of activity, with `clean`, `merge`, `transition`, `sense`, `split`, `monitor` making up the long tail. The Markov transition probabilities give a defensible state-machine description of cooking behavior at a level abstract enough to compare across participants.
 
-### 3.4.2 Recipe-Salient Hybrid mode — design and parameters
+### 3.4.2 Hybrid mode — design (revised July 2026)
 
-**Problem.** The Categorical mode (§3.4.1) hits the node-count target but is recipe-blind: `retrieve → block → leave` reads identically for coffee, curry, or salad. Prof. Lin's hard requirement — a viewer should recognize the recipe from the graph alone — was unmet. Recipe identity lives in the *nouns*, but keeping all nouns explodes node counts (28–124, §3.4.1).
+**Problem.** The Categorical mode (§3.4.1) hits the node-count target but has two limits: (1) it is recipe-blind — `retrieve → block → leave` reads identically for coffee, curry, or salad — and (2) it treats atomic-action noise (drawer-opening, phone-checking, cleanup) as equivalent to recipe-relevant activity. Prof. Lin's twin requirements — a proper Markov chain AND recipe-recognizability — need a state definition that carries more information than the verb category alone AND a mechanism that lets the graph focus on execution.
 
-**Design: two-tier states grounded in the recipe's own text.** A noun is *recipe-salient* if it lexically matches the recipe's author-written name + step text. Salient actions keep `verb_cat(noun)` identity; everything else (drawers, cloths, phones) aggregates to its bare verb category — aggregated, never dropped. Grounding in the recipe author's own vocabulary requires zero manual annotation and satisfies the aggregation guideline that aggregates must convey information about their content (Elmqvist & Fekete 2010, G4).
+**Design: fixed identity function + two-pipeline architecture.** The revised hybrid mode uses a deterministic state definition and separates the sequence that drives the UI from the sequence that drives the graph.
 
-**Parameters (CLI-exposed aggregation dials, Munzner 2014 "reduce"):**
-- `--salient-k` (default 6): max salient nouns per recipe.
-- `SALIENT_MIN_COUNT` (2): min occurrences for a noun to be eligible.
-- `--salient-node-min` (default 3): min observations for a salient *state* (verb_cat, noun) to earn its own node — "identity requires evidence." Empirically: node_min=1 gives 16–46 nodes on coffee recipes; node_min=3 gives 11–31.
+1. **Identity function (fixed, no per-recipe tuning).** Every atomic action's state is `verb_key(noun_category)` — the specific HD-EPIC verb (32 keys) crossed with the noun's high-level category (21 categories, e.g. `container`, `beverage`, `appliance`). Examples: `pour(beverage)`, `press(button)`, `open(container)`, `stir(container)`. This is authored by construction, not by lexical matching against the recipe text: no LLM, no vocabulary file, no `--salient-k`, no `match_report`. The pipeline runs identically on any recipe.
 
-**Compound-noun matching rule.** HD-EPIC keys follow the EPIC-KITCHENS `head:modifier` convention (`machine:washing` = washing machine; Damen et al. 2018/IJCV 2022). The head is a generic category word; the modifier is discriminative (Levi 1978). Matching any token caused a verified false positive: `machine:washing` was promoted to salient in P01_R01 because the recipe says "coffee *machine*." The rule now matches **modifier tokens only** for compound keys (single-word keys unchanged). Verified on P01_R01: salient set corrected to {button, coffee, maker:coffee, milk}; `maker:coffee` still matches via its modifier.
+   Why `verb_key × noun_category` rather than `verb_key × noun` or `verb_category × noun`? The verb key preserves the distinction between semantically distinct actions inside one category (`retrieve` covers both `take` and `remove`; `manipulate` covers `press` vs `flip`). The noun category preserves a stable, recipe-comparable object handle without exploding the alphabet the way individual nouns do (28–124 nodes at `verb_cat × noun_cat`, §3.4.1). The trade-off is deliberate: recipe identity now lives less in the node labels themselves (a coffee capsule and a tea bag can both surface as `container`) and more in the transition structure over primary actions, plus the per-node `objects` and `verbs` distributions surfaced in tooltips.
 
-**Shared recipe-level vocabulary.** Salience is computed ONCE per recipe over the POOLED sequences of all sessions, then applied identically to every session (`build_shared_hybrid_vocab`). This guarantees all sessions share one state alphabet — the precondition for pooling Markov transition counts across trials (Anderson & Goodman 1957) and for per-session graphs being directly comparable. Every hybrid JSON records `salient_config` (k, node_min, salient nouns, full `match_report`, `vocab_scope`) as an auditable trail.
+2. **Two pipelines from the same tagged sequence.**
 
-**HRI framing.** The salient/background split is itself collaboration-relevant: background states (retrieve, leave, access — fetching, transporting) are the repetitive, delegable activity a robot could absorb; salient states are the recipe-critical actions the human retains (anticipatory-support framing, Hoffman & Breazeal 2007).
+    - **Pipeline 1 — Full Sequence (drives swimlane / barcode).** Every atomic action gets its `verb_key(noun_category)` identity. Two synthetic sentinel items are then inserted at the head and tail: `START` at `t = max(0, first_action.start − 0.001)` and `END` at `t = last_action.end + 0.001`, both flagged `is_primary=True` (so they survive Pipeline 2's filter) and `kind` set to `start` / `end` for the renderer. Consecutive-item `next_action` and `edge_key` fields are re-linked. This is what feeds the swimlane, barcode, and any UI element that needs to walk the full behavioral timeline. Nothing is dropped from Pipeline 1.
 
-**Known contamination caveat.** Narration files span whole videos, so recipes sharing videos with other dishes (P03_R03: 31 nodes; P05_R01: 43) carry inflated background counts. Scoping narrations to the recipe's time span via activity-timestamps CSVs is a pending pipeline task.
+    - **Pipeline 2 — Primary Sequence (drives the motion graph).** A copy of the full sequence is filtered to `is_primary=True` items only. `next_action` and `edge_key` are re-linked so edges skip over the removed secondary items — a stir-in-the-pot that used to be followed by a phone-glance and then another stir now connects stir → stir directly. Node counts, per-node `objects` / `verbs` / `kind`, edges, and Markov probabilities are compiled from this primary-only stream. The motion graph therefore represents the recipe-execution Markov chain rather than the interleaved noise of the whole capture.
+
+    Both sequences are shipped in the payload: `result["sequence"]` = full sequence (for the UI's timeline uses), `result["graph"]` = nodes + links derived from primary sequence (for the motion graph). The two-pipeline design is documented on the payload itself as `salient_config = {"identity_rule": "verb_key(noun_category). Graph filtered for primary actions. Sequence keeps all actions."}`.
+
+3. **Per-session analysis fields.** Every hybrid payload also carries an `analysis` block:
+
+    - `dead_ends` — top-10 nodes with pooled `dead_end_score ≥ 0.5` from `_compute_dead_end_scores`. The score is defined as `1 − max_t P(n → t)` over targets `t` that are not `END`, so a node with score close to 1.0 has almost no non-terminating continuation and behaves as a semantic dead end (Video Textures anticipated-cost analog at the state-transition level; Schödl et al. 2000).
+    - `self_loops` — actions where two consecutive primary-sequence items land on the same identity (`stir → stir`, `pour → pour`), with count. These are the honest consecutive-repetition signal at the primary level.
+    - `start_id` / `end_id` — the sentinel identities, so the renderer can locate the graph's root and tail deterministically.
+
+**Why this replaces the previous salient/background design.**
+
+- *Determinism and cross-recipe portability.* The lexical-salience approach required a per-recipe salient set and a `match_report` audit trail, and had known recall misses (P01_R01's frother matched no HD-EPIC key token). The fixed identity function has no such dependency and runs identically on every recipe, including recipes not yet in the dataset.
+- *Node-count control by data, not thresholds.* Node counts fall out of the vocabulary of (`verb_key`, `noun_category`) actually observed in each primary sequence, not from `--salient-k` / `--salient-node-min` thresholds. There is no "identity requires evidence" cutoff to tune.
+- *Cross-session comparability by construction.* Because the identity function is fixed rather than recipe-scoped, sessions of *different* recipes are directly comparable — a step forward from the previous design where the salient vocabulary was recipe-specific.
+
+**HRI framing (preserved).** The `is_primary` / `is_secondary` split remains collaboration-relevant. Primary actions are the recipe-critical work the human is doing when they are visibly on-recipe; secondary actions (retrieve-a-cloth, check-a-phone, open-a-drawer between steps) are the repetitive delegable activity a robot could absorb (anticipatory-support framing, Hoffman & Breazeal 2007). The two-pipeline split makes this explicit at the data-model level: the graph represents what a robot would need to anticipate; the full sequence represents everything actually happening.
+
+**Known contamination caveat (still open).** Narration files span whole videos, so recipes sharing videos with other dishes carry inflated secondary counts. Scoping narrations to the recipe's time span via the per-participant activity-timestamps CSVs remains a pending pipeline task.
 
 ### 3.5 Primary vs Secondary action lanes
 
@@ -482,11 +508,13 @@ The largest single file. Handles:
 
 **No time axis.** A Markov chain is memoryless; its states have no temporal coordinates. Positioning states on an absolute-time axis asserts facts the abstraction doesn't contain — an expressiveness violation (Mackinlay 1986). In hybrid mode the temporal layout is replaced by a **rank layout**: nodes ordered left-to-right by the median normalized rank of their occurrences (relative order, per Prof. Lin), the process-map convention from process mining (directly-follows graphs; van der Aalst 2016).
 
+**Data-model note.** The renderer reads nodes from `payload.graph` (built from Pipeline 2 — primary-only) and reads the timeline from `payload.sequence` (built from Pipeline 1 — full sequence, including sentinel `START` / `END` items with `kind = "start" | "end"`). The graph is therefore a Markov chain over recipe execution, while playback and time-based views walk every atomic action. Nodes carry `kind`, `is_start`, `is_end`, `dead_end_score`, and their `objects` / `verbs` distributions from the primary sequence.
+
 **Layout mechanics:** ordinal spacing (evenly spaced rank order, START/END pinned to the extremes), salient band above / background band below, deterministic 3-level vertical stagger (−90/0/+90), then constrained force relaxation — x pinned by `forceX(0.9)`, y relaxed under `forceY(0.05)` + collision (constrained-layout family, Dwyer et al. 2006). Deterministic seeding (no random jitter) so identical data renders identically across reloads — required for cross-meeting screenshot comparability. Fit-to-view was retuned after diagnosing a width-bound fit (scale = min(W/gw, H/gh); the wide strip layout bound on width): radius-aware padding, fit factor 0.9→0.97, SPACING reduced so collision converts horizontal compression into vertical spread.
 
 **Edge encoding:** width = Markov probability (linear [0,1]→[0.8,6]); curved quadratic paths disambiguate overlapping collinear edges (arrowheads retained for direction — curvature alone conveys direction poorly, Holten & van Wijk 2009); low-probability edges (P < 0.08, START/END exempt) hidden with an on-canvas count caption — significance filtering per the Fuzzy Miner (Günther & van der Aalst 2007), with the caption keeping the filtering honest. Self-loops are real arcs with probability labels, drawn **inside each node group in node-local coordinates** so they inherit the node transform and follow drags (fixes a stale-geometry bug where zoomGroup-level arcs ignored dragging).
 
-**Node encoding:** salient nodes get a dark ring (redundant encoding of the tier split); labels are never truncated in hybrid mode (the 7-char `slice` rule is bypassed), rendered as two lines (verb / noun) with a label-fit radius floor; the count badge preserves exact frequency since radius now partially encodes label size (area is a low-accuracy channel anyway; Cleveland & McGill 1984). Node tooltip adds `Tier: recipe-salient | background activity`; edge tooltip adds `P(target | source)`.
+**Node encoding:** action nodes (`kind == "action"`, `salient == true` by construction under the new hybrid model) get a dark ring; sentinel `START` / `END` nodes are rendered distinctly via their `kind` field. Labels are never truncated in hybrid mode (the 7-char `slice` rule is bypassed), rendered as two lines (verb / noun-category) with a label-fit radius floor; the count badge preserves exact frequency since radius now partially encodes label size (area is a low-accuracy channel anyway; Cleveland & McGill 1984). Node tooltip surfaces `Objects:` (specific-noun distribution), `Verbs:` (specific-verb distribution — collapsed to 1 element under the new identity function but still informative in Categorical mode which reuses this renderer path), and `dead_end_score`; edge tooltip adds `P(target | source)`.
 
 #### Marker id namespacing (bug fix, all modes)
 
@@ -546,17 +574,17 @@ Standalone script that produces `outputs/step_labels.json`. Reads each recipe's 
 
 ### 3.7 Views
 
-#### Single-session view (default)
+#### Single-session view
 
 Two-column layout:
 - Left: motion graph with encoding controls above it, Min. Transition Count slider, the graph itself with zoom buttons, then the legend
 - Right: video player, annotation timeline strip, recipe metadata panel
 - Bottom: action timeline table
 
-#### Comparison view (P01_R01 only — accessed via the "Merged" session tab)
+#### Comparison view (default)
 
 Two-column layout:
-- Left: motion graph area with a sub-mode toggle ("Merged graph" vs "Small multiples"), support filter slider, then the graph or three stacked thumbnails, then the legend
+- Left: The merged graph is always the primary graph; session tabs act as highlights on it, not view switches
 - Right: main video, thumbnail queue of inactive sessions, three stacked barcodes, comparison metadata panel
 
 ### 3.8 Controls
@@ -594,7 +622,7 @@ Two-column layout:
 - **Annotation-layer gap.** Step-time annotations and atomic-action narrations were created independently and don't always agree on what counts as activity. About 0.9% of step-windows across the dataset have zero underlying narrations; P08_R03 has 23% (5 of 22). The dashboard renders these as visible-but-empty step windows.
 - **Cross-video overlap not detected.** The overlap detector (P3) only flags pairs within the same video file. If two step windows span a pause/resume boundary, they are not flagged. Adding cross-video overlap detection would require offset-aware time math; deferred.
 - **Cross-person comparison structurally impossible** with available data (63 of 69 recipes are single-participant).
-- **Zero of four intervention insights are surfaced.** The dashboard reveals frequency, transition structure, and consistency well. It does not reveal deviations from recipe order, revisitation hotspots, parallel overlaps, or prep-vs-execution gaps — which are the four insights that map to the collaboration research goal.
+- **Intervention insights: data available, UI pending.** The dashboard reveals frequency, transition structure, and consistency well. As of July 2026 the pipeline emits the underlying data for all four intervention insights (per-step time-window arrays for A/B/C; `step_windows` with `phase` and `steps[].prep_gaps` for D), but the frontend does not yet render dedicated views for any of them. The four proposed views in Part 5 are what closes this gap.
 - **Video contamination inflates hybrid node counts.** Narrations span whole videos; recipes sharing videos with other dishes (P03_R03, P05_R01) exceed the ~20-node target. Fix (pending): scope narrations to the recipe's time span via the per-participant activity-timestamps CSVs.
 - **Lexical salience matching has recall misses.** Synonym gaps are not recoverable by any lexical rule (e.g., P01_R01's frother matches no HD-EPIC key token). The `match_report` in `salient_config` makes each recipe's matches auditable; a per-recipe scan against step text is recommended when adding new recipes.
 - **Drag geometry lacks a single source of truth.** Node positions, edges, and self-loops are updated by separate code paths; two stale-geometry bugs have already occurred (START rank, self-loop arcs). A consolidated `updatePositions()` re-deriving all position-dependent geometry is the durable fix (standard D3 idiom); deferred.
@@ -623,11 +651,12 @@ Two-column layout:
 - The "30.4% of step-windows" multi-video data-loss figure and the per-recipe distribution (verified)
 - The "9 errors, 2 real, 1 ambiguous" overlap verification breakdown (manual verification)
 - Categorical detail mode added to the pipeline and dashboard (June 2026). Empirical check on 7 coffee recipes verified that `verb_cat` alone consistently produces 10–13 nodes; `verb_cat × noun_cat` produces 28–124 (too many) and was rejected.
-- Sequence items now carry `verb_class` and `noun_class` IDs in addition to the rendered `action` string, so downstream graph builders can group by category without re-parsing the action label.
-- Hybrid empirical numbers verified against real narrations: node counts 11–31 (coffee, node_min=3), Markov property and data preservation pass on all 7 coffee recipes + merged (automated in 9_validate_hybrid.py, June–July 2026)
-- Compound-noun false positive (machine:washing in P01_R01) identified by manual audit and fixed via modifier-only matching (July 2026)
-- Merged-view arrowhead loss root-caused to duplicate marker ids + hidden-subtree rendering; fixed by per-instance namespacing (July 2026)
-- Task Phases view removed from dashboard UI (design decision: swimlane covers step structure); pipeline output retained
+- Sequence items now carry `verb_class` and `noun_class` IDs in addition to the rendered `action` string, so downstream graph builders can group by category without re-parsing the action label. Sequence items also carry `phase` (`exec` / `prep` / `None`), `video_id`, `video_start`, and `video_end` after the multi-video stitching work.
+- Hybrid mode redesigned (July 2026) to use the fixed identity function `verb_key(noun_category)` and a two-pipeline architecture (full sequence for UI, primary-filtered sequence for graph). Previous lexical-salience design (`--salient-k`, `--salient-node-min`, per-recipe `match_report`) removed. Rationale: determinism, cross-recipe portability, and clean separation of "everything happening" from "the recipe-execution Markov chain."
+- Prep-times added to the pipeline (June 2026): `step_windows[*].phase`, `steps[].prep_gaps`, sequence-item `phase`. Enables Insight D at the data layer; frontend rendering pending.
+- Merged-graph analysis block added to `8_aggregate_sessions.py`: `mandatory_nodes`, `canonical_spine`, `dead_ends`, `session_similarity`, `session_shared_prefix` / `session_shared_suffix`, `loops`, `session_singleton_nodes`. `normalize_special_nodes` unifies START/END identity before pooling.
+- Merged-view arrowhead loss root-caused to duplicate marker ids + hidden-subtree rendering; fixed by per-instance namespacing (July 2026).
+- Task Phases (Abstracted) view removed from dashboard UI (design decision: swimlane covers step structure); pipeline output retained.
 
 ---
 
@@ -728,7 +757,7 @@ A long yellow bar means the person prepared early then did other things before e
 - **Overlay option:** show what *other* actions happened inside the gap — what was the person doing instead of executing?
 - Click the gap bar → play video across that span to see what filled the time
 
-**Data source:** `prep_times[step_id][0].start` vs `step_times[step_id][0].start`. Currently `prep_times` is unused in the dashboard and would need to be added to the pipeline.
+**Data source:** `steps[].prep_gaps` in the per-session payload (list of `{prep_end, exec_start, gap}` per step, pre-computed on the unified timeline). For rendering prep and exec bars in the same lane, `step_windows` in the payload now carries a `phase` field (`"exec"` or `"prep"`). Sequence items also carry `phase`, useful if the view wants to highlight the atomic actions that fall inside a prep window vs an exec window. All three were added to the pipeline in the June 2026 revision; the frontend rendering of prep windows in the swimlane is the remaining work.
 
 **Dataset prevalence:** present in most captures. Example: P01_R01 S04 — prep starts at 9.5s, execution at 136s, gap of 127s.
 
@@ -815,9 +844,9 @@ Each step bar contains multiple atomic actions inside its time window (e.g., S02
 
 The original section 5.7 order (Design 3 → Design 1 → Design 2 → Design 4) assumed four parallel designs. With the swimlane recast as the primary view, the order is:
 
-1. **Build the swimlane as the primary single-session view.** Reuses the existing detail-level pipeline (Task Phases gives clean lanes; Smart-Merged and Full Raw use the existing `step_id` field for lane assignment). LLM step labels become lane labels. This single build delivers Insights B, C, and partial A.
-2. **Layer `prep_times` onto the swimlane** (outline bars). This delivers Insight D. Requires adding `prep_times` to the pipeline output, which is independent groundwork.
+1. **Build the swimlane as the primary single-session view.** Reuses the existing detail-level pipeline (the Abstracted mode gives clean lanes; Smart-Merged, Full Raw, Categorical, and Hybrid all use the existing `step_id` field for lane assignment). LLM step labels become lane labels. This single build delivers Insights B, C, and partial A.
+2. **Layer prep windows onto the swimlane** (outline bars for `phase == "prep"`, filled bars for `phase == "exec"`). Pipeline groundwork is done — `step_windows[*].phase` and `steps[].prep_gaps` are already in every session payload. This is now a pure rendering task and delivers Insight D.
 3. **Add lane-order deviation cues** (e.g., a small marker or color tint when a bar's chronological order doesn't match its lane order). This sharpens Insight A from partial to full.
 4. **Demote the motion graph to a non-temporal topology view** (HRI / category clusters only, no time axis). Resolves the column-confusion problem by removing time from the view that can't honestly represent it.
 
-Before step 2, verify `prep_times` coverage across the corpus — if only a minority of captures have usable prep windows, Insight D works for case studies but not corpus-wide, and the swimlane's prep layer should be presented accordingly.
+Corpus check for prep coverage remains advisable — if only a minority of captures have usable prep windows, Insight D works for case studies but not corpus-wide, and the swimlane's prep layer should be presented accordingly.

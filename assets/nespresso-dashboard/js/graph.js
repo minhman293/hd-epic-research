@@ -169,7 +169,7 @@ function computeRankLayout(nodes, sequence, { maxRadius = 18 } = {}) {
   const ordered = [...realNodes].sort(
     (a, b) => (medianRank[a.id] ?? 0.5) - (medianRank[b.id] ?? 0.5)
   );
-  const SPACING = Math.max(64, Math.round(maxRadius * 1.4));
+  const SPACING = Math.max(80, Math.round(maxRadius * 1.8)); // Increased horizontal spacing
   const xOf = {};
   const orderIdx = {};
   ordered.forEach((n, i) => {
@@ -181,21 +181,27 @@ function computeRankLayout(nodes, sequence, { maxRadius = 18 } = {}) {
     if (isEndId(n.id))   xOf[n.id] = (ordered.length + 1) * SPACING;
   });
 
-  const STAGGER = [-90, 0, 90];              
+  const STAGGER = [-120, 0, 120]; // Increased vertical spread
   const SALIENT_Y = 0, BACKGROUND_Y = 340;   
   const laneY = (n) => (n.isSpecial || n.salient ? SALIENT_Y : BACKGROUND_Y);
 
-  const simNodes = nodes.map((n) => ({
-    id: n.id,
-    x: xOf[n.id] ?? 0,
-    y: laneY(n) + (n.isSpecial ? 0 : STAGGER[(orderIdx[n.id] ?? 0) % 3]),
-    lane: laneY(n),
-    r: 40,
-  }));
+  const simNodes = nodes.map((n) => {
+    const base = laneY(n);
+    const targetY = base + (n.isSpecial ? 0 : STAGGER[(orderIdx[n.id] ?? 0) % 3]);
+    return {
+      id: n.id,
+      x: xOf[n.id] ?? 0,
+      y: targetY,
+      targetY: targetY, // Save the staggered target
+      lane: base,
+      r: 40,
+    };
+  });
+  
   const sim = d3.forceSimulation(simNodes)
     .force("x", d3.forceX((d) => xOf[d.id] ?? 0).strength(0.9))
-    .force("y", d3.forceY((d) => d.lane).strength(0.05))   
-    .force("collide", d3.forceCollide((d) => d.r + Math.max(14, maxRadius * 0.4)))
+    .force("y", d3.forceY((d) => d.targetY).strength(0.4)) // Pull to stagger, not flat center!
+    .force("collide", d3.forceCollide((d) => d.r + Math.max(20, maxRadius * 0.5)))
     .stop();
   for (let i = 0; i < 150; i++) sim.tick();
 
@@ -449,16 +455,14 @@ function getCurvedPath(link, layout, radiusMap, curvature = 0.18) {
 
 function getNodeLabel(node, mode) {
   if (node.isSpecial) return specialLabel(node.id);
-  if (mode === "abstracted") {
-    return node.step_label || node.id;
-  }
-  if (mode === "hybrid") return node.id.split("(")[0];   
+  if (mode === "abstracted") return node.step_label || node.id;
+  if (mode.startsWith("hybrid")) return node.id; // Return full id, parsed later
   const verb = node.id.split("(")[0];
   return verb.length > 7 ? verb.slice(0, 6) + "..." : verb;
 }
 
 function getNodeSubtitle(node, mode) {
-  if (node.isSpecial || mode === "abstracted") return "";
+  if (node.isSpecial || mode === "abstracted" || mode.startsWith("hybrid")) return "";
   const match = node.id.match(/\((.+)\)/);
   return match ? match[1] : "";
 }
@@ -828,19 +832,27 @@ export function createGraphController({
     const nodeLabels = new Map();
     filteredNodes.forEach((node) => { nodeLabels.set(node.id, getNodeLabel(node, currentMode)); });
 
+    // const radiusMap = makeNodeSizeMap(
+    //   filteredNodes, nodeDurationStatsCache, sizeMode, nodeRadiusByCount, mode
+    // );
+    // if (mode.startsWith("hybrid")) {
+    //   filteredNodes.forEach((d) => {
+    //     const label = nodeLabels.get(d.id) || d.id;
+    //     const match = label.match(/^([^\(]+)\((.*)\)$/);
+    //     let maxLen = label.length;
+    //     if (match) maxLen = Math.max(match[1].length, match[2].length);
+        
+    //     // INCREASED MULTIPLIER AND BASE SIZE FOR BIGGER TEXT
+    //     const fitR = Math.max(34, maxLen * 4.8 + 10); 
+    //     radiusMap[d.id] = Math.max(radiusMap[d.id] || 18, fitR);
+    //   });
+    // }
+    // radiusMapCache = radiusMap;
+    // Restore pure data-driven sizing! Remove the text-based override completely.
+
     const radiusMap = makeNodeSizeMap(
       filteredNodes, nodeDurationStatsCache, sizeMode, nodeRadiusByCount, mode
     );
-    if (mode === "hybrid") {
-      filteredNodes.forEach((d) => {
-        const label = nodeLabels.get(d.id) || d.id;
-        const verbPart = label.includes("(") ? label.split("(")[0] : label;
-        const nounPart = label.includes("(") ? "(" + label.split("(")[1] : "";
-        const widest = Math.max(verbPart.length, nounPart.length);
-        const fitR = Math.min(48, widest * 2.9 + 10);
-        radiusMap[d.id] = Math.max(radiusMap[d.id], fitR);
-      });
-    }
     radiusMapCache = radiusMap;
 
     const maxRadius = d3.max(Object.values(radiusMap)) || 18;
@@ -849,7 +861,7 @@ export function createGraphController({
     let totalDuration = sequence[sequence.length - 1]?.end || 1;
     let xScale = null;
 
-    if (mode === "hybrid" && layoutMode === "temporal") {
+    if (mode.startsWith("hybrid") && layoutMode === "temporal") {
       drawHRIBackgrounds(false);
       zoomGroup.selectAll(".hri-backgrounds").selectAll("*").remove();
       const t = computeRankLayout(filteredNodes, sequence, { maxRadius });
@@ -986,7 +998,7 @@ export function createGraphController({
         edgeWidthScale = d3.scaleLinear().domain([minSup, maxSup]).range([0.8, 5]);
         edgeOpacityScale = (support) => supportToOpacity(support, nSessionsHint || 1);
       }
-    } else if (mode === "hybrid") {
+    } else if (mode.startsWith("hybrid")) {
       edgeMetricFn = (d) => (typeof d.probability === "number" ? d.probability : 0);
       edgeWidthScale = d3.scaleLinear().domain([0, 1]).range([0.8, 6]);
       edgeOpacityScale = d3.scaleLinear().domain([0, 1]).range([0.2, 0.9]);
@@ -1003,7 +1015,7 @@ export function createGraphController({
     const HYBRID_MIN_PROB = 0.08;
     let hiddenEdges = 0;
     enrichedLinks.forEach((link) => {
-      if (mode === "hybrid" && typeof link.probability === "number"
+      if (mode.startsWith("hybrid") && typeof link.probability === "number"
           && link.probability < HYBRID_MIN_PROB
           && !isStartId(link.source) && !isEndId(link.target)) {
         hiddenEdges += 1; return;
@@ -1022,6 +1034,7 @@ export function createGraphController({
       key: edges[0]?.key || `${sid}|||${sid}`,
       count: d3.sum(edges, (e) => e.count || 1),
       occurrences: edges.flatMap((e) => e.occurrences || []),
+      probability: edges[0]?.probability, // Carry the probability forward
     }));
 
     const backEdgesBySource = d3.group(backEdges, (d) => d.source);
@@ -1044,7 +1057,7 @@ export function createGraphController({
           .attr("text-anchor", "middle").attr("dy", "0.35em")
           .attr("font-size", "7px").attr("fill", "#64748b")
           .text(edges.length);
-        g.append("title").text(`Backward to: ${edges.map((e) => e.target).join(", ")}`);
+        g.append("title").text(`Backward to:\n` + edges.map((e) => `• ${e.target} (P = ${(e.probability || 0).toFixed(2)})`).join("\n"));
       });
 
     const edgeSet = new Set(forwardEdges.map((d) => `${d.source}|||${d.target}`));
@@ -1078,7 +1091,7 @@ export function createGraphController({
         return 0.15;
       })
       .attr("marker-end", markerUrl("arrow"))
-      .attr("d", (d) => currentMode === "hybrid" ? getCurvedPath(d, layout, radiusMap) : getStraightPath(d, layout, radiusMap))
+      .attr("d", (d) => currentMode.startsWith("hybrid") ? getCurvedPath(d, layout, radiusMap) : getStraightPath(d, layout, radiusMap))
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
       .on("mouseout", hideEdgeTooltip);
 
@@ -1086,7 +1099,7 @@ export function createGraphController({
       .append("text")
       .attr("class", "edge-prob-text")
       .attr("dy", -4)
-      .attr("font-size", "10px")
+      .attr("font-size", "14px")
       .attr("font-weight", "bold")
       .attr("fill", "#64748b")
       .attr("pointer-events", "none")
@@ -1108,7 +1121,7 @@ export function createGraphController({
       .attr("stroke-opacity", currentShowSupportBadges ? (d) => edgeOpacityScale(edgeMetricFn(d)) : 0.6)
       .attr("marker-end", markerUrl("arrow"))
       .attr("marker-start", markerUrl("arrowReverse"))
-      .attr("d", (d) => currentMode === "hybrid" ? getCurvedPath(d, layout, radiusMap) : getStraightPath(d, layout, radiusMap))
+      .attr("d", (d) => currentMode.startsWith("hybrid") ? getCurvedPath(d, layout, radiusMap) : getStraightPath(d, layout, radiusMap))
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
       .on("mouseout", hideEdgeTooltip);
 
@@ -1116,7 +1129,7 @@ export function createGraphController({
       .append("text")
       .attr("class", "edge-prob-text")
       .attr("dy", -4)
-      .attr("font-size", "10px")
+      .attr("font-size", "14px")
       .attr("font-weight", "bold")
       .attr("fill", "#64748b")
       .attr("pointer-events", "none")
@@ -1176,9 +1189,32 @@ export function createGraphController({
     nodeGroups.append("text")
       .attr("text-anchor", "middle")
       .attr("dy", (d) => (getNodeSubtitle(d, currentMode) ? "-0.12em" : "0.35em"))
+      // .attr("font-size", (d) => {
+      //   const label = nodeLabels.get(d.id) || d.id;
+      //   if (d.isSpecial) return "14px"; 
+        
+      //   // DYNAMIC SIZING: Font grows as the node grows!
+      //   if (currentMode.startsWith("hybrid")) {
+      //       const r = radiusMap[d.id] || 34;
+      //       return Math.max(12, Math.round(r * 0.35)) + "px"; 
+      //   }
+        
+      //   if (currentMode === "abstracted") {
+      //     return label.length > 18 ? "7px" : label.length > 10 ? "8px" : "9px";
+      //   }
+      //   return label.length > 10 ? "8px" : "9px";
+      // })
       .attr("font-size", (d) => {
         const label = nodeLabels.get(d.id) || d.id;
-        if (d.isSpecial) return "10px";
+        if (d.isSpecial) return "14px"; 
+        
+        // DYNAMIC SIZING: Scale font down if radius is small, up if large.
+        if (currentMode.startsWith("hybrid")) {
+            const r = radiusMap[d.id] || 26;
+            // Clamp font between 8px and 16px so it remains legible but scales with the node
+            return Math.min(16, Math.max(8, Math.round(r * 0.4))) + "px"; 
+        }
+        
         if (currentMode === "abstracted") {
           return label.length > 18 ? "7px" : label.length > 10 ? "8px" : "9px";
         }
@@ -1189,20 +1225,60 @@ export function createGraphController({
       .attr("pointer-events", "none")
       .each(function(d) {
         const label = nodeLabels.get(d.id) || d.id;
-        const isHybridSplit = currentMode === "hybrid" && label.includes("(");
+        const isHybridSplit = currentMode.startsWith("hybrid") && label.includes("(");
         const text = d3.select(this);
         text.text(null);
         if (isHybridSplit) {
-          const verbPart = label.split("(")[0];
-          const nounPart = "(" + label.split("(")[1];
-          text.append("tspan")
+          const match = label.match(/^([^\(]+)\((.*)\)$/);
+          const verbPart = match ? match[1] : label.split("(")[0];
+          const nounPart = match ? match[2] : label.split("(")[1].replace(")", "");
+          
+          // Track the total number of lines to calculate vertical centering
+          let totalLines = 1; 
+
+          // 1. Render the Verb (Bold, Top row) - we will set its Y position later!
+          const verbTspan = text.append("tspan")
             .attr("x", 0)
-            .attr("dy", "-0.35em")
+            .attr("font-weight", "900")
             .text(verbPart);
-          text.append("tspan")
-            .attr("x", 0)
-            .attr("dy", "1.15em")
-            .text(nounPart);
+
+          // 2. Setup Word Wrapping for the Noun
+          const r = radiusMap[d.id] || 34;
+          const maxWidth = r * 1.7; // Constrain text to 85% of diameter
+          const words = nounPart.split(/\s+/);
+          let line = [];
+          
+          let tspan = text.append("tspan")
+            .attr("x", 0).attr("dy", "1.2em") 
+            .attr("font-weight", "500");
+            
+          totalLines++;
+
+          // 3. Loop through words and measure width
+          words.forEach(word => {
+            line.push(word);
+            tspan.text(line.join(" "));
+            
+            if (tspan.node().getComputedTextLength() > maxWidth && line.length > 1) {
+              line.pop(); 
+              tspan.text(line.join(" ")); 
+              
+              line = [word]; 
+              tspan = text.append("tspan")
+                .attr("x", 0).attr("dy", "1.1em") 
+                .attr("font-weight", "500")
+                .text(word);
+                
+              totalLines++; // Increment our line counter!
+            }
+          });
+          
+          // 4. Vertically Center the Entire Block
+          // Standard offset for 2 lines is -0.2em.
+          // For every extra line, we pull the first line UP by 0.55em (half a line height)
+          const startDy = -0.2 - ((totalLines - 2) * 0.55);
+          verbTspan.attr("dy", `${startDy}em`);
+          
         } else {
           text
             .attr("textLength", Math.max(20, (radiusMap[d.id] || 18) * 1.55))
@@ -1274,12 +1350,11 @@ export function createGraphController({
       });
     nodeGroups.call(dragBehavior);
 
-    if (mode === "hybrid") {
+    if (currentMode.startsWith("hybrid")) {
       const loopInfo = {};
       selfLoopSummary.forEach((d) => {
         if (isSpecialId(d.source)) return;
-        const e = (d.edges && d.edges[0]) || {};
-        loopInfo[d.source] = (typeof e.probability === "number") ? e.probability : null;
+        loopInfo[d.source] = (typeof d.probability === "number") ? d.probability : null;
       });
 
       const loopNodes = nodeGroups.filter((d) => d.id in loopInfo);
@@ -1296,9 +1371,10 @@ export function createGraphController({
 
       loopNodes.append("text")
         .attr("class", "self-loop-prob")
-        .attr("y", (d) => -(radiusMap[d.id] || 18) - 14)
+        .attr("y", (d) => -(radiusMap[d.id] || 18) - 10) // Push it slightly higher
         .attr("text-anchor", "middle")
-        .attr("font-size", "9px")
+        .attr("font-size", "14px")
+        .attr("font-weight", "bold")
         .attr("fill", "#993C1D")
         .text((d) => (loopInfo[d.id] !== null ? loopInfo[d.id].toFixed(2) : ""));
     } else {

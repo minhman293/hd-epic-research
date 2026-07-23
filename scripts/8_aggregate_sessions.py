@@ -309,27 +309,70 @@ def compute_merged_analysis(merged_nodes, merged_links, session_payloads):
     for l in merged_links:
         successors[l["source"]].append(l["target"])
  
+    # starts = [n["id"] for n in merged_nodes if n["id"] == "START"]
+    # starts.sort(key=lambda s: -next((n["count"] for n in merged_nodes if n["id"] == s), 0))
+ 
+    # best_path, best_score = [], -1.0
+    # for start in starts or [None]:
+    #     if start is None:
+    #         break
+    #     path, visited = [start], {start}
+    #     cur, score = start, 0.0
+    #     for _ in range(200):
+    #         cands = [
+    #             (t, support.get((cur, t), 0), prob.get((cur, t), 0.0))
+    #             for t in successors.get(cur, [])
+    #             if t not in visited
+    #         ]
+    #         if not cands:
+    #             break
+    #         cands.sort(key=lambda x: (-x[1], -x[2]))
+    #         nxt = cands[0][0]
+    #         path.append(nxt)
+    #         visited.add(nxt)
+    #         score += cands[0][2]
+    #         cur = nxt
+    #         if cur == "END":
+    #             break
+    #     if score > best_score:
+    #         best_path, best_score = path, score
+    
     starts = [n["id"] for n in merged_nodes if n["id"] == "START"]
     starts.sort(key=lambda s: -next((n["count"] for n in merged_nodes if n["id"] == s), 0))
  
+    # Create lookups for Node Support and Node Count to use as tie-breakers
+    node_support = {n["id"]: n.get("support", 0) for n in merged_nodes}
+    node_count = {n["id"]: n.get("count", 0) for n in merged_nodes}
+
     best_path, best_score = [], -1.0
     for start in starts or [None]:
         if start is None:
             break
-        path, visited = [start], {start}
+        path = [start]
+        visited_edges = set() # Track edges to prevent infinite loops
         cur, score = start, 0.0
         for _ in range(200):
             cands = [
-                (t, support.get((cur, t), 0), prob.get((cur, t), 0.0))
+                (
+                    t, 
+                    support.get((cur, t), 0),   # Edge Support
+                    prob.get((cur, t), 0.0),    # Edge Probability
+                    node_support.get(t, 0),     # Target Node Support
+                    node_count.get(t, 0)        # Target Node Count
+                )
                 for t in successors.get(cur, [])
-                if t not in visited
+                if (cur, t) not in visited_edges
             ]
             if not cands:
                 break
-            cands.sort(key=lambda x: (-x[1], -x[2]))
+                
+            # Sort order (all descending): 
+            # 1. Edge Prob -> 2. Edge Support -> 3. Node Support -> 4. Node Count
+            cands.sort(key=lambda x: (-x[2], -x[1], -x[3], -x[4]))
+            
             nxt = cands[0][0]
             path.append(nxt)
-            visited.add(nxt)
+            visited_edges.add((cur, nxt))
             score += cands[0][2]
             cur = nxt
             if cur == "END":
@@ -480,7 +523,7 @@ def build_merged_payload(recipe_id, mode, session_payloads):
 # Main
 # ─────────────────────────────────────────────────────────────────────────────
 
-MODES = ["full", "smart", "abstracted", "categorical", "hybrid"]
+MODES = ["full", "smart", "abstracted", "categorical", "hybrid", "hybrid_cat"]
 
 def main():
     parser = argparse.ArgumentParser(

@@ -611,9 +611,14 @@ def _find_self_loops(hybrid_sequence):
     return dict(loops)
 
 
-def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes):
+def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes, use_category_for_verb=False):
     UNKNOWN = "unknown"
-    verb_id_to_key = dict(zip(verb_classes["id"].astype(int), verb_classes["key"]))
+    
+    if use_category_for_verb:
+        verb_mapping = dict(zip(verb_classes["id"].astype(int), verb_classes["category"]))
+    else:
+        verb_mapping = dict(zip(verb_classes["id"].astype(int), verb_classes["key"]))
+        
     noun_id_to_cat = dict(zip(noun_classes["id"].astype(int), noun_classes["category"]))
 
     hybrid_sequence = []
@@ -623,10 +628,10 @@ def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes):
         v_id = seq_item.get("verb_class", -1)
         n_id = seq_item.get("noun_class", -1)
         
-        v_key = verb_id_to_key.get(v_id, UNKNOWN) if v_id >= 0 else UNKNOWN
+        v_str = verb_mapping.get(v_id, UNKNOWN) if v_id >= 0 else UNKNOWN
         n_cat = noun_id_to_cat.get(n_id, UNKNOWN) if n_id >= 0 else UNKNOWN 
         
-        state = f"{v_key}({n_cat})"
+        state = f"{v_str}({n_cat})"
         
         m = seq_item.copy()
         m["raw_action"] = seq_item["action"]
@@ -641,38 +646,22 @@ def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes):
         t1 = hybrid_sequence[-1]["end"]
         
         start_item = {
-            "action": "START",
-            "raw_action": "START",
-            "start": max(0.0, t0 - 0.001),
-            "end": t0,
-            "duration": 0.0,
-            "step_id": None,
-            "is_primary": True, # Ensure it survives the filter
-            "phase": None,
-            "verb_class": -1,
-            "noun_class": -1,
+            "action": "START", "raw_action": "START",
+            "start": max(0.0, t0 - 0.001), "end": t0, "duration": 0.0,
+            "step_id": None, "is_primary": True, "phase": None,
+            "verb_class": -1, "noun_class": -1,
             "video_id": hybrid_sequence[0].get("video_id"),
-            "video_start": 0.0,
-            "video_end": 0.0,
-            "salient": False,
-            "kind": "start",
+            "video_start": 0.0, "video_end": 0.0,
+            "salient": False, "kind": "start",
         }
         end_item = {
-            "action": "END",
-            "raw_action": "END",
-            "start": t1,
-            "end": t1 + 0.001,
-            "duration": 0.0,
-            "step_id": None,
-            "is_primary": True, # Ensure it survives the filter
-            "phase": None,
-            "verb_class": -1,
-            "noun_class": -1,
+            "action": "END", "raw_action": "END",
+            "start": t1, "end": t1 + 0.001, "duration": 0.0,
+            "step_id": None, "is_primary": True, "phase": None,
+            "verb_class": -1, "noun_class": -1,
             "video_id": hybrid_sequence[-1].get("video_id"),
-            "video_start": 0.0,
-            "video_end": 0.0,
-            "salient": False,
-            "kind": "end",
+            "video_start": 0.0, "video_end": 0.0,
+            "salient": False, "kind": "end",
         }
         
         hybrid_sequence = [start_item] + hybrid_sequence + [end_item]
@@ -687,10 +676,8 @@ def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes):
                 hybrid_sequence[i]["edge_key"] = None
 
     # ── Pipeline 2: Primary Sequence (For Motion Graph) ─────────────────
-    # Create a FILTERED sequence specifically for building the graph nodes/edges
     primary_sequence = [item.copy() for item in hybrid_sequence if item.get("is_primary", True)]
     
-    # Re-link the primary sequence so edges skip over the deleted secondary noise
     for i in range(len(primary_sequence)):
         if i < len(primary_sequence) - 1:
             primary_sequence[i]["next_action"] = primary_sequence[i+1]["action"]
@@ -699,13 +686,14 @@ def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes):
             primary_sequence[i]["next_action"] = None
             primary_sequence[i]["edge_key"] = None
 
-    # Compile Aggregates from PRIMARY sequence only
     node_counts = Counter(item["action"] for item in primary_sequence)
     node_objects = defaultdict(Counter)
     node_verbs = defaultdict(Counter)
     node_kind = {item["action"]: item.get("kind", "action") for item in primary_sequence}
 
     noun_id_to_key = dict(zip(noun_classes["id"].astype(int), noun_classes["key"]))
+    verb_id_to_key = dict(zip(verb_classes["id"].astype(int), verb_classes["key"]))
+    
     for item in primary_sequence:
         state = item["action"]
         if state == "START" or state == "END":
@@ -721,15 +709,11 @@ def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes):
     for state, c in sorted(node_counts.items(), key=lambda x: (-x[1], x[0])):
         kind = node_kind.get(state, "action")
         nodes.append({
-            "id": state,
-            "count": int(c),
-            "is_primary": True,
+            "id": state, "count": int(c), "is_primary": True,
             "salient": True if kind == "action" else False,
             "objects": dict(node_objects.get(state, {})),
             "verbs": dict(node_verbs.get(state, {})),
-            "kind": kind,
-            "is_start": kind == "start",
-            "is_end": kind == "end",
+            "kind": kind, "is_start": kind == "start", "is_end": kind == "end",
         })
 
     dead_scores = _compute_dead_end_scores(primary_sequence, nodes)
@@ -740,21 +724,11 @@ def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes):
     links = markov_links(primary_sequence)
 
     result = payload.copy()
-    result["sequence"] = hybrid_sequence  # The UI gets the FULL sequence
-    result["graph"] = {"nodes": nodes, "links": links}  # The UI gets the CLEAN graph
-    result["salient_config"] = {
-        "identity_rule": "verb_key(noun_category). Graph filtered for primary actions. Sequence keeps all actions."
-    }
+    result["sequence"] = hybrid_sequence
+    result["graph"] = {"nodes": nodes, "links": links}
     result["analysis"] = {
-        "dead_ends": [
-            {"id": n["id"], "score": n["dead_end_score"]}
-            for n in sorted(nodes, key=lambda x: -x["dead_end_score"])
-            if n["kind"] == "action" and n["dead_end_score"] >= 0.5
-        ][:10],
-        "self_loops": [
-            {"id": nid, "count": c}
-            for nid, c in sorted(self_loops.items(), key=lambda x: -x[1])
-        ],
+        "dead_ends": [{"id": n["id"], "score": n["dead_end_score"]} for n in sorted(nodes, key=lambda x: -x["dead_end_score"]) if n["kind"] == "action" and n["dead_end_score"] >= 0.5][:10],
+        "self_loops": [{"id": nid, "count": c} for nid, c in sorted(self_loops.items(), key=lambda x: -x[1])],
         "start_id": "START" if primary_sequence else None,
         "end_id": "END" if primary_sequence else None,
     }
@@ -820,7 +794,11 @@ def main():
         )
         payload_hybrid = create_hybrid_graph(
             payload_full, recipe_meta,
-            data["verb_classes"], data["noun_classes"]
+            data["verb_classes"], data["noun_classes"], use_category_for_verb=False
+        )
+        payload_hybrid_cat = create_hybrid_graph(
+            payload_full, recipe_meta,
+            data["verb_classes"], data["noun_classes"], use_category_for_verb=True
         )
 
         for filename, payload, label in [
@@ -828,7 +806,8 @@ def main():
             (f"session_{s['index']}_smart.json", payload_smart, "Smart-Merged"),
             (f"session_{s['index']}_abstracted.json", payload_abstracted, "Abstracted"),
             (f"session_{s['index']}_categorical.json", payload_categorical, "Categorical"),
-            (f"session_{s['index']}_hybrid.json", payload_hybrid, "Hybrid (Filtered)"),
+            (f"session_{s['index']}_hybrid.json", payload_hybrid, "Hybrid (verb_key)"),
+            (f"session_{s['index']}_hybrid_cat.json", payload_hybrid_cat, "Hybrid (verb_cat)"),
         ]:
             out_path = output_dir / filename
             with open(out_path, "w", encoding="utf-8") as f:
