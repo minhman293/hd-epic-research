@@ -81220,150 +81220,154 @@
     "session_shared_suffix": [],
     "loops": [
       [
-        "put(clothes)",
-        "take(pan)",
-        "put(pan)",
-        "take(clothes)",
-        "put(clothes)"
-      ],
-      [
+        "turn-on(tap)",
         "wash(cloth)",
         "turn-off(tap)",
         "shake(hand)",
         "take(cloth)",
+        "turn-on(tap)"
+      ],
+      [
         "turn-on(tap)",
-        "wash(cloth)"
+        "fill(kettle)",
+        "turn-off(tap)",
+        "shake(hand)",
+        "take(cloth)",
+        "turn-on(tap)"
       ],
       [
-        "open(cupboard)",
+        "turn-on(tap)",
+        "wash(hand)",
+        "turn-off(tap)",
+        "shake(hand)",
+        "take(cloth)",
+        "turn-on(tap)"
+      ],
+      [
+        "turn-on(tap)",
+        "wash(spoon)",
+        "turn-off(tap)",
+        "shake(hand)",
+        "take(cloth)",
+        "turn-on(tap)"
+      ],
+      [
         "take(knife)",
         "close(cupboard)",
-        "open(cupboard)"
+        "take(fork)",
+        "take(knife)"
       ],
       [
-        "open(cupboard)",
-        "take(knife)",
-        "close(cupboard)",
-        "take(kettle)",
-        "put(kettle)",
-        "open(cupboard)"
-      ],
-      [
-        "open(cupboard)",
         "take(knife)",
         "close(cupboard)",
         "take(fork)",
         "put(fork)",
-        "open(cupboard)"
+        "open(cupboard)",
+        "take(knife)"
       ],
       [
+        "take(knife)",
+        "close(cupboard)",
         "open(cupboard)",
+        "take(knife)"
+      ],
+      [
+        "take(knife)",
+        "close(cupboard)",
+        "take(kettle)",
+        "put(kettle)",
+        "take(fork)",
+        "take(knife)"
+      ],
+      [
+        "take(knife)",
+        "close(cupboard)",
+        "take(kettle)",
+        "put(kettle)",
+        "open(cupboard)",
+        "take(knife)"
+      ],
+      [
         "take(knife)",
         "put(knife)",
-        "put(fork)",
-        "open(cupboard)"
+        "put(spoon)",
+        "close(cupboard)",
+        "take(fork)",
+        "take(knife)"
       ],
       [
+        "take(knife)",
+        "put(knife)",
+        "put(spoon)",
+        "close(cupboard)",
         "open(cupboard)",
+        "take(knife)"
+      ],
+      [
         "take(knife)",
         "put(knife)",
         "put(spoon)",
         "put(fork)",
-        "open(cupboard)"
+        "open(cupboard)",
+        "take(knife)"
       ],
       [
-        "open(cupboard)",
         "take(knife)",
         "put(knife)",
-        "put(spoon)",
-        "close(cupboard)",
-        "open(cupboard)"
+        "put(fork)",
+        "open(cupboard)",
+        "take(knife)"
       ],
       [
-        "open(cupboard)",
+        "take(knife)",
+        "take(fork)",
+        "take(knife)"
+      ],
+      [
         "take(knife)",
         "take(fork)",
         "put(fork)",
-        "open(cupboard)"
+        "open(cupboard)",
+        "take(knife)"
       ],
       [
-        "open(cupboard)",
-        "take(plate)",
-        "put(plate)",
-        "open(cupboard)"
-      ],
-      [
-        "open(cupboard)",
+        "put(kettle)",
         "take(plate)",
         "put(plate)",
         "take(kettle)",
-        "put(kettle)",
-        "open(cupboard)"
+        "put(kettle)"
       ],
       [
-        "open(cupboard)",
+        "put(kettle)",
         "take(plate)",
-        "open(oven)",
-        "pull(cupboard)",
         "put(plate)",
-        "open(cupboard)"
-      ],
-      [
-        "open(cupboard)",
-        "take(tea)",
-        "close(cupboard)",
-        "open(cupboard)"
-      ],
-      [
-        "open(cupboard)",
-        "take(tea)",
-        "close(cupboard)",
-        "take(kettle)",
-        "put(kettle)",
-        "open(cupboard)"
-      ],
-      [
-        "open(cupboard)",
-        "take(tea)",
-        "close(cupboard)",
-        "take(fork)",
-        "put(fork)",
-        "open(cupboard)"
-      ],
-      [
-        "open(cupboard)",
-        "close(cupboard)",
-        "open(cupboard)"
-      ],
-      [
-        "open(cupboard)",
-        "close(cupboard)",
-        "take(kettle)",
-        "pour(water)",
-        "put(kettle)",
-        "open(cupboard)"
-      ],
-      [
-        "open(cupboard)",
-        "close(cupboard)",
         "take(kettle)",
         "lift(kettle)",
-        "put(kettle)",
-        "open(cupboard)"
+        "put(kettle)"
       ],
       [
+        "put(kettle)",
+        "take(plate)",
+        "put(plate)",
+        "take(kettle)",
+        "pour(water)",
+        "put(kettle)"
+      ],
+      [
+        "put(kettle)",
         "open(cupboard)",
+        "take(tea)",
         "close(cupboard)",
         "take(kettle)",
-        "put(kettle)",
-        "open(cupboard)"
+        "put(kettle)"
       ],
       [
+        "put(kettle)",
         "open(cupboard)",
-        "close(cupboard)",
-        "take(fork)",
-        "put(fork)",
-        "open(cupboard)"
+        "take(plate)",
+        "put(plate)",
+        "take(kettle)",
+        "put(kettle)"
       ]
     ],
     "session_singleton_nodes": [
