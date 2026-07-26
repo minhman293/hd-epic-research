@@ -1,0 +1,143 @@
+{
+  "recipe_id": "P07_R01",
+  "recipe_data": {
+    "participant": "P07",
+    "name": "Coffee",
+    "type": "online",
+    "source": "https://coffeeculture.asia/a-step-by-step-guide-on-how-to-make-coffee-with-an-espresso-machine/",
+    "steps": {
+      "P07_R01_S01": "Turn on your espresso coffee machine to allow it to heat up the water.",
+      "P07_R01_S02": "Clean and Dry Portafilter & Basket. Before making a coffee with the espresso machine make sure that your portafilter & basket are both clean and dry.",
+      "P07_R01_S03": "Dose your ground coffee into the portafilter.",
+      "P07_R01_S04": "Using a coffee tamper, tamp your coffee. Then apply a light amount of pressure to compact your coffee.",
+      "P07_R01_S05": "Turn on the kettle",
+      "P07_R01_S06": "Make The Espresso",
+      "P07_R01_S07": "Add the boiling water from the kettle"
+    },
+    "captures": [
+      {
+        "videos": [
+          "P07-20240529-102652"
+        ],
+        "ingredients": {
+          "P07_R01_I01": {
+            "name": "coffee",
+            "amount": 16,
+            "amount_unit": "g",
+            "calories": 0,
+            "fat": 0,
+            "carbs": 0,
+            "protein": 0,
+            "weigh": [],
+            "add": [
+              {
+                "video": "P07-20240529-102652",
+                "start": 853.0,
+                "end": 855.99
+              }
+            ]
+          }
+        },
+        "step_times": {
+          "P07_R01_S01": [
+            {
+              "video": "P07-20240529-102652",
+              "start": 860.674,
+              "end": 861.221
+            }
+          ],
+          "P07_R01_S02": [
+            {
+              "video": "P07-20240529-102652",
+              "start": 808.403,
+              "end": 813.676
+            }
+          ],
+          "P07_R01_S03": [
+            {
+              "video": "P07-20240529-102652",
+              "start": 830.599,
+              "end": 840.757
+            }
+          ],
+          "P07_R01_S04": [
+            {
+              "video": "P07-20240529-102652",
+              "start": 843.348,
+              "end": 845.127
+            },
+            {
+              "video": "P07-20240529-102652",
+              "start": 852.078,
+              "end": 855.185
+            }
+          ],
+          "P07_R01_S05": [
+            {
+              "video": "P07-20240529-102652",
+              "start": 864.56,
+              "end": 866.435
+            }
+          ],
+          "P07_R01_S06": [
+            {
+              "video": "P07-20240529-102652",
+              "start": 903.292,
+              "end": 914.257
+            }
+          ],
+          "P07_R01_S07": [
+            {
+              "video": "P07-20240529-102652",
+              "start": 916.149,
+              "end": 920.81
+            }
+          ]
+        },
+        "prep_times": {
+          "P07_R01_S01": [],
+          "P07_R01_S02": [
+            {
+              "video": "P07-20240529-102652",
+              "start": 784.007,
+              "end": 808.384
+            }
+          ],
+          "P07_R01_S03": [
+            {
+              "video": "P07-20240529-102652",
+              "start": 822.441,
+              "end": 830.546
+            }
+          ],
+          "P07_R01_S04": [
+            {
+              "video": "P07-20240529-102652",
+              "start": 841.389,
+              "end": 843.178
+            }
+          ],
+          "P07_R01_S05": [],
+          "P07_R01_S06": [
+            {
+              "video": "P07-20240529-102652",
+              "start": 857.242,
+              "end": 859.9
+            }
+          ],
+          "P07_R01_S07": [
+            {
+              "video": "P07-20240529-102652",
+              "start": 914.913,
+              "end": 916.149
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "video_ids": [
+    "P07-20240529-102652"
+  ],
+  "narrations_count": 379
+}

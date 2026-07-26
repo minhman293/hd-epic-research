@@ -28,7 +28,9 @@
       "end": 4.67,
       "duration": 1.3599999999999999,
       "next_action": "open(phone)",
-      "edge_key": "slide(phone)|||open(phone)"
+      "edge_key": "slide(phone)|||open(phone)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 1,
@@ -37,7 +39,9 @@
       "end": 7.92,
       "duration": 3.42,
       "next_action": "move(scale)",
-      "edge_key": "open(phone)|||move(scale)"
+      "edge_key": "open(phone)|||move(scale)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 2,
@@ -46,7 +50,9 @@
       "end": 11.04,
       "duration": 2.25,
       "next_action": "take(cup)",
-      "edge_key": "move(scale)|||take(cup)"
+      "edge_key": "move(scale)|||take(cup)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 3,
@@ -55,7 +61,9 @@
       "end": 17.34,
       "duration": 1.8399999999999999,
       "next_action": "turn-on(scale)",
-      "edge_key": "take(cup)|||turn-on(scale)"
+      "edge_key": "take(cup)|||turn-on(scale)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 4,
@@ -64,7 +72,9 @@
       "end": 19.23,
       "duration": 1.4499999999999993,
       "next_action": "adjust(scale)",
-      "edge_key": "turn-on(scale)|||adjust(scale)"
+      "edge_key": "turn-on(scale)|||adjust(scale)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 5,
@@ -73,7 +83,9 @@
       "end": 26.83,
       "duration": 7.979999999999997,
       "next_action": "put(cup)",
-      "edge_key": "adjust(scale)|||put(cup)"
+      "edge_key": "adjust(scale)|||put(cup)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 6,
@@ -82,7 +94,9 @@
       "end": 28.74,
       "duration": 1.3399999999999999,
       "next_action": "take(can)",
-      "edge_key": "put(cup)|||take(can)"
+      "edge_key": "put(cup)|||take(can)",
+      "step_id": "P08_R01_S01",
+      "is_primary": true
     },
     {
       "index": 7,
@@ -91,7 +105,9 @@
       "end": 35.16,
       "duration": 1.3099999999999952,
       "next_action": "open(can)",
-      "edge_key": "take(can)|||open(can)"
+      "edge_key": "take(can)|||open(can)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 8,
@@ -100,7 +116,9 @@
       "end": 36.87,
       "duration": 1.1599999999999966,
       "next_action": "pour(coffee)",
-      "edge_key": "open(can)|||pour(coffee)"
+      "edge_key": "open(can)|||pour(coffee)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 9,
@@ -109,7 +127,9 @@
       "end": 41.37,
       "duration": 4.729999999999997,
       "next_action": "close(can)",
-      "edge_key": "pour(coffee)|||close(can)"
+      "edge_key": "pour(coffee)|||close(can)",
+      "step_id": "P08_R01_S01",
+      "is_primary": true
     },
     {
       "index": 10,
@@ -118,7 +138,9 @@
       "end": 44.71,
       "duration": 3.450000000000003,
       "next_action": "put(can)",
-      "edge_key": "close(can)|||put(can)"
+      "edge_key": "close(can)|||put(can)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 11,
@@ -127,7 +149,9 @@
       "end": 46.7,
       "duration": 1.4400000000000048,
       "next_action": "carry(phone)",
-      "edge_key": "put(can)|||carry(phone)"
+      "edge_key": "put(can)|||carry(phone)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 12,
@@ -136,7 +160,9 @@
       "end": 47.26,
       "duration": 0.9799999999999969,
       "next_action": "write(coffee)",
-      "edge_key": "carry(phone)|||write(coffee)"
+      "edge_key": "carry(phone)|||write(coffee)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 13,
@@ -145,7 +171,9 @@
       "end": 67.23,
       "duration": 18.970000000000006,
       "next_action": "move(phone)",
-      "edge_key": "write(coffee)|||move(phone)"
+      "edge_key": "write(coffee)|||move(phone)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 14,
@@ -154,7 +182,9 @@
       "end": 68.61,
       "duration": 1.2199999999999989,
       "next_action": "move(scale)",
-      "edge_key": "move(phone)|||move(scale)"
+      "edge_key": "move(phone)|||move(scale)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 15,
@@ -163,7 +193,9 @@
       "end": 70.74,
       "duration": 1.019999999999996,
       "next_action": "take(maker:coffee)",
-      "edge_key": "move(scale)|||take(maker:coffee)"
+      "edge_key": "move(scale)|||take(maker:coffee)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 16,
@@ -172,7 +204,9 @@
       "end": 73.35,
       "duration": 0.5,
       "next_action": "open(cap)",
-      "edge_key": "take(maker:coffee)|||open(cap)"
+      "edge_key": "take(maker:coffee)|||open(cap)",
+      "step_id": "P08_R01_S01",
+      "is_primary": true
     },
     {
       "index": 17,
@@ -181,7 +215,9 @@
       "end": 74.18,
       "duration": 0.7400000000000091,
       "next_action": "pour(coffee)",
-      "edge_key": "open(cap)|||pour(coffee)"
+      "edge_key": "open(cap)|||pour(coffee)",
+      "step_id": "P08_R01_S01",
+      "is_primary": true
     },
     {
       "index": 18,
@@ -190,7 +226,9 @@
       "end": 76.96000000000001,
       "duration": 1.240000000000009,
       "next_action": "put(cup)",
-      "edge_key": "pour(coffee)|||put(cup)"
+      "edge_key": "pour(coffee)|||put(cup)",
+      "step_id": "P08_R01_S01",
+      "is_primary": true
     },
     {
       "index": 19,
@@ -199,7 +237,9 @@
       "end": 80.11,
       "duration": 2.700000000000003,
       "next_action": "crush(coffee)",
-      "edge_key": "put(cup)|||crush(coffee)"
+      "edge_key": "put(cup)|||crush(coffee)",
+      "step_id": "P08_R01_S01",
+      "is_primary": true
     },
     {
       "index": 20,
@@ -208,7 +248,9 @@
       "end": 96.38,
       "duration": 16.489999999999995,
       "next_action": "turn-on(machine:washing)",
-      "edge_key": "crush(coffee)|||turn-on(machine:washing)"
+      "edge_key": "crush(coffee)|||turn-on(machine:washing)",
+      "step_id": "P08_R01_S01",
+      "is_primary": true
     },
     {
       "index": 21,
@@ -217,7 +259,9 @@
       "end": 98.76,
       "duration": 1.3500000000000085,
       "next_action": "take(cup)",
-      "edge_key": "turn-on(machine:washing)|||take(cup)"
+      "edge_key": "turn-on(machine:washing)|||take(cup)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 22,
@@ -226,7 +270,9 @@
       "end": 101.6,
       "duration": 0.6799999999999926,
       "next_action": "search(rack:drying)",
-      "edge_key": "take(cup)|||search(rack:drying)"
+      "edge_key": "take(cup)|||search(rack:drying)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 23,
@@ -235,7 +281,9 @@
       "end": 106.93,
       "duration": 3.760000000000005,
       "next_action": "take(cup)",
-      "edge_key": "search(rack:drying)|||take(cup)"
+      "edge_key": "search(rack:drying)|||take(cup)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 24,
@@ -244,7 +292,9 @@
       "end": 107.81,
       "duration": 0.4399999999999977,
       "next_action": "take(cup)",
-      "edge_key": "take(cup)|||take(cup)"
+      "edge_key": "take(cup)|||take(cup)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 25,
@@ -253,7 +303,9 @@
       "end": 110.35,
       "duration": 1.2999999999999972,
       "next_action": "screw(cup)",
-      "edge_key": "take(cup)|||screw(cup)"
+      "edge_key": "take(cup)|||screw(cup)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 26,
@@ -262,7 +314,9 @@
       "end": 114.51,
       "duration": 3.3200000000000074,
       "next_action": "put(cup)",
-      "edge_key": "screw(cup)|||put(cup)"
+      "edge_key": "screw(cup)|||put(cup)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 27,
@@ -271,7 +325,9 @@
       "end": 114.99,
       "duration": 0.6099999999999994,
       "next_action": "put(cup)",
-      "edge_key": "put(cup)|||put(cup)"
+      "edge_key": "put(cup)|||put(cup)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 28,
@@ -280,7 +336,9 @@
       "end": 117.26,
       "duration": 1.710000000000008,
       "next_action": "move(scale)",
-      "edge_key": "put(cup)|||move(scale)"
+      "edge_key": "put(cup)|||move(scale)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 29,
@@ -289,7 +347,9 @@
       "end": 118.96,
       "duration": 1.269999999999996,
       "next_action": "pat(maker:coffee)",
-      "edge_key": "move(scale)|||pat(maker:coffee)"
+      "edge_key": "move(scale)|||pat(maker:coffee)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 30,
@@ -298,7 +358,9 @@
       "end": 121.44,
       "duration": 1.0900000000000034,
       "next_action": "take(spoon)",
-      "edge_key": "pat(maker:coffee)|||take(spoon)"
+      "edge_key": "pat(maker:coffee)|||take(spoon)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 31,
@@ -307,7 +369,9 @@
       "end": 122.39,
       "duration": 0.9699999999999989,
       "next_action": "mix(coffee)",
-      "edge_key": "take(spoon)|||mix(coffee)"
+      "edge_key": "take(spoon)|||mix(coffee)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 32,
@@ -316,7 +380,9 @@
       "end": 125.8,
       "duration": 3.3299999999999983,
       "next_action": "pat(maker:coffee)",
-      "edge_key": "mix(coffee)|||pat(maker:coffee)"
+      "edge_key": "mix(coffee)|||pat(maker:coffee)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 33,
@@ -325,7 +391,9 @@
       "end": 128.0,
       "duration": 2.450000000000003,
       "next_action": "scoop(coffee)",
-      "edge_key": "pat(maker:coffee)|||scoop(coffee)"
+      "edge_key": "pat(maker:coffee)|||scoop(coffee)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 34,
@@ -334,7 +402,9 @@
       "end": 130.2,
       "duration": 2.4499999999999886,
       "next_action": "put(coffee)",
-      "edge_key": "scoop(coffee)|||put(coffee)"
+      "edge_key": "scoop(coffee)|||put(coffee)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 35,
@@ -343,7 +413,9 @@
       "end": 131.6,
       "duration": 1.4699999999999989,
       "next_action": "pat(maker:coffee)",
-      "edge_key": "put(coffee)|||pat(maker:coffee)"
+      "edge_key": "put(coffee)|||pat(maker:coffee)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 36,
@@ -352,7 +424,9 @@
       "end": 133.15,
       "duration": 1.75,
       "next_action": "crush(coffee)",
-      "edge_key": "pat(maker:coffee)|||crush(coffee)"
+      "edge_key": "pat(maker:coffee)|||crush(coffee)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 37,
@@ -361,7 +435,9 @@
       "end": 135.95,
       "duration": 3.0,
       "next_action": "pat(maker:coffee)",
-      "edge_key": "crush(coffee)|||pat(maker:coffee)"
+      "edge_key": "crush(coffee)|||pat(maker:coffee)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 38,
@@ -370,7 +446,9 @@
       "end": 137.62,
       "duration": 2.069999999999993,
       "next_action": "put(spoon)",
-      "edge_key": "pat(maker:coffee)|||put(spoon)"
+      "edge_key": "pat(maker:coffee)|||put(spoon)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 39,
@@ -379,7 +457,9 @@
       "end": 140.73,
       "duration": 1.2299999999999898,
       "next_action": "pat(cup)",
-      "edge_key": "put(spoon)|||pat(cup)"
+      "edge_key": "put(spoon)|||pat(cup)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 40,
@@ -388,7 +468,9 @@
       "end": 142.18,
       "duration": 1.4099999999999966,
       "next_action": "press(coffee)",
-      "edge_key": "pat(cup)|||press(coffee)"
+      "edge_key": "pat(cup)|||press(coffee)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 41,
@@ -397,7 +479,9 @@
       "end": 151.13,
       "duration": 8.879999999999995,
       "next_action": "put(presser)",
-      "edge_key": "press(coffee)|||put(presser)"
+      "edge_key": "press(coffee)|||put(presser)",
+      "step_id": "P08_R01_S02",
+      "is_primary": true
     },
     {
       "index": 42,
@@ -406,7 +490,9 @@
       "end": 152.04,
       "duration": 1.25,
       "next_action": "put(cup)",
-      "edge_key": "put(presser)|||put(cup)"
+      "edge_key": "put(presser)|||put(cup)",
+      "step_id": "P08_R01_S02",
+      "is_primary": true
     },
     {
       "index": 43,
@@ -415,7 +501,9 @@
       "end": 153.82,
       "duration": 1.7299999999999898,
       "next_action": "screw(cup)",
-      "edge_key": "put(cup)|||screw(cup)"
+      "edge_key": "put(cup)|||screw(cup)",
+      "step_id": "P08_R01_S02",
+      "is_primary": true
     },
     {
       "index": 44,
@@ -424,7 +512,9 @@
       "end": 154.9,
       "duration": 1.0300000000000011,
       "next_action": "put(machine:washing)",
-      "edge_key": "screw(cup)|||put(machine:washing)"
+      "edge_key": "screw(cup)|||put(machine:washing)",
+      "step_id": "P08_R01_S02",
+      "is_primary": true
     },
     {
       "index": 45,
@@ -433,7 +523,9 @@
       "end": 156.27,
       "duration": 1.3800000000000239,
       "next_action": "move(phone)",
-      "edge_key": "put(machine:washing)|||move(phone)"
+      "edge_key": "put(machine:washing)|||move(phone)",
+      "step_id": "P08_R01_S02",
+      "is_primary": true
     },
     {
       "index": 46,
@@ -442,7 +534,9 @@
       "end": 160.13,
       "duration": 3.759999999999991,
       "next_action": "carry(cup)",
-      "edge_key": "move(phone)|||carry(cup)"
+      "edge_key": "move(phone)|||carry(cup)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 47,
@@ -451,7 +545,9 @@
       "end": 161.28,
       "duration": 1.0500000000000114,
       "next_action": "put(cup)",
-      "edge_key": "carry(cup)|||put(cup)"
+      "edge_key": "carry(cup)|||put(cup)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 48,
@@ -460,7 +556,9 @@
       "end": 162.5,
       "duration": 1.1200000000000045,
       "next_action": "turn-on(machine:washing)",
-      "edge_key": "put(cup)|||turn-on(machine:washing)"
+      "edge_key": "put(cup)|||turn-on(machine:washing)",
+      "step_id": null,
+      "is_primary": false
     },
     {
       "index": 49,
@@ -469,7 +567,9 @@
       "end": 165.95,
       "duration": 2.549999999999983,
       "next_action": "check(coffee)",
-      "edge_key": "turn-on(machine:washing)|||check(coffee)"
+      "edge_key": "turn-on(machine:washing)|||check(coffee)",
+      "step_id": "P08_R01_S03",
+      "is_primary": true
     },
     {
       "index": 50,
@@ -478,7 +578,9 @@
       "end": 174.87,
       "duration": 8.550000000000011,
       "next_action": "open(drawer)",
-      "edge_key": "check(coffee)|||open(drawer)"
+      "edge_key": "check(coffee)|||open(drawer)",
+      "step_id": "P08_R01_S03",
+      "is_primary": true
     },
     {
       "index": 51,
@@ -487,7 +589,9 @@
       "end": 175.82,
       "duration": 0.8499999999999943,
       "next_action": "take(plate)",
-      "edge_key": "open(drawer)|||take(plate)"
+      "edge_key": "open(drawer)|||take(plate)",
+      "step_id": "P08_R01_S03",
+      "is_primary": true
     },
     {
       "index": 52,
@@ -496,7 +600,9 @@
       "end": 176.32,
       "duration": 0.4300000000000068,
       "next_action": "finish(machine:washing)",
-      "edge_key": "take(plate)|||finish(machine:washing)"
+      "edge_key": "take(plate)|||finish(machine:washing)",
+      "step_id": "P08_R01_S03",
+      "is_primary": true
     },
     {
       "index": 53,
@@ -505,7 +611,9 @@
       "end": 180.39,
       "duration": 1.6999999999999886,
       "next_action": "wait(machine:washing)",
-      "edge_key": "finish(machine:washing)|||wait(machine:washing)"
+      "edge_key": "finish(machine:washing)|||wait(machine:washing)",
+      "step_id": "P08_R01_S03",
+      "is_primary": true
     },
     {
       "index": 54,
@@ -514,7 +622,9 @@
       "end": 185.2,
       "duration": 4.649999999999977,
       "next_action": "squeeze(cup)",
-      "edge_key": "wait(machine:washing)|||squeeze(cup)"
+      "edge_key": "wait(machine:washing)|||squeeze(cup)",
+      "step_id": "P08_R01_S03",
+      "is_primary": true
     },
     {
       "index": 55,
@@ -523,7 +633,9 @@
       "end": 191.15,
       "duration": 5.939999999999998,
       "next_action": "turn-off(machine:washing)",
-      "edge_key": "squeeze(cup)|||turn-off(machine:washing)"
+      "edge_key": "squeeze(cup)|||turn-off(machine:washing)",
+      "step_id": "P08_R01_S03",
+      "is_primary": true
     },
     {
       "index": 56,
@@ -532,7 +644,9 @@
       "end": 193.26,
       "duration": 1.0900000000000034,
       "next_action": null,
-      "edge_key": null
+      "edge_key": null,
+      "step_id": null,
+      "is_primary": false
     }
   ],
   "graph": {
@@ -540,6 +654,7 @@
       {
         "id": "put",
         "count": 11,
+        "is_primary": false,
         "objects": {
           "cup": 6,
           "can": 1,
@@ -552,6 +667,7 @@
       {
         "id": "take",
         "count": 8,
+        "is_primary": false,
         "objects": {
           "cup": 4,
           "can": 1,
@@ -563,6 +679,7 @@
       {
         "id": "move",
         "count": 5,
+        "is_primary": false,
         "objects": {
           "scale": 3,
           "phone": 2
@@ -571,6 +688,7 @@
       {
         "id": "pat",
         "count": 5,
+        "is_primary": false,
         "objects": {
           "maker:coffee": 4,
           "cup": 1
@@ -579,6 +697,7 @@
       {
         "id": "open",
         "count": 4,
+        "is_primary": true,
         "objects": {
           "phone": 1,
           "can": 1,
@@ -589,6 +708,7 @@
       {
         "id": "turn-on",
         "count": 3,
+        "is_primary": false,
         "objects": {
           "scale": 1,
           "machine:washing": 2
@@ -597,6 +717,7 @@
       {
         "id": "carry",
         "count": 2,
+        "is_primary": false,
         "objects": {
           "phone": 1,
           "cup": 1
@@ -605,6 +726,7 @@
       {
         "id": "crush",
         "count": 2,
+        "is_primary": true,
         "objects": {
           "coffee": 2
         }
@@ -612,6 +734,7 @@
       {
         "id": "pour",
         "count": 2,
+        "is_primary": true,
         "objects": {
           "coffee": 2
         }
@@ -619,6 +742,7 @@
       {
         "id": "screw",
         "count": 2,
+        "is_primary": true,
         "objects": {
           "cup": 2
         }
@@ -626,6 +750,7 @@
       {
         "id": "adjust",
         "count": 1,
+        "is_primary": false,
         "objects": {
           "scale": 1
         }
@@ -633,6 +758,7 @@
       {
         "id": "check",
         "count": 1,
+        "is_primary": true,
         "objects": {
           "coffee": 1
         }
@@ -640,6 +766,7 @@
       {
         "id": "close",
         "count": 1,
+        "is_primary": false,
         "objects": {
           "can": 1
         }
@@ -647,6 +774,7 @@
       {
         "id": "finish",
         "count": 1,
+        "is_primary": true,
         "objects": {
           "machine:washing": 1
         }
@@ -654,6 +782,7 @@
       {
         "id": "mix",
         "count": 1,
+        "is_primary": false,
         "objects": {
           "coffee": 1
         }
@@ -661,6 +790,7 @@
       {
         "id": "press",
         "count": 1,
+        "is_primary": true,
         "objects": {
           "coffee": 1
         }
@@ -668,6 +798,7 @@
       {
         "id": "scoop",
         "count": 1,
+        "is_primary": false,
         "objects": {
           "coffee": 1
         }
@@ -675,6 +806,7 @@
       {
         "id": "search",
         "count": 1,
+        "is_primary": false,
         "objects": {
           "rack:drying": 1
         }
@@ -682,6 +814,7 @@
       {
         "id": "slide",
         "count": 1,
+        "is_primary": false,
         "objects": {
           "phone": 1
         }
@@ -689,6 +822,7 @@
       {
         "id": "squeeze",
         "count": 1,
+        "is_primary": true,
         "objects": {
           "cup": 1
         }
@@ -696,6 +830,7 @@
       {
         "id": "turn-off",
         "count": 1,
+        "is_primary": false,
         "objects": {
           "machine:washing": 1
         }
@@ -703,6 +838,7 @@
       {
         "id": "wait",
         "count": 1,
+        "is_primary": true,
         "objects": {
           "machine:washing": 1
         }
@@ -710,6 +846,7 @@
       {
         "id": "write",
         "count": 1,
+        "is_primary": false,
         "objects": {
           "coffee": 1
         }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nespresso Motion Dashboard (P08_R01)</title>
+  <title>Motion Dashboard</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <link rel="stylesheet" href="assets/nespresso-dashboard/css/dashboard.css" />
 </head>
@@ -11,52 +11,76 @@
   <div class="page" id="appRoot">
 
     <section class="header">
-      <div>
-        <h1 class="title">Nespresso Motion Dashboard - P08_R01</h1>
-        <p class="sub">Motion graph synchronized with video - nodes = actions, directed edges = transitions</p>
+      <div class="header-left">
+        <h1 class="title" id="dashboardTitle">Motion Dashboard</h1>
+        <p class="sub">Motion graph synchronized with video — nodes = actions, directed edges = transitions</p>
       </div>
-      <div class="pill" id="summaryPill">Loading...</div>
+      <div class="header-right">
+        <div class="recipe-selector">
+          <label for="recipeSelect" class="control-label">Recipe:</label>
+          <select id="recipeSelect" class="control-select">
+            <option value="">Loading...</option>
+          </select>
+        </div>
+        <div class="pill" id="summaryPill">Loading...</div>
+      </div>
     </section>
 
-    <section class="layout">
+    <!-- Session Picker Row -->
+    <section class="session-picker-row" id="sessionPickerRow" style="display:none;">
+      <label class="control-label">Highlight View:</label>
+      <div class="session-picker-tabs" id="sessionPickerTabs"></div>
+    </section>
+
+    <!-- ENCODING CONTROLS — shared across both views ──────────────────────────── -->
+    <section class="encoding-controls-row" id="encodingControlsRow">
+      <label class="control-label">Detail Level:</label>
+      <select id="graphModeSelect" class="control-select">
+        <option value="hybrid">Abstraction (Verb_key)</option>
+        <option value="hybrid_cat">Abstraction (Verb_cat)</option>
+        <!-- <option value="smart">Smart-Merged (Clear)</option>
+        <option value="full">Full Raw (Complete)</option>
+        <option value="categorical">Categorical (Verb)</option> -->
+      </select>
+
+      <span class="encoding-controls-sep"></span>
+
+      <label class="control-label">Color encodes:</label>
+      <select id="colorEncodeSelect" class="control-select">
+        <option value="category">Action category</option>
+        <option value="phase">Recipe step</option>
+        <option value="duration">Mean duration</option>
+      </select>
+
+      <label class="control-label">Node size:</label>
+      <select id="sizeEncodeSelect" class="control-select">
+        <option value="support">Frequency</option>
+        <option value="duration">Duration</option>
+      </select>
+
+      <label class="control-label" id="layoutLabel">Layout:</label>
+      <select id="layoutModeSelect" class="control-select">
+        <option value="temporal">Sequence Flow</option>
+        <option value="category">HRC Category</option>
+      </select>
+
+      <span class="encoding-controls-sep"></span>
+      
+      <!-- Canonical Spine Button -->
+      <button id="highlightSpineBtn" class="control-btn" style="border-color: #ea580c; color: #B8362A; background-color: #fff; font-weight: bold; border: 1px solid #d1d5db; padding: 4px 8px; border-radius: 4px; cursor: pointer;">
+        Highlight Pattern
+      </button>
+    </section>
+
+    <!-- SINGLE UNIFIED VIEW ─────────────────────────────────────────── -->
+    <section class="layout" id="unifiedSessionView">
+      
+      <!-- LEFT PANEL: Unified Graph -->
       <article class="panel">
         <h2>
-          Motion Graph
-          <span class="graph-hint">
-            - scroll to zoom - drag to pan
-          </span>
+          Merged Motion Graph
+          <span class="graph-hint">— scroll to zoom · drag to pan</span>
         </h2>
-        <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px; flex-wrap: wrap;">
-          <label style="font-size: 0.9rem; font-weight: 500; color: #374151;">Detail Level:</label>
-          <select id="graphModeSelect" style="padding: 6px 36px 6px 10px; border-radius: 6px; border: 1px solid #d1d5db; font-size: 0.9rem; cursor: pointer; background: white url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 24 24%22 stroke=%22%236B7280%22%3E%3Cpath stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%222%22 d=%22M19 9l-7 7-7-7%22/%3E%3C/svg%3E') no-repeat right 14px center; background-size: 16px; appearance: none; -webkit-appearance: none;">
-            <option value="smart">Smart-Merged (Clear)</option>
-            <option value="full">Full Raw (Complete)</option>
-            <option value="abstracted">Task Phases (Overview)</option>
-          </select>
-        </div>
-        <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px; flex-wrap: wrap;">
-          <label style="font-size: 0.9rem; font-weight: 500; color: #374151;">Color encodes:</label>
-          <select id="colorEncodeSelect" style="padding: 6px 36px 6px 10px; border-radius: 6px; border: 1px solid #d1d5db; font-size: 0.9rem; cursor: pointer; background: white url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 24 24%22 stroke=%22%236B7280%22%3E%3Cpath stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%222%22 d=%22M19 9l-7 7-7-7%22/%3E%3C/svg%3E') no-repeat right 14px center; background-size: 16px; appearance: none; -webkit-appearance: none;">
-            <option value="category">Action category</option>
-            <option value="phase">Task phase</option>
-            <option value="duration">Mean duration</option>
-          </select>
-          <label style="font-size: 0.9rem; font-weight: 500; color: #374151; margin-left: 8px;">Node size:</label>
-          <select id="sizeEncodeSelect" style="padding: 6px 36px 6px 10px; border-radius: 6px; border: 1px solid #d1d5db; font-size: 0.9rem; cursor: pointer; background: white url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 24 24%22 stroke=%22%236B7280%22%3E%3Cpath stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%222%22 d=%22M19 9l-7 7-7-7%22/%3E%3C/svg%3E') no-repeat right 14px center; background-size: 16px; appearance: none; -webkit-appearance: none;">
-            <option value="frequency">Frequency</option>
-            <option value="duration">Duration</option>
-          </select>
-          <label style="font-size: 0.9rem; font-weight: 500; color: #374151; margin-left: 8px;">Layout:</label>
-          <select id="layoutModeSelect" style="padding: 6px 36px 6px 10px; border-radius: 6px; border: 1px solid #d1d5db; font-size: 0.9rem; cursor: pointer; background: white url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 24 24%22 stroke=%22%236B7280%22%3E%3Cpath stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%222%22 d=%22M19 9l-7 7-7-7%22/%3E%3C/svg%3E') no-repeat right 14px center; background-size: 16px; appearance: none; -webkit-appearance: none;">
-            <option value="temporal">Temporal (clock time)</option>
-            <option value="structural">Structural (sequence-based)</option>
-          </select>
-        </div>
-        <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px; flex-wrap: wrap;">
-          <label style="font-size: 0.9rem; font-weight: 500; color: #374151;">Min. Transition Count:</label>
-          <input type="range" id="edgeThreshold" min="1" max="10" value="1" style="width: 140px; cursor: pointer;" />
-          <span id="thresholdLabel" style="font-weight: 600; min-width: 20px;">1</span>
-        </div>
         <div id="graphWrap">
           <svg id="graphSvg"></svg>
           <div class="zoom-controls">
@@ -69,30 +93,52 @@
         <div class="legend-strip" id="legendStrip"></div>
       </article>
 
+      <!-- RIGHT PANEL: Video & Timelines -->
       <article class="panel">
         <h2>Video Player</h2>
         <video id="video" controls preload="metadata"></video>
-        <div id="annotationTimeline" style="
-          width:100%; height:28px; position:relative;
-          border-radius:6px; overflow:hidden;
-          border:1px solid #e5e7eb; margin-bottom:6px;
-          background:#f8fafc;
-        "></div>
+        
+        <!-- Shown ONLY in "All Sessions" mode -->
+        <div id="videoQueueRow" class="video-queue-row" style="display:none;">
+          <span class="video-queue-label-prefix">Switch to:</span>
+          <div id="videoQueue" class="video-queue"></div>
+        </div>
+        <div id="barcodeStackWrap" style="display:none; margin-top: 10px;">
+          <h3 class="barcode-stack-heading" style="font-size: 11px; margin-bottom: 5px; color:#475569;">Action sequences (normalized time)</h3>
+          <div id="barcodeStack" class="barcode-stack-container"></div>
+        </div>
+
+        <!-- Shown ONLY in "Single Session" mode -->
+        <div id="annotationTimelineWrap">
+          <div id="annotationTimeline" class="annotation-timeline"></div>
+        </div>
+
         <div class="meta">
           <div class="row"><span>Recipe</span><span id="recipeLabel">-</span></div>
-          <div class="row"><span>Video</span><span id="videoLabel">-</span></div>
+          <div class="row"><span>Active Video</span><span id="sessionLabel">-</span></div>
+          <div class="row"><span>Video ID</span><span id="videoLabel">-</span></div>
           <div class="row"><span>Time</span><span id="timeLabel">0.00 s</span></div>
           <div class="row"><span>Current Action</span><span id="actionLabel">-</span></div>
           <div class="status" id="statusLabel">Status: <strong>Idle</strong></div>
         </div>
       </article>
+
+      <!-- SWIMLANE (Shown ONLY in "Single Session" mode) -->
+      <article class="panel swimlane-panel" id="swimlanePanel">
+        <h2>
+          Swimlane
+          <span class="graph-hint">— one lane per recipe step · bar width = duration · click to seek</span>
+        </h2>
+        <div id="swimlaneContainer" class="swimlane-container"></div>
+      </article>
     </section>
 
-    <section class="footerPanel">
+    <!-- FOOTER PANEL -->
+    <section class="footerPanel" id="footerPanel">
       <table class="timeline">
         <thead>
           <tr>
-            <th>#</th><th>Action</th><th>Start</th><th>End</th><th>Duration</th>
+            <th>#</th><th>Action</th><th>Step</th><th>Start</th><th>End</th><th>Duration</th>
           </tr>
         </thead>
         <tbody id="timelineBody"></tbody>
@@ -101,35 +147,8 @@
 
   </div>
 
-  <div id="edgeTooltip" style="
-    position: fixed;
-    background: rgba(0,0,0,0.85);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-family: monospace;
-    pointer-events: none;
-    display: none;
-    white-space: pre;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  "></div>
-
-  <div id="nodeTooltip" style="
-    position: fixed;
-    background: rgba(0,0,0,0.85);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-family: monospace;
-    pointer-events: none;
-    display: none;
-    white-space: pre;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  "></div>
+  <div id="edgeTooltip" class="hover-tooltip"></div>
+  <div id="nodeTooltip" class="hover-tooltip"></div>
 
   <script type="module" src="assets/nespresso-dashboard/js/app.js"></script>
 </body>

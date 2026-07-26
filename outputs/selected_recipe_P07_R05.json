@@ -1,0 +1,169 @@
+{
+  "recipe_id": "P07_R05",
+  "recipe_data": {
+    "participant": "P07",
+    "name": "Coffee",
+    "type": "online",
+    "source": "https://coffeeculture.asia/a-step-by-step-guide-on-how-to-make-coffee-with-an-espresso-machine/",
+    "steps": {
+      "P07_R05_S01": "Turn on your espresso coffee machine to allow it to heat up the water.",
+      "P07_R05_S02": "Before making a coffee with the espresso machine make sure that your portafilter & basket are both clean and dry.",
+      "P07_R05_S03": "Freshly grind your coffee beans",
+      "P07_R05_S04": "Dose your ground coffee into the portafilter.",
+      "P07_R05_S05": "Using a coffee tamper, tamp your coffee. Then apply a light amount of pressure to compact your coffee.",
+      "P07_R05_S06": "Put the portafilter back into the machine.",
+      "P07_R05_S07": "Make The Espresso",
+      "P07_R05_S08": "Turn the kettle on to boil",
+      "P07_R05_S09": "Add boiling water to the espresso"
+    },
+    "captures": [
+      {
+        "videos": [
+          "P07-20240530-102543",
+          "P07-20240530-111344"
+        ],
+        "ingredients": {
+          "P07_R05_I01": {
+            "name": "coffee",
+            "amount": 16,
+            "amount_unit": "g",
+            "calories": 0,
+            "fat": 0,
+            "carbs": 0,
+            "protein": 0,
+            "weigh": [],
+            "add": [
+              {
+                "video": "P07-20240530-102543",
+                "start": 1592.0,
+                "end": 1594.99
+              }
+            ]
+          }
+        },
+        "step_times": {
+          "P07_R05_S01": [],
+          "P07_R05_S02": [],
+          "P07_R05_S03": [
+            {
+              "video": "P07-20240530-102543",
+              "start": 1553.619,
+              "end": 1561.614
+            },
+            {
+              "video": "P07-20240530-102543",
+              "start": 1544.581,
+              "end": 1548.097
+            }
+          ],
+          "P07_R05_S04": [
+            {
+              "video": "P07-20240530-102543",
+              "start": 1572.042,
+              "end": 1578.507
+            }
+          ],
+          "P07_R05_S05": [
+            {
+              "video": "P07-20240530-102543",
+              "start": 1581.275,
+              "end": 1582.275
+            }
+          ],
+          "P07_R05_S06": [
+            {
+              "video": "P07-20240530-102543",
+              "start": 1592.167,
+              "end": 1594.114
+            }
+          ],
+          "P07_R05_S07": [
+            {
+              "video": "P07-20240530-102543",
+              "start": 1617.275,
+              "end": 1617.775
+            },
+            {
+              "video": "P07-20240530-111344",
+              "start": 45.005,
+              "end": 46.471
+            }
+          ],
+          "P07_R05_S08": [
+            {
+              "video": "P07-20240530-102543",
+              "start": 1668.452,
+              "end": 1669.042
+            }
+          ],
+          "P07_R05_S09": [
+            {
+              "video": "P07-20240530-111344",
+              "start": 50.685,
+              "end": 56.489
+            }
+          ]
+        },
+        "prep_times": {
+          "P07_R05_S01": [],
+          "P07_R05_S02": [
+            {
+              "video": "P07-20240530-102543",
+              "start": 1521.517,
+              "end": 1529.248
+            }
+          ],
+          "P07_R05_S03": [
+            {
+              "video": "P07-20240530-102543",
+              "start": 1530.384,
+              "end": 1544.581
+            }
+          ],
+          "P07_R05_S04": [
+            {
+              "video": "P07-20240530-102543",
+              "start": 1562.233,
+              "end": 1572.042
+            }
+          ],
+          "P07_R05_S05": [
+            {
+              "video": "P07-20240530-102543",
+              "start": 1579.698,
+              "end": 1581.133
+            }
+          ],
+          "P07_R05_S06": [
+            {
+              "video": "P07-20240530-102543",
+              "start": 1591.622,
+              "end": 1592.167
+            }
+          ],
+          "P07_R05_S07": [
+            {
+              "video": "P07-20240530-102543",
+              "start": 1601.73,
+              "end": 1617.275
+            }
+          ],
+          "P07_R05_S08": [],
+          "P07_R05_S09": [
+            {
+              "video": "P07-20240530-111344",
+              "start": 47.027,
+              "end": 50.685
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "video_ids": [
+    "P07-20240530-102543",
+    "P07-20240530-102543",
+    "P07-20240530-111344"
+  ],
+  "narrations_count": 687
+}

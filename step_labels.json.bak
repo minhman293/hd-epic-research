@@ -1,0 +1,2287 @@
+{
+  "P01_R01_S01": {
+    "label": "insert capsule",
+    "source": "llm",
+    "raw": "Put one capsule into the coffee machine."
+  },
+  "P01_R01_S02": {
+    "label": "press button",
+    "source": "llm",
+    "raw": "Press the long coffee button"
+  },
+  "P01_R01_S03": {
+    "label": "froth milk",
+    "source": "llm",
+    "raw": "Pour minimum amount of milk into the frother"
+  },
+  "P01_R01_S04": {
+    "label": "add frothed milk",
+    "source": "llm",
+    "raw": "Add the frothed milk into the coffee"
+  },
+  "P01_R01_S05": {
+    "label": "stir",
+    "source": "llm",
+    "raw": "Stir"
+  },
+  "P01_R03_S01": {
+    "label": "cook pasta",
+    "source": "llm",
+    "raw": "cook your choice of pasta in a large pot of generously salted boiling water until al dente."
+  },
+  "P01_R03_S02": {
+    "label": "toast pepper",
+    "source": "llm",
+    "raw": "Toast the grounded peppercorns until fragrant in a frying pan (with little butter) over medium heat, about 2 minutes. Keep them moving to prevent them from burning."
+  },
+  "P01_R03_S03": {
+    "label": "emulsify sauce",
+    "source": "llm",
+    "raw": "While the pasta cooks, add freshly grated parmigano cheese to the crushed black peppercorns on very low heat. Gradually add a cup of the boiling cooking water to the bowl, constantly mixing and adjusting as necessary to melt the cheese and obtain a silky, smooth sauce that’s able to completely coat the pasta. Finish with a knob of butter to emulsify the sauce"
+  },
+  "P01_R03_S04": {
+    "label": "toss pasta",
+    "source": "llm",
+    "raw": "Once your cacio e pepe has become a creamy, silky sauce, add your piping hot pasta to the bowl and toss vigorously to coat."
+  },
+  "P01_R04_S01": {
+    "label": "knead dough",
+    "source": "llm",
+    "raw": "In a large bowl mix together flour, salt and then add oil. In a separate cup mix yeast with sugar in warm water. Pour over everything else and start kneading until the mix gets doughy and easy to work with. Using your hands rub the bowl with some oil and also rub some on the dough itself while keeping it as a big round shape then cover the bowl with plastic wrapping and a blanket and let it rest for about an hour."
+  },
+  "P01_R04_S02": {
+    "label": "cook meat",
+    "source": "llm",
+    "raw": "STUFFING. Start preparing the meat stuffing. Sweat one chopped onion in a pot, for a few minutes and then add minced garlic, then place the meat in the pot and on high heat while continuing stirring let the meat cook until the red color turns into more brownish, the idea here is not to fully cook the meat, but perhaps to get all the water out, this will help to get rid of all the water residue that comes out of the meat so it can help the meat stick to the dough while baking."
+  },
+  "P01_R04_S03": {
+    "label": "lower heat",
+    "source": "heuristic",
+    "raw": "Lower the heat, add some water if needed and a stock cube and leave for a total of 15 minutes."
+  },
+  "P01_R04_S04": {
+    "label": "add sumac",
+    "source": "llm",
+    "raw": "Leave the stuffing to cool, then add a spoonful of yoghurt and another spoonful of tahini and a generous amount of sumac."
+  },
+  "P01_R04_S05": {
+    "label": "heat oven",
+    "source": "heuristic",
+    "raw": "Heat oven on 200C (fan) and once the dough is ready, with your hands take a small piece of the dough and round it in a ball shape. Place in a greased tray, then flatten with your fingers (try not to flatten it too thin. it's nice to have it a bit fluffy once baked) with your fingers, scoop out some of the meat stuffing and place over the flattened dough, press well with hands to make sure the meat mixture sticks with the dough."
+  },
+  "P01_R04_S06": {
+    "label": "this process",
+    "source": "heuristic",
+    "raw": "Continue this process until the tray is full, make sure there is some space between one sfeeha and the other, so they won't stick to each other while baking. After filling the dough with the meat mixture let it sit for another 10 minutes before baking."
+  },
+  "P01_R04_S07": {
+    "label": "bake for",
+    "source": "heuristic",
+    "raw": "Bake for about 8-10 minutes or until the bottom turns golden brown."
+  },
+  "P01_R05_S01": {
+    "label": "mixing melted",
+    "source": "heuristic",
+    "raw": "Start by mixing the melted butter, sweetened condensed milk with the cocoa powder. Combine them really well together, but it's okay if there are a few small lumps."
+  },
+  "P01_R05_S02": {
+    "label": "crumble biscuit",
+    "source": "heuristic",
+    "raw": "Crumble up the biscuit and combine with the mixture"
+  },
+  "P01_R05_S03": {
+    "label": "important use",
+    "source": "heuristic",
+    "raw": "It's important to use small sized biscuit crumbs like in the picture, but also try and incorporate really small crumbs in there as well to help the mixture hold"
+  },
+  "P01_R05_S04": {
+    "label": "the last",
+    "source": "heuristic",
+    "raw": "The last step is shaping the mixture. Do this by placing the mixture on a chopping board and shaping into a cylindrical log using the hands."
+  },
+  "P01_R05_S05": {
+    "label": "next wrap",
+    "source": "heuristic",
+    "raw": "Next wrap the log with foil to help it maintain its shape and place it in the fridge for at least 5 hours (depending on your freezer)"
+  },
+  "P01_R05_S06": {
+    "label": "after roughly",
+    "source": "heuristic",
+    "raw": "After roughly 2 hours, divide into chunks of your desired thickness."
+  },
+  "P01_R06_S01": {
+    "label": "heat butter",
+    "source": "heuristic",
+    "raw": "Heat butter in a pot over medium heat until the butter melts. Add onion; cook, stirring occasionally, until softened, 4 to 6 minutes. Stir in carrots and mix until properly coated. Add water and broth; bring to a lively simmer over high heat.  Reduce heat to maintain a lively simmer and cook until very tender, about 25 minutes."
+  },
+  "P01_R06_S02": {
+    "label": "puree soup",
+    "source": "heuristic",
+    "raw": "Puree the soup in batches in a blender until smooth. (Use caution when pureeing hot liquids.) Stir in spice mix and fresh coriander."
+  },
+  "P01_R07_S01": {
+    "label": "sweat onion",
+    "source": "llm",
+    "raw": "The meat: Sweat one chopped onion in a pot, for a few minutes and then add minced garlic, then place the meat in the pot and on high heat while continuing stirring let the meat cook until the red color turns into more brownish, the idea here is not to fully cook the meat, but perhaps to get all the water out, this will help to get rid of all the water residue that comes out of the meat."
+  },
+  "P01_R07_S02": {
+    "label": "lower heat",
+    "source": "heuristic",
+    "raw": "Lower the heat, add some water if needed, a stock cube, cinamon, and additional pepper and leave for a total of 15 minutes."
+  },
+  "P01_R07_S03": {
+    "label": "the rice",
+    "source": "heuristic",
+    "raw": "The rice: start by soaking the rice in some room temperature tap water, with some salt, for at least 2 hours. Once soaking period is over, rinse the rice well until water runs clear to get rid of any excess starchiness."
+  },
+  "P01_R07_S04": {
+    "label": "the vermicelli",
+    "source": "heuristic",
+    "raw": "The vermicelli: heat enough oil to coat the bottom of a large saucepan over medium high heat. Once hot, add the broken vermicelli strands, and continue to saute constantly until the vermicelli turns a golden brown. You have to be careful, because vermicelli can burn quite easily. At this point, your rice should be rinsed and ready to add because as soon as the vermicelli is ready, dump in the rice to prevent further cooking of the vermicelli strands. Stir with a wooden spoon to combine well. Add one cube of chicken cube, loosely divided into smaller chunks. then add the water."
+  },
+  "P01_R07_S05": {
+    "label": "the water",
+    "source": "heuristic",
+    "raw": "The water: I like to go with a ration of 1 cup of basmati rice to 1.5 cups of water. Importantly, the water should cover the rice with an additional couple of centimetres."
+  },
+  "P01_R07_S06": {
+    "label": "let mixture",
+    "source": "heuristic",
+    "raw": "Let the mixture come to a boil, then cover with a tight fitting lid and let it simmer at low heat for an additional 15-20 minutes or until water is fully absorbed. Then, remove from heat, and let stand an extra 10 minutes before fluffing."
+  },
+  "P01_R07_S07": {
+    "label": "finish add",
+    "source": "heuristic",
+    "raw": "Finish: Add the pre-prepared minced meat to the rice. Mix thoroughly."
+  },
+  "P01_R08_S01": {
+    "label": "mix all",
+    "source": "heuristic",
+    "raw": "Mix all the ingredients except for the chicken. Pour into a large container and add the chicken thighs."
+  },
+  "P01_R08_S02": {
+    "label": "water cover",
+    "source": "heuristic",
+    "raw": "Add water to cover."
+  },
+  "P01_R08_S03": {
+    "label": "marinate fridge",
+    "source": "heuristic",
+    "raw": "Marinate in the fridge for at least 1 hour or overnight."
+  },
+  "P01_R08_S04": {
+    "label": "prepare for",
+    "source": "heuristic",
+    "raw": "Prepare for baking by adding the marinade and chicken. Cover with oil. Add chunks of chicken cube for additional taste"
+  },
+  "P01_R08_S05": {
+    "label": "bake well",
+    "source": "heuristic",
+    "raw": "Bake until well browned and cooked through, about 1 hour at 350 degrees F, basting the tops often."
+  },
+  "P01_R09_S01": {
+    "label": "butter pitted",
+    "source": "heuristic",
+    "raw": "Place butter and pitted dates in a pan and heat until dates are soft."
+  },
+  "P01_R09_S02": {
+    "label": "remove from",
+    "source": "heuristic",
+    "raw": "Remove from heat and quickly mix with crushed biscuts"
+  },
+  "P01_R09_S03": {
+    "label": "wait for",
+    "source": "heuristic",
+    "raw": "Wait for the mixture to cool on touch then and mix well."
+  },
+  "P01_R09_S04": {
+    "label": "roll mixture",
+    "source": "heuristic",
+    "raw": "Roll mixture into balls."
+  },
+  "P01_R09_S05": {
+    "label": "fridge cool",
+    "source": "heuristic",
+    "raw": "Place in fridge to cool."
+  },
+  "P02_R01_S01": {
+    "label": "preheat pan",
+    "source": "heuristic",
+    "raw": "Preheat the pan over medium low heat then add 2 tablespoons olive oil."
+  },
+  "P02_R01_S02": {
+    "label": "the seeded",
+    "source": "heuristic",
+    "raw": "Add the de-seeded, chopped tomatoes and cook slowly until softened."
+  },
+  "P02_R01_S03": {
+    "label": "the onions",
+    "source": "heuristic",
+    "raw": "Add the onions and chopped garlic and brown slowly until tender and golden, about 5 minutes."
+  },
+  "P02_R01_S04": {
+    "label": "the tomato",
+    "source": "heuristic",
+    "raw": "Add the tomato puree and cook out for 5 minutes"
+  },
+  "P02_R01_S05": {
+    "label": "more oil",
+    "source": "heuristic",
+    "raw": "Add more oil if necessary and add mushrooms. Do not raise heat. Cook an additional 5minutes."
+  },
+  "P02_R01_S06": {
+    "label": "the sweetcorn",
+    "source": "heuristic",
+    "raw": "Add the sweetcorn and season with Worcestershire sauce and apple cider vinegar. Cook for 5 more minutes."
+  },
+  "P02_R02_S01": {
+    "label": "microwave potatoes",
+    "source": "heuristic",
+    "raw": "Microwave potatoes for 4-6 minutes until just soft"
+  },
+  "P02_R02_S02": {
+    "label": "cut potatoes",
+    "source": "heuristic",
+    "raw": "Cut the potatoes into chunks"
+  },
+  "P02_R02_S03": {
+    "label": "when ready",
+    "source": "heuristic",
+    "raw": "When ready to serve, heat 6-8 tbsp sunflower or olive oil in a large non-stick frying pan until you can feel a strong heat rising."
+  },
+  "P02_R02_S04": {
+    "label": "your pan",
+    "source": "heuristic",
+    "raw": "If your pan isn't large enough, fry the potatoes in two batches - rather than crowding them. Have kitchen paper ready to drain them on. Add the potatoes in a single layer, not too tightly packed."
+  },
+  "P02_R02_S05": {
+    "label": "turn heat",
+    "source": "heuristic",
+    "raw": "Turn the heat to medium-high, so that the potatoes sizzle, but don't stir until they start to brown underneath."
+  },
+  "P02_R02_S06": {
+    "label": "turn them",
+    "source": "heuristic",
+    "raw": "Turn them all evenly 2 or 3 times until nicely browned all over - this can take about 7 mins."
+  },
+  "P02_R02_S07": {
+    "label": "then lift",
+    "source": "heuristic",
+    "raw": "Then lift out with a fish slice or large spoon. Sprinkle with sea salt."
+  },
+  "P02_R03_S01": {
+    "label": "squash add",
+    "source": "heuristic",
+    "raw": "Add Squash- Add the amount of Squash to your glass - that's 1 part juice and 8 parts water for standard strength squash."
+  },
+  "P02_R03_S02": {
+    "label": "fill glass",
+    "source": "heuristic",
+    "raw": "Fill Your Glass With Water - pour the desired amount of water into your glass."
+  },
+  "P02_R03_S03": {
+    "label": "enjoy take",
+    "source": "heuristic",
+    "raw": "Enjoy! - Take a sip and savour the perfect glass of squash."
+  },
+  "P02_R04_S01": {
+    "label": "heat half",
+    "source": "heuristic",
+    "raw": "Heat half the oil in a large frying pan, add bacon and cook, turning occasionally, until browned and cooked to your liking (3-4 minutes for semi-crisp)."
+  },
+  "P02_R04_S02": {
+    "label": "another pan",
+    "source": "heuristic",
+    "raw": "In another pan, add remaining oil, crack eggs into a measuring jug, add some milk and beat them. Add pepper to taste"
+  },
+  "P02_R04_S03": {
+    "label": "once eggs",
+    "source": "heuristic",
+    "raw": "Once the eggs have been mixed, cook them over medium-high heat to your liking (3-4 minutes for a soft scramble)."
+  },
+  "P02_R04_S04": {
+    "label": "whilst eggs",
+    "source": "heuristic",
+    "raw": "Whilst the eggs and bacon continue cooking, shred cheddar cheese into a bowl."
+  },
+  "P02_R04_S05": {
+    "label": "season eggs",
+    "source": "heuristic",
+    "raw": "Season the eggs with salt and add paprika if desired."
+  },
+  "P02_R04_S06": {
+    "label": "serve cut",
+    "source": "heuristic",
+    "raw": "To serve, cut the baguette in half and butter both sides. Add the bacon, scrambled eggs, and cheese."
+  },
+  "P02_R05_S01": {
+    "label": "the cereal",
+    "source": "heuristic",
+    "raw": "Place the Cereal in a bowl"
+  },
+  "P02_R05_S02": {
+    "label": "pour milk",
+    "source": "heuristic",
+    "raw": "pour the milk"
+  },
+  "P02_R06_S01": {
+    "label": "thaw puff",
+    "source": "heuristic",
+    "raw": "Thaw puff pastry for 1 hour in room temperature, until defrosted, or in the refrigerator overnight."
+  },
+  "P02_R06_S02": {
+    "label": "prepare lemon",
+    "source": "heuristic",
+    "raw": "Prepare the Lemon Curd. Heat a bainmarie on medium-low heat. Add butter and wait for it to melt. Then add lemon juice, zest, raspberry juice, sugar, and eggs and whisk together until sugar melts into the mix and stir continuously. The lemon curd should begin to thicken and small bubbles will begin to form on the surface, about 40 minutes. Remove from heat once the lemon curd is thick enough for the whisk to leave marks on the surface."
+  },
+  "P02_R06_S03": {
+    "label": "the meantime",
+    "source": "heuristic",
+    "raw": "In the meantime, prepare the puff pastry. Roll out the puff pastry to about 10 inches by 14 inches, then cut into squares."
+  },
+  "P02_R06_S04": {
+    "label": "bake degrees",
+    "source": "heuristic",
+    "raw": "Bake at 200 degrees C for 15 minutes, until the pastry is puffed. Cool for 3 minutes."
+  },
+  "P02_R06_S05": {
+    "label": "layer cooled",
+    "source": "heuristic",
+    "raw": "Layer the cooled raspberry lemon curd onto the top of the tart. Serve immediately. Store any leftovers in the refrigerator."
+  },
+  "P02_R07_S01": {
+    "label": "heat oven",
+    "source": "heuristic",
+    "raw": "heat oven to 220c/fan 200c/gas 7."
+  },
+  "P02_R07_S02": {
+    "label": "unroll puff",
+    "source": "heuristic",
+    "raw": "Unroll a puff pastry, scatter over a couple of handfuls of grated Parmesan and then grate over the cheddar cheese, then fold in half."
+  },
+  "P02_R07_S03": {
+    "label": "lightly floured",
+    "source": "heuristic",
+    "raw": "On a lightly floured surface, roll out to the thickness of a 1 pound coin. Cut into 1cm strips, then twist the strips 3-4 times."
+  },
+  "P02_R07_S04": {
+    "label": "lay baking",
+    "source": "heuristic",
+    "raw": "Lay on a baking sheet, scatter over more cheese and bake for 12 mins, or until golden."
+  },
+  "P02_R07_S05": {
+    "label": "cool then",
+    "source": "heuristic",
+    "raw": "Leave to cool, then keep in an airtight container for up to 2 days.  "
+  },
+  "P02_R08_S01": {
+    "label": "liberally butter",
+    "source": "heuristic",
+    "raw": "Liberally butter one side of each slice of bread."
+  },
+  "P02_R08_S02": {
+    "label": "top one",
+    "source": "heuristic",
+    "raw": "Top one side with cheese. Add crisps if using."
+  },
+  "P02_R08_S03": {
+    "label": "second slice",
+    "source": "heuristic",
+    "raw": "Add second slice on top butter-side-down, gently press to secure the filling, then slice in half and enjoy!"
+  },
+  "P02_R10_S01": {
+    "label": "preheat oven",
+    "source": "heuristic",
+    "raw": "Preheat the oven to 200 degrees C, fan 180 degrees C, gas 6. Line a large roasting tray with baking paper, remove the stalks from the mushrooms and place them on the tray."
+  },
+  "P02_R10_S02": {
+    "label": "whisk together",
+    "source": "heuristic",
+    "raw": "Whisk together the coriander, cumin, ginger, chilli powder, nutmeg, paprika, salt and olive oil with the juice of 1/2 lemon. Drizzle this over the mushrooms and toss to coat."
+  },
+  "P02_R10_S03": {
+    "label": "sit mushrooms",
+    "source": "heuristic",
+    "raw": "Sit the mushrooms stalk-side down and cover with another sheet of baking paper. Weigh down the mushrooms with another empty baking tray and roast for 30 minutes."
+  },
+  "P02_R10_S04": {
+    "label": "meanwhile finely",
+    "source": "heuristic",
+    "raw": "Meanwhile, finely dice the tomatoes and finely slice the red onion. Mix with the zingy lemon juice and season well. Set aside."
+  },
+  "P02_R10_S05": {
+    "label": "when mushrooms",
+    "source": "heuristic",
+    "raw": "When the mushrooms are roasted drizzle them with the sugar syrup, garlic paste, and worcestershire sauce. Roast again for 15 minutes."
+  },
+  "P02_R10_S06": {
+    "label": "halve each",
+    "source": "heuristic",
+    "raw": "Halve each kebab wrap and warm in a griddle pan."
+  },
+  "P02_R10_S07": {
+    "label": "each wrap",
+    "source": "heuristic",
+    "raw": "On each wrap pile on the tomato salad for crunch followed by the sliced mushrooms. Drizzle the kebabs with the yogurt or aioli, if using, grated parmesan, and chilli sauce to taste."
+  },
+  "P02_R11_S01": {
+    "label": "fill large",
+    "source": "heuristic",
+    "raw": "Fill a large pot about 3/4 full of water and bring to a boil."
+  },
+  "P02_R11_S02": {
+    "label": "sweetcorn boiling",
+    "source": "heuristic",
+    "raw": "Place sweetcorn into boiling water, and let the sweetcorn cook in the hot water until tender, about 10 minutes."
+  },
+  "P03_R01_S01": {
+    "label": "rinse lentils",
+    "source": "heuristic",
+    "raw": "Rinse lentils"
+  },
+  "P03_R01_S02": {
+    "label": "cut squash",
+    "source": "heuristic",
+    "raw": "Cut the squash into 2cm chunks and peel it"
+  },
+  "P03_R01_S03": {
+    "label": "wash spring",
+    "source": "heuristic",
+    "raw": "Wash the spring greens and slice them"
+  },
+  "P03_R01_S04": {
+    "label": "chop onion",
+    "source": "heuristic",
+    "raw": "Chop the onion"
+  },
+  "P03_R01_S05": {
+    "label": "fry onion",
+    "source": "heuristic",
+    "raw": "Fry the onion until golden (around 6-8 mins)"
+  },
+  "P03_R01_S06": {
+    "label": "the squash",
+    "source": "heuristic",
+    "raw": "Add the squash and fry for 3 mins."
+  },
+  "P03_R01_S07": {
+    "label": "the spicy",
+    "source": "heuristic",
+    "raw": "Add the spicy garlic & coconut paste to the pan and mix well."
+  },
+  "P03_R01_S08": {
+    "label": "stir red",
+    "source": "heuristic",
+    "raw": "Stir in the red lentils and the dhal spice mix."
+  },
+  "P03_R01_S09": {
+    "label": "the coconut",
+    "source": "heuristic",
+    "raw": "Add the coconut milk and the ginger lentil stock pot along with 100ml of water and bring to the boil."
+  },
+  "P03_R01_S10": {
+    "label": "cover lid",
+    "source": "heuristic",
+    "raw": "Cover with a lid, turn the heat down and let it simmer for 10 mins"
+  },
+  "P03_R01_S11": {
+    "label": "stir spring",
+    "source": "heuristic",
+    "raw": "Stir in the spring greens and then put the lid back on and cook for 5 more mins."
+  },
+  "P03_R02_S01": {
+    "label": "wash potatoes",
+    "source": "heuristic",
+    "raw": "Wash potatoes, peel and cut them into small cubes"
+  },
+  "P03_R02_S02": {
+    "label": "boil potatoes",
+    "source": "heuristic",
+    "raw": "Boil the potatoes for 15-20 mins or until soft, then drain."
+  },
+  "P03_R02_S03": {
+    "label": "wash slice",
+    "source": "heuristic",
+    "raw": "Wash and slice the mushrooms"
+  },
+  "P03_R02_S04": {
+    "label": "peel finely",
+    "source": "heuristic",
+    "raw": "Peel and finely chop the onion"
+  },
+  "P03_R02_S05": {
+    "label": "cut plant",
+    "source": "heuristic",
+    "raw": "Cut the plant-based beef burger into thin strips"
+  },
+  "P03_R02_S06": {
+    "label": "toss beef",
+    "source": "heuristic",
+    "raw": "Toss the beef strips in half of the stroganoff seasoning"
+  },
+  "P03_R02_S07": {
+    "label": "heat wide",
+    "source": "heuristic",
+    "raw": "Heat a wide pan on high heat, add 2 tsps oil and sear the beef quickly on all sides. Remove and keep aside."
+  },
+  "P03_R02_S08": {
+    "label": "reduce heat",
+    "source": "heuristic",
+    "raw": "Reduce the heat, add a knob of butter, the onion and the rest of the stroganoff seasoning.  Cook for 5 mins until soft."
+  },
+  "P03_R02_S09": {
+    "label": "the mushrooms",
+    "source": "heuristic",
+    "raw": "Add the mushrooms and cook for 3 mins."
+  },
+  "P03_R02_S10": {
+    "label": "mix tomato",
+    "source": "heuristic",
+    "raw": "Mix in the tomato puree."
+  },
+  "P03_R02_S11": {
+    "label": "stir mushroom",
+    "source": "heuristic",
+    "raw": "Stir in the mushroom stock pot and the cream. Gently bring to the boil then cook for 2 mins on low heat."
+  },
+  "P03_R02_S12": {
+    "label": "mash potatoes",
+    "source": "heuristic",
+    "raw": "Mash the potatoes with some butter and the horseradish seasoning."
+  },
+  "P03_R02_S13": {
+    "label": "return beef",
+    "source": "heuristic",
+    "raw": "Return the beef (and its juices) to the sauce and cook for 2 mins, or longer for more 'well done' beef."
+  },
+  "P03_R03_S01": {
+    "label": "boil water",
+    "source": "heuristic",
+    "raw": "Boil water using kettle"
+  },
+  "P03_R03_S02": {
+    "label": "grind coffee",
+    "source": "heuristic",
+    "raw": "Grind coffee beans using the electric coffee grinder"
+  },
+  "P03_R03_S03": {
+    "label": "pour ground",
+    "source": "heuristic",
+    "raw": "Pour ground coffee into the metal V60 filter"
+  },
+  "P03_R03_S04": {
+    "label": "pour water",
+    "source": "heuristic",
+    "raw": "Pour water into the V60. Pour enough hot water to soak all the coffee grounds, then wait until most water is filtered through."
+  },
+  "P03_R03_S05": {
+    "label": "slowly pour",
+    "source": "heuristic",
+    "raw": "Slowly pour over the remaining water over the coffee, making small circles. Stop when the water is 3/4 of the way or 2 cm from the top."
+  },
+  "P03_R03_S06": {
+    "label": "wait for",
+    "source": "heuristic",
+    "raw": "Wait for it to drain, allowing the coffee to cool down a little."
+  },
+  "P03_R04_S01": {
+    "label": "peel potatoes",
+    "source": "heuristic",
+    "raw": "Peel the potatoes and chop them into small chunks."
+  },
+  "P03_R04_S02": {
+    "label": "fry potatoes",
+    "source": "heuristic",
+    "raw": "Fry the potatoes on a medium-heat pan with abundant oil turning the potatoes frequently so that they don't burn. Split larger chunks with a spatula as they soften while cooking to ensure an even size of chunks. Add a pinch of salt while frying the potatoes."
+  },
+  "P03_R04_S03": {
+    "label": "crack eggs",
+    "source": "heuristic",
+    "raw": "Crack the eggs into a mixing bowl, season with a pinch of salt, then whisk together with a fork."
+  },
+  "P03_R04_S04": {
+    "label": "peel finely",
+    "source": "heuristic",
+    "raw": "Peel and finely slice the onion"
+  },
+  "P03_R04_S05": {
+    "label": "the onion",
+    "source": "heuristic",
+    "raw": "Add the onion to the pan and fry it together with the potatoes, adding oil if necessary."
+  },
+  "P03_R04_S06": {
+    "label": "when onions",
+    "source": "heuristic",
+    "raw": "When the onions and potatoes are cooked, carefully pour the eggs on top ensuring the eggs cover the potatoes and onions evenly. Cook the eggs with a low heat until there's almost no runny egg on top."
+  },
+  "P03_R04_S07": {
+    "label": "spatula slightly",
+    "source": "heuristic",
+    "raw": "Use a spatula to slightly lift and loosen the sides of the tortilla. Carefully flip the pan over a dinner plate or large lid and tip out the tortilla, then slide it back into the pan and cook for another 5 minutes, or until golden and cooked through."
+  },
+  "P03_R05_S01": {
+    "label": "mix flour",
+    "source": "heuristic",
+    "raw": "Mix the flour with yeast, salt and water in a large bowl using a wooden spoon"
+  },
+  "P03_R05_S02": {
+    "label": "once ingredients",
+    "source": "heuristic",
+    "raw": "Once the ingredients are roughly mixed, transfer the mixture onto the kitchen top and knead the dough by hand. This is done by rolling the dough on itself several times. Once the dough starts tearing, flatten the dough and fold the 4 edges to form a ball. Let the ball rest for a few minutes between repetitions."
+  },
+  "P03_R05_S03": {
+    "label": "repeat previous",
+    "source": "heuristic",
+    "raw": "Repeat the previous step several times until the dough is uniform and no longer sticks to the hands."
+  },
+  "P03_R05_S04": {
+    "label": "split dough",
+    "source": "heuristic",
+    "raw": "Split the dough in 2, then flatten and fold each chunk to form a ball."
+  },
+  "P03_R05_S05": {
+    "label": "coat plastic",
+    "source": "heuristic",
+    "raw": "Coat a plastic container with a little olive oil and place the dough balls in the container."
+  },
+  "P03_R05_S06": {
+    "label": "let pizza",
+    "source": "heuristic",
+    "raw": "Let the pizza dough mature and rise for 24 hours in the fridge."
+  },
+  "P03_R06_S01": {
+    "label": "wash kale",
+    "source": "heuristic",
+    "raw": "Wash the kale, dry it and spread it evenly in a baking tray"
+  },
+  "P03_R06_S02": {
+    "label": "the oil",
+    "source": "heuristic",
+    "raw": "Add the oil and the salt, mixing everything well. The quantities are fairly loose: just make sure the leaves are coated and sprinkle with a bit of salt."
+  },
+  "P03_R06_S03": {
+    "label": "cook for",
+    "source": "heuristic",
+    "raw": "Cook for 15 minutes in an oven preheated at 180 degrees with the fan on (200 if the oven does not have a fan). Once it's mainly wilted but crisp at the edges, it's ready."
+  },
+  "P03_R07_S01": {
+    "label": "wash aubergine",
+    "source": "heuristic",
+    "raw": "Wash the aubergine and chop it in 2cm cubes"
+  },
+  "P03_R07_S02": {
+    "label": "fry aubergine",
+    "source": "heuristic",
+    "raw": "Fry the aubergine with sunflower oil until it's very soft. Add salt and black pepper while cooking."
+  },
+  "P03_R07_S03": {
+    "label": "when aubergine",
+    "source": "heuristic",
+    "raw": "When the aubergine is ready, move it to a plate with kitchen towel to absorb the oil"
+  },
+  "P03_R07_S04": {
+    "label": "hard boil",
+    "source": "heuristic",
+    "raw": "Hard-boil the egg in a saucepan for 5 minutes"
+  },
+  "P03_R07_S05": {
+    "label": "peel egg",
+    "source": "heuristic",
+    "raw": "Peel the egg and slice it in 4 slices"
+  },
+  "P03_R07_S06": {
+    "label": "stretch pizza",
+    "source": "heuristic",
+    "raw": "Stretch the pizza dough using the semolina flour to avoid the dough getting stuck on the hands and surfaces. To stretch the dough, first press it with the fingertips, starting from the centre towards the edges, rotating and repeating until it no longer stretches. Then transfer the dough to the back of both hands and slowly rotate and stretch the dough until it reaches the desired size."
+  },
+  "P03_R07_S07": {
+    "label": "some semolina",
+    "source": "heuristic",
+    "raw": "Add some semolina flour to the pizza peel, then add the dough on top of it and add all toppings to the pizza: tomato sauce first, then mozzarella, finally aubergine and egg."
+  },
+  "P03_R07_S08": {
+    "label": "transfer pizza",
+    "source": "heuristic",
+    "raw": "Transfer the pizza to the pre-heated pizza oven and cook for 5 minutes. Rotate the pizza halfway through to ensure the pizza is cooked evenly."
+  },
+  "P03_R08_S01": {
+    "label": "chop garlic",
+    "source": "heuristic",
+    "raw": "Chop the garlic in large chunks and stir fry it in a saucepan with olive oil at medium heat"
+  },
+  "P03_R08_S02": {
+    "label": "lower heat",
+    "source": "heuristic",
+    "raw": "Lower the heat and add the tomato passata to the pan. Cook for 5 minutes, stirring occasionally."
+  },
+  "P03_R08_S03": {
+    "label": "remove garlic",
+    "source": "heuristic",
+    "raw": "Remove garlic from the sauce"
+  },
+  "P03_R09_S01": {
+    "label": "wash mushrooms",
+    "source": "heuristic",
+    "raw": "Wash the mushrooms and slice them thinly"
+  },
+  "P03_R09_S02": {
+    "label": "stir fry",
+    "source": "heuristic",
+    "raw": "Stir fry the mushrooms in a pan with sunflower oil. Add black pepper and garlic powder while cooking."
+  },
+  "P03_R09_S03": {
+    "label": "stretch pizza",
+    "source": "heuristic",
+    "raw": "Stretch the pizza dough using the semolina flour to avoid the dough getting stuck on the hands and surfaces. To stretch the dough first press it with the fingertips, starting from the centre towards the edges, rotating and repeating until it no longer stretches. Then transfer the dough to the back of both hands and slowly rotate and stretch the dough until it reaches the desired size."
+  },
+  "P03_R09_S04": {
+    "label": "some semolina",
+    "source": "heuristic",
+    "raw": "Add some semolina flour to the pizza peel, then add the dough on top of it and add all toppings to the pizza: tomato sauce first, then mozzarella, finally mushrooms and the pre-cooked plant-based mince."
+  },
+  "P03_R09_S05": {
+    "label": "transfer pizza",
+    "source": "heuristic",
+    "raw": "Transfer the pizza to the pre-heated pizza oven and cook for 5 minutes. Rotate the pizza halfway through to ensure the pizza is cooked evenly."
+  },
+  "P03_R10_S01": {
+    "label": "bring large",
+    "source": "heuristic",
+    "raw": "Bring a large saucepan of water to boil"
+  },
+  "P03_R10_S02": {
+    "label": "while waiting",
+    "source": "heuristic",
+    "raw": "While waiting for the water to boil, pour the soy sauce and the sesame oil in a small bowl"
+  },
+  "P03_R10_S03": {
+    "label": "cut garlic",
+    "source": "heuristic",
+    "raw": "Cut the garlic in large chunks and add them to the sauce"
+  },
+  "P03_R10_S04": {
+    "label": "once water",
+    "source": "heuristic",
+    "raw": "Once the water is boiling, add the dumplings to the pan to cook them. Wait for 5 minutes or until the dumplings float."
+  },
+  "P04_R01_S01": {
+    "label": "large mixing",
+    "source": "heuristic",
+    "raw": "To a large mixing bowl, add chicken breast, 1 tbsp of olive oil, oregano, paprika, garlic powder, onion powder, salt, pepper, and lemon juice, then mix until combined."
+  },
+  "P04_R01_S02": {
+    "label": "non stick",
+    "source": "heuristic",
+    "raw": "In a non-stick pan, on medium to high heat, add seasoned chicken breast. Cook for 5-10 mins, stirring regularly, until chicken breast is cooked through, showing a golden-brown colour all over and slightly charred."
+  },
+  "P04_R01_S03": {
+    "label": "separate small",
+    "source": "heuristic",
+    "raw": "In a separate small bowl, combine fat free yoghurt, sriracha hot sauce, parsley, salt, pepper and lemon juice until smooth."
+  },
+  "P04_R01_S04": {
+    "label": "build wraps",
+    "source": "heuristic",
+    "raw": "Build the wraps: On a tortilla wrap, add shredded lettuce, chopped tomatoes, chopped onion, spicy chicken and creamy hot sauce, then wrap into a burrito shaped roll or whatever shape desired."
+  },
+  "P04_R02_S01": {
+    "label": "crack eggs",
+    "source": "heuristic",
+    "raw": "Crack the eggs into a bowl, add salt and pepper and beat."
+  },
+  "P04_R02_S02": {
+    "label": "wash vegetables",
+    "source": "heuristic",
+    "raw": "Wash the vegetables. Next, slice the mushrooms and chop the bell pepper."
+  },
+  "P04_R02_S03": {
+    "label": "heat pan",
+    "source": "heuristic",
+    "raw": "Heat a pan over medium heat. Once heated, pour 1tbsp of olive oil, spread and add the egg mixture and the vegetables."
+  },
+  "P04_R02_S04": {
+    "label": "stir fry",
+    "source": "heuristic",
+    "raw": "Stir-fry for at least 5 minutes, or until the eggs are cooked as desired."
+  },
+  "P04_R02_S05": {
+    "label": "season taste",
+    "source": "heuristic",
+    "raw": "Season to taste and serve."
+  },
+  "P04_R03_S01": {
+    "label": "serving bowl",
+    "source": "heuristic",
+    "raw": "Take a serving bowl, add granola of your choice and pour in almond milk over it."
+  },
+  "P04_R03_S02": {
+    "label": "tsp cinnamon",
+    "source": "heuristic",
+    "raw": "Add 2/3 tsp of cinnamon powder for sweetness and mix it until ingredients are blended together."
+  },
+  "P04_R03_S03": {
+    "label": "the bowl",
+    "source": "heuristic",
+    "raw": "The bowl of granola with almond milk is ready to be served."
+  },
+  "P04_R04_S01": {
+    "label": "wash boil",
+    "source": "heuristic",
+    "raw": "Wash and boil the cut potato halves in a pressure cooker. Once it is cooled, peel it and smash it. Also, keep all other ingredients ready."
+  },
+  "P04_R04_S02": {
+    "label": "frying pan",
+    "source": "heuristic",
+    "raw": "Take a frying pan on medium heat, add 4tbsp of olive oil and mustard seeds. Once the mustard starts spluttering, add urad dal into the pan. Saute it for a while. When the urad dal turns brown add slit green chili`, and grated ginger. Saute it for few seconds."
+  },
+  "P04_R04_S03": {
+    "label": "then add",
+    "source": "heuristic",
+    "raw": "Then add chopped onion, along with 1 tbsp oil and salt and then continue frying until the onions turn soft. Add turmeric powder, saute for a few seconds. Remove the pan from the heat and allow contents to cool."
+  },
+  "P04_R04_S04": {
+    "label": "now add",
+    "source": "heuristic",
+    "raw": "Now add smashed potato to the pan and mix until finely blended. Once it is mixed, add salt to taste. Garnish with coriander leaves."
+  },
+  "P04_R04_S05": {
+    "label": "the aloo",
+    "source": "heuristic",
+    "raw": "The aloo stuffing is ready to be served."
+  },
+  "P04_R05_S01": {
+    "label": "large mixing",
+    "source": "heuristic",
+    "raw": "Take a large mixing bowl, add 150g of instant dosa mixture to 240ml of water and"
+  },
+  "P04_R05_S02": {
+    "label": "gently stir",
+    "source": "heuristic",
+    "raw": "Gently stir until completely blended and set aside for a few minutes."
+  },
+  "P04_R05_S03": {
+    "label": "flat non",
+    "source": "heuristic",
+    "raw": "Take a flat non-stick pan, grease it with oil and place on high heat."
+  },
+  "P04_R05_S04": {
+    "label": "pour sufficient",
+    "source": "heuristic",
+    "raw": "Pour sufficient dosa batter on the hot pan and then spread the batter evenly in an outward spiral motion using a dosa ladle. Coat the sides of the dosa with oil and ghee while cooking."
+  },
+  "P04_R05_S05": {
+    "label": "roast dosa",
+    "source": "heuristic",
+    "raw": "Roast the dosa until it turns golden brown in colour and then remove it from the pan and fold it in half."
+  },
+  "P04_R05_S06": {
+    "label": "serve masala",
+    "source": "heuristic",
+    "raw": "Serve the masala dosa hot with aloo stuffing."
+  },
+  "P04_R06_S01": {
+    "label": "basmati rice",
+    "source": "heuristic",
+    "raw": "Set 200g of basmati rice aside"
+  },
+  "P04_R06_S02": {
+    "label": "slice medium",
+    "source": "heuristic",
+    "raw": "Slice 1 medium onion and slit few green chilies. Grate ginger and few cloves of garlic."
+  },
+  "P04_R06_S03": {
+    "label": "the chilli",
+    "source": "heuristic",
+    "raw": "Add the chilli, garlic and ginger into a kitchen mortar and crush them together into a paste using a pestle."
+  },
+  "P04_R06_S04": {
+    "label": "pour tbsp",
+    "source": "heuristic",
+    "raw": "Pour 5 tbsp of olive oil, and 1 tbsp of ghee into to a pressure cooker placed on medium heat. When the oil/ghee mixture becomes hot, add the spices (bay leaf, cardamom, cloves, anise flower etc) and cashew nuts to it and saute for a few minutes allowing them to fry. Once the cashews turn slightly golden brown, add chopped onions and fry it for a while. Then add the spice paste from the mortar into the cooker and saute the mixture."
+  },
+  "P04_R06_S05": {
+    "label": "after few",
+    "source": "heuristic",
+    "raw": "After a few minutes, add garam masala powder to the cooker and continue to saute until mixed well. Salt maybe added. Then add green peas into the cooker and stir fry for a few minutes under medium heat."
+  },
+  "P04_R06_S06": {
+    "label": "water tbsp",
+    "source": "heuristic",
+    "raw": "Add 300ml of water and 1tbsp of lemon juice followed by the drained basmati rice and fry on a slightly high flame for 2 to 3 minutes. Mix gently to evenly coat the rice with the cooked masala."
+  },
+  "P04_R06_S07": {
+    "label": "cover pressure",
+    "source": "heuristic",
+    "raw": "Cover the pressure cooker and place the whistle. Pressure cook for 2 whistles on a medium high flame. Turn off and remove from the stove. Leaving it on the hot burner will further cook the rice"
+  },
+  "P04_R06_S08": {
+    "label": "when pressure",
+    "source": "heuristic",
+    "raw": "When the pressure drops naturally, open the lid and fluff the peas pulao. The peas pulao is then ready to serve."
+  },
+  "P05_R01_S01": {
+    "label": "heat oil",
+    "source": "heuristic",
+    "raw": "Heat the oil in a heavy bottomed pan; make sure you have a lid for it."
+  },
+  "P05_R01_S02": {
+    "label": "the onions",
+    "source": "heuristic",
+    "raw": "Add the onions and when they start to sizzle add the whole spices and chillies. Cook on a low heat until the onions are starting to brown."
+  },
+  "P05_R01_S03": {
+    "label": "the garlic",
+    "source": "heuristic",
+    "raw": "Add the garlic and finger chillies to the pan and cook for a minute more."
+  },
+  "P05_R01_S04": {
+    "label": "the oil",
+    "source": "heuristic",
+    "raw": "If the oil has disappeared add a little more, you need the oil to cook the ground spices out."
+  },
+  "P05_R01_S05": {
+    "label": "the curry",
+    "source": "heuristic",
+    "raw": "Add the curry Masala or ground spices to the pan and continue to cook on a low heat for 45 seconds"
+  },
+  "P05_R01_S06": {
+    "label": "the diluted",
+    "source": "heuristic",
+    "raw": "Add the diluted tomato puree, stir in and cook for 30 seconds or so."
+  },
+  "P05_R01_S07": {
+    "label": "the tomatoes",
+    "source": "heuristic",
+    "raw": "Add the tomatoes, mango chutney and salt, stir in and bring to a simmer. Turn the heat to the lowest you can (a heat diffuser on gas works a treat) and put the lid on. Leave to cook for around 20 minutes."
+  },
+  "P05_R01_S08": {
+    "label": "the lid",
+    "source": "heuristic",
+    "raw": "Take the lid off and stir. If it looks a little dry add a splash of water. Add the Garam Masala. Stir in and put the lid back on. Leave to cook for another 15 minutes."
+  },
+  "P05_R01_S09": {
+    "label": "after minutes",
+    "source": "heuristic",
+    "raw": "After 15 minutes remove the lid and stir. If you like a thick sauce you may want to turn the heat up now and let it reduce down. If the sauce looks a little oily for your taste you can use a ladle to skim some of the oil off."
+  },
+  "P05_R01_S10": {
+    "label": "the chickpeas",
+    "source": "heuristic",
+    "raw": "Add the chickpeas and spinach, and later add the coconut milk and the juice of half a lemon. Season to taste."
+  },
+  "P05_R01_S11": {
+    "label": "some coconut",
+    "source": "heuristic",
+    "raw": "Add some coconut milk and a squeeze of lemon, to taste"
+  },
+  "P05_R01_S12": {
+    "label": "stir fresh",
+    "source": "heuristic",
+    "raw": "Stir in the fresh coriander and serve over plain boiled rice with a chapatti or roti."
+  },
+  "P05_R02_S01": {
+    "label": "the oats",
+    "source": "heuristic",
+    "raw": "Put the oats in a bowl with the milk and 300ml/10 1/2 fl oz water. Microwave until hot."
+  },
+  "P05_R02_S02": {
+    "label": "for few",
+    "source": "heuristic",
+    "raw": "Leave for a few minutes, stir, then microwave for a further minute."
+  },
+  "P05_R02_S03": {
+    "label": "chopped banana",
+    "source": "heuristic",
+    "raw": "Add chopped banana, and the raisins and pecan nuts."
+  },
+  "P05_R03_S01": {
+    "label": "large pan",
+    "source": "heuristic",
+    "raw": "Put a large pan of salted water on to boil, and add the pasta"
+  },
+  "P05_R03_S02": {
+    "label": "optionally add",
+    "source": "heuristic",
+    "raw": "Optionally add garlic, then pound in a pestle and mortar with a pinch of sea salt."
+  },
+  "P05_R03_S03": {
+    "label": "pick roughly",
+    "source": "heuristic",
+    "raw": "Pick, roughly chop and add the basil leaves, then bash to a paste (or pulse in a food processor)."
+  },
+  "P05_R03_S04": {
+    "label": "the pine",
+    "source": "heuristic",
+    "raw": "Add the pine nuts (very lightly toast first, if you like) to the mixture and pound again, then stir in half the Parmesan."
+  },
+  "P05_R03_S05": {
+    "label": "drizzle some",
+    "source": "heuristic",
+    "raw": "Drizzle in some oil - you need just enough to bind the sauce and get it to an oozy consistency."
+  },
+  "P05_R03_S06": {
+    "label": "most remaining",
+    "source": "heuristic",
+    "raw": "Add most of the remaining cheese, then season to perfection with salt and black pepper. Have a taste, and keep adding a bit more cheese or oil until you are happy with the taste and consistency."
+  },
+  "P05_R03_S07": {
+    "label": "squeeze lemon",
+    "source": "heuristic",
+    "raw": "Add a squeeze of lemon juice at the end to give it a little twang, if you like, but it's not essential."
+  },
+  "P05_R03_S08": {
+    "label": "frozen peas",
+    "source": "heuristic",
+    "raw": "Add frozen peas to the pasta with 4 minutes left."
+  },
+  "P05_R03_S09": {
+    "label": "combine salad",
+    "source": "heuristic",
+    "raw": "Combine the salad ingredients in a bowl with the oil and vinegar."
+  },
+  "P05_R03_S10": {
+    "label": "drain pasta",
+    "source": "heuristic",
+    "raw": "Drain the pasta when al dente, and add the pesto."
+  },
+  "P05_R04_S01": {
+    "label": "cook pasta",
+    "source": "heuristic",
+    "raw": "Cook the pasta in a pan of boiling salted water according to the packet instructions."
+  },
+  "P05_R04_S02": {
+    "label": "slice bacon",
+    "source": "heuristic",
+    "raw": "Slice the bacon and place in a non-stick frying pan on a medium heat with half a tablespoon of olive oil and a really good pinch of black pepper. Leave it to get super-golden and crispy, tossing occasionally, then add the peas"
+  },
+  "P05_R04_S03": {
+    "label": "meanwhile beat",
+    "source": "heuristic",
+    "raw": "Meanwhile, beat the eggs in a bowl, then finely grate in the Parmesan and mix well."
+  },
+  "P05_R04_S04": {
+    "label": "mix salad",
+    "source": "heuristic",
+    "raw": "Mix salad ingredients with oil and vinegar."
+  },
+  "P05_R04_S05": {
+    "label": "tongs transfer",
+    "source": "heuristic",
+    "raw": "Use tongs to transfer your pasta straight into the pan and toss with the bacon."
+  },
+  "P05_R04_S06": {
+    "label": "pour parmesan",
+    "source": "heuristic",
+    "raw": "Pour the Parmesan eggs into the pan, and keep everything moving, loosening with splashes of the pasta cooking water until you have a silky sauce. Make sure the pan isn't too hot otherwise the eggs will scramble."
+  },
+  "P05_R04_S07": {
+    "label": "plate pasta",
+    "source": "heuristic",
+    "raw": "Plate up the pasta, and finish with an extra grating of Parmesan."
+  },
+  "P05_R05_S01": {
+    "label": "break chocolate",
+    "source": "heuristic",
+    "raw": "Break the chocolate into fairly evenly sized pieces - I find the easiest and most satisfying way to start this process is to leave it in the packet, or put it in a resealable bag, give it a good whack against the work surface, then chop up any large pieces that remain. Cut the butter into chunky dice."
+  },
+  "P05_R05_S02": {
+    "label": "the butter",
+    "source": "heuristic",
+    "raw": "Leave the butter and chocolate to melt together, stirring now and then to encourage them along. Once you have a smooth, well-blended mixture, turn off the heat, lift the bowl off the pan (remember that it will be hot) and pour the mixture into a cold bowl or jug to cool slightly while you prepare the rest of the batter."
+  },
+  "P05_R05_S03": {
+    "label": "the egg",
+    "source": "heuristic",
+    "raw": "Put the egg and egg yolk in a large bowl with the sugar and a pinch of salt. Vigorously whisk by hand or with electric beaters, until the mixture is pale yellow and voluminous. Very gently fold in the melted chocolate mixture with a large metal spoon, taking care not to knock too much air out of the batter. Repeat with the flour."
+  },
+  "P05_R05_S04": {
+    "label": "grease insides",
+    "source": "heuristic",
+    "raw": "Grease the insides of two small ramekins or pudding moulds with butter, put the cocoa in one, and turn and tip to coat the insides, holding it over the other ramekin to catch any powder. Tip the rest of the cocoa into the second ramekin and repeat."
+  },
+  "P05_R05_S05": {
+    "label": "divide batter",
+    "source": "heuristic",
+    "raw": "Divide the batter between the two moulds, leaving a little room at the top for them to rise. If you'd like to eat them immediately, put them on the hot baking tray in the oven for 12 minutes, until the tops are set and the cake mix is just starting to come away from the sides of the moulds."
+  },
+  "P05_R06_S01": {
+    "label": "wash starch",
+    "source": "heuristic",
+    "raw": "Wash the starch out of the jasmine rice. Add to a pan with cold water and salt and bring to the boil. Once boiling, cook for 20 minutes on low with the lid on."
+  },
+  "P05_R06_S02": {
+    "label": "heat wok",
+    "source": "heuristic",
+    "raw": "Heat a wok over high heat for 1 to 2 minutes or until it begins to slightly smoke and then add in the oil."
+  },
+  "P05_R06_S03": {
+    "label": "next add",
+    "source": "heuristic",
+    "raw": "Next, add in the vegetables and nuts and fry for 2 minutes. Cook in batches so as not to overload the pan and boil them."
+  },
+  "P05_R06_S04": {
+    "label": "pour soy",
+    "source": "heuristic",
+    "raw": "Pour in soy sauce, siracha sauce, peanut butter, coconut and a bit of boiling water"
+  },
+  "P05_R06_S05": {
+    "label": "serve vegetable",
+    "source": "heuristic",
+    "raw": "Serve the vegetable stir-fry over the cooked jasmine rice."
+  },
+  "P06_R01_S01": {
+    "label": "mix uttapam",
+    "source": "heuristic",
+    "raw": "Mix the uttapam pancake mix into water in a bowl until a smooth batter is prepared and set it aside for 10-15 minutes."
+  },
+  "P06_R01_S02": {
+    "label": "wash tomato",
+    "source": "heuristic",
+    "raw": "Wash tomato, coriander, and onions in fresh running water and chop tomato and onion into small pieces."
+  },
+  "P06_R01_S03": {
+    "label": "frying pan",
+    "source": "heuristic",
+    "raw": "Take a frying pan and place it on gas stove to heat it up. Place some butter on the heated pan and spread it on the whole pan in a circular motion."
+  },
+  "P06_R01_S04": {
+    "label": "when pan",
+    "source": "heuristic",
+    "raw": "When the pan is hot enough, pour a ladle full of batter in the centre of the pan. At this stage the pan has to be hot otherwise the batter won't rise and the uttapams will be flat."
+  },
+  "P06_R01_S05": {
+    "label": "not spread",
+    "source": "heuristic",
+    "raw": "Do not spread the batter too much, uthappam has to be made thick. If the batter doesn't spread on its own, then you may lightly spread a bit. Lower the flame."
+  },
+  "P06_R01_S06": {
+    "label": "the chopped",
+    "source": "heuristic",
+    "raw": "Place the chopped onions and tomato on the pancake in the pan and flip the sides of the pancake on the lower flame."
+  },
+  "P06_R01_S07": {
+    "label": "oil ghee",
+    "source": "heuristic",
+    "raw": "Add oil or ghee around the edges and allow to cook on a low to medium flame until the base cooks well and firms up."
+  },
+  "P06_R01_S08": {
+    "label": "sprinkle little",
+    "source": "heuristic",
+    "raw": "Sprinkle little oil over the onions and turn to the other side. Put some more butter on the sides of the pancake in the pan, so that it does not stick to the sides of the pan."
+  },
+  "P06_R01_S09": {
+    "label": "cook onions",
+    "source": "heuristic",
+    "raw": "Cook until the onions are done. The color of the uthappam depends on the temperature of the batter & the pan. Usually batter straight away from fridge does not yield golden uthappam."
+  },
+  "P06_R01_S10": {
+    "label": "sure cooked",
+    "source": "heuristic",
+    "raw": "Make sure it is cooked well from inside. If you like caramelized onions, you may cook longer. To make the next uttapam, ensure the pan is hot enough."
+  },
+  "P06_R01_S11": {
+    "label": "cook both",
+    "source": "heuristic",
+    "raw": "Cook both the sides of the pancake on a lower flame until fully cooked. Garnish it with some coriander and tomato ketchup."
+  },
+  "P06_R02_S01": {
+    "label": "fill cup",
+    "source": "heuristic",
+    "raw": "Fill a cup with whole milk and heat it in the microwave for 3-4 minutes. Stir the heated milk with a milk frother to make the cappuccino frothier."
+  },
+  "P06_R02_S02": {
+    "label": "another empty",
+    "source": "heuristic",
+    "raw": "Take another empty cup and put 2 teaspoons of sugar and coffee in the cup. Add 2 teaspoons of water and slowly add more until the ingredients are just wet so that you can beat the mixture."
+  },
+  "P06_R02_S03": {
+    "label": "more water",
+    "source": "heuristic",
+    "raw": "Add more water if needed, whipping it vigorously with the spoon."
+  },
+  "P06_R02_S04": {
+    "label": "once mixture",
+    "source": "heuristic",
+    "raw": "Once the mixture in nicely thickened, smooth, and almost shiny, your Indian whipped coffee is mixture is ready."
+  },
+  "P06_R02_S05": {
+    "label": "pour heated",
+    "source": "heuristic",
+    "raw": "Pour the heated milk in the golden-brown paste and stir it well until all ingredients are uniformly mixed. Heat the cappuccino again in microwave for 30 seconds and it is ready to drink."
+  },
+  "P06_R03_S01": {
+    "label": "chop half",
+    "source": "heuristic",
+    "raw": "Chop half of the onion into smaller pieces and other half into larger bits. Chop the tomatoes into smaller pieces and grind them in a grinder with fresh garlic and green chillies to make a smooth tomato puree. Chop some green chillies into pieces and add them into the puree."
+  },
+  "P06_R03_S02": {
+    "label": "large kadai",
+    "source": "heuristic",
+    "raw": "In a large kadai or any other pan, now melt butter with oil on medium heat. Add cumin seeds to the melted butter."
+  },
+  "P06_R03_S03": {
+    "label": "the chopped",
+    "source": "heuristic",
+    "raw": "Add the chopped onion and saute for 3 minutes until softened. Then add the sliced green chili and ginger garlic paste and saute for another 1 to 2 minutes."
+  },
+  "P06_R03_S04": {
+    "label": "turmeric powder",
+    "source": "heuristic",
+    "raw": "Add turmeric powder, coriander powder, garam masala powder, red chilli powder, and salt to the mixture and saute the mixture uniformly. Then add 1/2 cup water and stir. Wait for the whole mixture to homogenise."
+  },
+  "P06_R03_S05": {
+    "label": "the tomato",
+    "source": "heuristic",
+    "raw": "Add the tomato puree to the mixture in the pan and mix it thoroughly. Cook the puree for about 5 minutes on a low flame or until the butter separates out from the mixture."
+  },
+  "P06_R03_S06": {
+    "label": "the pieces",
+    "source": "heuristic",
+    "raw": "Add the pieces of cottage cheese in the mixture and cook it for 5-10 minutes on a low flame. Cover the pan or kadai with a lid and cook for 5 to 6 minutes on medium heat."
+  },
+  "P06_R04_S01": {
+    "label": "wash rinse",
+    "source": "heuristic",
+    "raw": "Wash and rinse urad dal (whole black lentil) and rajma (kidney beans) in a large bowl. Soak in 3 cups water overnight."
+  },
+  "P06_R04_S02": {
+    "label": "the morning",
+    "source": "heuristic",
+    "raw": "In the morning, drain the water in which the dal and rajma was soaked. Transfer the dal and rajma to a pressure cooker with 1 teaspoon salt. Add around 3.5 cups water. Cook in the pressure cooker on high-medium heat for 10 whistles, then lower the heat to low-medium and cook for another 10 minutes. In total around 15 to 20 whistles."
+  },
+  "P06_R04_S03": {
+    "label": "let pressure",
+    "source": "heuristic",
+    "raw": "Let the pressure release naturally. The dal and rajma should be completely cooked, and you should be able to mash them with your fingers. If using the Instant pot, pressure cook the lentils on high pressure for 30 minutes with natural pressure release."
+  },
+  "P06_R04_S04": {
+    "label": "frying pan",
+    "source": "heuristic",
+    "raw": "Take a frying pan and place it on gas stove to heat it up. Add some butter in the pan and wait for it to melt. Add 1 tablespoon of cumin seeds to the melted butter."
+  },
+  "P06_R04_S05": {
+    "label": "chopped onions",
+    "source": "heuristic",
+    "raw": "Add chopped onions to the pan. Cook the onion for around 6 to 7 minutes or until it turns light golden brown. Keep stirring it continuously so that it doesn't burn and keep heat on medium. Add chopped tomato to the pan and saute them with onions."
+  },
+  "P06_R04_S06": {
+    "label": "turmeric powder",
+    "source": "heuristic",
+    "raw": "Add turmeric powder, coriander powder, garam masala powder, red chilli powder, and salt to the mixture and saute the mixture uniformly. Cook for 2 minutes or until the puree mixes well with masala and oil starts oozing out from the sides."
+  },
+  "P06_R04_S07": {
+    "label": "the boiled",
+    "source": "heuristic",
+    "raw": "Add the boiled kidney beans and black urad pulses along with the broth to the mixture and mix it thoroughly. Add 1/2 cup water, stir, and set heat to low. Cook the Dal makhani for 5-10 minutes on a low flame."
+  },
+  "P06_R04_S08": {
+    "label": "for boiled",
+    "source": "heuristic",
+    "raw": "For boiled rice, fill an empty glass with rice and wash it three times in the fresh running water."
+  },
+  "P06_R04_S09": {
+    "label": "pressure cooker",
+    "source": "heuristic",
+    "raw": "Take a pressure cooker and add the washed rice into it. Add 1.5 glass of water with the rice. Close the lid of the pressure cooker and boil the rice for 5 minutes on a high flame."
+  },
+  "P06_R04_S10": {
+    "label": "after minutes",
+    "source": "heuristic",
+    "raw": "After 5 minutes, turn off the flame and put the pressure cooker aside for 5 more minutes for boiled rice. Add the dal makhani to the boiled rice and it is ready to serve."
+  },
+  "P06_R05_S01": {
+    "label": "large bowl",
+    "source": "heuristic",
+    "raw": "In a large bowl, add 2 cups whole wheat flour (atta). Make a well in the centre. Add 1 tablespoon oil or ghee, and roughly 1/3 to 1/2 cup water."
+  },
+  "P06_R05_S02": {
+    "label": "bring mixture",
+    "source": "heuristic",
+    "raw": "Bring the mixture together and knead into a smooth, soft dough for a few minutes. Add more water if needed."
+  },
+  "P06_R05_S03": {
+    "label": "pinch two",
+    "source": "heuristic",
+    "raw": "Pinch two small balls from the dough. Flatten them and dust with whole wheat flour."
+  },
+  "P06_R05_S04": {
+    "label": "with rolling",
+    "source": "heuristic",
+    "raw": "With a rolling pin, roll them into rounds roughly 4 to 5 inches in diameter. Try making both the discs the same size."
+  },
+  "P06_R05_S05": {
+    "label": "one discs",
+    "source": "heuristic",
+    "raw": "On one of the discs, place the potato stuffing in the centre, keeping about 1-inch empty space from the sides."
+  },
+  "P06_R05_S06": {
+    "label": "gently place",
+    "source": "heuristic",
+    "raw": "Gently place the second circle on top. Press and seal the edges with your fingertips. If you are not able to seal the edges, then brush or spread some water on the edges and then seal."
+  },
+  "P06_R05_S07": {
+    "label": "dust some",
+    "source": "heuristic",
+    "raw": "Dust some flour on the stuffed aloo ka paratha and start rolling."
+  },
+  "P06_R05_S08": {
+    "label": "roll paratha",
+    "source": "heuristic",
+    "raw": "Roll the paratha into a roundabout 7 to 8 inches in diameter, or about the size of a normal roti or chapati."
+  },
+  "P06_R05_S09": {
+    "label": "hot tawa",
+    "source": "heuristic",
+    "raw": "On a hot tawa (skillet or griddle), place the rolled paratha. The tawa should be quite hot; cooking parathas at a low flame will harden them. Ideally, the finished parathas are crisp as well as soft."
+  },
+  "P06_R05_S10": {
+    "label": "when base",
+    "source": "heuristic",
+    "raw": "When the base is partly cooked, flip the paratha using a spatula. You will see some air pockets on this side."
+  },
+  "P06_R05_S11": {
+    "label": "spread some",
+    "source": "heuristic",
+    "raw": "Spread some butter on the partly cooked part."
+  },
+  "P06_R05_S12": {
+    "label": "flip again",
+    "source": "heuristic",
+    "raw": "Flip again and you will see nice golden blisters on the second side. To clarify, the side which has been spread with ghee will be on the bottom."
+  },
+  "P06_R05_S13": {
+    "label": "this side",
+    "source": "heuristic",
+    "raw": "This side has to be cooked more than the previous side."
+  },
+  "P06_R05_S14": {
+    "label": "spread some",
+    "source": "heuristic",
+    "raw": "Spread some butter on the second side facing you. A well-made and well-roasted aloo paratha will always puff up when roasting."
+  },
+  "P06_R05_S15": {
+    "label": "flip again",
+    "source": "heuristic",
+    "raw": "Flip again once or twice till both sides are cooked properly, with crisp brown spots. You should also press the aloo paratha edges down with a spatula or spoon so that they are fried well. Repeat, making all parathas this way."
+  },
+  "P06_R06_S01": {
+    "label": "break open",
+    "source": "heuristic",
+    "raw": "Break open 2 eggs in a mixing bowl, then add red chilli powder along with required salt."
+  },
+  "P06_R06_S02": {
+    "label": "chop onion",
+    "source": "heuristic",
+    "raw": "Chop an onion into smaller pieces and add it to the whisked eggs."
+  },
+  "P06_R06_S03": {
+    "label": "heat pan",
+    "source": "heuristic",
+    "raw": "Heat a pan with butter when it is hot - pour the egg mixture on it. Tilt it so that the egg mixture is even on all the edges."
+  },
+  "P06_R06_S04": {
+    "label": "bread slice",
+    "source": "heuristic",
+    "raw": "Take a bread slice dip in the egg then flip over and place it. Repeat this for the other egg too. So, the dipped side should come on top. Drizzle oil or butter."
+  },
+  "P06_R06_S05": {
+    "label": "once gets",
+    "source": "heuristic",
+    "raw": "Once it gets cooked on one side and flip over to other side and press it with the ladle. Cook for 2 mins then flip over and serve."
+  },
+  "P06_R07_S01": {
+    "label": "fill cup",
+    "source": "heuristic",
+    "raw": "Fill a cup with whole milk and heat it in the microwave for 3-4 minutes. Stir the heated milk with a milk frother to make the cappuccino frothier."
+  },
+  "P06_R07_S02": {
+    "label": "another empty",
+    "source": "heuristic",
+    "raw": "Take another empty cup and put 2 teaspoons of sugar and coffee in the cup. Add about a half tablespoon of water and slowly add more until the ingredients are just wet so that you can beat the mixture."
+  },
+  "P06_R07_S03": {
+    "label": "more water",
+    "source": "heuristic",
+    "raw": "Add more water if needed, about 1/2 teaspoon at a time, whipping it vigorously with the spoon."
+  },
+  "P06_R07_S04": {
+    "label": "once mixture",
+    "source": "heuristic",
+    "raw": "Once the mixture in nicely thickened, smooth, and almost shiny, your cappuccino mixture is ready"
+  },
+  "P06_R07_S05": {
+    "label": "pour heated",
+    "source": "heuristic",
+    "raw": "Pour the heated milk in the golden-brown paste and stir it well until all ingredients are uniformly mixed. Heat the cappuccino again in microwave for 30 seconds and it is ready to drink."
+  },
+  "P07_R01_S01": {
+    "label": "turn espresso",
+    "source": "heuristic",
+    "raw": "Turn on your espresso coffee machine to allow it to heat up the water."
+  },
+  "P07_R01_S02": {
+    "label": "clean dry",
+    "source": "heuristic",
+    "raw": "Clean and Dry Portafilter & Basket. Before making a coffee with the espresso machine make sure that your portafilter & basket are both clean and dry."
+  },
+  "P07_R01_S03": {
+    "label": "dose ground",
+    "source": "heuristic",
+    "raw": "Dose your ground coffee into the portafilter."
+  },
+  "P07_R01_S04": {
+    "label": "using coffee",
+    "source": "heuristic",
+    "raw": "Using a coffee tamper, tamp your coffee. Then apply a light amount of pressure to compact your coffee."
+  },
+  "P07_R01_S05": {
+    "label": "turn kettle",
+    "source": "heuristic",
+    "raw": "Turn on the kettle"
+  },
+  "P07_R01_S06": {
+    "label": "the espresso",
+    "source": "heuristic",
+    "raw": "Make The Espresso"
+  },
+  "P07_R01_S07": {
+    "label": "the boiling",
+    "source": "heuristic",
+    "raw": "Add the boiling water from the kettle"
+  },
+  "P07_R02_S01": {
+    "label": "preheat oven",
+    "source": "heuristic",
+    "raw": "Preheat the oven to 425 degrees F."
+  },
+  "P07_R02_S02": {
+    "label": "rinse chickpeas",
+    "source": "heuristic",
+    "raw": "Rinse the chickpeas, then place the chickpeas on a towel and lightly towel dry them so they aren't wet from rinsing. You can remove any loose skins at this time too."
+  },
+  "P07_R02_S03": {
+    "label": "the chickpeas",
+    "source": "heuristic",
+    "raw": "Place the chickpeas on a baking sheet and drizzle with the olive oil. Toss to coat, then sprinkle with the paprika, garlic powder, oregano, salt and pepper. Stir the chickpeas and shake the pan a few times to distribute the seasoning. Put the tray in the oven and roast the chickpeas for 15 minutes."
+  },
+  "P07_R02_S04": {
+    "label": "apart head",
+    "source": "heuristic",
+    "raw": "Take apart the head of lettuce. Wash the lettuce leaves and squeeze to dry."
+  },
+  "P07_R02_S05": {
+    "label": "stir chickpeas",
+    "source": "heuristic",
+    "raw": "Stir the chickpeas and roast for 10 to 15 more minutes"
+  },
+  "P07_R02_S06": {
+    "label": "tear lettuce",
+    "source": "heuristic",
+    "raw": "Tear the lettuce and place it in a large bowl."
+  },
+  "P07_R02_S07": {
+    "label": "wash tomatoes",
+    "source": "heuristic",
+    "raw": "Wash the tomatoes and then cut them in half."
+  },
+  "P07_R02_S08": {
+    "label": "the tomatoes",
+    "source": "heuristic",
+    "raw": "Add the tomatoes to the bowl"
+  },
+  "P07_R02_S09": {
+    "label": "chop cucumber",
+    "source": "heuristic",
+    "raw": "Chop the cucumber into small pieces and add it to the bowl."
+  },
+  "P07_R02_S10": {
+    "label": "drain olives",
+    "source": "heuristic",
+    "raw": "Drain the olives, tear them in half and add them to the bowl."
+  },
+  "P07_R02_S11": {
+    "label": "crumble blue",
+    "source": "heuristic",
+    "raw": "Crumble the blue cheese into the bowl."
+  },
+  "P07_R02_S12": {
+    "label": "stir ingredients",
+    "source": "heuristic",
+    "raw": "Stir the ingredients in the bowl together to mix."
+  },
+  "P07_R02_S13": {
+    "label": "remove chickpeas",
+    "source": "heuristic",
+    "raw": "Remove the chickpeas from the oven and discard any burnt chickpeas."
+  },
+  "P07_R02_S14": {
+    "label": "mix salad",
+    "source": "heuristic",
+    "raw": "Mix the salad and the chickpeas together in a bowl to serve."
+  },
+  "P07_R03_S01": {
+    "label": "dried mushrooms",
+    "source": "heuristic",
+    "raw": "Put dried mushrooms into a large bowl."
+  },
+  "P07_R03_S02": {
+    "label": "finely chop",
+    "source": "heuristic",
+    "raw": "Finely chop the onions."
+  },
+  "P07_R03_S03": {
+    "label": "pour boiling",
+    "source": "heuristic",
+    "raw": "Pour boiling water over the dried mushrooms, stir and soak."
+  },
+  "P07_R03_S04": {
+    "label": "measure out",
+    "source": "heuristic",
+    "raw": "Measure out the pre-chopped garlic."
+  },
+  "P07_R03_S05": {
+    "label": "wash chop",
+    "source": "heuristic",
+    "raw": "Wash and chop the fresh chestnut and shiitake mushrooms."
+  },
+  "P07_R03_S06": {
+    "label": "drain dried",
+    "source": "heuristic",
+    "raw": "Drain the dried mushrooms into a pan, keeping the liquid."
+  },
+  "P07_R03_S07": {
+    "label": "crumble vegetable",
+    "source": "heuristic",
+    "raw": "Crumble vegetable stock cube into the mushroom liquid, then squeeze the mushrooms gently with a fork to remove any liquid."
+  },
+  "P07_R03_S08": {
+    "label": "heat tbsp",
+    "source": "heuristic",
+    "raw": "Heat 3 tbsp olive oil in a shallow saucepan or deep frying pan over a medium flame. Add the pre-chopped garlic and the finely chopped onion into the pan, then fry for about 5 mins until soft, stirring regularly."
+  },
+  "P07_R03_S09": {
+    "label": "measure out",
+    "source": "heuristic",
+    "raw": "Measure out the risotto rice."
+  },
+  "P07_R03_S10": {
+    "label": "stir chopped",
+    "source": "heuristic",
+    "raw": "Stir in chopped chestnut mushrooms, chopped shiitake mushrooms, and the dried mushrooms"
+  },
+  "P07_R03_S11": {
+    "label": "season salt",
+    "source": "heuristic",
+    "raw": "Season with salt and pepper and continue to cook, stirring regularly, for 8 mins until the fresh mushrooms have softened."
+  },
+  "P07_R03_S12": {
+    "label": "tip risotto",
+    "source": "heuristic",
+    "raw": "Tip risotto rice into the pan and cook for 1 min. Pour over a glass of white wine and let it bubble to nothing so the alcohol evaporates."
+  },
+  "P07_R03_S13": {
+    "label": "the pan",
+    "source": "heuristic",
+    "raw": "Keep the pan over a medium heat and pour in a quarter of the mushroom stock. Simmer the rice, stirring often, until the rice has absorbed all the liquid."
+  },
+  "P07_R03_S14": {
+    "label": "about same",
+    "source": "heuristic",
+    "raw": "Add about the same amount of stock again and continue to simmer and stir - it should start to become creamy, plump and tender. By the time the final quarter of stock is added, the rice should be almost cooked."
+  },
+  "P07_R03_S15": {
+    "label": "grate cheese",
+    "source": "heuristic",
+    "raw": "Grate the cheese."
+  },
+  "P07_R03_S16": {
+    "label": "stirring add",
+    "source": "heuristic",
+    "raw": "Continue stirring and add the rest of the stock."
+  },
+  "P07_R03_S17": {
+    "label": "when rice",
+    "source": "heuristic",
+    "raw": "When the rice is cooked take the pan off the heat, add butter and scatter over grated parmesan or Grana Padano cheese and tear and scatter a handful of parsley leaves. Chop the rest of the parsley and save for later."
+  },
+  "P07_R03_S18": {
+    "label": "give risotto",
+    "source": "heuristic",
+    "raw": "Give the risotto a final stir, add more parsley and taste."
+  },
+  "P07_R04_S01": {
+    "label": "measure butter",
+    "source": "heuristic",
+    "raw": "Measure the butter into a microwavable container, and heat it in the microwave. Stir."
+  },
+  "P07_R04_S02": {
+    "label": "large bowl",
+    "source": "heuristic",
+    "raw": "In a large bowl, combine the melted butter and sugar. Mix to combine."
+  },
+  "P07_R04_S03": {
+    "label": "the banana",
+    "source": "heuristic",
+    "raw": "Place the banana into a microwavable container, and heat it in the microwave. Stir."
+  },
+  "P07_R04_S04": {
+    "label": "the banana",
+    "source": "heuristic",
+    "raw": "Add the banana to the melted butter and sugar. Mix to combine."
+  },
+  "P07_R04_S05": {
+    "label": "separate egg",
+    "source": "heuristic",
+    "raw": "Separate an egg yolk and add."
+  },
+  "P07_R04_S06": {
+    "label": "vanilla extract",
+    "source": "heuristic",
+    "raw": "Add vanilla extract. Mix well."
+  },
+  "P07_R04_S07": {
+    "label": "measure add",
+    "source": "heuristic",
+    "raw": "Measure and add the flour, salt, baking soda, and cinnamon. Stir until combined and no streaks of flour remain."
+  },
+  "P07_R04_S08": {
+    "label": "last fold",
+    "source": "heuristic",
+    "raw": "Last, fold in the chocolate chips. Set aside to let the flour hydrate in the dough."
+  },
+  "P07_R04_S09": {
+    "label": "turn oven",
+    "source": "heuristic",
+    "raw": "Turn on the oven to preheat."
+  },
+  "P07_R04_S10": {
+    "label": "line cookie",
+    "source": "heuristic",
+    "raw": "Line a cookie sheet with parchment paper."
+  },
+  "P07_R04_S11": {
+    "label": "cookie scoop",
+    "source": "heuristic",
+    "raw": "Use a cookie scoop or a spoon to scoop out about 1 inch dough balls. Place 2 inches apart on the prepared cookie sheet"
+  },
+  "P07_R04_S12": {
+    "label": "the oven",
+    "source": "heuristic",
+    "raw": "Put in the oven and bake for 10 to 11 minutes or until the edges are set and the cookies have puffed up, but the middles are still underbaked."
+  },
+  "P07_R04_S13": {
+    "label": "remove cookies",
+    "source": "heuristic",
+    "raw": "Remove the cookies from the oven"
+  },
+  "P07_R05_S01": {
+    "label": "turn espresso",
+    "source": "heuristic",
+    "raw": "Turn on your espresso coffee machine to allow it to heat up the water."
+  },
+  "P07_R05_S02": {
+    "label": "before making",
+    "source": "heuristic",
+    "raw": "Before making a coffee with the espresso machine make sure that your portafilter & basket are both clean and dry."
+  },
+  "P07_R05_S03": {
+    "label": "freshly grind",
+    "source": "heuristic",
+    "raw": "Freshly grind your coffee beans"
+  },
+  "P07_R05_S04": {
+    "label": "dose ground",
+    "source": "heuristic",
+    "raw": "Dose your ground coffee into the portafilter."
+  },
+  "P07_R05_S05": {
+    "label": "using coffee",
+    "source": "heuristic",
+    "raw": "Using a coffee tamper, tamp your coffee. Then apply a light amount of pressure to compact your coffee."
+  },
+  "P07_R05_S06": {
+    "label": "the portafilter",
+    "source": "heuristic",
+    "raw": "Put the portafilter back into the machine."
+  },
+  "P07_R05_S07": {
+    "label": "the espresso",
+    "source": "heuristic",
+    "raw": "Make The Espresso"
+  },
+  "P07_R05_S08": {
+    "label": "turn kettle",
+    "source": "heuristic",
+    "raw": "Turn the kettle on to boil"
+  },
+  "P07_R05_S09": {
+    "label": "boiling water",
+    "source": "heuristic",
+    "raw": "Add boiling water to the espresso"
+  },
+  "P07_R06_S01": {
+    "label": "before making",
+    "source": "heuristic",
+    "raw": "Before making a coffee with the espresso machine make sure that your portafilter & basket are both clean and dry."
+  },
+  "P07_R06_S02": {
+    "label": "dose ground",
+    "source": "heuristic",
+    "raw": "Dose your ground coffee into the portafilter."
+  },
+  "P07_R06_S03": {
+    "label": "using coffee",
+    "source": "heuristic",
+    "raw": "Using a coffee tamper, tamp your coffee. Then apply a light amount of pressure to compact your coffee."
+  },
+  "P07_R06_S04": {
+    "label": "the portafilter",
+    "source": "heuristic",
+    "raw": "Put the portafilter back into the machine."
+  },
+  "P07_R06_S05": {
+    "label": "turn coffee",
+    "source": "heuristic",
+    "raw": "Turn on the coffee machine"
+  },
+  "P07_R06_S06": {
+    "label": "turn kettle",
+    "source": "heuristic",
+    "raw": "Turn on the kettle"
+  },
+  "P07_R06_S07": {
+    "label": "the espresso",
+    "source": "heuristic",
+    "raw": "Make The Espresso"
+  },
+  "P07_R06_S08": {
+    "label": "boiling water",
+    "source": "heuristic",
+    "raw": "Add boiling water to the espresso"
+  },
+  "P07_R07_S01": {
+    "label": "preheat oven",
+    "source": "heuristic",
+    "raw": "Preheat the oven to 400 degrees."
+  },
+  "P07_R07_S02": {
+    "label": "wash peel",
+    "source": "heuristic",
+    "raw": "Wash and peel the sweet potatoes and chop into bite-sized pieces. Put the sweet potatoes in a bowl and add the olive oil, cumin, and chili powder. Mix well and pour the mixture onto a baking tray. Roast for 10 minutes."
+  },
+  "P07_R07_S03": {
+    "label": "pulse all",
+    "source": "heuristic",
+    "raw": "Pulse all the dressing ingredients in a food processor until mostly smooth."
+  },
+  "P07_R07_S04": {
+    "label": "check sweet",
+    "source": "heuristic",
+    "raw": "Check the sweet potatoes and roast for another 10-15 minutes."
+  },
+  "P07_R07_S05": {
+    "label": "wash then",
+    "source": "heuristic",
+    "raw": "Wash and then chop and tear the lettuce into a bowl."
+  },
+  "P07_R07_S06": {
+    "label": "the sweetcorn",
+    "source": "heuristic",
+    "raw": "Add the sweetcorn and beans to the bowl. Chop the rest of the avocado and add."
+  },
+  "P07_R07_S07": {
+    "label": "remove sweet",
+    "source": "heuristic",
+    "raw": "Remove the sweet potatoes from the oven."
+  },
+  "P07_R07_S08": {
+    "label": "stir salad",
+    "source": "heuristic",
+    "raw": "Stir the salad and add the dressing. Stir again."
+  },
+  "P07_R07_S09": {
+    "label": "the sweet",
+    "source": "heuristic",
+    "raw": "Add the sweet potatoes."
+  },
+  "P08_R01_S01": {
+    "label": "grind weigh",
+    "source": "heuristic",
+    "raw": "GRIND AND WEIGH YOUR COFFEE."
+  },
+  "P08_R01_S02": {
+    "label": "distribute tamp",
+    "source": "heuristic",
+    "raw": " DISTRIBUTE AND TAMP YOUR SHOT."
+  },
+  "P08_R01_S03": {
+    "label": "pull shot",
+    "source": "heuristic",
+    "raw": "PULL YOUR SHOT."
+  },
+  "P08_R02_S01": {
+    "label": "this salad",
+    "source": "heuristic",
+    "raw": "To make this salad, start by preparing the dressing. Whisk the dressing ingredients together, in a small bowl, until they're fully combined. Taste and add additional seasonings, if desired."
+  },
+  "P08_R02_S02": {
+    "label": "next chop",
+    "source": "heuristic",
+    "raw": "Next, chop your cucumbers, cherry tomatoes, carrot, coriander, and red onion, and add them to a large bowl alongside the beans and diced tomatoes."
+  },
+  "P08_R02_S03": {
+    "label": "toss combine",
+    "source": "heuristic",
+    "raw": "Toss to combine, then pour the dressing on top and toss once more until the salad ingredients are fully coated in the dressing."
+  },
+  "P08_R02_S04": {
+    "label": "slice piece",
+    "source": "heuristic",
+    "raw": "Slice piece of sourdough bread and place on side of bowl."
+  },
+  "P08_R02_S05": {
+    "label": "serve immediately",
+    "source": "heuristic",
+    "raw": "Serve immediately and enjoy!"
+  },
+  "P08_R03_S01": {
+    "label": "crack eggs",
+    "source": "heuristic",
+    "raw": "Crack the eggs into a medium bowl. Whisk until smooth and combined, with no streaks of egg white remaining."
+  },
+  "P08_R03_S02": {
+    "label": "spray olive",
+    "source": "heuristic",
+    "raw": "Spray olive oil in a small nonstick skillet. Bring to medium heat."
+  },
+  "P08_R03_S03": {
+    "label": "chopped red",
+    "source": "heuristic",
+    "raw": "Add chopped red onions and finger chillies to a pan and saute until soft"
+  },
+  "P08_R03_S04": {
+    "label": "pour eggs",
+    "source": "heuristic",
+    "raw": "Pour in the eggs, and let them cook for a few seconds without stirring. Pull a rubber spatula across the bottom of the pan to form large, soft curds of scrambled eggs."
+  },
+  "P08_R03_S05": {
+    "label": "cooking medium",
+    "source": "heuristic",
+    "raw": "Continue cooking over medium-low heat, folding and stirring the eggs every few seconds. Scrape the spatula along the bottom and sides of the pan often to form more curds and to prevent any part of the eggs from drying out"
+  },
+  "P08_R03_S06": {
+    "label": "remove pan",
+    "source": "heuristic",
+    "raw": "Remove the pan from the heat when the eggs are mostly set, but a little liquid egg remains. Season to taste with salt and pepper."
+  },
+  "P08_R03_S07": {
+    "label": "cottage cheese",
+    "source": "heuristic",
+    "raw": "Add cottage cheese to plate and season to taste with salt, pepper, oregano and olive oil."
+  },
+  "P08_R04_S01": {
+    "label": "preheat oven",
+    "source": "heuristic",
+    "raw": "Preheat the oven to 180 degrees C/gas mark 4."
+  },
+  "P08_R04_S02": {
+    "label": "the chicken",
+    "source": "heuristic",
+    "raw": "Place the chicken breast on a baking sheet and spray it with olive oil. Sprinkle liberally with salt and pepper. Roast for 35 to 40 minutes, until just cooked. Set aside until cool enough to handle."
+  },
+  "P08_R04_S03": {
+    "label": "pre made",
+    "source": "heuristic",
+    "raw": "Place pre-made tabbouleh salad into bowl and add salad nuts to bowl."
+  },
+  "P08_R04_S04": {
+    "label": "chop carrot",
+    "source": "heuristic",
+    "raw": "Chop carrot, coriander and avocado and add to bowl with tabbouleh salad."
+  },
+  "P08_R04_S05": {
+    "label": "remove chicken",
+    "source": "heuristic",
+    "raw": "Remove the chicken meat from the bones and discard the skin. Cut the chicken into medium dice and add to the tabbouleh. Season, to taste, and serve immediately or cover and refrigerate. The flavors will improve as it sits"
+  },
+  "P08_R05_S01": {
+    "label": "preheat oven",
+    "source": "heuristic",
+    "raw": "Preheat the oven to 180 degrees C/gas mark 4."
+  },
+  "P08_R05_S02": {
+    "label": "salmon teriyaki",
+    "source": "heuristic",
+    "raw": "Place salmon teriyaki skewers on a baking sheet. Roast for 11 to 15 minutes, until just cooked. Set aside until cool enough to handle."
+  },
+  "P08_R05_S03": {
+    "label": "pre heat",
+    "source": "heuristic",
+    "raw": "Pre-heat air fryer to 180 degrees C"
+  },
+  "P08_R05_S04": {
+    "label": "broccoli air",
+    "source": "heuristic",
+    "raw": "Place broccoli in air fryer and roast for 15 minutes. Season with oil, salt, pepper, oregano, and garlic granules half-way through."
+  },
+  "P08_R05_S05": {
+    "label": "pre made",
+    "source": "heuristic",
+    "raw": "Add pre-made Chickpea, Spinach & Quinoa salad to plate."
+  },
+  "P08_R05_S06": {
+    "label": "broccoli salmon",
+    "source": "heuristic",
+    "raw": "Add broccoli and salmon skewers to plate ontop of salad. Serve and enjoy!"
+  },
+  "P08_R06_S01": {
+    "label": "cook pasta",
+    "source": "heuristic",
+    "raw": "Cook the pasta according to the package directions. Drain and rinse in warm water, then transfer to a large bowl. Season with salt and pepper and let cool."
+  },
+  "P08_R06_S02": {
+    "label": "the tuna",
+    "source": "heuristic",
+    "raw": "Add the tuna, coriander, beans, spinach, bell peppers, carrots, celery, onion, cherry tomatoes, cucumbers, and spinach. At this point, you can cover the bowl and refrigerate it until you're ready to serve, up to 6 hours."
+  },
+  "P08_R06_S03": {
+    "label": "pour dressing",
+    "source": "heuristic",
+    "raw": "Pour the dressing over the top of the salad and toss everything together to coat. Season with salt and pepper to taste. Give the salad a taste - if you think it could use a splash more oil or vinegar, then go for it! Serve the pasta salad immediately, or let it sit at room temperature for up to 2 hours."
+  },
+  "P08_R07_S01": {
+    "label": "preheat oven",
+    "source": "heuristic",
+    "raw": "Preheat the oven to 180 degrees C"
+  },
+  "P08_R07_S02": {
+    "label": "fishcakes baking",
+    "source": "heuristic",
+    "raw": "Place fishcakes on baking tray and place in over for 30 minutes"
+  },
+  "P08_R07_S03": {
+    "label": "frozen broccoli",
+    "source": "heuristic",
+    "raw": "Place frozen broccoli and green beans to air fryer for 10 minutes. Season with salt and pepper half-way through."
+  },
+  "P08_R07_S04": {
+    "label": "boil water",
+    "source": "heuristic",
+    "raw": "Boil water for couscous (170 ml)"
+  },
+  "P08_R07_S05": {
+    "label": "couscous boiling",
+    "source": "heuristic",
+    "raw": "Add couscous and boiling water to pot (no flame needed), leave until water has been absorbed"
+  },
+  "P08_R07_S06": {
+    "label": "slice onion",
+    "source": "heuristic",
+    "raw": "Slice onion, chili pepper, and bell pepper and place to side"
+  },
+  "P08_R07_S07": {
+    "label": "oil nonstick",
+    "source": "heuristic",
+    "raw": "Add oil to a nonstick pan. Bring to medium heat."
+  },
+  "P08_R07_S08": {
+    "label": "once warm",
+    "source": "heuristic",
+    "raw": "Once warm, add garlic, onions, red peppers and chilis to pan. Cook until browned"
+  },
+  "P08_R07_S09": {
+    "label": "broccoli green",
+    "source": "heuristic",
+    "raw": "Add broccoli and green beans to pan and stir"
+  },
+  "P08_R07_S10": {
+    "label": "season pan",
+    "source": "heuristic",
+    "raw": "Season pan with salt, pepper, and sesame oil"
+  },
+  "P08_R07_S11": {
+    "label": "serve fishcakes",
+    "source": "heuristic",
+    "raw": "Serve fishcakes on top of couscous with side of vegetables"
+  },
+  "P08_R08_S01": {
+    "label": "heat oil",
+    "source": "heuristic",
+    "raw": "Heat the oil in a frying pan over a medium-high heat. Add the onion and cook for 5 minutes, stirring often, until the onion softens."
+  },
+  "P08_R08_S02": {
+    "label": "the garlic",
+    "source": "heuristic",
+    "raw": "Add the garlic and chilli peppers and cook for a further minute."
+  },
+  "P08_R08_S03": {
+    "label": "the minced",
+    "source": "heuristic",
+    "raw": "Add the minced beef and cook for 5-6 minutes, until browned. Stir often, breaking up any large chunks of meat with a spatula."
+  },
+  "P08_R08_S04": {
+    "label": "the carrot",
+    "source": "heuristic",
+    "raw": "Add the carrot, celery, bell peppers, and mushrooms and cook for a further 2-3 minutes."
+  },
+  "P08_R08_S05": {
+    "label": "the tomato",
+    "source": "heuristic",
+    "raw": "Add the tomato pasta sauce, oregano, tinned tomatoes, salt, and pepper. Stir and bring to the boil. Turn down the heat and simmer for 15 -20 minutes until thickened."
+  },
+  "P08_R08_S06": {
+    "label": "meanwhile boil",
+    "source": "heuristic",
+    "raw": "Meanwhile, boil a large pan of salted water. Add the spaghetti and cook for 10-12 minutes until al dente."
+  },
+  "P08_R08_S07": {
+    "label": "drain spaghetti",
+    "source": "heuristic",
+    "raw": "Drain the spaghetti and divide it between bowls."
+  },
+  "P08_R08_S08": {
+    "label": "spoon bolognese",
+    "source": "heuristic",
+    "raw": "Spoon the Bolognese on top of the spaghetti and sprinkle on parmesan before serving."
+  },
+  "P08_R09_S01": {
+    "label": "cut cucumber",
+    "source": "heuristic",
+    "raw": "Cut the cucumber lengthwise down the middle then into 2.4cm/1 inch pieces"
+  },
+  "P08_R09_S02": {
+    "label": "salt minutes",
+    "source": "heuristic",
+    "raw": "Salt 30 minutes - Put them in a bowl then toss with salt. Leave for 30 minutes. The salt will draw out water from the cucumbers which dilutes flavour when you eat them. It also seasons the cucumbers all the way though."
+  },
+  "P08_R09_S03": {
+    "label": "drain discard",
+    "source": "heuristic",
+    "raw": "Drain and discard the cucumber water from the bowl (too salty to re-use for another purpose). Use a colander if you want to be thorough else just drain it out of the bowl, using your hand to hold the cucumbers in."
+  },
+  "P08_R09_S04": {
+    "label": "whisk soy",
+    "source": "heuristic",
+    "raw": "Whisk the soy sauce and sesame oil in a bowl until it combines properly. You'll know because it becomes murky and thicker, rather than clear and split."
+  },
+  "P08_R09_S05": {
+    "label": "teaspoons chilli",
+    "source": "heuristic",
+    "raw": "Add 2 teaspoons of chilli crisp - or more if you dare! You want to get a mound of the crispy chilli - it will be well soaked with the red chilli oil that colours this salad. You can always add more after you toss. Taste and add, taste and add!"
+  },
+  "P08_R09_S06": {
+    "label": "finally grate",
+    "source": "heuristic",
+    "raw": "Finally grate and add ginger and garlic to bowl. Toss well then pile up high into a shallow bowl and serve!"
+  },
+  "P09_R01_S01": {
+    "label": "heat some",
+    "source": "heuristic",
+    "raw": "Heat some oil in a pan (any neutral oil will do) along with some salt and once heated, and red curry paste to the oil and allow to cook, ensuring it doesn't burn or darken"
+  },
+  "P09_R01_S02": {
+    "label": "the chicken",
+    "source": "heuristic",
+    "raw": "Add the chicken chunks in (they should have been cooked 80%)"
+  },
+  "P09_R01_S03": {
+    "label": "mix all",
+    "source": "heuristic",
+    "raw": "Mix all and stir and don't let it burn"
+  },
+  "P09_R01_S04": {
+    "label": "coconut milk",
+    "source": "heuristic",
+    "raw": "Add coconut milk to the mix."
+  },
+  "P09_R01_S05": {
+    "label": "stir mix",
+    "source": "heuristic",
+    "raw": "Stir and mix and wait until it begins to boil"
+  },
+  "P09_R01_S06": {
+    "label": "the chopped",
+    "source": "heuristic",
+    "raw": "Add in the chopped vegetables (courgette, bamboo shoots and chili. Chili is optional)"
+  },
+  "P09_R01_S07": {
+    "label": "sure all",
+    "source": "heuristic",
+    "raw": "Make sure all vegetables are beneath the liquid's surface. Stir and allow to boil."
+  },
+  "P09_R01_S08": {
+    "label": "some thai",
+    "source": "heuristic",
+    "raw": "Add in some Thai basil and turn off the cooker."
+  },
+  "P09_R02_S01": {
+    "label": "separate pots",
+    "source": "heuristic",
+    "raw": "In separate pots, boil the chicken and potatoes until cooked through."
+  },
+  "P09_R02_S02": {
+    "label": "once boiled",
+    "source": "heuristic",
+    "raw": "Once boiled, drain out any excess water from the potatoes and then mash them."
+  },
+  "P09_R02_S03": {
+    "label": "once boiled",
+    "source": "heuristic",
+    "raw": "Once boiled, shred the chicken."
+  },
+  "P09_R02_S04": {
+    "label": "mix all",
+    "source": "heuristic",
+    "raw": "Mix all seasoning along with the shredded chicken until well combined."
+  },
+  "P09_R02_S05": {
+    "label": "mix shredded",
+    "source": "heuristic",
+    "raw": "Mix the shredded chicken, mashed potatoes and cheese together."
+  },
+  "P09_R02_S06": {
+    "label": "scoop some",
+    "source": "heuristic",
+    "raw": "Scoop some of the mixture and roll in your palms to make a smooth ball. (adjust the quantity of the scooped mixture to obtain your preferred size; repeat this process until all the mixture has been used)"
+  },
+  "P09_R02_S07": {
+    "label": "dredge each",
+    "source": "heuristic",
+    "raw": "Dredge each Chicken-cheese ball into flour, then dip into egg and roll in the breadcrumbs, ensuring the entire surface of the chicken ball is covered in breadcrumbs."
+  },
+  "P09_R02_S08": {
+    "label": "heat oil",
+    "source": "heuristic",
+    "raw": "Heat oil over medium heat, about 2-inch deep to cover the balls halfway at least."
+  },
+  "P09_R02_S09": {
+    "label": "gently add",
+    "source": "heuristic",
+    "raw": "Gently add the chicken cheese balls into the oil, ensuring the pan does not get overcrowded. Fry the balls until golden turning as required to cook through and brown evenly."
+  },
+  "P09_R03_S01": {
+    "label": "the hibiscus",
+    "source": "heuristic",
+    "raw": "Add the Hibiscus (Zobo) flowers and chopped ginger into a pot a fill with water"
+  },
+  "P09_R03_S02": {
+    "label": "cover pot",
+    "source": "heuristic",
+    "raw": "Cover the pot and bring to a boil for about 30 minutes, occasionally stirring."
+  },
+  "P09_R03_S03": {
+    "label": "strain liquid",
+    "source": "heuristic",
+    "raw": "Strain the liquid to extract hibiscus leaves and ginger bits"
+  },
+  "P09_R03_S04": {
+    "label": "sugar give",
+    "source": "heuristic",
+    "raw": "Add sugar, give it a good stir and leave to cool."
+  },
+  "P09_R04_S01": {
+    "label": "heat oil",
+    "source": "heuristic",
+    "raw": "Heat oil in a pan and throw in some cinnamon sticks, cardamon, cloves, black peppercorn."
+  },
+  "P09_R04_S02": {
+    "label": "half sliced",
+    "source": "heuristic",
+    "raw": "Add half of the sliced onion and fry until the onion begin to brown. Set aside the other half for later use."
+  },
+  "P09_R04_S03": {
+    "label": "water mix",
+    "source": "heuristic",
+    "raw": "Add water to the mix along with turmeric and red chili powder and stir."
+  },
+  "P09_R04_S04": {
+    "label": "then add",
+    "source": "heuristic",
+    "raw": "Then add in the garlic and ginger paste, ghee, yoghurt and stir."
+  },
+  "P09_R04_S05": {
+    "label": "now add",
+    "source": "heuristic",
+    "raw": "Now add the meat to the mix and stir to mix evenly."
+  },
+  "P09_R04_S06": {
+    "label": "cover cook",
+    "source": "heuristic",
+    "raw": "Cover and cook until the meat is cooked through and a bit tender (50 - 55mins), occasionally adding water and stirring to prevent burning and sticking to the pan"
+  },
+  "P09_R04_S07": {
+    "label": "fry second",
+    "source": "heuristic",
+    "raw": "Fry the second half of the onions until browned. Once cooked, add to the rest of the mixture."
+  },
+  "P09_R04_S08": {
+    "label": "once meat",
+    "source": "heuristic",
+    "raw": "Once the meat is cooked and tender, add the fried onion, cumin, garam masala, ghee and chili and cook through until the meat is tender."
+  },
+  "P09_R05_S01": {
+    "label": "peel slice",
+    "source": "heuristic",
+    "raw": "Peel and slice mangoes."
+  },
+  "P09_R05_S02": {
+    "label": "mangoes ice",
+    "source": "heuristic",
+    "raw": "Add mangoes, ice cubes, cold water, honey, coconut milk, and yogurt to blender."
+  },
+  "P09_R05_S03": {
+    "label": "blend high",
+    "source": "heuristic",
+    "raw": "Blend on high until smooth, approx. 2 - 3 min."
+  },
+  "P09_R05_S04": {
+    "label": "slice peel",
+    "source": "heuristic",
+    "raw": "Slice and peel remaining mango, add to the blender and blend to combine, approx. 30 secs-1 min. Enjoy."
+  },
+  "P09_R06_S01": {
+    "label": "cut beef",
+    "source": "heuristic",
+    "raw": "Cut the beef into cubes of your choosing"
+  },
+  "P09_R06_S02": {
+    "label": "slice onion",
+    "source": "heuristic",
+    "raw": "Slice the onion, tomato and peppers into preferred size"
+  },
+  "P09_R06_S03": {
+    "label": "marinate beef",
+    "source": "heuristic",
+    "raw": "Marinate beef in ginger and garlic paste"
+  },
+  "P09_R06_S04": {
+    "label": "thread beef",
+    "source": "heuristic",
+    "raw": "Thread the beef and sliced vegetables (onion, tomato and scotch bonnet chilli) onto skewers and arrange them on a baking tray"
+  },
+  "P09_R06_S05": {
+    "label": "drizzle skewers",
+    "source": "heuristic",
+    "raw": "Drizzle skewers with oil"
+  },
+  "P09_R06_S06": {
+    "label": "cook oven",
+    "source": "heuristic",
+    "raw": "Cook in the oven for 15 minutes or more based on your oven settings, turn them over halfway through."
+  },
+  "P09_R06_S07": {
+    "label": "peel potatoes",
+    "source": "heuristic",
+    "raw": "Peel the potatoes and cut them onto strips"
+  },
+  "P09_R06_S08": {
+    "label": "heat oil",
+    "source": "heuristic",
+    "raw": "Heat the oil in a pan, season it with salt, and add the potatoes in batches"
+  },
+  "P09_R06_S09": {
+    "label": "once fried",
+    "source": "heuristic",
+    "raw": "Once fried, transfer to a plate and season with peri-peri seasoning"
+  }
+}

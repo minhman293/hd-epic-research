@@ -1,0 +1,1808 @@
+{
+  "recipe": {
+    "id": "P08_R01",
+    "name": "Coffee",
+    "session_index": 0,
+    "video_id": "P08-20240613-122900",
+    "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P08-20240613-122900.mp4",
+    "narration_count": 57,
+    "n_videos": 1,
+    "total_capture_duration_s": 198.8
+  },
+  "videos": [
+    {
+      "video_id": "P08-20240613-122900",
+      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P08-20240613-122900.mp4",
+      "offset_s": 0.0,
+      "duration_s": 198.8
+    }
+  ],
+  "steps": [
+    {
+      "id": "P08_R01_S01",
+      "text": "GRIND AND WEIGH YOUR COFFEE.",
+      "label": "grind weigh coffee",
+      "prep_gaps": [
+        {
+          "prep_end": 27.367,
+          "exec_start": 37.415,
+          "gap": 10.048
+        },
+        {
+          "prep_end": 37.448,
+          "exec_start": 72.963,
+          "gap": 35.515
+        }
+      ]
+    },
+    {
+      "id": "P08_R01_S02",
+      "text": "DISTRIBUTE AND TAMP YOUR SHOT.",
+      "label": "distribute tamp shot",
+      "prep_gaps": [
+        {
+          "prep_end": 117.593,
+          "exec_start": 143.077,
+          "gap": 25.484
+        },
+        {
+          "prep_end": 143.077,
+          "exec_start": 143.077,
+          "gap": 0.0
+        }
+      ]
+    },
+    {
+      "id": "P08_R01_S03",
+      "text": "PULL YOUR SHOT.",
+      "label": "pull espresso shot",
+      "prep_gaps": [
+        {
+          "prep_end": 163.044,
+          "exec_start": 163.078,
+          "gap": 0.034
+        }
+      ]
+    }
+  ],
+  "step_windows": [
+    {
+      "step_id": "P08_R01_S01",
+      "start": 27.302,
+      "end": 28.431,
+      "phase": "exec"
+    },
+    {
+      "step_id": "P08_R01_S01",
+      "start": 37.415,
+      "end": 40.56,
+      "phase": "exec"
+    },
+    {
+      "step_id": "P08_R01_S01",
+      "start": 72.963,
+      "end": 95.125,
+      "phase": "exec"
+    },
+    {
+      "step_id": "P08_R01_S02",
+      "start": 143.077,
+      "end": 155.528,
+      "phase": "exec"
+    },
+    {
+      "step_id": "P08_R01_S03",
+      "start": 163.078,
+      "end": 190.051,
+      "phase": "exec"
+    },
+    {
+      "step_id": "P08_R01_S01",
+      "start": 16.302,
+      "end": 27.367,
+      "phase": "prep"
+    },
+    {
+      "step_id": "P08_R01_S01",
+      "start": 33.695,
+      "end": 37.448,
+      "phase": "prep"
+    },
+    {
+      "step_id": "P08_R01_S02",
+      "start": 107.399,
+      "end": 117.593,
+      "phase": "prep"
+    },
+    {
+      "step_id": "P08_R01_S01",
+      "start": 120.404,
+      "end": 130.367,
+      "phase": "prep"
+    },
+    {
+      "step_id": "P08_R01_S02",
+      "start": 130.4,
+      "end": 143.077,
+      "phase": "prep"
+    },
+    {
+      "step_id": "P08_R01_S03",
+      "start": 160.844,
+      "end": 163.044,
+      "phase": "prep"
+    }
+  ],
+  "sequence": [
+    {
+      "action": "START",
+      "raw_action": "START",
+      "start": 3.309,
+      "end": 3.31,
+      "duration": 0.0,
+      "step_id": null,
+      "is_primary": true,
+      "phase": null,
+      "verb_class": -1,
+      "noun_class": -1,
+      "video_id": "P08-20240613-122900",
+      "video_start": 0.0,
+      "video_end": 0.0,
+      "salient": false,
+      "kind": "start",
+      "index": 0,
+      "next_action": "manipulate(appliances)",
+      "edge_key": "START|||manipulate(appliances)"
+    },
+    {
+      "index": 1,
+      "action": "manipulate(appliances)",
+      "start": 3.31,
+      "end": 4.67,
+      "duration": 1.3599999999999999,
+      "next_action": "access(appliances)",
+      "edge_key": "manipulate(appliances)|||access(appliances)",
+      "step_id": null,
+      "is_primary": false,
+      "phase": null,
+      "verb_class": 61,
+      "noun_class": 165,
+      "video_id": "P08-20240613-122900",
+      "video_start": 3.31,
+      "video_end": 4.67,
+      "raw_action": "slide(phone)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 2,
+      "action": "access(appliances)",
+      "start": 4.5,
+      "end": 7.92,
+      "duration": 3.42,
+      "next_action": "transition(appliances)",
+      "edge_key": "access(appliances)|||transition(appliances)",
+      "step_id": null,
+      "is_primary": false,
+      "phase": null,
+      "verb_class": 3,
+      "noun_class": 165,
+      "video_id": "P08-20240613-122900",
+      "video_start": 4.5,
+      "video_end": 7.92,
+      "raw_action": "open(phone)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 3,
+      "action": "transition(appliances)",
+      "start": 8.79,
+      "end": 11.04,
+      "duration": 2.25,
+      "next_action": "retrieve(crockery)",
+      "edge_key": "transition(appliances)|||retrieve(crockery)",
+      "step_id": null,
+      "is_primary": false,
+      "phase": null,
+      "verb_class": 11,
+      "noun_class": 108,
+      "video_id": "P08-20240613-122900",
+      "video_start": 8.79,
+      "video_end": 11.04,
+      "raw_action": "move(scale)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 4,
+      "action": "retrieve(crockery)",
+      "start": 15.5,
+      "end": 17.34,
+      "duration": 1.8399999999999999,
+      "next_action": "access(appliances)",
+      "edge_key": "retrieve(crockery)|||access(appliances)",
+      "step_id": "P08_R01_S01",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 0,
+      "noun_class": 13,
+      "video_id": "P08-20240613-122900",
+      "video_start": 15.5,
+      "video_end": 17.34,
+      "raw_action": "take(cup)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 5,
+      "action": "access(appliances)",
+      "start": 17.78,
+      "end": 19.23,
+      "duration": 1.4499999999999993,
+      "next_action": "monitor(appliances)",
+      "edge_key": "access(appliances)|||monitor(appliances)",
+      "step_id": "P08_R01_S01",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 6,
+      "noun_class": 108,
+      "video_id": "P08-20240613-122900",
+      "video_start": 17.78,
+      "video_end": 19.23,
+      "raw_action": "turn-on(scale)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 6,
+      "action": "monitor(appliances)",
+      "start": 18.85,
+      "end": 26.83,
+      "duration": 7.979999999999997,
+      "next_action": "leave(crockery)",
+      "edge_key": "monitor(appliances)|||leave(crockery)",
+      "step_id": "P08_R01_S01",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 17,
+      "noun_class": 108,
+      "video_id": "P08-20240613-122900",
+      "video_start": 18.85,
+      "video_end": 26.83,
+      "raw_action": "adjust(scale)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 7,
+      "action": "leave(crockery)",
+      "start": 27.4,
+      "end": 28.74,
+      "duration": 1.3399999999999999,
+      "next_action": "retrieve(containers)",
+      "edge_key": "leave(crockery)|||retrieve(containers)",
+      "step_id": "P08_R01_S01",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 1,
+      "noun_class": 13,
+      "video_id": "P08-20240613-122900",
+      "video_start": 27.4,
+      "video_end": 28.74,
+      "raw_action": "put(cup)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 8,
+      "action": "retrieve(containers)",
+      "start": 33.85,
+      "end": 35.16,
+      "duration": 1.3099999999999952,
+      "next_action": "access(containers)",
+      "edge_key": "retrieve(containers)|||access(containers)",
+      "step_id": "P08_R01_S01",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 0,
+      "noun_class": 61,
+      "video_id": "P08-20240613-122900",
+      "video_start": 33.85,
+      "video_end": 35.16,
+      "raw_action": "take(can)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 9,
+      "action": "access(containers)",
+      "start": 35.71,
+      "end": 36.87,
+      "duration": 1.1599999999999966,
+      "next_action": "merge(drinks)",
+      "edge_key": "access(containers)|||merge(drinks)",
+      "step_id": "P08_R01_S01",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 3,
+      "noun_class": 61,
+      "video_id": "P08-20240613-122900",
+      "video_start": 35.71,
+      "video_end": 36.87,
+      "raw_action": "open(can)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 10,
+      "action": "merge(drinks)",
+      "start": 36.64,
+      "end": 41.37,
+      "duration": 4.729999999999997,
+      "next_action": "block(containers)",
+      "edge_key": "merge(drinks)|||block(containers)",
+      "step_id": "P08_R01_S01",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 9,
+      "noun_class": 59,
+      "video_id": "P08-20240613-122900",
+      "video_start": 36.64,
+      "video_end": 41.37,
+      "raw_action": "pour(coffee)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 11,
+      "action": "block(containers)",
+      "start": 41.26,
+      "end": 44.71,
+      "duration": 3.450000000000003,
+      "next_action": "leave(containers)",
+      "edge_key": "block(containers)|||leave(containers)",
+      "step_id": null,
+      "is_primary": false,
+      "phase": null,
+      "verb_class": 4,
+      "noun_class": 61,
+      "video_id": "P08-20240613-122900",
+      "video_start": 41.26,
+      "video_end": 44.71,
+      "raw_action": "close(can)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 12,
+      "action": "leave(containers)",
+      "start": 45.26,
+      "end": 46.7,
+      "duration": 1.4400000000000048,
+      "next_action": "transition(appliances)",
+      "edge_key": "leave(containers)|||transition(appliances)",
+      "step_id": null,
+      "is_primary": false,
+      "phase": null,
+      "verb_class": 1,
+      "noun_class": 61,
+      "video_id": "P08-20240613-122900",
+      "video_start": 45.26,
+      "video_end": 46.7,
+      "raw_action": "put(can)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 13,
+      "action": "transition(appliances)",
+      "start": 46.28,
+      "end": 47.26,
+      "duration": 0.9799999999999969,
+      "next_action": "manipulate(drinks)",
+      "edge_key": "transition(appliances)|||manipulate(drinks)",
+      "step_id": null,
+      "is_primary": false,
+      "phase": null,
+      "verb_class": 89,
+      "noun_class": 165,
+      "video_id": "P08-20240613-122900",
+      "video_start": 46.28,
+      "video_end": 47.26,
+      "raw_action": "carry(phone)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 14,
+      "action": "manipulate(drinks)",
+      "start": 48.26,
+      "end": 67.23,
+      "duration": 18.970000000000006,
+      "next_action": "transition(appliances)",
+      "edge_key": "manipulate(drinks)|||transition(appliances)",
+      "step_id": null,
+      "is_primary": false,
+      "phase": null,
+      "verb_class": 97,
+      "noun_class": 59,
+      "video_id": "P08-20240613-122900",
+      "video_start": 48.26,
+      "video_end": 67.23,
+      "raw_action": "write(coffee)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 15,
+      "action": "transition(appliances)",
+      "start": 67.39,
+      "end": 68.61,
+      "duration": 1.2199999999999989,
+      "next_action": "transition(appliances)",
+      "edge_key": "transition(appliances)|||transition(appliances)",
+      "step_id": null,
+      "is_primary": false,
+      "phase": null,
+      "verb_class": 11,
+      "noun_class": 165,
+      "video_id": "P08-20240613-122900",
+      "video_start": 67.39,
+      "video_end": 68.61,
+      "raw_action": "move(phone)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 16,
+      "action": "transition(appliances)",
+      "start": 69.72,
+      "end": 70.74,
+      "duration": 1.019999999999996,
+      "next_action": "retrieve(appliances)",
+      "edge_key": "transition(appliances)|||retrieve(appliances)",
+      "step_id": null,
+      "is_primary": false,
+      "phase": null,
+      "verb_class": 11,
+      "noun_class": 108,
+      "video_id": "P08-20240613-122900",
+      "video_start": 69.72,
+      "video_end": 70.74,
+      "raw_action": "move(scale)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 17,
+      "action": "retrieve(appliances)",
+      "start": 72.85,
+      "end": 73.35,
+      "duration": 0.5,
+      "next_action": "access(containers)",
+      "edge_key": "retrieve(appliances)|||access(containers)",
+      "step_id": "P08_R01_S01",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 0,
+      "noun_class": 50,
+      "video_id": "P08-20240613-122900",
+      "video_start": 72.85,
+      "video_end": 73.35,
+      "raw_action": "take(maker:coffee)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 18,
+      "action": "access(containers)",
+      "start": 73.44,
+      "end": 74.18,
+      "duration": 0.7400000000000091,
+      "next_action": "merge(drinks)",
+      "edge_key": "access(containers)|||merge(drinks)",
+      "step_id": "P08_R01_S01",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 3,
+      "noun_class": 118,
+      "video_id": "P08-20240613-122900",
+      "video_start": 73.44,
+      "video_end": 74.18,
+      "raw_action": "open(cap)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 19,
+      "action": "merge(drinks)",
+      "start": 75.72,
+      "end": 76.96000000000001,
+      "duration": 1.240000000000009,
+      "next_action": "leave(crockery)",
+      "edge_key": "merge(drinks)|||leave(crockery)",
+      "step_id": "P08_R01_S01",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 9,
+      "noun_class": 59,
+      "video_id": "P08-20240613-122900",
+      "video_start": 75.72,
+      "video_end": 76.96000000000001,
+      "raw_action": "pour(coffee)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 20,
+      "action": "leave(crockery)",
+      "start": 77.41,
+      "end": 80.11,
+      "duration": 2.700000000000003,
+      "next_action": "split(drinks)",
+      "edge_key": "leave(crockery)|||split(drinks)",
+      "step_id": "P08_R01_S01",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 1,
+      "noun_class": 13,
+      "video_id": "P08-20240613-122900",
+      "video_start": 77.41,
+      "video_end": 80.11,
+      "raw_action": "put(cup)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 21,
+      "action": "split(drinks)",
+      "start": 79.89,
+      "end": 96.38,
+      "duration": 16.489999999999995,
+      "next_action": "access(appliances)",
+      "edge_key": "split(drinks)|||access(appliances)",
+      "step_id": "P08_R01_S01",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 49,
+      "noun_class": 59,
+      "video_id": "P08-20240613-122900",
+      "video_start": 79.89,
+      "video_end": 96.38,
+      "raw_action": "crush(coffee)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 22,
+      "action": "access(appliances)",
+      "start": 97.41,
+      "end": 98.76,
+      "duration": 1.3500000000000085,
+      "next_action": "retrieve(crockery)",
+      "edge_key": "access(appliances)|||retrieve(crockery)",
+      "step_id": null,
+      "is_primary": false,
+      "phase": null,
+      "verb_class": 6,
+      "noun_class": 124,
+      "video_id": "P08-20240613-122900",
+      "video_start": 97.41,
+      "video_end": 98.76,
+      "raw_action": "turn-on(machine:washing)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 23,
+      "action": "retrieve(crockery)",
+      "start": 100.92,
+      "end": 101.6,
+      "duration": 0.6799999999999926,
+      "next_action": "monitor(storage)",
+      "edge_key": "retrieve(crockery)|||monitor(storage)",
+      "step_id": null,
+      "is_primary": false,
+      "phase": null,
+      "verb_class": 0,
+      "noun_class": 13,
+      "video_id": "P08-20240613-122900",
+      "video_start": 100.92,
+      "video_end": 101.6,
+      "raw_action": "take(cup)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 24,
+      "action": "monitor(storage)",
+      "start": 103.17,
+      "end": 106.93,
+      "duration": 3.760000000000005,
+      "next_action": "retrieve(crockery)",
+      "edge_key": "monitor(storage)|||retrieve(crockery)",
+      "step_id": null,
+      "is_primary": false,
+      "phase": null,
+      "verb_class": 48,
+      "noun_class": 110,
+      "video_id": "P08-20240613-122900",
+      "video_start": 103.17,
+      "video_end": 106.93,
+      "raw_action": "search(rack:drying)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 25,
+      "action": "retrieve(crockery)",
+      "start": 107.37,
+      "end": 107.81,
+      "duration": 0.4399999999999977,
+      "next_action": "retrieve(crockery)",
+      "edge_key": "retrieve(crockery)|||retrieve(crockery)",
+      "step_id": "P08_R01_S02",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 0,
+      "noun_class": 13,
+      "video_id": "P08-20240613-122900",
+      "video_start": 107.37,
+      "video_end": 107.81,
+      "raw_action": "take(cup)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 26,
+      "action": "retrieve(crockery)",
+      "start": 109.05,
+      "end": 110.35,
+      "duration": 1.2999999999999972,
+      "next_action": "manipulate(crockery)",
+      "edge_key": "retrieve(crockery)|||manipulate(crockery)",
+      "step_id": "P08_R01_S02",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 0,
+      "noun_class": 13,
+      "video_id": "P08-20240613-122900",
+      "video_start": 109.05,
+      "video_end": 110.35,
+      "raw_action": "take(cup)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 27,
+      "action": "manipulate(crockery)",
+      "start": 111.19,
+      "end": 114.51,
+      "duration": 3.3200000000000074,
+      "next_action": "leave(crockery)",
+      "edge_key": "manipulate(crockery)|||leave(crockery)",
+      "step_id": "P08_R01_S02",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 78,
+      "noun_class": 13,
+      "video_id": "P08-20240613-122900",
+      "video_start": 111.19,
+      "video_end": 114.51,
+      "raw_action": "screw(cup)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 28,
+      "action": "leave(crockery)",
+      "start": 114.38,
+      "end": 114.99,
+      "duration": 0.6099999999999994,
+      "next_action": "leave(crockery)",
+      "edge_key": "leave(crockery)|||leave(crockery)",
+      "step_id": "P08_R01_S02",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 1,
+      "noun_class": 13,
+      "video_id": "P08-20240613-122900",
+      "video_start": 114.38,
+      "video_end": 114.99,
+      "raw_action": "put(cup)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 29,
+      "action": "leave(crockery)",
+      "start": 115.55,
+      "end": 117.26,
+      "duration": 1.710000000000008,
+      "next_action": "transition(appliances)",
+      "edge_key": "leave(crockery)|||transition(appliances)",
+      "step_id": "P08_R01_S02",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 1,
+      "noun_class": 13,
+      "video_id": "P08-20240613-122900",
+      "video_start": 115.55,
+      "video_end": 117.26,
+      "raw_action": "put(cup)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 30,
+      "action": "transition(appliances)",
+      "start": 117.69,
+      "end": 118.96,
+      "duration": 1.269999999999996,
+      "next_action": "sense(appliances)",
+      "edge_key": "transition(appliances)|||sense(appliances)",
+      "step_id": null,
+      "is_primary": false,
+      "phase": null,
+      "verb_class": 11,
+      "noun_class": 108,
+      "video_id": "P08-20240613-122900",
+      "video_start": 117.69,
+      "video_end": 118.96,
+      "raw_action": "move(scale)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 31,
+      "action": "sense(appliances)",
+      "start": 120.35,
+      "end": 121.44,
+      "duration": 1.0900000000000034,
+      "next_action": "retrieve(cutlery)",
+      "edge_key": "sense(appliances)|||retrieve(cutlery)",
+      "step_id": "P08_R01_S01",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 32,
+      "noun_class": 50,
+      "video_id": "P08-20240613-122900",
+      "video_start": 120.35,
+      "video_end": 121.44,
+      "raw_action": "pat(maker:coffee)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 32,
+      "action": "retrieve(cutlery)",
+      "start": 121.42,
+      "end": 122.39,
+      "duration": 0.9699999999999989,
+      "next_action": "merge(drinks)",
+      "edge_key": "retrieve(cutlery)|||merge(drinks)",
+      "step_id": "P08_R01_S01",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 0,
+      "noun_class": 1,
+      "video_id": "P08-20240613-122900",
+      "video_start": 121.42,
+      "video_end": 122.39,
+      "raw_action": "take(spoon)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 33,
+      "action": "merge(drinks)",
+      "start": 122.47,
+      "end": 125.8,
+      "duration": 3.3299999999999983,
+      "next_action": "sense(appliances)",
+      "edge_key": "merge(drinks)|||sense(appliances)",
+      "step_id": "P08_R01_S01",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 10,
+      "noun_class": 59,
+      "video_id": "P08-20240613-122900",
+      "video_start": 122.47,
+      "video_end": 125.8,
+      "raw_action": "mix(coffee)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 34,
+      "action": "sense(appliances)",
+      "start": 125.55,
+      "end": 128.0,
+      "duration": 2.450000000000003,
+      "next_action": "retrieve(drinks)",
+      "edge_key": "sense(appliances)|||retrieve(drinks)",
+      "step_id": "P08_R01_S01",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 32,
+      "noun_class": 50,
+      "video_id": "P08-20240613-122900",
+      "video_start": 125.55,
+      "video_end": 128.0,
+      "raw_action": "pat(maker:coffee)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 35,
+      "action": "retrieve(drinks)",
+      "start": 127.75,
+      "end": 130.2,
+      "duration": 2.4499999999999886,
+      "next_action": "leave(drinks)",
+      "edge_key": "retrieve(drinks)|||leave(drinks)",
+      "step_id": "P08_R01_S01",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 16,
+      "noun_class": 59,
+      "video_id": "P08-20240613-122900",
+      "video_start": 127.75,
+      "video_end": 130.2,
+      "raw_action": "scoop(coffee)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 36,
+      "action": "leave(drinks)",
+      "start": 130.13,
+      "end": 131.6,
+      "duration": 1.4699999999999989,
+      "next_action": "sense(appliances)",
+      "edge_key": "leave(drinks)|||sense(appliances)",
+      "step_id": "P08_R01_S02",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 1,
+      "noun_class": 59,
+      "video_id": "P08-20240613-122900",
+      "video_start": 130.13,
+      "video_end": 131.6,
+      "raw_action": "put(coffee)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 37,
+      "action": "sense(appliances)",
+      "start": 131.4,
+      "end": 133.15,
+      "duration": 1.75,
+      "next_action": "split(drinks)",
+      "edge_key": "sense(appliances)|||split(drinks)",
+      "step_id": "P08_R01_S02",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 32,
+      "noun_class": 50,
+      "video_id": "P08-20240613-122900",
+      "video_start": 131.4,
+      "video_end": 133.15,
+      "raw_action": "pat(maker:coffee)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 38,
+      "action": "split(drinks)",
+      "start": 132.95,
+      "end": 135.95,
+      "duration": 3.0,
+      "next_action": "sense(appliances)",
+      "edge_key": "split(drinks)|||sense(appliances)",
+      "step_id": "P08_R01_S02",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 49,
+      "noun_class": 59,
+      "video_id": "P08-20240613-122900",
+      "video_start": 132.95,
+      "video_end": 135.95,
+      "raw_action": "crush(coffee)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 39,
+      "action": "sense(appliances)",
+      "start": 135.55,
+      "end": 137.62,
+      "duration": 2.069999999999993,
+      "next_action": "leave(cutlery)",
+      "edge_key": "sense(appliances)|||leave(cutlery)",
+      "step_id": "P08_R01_S02",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 32,
+      "noun_class": 50,
+      "video_id": "P08-20240613-122900",
+      "video_start": 135.55,
+      "video_end": 137.62,
+      "raw_action": "pat(maker:coffee)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 40,
+      "action": "leave(cutlery)",
+      "start": 139.5,
+      "end": 140.73,
+      "duration": 1.2299999999999898,
+      "next_action": "sense(crockery)",
+      "edge_key": "leave(cutlery)|||sense(crockery)",
+      "step_id": "P08_R01_S02",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 1,
+      "noun_class": 1,
+      "video_id": "P08-20240613-122900",
+      "video_start": 139.5,
+      "video_end": 140.73,
+      "raw_action": "put(spoon)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 41,
+      "action": "sense(crockery)",
+      "start": 140.77,
+      "end": 142.18,
+      "duration": 1.4099999999999966,
+      "next_action": "manipulate(drinks)",
+      "edge_key": "sense(crockery)|||manipulate(drinks)",
+      "step_id": "P08_R01_S02",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 32,
+      "noun_class": 13,
+      "video_id": "P08-20240613-122900",
+      "video_start": 140.77,
+      "video_end": 142.18,
+      "raw_action": "pat(cup)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 42,
+      "action": "manipulate(drinks)",
+      "start": 142.25,
+      "end": 151.13,
+      "duration": 8.879999999999995,
+      "next_action": "leave(utensils)",
+      "edge_key": "manipulate(drinks)|||leave(utensils)",
+      "step_id": "P08_R01_S02",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 21,
+      "noun_class": 59,
+      "video_id": "P08-20240613-122900",
+      "video_start": 142.25,
+      "video_end": 151.13,
+      "raw_action": "press(coffee)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 43,
+      "action": "leave(utensils)",
+      "start": 150.79,
+      "end": 152.04,
+      "duration": 1.25,
+      "next_action": "leave(crockery)",
+      "edge_key": "leave(utensils)|||leave(crockery)",
+      "step_id": "P08_R01_S02",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 1,
+      "noun_class": 172,
+      "video_id": "P08-20240613-122900",
+      "video_start": 150.79,
+      "video_end": 152.04,
+      "raw_action": "put(presser)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 44,
+      "action": "leave(crockery)",
+      "start": 152.09,
+      "end": 153.82,
+      "duration": 1.7299999999999898,
+      "next_action": "manipulate(crockery)",
+      "edge_key": "leave(crockery)|||manipulate(crockery)",
+      "step_id": "P08_R01_S02",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 1,
+      "noun_class": 13,
+      "video_id": "P08-20240613-122900",
+      "video_start": 152.09,
+      "video_end": 153.82,
+      "raw_action": "put(cup)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 45,
+      "action": "manipulate(crockery)",
+      "start": 153.87,
+      "end": 154.9,
+      "duration": 1.0300000000000011,
+      "next_action": "leave(appliances)",
+      "edge_key": "manipulate(crockery)|||leave(appliances)",
+      "step_id": "P08_R01_S02",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 78,
+      "noun_class": 13,
+      "video_id": "P08-20240613-122900",
+      "video_start": 153.87,
+      "video_end": 154.9,
+      "raw_action": "screw(cup)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 46,
+      "action": "leave(appliances)",
+      "start": 154.89,
+      "end": 156.27,
+      "duration": 1.3800000000000239,
+      "next_action": "transition(appliances)",
+      "edge_key": "leave(appliances)|||transition(appliances)",
+      "step_id": "P08_R01_S02",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 1,
+      "noun_class": 124,
+      "video_id": "P08-20240613-122900",
+      "video_start": 154.89,
+      "video_end": 156.27,
+      "raw_action": "put(machine:washing)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 47,
+      "action": "transition(appliances)",
+      "start": 156.37,
+      "end": 160.13,
+      "duration": 3.759999999999991,
+      "next_action": "transition(crockery)",
+      "edge_key": "transition(appliances)|||transition(crockery)",
+      "step_id": null,
+      "is_primary": false,
+      "phase": null,
+      "verb_class": 11,
+      "noun_class": 165,
+      "video_id": "P08-20240613-122900",
+      "video_start": 156.37,
+      "video_end": 160.13,
+      "raw_action": "move(phone)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 48,
+      "action": "transition(crockery)",
+      "start": 160.23,
+      "end": 161.28,
+      "duration": 1.0500000000000114,
+      "next_action": "leave(crockery)",
+      "edge_key": "transition(crockery)|||leave(crockery)",
+      "step_id": "P08_R01_S03",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 89,
+      "noun_class": 13,
+      "video_id": "P08-20240613-122900",
+      "video_start": 160.23,
+      "video_end": 161.28,
+      "raw_action": "carry(cup)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 49,
+      "action": "leave(crockery)",
+      "start": 161.38,
+      "end": 162.5,
+      "duration": 1.1200000000000045,
+      "next_action": "access(appliances)",
+      "edge_key": "leave(crockery)|||access(appliances)",
+      "step_id": "P08_R01_S03",
+      "is_primary": false,
+      "phase": "prep",
+      "verb_class": 1,
+      "noun_class": 13,
+      "video_id": "P08-20240613-122900",
+      "video_start": 161.38,
+      "video_end": 162.5,
+      "raw_action": "put(cup)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 50,
+      "action": "access(appliances)",
+      "start": 163.4,
+      "end": 165.95,
+      "duration": 2.549999999999983,
+      "next_action": "monitor(drinks)",
+      "edge_key": "access(appliances)|||monitor(drinks)",
+      "step_id": "P08_R01_S03",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 6,
+      "noun_class": 124,
+      "video_id": "P08-20240613-122900",
+      "video_start": 163.4,
+      "video_end": 165.95,
+      "raw_action": "turn-on(machine:washing)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 51,
+      "action": "monitor(drinks)",
+      "start": 166.32,
+      "end": 174.87,
+      "duration": 8.550000000000011,
+      "next_action": "access(furniture)",
+      "edge_key": "monitor(drinks)|||access(furniture)",
+      "step_id": "P08_R01_S03",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 24,
+      "noun_class": 59,
+      "video_id": "P08-20240613-122900",
+      "video_start": 166.32,
+      "video_end": 174.87,
+      "raw_action": "check(coffee)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 52,
+      "action": "access(furniture)",
+      "start": 174.97,
+      "end": 175.82,
+      "duration": 0.8499999999999943,
+      "next_action": "retrieve(crockery)",
+      "edge_key": "access(furniture)|||retrieve(crockery)",
+      "step_id": "P08_R01_S03",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 3,
+      "noun_class": 8,
+      "video_id": "P08-20240613-122900",
+      "video_start": 174.97,
+      "video_end": 175.82,
+      "raw_action": "open(drawer)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 53,
+      "action": "retrieve(crockery)",
+      "start": 175.89,
+      "end": 176.32,
+      "duration": 0.4300000000000068,
+      "next_action": "manipulate(appliances)",
+      "edge_key": "retrieve(crockery)|||manipulate(appliances)",
+      "step_id": "P08_R01_S03",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 0,
+      "noun_class": 2,
+      "video_id": "P08-20240613-122900",
+      "video_start": 175.89,
+      "video_end": 176.32,
+      "raw_action": "take(plate)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 54,
+      "action": "manipulate(appliances)",
+      "start": 178.69,
+      "end": 180.39,
+      "duration": 1.6999999999999886,
+      "next_action": "monitor(appliances)",
+      "edge_key": "manipulate(appliances)|||monitor(appliances)",
+      "step_id": "P08_R01_S03",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 80,
+      "noun_class": 124,
+      "video_id": "P08-20240613-122900",
+      "video_start": 178.69,
+      "video_end": 180.39,
+      "raw_action": "finish(machine:washing)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 55,
+      "action": "monitor(appliances)",
+      "start": 180.55,
+      "end": 185.2,
+      "duration": 4.649999999999977,
+      "next_action": "manipulate(crockery)",
+      "edge_key": "monitor(appliances)|||manipulate(crockery)",
+      "step_id": "P08_R01_S03",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 72,
+      "noun_class": 124,
+      "video_id": "P08-20240613-122900",
+      "video_start": 180.55,
+      "video_end": 185.2,
+      "raw_action": "wait(machine:washing)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 56,
+      "action": "manipulate(crockery)",
+      "start": 185.21,
+      "end": 191.15,
+      "duration": 5.939999999999998,
+      "next_action": "block(appliances)",
+      "edge_key": "manipulate(crockery)|||block(appliances)",
+      "step_id": "P08_R01_S03",
+      "is_primary": true,
+      "phase": "exec",
+      "verb_class": 18,
+      "noun_class": 13,
+      "video_id": "P08-20240613-122900",
+      "video_start": 185.21,
+      "video_end": 191.15,
+      "raw_action": "squeeze(cup)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "index": 57,
+      "action": "block(appliances)",
+      "start": 192.17,
+      "end": 193.26,
+      "duration": 1.0900000000000034,
+      "next_action": "END",
+      "edge_key": "block(appliances)|||END",
+      "step_id": null,
+      "is_primary": false,
+      "phase": null,
+      "verb_class": 8,
+      "noun_class": 124,
+      "video_id": "P08-20240613-122900",
+      "video_start": 192.17,
+      "video_end": 193.26,
+      "raw_action": "turn-off(machine:washing)",
+      "salient": true,
+      "kind": "action"
+    },
+    {
+      "action": "END",
+      "raw_action": "END",
+      "start": 193.26,
+      "end": 193.261,
+      "duration": 0.0,
+      "step_id": null,
+      "is_primary": true,
+      "phase": null,
+      "verb_class": -1,
+      "noun_class": -1,
+      "video_id": "P08-20240613-122900",
+      "video_start": 0.0,
+      "video_end": 0.0,
+      "salient": false,
+      "kind": "end",
+      "index": 58,
+      "next_action": null,
+      "edge_key": null
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "leave(crockery)",
+        "count": 3,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "cup": 3
+        },
+        "verbs": {
+          "put": 3
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.667
+      },
+      {
+        "id": "manipulate(crockery)",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "cup": 2
+        },
+        "verbs": {
+          "screw": 1,
+          "squeeze": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "merge(drinks)",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "coffee": 2
+        },
+        "verbs": {
+          "pour": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "END",
+        "count": 1,
+        "is_primary": true,
+        "salient": false,
+        "objects": {},
+        "verbs": {},
+        "kind": "end",
+        "is_start": false,
+        "is_end": true,
+        "dead_end_score": 1.0
+      },
+      {
+        "id": "START",
+        "count": 1,
+        "is_primary": true,
+        "salient": false,
+        "objects": {},
+        "verbs": {},
+        "kind": "start",
+        "is_start": true,
+        "is_end": false,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "access(appliances)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "machine:washing": 1
+        },
+        "verbs": {
+          "turn-on": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "access(containers)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "cap": 1
+        },
+        "verbs": {
+          "open": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "access(furniture)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "drawer": 1
+        },
+        "verbs": {
+          "open": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "leave(appliances)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "machine:washing": 1
+        },
+        "verbs": {
+          "put": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "leave(utensils)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "presser": 1
+        },
+        "verbs": {
+          "put": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "manipulate(appliances)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "machine:washing": 1
+        },
+        "verbs": {
+          "finish": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "manipulate(drinks)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "coffee": 1
+        },
+        "verbs": {
+          "press": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "monitor(appliances)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "machine:washing": 1
+        },
+        "verbs": {
+          "wait": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "monitor(drinks)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "coffee": 1
+        },
+        "verbs": {
+          "check": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "retrieve(appliances)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "maker:coffee": 1
+        },
+        "verbs": {
+          "take": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "retrieve(crockery)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "plate": 1
+        },
+        "verbs": {
+          "take": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "split(drinks)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "coffee": 1
+        },
+        "verbs": {
+          "crush": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "dead_end_score": 0.0
+      }
+    ],
+    "links": [
+      {
+        "source": "START",
+        "target": "leave(crockery)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "START|||leave(crockery)",
+        "occurrences": [
+          0
+        ]
+      },
+      {
+        "source": "access(appliances)",
+        "target": "monitor(drinks)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "access(appliances)|||monitor(drinks)",
+        "occurrences": [
+          13
+        ]
+      },
+      {
+        "source": "access(containers)",
+        "target": "merge(drinks)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "access(containers)|||merge(drinks)",
+        "occurrences": [
+          4
+        ]
+      },
+      {
+        "source": "access(furniture)",
+        "target": "retrieve(crockery)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "access(furniture)|||retrieve(crockery)",
+        "occurrences": [
+          15
+        ]
+      },
+      {
+        "source": "leave(appliances)",
+        "target": "access(appliances)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "leave(appliances)|||access(appliances)",
+        "occurrences": [
+          12
+        ]
+      },
+      {
+        "source": "leave(crockery)",
+        "target": "manipulate(crockery)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "leave(crockery)|||manipulate(crockery)",
+        "occurrences": [
+          10
+        ]
+      },
+      {
+        "source": "leave(crockery)",
+        "target": "merge(drinks)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "leave(crockery)|||merge(drinks)",
+        "occurrences": [
+          1
+        ]
+      },
+      {
+        "source": "leave(crockery)",
+        "target": "split(drinks)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "leave(crockery)|||split(drinks)",
+        "occurrences": [
+          6
+        ]
+      },
+      {
+        "source": "leave(utensils)",
+        "target": "leave(crockery)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "leave(utensils)|||leave(crockery)",
+        "occurrences": [
+          9
+        ]
+      },
+      {
+        "source": "manipulate(appliances)",
+        "target": "monitor(appliances)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "manipulate(appliances)|||monitor(appliances)",
+        "occurrences": [
+          17
+        ]
+      },
+      {
+        "source": "manipulate(crockery)",
+        "target": "END",
+        "count": 1,
+        "probability": 0.5,
+        "key": "manipulate(crockery)|||END",
+        "occurrences": [
+          19
+        ]
+      },
+      {
+        "source": "manipulate(crockery)",
+        "target": "leave(appliances)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "manipulate(crockery)|||leave(appliances)",
+        "occurrences": [
+          11
+        ]
+      },
+      {
+        "source": "manipulate(drinks)",
+        "target": "leave(utensils)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "manipulate(drinks)|||leave(utensils)",
+        "occurrences": [
+          8
+        ]
+      },
+      {
+        "source": "merge(drinks)",
+        "target": "leave(crockery)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "merge(drinks)|||leave(crockery)",
+        "occurrences": [
+          5
+        ]
+      },
+      {
+        "source": "merge(drinks)",
+        "target": "retrieve(appliances)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "merge(drinks)|||retrieve(appliances)",
+        "occurrences": [
+          2
+        ]
+      },
+      {
+        "source": "monitor(appliances)",
+        "target": "manipulate(crockery)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "monitor(appliances)|||manipulate(crockery)",
+        "occurrences": [
+          18
+        ]
+      },
+      {
+        "source": "monitor(drinks)",
+        "target": "access(furniture)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "monitor(drinks)|||access(furniture)",
+        "occurrences": [
+          14
+        ]
+      },
+      {
+        "source": "retrieve(appliances)",
+        "target": "access(containers)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "retrieve(appliances)|||access(containers)",
+        "occurrences": [
+          3
+        ]
+      },
+      {
+        "source": "retrieve(crockery)",
+        "target": "manipulate(appliances)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "retrieve(crockery)|||manipulate(appliances)",
+        "occurrences": [
+          16
+        ]
+      },
+      {
+        "source": "split(drinks)",
+        "target": "manipulate(drinks)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "split(drinks)|||manipulate(drinks)",
+        "occurrences": [
+          7
+        ]
+      }
+    ]
+  },
+  "analysis": {
+    "dead_ends": [
+      {
+        "id": "leave(crockery)",
+        "score": 0.667
+      },
+      {
+        "id": "manipulate(crockery)",
+        "score": 0.5
+      },
+      {
+        "id": "merge(drinks)",
+        "score": 0.5
+      }
+    ],
+    "self_loops": [],
+    "start_id": "START",
+    "end_id": "END"
+  }
+}

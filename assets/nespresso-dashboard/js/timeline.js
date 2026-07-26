@@ -1,4 +1,14 @@
+// timeline.js
 import { formatSeconds } from "./utils.js";
+
+function shortStepLabel(stepId) {
+  if (!stepId) return "—";
+  // P01_R01_S02 → S02
+  const parts = stepId.split("_");
+  const last = parts[parts.length - 1];
+  if (last && last.startsWith("S")) return last;
+  return stepId;
+}
 
 export function drawTimeline(timelineBodyEl, sequence) {
   timelineBodyEl.innerHTML = "";
@@ -6,9 +16,11 @@ export function drawTimeline(timelineBodyEl, sequence) {
   return sequence.map((item) => {
     const tr = document.createElement("tr");
     tr.dataset.index = String(item.index);
+    const step = shortStepLabel(item.step_id);
     tr.innerHTML =
       `<td>${item.index + 1}</td>` +
       `<td title="${item.action}">${item.action}</td>` +
+      `<td>${step}</td>` +
       `<td>${formatSeconds(item.start)}</td>` +
       `<td>${formatSeconds(item.end)}</td>` +
       `<td>${formatSeconds(item.duration)}</td>`;
@@ -28,8 +40,6 @@ export function updateTimelineActive(timelineRows, footerPanelEl, activeItem) {
   timelineRows.forEach((rowEl) => {
     const isActive = activeItem && Number(rowEl.dataset.index) === activeItem.index;
     rowEl.classList.toggle("active", Boolean(isActive));
-    if (isActive) {
-      scrollTimelineToRow(footerPanelEl, rowEl);
-    }
+    if (isActive) scrollTimelineToRow(footerPanelEl, rowEl);
   });
 }
