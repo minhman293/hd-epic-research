@@ -99,7 +99,7 @@ Only 5 recipes have multiple captures. Of those, only one (P01_R01) has all sing
 | P05_R02 | Porridge | 3 | Every capture spans multiple videos |
 | P09_R03 | Hibiscus Drink | 2 | Second capture spans 2 videos |
 
-### 1.8 The four challenges that constrain visualization
+### 1.8 The challenges that constrain visualization
 
 These are the dataset's defining difficulties. The current motion graph design predates this analysis and does not handle them well.
 
@@ -111,7 +111,7 @@ Example: In all three Nespresso captures, P01 presses the coffee button (S02) be
 
 **Implication:** Step number (S01, S02, ...) is not a reliable proxy for time. Any visualization that places steps left-to-right by step number will contradict the video evidence.
 
-#### Challenge 2 — Step revisitation
+#### Challenge 2 — Step revisitation (This is not a challenge. This is normal behavior in cooking)
 
 **341 of 504 annotated step instances have more than one time window.** Steps are not atomic — people return to the same activity repeatedly.
 
@@ -137,13 +137,6 @@ To support verification, the detector now writes `overlap_pairs.csv` (one row pe
 
 **Implication:** A directed sequence graph structurally assumes one action follows another. It cannot represent two steps active in the same time span. For simple recipes (Nespresso) this is moot. For the few real-overlap cases it underrepresents the structure; analysis of those moments is deferred to a future view.
 
-#### Challenge 4 — Step window duration heterogeneity
-
-- 4.7% of windows are under 1s (likely annotation artifacts)
-- 1.5% are over 2 minutes
-- Median: 9.8s, mean: 18.5s
-
-**Implication:** Step windows cannot be treated as uniform-duration slots. A temporal barcode colored by step has some steps as slivers, others as wide blocks. 41 step+capture combinations have zero time windows (missing annotation).
 
 ### 1.9 What the dataset can and cannot support
 
@@ -176,7 +169,7 @@ The project sits between two advisor interests:
 
 ### 2.2 The shared interest
 
-Across all: **identify, from real human cooking video, where and how a robot could take over or share work, and represent human and (eventually) robot activity together.** Two collaboration modes have been named:
+Across all: **identify where and how a robot could take over or share work, and represent human and (eventually) robot activity together.** Two collaboration modes have been named:
 
 - **Parallel collaboration:** human and robot act simultaneously, possibly on different sub-tasks
 - **Sequential / predictive collaboration:** robot anticipates the next human action
@@ -187,11 +180,11 @@ Honest accounting of what the dashboard surfaces today:
 
 | Insight | Status | How it's revealed |
 |---|---|---|
-| Action frequency | Full | Node size in graph; segment density in barcode |
+| Action frequency | Full | Node size in graph; segment density in barcode and swimlane |
 | Action category | Full | 13-color encoding consistent across views; combined with HRC-role |
-| Action duration | Full | Barcode stack |
-| Within-person consistency | Full | Merged graph view + Min support |
-| Transition structure | Partial | Graph edges; time-axis encoding is misleading (columns issue) |
+| Action duration | Full | Swimlane |
+| Within-person consistency | Partial | Barcode |
+| Transition structure | Partial | Graph edges. Still have issues on how to represent the transition: backward transitions |
 | Self-loops (consecutive repetition) | Partial | ⟳ glyph — captures only consecutive repeats, not full revisitation |
 
 ### 2.4 The intervention-point insights — not yet revealed
@@ -364,7 +357,7 @@ Prof. Lin's requirement: the motion graph should summarize action occurrences an
 
 - `mandatory_nodes` — actions present in every session; the operational core of the recipe.
 - `canonical_spine` and `canonical_spine_score` — a greedy walk from `START` choosing, at each step, the successor with highest support (breaking ties by highest pooled probability). This is a habit-weighted "most likely path" through the merged chain and is useful as an anticipatory-robot baseline: the plan a robot would follow if it always bet on what the person usually did.
-- `dead_ends` — top-10 nodes with pooled `dead_end_score ≥ 0.6`, i.e. states most transitions out of which lead directly to termination (Video Textures anticipated-cost analog, Schödl et al. 2000).
+
 - `session_similarity` — pairwise (1 − normalized Levenshtein) matrix on the START/END-stripped action sequences; a first-order handle on within-participant consistency.
 - `session_shared_prefix` and `session_shared_suffix` — the initial and final action runs identical across all sessions in the same positions. Structural signal for openings/closings that are stable across trials.
 - `loops` — up to 20 cycles (length ≤ 5) discovered in the strong-edge subgraph (support ≥ 2, non-self-loop). Structural signal for recurring behavioral motifs.
@@ -380,7 +373,7 @@ The pipeline produces **five** per-session JSONs, each at a different granularit
 - **Hybrid** (`session_{N}_hybrid.json`) — the primary Markov view. State identity is the fixed function `verb_key(noun_category)` (e.g. `pour(beverage)`, `press(button)`, `open(container)`). A dedicated two-pipeline architecture produces (a) a *full sequence* — every atomic action with `verb_key(noun_category)` identity plus injected `START` / `END` sentinel items — that feeds the swimlane and barcode views, and (b) a *primary sequence* — the same identity function applied to only the `is_primary=True` subset — that drives the motion graph's nodes and edges. Filtering the graph to primary actions makes the Markov chain about recipe execution rather than about the interleaved noise of drawer-opening, phone-checking, and cleanup. Node counts fall in the ~15–40 range in practice. Edges carry `count` and Markov `probability` (P(B|A) = count/out-degree, Σ = 1 per node, self-loops kept; Schödl et al. 2000). See §3.4.2.
 - **Abstracted** (`session_{N}_abstracted.json`) — nodes are recipe steps (S01, S02, …). 3–16 nodes per recipe. Still generated by the pipeline for downstream reuse. **Removed from the dashboard UI** in the June 2026 revision — the swimlane covers step structure and duplicate views fragment attention.
 
-The four UI-exposed modes (Full Raw → Smart-Merged → Categorical → Hybrid) form a **granularity ladder** the user can switch between via the dropdown. Each level answers a different analytical question: Full Raw asks "what action on what object?", Smart-Merged asks "what verb?", Categorical asks "what kind of action?", and Hybrid asks "what verb on what kind of object, restricted to recipe execution?"
+
 
 #### Step labels
 
@@ -388,27 +381,6 @@ Each step node carries a short **diagnostic label** (e.g., "insert capsule", "fr
 
 Labels live in `outputs/step_labels.json` keyed by full step ID (`P01_R01_S01`), and ride the pipeline into each payload's `steps[].label` and onto abstracted nodes' `step_label`. The frontend (`config.js`'s `resolveStepLabel`) falls back gracefully to the raw step ID if a label is missing, so the view never breaks. Labels are generated once and committed — no LLM call at render time, which keeps the dashboard deterministic for demos.
 
-### 3.4.1 Picking the Categorical granularity — empirical check
-
-Prof. Lin's recommendation was to "merge actions by type so each node represents one action category." The naive reading of this — group by HD-EPIC verb categories — was tested empirically across the 7 coffee recipes before committing to an implementation.
-
-**Three abstraction schemes were measured on the same data** (all atomic narrations across each capture's videos):
-
-| Recipe | verb×noun (Full Raw) | verb_cat × noun_cat | verb_cat only |
-|---|---|---|---|
-| P01_R01 Nespresso | 163 | 83 | **11** |
-| P03_R03 Drip Coffee | 424 | 124 | **13** |
-| P06_R02 Cappuccino | 148 | 65 | **11** |
-| P06_R07 Cappuccino | 147 | 75 | **12** |
-| P07_R01 Coffee | 157 | 76 | **12** |
-| P07_R06 Coffee | 306 | 108 | **13** |
-| P08_R01 Coffee | 39 | 28 | **10** |
-
-The `verb_cat × noun_cat` scheme (the obvious "merge by category" reading) **does not** hit the target node count. The narrations are more verbose than expected — annotators record every micro-action including cleaning, drawer-opening, phone-handling — so the (verb-category × noun-category) space still produces 28–124 nodes per recipe. Adding a primary-action filter (only actions overlapping a `step_times` window) brings the count into range but throws away 67–97% of activity, including all prep, transitions, and cleanup. Adding a frequency-pruning cutoff (top-K nodes) introduces an arbitrary threshold.
-
-The **`verb_cat` only** scheme hits the 10–13 node target naturally across every recipe tested, preserves 100% of the data (no filter, no threshold), and is a clean Markov chain in the Video Textures sense. The trade-off is that object/material information is not in the node identity itself — it is preserved as a per-node distribution (`objects`, `verbs`, `noun_categories` fields) and surfaced in the hover tooltip.
-
-For coffee recipes, the top 5 verb categories (`retrieve`, `leave`, `manipulate`, `access`, `block`) cover roughly 85–90% of activity, with `clean`, `merge`, `transition`, `sense`, `split`, `monitor` making up the long tail. The Markov transition probabilities give a defensible state-machine description of cooking behavior at a level abstract enough to compare across participants.
 
 ### 3.4.2 Hybrid mode — design (revised July 2026)
 
@@ -429,22 +401,16 @@ For coffee recipes, the top 5 verb categories (`retrieve`, `leave`, `manipulate`
     Both sequences are shipped in the payload: `result["sequence"]` = full sequence (for the UI's timeline uses), `result["graph"]` = nodes + links derived from primary sequence (for the motion graph). The two-pipeline design is documented on the payload itself as `salient_config = {"identity_rule": "verb_key(noun_category). Graph filtered for primary actions. Sequence keeps all actions."}`.
 
 3. **Per-session analysis fields.** Every hybrid payload also carries an `analysis` block:
-
-    - `dead_ends` — top-10 nodes with pooled `dead_end_score ≥ 0.5` from `_compute_dead_end_scores`. The score is defined as `1 − max_t P(n → t)` over targets `t` that are not `END`, so a node with score close to 1.0 has almost no non-terminating continuation and behaves as a semantic dead end (Video Textures anticipated-cost analog at the state-transition level; Schödl et al. 2000).
     - `self_loops` — actions where two consecutive primary-sequence items land on the same identity (`stir → stir`, `pour → pour`), with count. These are the honest consecutive-repetition signal at the primary level.
     - `start_id` / `end_id` — the sentinel identities, so the renderer can locate the graph's root and tail deterministically.
 
-**Why this replaces the previous salient/background design.**
 
-- *Determinism and cross-recipe portability.* The lexical-salience approach required a per-recipe salient set and a `match_report` audit trail, and had known recall misses (P01_R01's frother matched no HD-EPIC key token). The fixed identity function has no such dependency and runs identically on every recipe, including recipes not yet in the dataset.
-- *Node-count control by data, not thresholds.* Node counts fall out of the vocabulary of (`verb_key`, `noun_category`) actually observed in each primary sequence, not from `--salient-k` / `--salient-node-min` thresholds. There is no "identity requires evidence" cutoff to tune.
-- *Cross-session comparability by construction.* Because the identity function is fixed rather than recipe-scoped, sessions of *different* recipes are directly comparable — a step forward from the previous design where the salient vocabulary was recipe-specific.
 
 **HRI framing (preserved).** The `is_primary` / `is_secondary` split remains collaboration-relevant. Primary actions are the recipe-critical work the human is doing when they are visibly on-recipe; secondary actions (retrieve-a-cloth, check-a-phone, open-a-drawer between steps) are the repetitive delegable activity a robot could absorb (anticipatory-support framing, Hoffman & Breazeal 2007). The two-pipeline split makes this explicit at the data-model level: the graph represents what a robot would need to anticipate; the full sequence represents everything actually happening.
 
 **Known contamination caveat (still open).** Narration files span whole videos, so recipes sharing videos with other dishes carry inflated secondary counts. Scoping narrations to the recipe's time span via the per-participant activity-timestamps CSVs remains a pending pipeline task.
 
-### 3.5 Primary vs Secondary action lanes
+### 3.5 Primary vs Secondary action lanes (stil need these two action categories. but they're not showed in the graph anymore)
 
 A key design decision based on `step_times` coverage:
 
@@ -577,7 +543,7 @@ Standalone script that produces `outputs/step_labels.json`. Reads each recipe's 
 #### Single-session view
 
 Two-column layout:
-- Left: motion graph with encoding controls above it, Min. Transition Count slider, the graph itself with zoom buttons, then the legend
+- Left: motion graph with encoding controls above it,  the graph itself with zoom buttons, then the legend
 - Right: video player, annotation timeline strip, recipe metadata panel
 - Bottom: action timeline table
 
@@ -585,26 +551,28 @@ Two-column layout:
 
 Two-column layout:
 - Left: The merged graph is always the primary graph; session tabs act as highlights on it, not view switches
-- Right: main video, thumbnail queue of inactive sessions, three stacked barcodes, comparison metadata panel
+- Right: main video, thumbnail queue of inactive sessions, [n] stacked barcodes, comparison metadata panel
 
 ### 3.8 Controls
 
-**Shared across both views (in the encoding-controls row):**
-- Recipe dropdown
-- Session picker (tab buttons: "Session 1", "Session 2", "Session 3", "Merged")
-- Detail Level dropdown (Smart-Merged / Full Raw / Task Phases)
-- Color encodes dropdown (Action category / Task phase / Mean duration)
-  - The "Action category" option is automatically disabled when Detail Level is Task Phases, since step labels aren't verbs
-- Node size dropdown (Frequency / Duration)
-- Layout dropdown (Temporal / Category groups) — hidden in comparison view since the merged graph is always temporal
+**Shared Top-Row Controls (Encoding & View Filters):**
+- **Recipe dropdown:** Selects the target recipe payload (e.g., P01_R01, P03_R03).
+- **Highlight View tabs:** Session picker containing "All Sessions" (loads merged global topology) alongside individual "Session 1", "Session 2", etc. tabs. Toggling tabs dynamically shifts path opacities to spotlight specific participant workflows without tearing down the layout.
+- **Detail Level dropdown:** Selects the abstraction mode:
+  - *Hybrid (verb_key):* Primary Markov view using `verb_key(noun_category)` states.
+  - *Hybrid (verb_cat):* High-level Markov view using `verb_category(noun_category)` states.
+- **Color encodes dropdown:** Node fill encoding (Action category / Task phase / Mean duration).
+- **Node size dropdown:** Circle area encoding (Frequency / Duration).
+- **Layout dropdown:** Spatial positioning mode (Process Flow / HRC roles).
+- **Highlight Canonical Spine button:** Dynamic toggle that darkens and thickens the greedy highest-probability walk from `START` to `END`.
 
-**Single-session only:**
-- Min. Transition Count slider — filter out low-count edges
-
-**Comparison only:**
-- Sub-mode toggle: Merged graph / Small multiples
-- Min. support slider — hide nodes appearing in fewer than N sessions (Merged graph sub-mode only)
-
+**Dynamic Panel Controls (Context-Aware):**
+- **Single Session Focus (when an individual session tab is selected):**
+  - Displays the single Annotation Timeline Strip above the Swimlane.
+  - Swimlane maps actions back to absolute elapsed time, showing primary execution bars alongside secondary background activity.
+- **All Sessions / Merged View (when "All Sessions" tab is selected):**
+  - Displays the Stacked Barcodes and Video Thumbnail Queue in the right panel.
+  - Filters out single-session swimlanes to emphasize cross-trial comparison.
 ### 3.9 Interactions
 
 - **Click a node in motion graph** → seek video to that action's start; repeated clicks cycle through the action's occurrences
@@ -616,237 +584,10 @@ Two-column layout:
 - **Hover an edge** → tooltip with transition count and source/target
 
 ### 3.10 Known limitations
-
-- **Time-axis honesty problem.** The temporal layout buckets nodes into ~90px columns based on mean onset across occurrences. This creates a misleading visual where nodes in the same column appear to happen at the same time when they don't. For actions that recur, the mean is a fabricated timestamp.
 - **Step-tagging picks one step per action even when step windows are nested.** When an action overlaps two step windows (e.g., S03 nested inside S02 in P05_R01), the rule picks the step with maximum overlap. The narrower step receives no actions. This is a design choice — one step per action keeps the swimlane unambiguous — but it can hide annotated step boundaries in a few specific captures.
 - **Annotation-layer gap.** Step-time annotations and atomic-action narrations were created independently and don't always agree on what counts as activity. About 0.9% of step-windows across the dataset have zero underlying narrations; P08_R03 has 23% (5 of 22). The dashboard renders these as visible-but-empty step windows.
 - **Cross-video overlap not detected.** The overlap detector (P3) only flags pairs within the same video file. If two step windows span a pause/resume boundary, they are not flagged. Adding cross-video overlap detection would require offset-aware time math; deferred.
 - **Cross-person comparison structurally impossible** with available data (63 of 69 recipes are single-participant).
 - **Intervention insights: data available, UI pending.** The dashboard reveals frequency, transition structure, and consistency well. As of July 2026 the pipeline emits the underlying data for all four intervention insights (per-step time-window arrays for A/B/C; `step_windows` with `phase` and `steps[].prep_gaps` for D), but the frontend does not yet render dedicated views for any of them. The four proposed views in Part 5 are what closes this gap.
-- **Video contamination inflates hybrid node counts.** Narrations span whole videos; recipes sharing videos with other dishes (P03_R03, P05_R01) exceed the ~20-node target. Fix (pending): scope narrations to the recipe's time span via the per-participant activity-timestamps CSVs.
 - **Lexical salience matching has recall misses.** Synonym gaps are not recoverable by any lexical rule (e.g., P01_R01's frother matches no HD-EPIC key token). The `match_report` in `salient_config` makes each recipe's matches auditable; a per-recipe scan against step text is recommended when adding new recipes.
 - **Drag geometry lacks a single source of truth.** Node positions, edges, and self-loops are updated by separate code paths; two stale-geometry bugs have already occurred (START rank, self-loop arcs). A consolidated `updatePositions()` re-deriving all position-dependent geometry is the durable fix (standard D3 idiom); deferred.
-- **Hybrid default view is a compromise.** The legibility-floor option (minimum scale with initial pan to START) was considered and deliberately deferred — it trades whole-graph visibility (overview-first, Shneiderman 1996) for node legibility; to be decided with Prof. Lin.
-
----
-
-## Part 4 — Document Status
-
-**Coverage of the project:**
-- Dataset structure and challenges: complete
-- Research insights and direction: complete as of current understanding
-- Current dashboard components and tech: complete
-- Multi-video capture stitching architecture and the new JSON schema: complete
-
-**Not covered here:**
-- Detailed development history (delivery-by-delivery patch log)
-- Code-level API documentation
-- The proposed timeline/intervention view designs (covered separately)
-
-**Verification recommended before sharing externally:**
-- Exact numbers from `complete_recipes.json` analysis (verified against actual JSON during this work)
-- The "5 multi-capture recipes" list (verified)
-- The "63% of captures have out-of-order execution" number (verified)
-- The "25 same-video overlap pairs in 12 of 80 captures" number (verified)
-- The "30.4% of step-windows" multi-video data-loss figure and the per-recipe distribution (verified)
-- The "9 errors, 2 real, 1 ambiguous" overlap verification breakdown (manual verification)
-- Categorical detail mode added to the pipeline and dashboard (June 2026). Empirical check on 7 coffee recipes verified that `verb_cat` alone consistently produces 10–13 nodes; `verb_cat × noun_cat` produces 28–124 (too many) and was rejected.
-- Sequence items now carry `verb_class` and `noun_class` IDs in addition to the rendered `action` string, so downstream graph builders can group by category without re-parsing the action label. Sequence items also carry `phase` (`exec` / `prep` / `None`), `video_id`, `video_start`, and `video_end` after the multi-video stitching work.
-- Hybrid mode redesigned (July 2026) to use the fixed identity function `verb_key(noun_category)` and a two-pipeline architecture (full sequence for UI, primary-filtered sequence for graph). Previous lexical-salience design (`--salient-k`, `--salient-node-min`, per-recipe `match_report`) removed. Rationale: determinism, cross-recipe portability, and clean separation of "everything happening" from "the recipe-execution Markov chain."
-- Prep-times added to the pipeline (June 2026): `step_windows[*].phase`, `steps[].prep_gaps`, sequence-item `phase`. Enables Insight D at the data layer; frontend rendering pending.
-- Merged-graph analysis block added to `8_aggregate_sessions.py`: `mandatory_nodes`, `canonical_spine`, `dead_ends`, `session_similarity`, `session_shared_prefix` / `session_shared_suffix`, `loops`, `session_singleton_nodes`. `normalize_special_nodes` unifies START/END identity before pooling.
-- Merged-view arrowhead loss root-caused to duplicate marker ids + hidden-subtree rendering; fixed by per-instance namespacing (July 2026).
-- Task Phases (Abstracted) view removed from dashboard UI (design decision: swimlane covers step structure); pipeline output retained.
-
----
-
-## Part 5 — Proposed Designs for the Missing Intervention Insights
-
-The four insights in Section 2.4 (deviations from order, revisitation hotspots, parallel overlaps, prep-vs-execution gaps) are not currently revealed by the dashboard. This section sketches an interactive view for each. The principle throughout: each design is not one fixed chart but an explorable view with controls that let users filter, sort, drill in, and switch encodings.
-
-### 5.1 Design 1 — Deviations from recipe order
-
-**Research question:** Where does the participant diverge from the recipe's nominal step order, and why?
-
-**View structure:** Two parallel horizontal rows per capture.
-- **Top row** — the recipe's nominal order. Steps S01, S02, S03, … evenly spaced left to right. This is the "ideal."
-- **Bottom row** — the actual first-occurrence order along real time. Each step placed at its first time-window start.
-- **Connecting lines** between the same step in both rows. When two lines cross, that's a deviation. The crossing is the visual signal.
-
-A per-capture **disorder score** (count of crossings) lets users rank multiple captures by how non-linear they were.
-
-**Interactive controls:**
-- Toggle the bottom-row x-axis between **real time** and **rank order** — rank removes duration distortion; time shows how far apart the deviations are in seconds
-- Toggle **"first occurrence only"** vs **"all occurrences"** — a step with 20 windows shows 20 ticks on the bottom row instead of one
-- Click any crossing line → seek video to that moment so users can see *why* the person went out of order
-- Sort multiple captures by disorder score to find the most non-linear ones
-
-**Data source:** for each step ID, `min(w.start for w in step_times[step_id])`.
-
-**Dataset prevalence:** 63% of captures (50 of 80) have at least one out-of-order step.
-
-**What users discover:** which steps get reordered, how consistently the same person does it across sessions, and by watching the video at crossings, why.
-
-### 5.2 Design 2 — Revisitation hotspots
-
-**Research question:** Which steps does the participant return to repeatedly across the session? Which are one-and-done?
-
-**View structure:** One horizontal strip per step.
-- Each strip spans the full session timeline (real time or normalized)
-- Each time window for that step is drawn as a **vertical tick** at its true position
-- A step done once = one tick. A step revisited 20 times = 20 ticks scattered across the strip.
-
-The eye immediately sees which steps are "busy" (dense ticks) versus "one-and-done" (single tick). Each strip is labeled with its revisitation count, color-coded (red for high, yellow for medium, green for low).
-
-**Interactive controls:**
-- Sort steps **by revisitation count** (hotspots float to top) or **by recipe order** (preserve structural reading)
-- **Density heat-bar view** as an alternative — instead of discrete ticks, a continuous bar darkened where the step recurs most densely
-- **Brush a time region** → reverse lookup: which steps were active in that window
-- **Filter slider:** "show only steps revisited more than N times" — isolates the hotspots
-- Click any tick → seek video to that specific revisit
-
-**Data source:** for each step ID, `len(step_times[step_id])` and the time windows themselves.
-
-**Dataset prevalence:** 341 of 504 annotated step instances have more than one window. Extreme cases: Cacio e Pepe S03 with 20 windows; Sfesiha S01 with 13.
-
-**What users discover:** which steps are attention-heavy mechanical loops — strong candidates for robot delegation, since a step revisited 20 times is a repetitive sub-task ripe to offload.
-
-### 5.3 Design 3 — Parallel overlaps (Gantt / swimlane)
-
-This is the view the current motion graph fundamentally cannot produce. It directly serves Prof. Yen's "robot holds the machine while person brushes hair" vision and Prof. Grace's parallel collaboration mode.
-
-**Research question:** Where does the participant already run two tasks at once?
-
-**View structure:** A Gantt-style swimlane.
-- **X-axis = real elapsed time** (no bucketing, no mean — actual seconds)
-- Each step gets its **own horizontal lane**
-- Each time window is a **bar at its true `[start, end]`** with width proportional to true duration
-- **Vertical highlight bands** mark columns where two or more steps were simultaneously active — the overlap regions
-
-When two bars in different lanes occupy the same x-range, the steps overlapped. The vertical alignment is the visual signal.
-
-**Interactive controls:**
-- Switch lane grouping: **by step**, **by verb category**, or **by primary/secondary**
-- Toggle **"show overlaps only"** — dims non-overlapping bars so the 214 simultaneity points pop
-- **Minimum overlap duration slider** — ignore <1s incidental overlaps, keep meaningful ones
-- Toggle x-axis between **absolute seconds** and **normalized 0–100%** (to compare across sessions)
-- Click any bar → seek video; click an overlap band → see both actions at that moment in the video
-
-**Data source:** all pairs of `step_times` windows from different steps in the same capture where `max(start1, start2) < min(end1, end2)`.
-
-**Dataset prevalence:** 25 overlapping pairs across 12 of 80 captures. Cacio e Pepe S01 ∩ S03; Sfesiha dough-rest ∩ filling-prep.
-
-**What users discover:** natural parallelization points where a robot taking one track wouldn't disrupt the human's flow. These are pre-existing demonstrations that the human's workflow already supports parallel execution at these specific moments.
-
-**Why this is the highest-value design:** it answers the question Prof. Yen raised that the meeting couldn't resolve, it serves Prof. Grace's parallel collaboration mode directly, and it provides the honest temporal representation Prof. Lin demanded. It also forces the timeline foundation that Designs 1, 2, and 4 can reuse.
-
-### 5.4 Design 4 — Prep-vs-execution gaps
-
-**Research question:** How long is the window between preparing for a step and actually executing it? Long gaps are candidate intervention windows where a robot could bridge.
-
-**View structure:** One row per step, sorted by gap length.
-- A **green marker** where `prep_times` begins (prep starts)
-- A **blue marker** where `step_times` begins (execution starts)
-- A **yellow bar** connecting them — the gap
-
-A long yellow bar means the person prepared early then did other things before executing. The bar literally is the intervention window. Each row is labeled with the gap duration, color-coded by length (red for very long, yellow for medium, green for short).
-
-**Interactive controls:**
-- Sort by **gap length** (longest at top — biggest opportunity windows) or **by recipe order**
-- Toggle **"show prep without execution"** — surfaces annotation gaps where prep was annotated but execution wasn't
-- **Overlay option:** show what *other* actions happened inside the gap — what was the person doing instead of executing?
-- Click the gap bar → play video across that span to see what filled the time
-
-**Data source:** `steps[].prep_gaps` in the per-session payload (list of `{prep_end, exec_start, gap}` per step, pre-computed on the unified timeline). For rendering prep and exec bars in the same lane, `step_windows` in the payload now carries a `phase` field (`"exec"` or `"prep"`). Sequence items also carry `phase`, useful if the view wants to highlight the atomic actions that fall inside a prep window vs an exec window. All three were added to the pipeline in the June 2026 revision; the frontend rendering of prep windows in the swimlane is the remaining work.
-
-**Dataset prevalence:** present in most captures. Example: P01_R01 S04 — prep starts at 9.5s, execution at 136s, gap of 127s.
-
-**What users discover:** windows where preparation and execution are temporally separated — candidate moments for a robot to pre-position a tool during the human's prep, then hand off when the human is ready to execute.
-
-### 5.5 How the four views fit together
-
-These should not be built as four separate pages. The unifying structure: **all four are time-based views of the same capture, sharing one video and one timeline cursor.**
-
-The natural architecture is a single **"Intervention Explorer"** panel with:
-
-- One shared `<video>` element at the top
-- One shared timeline cursor that moves across all four views as the video plays
-- A **view-mode switcher**: Order alignment · Revisitation · Overlaps · Prep-gaps
-- Shared controls that persist across views: session picker, real-time vs normalized, click-to-seek
-- Each view answers one of the four questions, but they all illuminate the same underlying video moments
-
-This is genuinely interactive in the sense that matters — users explore by switching views, filtering, sorting, and clicking into the video, rather than reading a fixed chart.
-
-The two collaboration framings from Section 2.2 map cleanly onto these:
-
-- **Parallel collaboration mode** → Design 3 (overlaps)
-- **Sequential/predictive collaboration mode** → Designs 1 (deviations) and 4 (prep-gaps)
-- Design 2 (revisitation) identifies the *targets* for either mode — actions worth delegating
-
-### 5.6 Relationship to the current motion graph
-
-The current motion graph is a node-link diagram with a misleading temporal layout. The dataset analysis in Part 1 makes clear it cannot honestly represent the three structural realities of HD-EPIC cooking:
-
-- Out-of-order step execution (50/80 captures) — a left-to-right node layout asserts an order the data doesn't have.
-- Step revisitation (341 of 504 step-instances have >1 window) — aggregating into a single node hides temporal distribution.
-- Temporal overlap (25 same-video pairs in 12 captures) — a directed sequence graph structurally cannot represent two steps active simultaneously.
-
-These are not framing issues; the motion graph's representation is wrong for this data.
-
-**The swimlane (Design 3 generalized) is the appropriate primary view for one recipe.** Time on the x-axis, one lane per recipe step in nominal order, every step window as a bar at its true position with width = duration. The three structural realities become *visible features* of the data rather than problems to work around: revisitation appears as multiple bars in the same lane, overlap appears as vertical alignment across lanes, and out-of-order execution appears as bars whose chronological order doesn't match their lane order. With LLM step labels as lane headings ("load capsule", "brew espresso", "froth milk", ...) the swimlane is also recipe-recognizable without watching the video.
-
-**The motion graph is not eliminated; it is demoted to a complementary role.** Its honest jobs are showing *what kinds* of action exist and how they cluster by HRI role — questions where time is not the primary concern. The merged motion graph for cross-session aggregation retains its purpose (showing transition support across sessions).
-
-**Resulting three-view architecture:**
-
-| View | Question it answers | Position in dashboard |
-|---|---|---|
-| Swimlane (single session) | When does each action happen, how long, in what order? | Primary single-session view |
-| Motion graph (single session) | What kinds of action exist, in what role groupings? | Complementary, explicitly non-temporal |
-| Merged motion graph (cross-session) | What reliably follows what across sessions? | Comparison view |
-
-Each view makes one honest claim instead of one view making a confused one (Baldonado et al. 2000, *Guidelines for using multiple views in information visualization*).
-
-### 5.7 What the swimlane delivers against the insight list
-
-Coverage of the insights tracked in sections 2.3 and 2.4:
-
-| Insight | Swimlane delivers? |
-|---|---|
-| Action frequency (2.3) | Yes — bar count per lane |
-| Action category (2.3) | Yes — bar fill color, same 13-category palette |
-| Action duration (2.3) | Yes — bar width on a real time axis |
-| Within-person consistency (2.3) | Yes — stack one swimlane per session, time-aligned |
-| Transition structure (2.3) | Partial — order visible, but no probabilities |
-| Self-loops / consecutive repetition (2.3) | Yes — adjacent bars in same lane |
-| Insight A · Deviations from recipe order (2.4) | Yes — bars firing out of lane order are visible deviations |
-| Insight B · Revisitation hotspots (2.4) | Yes — dense lanes are visually obvious |
-| Insight C · Parallel overlaps (2.4) | Yes — vertical alignment across lanes |
-| Insight D · Prep-vs-execution gaps (2.4) | Yes — render prep as outline bar, execution as filled bar, in the same lane; the empty gap between them is the intervention window |
-
-Six insights fully delivered, two existing insights partially delivered, no insight made worse. This is a net coverage gain across the dashboard.
-
-**Encoding choices, settled:**
-
-- **Lane order** = recipe order (S01 top, last step bottom). Any other order forfeits the deviation signal that out-of-order lanes provide for free.
-- **Prep vs execution** = outline-only bar for prep, filled bar for execution, both in the same verb-category color, in the same lane. The empty space between an outline-bar's end and a filled-bar's start *is* the prep–execution gap (Aigner et al. 2011 on layered time intervals).
-- **Lane labels** = LLM step labels from `step_labels.json` ("load capsule", "brew espresso", ...), with the raw step ID as fallback. This is what makes the swimlane recipe-recognizable.
-
-**One signal the swimlane does NOT deliver:** transition probability across sessions (which Prof. Lin's Markov direction needs). That signal lives in a transition matrix, not a timeline. The merged motion graph already partly serves this; a true transition matrix would serve it better and remains a candidate for a future complementary view.
-
-**Bar fill — sub-segmented:**
-
-Each step bar contains multiple atomic actions inside its time window (e.g., S02 "brew espresso" at 18.9–19.2s contains `take`, `open`, `press`, `close`). Rendering option:
-
-- **Sub-segmented** (each atomic action is its own colored slice within the bar, widths from real timestamps) — matches the existing barcode encoding for consistency, but short atomic actions become invisible slivers at normal zoom.
-
-### 5.8 Implementation order, revised
-
-The original section 5.7 order (Design 3 → Design 1 → Design 2 → Design 4) assumed four parallel designs. With the swimlane recast as the primary view, the order is:
-
-1. **Build the swimlane as the primary single-session view.** Reuses the existing detail-level pipeline (the Abstracted mode gives clean lanes; Smart-Merged, Full Raw, Categorical, and Hybrid all use the existing `step_id` field for lane assignment). LLM step labels become lane labels. This single build delivers Insights B, C, and partial A.
-2. **Layer prep windows onto the swimlane** (outline bars for `phase == "prep"`, filled bars for `phase == "exec"`). Pipeline groundwork is done — `step_windows[*].phase` and `steps[].prep_gaps` are already in every session payload. This is now a pure rendering task and delivers Insight D.
-3. **Add lane-order deviation cues** (e.g., a small marker or color tint when a bar's chronological order doesn't match its lane order). This sharpens Insight A from partial to full.
-4. **Demote the motion graph to a non-temporal topology view** (HRI / category clusters only, no time axis). Resolves the column-confusion problem by removing time from the view that can't honestly represent it.
-
-Corpus check for prep coverage remains advisable — if only a minority of captures have usable prep windows, Insight D works for case studies but not corpus-wide, and the swimlane's prep layer should be presented accordingly.
