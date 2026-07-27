@@ -8451,25 +8451,19 @@
           "P01_R01_S02",
           "P01_R01_S02"
         ],
-        "mean_normalized_onset": 0.292,
+        "mean_normalized_onset": 0.3171,
         "raw_onsets": [
-          13.73,
           15.36,
           41.19,
-          71.93,
-          97.92,
-          100.9,
-          130.41,
-          130.81,
           18.98,
-          78.2,
           79.49,
           107.1,
           68.28
         ],
-        "mean_duration": 0.792,
+        "mean_duration": 0.683,
         "min_duration": 0.27,
-        "max_duration": 2.01,
+        "max_duration": 1.26,
+        "median_rank": 0.36842,
         "objects": {
           "button": 6
         },
@@ -8495,27 +8489,22 @@
         "merged_step_id": "P01_R01_S04",
         "per_session_step_ids": [
           "P01_R01_S04",
-          "P01_R01_S04",
+          null,
           "P01_R01_S04"
         ],
-        "mean_normalized_onset": 0.4783,
+        "mean_normalized_onset": 0.4722,
         "raw_onsets": [
-          95.46,
           136.72,
           137.7,
           139.92,
           141.14,
-          155.41,
-          174.12,
-          317.05,
-          113.86,
-          46.32,
           112.84,
           121.68
         ],
-        "mean_duration": 2.07,
-        "min_duration": 0.46,
+        "mean_duration": 2.968,
+        "min_duration": 0.75,
         "max_duration": 9.16,
+        "median_rank": 0.55573,
         "objects": {
           "milk": 6
         },
@@ -8545,19 +8534,17 @@
           "P01_R01_S03",
           "P01_R01_S03"
         ],
-        "mean_normalized_onset": 0.4221,
+        "mean_normalized_onset": 0.5273,
         "raw_onsets": [
           73.5,
           115.15,
           27.59,
-          35.42,
-          48.88,
-          54.7,
           116.43
         ],
-        "mean_duration": 4.649,
-        "min_duration": 1.23,
+        "mean_duration": 6.547,
+        "min_duration": 3.07,
         "max_duration": 12.63,
+        "median_rank": 0.47369,
         "objects": {
           "milk": 4
         },
@@ -8583,20 +8570,20 @@
         "merged_step_id": "P01_R01_S05",
         "per_session_step_ids": [
           "P01_R01_S05",
-          "P01_R01_S01",
+          "P01_R01_S05",
           "P01_R01_S05"
         ],
-        "mean_normalized_onset": 0.5566,
+        "mean_normalized_onset": 0.6554,
         "raw_onsets": [
           145.29,
           147.02,
-          24.64,
           146.11,
           152.25
         ],
-        "mean_duration": 3.086,
+        "mean_duration": 3.31,
         "min_duration": 1.83,
         "max_duration": 5.05,
+        "median_rank": 0.84615,
         "objects": {
           "coffee": 4
         },
@@ -8634,6 +8621,7 @@
         "mean_duration": 0.0,
         "min_duration": 0.0,
         "max_duration": 0.0,
+        "median_rank": 1.0,
         "salient": false
       },
       {
@@ -8665,6 +8653,7 @@
         "mean_duration": 0.0,
         "min_duration": 0.0,
         "max_duration": 0.0,
+        "median_rank": 0.0,
         "salient": false
       },
       {
@@ -8696,6 +8685,7 @@
         "mean_duration": 0.99,
         "min_duration": 0.82,
         "max_duration": 1.27,
+        "median_rank": 0.9048,
         "objects": {
           "spoon": 3
         },
@@ -8725,18 +8715,15 @@
           "P01_R01_S01",
           "P01_R01_S01"
         ],
-        "mean_normalized_onset": 0.2533,
+        "mean_normalized_onset": 0.2209,
         "raw_onsets": [
-          48.28,
-          61.54,
-          103.88,
           45.6,
-          23.61,
-          88.28
+          23.61
         ],
-        "mean_duration": 0.977,
+        "mean_duration": 0.75,
         "min_duration": 0.47,
-        "max_duration": 1.31,
+        "max_duration": 1.03,
+        "median_rank": 0.22065,
         "objects": {
           "drawer": 2
         },
@@ -8765,15 +8752,15 @@
           "P01_R01_S01",
           "P01_R01_S01"
         ],
-        "mean_normalized_onset": 0.2143,
+        "mean_normalized_onset": 0.2258,
         "raw_onsets": [
-          29.25,
           46.12,
           24.68
         ],
-        "mean_duration": 1.497,
+        "mean_duration": 0.725,
         "min_duration": 0.62,
-        "max_duration": 3.04,
+        "max_duration": 0.83,
+        "median_rank": 0.28543,
         "objects": {
           "coffee": 2
         },
@@ -8796,27 +8783,21 @@
         "n_sessions": 3,
         "is_primary": true,
         "is_mandatory": false,
-        "merged_step_id": "P01_R01_S01",
+        "merged_step_id": "P01_R01_S04",
         "per_session_step_ids": [
-          "P01_R01_S01",
           "P01_R01_S04",
+          null,
           "P01_R01_S05"
         ],
-        "mean_normalized_onset": 0.6525,
+        "mean_normalized_onset": 0.6305,
         "raw_onsets": [
-          11.15,
           136.35,
-          329.17,
-          341.41,
-          355.72,
-          357.51,
-          386.83,
-          14.96,
           150.58
         ],
-        "mean_duration": 1.101,
-        "min_duration": 0.45,
-        "max_duration": 3.11,
+        "mean_duration": 0.835,
+        "min_duration": 0.71,
+        "max_duration": 0.96,
+        "median_rank": 0.54489,
         "objects": {
           "cup": 2
         },
@@ -8843,32 +8824,18 @@
         "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           "P01_R01_S03",
-          "P01_R01_S03",
-          "P01_R01_S03"
+          null,
+          null
         ],
-        "mean_normalized_onset": 0.2616,
+        "mean_normalized_onset": 0.0692,
         "raw_onsets": [
-          21.4,
           27.0,
-          27.61,
-          34.14,
-          50.17,
-          143.45,
-          179.06,
-          203.0,
-          251.67,
-          19.36,
-          32.39,
-          50.88,
-          53.34,
-          70.28,
-          7.93,
-          26.14,
-          63.38
+          27.61
         ],
-        "mean_duration": 1.488,
-        "min_duration": 0.36,
+        "mean_duration": 3.34,
+        "min_duration": 0.5,
         "max_duration": 6.18,
+        "median_rank": 0.20588,
         "objects": {
           "bottle": 2
         },
@@ -8891,32 +8858,21 @@
         "n_sessions": 3,
         "is_primary": true,
         "is_mandatory": false,
-        "merged_step_id": "P01_R01_S04",
+        "merged_step_id": "P01_R01_S05",
         "per_session_step_ids": [
-          "P01_R01_S01",
-          "P01_R01_S04",
-          "P01_R01_S04"
+          null,
+          "P01_R01_S05",
+          "P01_R01_S05"
         ],
-        "mean_normalized_onset": 0.6174,
+        "mean_normalized_onset": 0.9388,
         "raw_onsets": [
-          9.34,
-          330.32,
-          353.33,
-          358.59,
-          359.63,
-          360.37,
-          386.66,
-          13.3,
-          23.63,
-          109.01,
           145.8,
-          13.41,
-          43.05,
           152.01
         ],
-        "mean_duration": 1.71,
+        "mean_duration": 0.5,
         "min_duration": 0.45,
-        "max_duration": 6.77,
+        "max_duration": 0.55,
+        "median_rank": 0.80567,
         "objects": {
           "cup": 2
         },
@@ -8941,19 +8897,19 @@
         "is_mandatory": false,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
-          "P01_R01_S01",
+          null,
           "P01_R01_S01",
           "P01_R01_S01"
         ],
-        "mean_normalized_onset": 0.152,
+        "mean_normalized_onset": 0.2092,
         "raw_onsets": [
-          14.81,
           43.76,
           21.75
         ],
-        "mean_duration": 1.167,
-        "min_duration": 0.27,
+        "mean_duration": 1.615,
+        "min_duration": 1.48,
         "max_duration": 1.75,
+        "median_rank": 0.12956,
         "objects": {
           "coffee": 2
         },
@@ -8990,6 +8946,7 @@
         "mean_duration": 1.185,
         "min_duration": 0.82,
         "max_duration": 1.55,
+        "median_rank": 0.49845,
         "objects": {
           "milk": 2
         },
@@ -9012,35 +8969,20 @@
         "n_sessions": 3,
         "is_primary": true,
         "is_mandatory": false,
-        "merged_step_id": "P01_R01_S03",
+        "merged_step_id": "P01_R01_S02",
         "per_session_step_ids": [
           null,
           null,
-          "P01_R01_S03"
+          "P01_R01_S02"
         ],
-        "mean_normalized_onset": 0.4828,
+        "mean_normalized_onset": 0.109,
         "raw_onsets": [
-          19.75,
-          36.07,
-          98.98,
-          157.91,
-          283.07,
-          296.34,
-          338.79,
-          381.05,
-          49.82,
-          82.82,
-          131.18,
-          6.63,
-          17.93,
-          37.02,
-          58.1,
-          134.88,
-          140.03
+          17.93
         ],
-        "mean_duration": 0.849,
-        "min_duration": 0.3,
-        "max_duration": 1.56,
+        "mean_duration": 0.57,
+        "min_duration": 0.57,
+        "max_duration": 0.57,
+        "median_rank": 0.05263,
         "objects": {
           "machine:washing": 1
         },
@@ -9066,26 +9008,17 @@
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           null,
-          "P01_R01_S01",
+          null,
           "P01_R01_S01"
         ],
-        "mean_normalized_onset": 0.407,
+        "mean_normalized_onset": 0.1415,
         "raw_onsets": [
-          127.89,
-          337.2,
-          27.96,
-          76.68,
-          23.27,
-          32.2,
-          53.31,
-          56.11,
-          79.98,
-          81.73,
-          103.34
+          23.27
         ],
-        "mean_duration": 1.039,
+        "mean_duration": 0.31,
         "min_duration": 0.31,
-        "max_duration": 2.02,
+        "max_duration": 0.31,
+        "median_rank": 0.15789,
         "objects": {
           "box": 1
         },
@@ -9108,27 +9041,20 @@
         "n_sessions": 3,
         "is_primary": true,
         "is_mandatory": false,
-        "merged_step_id": "P01_R01_S05",
+        "merged_step_id": "P01_R01_S04",
         "per_session_step_ids": [
           null,
           null,
-          "P01_R01_S05"
+          "P01_R01_S04"
         ],
-        "mean_normalized_onset": 0.6949,
+        "mean_normalized_onset": 0.7982,
         "raw_onsets": [
-          153.63,
-          186.95,
-          224.56,
-          258.71,
-          315.35,
-          151.17,
-          100.23,
-          131.28,
-          159.91
+          131.28
         ],
-        "mean_duration": 0.578,
-        "min_duration": 0.29,
-        "max_duration": 0.91,
+        "mean_duration": 0.75,
+        "min_duration": 0.75,
+        "max_duration": 0.75,
+        "median_rank": 0.68421,
         "objects": {
           "spoon": 1
         },
@@ -9157,20 +9083,14 @@
           "P01_R01_S05",
           null
         ],
-        "mean_normalized_onset": 0.755,
+        "mean_normalized_onset": 0.9465,
         "raw_onsets": [
-          175.59,
-          178.33,
-          319.88,
-          326.89,
-          130.63,
-          144.75,
-          134.45,
-          145.82
+          144.75
         ],
-        "mean_duration": 0.629,
-        "min_duration": 0.36,
-        "max_duration": 1.23,
+        "mean_duration": 0.5,
+        "min_duration": 0.5,
+        "max_duration": 0.5,
+        "median_rank": 0.69231,
         "objects": {
           "milk": 1
         },
@@ -9196,17 +9116,17 @@
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
           "P01_R01_S01",
-          "P01_R01_S01",
+          null,
           null
         ],
-        "mean_normalized_onset": 0.095,
+        "mean_normalized_onset": 0.0407,
         "raw_onsets": [
-          16.08,
-          22.84
+          16.08
         ],
-        "mean_duration": 0.965,
-        "min_duration": 0.75,
+        "mean_duration": 1.18,
+        "min_duration": 1.18,
         "max_duration": 1.18,
+        "median_rank": 0.11765,
         "objects": {
           "coffee": 1
         },
@@ -9235,16 +9155,14 @@
           null,
           "P01_R01_S02"
         ],
-        "mean_normalized_onset": 0.3892,
+        "mean_normalized_onset": 0.4214,
         "raw_onsets": [
-          106.2,
-          161.4,
-          69.3,
-          75.23
+          69.3
         ],
-        "mean_duration": 2.872,
-        "min_duration": 1.32,
+        "mean_duration": 4.38,
+        "min_duration": 4.38,
         "max_duration": 4.38,
+        "median_rank": 0.42105,
         "objects": {
           "cereal": 1
         },
@@ -9280,6 +9198,7 @@
         "mean_duration": 0.92,
         "min_duration": 0.92,
         "max_duration": 0.92,
+        "median_rank": 0.88235,
         "objects": {
           "rest": 1
         },
@@ -9308,15 +9227,14 @@
           "P01_R01_S05",
           null
         ],
-        "mean_normalized_onset": 0.4394,
+        "mean_normalized_onset": 0.9785,
         "raw_onsets": [
-          49.54,
-          84.55,
           149.65
         ],
-        "mean_duration": 0.68,
-        "min_duration": 0.5,
+        "mean_duration": 0.86,
+        "min_duration": 0.86,
         "max_duration": 0.86,
+        "median_rank": 0.92308,
         "objects": {
           "colander": 1
         },
@@ -9352,6 +9270,7 @@
         "mean_duration": 0.3,
         "min_duration": 0.3,
         "max_duration": 0.3,
+        "median_rank": 0.70588,
         "objects": {
           "spoon": 1
         },
@@ -9385,7 +9304,15 @@
           ],
           "2": []
         },
-        "probability": 0.6667
+        "probability": 0.6667,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.36842,
+        "per_session_is_return": [
+          false,
+          false,
+          null
+        ]
       },
       {
         "source": "access(furniture)",
@@ -9410,7 +9337,15 @@
             4
           ]
         },
-        "probability": 1.0
+        "probability": 1.0,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.06478,
+        "per_session_is_return": [
+          null,
+          false,
+          false
+        ]
       },
       {
         "source": "leave(drinks)",
@@ -9435,7 +9370,15 @@
             5
           ]
         },
-        "probability": 1.0
+        "probability": 1.0,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.18826,
+        "per_session_is_return": [
+          null,
+          false,
+          false
+        ]
       },
       {
         "source": "manipulate(cutlery)",
@@ -9460,7 +9403,15 @@
             18
           ]
         },
-        "probability": 0.6667
+        "probability": 0.6667,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0952,
+        "per_session_is_return": [
+          false,
+          null,
+          false
+        ]
       },
       {
         "source": "merge(dairy and eggs)",
@@ -9485,7 +9436,15 @@
             6
           ]
         },
-        "probability": 0.5
+        "probability": 0.5,
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.10527,
+        "per_session_is_return": [
+          null,
+          true,
+          true
+        ]
       },
       {
         "source": "retrieve(crockery)",
@@ -9510,7 +9469,15 @@
             16
           ]
         },
-        "probability": 1.0
+        "probability": 1.0,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.04048,
+        "per_session_is_return": [
+          null,
+          false,
+          false
+        ]
       },
       {
         "source": "retrieve(dairy and eggs)",
@@ -9534,7 +9501,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.3333
+        "probability": 0.3333,
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          false,
+          null,
+          null
+        ]
       },
       {
         "source": "retrieve(dairy and eggs)",
@@ -9559,7 +9534,15 @@
             9
           ]
         },
-        "probability": 0.3333
+        "probability": 0.3333,
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.05728,
+        "per_session_is_return": [
+          true,
+          null,
+          true
+        ]
       },
       {
         "source": "START",
@@ -9582,7 +9565,15 @@
             0
           ]
         },
-        "probability": 0.3333
+        "probability": 0.3333,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.05263,
+        "per_session_is_return": [
+          null,
+          null,
+          false
+        ]
       },
       {
         "source": "access(appliances)",
@@ -9605,7 +9596,15 @@
             1
           ]
         },
-        "probability": 1.0
+        "probability": 1.0,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.07693,
+        "per_session_is_return": [
+          null,
+          null,
+          false
+        ]
       },
       {
         "source": "block(containers)",
@@ -9628,7 +9627,15 @@
             3
           ]
         },
-        "probability": 1.0
+        "probability": 1.0,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.06276,
+        "per_session_is_return": [
+          null,
+          null,
+          false
+        ]
       },
       {
         "source": "leave(cutlery)",
@@ -9651,7 +9658,15 @@
             13
           ]
         },
-        "probability": 1.0
+        "probability": 1.0,
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.13932,
+        "per_session_is_return": [
+          null,
+          null,
+          false
+        ]
       },
       {
         "source": "leave(dairy and eggs)",
@@ -9674,7 +9689,15 @@
           ],
           "2": []
         },
-        "probability": 1.0
+        "probability": 1.0,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.11336,
+        "per_session_is_return": [
+          null,
+          false,
+          null
+        ]
       },
       {
         "source": "manipulate(appliances)",
@@ -9697,7 +9720,15 @@
           ],
           "2": []
         },
-        "probability": 0.1667
+        "probability": 0.1667,
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          false,
+          null
+        ]
       },
       {
         "source": "manipulate(appliances)",
@@ -9720,7 +9751,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.1667
+        "probability": 0.1667,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.17647,
+        "per_session_is_return": [
+          false,
+          null,
+          null
+        ]
       },
       {
         "source": "manipulate(appliances)",
@@ -9743,7 +9782,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.1667
+        "probability": 0.1667,
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.25077,
+        "per_session_is_return": [
+          true,
+          null,
+          null
+        ]
       },
       {
         "source": "manipulate(appliances)",
@@ -9766,7 +9813,15 @@
           ],
           "2": []
         },
-        "probability": 0.1667
+        "probability": 0.1667,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.10527,
+        "per_session_is_return": [
+          null,
+          false,
+          null
+        ]
       },
       {
         "source": "manipulate(appliances)",
@@ -9789,7 +9844,15 @@
             7
           ]
         },
-        "probability": 0.1667
+        "probability": 0.1667,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.05263,
+        "per_session_is_return": [
+          null,
+          null,
+          false
+        ]
       },
       {
         "source": "manipulate(appliances)",
@@ -9812,7 +9875,15 @@
           ],
           "2": []
         },
-        "probability": 0.1667
+        "probability": 0.1667,
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.23886,
+        "per_session_is_return": [
+          null,
+          true,
+          null
+        ]
       },
       {
         "source": "manipulate(crockery)",
@@ -9835,7 +9906,15 @@
             14
           ]
         },
-        "probability": 0.5
+        "probability": 0.5,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.35991,
+        "per_session_is_return": [
+          null,
+          null,
+          false
+        ]
       },
       {
         "source": "manipulate(crockery)",
@@ -9858,7 +9937,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.5
+        "probability": 0.5,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.01084,
+        "per_session_is_return": [
+          false,
+          null,
+          null
+        ]
       },
       {
         "source": "manipulate(cutlery)",
@@ -9881,7 +9968,15 @@
             15
           ]
         },
-        "probability": 0.3333
+        "probability": 0.3333,
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.09913,
+        "per_session_is_return": [
+          null,
+          null,
+          true
+        ]
       },
       {
         "source": "manipulate(drinks)",
@@ -9904,7 +9999,15 @@
           "1": [],
           "2": []
         },
-        "probability": 1.0
+        "probability": 1.0,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.08823,
+        "per_session_is_return": [
+          false,
+          null,
+          null
+        ]
       },
       {
         "source": "merge(dairy and eggs)",
@@ -9927,7 +10030,15 @@
           ],
           "2": []
         },
-        "probability": 0.25
+        "probability": 0.25,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.21862,
+        "per_session_is_return": [
+          null,
+          false,
+          null
+        ]
       },
       {
         "source": "merge(dairy and eggs)",
@@ -9950,7 +10061,15 @@
             11
           ]
         },
-        "probability": 0.25
+        "probability": 0.25,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.08204,
+        "per_session_is_return": [
+          null,
+          null,
+          false
+        ]
       },
       {
         "source": "merge(drinks)",
@@ -9973,7 +10092,15 @@
             17
           ]
         },
-        "probability": 0.25
+        "probability": 0.25,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.05865,
+        "per_session_is_return": [
+          null,
+          null,
+          true
+        ]
       },
       {
         "source": "merge(drinks)",
@@ -9996,7 +10123,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.25
+        "probability": 0.25,
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          false,
+          null,
+          null
+        ]
       },
       {
         "source": "merge(drinks)",
@@ -10019,7 +10154,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.25
+        "probability": 0.25,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0362,
+        "per_session_is_return": [
+          false,
+          null,
+          null
+        ]
       },
       {
         "source": "merge(drinks)",
@@ -10042,7 +10185,15 @@
           ],
           "2": []
         },
-        "probability": 0.25
+        "probability": 0.25,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.07693,
+        "per_session_is_return": [
+          null,
+          false,
+          null
+        ]
       },
       {
         "source": "retrieve(baked goods and grains)",
@@ -10065,7 +10216,15 @@
             8
           ]
         },
-        "probability": 1.0
+        "probability": 1.0,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.13468,
+        "per_session_is_return": [
+          null,
+          null,
+          false
+        ]
       },
       {
         "source": "retrieve(containers)",
@@ -10088,7 +10247,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.5
+        "probability": 0.5,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.16254,
+        "per_session_is_return": [
+          true,
+          null,
+          null
+        ]
       },
       {
         "source": "retrieve(containers)",
@@ -10111,7 +10278,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.5
+        "probability": 0.5,
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          false,
+          null,
+          null
+        ]
       },
       {
         "source": "retrieve(dairy and eggs)",
@@ -10134,7 +10309,15 @@
             12
           ]
         },
-        "probability": 0.1667
+        "probability": 0.1667,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.12848,
+        "per_session_is_return": [
+          null,
+          null,
+          false
+        ]
       },
       {
         "source": "retrieve(dairy and eggs)",
@@ -10157,7 +10340,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.1667
+        "probability": 0.1667,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.15015,
+        "per_session_is_return": [
+          false,
+          null,
+          null
+        ]
       },
       {
         "source": "retrieve(drinks)",
@@ -10180,7 +10371,15 @@
           ],
           "2": []
         },
-        "probability": 0.5
+        "probability": 0.5,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.09109,
+        "per_session_is_return": [
+          null,
+          false,
+          null
+        ]
       },
       {
         "source": "retrieve(drinks)",
@@ -10203,7 +10402,15 @@
             2
           ]
         },
-        "probability": 0.5
+        "probability": 0.5,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.02833,
+        "per_session_is_return": [
+          null,
+          null,
+          false
+        ]
       },
       {
         "source": "retrieve(other)",
@@ -10226,7 +10433,15 @@
           "1": [],
           "2": []
         },
-        "probability": 1.0
+        "probability": 1.0,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.02245,
+        "per_session_is_return": [
+          false,
+          null,
+          null
+        ]
       },
       {
         "source": "retrieve(utensils)",
@@ -10249,7 +10464,15 @@
           ],
           "2": []
         },
-        "probability": 1.0
+        "probability": 1.0,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.07692,
+        "per_session_is_return": [
+          null,
+          false,
+          null
+        ]
       },
       {
         "source": "sense(dairy and eggs)",
@@ -10272,7 +10495,15 @@
             10
           ]
         },
-        "probability": 0.5
+        "probability": 0.5,
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.02476,
+        "per_session_is_return": [
+          null,
+          null,
+          true
+        ]
       },
       {
         "source": "sense(dairy and eggs)",
@@ -10295,7 +10526,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.5
+        "probability": 0.5,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.05728,
+        "per_session_is_return": [
+          false,
+          null,
+          null
+        ]
       },
       {
         "source": "transition(cutlery)",
@@ -10318,7 +10557,15 @@
           "1": [],
           "2": []
         },
-        "probability": 1.0
+        "probability": 1.0,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.14027,
+        "per_session_is_return": [
+          false,
+          null,
+          null
+        ]
       }
     ]
   },
@@ -10376,6 +10623,706 @@
       "retrieve(other)",
       "retrieve(utensils)",
       "transition(cutlery)"
+    ]
+  },
+  "filter_report": {
+    "identity": "verb_category(noun_category)",
+    "rule": "An action is PRIMARY if its time window overlaps an annotated step_times window (with a per-side buffer). Non-primary actions are excluded from the motion graph only; they remain in the sequence, the swimlane and graph_unfiltered.",
+    "actions": {
+      "before": 379,
+      "after": 52,
+      "removed": 327,
+      "removed_fraction": 0.8628
+    },
+    "merged_nodes": 23,
+    "merged_links": 41,
+    "return_transitions": {
+      "count": 7,
+      "keys": [
+        "merge(dairy and eggs)|||manipulate(appliances)",
+        "retrieve(dairy and eggs)|||sense(dairy and eggs)",
+        "leave(cutlery)|||manipulate(crockery)",
+        "manipulate(appliances)|||manipulate(drinks)",
+        "manipulate(appliances)|||retrieve(drinks)",
+        "manipulate(cutlery)|||retrieve(crockery)",
+        "sense(dairy and eggs)|||merge(dairy and eggs)"
+      ]
+    },
+    "self_loops": {
+      "count": 4,
+      "keys": [
+        "retrieve(dairy and eggs)|||retrieve(dairy and eggs)",
+        "manipulate(appliances)|||manipulate(appliances)",
+        "merge(drinks)|||merge(drinks)",
+        "retrieve(containers)|||retrieve(containers)"
+      ]
+    },
+    "per_session": [
+      {
+        "session_index": 0,
+        "identity": "verb_category(noun_category)",
+        "rule": "An action is PRIMARY if its time window overlaps an annotated step_times window (with a per-side buffer). Non-primary actions are excluded from the motion graph only; they remain in the sequence, the swimlane and graph_unfiltered.",
+        "actions": {
+          "before": 226,
+          "after": 18,
+          "removed": 208,
+          "removed_fraction": 0.9204
+        },
+        "nodes": {
+          "before": 72,
+          "after": 12,
+          "removed": [
+            "access(appliances)",
+            "access(containers)",
+            "access(dairy and eggs)",
+            "access(furniture)",
+            "access(prepared food)",
+            "access(storage)",
+            "access(utensils)",
+            "block(appliances)",
+            "block(containers)",
+            "block(furniture)",
+            "block(prepared food)",
+            "block(rubbish)",
+            "block(storage)",
+            "block(utensils)",
+            "clean(cleaning equipment and material)",
+            "clean(crockery)",
+            "clean(dairy and eggs)",
+            "clean(prepared food)",
+            "clean(utensils)",
+            "leave(appliances)",
+            "leave(cleaning equipment and material)",
+            "leave(containers)",
+            "leave(crockery)",
+            "leave(cutlery)",
+            "leave(dairy and eggs)",
+            "leave(fruits and nuts)",
+            "leave(furniture)",
+            "leave(prepared food)",
+            "leave(rubbish)",
+            "leave(utensils)",
+            "leave(vegetables)",
+            "manipulate(containers)",
+            "manipulate(cookware)",
+            "manipulate(dairy and eggs)",
+            "manipulate(fruits and nuts)",
+            "manipulate(furniture)",
+            "manipulate(hand)",
+            "manipulate(prepared food)",
+            "manipulate(rubbish)",
+            "manipulate(storage)",
+            "manipulate(utensils)",
+            "retrieve(appliances)",
+            "retrieve(baked goods and grains)",
+            "retrieve(cleaning equipment and material)",
+            "retrieve(cookware)",
+            "retrieve(crockery)",
+            "retrieve(cutlery)",
+            "retrieve(drinks)",
+            "retrieve(fruits and nuts)",
+            "retrieve(materials)",
+            "retrieve(prepared food)",
+            "retrieve(rubbish)",
+            "retrieve(utensils)",
+            "retrieve(vegetables)",
+            "sense(baked goods and grains)",
+            "sense(crockery)",
+            "split(fruits and nuts)",
+            "transition(containers)",
+            "transition(dairy and eggs)",
+            "transition(prepared food)"
+          ]
+        },
+        "links": {
+          "before": 185,
+          "after": 16,
+          "removed_keys": [
+            "START|||access(storage)",
+            "access(appliances)|||block(appliances)",
+            "access(appliances)|||clean(crockery)",
+            "access(appliances)|||leave(containers)",
+            "access(appliances)|||manipulate(fruits and nuts)",
+            "access(appliances)|||manipulate(prepared food)",
+            "access(appliances)|||retrieve(containers)",
+            "access(appliances)|||transition(dairy and eggs)",
+            "access(containers)|||clean(prepared food)",
+            "access(containers)|||leave(containers)",
+            "access(containers)|||leave(cutlery)",
+            "access(containers)|||leave(fruits and nuts)",
+            "access(containers)|||leave(prepared food)",
+            "access(containers)|||leave(rubbish)",
+            "access(containers)|||retrieve(containers)",
+            "access(dairy and eggs)|||retrieve(containers)",
+            "access(furniture)|||leave(utensils)",
+            "access(furniture)|||retrieve(utensils)",
+            "access(furniture)|||retrieve(vegetables)",
+            "access(prepared food)|||manipulate(fruits and nuts)",
+            "access(storage)|||manipulate(hand)",
+            "access(storage)|||retrieve(crockery)",
+            "access(storage)|||transition(containers)",
+            "access(utensils)|||retrieve(fruits and nuts)",
+            "block(appliances)|||leave(crockery)",
+            "block(appliances)|||leave(dairy and eggs)",
+            "block(appliances)|||manipulate(appliances)",
+            "block(appliances)|||manipulate(crockery)",
+            "block(appliances)|||manipulate(dairy and eggs)",
+            "block(appliances)|||retrieve(cleaning equipment and material)",
+            "block(appliances)|||retrieve(crockery)",
+            "block(appliances)|||retrieve(dairy and eggs)",
+            "block(appliances)|||retrieve(rubbish)",
+            "block(containers)|||leave(crockery)",
+            "block(containers)|||manipulate(furniture)",
+            "block(furniture)|||manipulate(containers)",
+            "block(prepared food)|||access(containers)",
+            "block(prepared food)|||manipulate(fruits and nuts)",
+            "block(prepared food)|||retrieve(containers)",
+            "block(prepared food)|||retrieve(fruits and nuts)",
+            "block(rubbish)|||retrieve(dairy and eggs)",
+            "block(storage)|||manipulate(appliances)",
+            "block(storage)|||transition(containers)",
+            "block(utensils)|||access(furniture)",
+            "clean(cleaning equipment and material)|||leave(cleaning equipment and material)",
+            "clean(crockery)|||block(appliances)",
+            "clean(crockery)|||leave(cleaning equipment and material)",
+            "clean(crockery)|||manipulate(crockery)",
+            "clean(dairy and eggs)|||block(appliances)",
+            "clean(dairy and eggs)|||clean(dairy and eggs)",
+            "clean(dairy and eggs)|||leave(cleaning equipment and material)",
+            "clean(dairy and eggs)|||manipulate(dairy and eggs)",
+            "clean(dairy and eggs)|||retrieve(cleaning equipment and material)",
+            "clean(dairy and eggs)|||retrieve(cookware)",
+            "clean(prepared food)|||block(appliances)",
+            "clean(utensils)|||block(appliances)",
+            "leave(appliances)|||manipulate(appliances)",
+            "leave(cleaning equipment and material)|||access(appliances)",
+            "leave(cleaning equipment and material)|||clean(dairy and eggs)",
+            "leave(containers)|||access(storage)",
+            "leave(containers)|||block(appliances)",
+            "leave(containers)|||block(containers)",
+            "leave(crockery)|||access(appliances)",
+            "leave(crockery)|||access(containers)",
+            "leave(crockery)|||leave(crockery)",
+            "leave(crockery)|||manipulate(crockery)",
+            "leave(crockery)|||retrieve(drinks)",
+            "leave(crockery)|||retrieve(materials)",
+            "leave(cutlery)|||block(rubbish)",
+            "leave(cutlery)|||leave(furniture)",
+            "leave(cutlery)|||manipulate(fruits and nuts)",
+            "leave(cutlery)|||retrieve(dairy and eggs)",
+            "leave(cutlery)|||retrieve(fruits and nuts)",
+            "leave(dairy and eggs)|||clean(dairy and eggs)",
+            "leave(dairy and eggs)|||leave(dairy and eggs)",
+            "leave(dairy and eggs)|||manipulate(crockery)",
+            "leave(dairy and eggs)|||retrieve(containers)",
+            "leave(fruits and nuts)|||access(appliances)",
+            "leave(fruits and nuts)|||access(furniture)",
+            "leave(fruits and nuts)|||access(prepared food)",
+            "leave(fruits and nuts)|||retrieve(cutlery)",
+            "leave(fruits and nuts)|||retrieve(fruits and nuts)",
+            "leave(furniture)|||retrieve(fruits and nuts)",
+            "leave(prepared food)|||sense(crockery)",
+            "leave(rubbish)|||retrieve(cutlery)",
+            "leave(rubbish)|||retrieve(fruits and nuts)",
+            "leave(utensils)|||manipulate(utensils)",
+            "leave(vegetables)|||block(furniture)",
+            "manipulate(appliances)|||access(appliances)",
+            "manipulate(appliances)|||access(furniture)",
+            "manipulate(appliances)|||block(appliances)",
+            "manipulate(appliances)|||leave(crockery)",
+            "manipulate(appliances)|||manipulate(appliances)",
+            "manipulate(appliances)|||manipulate(containers)",
+            "manipulate(appliances)|||retrieve(cookware)",
+            "manipulate(appliances)|||retrieve(fruits and nuts)",
+            "manipulate(containers)|||access(containers)",
+            "manipulate(containers)|||leave(containers)",
+            "manipulate(containers)|||leave(vegetables)",
+            "manipulate(containers)|||manipulate(containers)",
+            "manipulate(cookware)|||access(appliances)",
+            "manipulate(crockery)|||block(storage)",
+            "manipulate(crockery)|||clean(utensils)",
+            "manipulate(crockery)|||leave(crockery)",
+            "manipulate(crockery)|||retrieve(crockery)",
+            "manipulate(crockery)|||retrieve(materials)",
+            "manipulate(cutlery)|||access(containers)",
+            "manipulate(dairy and eggs)|||access(containers)",
+            "manipulate(dairy and eggs)|||retrieve(baked goods and grains)",
+            "manipulate(drinks)|||manipulate(cookware)",
+            "manipulate(fruits and nuts)|||access(containers)",
+            "manipulate(fruits and nuts)|||access(prepared food)",
+            "manipulate(fruits and nuts)|||block(prepared food)",
+            "manipulate(fruits and nuts)|||manipulate(fruits and nuts)",
+            "manipulate(fruits and nuts)|||manipulate(prepared food)",
+            "manipulate(fruits and nuts)|||manipulate(utensils)",
+            "manipulate(furniture)|||manipulate(appliances)",
+            "manipulate(hand)|||retrieve(crockery)",
+            "manipulate(prepared food)|||block(prepared food)",
+            "manipulate(prepared food)|||manipulate(appliances)",
+            "manipulate(prepared food)|||manipulate(fruits and nuts)",
+            "manipulate(prepared food)|||retrieve(appliances)",
+            "manipulate(rubbish)|||leave(dairy and eggs)",
+            "manipulate(storage)|||leave(utensils)",
+            "manipulate(storage)|||manipulate(storage)",
+            "manipulate(utensils)|||block(prepared food)",
+            "manipulate(utensils)|||retrieve(dairy and eggs)",
+            "manipulate(utensils)|||retrieve(prepared food)",
+            "retrieve(appliances)|||leave(appliances)",
+            "retrieve(baked goods and grains)|||clean(dairy and eggs)",
+            "retrieve(baked goods and grains)|||sense(baked goods and grains)",
+            "retrieve(cleaning equipment and material)|||clean(cleaning equipment and material)",
+            "retrieve(cleaning equipment and material)|||clean(crockery)",
+            "retrieve(cleaning equipment and material)|||clean(dairy and eggs)",
+            "retrieve(containers)|||access(appliances)",
+            "retrieve(containers)|||access(dairy and eggs)",
+            "retrieve(containers)|||access(utensils)",
+            "retrieve(containers)|||block(appliances)",
+            "retrieve(containers)|||leave(rubbish)",
+            "retrieve(containers)|||retrieve(materials)",
+            "retrieve(containers)|||transition(cutlery)",
+            "retrieve(cookware)|||block(appliances)",
+            "retrieve(cookware)|||manipulate(drinks)",
+            "retrieve(crockery)|||access(containers)",
+            "retrieve(crockery)|||leave(crockery)",
+            "retrieve(crockery)|||manipulate(crockery)",
+            "retrieve(crockery)|||retrieve(crockery)",
+            "retrieve(cutlery)|||split(fruits and nuts)",
+            "retrieve(cutlery)|||transition(prepared food)",
+            "retrieve(dairy and eggs)|||access(appliances)",
+            "retrieve(dairy and eggs)|||leave(dairy and eggs)",
+            "retrieve(dairy and eggs)|||manipulate(appliances)",
+            "retrieve(dairy and eggs)|||manipulate(rubbish)",
+            "retrieve(dairy and eggs)|||retrieve(containers)",
+            "retrieve(drinks)|||manipulate(appliances)",
+            "retrieve(fruits and nuts)|||access(appliances)",
+            "retrieve(fruits and nuts)|||block(utensils)",
+            "retrieve(fruits and nuts)|||leave(fruits and nuts)",
+            "retrieve(fruits and nuts)|||manipulate(fruits and nuts)",
+            "retrieve(fruits and nuts)|||retrieve(containers)",
+            "retrieve(fruits and nuts)|||retrieve(fruits and nuts)",
+            "retrieve(materials)|||END",
+            "retrieve(materials)|||access(storage)",
+            "retrieve(materials)|||retrieve(cutlery)",
+            "retrieve(prepared food)|||manipulate(prepared food)",
+            "retrieve(rubbish)|||access(containers)",
+            "retrieve(utensils)|||block(storage)",
+            "retrieve(utensils)|||retrieve(containers)",
+            "retrieve(vegetables)|||retrieve(baked goods and grains)",
+            "sense(baked goods and grains)|||manipulate(containers)",
+            "sense(crockery)|||block(containers)",
+            "split(fruits and nuts)|||leave(cutlery)",
+            "transition(containers)|||manipulate(storage)",
+            "transition(containers)|||retrieve(utensils)",
+            "transition(dairy and eggs)|||clean(dairy and eggs)",
+            "transition(prepared food)|||leave(cutlery)"
+          ],
+          "introduced_keys": [
+            "START|||manipulate(appliances)",
+            "manipulate(appliances)|||manipulate(crockery)",
+            "manipulate(appliances)|||manipulate(drinks)",
+            "manipulate(cutlery)|||END",
+            "manipulate(drinks)|||retrieve(containers)",
+            "retrieve(containers)|||manipulate(appliances)",
+            "retrieve(dairy and eggs)|||transition(cutlery)"
+          ]
+        },
+        "removed_action_counts": {
+          "retrieve(fruits and nuts)": 13,
+          "manipulate(fruits and nuts)": 11,
+          "block(appliances)": 9,
+          "access(containers)": 9,
+          "access(appliances)": 8,
+          "leave(fruits and nuts)": 8,
+          "retrieve(crockery)": 7,
+          "retrieve(containers)": 7,
+          "clean(dairy and eggs)": 7,
+          "block(prepared food)": 7,
+          "manipulate(crockery)": 6,
+          "manipulate(appliances)": 6,
+          "leave(crockery)": 6,
+          "leave(cutlery)": 5,
+          "leave(rubbish)": 5,
+          "manipulate(prepared food)": 4,
+          "manipulate(containers)": 4,
+          "retrieve(dairy and eggs)": 4,
+          "leave(dairy and eggs)": 4,
+          "retrieve(cutlery)": 4,
+          "access(prepared food)": 4,
+          "access(storage)": 3,
+          "leave(containers)": 3,
+          "access(furniture)": 3,
+          "manipulate(utensils)": 3,
+          "retrieve(cleaning equipment and material)": 3,
+          "leave(cleaning equipment and material)": 3,
+          "retrieve(materials)": 3,
+          "split(fruits and nuts)": 3,
+          "clean(crockery)": 3,
+          "block(storage)": 2,
+          "retrieve(cookware)": 2,
+          "manipulate(dairy and eggs)": 2,
+          "retrieve(utensils)": 2,
+          "leave(utensils)": 2,
+          "transition(containers)": 2,
+          "manipulate(storage)": 2,
+          "retrieve(baked goods and grains)": 2,
+          "block(containers)": 2,
+          "manipulate(hand)": 1,
+          "retrieve(drinks)": 1,
+          "manipulate(cookware)": 1,
+          "access(dairy and eggs)": 1,
+          "access(utensils)": 1,
+          "block(utensils)": 1,
+          "retrieve(prepared food)": 1,
+          "retrieve(appliances)": 1,
+          "leave(appliances)": 1,
+          "retrieve(vegetables)": 1,
+          "sense(baked goods and grains)": 1,
+          "leave(vegetables)": 1,
+          "block(furniture)": 1,
+          "manipulate(furniture)": 1,
+          "block(rubbish)": 1,
+          "transition(dairy and eggs)": 1,
+          "clean(cleaning equipment and material)": 1,
+          "leave(furniture)": 1,
+          "retrieve(rubbish)": 1,
+          "transition(prepared food)": 1,
+          "manipulate(rubbish)": 1,
+          "leave(prepared food)": 1,
+          "sense(crockery)": 1,
+          "clean(utensils)": 1,
+          "clean(prepared food)": 1
+        },
+        "return_transitions": {
+          "count": 3,
+          "keys": [
+            "manipulate(appliances)|||manipulate(drinks)",
+            "retrieve(containers)|||manipulate(appliances)",
+            "retrieve(dairy and eggs)|||sense(dairy and eggs)"
+          ]
+        },
+        "self_loops": {
+          "count": 3,
+          "keys": [
+            "retrieve(dairy and eggs)|||retrieve(dairy and eggs)",
+            "merge(drinks)|||merge(drinks)",
+            "retrieve(containers)|||retrieve(containers)"
+          ]
+        }
+      },
+      {
+        "session_index": 1,
+        "identity": "verb_category(noun_category)",
+        "rule": "An action is PRIMARY if its time window overlaps an annotated step_times window (with a per-side buffer). Non-primary actions are excluded from the motion graph only; they remain in the sequence, the swimlane and graph_unfiltered.",
+        "actions": {
+          "before": 70,
+          "after": 14,
+          "removed": 56,
+          "removed_fraction": 0.8
+        },
+        "nodes": {
+          "before": 36,
+          "after": 11,
+          "removed": [
+            "access(appliances)",
+            "access(containers)",
+            "access(rubbish)",
+            "block(appliances)",
+            "block(containers)",
+            "block(rubbish)",
+            "clean(dairy and eggs)",
+            "leave(cleaning equipment and material)",
+            "leave(containers)",
+            "leave(cookware)",
+            "leave(crockery)",
+            "leave(cutlery)",
+            "leave(furniture)",
+            "manipulate(containers)",
+            "manipulate(crockery)",
+            "manipulate(drinks)",
+            "monitor(appliances)",
+            "monitor(containers)",
+            "retrieve(cleaning equipment and material)",
+            "retrieve(containers)",
+            "retrieve(cookware)",
+            "retrieve(cutlery)",
+            "retrieve(dairy and eggs)",
+            "retrieve(furniture)",
+            "sense(storage)"
+          ]
+        },
+        "links": {
+          "before": 65,
+          "after": 13,
+          "removed_keys": [
+            "START|||leave(crockery)",
+            "access(appliances)|||clean(dairy and eggs)",
+            "access(appliances)|||leave(containers)",
+            "access(appliances)|||retrieve(containers)",
+            "access(containers)|||merge(dairy and eggs)",
+            "access(containers)|||retrieve(cutlery)",
+            "access(containers)|||retrieve(drinks)",
+            "access(rubbish)|||leave(containers)",
+            "access(rubbish)|||leave(cutlery)",
+            "block(appliances)|||access(appliances)",
+            "block(appliances)|||access(containers)",
+            "block(appliances)|||access(rubbish)",
+            "block(appliances)|||retrieve(furniture)",
+            "block(containers)|||leave(drinks)",
+            "block(containers)|||manipulate(appliances)",
+            "block(rubbish)|||END",
+            "block(rubbish)|||retrieve(containers)",
+            "clean(dairy and eggs)|||block(appliances)",
+            "clean(dairy and eggs)|||leave(cleaning equipment and material)",
+            "clean(dairy and eggs)|||retrieve(furniture)",
+            "leave(cleaning equipment and material)|||clean(dairy and eggs)",
+            "leave(containers)|||access(containers)",
+            "leave(containers)|||block(appliances)",
+            "leave(containers)|||block(rubbish)",
+            "leave(cookware)|||manipulate(crockery)",
+            "leave(crockery)|||block(containers)",
+            "leave(crockery)|||manipulate(appliances)",
+            "leave(crockery)|||retrieve(cleaning equipment and material)",
+            "leave(crockery)|||sense(storage)",
+            "leave(cutlery)|||block(rubbish)",
+            "leave(dairy and eggs)|||access(appliances)",
+            "leave(drinks)|||block(appliances)",
+            "leave(drinks)|||retrieve(containers)",
+            "leave(furniture)|||leave(dairy and eggs)",
+            "manipulate(appliances)|||access(appliances)",
+            "manipulate(appliances)|||retrieve(containers)",
+            "manipulate(appliances)|||retrieve(crockery)",
+            "manipulate(containers)|||monitor(containers)",
+            "manipulate(crockery)|||retrieve(furniture)",
+            "manipulate(drinks)|||retrieve(crockery)",
+            "merge(dairy and eggs)|||block(containers)",
+            "merge(drinks)|||leave(crockery)",
+            "monitor(appliances)|||block(appliances)",
+            "monitor(containers)|||monitor(appliances)",
+            "retrieve(cleaning equipment and material)|||clean(dairy and eggs)",
+            "retrieve(containers)|||leave(containers)",
+            "retrieve(containers)|||manipulate(containers)",
+            "retrieve(containers)|||manipulate(drinks)",
+            "retrieve(containers)|||retrieve(containers)",
+            "retrieve(cookware)|||retrieve(crockery)",
+            "retrieve(crockery)|||leave(cookware)",
+            "retrieve(crockery)|||retrieve(dairy and eggs)",
+            "retrieve(cutlery)|||manipulate(appliances)",
+            "retrieve(dairy and eggs)|||merge(dairy and eggs)",
+            "retrieve(furniture)|||leave(crockery)",
+            "retrieve(furniture)|||leave(furniture)",
+            "retrieve(utensils)|||access(rubbish)",
+            "sense(storage)|||retrieve(cookware)"
+          ],
+          "introduced_keys": [
+            "START|||manipulate(appliances)",
+            "leave(drinks)|||merge(dairy and eggs)",
+            "manipulate(appliances)|||merge(dairy and eggs)",
+            "manipulate(appliances)|||retrieve(drinks)",
+            "merge(dairy and eggs)|||manipulate(appliances)",
+            "retrieve(utensils)|||END"
+          ]
+        },
+        "removed_action_counts": {
+          "retrieve(containers)": 5,
+          "leave(crockery)": 4,
+          "leave(containers)": 4,
+          "block(appliances)": 4,
+          "retrieve(crockery)": 3,
+          "retrieve(furniture)": 3,
+          "access(containers)": 3,
+          "access(appliances)": 3,
+          "clean(dairy and eggs)": 3,
+          "block(containers)": 2,
+          "access(rubbish)": 2,
+          "block(rubbish)": 2,
+          "sense(storage)": 1,
+          "retrieve(cookware)": 1,
+          "leave(cookware)": 1,
+          "manipulate(crockery)": 1,
+          "manipulate(drinks)": 1,
+          "merge(drinks)": 1,
+          "leave(drinks)": 1,
+          "manipulate(containers)": 1,
+          "monitor(containers)": 1,
+          "monitor(appliances)": 1,
+          "manipulate(appliances)": 1,
+          "retrieve(cutlery)": 1,
+          "retrieve(dairy and eggs)": 1,
+          "leave(dairy and eggs)": 1,
+          "retrieve(cleaning equipment and material)": 1,
+          "leave(cleaning equipment and material)": 1,
+          "leave(furniture)": 1,
+          "leave(cutlery)": 1
+        },
+        "return_transitions": {
+          "count": 2,
+          "keys": [
+            "manipulate(appliances)|||retrieve(drinks)",
+            "merge(dairy and eggs)|||manipulate(appliances)"
+          ]
+        },
+        "self_loops": {
+          "count": 1,
+          "keys": [
+            "manipulate(appliances)|||manipulate(appliances)"
+          ]
+        }
+      },
+      {
+        "session_index": 2,
+        "identity": "verb_category(noun_category)",
+        "rule": "An action is PRIMARY if its time window overlaps an annotated step_times window (with a per-side buffer). Non-primary actions are excluded from the motion graph only; they remain in the sequence, the swimlane and graph_unfiltered.",
+        "actions": {
+          "before": 83,
+          "after": 20,
+          "removed": 63,
+          "removed_fraction": 0.759
+        },
+        "nodes": {
+          "before": 37,
+          "after": 17,
+          "removed": [
+            "access(containers)",
+            "access(dairy and eggs)",
+            "access(storage)",
+            "block(appliances)",
+            "block(drinks)",
+            "block(rubbish)",
+            "block(storage)",
+            "clean(dairy and eggs)",
+            "clean(hand)",
+            "leave(baked goods and grains)",
+            "leave(containers)",
+            "leave(crockery)",
+            "leave(dairy and eggs)",
+            "manipulate(dairy and eggs)",
+            "retrieve(appliances)",
+            "retrieve(containers)",
+            "retrieve(cutlery)",
+            "sense(furniture)",
+            "transition(crockery)",
+            "transition(dairy and eggs)"
+          ]
+        },
+        "links": {
+          "before": 74,
+          "after": 19,
+          "removed_keys": [
+            "access(appliances)|||access(dairy and eggs)",
+            "access(appliances)|||clean(dairy and eggs)",
+            "access(appliances)|||leave(containers)",
+            "access(appliances)|||retrieve(containers)",
+            "access(appliances)|||transition(dairy and eggs)",
+            "access(containers)|||leave(cutlery)",
+            "access(containers)|||manipulate(appliances)",
+            "access(containers)|||merge(dairy and eggs)",
+            "access(containers)|||retrieve(cutlery)",
+            "access(containers)|||retrieve(drinks)",
+            "access(dairy and eggs)|||access(storage)",
+            "access(dairy and eggs)|||merge(dairy and eggs)",
+            "access(furniture)|||retrieve(cutlery)",
+            "access(storage)|||retrieve(crockery)",
+            "block(appliances)|||leave(containers)",
+            "block(appliances)|||manipulate(dairy and eggs)",
+            "block(appliances)|||retrieve(containers)",
+            "block(containers)|||access(appliances)",
+            "block(containers)|||access(containers)",
+            "block(containers)|||access(dairy and eggs)",
+            "block(containers)|||block(containers)",
+            "block(containers)|||leave(baked goods and grains)",
+            "block(containers)|||transition(crockery)",
+            "block(drinks)|||retrieve(containers)",
+            "block(rubbish)|||leave(crockery)",
+            "block(storage)|||retrieve(dairy and eggs)",
+            "clean(dairy and eggs)|||block(appliances)",
+            "clean(hand)|||manipulate(crockery)",
+            "leave(baked goods and grains)|||access(furniture)",
+            "leave(baked goods and grains)|||block(containers)",
+            "leave(baked goods and grains)|||retrieve(baked goods and grains)",
+            "leave(containers)|||block(appliances)",
+            "leave(containers)|||block(containers)",
+            "leave(containers)|||retrieve(crockery)",
+            "leave(crockery)|||END",
+            "leave(crockery)|||access(appliances)",
+            "leave(crockery)|||access(containers)",
+            "leave(cutlery)|||access(containers)",
+            "leave(cutlery)|||block(rubbish)",
+            "leave(cutlery)|||leave(dairy and eggs)",
+            "leave(dairy and eggs)|||access(appliances)",
+            "leave(dairy and eggs)|||clean(hand)",
+            "leave(drinks)|||block(drinks)",
+            "manipulate(cutlery)|||access(containers)",
+            "manipulate(dairy and eggs)|||access(appliances)",
+            "manipulate(dairy and eggs)|||leave(dairy and eggs)",
+            "merge(dairy and eggs)|||access(appliances)",
+            "merge(dairy and eggs)|||block(containers)",
+            "merge(dairy and eggs)|||leave(containers)",
+            "retrieve(appliances)|||leave(crockery)",
+            "retrieve(baked goods and grains)|||leave(baked goods and grains)",
+            "retrieve(containers)|||access(containers)",
+            "retrieve(containers)|||block(appliances)",
+            "retrieve(crockery)|||block(storage)",
+            "retrieve(crockery)|||retrieve(appliances)",
+            "retrieve(cutlery)|||block(containers)",
+            "retrieve(cutlery)|||sense(furniture)",
+            "retrieve(dairy and eggs)|||leave(crockery)",
+            "sense(furniture)|||leave(cutlery)",
+            "transition(crockery)|||retrieve(dairy and eggs)",
+            "transition(dairy and eggs)|||access(containers)"
+          ],
+          "introduced_keys": [
+            "access(appliances)|||retrieve(drinks)",
+            "leave(cutlery)|||manipulate(crockery)",
+            "leave(drinks)|||merge(dairy and eggs)",
+            "manipulate(cutlery)|||END",
+            "merge(dairy and eggs)|||manipulate(appliances)",
+            "retrieve(baked goods and grains)|||retrieve(dairy and eggs)"
+          ]
+        },
+        "removed_action_counts": {
+          "access(containers)": 7,
+          "block(containers)": 6,
+          "access(appliances)": 5,
+          "block(appliances)": 4,
+          "retrieve(containers)": 3,
+          "leave(containers)": 3,
+          "leave(crockery)": 3,
+          "merge(dairy and eggs)": 3,
+          "leave(baked goods and grains)": 3,
+          "retrieve(crockery)": 2,
+          "access(dairy and eggs)": 2,
+          "retrieve(cutlery)": 2,
+          "leave(cutlery)": 2,
+          "leave(dairy and eggs)": 2,
+          "clean(dairy and eggs)": 2,
+          "manipulate(dairy and eggs)": 2,
+          "retrieve(appliances)": 1,
+          "transition(dairy and eggs)": 1,
+          "block(drinks)": 1,
+          "access(storage)": 1,
+          "block(storage)": 1,
+          "retrieve(dairy and eggs)": 1,
+          "retrieve(baked goods and grains)": 1,
+          "access(furniture)": 1,
+          "sense(furniture)": 1,
+          "transition(crockery)": 1,
+          "clean(hand)": 1,
+          "block(rubbish)": 1
+        },
+        "return_transitions": {
+          "count": 5,
+          "keys": [
+            "manipulate(cutlery)|||retrieve(crockery)",
+            "merge(dairy and eggs)|||manipulate(appliances)",
+            "merge(drinks)|||manipulate(cutlery)",
+            "retrieve(dairy and eggs)|||sense(dairy and eggs)",
+            "sense(dairy and eggs)|||merge(dairy and eggs)"
+          ]
+        },
+        "self_loops": {
+          "count": 0,
+          "keys": []
+        }
+      }
     ]
   }
 }

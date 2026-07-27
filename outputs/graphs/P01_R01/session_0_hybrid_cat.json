@@ -4685,6 +4685,7 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
+        "median_rank": 0.55882,
         "dead_end_score": 0.5
       },
       {
@@ -4701,6 +4702,7 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
+        "median_rank": 0.17647,
         "dead_end_score": 0.5
       },
       {
@@ -4717,6 +4719,7 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
+        "median_rank": 0.79412,
         "dead_end_score": 0.5
       },
       {
@@ -4733,6 +4736,7 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
+        "median_rank": 0.20588,
         "dead_end_score": 0.5
       },
       {
@@ -4745,6 +4749,7 @@
         "kind": "end",
         "is_start": false,
         "is_end": true,
+        "median_rank": 1.0,
         "dead_end_score": 1.0
       },
       {
@@ -4757,6 +4762,7 @@
         "kind": "start",
         "is_start": true,
         "is_end": false,
+        "median_rank": 0.0,
         "dead_end_score": 0.0
       },
       {
@@ -4773,6 +4779,7 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
+        "median_rank": 0.35294,
         "dead_end_score": 0.0
       },
       {
@@ -4789,6 +4796,7 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
+        "median_rank": 0.94118,
         "dead_end_score": 0.0
       },
       {
@@ -4805,6 +4813,7 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
+        "median_rank": 0.11765,
         "dead_end_score": 0.0
       },
       {
@@ -4821,6 +4830,7 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
+        "median_rank": 0.88235,
         "dead_end_score": 0.0
       },
       {
@@ -4837,6 +4847,7 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
+        "median_rank": 0.47059,
         "dead_end_score": 0.0
       },
       {
@@ -4853,6 +4864,7 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
+        "median_rank": 0.70588,
         "dead_end_score": 0.0
       }
     ],
@@ -4866,7 +4878,10 @@
         "occurrences": [
           9,
           10
-        ]
+        ],
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
       },
       {
         "source": "START",
@@ -4876,7 +4891,10 @@
         "key": "START|||manipulate(appliances)",
         "occurrences": [
           0
-        ]
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.17647
       },
       {
         "source": "manipulate(appliances)",
@@ -4886,7 +4904,10 @@
         "key": "manipulate(appliances)|||manipulate(crockery)",
         "occurrences": [
           5
-        ]
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.17647
       },
       {
         "source": "manipulate(appliances)",
@@ -4896,7 +4917,10 @@
         "key": "manipulate(appliances)|||manipulate(drinks)",
         "occurrences": [
           1
-        ]
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.05882
       },
       {
         "source": "manipulate(crockery)",
@@ -4906,7 +4930,10 @@
         "key": "manipulate(crockery)|||retrieve(dairy and eggs)",
         "occurrences": [
           6
-        ]
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.20588
       },
       {
         "source": "manipulate(cutlery)",
@@ -4916,7 +4943,10 @@
         "key": "manipulate(cutlery)|||END",
         "occurrences": [
           16
-        ]
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.05882
       },
       {
         "source": "manipulate(drinks)",
@@ -4926,7 +4956,10 @@
         "key": "manipulate(drinks)|||retrieve(containers)",
         "occurrences": [
           2
-        ]
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.08823
       },
       {
         "source": "merge(drinks)",
@@ -4936,7 +4969,10 @@
         "key": "merge(drinks)|||merge(drinks)",
         "occurrences": [
           13
-        ]
+        ],
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
       },
       {
         "source": "merge(drinks)",
@@ -4946,7 +4982,10 @@
         "key": "merge(drinks)|||retrieve(other)",
         "occurrences": [
           14
-        ]
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.08823
       },
       {
         "source": "retrieve(containers)",
@@ -4956,7 +4995,10 @@
         "key": "retrieve(containers)|||manipulate(appliances)",
         "occurrences": [
           4
-        ]
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.02941
       },
       {
         "source": "retrieve(containers)",
@@ -4966,7 +5008,10 @@
         "key": "retrieve(containers)|||retrieve(containers)",
         "occurrences": [
           3
-        ]
+        ],
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
       },
       {
         "source": "retrieve(dairy and eggs)",
@@ -4976,7 +5021,10 @@
         "key": "retrieve(dairy and eggs)|||sense(dairy and eggs)",
         "occurrences": [
           7
-        ]
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.08823
       },
       {
         "source": "retrieve(dairy and eggs)",
@@ -4986,7 +5034,10 @@
         "key": "retrieve(dairy and eggs)|||transition(cutlery)",
         "occurrences": [
           11
-        ]
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.14706
       },
       {
         "source": "retrieve(other)",
@@ -4996,7 +5047,10 @@
         "key": "retrieve(other)|||manipulate(cutlery)",
         "occurrences": [
           15
-        ]
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.05883
       },
       {
         "source": "sense(dairy and eggs)",
@@ -5006,7 +5060,10 @@
         "key": "sense(dairy and eggs)|||retrieve(dairy and eggs)",
         "occurrences": [
           8
-        ]
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.08823
       },
       {
         "source": "transition(cutlery)",
@@ -5016,9 +5073,4089 @@
         "key": "transition(cutlery)|||merge(drinks)",
         "occurrences": [
           12
-        ]
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.08824
       }
     ]
+  },
+  "graph_unfiltered": {
+    "nodes": [
+      {
+        "id": "retrieve(fruits and nuts)",
+        "count": 13,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "orange": 13
+        },
+        "verbs": {
+          "take": 11,
+          "remove": 1,
+          "lift": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.57333,
+        "dead_end_score": 0.462
+      },
+      {
+        "id": "manipulate(fruits and nuts)",
+        "count": 11,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "orange": 11
+        },
+        "verbs": {
+          "flip": 3,
+          "press": 6,
+          "turn": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.60889,
+        "dead_end_score": 0.545
+      },
+      {
+        "id": "access(containers)",
+        "count": 9,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "bottle": 1,
+          "lid": 7,
+          "cap": 1
+        },
+        "verbs": {
+          "open": 9
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.61778,
+        "dead_end_score": 0.667
+      },
+      {
+        "id": "block(appliances)",
+        "count": 9,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "fridge": 2,
+          "kettle": 1,
+          "tap": 5,
+          "machine:washing": 1
+        },
+        "verbs": {
+          "close": 6,
+          "turn-off": 3
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.76444,
+        "dead_end_score": 0.889
+      },
+      {
+        "id": "retrieve(containers)",
+        "count": 9,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "bottle": 4,
+          "package": 1,
+          "lid": 4
+        },
+        "verbs": {
+          "take": 3,
+          "lift": 5,
+          "remove": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.12444,
+        "dead_end_score": 0.778
+      },
+      {
+        "id": "access(appliances)",
+        "count": 8,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "fridge": 2,
+          "button": 1,
+          "tap": 3,
+          "machine:washing": 2
+        },
+        "verbs": {
+          "open": 5,
+          "switch": 1,
+          "turn-on": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.57556,
+        "dead_end_score": 0.75
+      },
+      {
+        "id": "leave(fruits and nuts)",
+        "count": 8,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "orange": 8
+        },
+        "verbs": {
+          "put": 7,
+          "throw": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.62667,
+        "dead_end_score": 0.625
+      },
+      {
+        "id": "manipulate(appliances)",
+        "count": 8,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "maker:coffee": 1,
+          "button": 3,
+          "plug": 1,
+          "knob": 2,
+          "kettle": 1
+        },
+        "verbs": {
+          "flip": 1,
+          "press": 4,
+          "turn": 2,
+          "hold": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.21111,
+        "dead_end_score": 0.875
+      },
+      {
+        "id": "retrieve(dairy and eggs)",
+        "count": 8,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "cream": 2,
+          "milk": 6
+        },
+        "verbs": {
+          "lift": 5,
+          "take": 2,
+          "remove": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.35778,
+        "dead_end_score": 0.75
+      },
+      {
+        "id": "block(prepared food)",
+        "count": 7,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "food": 7
+        },
+        "verbs": {
+          "turn-off": 7
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.64444,
+        "dead_end_score": 0.714
+      },
+      {
+        "id": "clean(dairy and eggs)",
+        "count": 7,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "milk": 4,
+          "cream": 3
+        },
+        "verbs": {
+          "wash": 7
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.45333,
+        "dead_end_score": 0.714
+      },
+      {
+        "id": "manipulate(crockery)",
+        "count": 7,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "cup": 2,
+          "bowl": 4,
+          "glass": 1
+        },
+        "verbs": {
+          "turn": 7
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.88,
+        "dead_end_score": 0.714
+      },
+      {
+        "id": "retrieve(crockery)",
+        "count": 7,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "cup": 1,
+          "bowl": 4,
+          "glass": 2
+        },
+        "verbs": {
+          "take": 3,
+          "lift": 4
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.92444,
+        "dead_end_score": 0.571
+      },
+      {
+        "id": "leave(crockery)",
+        "count": 6,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "cup": 1,
+          "bowl": 3,
+          "glass": 2
+        },
+        "verbs": {
+          "put": 6
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.90444,
+        "dead_end_score": 0.833
+      },
+      {
+        "id": "leave(cutlery)",
+        "count": 5,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "spoon": 1,
+          "knife": 4
+        },
+        "verbs": {
+          "throw": 1,
+          "put": 4
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.59111,
+        "dead_end_score": 0.8
+      },
+      {
+        "id": "leave(rubbish)",
+        "count": 5,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "skin": 5
+        },
+        "verbs": {
+          "throw": 5
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.65333,
+        "dead_end_score": 0.2
+      },
+      {
+        "id": "access(prepared food)",
+        "count": 4,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "food": 4
+        },
+        "verbs": {
+          "turn-on": 4
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.62,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "leave(dairy and eggs)",
+        "count": 4,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "cream": 3,
+          "milk": 1
+        },
+        "verbs": {
+          "put": 4
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.64,
+        "dead_end_score": 0.75
+      },
+      {
+        "id": "manipulate(containers)",
+        "count": 4,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "lid": 1,
+          "bag": 3
+        },
+        "verbs": {
+          "turn": 1,
+          "pull": 2,
+          "shake": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.29111,
+        "dead_end_score": 0.75
+      },
+      {
+        "id": "manipulate(prepared food)",
+        "count": 4,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "food": 4
+        },
+        "verbs": {
+          "hold": 1,
+          "turn": 3
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.37778,
+        "dead_end_score": 0.75
+      },
+      {
+        "id": "retrieve(cutlery)",
+        "count": 4,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "knife": 4
+        },
+        "verbs": {
+          "take": 4
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.62444,
+        "dead_end_score": 0.25
+      },
+      {
+        "id": "access(furniture)",
+        "count": 3,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "drawer": 3
+        },
+        "verbs": {
+          "open": 3
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.15111,
+        "dead_end_score": 0.667
+      },
+      {
+        "id": "access(storage)",
+        "count": 3,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "cupboard": 3
+        },
+        "verbs": {
+          "open": 3
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.19556,
+        "dead_end_score": 0.667
+      },
+      {
+        "id": "clean(crockery)",
+        "count": 3,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "bowl": 3
+        },
+        "verbs": {
+          "wash": 2,
+          "scrub": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.96444,
+        "dead_end_score": 0.667
+      },
+      {
+        "id": "leave(cleaning equipment and material)",
+        "count": 3,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "sponge": 3
+        },
+        "verbs": {
+          "insert": 1,
+          "put": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.82222,
+        "dead_end_score": 0.333
+      },
+      {
+        "id": "leave(containers)",
+        "count": 3,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "bottle": 1,
+          "lid": 1,
+          "bag": 1
+        },
+        "verbs": {
+          "put": 3
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.19111,
+        "dead_end_score": 0.667
+      },
+      {
+        "id": "manipulate(utensils)",
+        "count": 3,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "board:chopping": 1,
+          "juicer": 2
+        },
+        "verbs": {
+          "slide": 1,
+          "turn": 1,
+          "press": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.23111,
+        "dead_end_score": 0.667
+      },
+      {
+        "id": "retrieve(cleaning equipment and material)",
+        "count": 3,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "sponge": 3
+        },
+        "verbs": {
+          "take": 3
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.81333,
+        "dead_end_score": 0.667
+      },
+      {
+        "id": "retrieve(materials)",
+        "count": 3,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "towel": 3
+        },
+        "verbs": {
+          "take": 3
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.89778,
+        "dead_end_score": 0.667
+      },
+      {
+        "id": "split(fruits and nuts)",
+        "count": 3,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "orange": 3
+        },
+        "verbs": {
+          "cut": 3
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.58667,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "block(containers)",
+        "count": 2,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "lid": 2
+        },
+        "verbs": {
+          "close": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.58889,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "block(storage)",
+        "count": 2,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "cupboard": 2
+        },
+        "verbs": {
+          "close": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.11556,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "leave(utensils)",
+        "count": 2,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "scissors": 1,
+          "juicer": 1
+        },
+        "verbs": {
+          "put": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.19111,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "manipulate(dairy and eggs)",
+        "count": 2,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "milk": 2
+        },
+        "verbs": {
+          "slide": 1,
+          "turn": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.24667,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "manipulate(storage)",
+        "count": 2,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "cupboard": 2
+        },
+        "verbs": {
+          "slide": 1,
+          "press": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.22,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "merge(drinks)",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "coffee": 2
+        },
+        "verbs": {
+          "mix": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.37556,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "retrieve(baked goods and grains)",
+        "count": 2,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "roll": 1,
+          "cake": 1
+        },
+        "verbs": {
+          "take": 1,
+          "remove": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.35111,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "retrieve(cookware)",
+        "count": 2,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "handle": 1,
+          "tray": 1
+        },
+        "verbs": {
+          "lift": 1,
+          "take": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.25111,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "retrieve(utensils)",
+        "count": 2,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "scissors": 1,
+          "juicer": 1
+        },
+        "verbs": {
+          "take": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.16222,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "transition(containers)",
+        "count": 2,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "package": 1,
+          "box": 1
+        },
+        "verbs": {
+          "move": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.20667,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "END",
+        "count": 1,
+        "is_primary": true,
+        "salient": false,
+        "objects": {},
+        "verbs": {},
+        "kind": "end",
+        "is_start": false,
+        "is_end": true,
+        "median_rank": 1.0,
+        "dead_end_score": 1.0
+      },
+      {
+        "id": "START",
+        "count": 1,
+        "is_primary": true,
+        "salient": false,
+        "objects": {},
+        "verbs": {},
+        "kind": "start",
+        "is_start": true,
+        "is_end": false,
+        "median_rank": 0.0,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "access(dairy and eggs)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "milk": 1
+        },
+        "verbs": {
+          "turn-on": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.08889,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "access(utensils)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "scissors": 1
+        },
+        "verbs": {
+          "open": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.12889,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "block(furniture)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "drawer": 1
+        },
+        "verbs": {
+          "close": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.29333,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "block(rubbish)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "bin": 1
+        },
+        "verbs": {
+          "close": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.4,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "block(utensils)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "scissors": 1
+        },
+        "verbs": {
+          "wrap": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.14667,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "clean(cleaning equipment and material)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "sponge": 1
+        },
+        "verbs": {
+          "scrub": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.44444,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "clean(prepared food)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "food": 1
+        },
+        "verbs": {
+          "wash": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.95111,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "clean(utensils)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "juicer": 1
+        },
+        "verbs": {
+          "wash": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.88444,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "leave(appliances)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "plug": 1
+        },
+        "verbs": {
+          "put": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.17778,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "leave(furniture)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "top": 1
+        },
+        "verbs": {
+          "insert": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.68,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "leave(prepared food)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "food": 1
+        },
+        "verbs": {
+          "throw": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.85333,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "leave(vegetables)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "vegetable": 1
+        },
+        "verbs": {
+          "put": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.28889,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "manipulate(cookware)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "handle": 1
+        },
+        "verbs": {
+          "pull": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.05333,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "manipulate(cutlery)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "spoon": 1
+        },
+        "verbs": {
+          "shake": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.38667,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "manipulate(drinks)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "coffee": 1
+        },
+        "verbs": {
+          "slide": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.04889,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "manipulate(furniture)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "top": 1
+        },
+        "verbs": {
+          "press": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.32,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "manipulate(hand)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "hand": 1
+        },
+        "verbs": {
+          "stretch": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.00889,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "manipulate(rubbish)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "skin": 1
+        },
+        "verbs": {
+          "shake": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.8,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "retrieve(appliances)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "plug": 1
+        },
+        "verbs": {
+          "remove": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.17333,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "retrieve(drinks)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "coffee": 1
+        },
+        "verbs": {
+          "take": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.03556,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "retrieve(other)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "rest": 1
+        },
+        "verbs": {
+          "take": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.38222,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "retrieve(prepared food)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "food": 1
+        },
+        "verbs": {
+          "take": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.16444,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "retrieve(rubbish)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "skin": 1
+        },
+        "verbs": {
+          "remove": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.76889,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "retrieve(vegetables)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "vegetable": 1
+        },
+        "verbs": {
+          "take": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.27111,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "sense(baked goods and grains)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "roll": 1
+        },
+        "verbs": {
+          "feel": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.28,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "sense(crockery)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "bowl": 1
+        },
+        "verbs": {
+          "pat": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.85778,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "sense(dairy and eggs)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "milk": 1
+        },
+        "verbs": {
+          "pat": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.34667,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "transition(cutlery)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "spoon": 1
+        },
+        "verbs": {
+          "move": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.36889,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "transition(dairy and eggs)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "milk": 1
+        },
+        "verbs": {
+          "move": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.41333,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "transition(prepared food)",
+        "count": 1,
+        "is_primary": false,
+        "salient": true,
+        "objects": {
+          "food": 1
+        },
+        "verbs": {
+          "move": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.78667,
+        "dead_end_score": 0.0
+      }
+    ],
+    "links": [
+      {
+        "source": "retrieve(fruits and nuts)",
+        "target": "leave(fruits and nuts)",
+        "count": 7,
+        "probability": 0.5385,
+        "key": "retrieve(fruits and nuts)|||leave(fruits and nuts)",
+        "occurrences": [
+          58,
+          121,
+          129,
+          141,
+          148,
+          154,
+          165
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.05334
+      },
+      {
+        "source": "manipulate(fruits and nuts)",
+        "target": "block(prepared food)",
+        "count": 5,
+        "probability": 0.4545,
+        "key": "manipulate(fruits and nuts)|||block(prepared food)",
+        "occurrences": [
+          124,
+          137,
+          144,
+          157,
+          168
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.03555
+      },
+      {
+        "source": "access(prepared food)",
+        "target": "manipulate(fruits and nuts)",
+        "count": 4,
+        "probability": 1.0,
+        "key": "access(prepared food)|||manipulate(fruits and nuts)",
+        "occurrences": [
+          123,
+          136,
+          143,
+          156
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.01111
+      },
+      {
+        "source": "leave(rubbish)",
+        "target": "retrieve(fruits and nuts)",
+        "count": 4,
+        "probability": 0.8,
+        "key": "leave(rubbish)|||retrieve(fruits and nuts)",
+        "occurrences": [
+          120,
+          128,
+          147,
+          164
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.08
+      },
+      {
+        "source": "access(containers)",
+        "target": "leave(rubbish)",
+        "count": 3,
+        "probability": 0.3333,
+        "key": "access(containers)|||leave(rubbish)",
+        "occurrences": [
+          127,
+          163,
+          174
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.03555
+      },
+      {
+        "source": "leave(fruits and nuts)",
+        "target": "access(prepared food)",
+        "count": 3,
+        "probability": 0.375,
+        "key": "leave(fruits and nuts)|||access(prepared food)",
+        "occurrences": [
+          122,
+          142,
+          155
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.00667
+      },
+      {
+        "source": "retrieve(crockery)",
+        "target": "manipulate(crockery)",
+        "count": 3,
+        "probability": 0.4286,
+        "key": "retrieve(crockery)|||manipulate(crockery)",
+        "occurrences": [
+          3,
+          204,
+          222
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.04444
+      },
+      {
+        "source": "retrieve(cutlery)",
+        "target": "split(fruits and nuts)",
+        "count": 3,
+        "probability": 0.75,
+        "key": "retrieve(cutlery)|||split(fruits and nuts)",
+        "occurrences": [
+          110,
+          131,
+          150
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.03777
+      },
+      {
+        "source": "split(fruits and nuts)",
+        "target": "leave(cutlery)",
+        "count": 3,
+        "probability": 1.0,
+        "key": "split(fruits and nuts)|||leave(cutlery)",
+        "occurrences": [
+          111,
+          132,
+          151
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.00444
+      },
+      {
+        "source": "access(appliances)",
+        "target": "clean(crockery)",
+        "count": 2,
+        "probability": 0.25,
+        "key": "access(appliances)|||clean(crockery)",
+        "occurrences": [
+          196,
+          219
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.38888
+      },
+      {
+        "source": "block(prepared food)",
+        "target": "access(containers)",
+        "count": 2,
+        "probability": 0.2857,
+        "key": "block(prepared food)|||access(containers)",
+        "occurrences": [
+          138,
+          162
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.02666
+      },
+      {
+        "source": "block(prepared food)",
+        "target": "manipulate(fruits and nuts)",
+        "count": 2,
+        "probability": 0.2857,
+        "key": "block(prepared food)|||manipulate(fruits and nuts)",
+        "occurrences": [
+          125,
+          158
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.03555
+      },
+      {
+        "source": "block(prepared food)",
+        "target": "retrieve(fruits and nuts)",
+        "count": 2,
+        "probability": 0.2857,
+        "key": "block(prepared food)|||retrieve(fruits and nuts)",
+        "occurrences": [
+          117,
+          169
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.07111
+      },
+      {
+        "source": "clean(dairy and eggs)",
+        "target": "retrieve(cleaning equipment and material)",
+        "count": 2,
+        "probability": 0.2857,
+        "key": "clean(dairy and eggs)|||retrieve(cleaning equipment and material)",
+        "occurrences": [
+          98,
+          182
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.36
+      },
+      {
+        "source": "leave(cleaning equipment and material)",
+        "target": "clean(dairy and eggs)",
+        "count": 2,
+        "probability": 0.6667,
+        "key": "leave(cleaning equipment and material)|||clean(dairy and eggs)",
+        "occurrences": [
+          101,
+          185
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.36889
+      },
+      {
+        "source": "leave(fruits and nuts)",
+        "target": "retrieve(cutlery)",
+        "count": 2,
+        "probability": 0.25,
+        "key": "leave(fruits and nuts)|||retrieve(cutlery)",
+        "occurrences": [
+          130,
+          149
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.00223
+      },
+      {
+        "source": "leave(utensils)",
+        "target": "manipulate(utensils)",
+        "count": 2,
+        "probability": 1.0,
+        "key": "leave(utensils)|||manipulate(utensils)",
+        "occurrences": [
+          35,
+          51
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.04
+      },
+      {
+        "source": "manipulate(crockery)",
+        "target": "retrieve(crockery)",
+        "count": 2,
+        "probability": 0.2857,
+        "key": "manipulate(crockery)|||retrieve(crockery)",
+        "occurrences": [
+          189,
+          207
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.04444
+      },
+      {
+        "source": "manipulate(fruits and nuts)",
+        "target": "manipulate(prepared food)",
+        "count": 2,
+        "probability": 0.1818,
+        "key": "manipulate(fruits and nuts)|||manipulate(prepared food)",
+        "occurrences": [
+          113,
+          160
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.23111
+      },
+      {
+        "source": "retrieve(containers)",
+        "target": "leave(rubbish)",
+        "count": 2,
+        "probability": 0.2222,
+        "key": "retrieve(containers)|||leave(rubbish)",
+        "occurrences": [
+          119,
+          146
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.52889
+      },
+      {
+        "source": "retrieve(crockery)",
+        "target": "retrieve(crockery)",
+        "count": 2,
+        "probability": 0.2857,
+        "key": "retrieve(crockery)|||retrieve(crockery)",
+        "occurrences": [
+          208,
+          209
+        ],
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
+      },
+      {
+        "source": "retrieve(dairy and eggs)",
+        "target": "retrieve(dairy and eggs)",
+        "count": 2,
+        "probability": 0.25,
+        "key": "retrieve(dairy and eggs)|||retrieve(dairy and eggs)",
+        "occurrences": [
+          79,
+          80
+        ],
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
+      },
+      {
+        "source": "retrieve(fruits and nuts)",
+        "target": "retrieve(fruits and nuts)",
+        "count": 2,
+        "probability": 0.1538,
+        "key": "retrieve(fruits and nuts)|||retrieve(fruits and nuts)",
+        "occurrences": [
+          30,
+          31
+        ],
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
+      },
+      {
+        "source": "START",
+        "target": "access(storage)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "START|||access(storage)",
+        "occurrences": [
+          0
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.19556
+      },
+      {
+        "source": "access(appliances)",
+        "target": "block(appliances)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "access(appliances)|||block(appliances)",
+        "occurrences": [
+          171
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.18888
+      },
+      {
+        "source": "access(appliances)",
+        "target": "leave(containers)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "access(appliances)|||leave(containers)",
+        "occurrences": [
+          22
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.38445
+      },
+      {
+        "source": "access(appliances)",
+        "target": "manipulate(fruits and nuts)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "access(appliances)|||manipulate(fruits and nuts)",
+        "occurrences": [
+          167
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.03333
+      },
+      {
+        "source": "access(appliances)",
+        "target": "manipulate(prepared food)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "access(appliances)|||manipulate(prepared food)",
+        "occurrences": [
+          55
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.19778
+      },
+      {
+        "source": "access(appliances)",
+        "target": "retrieve(containers)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "access(appliances)|||retrieve(containers)",
+        "occurrences": [
+          13
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.45112
+      },
+      {
+        "source": "access(appliances)",
+        "target": "transition(dairy and eggs)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "access(appliances)|||transition(dairy and eggs)",
+        "occurrences": [
+          92
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.16223
+      },
+      {
+        "source": "access(containers)",
+        "target": "clean(prepared food)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "access(containers)|||clean(prepared food)",
+        "occurrences": [
+          213
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.33333
+      },
+      {
+        "source": "access(containers)",
+        "target": "leave(containers)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "access(containers)|||leave(containers)",
+        "occurrences": [
+          69
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.42667
+      },
+      {
+        "source": "access(containers)",
+        "target": "leave(cutlery)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "access(containers)|||leave(cutlery)",
+        "occurrences": [
+          88
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.02667
+      },
+      {
+        "source": "access(containers)",
+        "target": "leave(fruits and nuts)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "access(containers)|||leave(fruits and nuts)",
+        "occurrences": [
+          139
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.00889
+      },
+      {
+        "source": "access(containers)",
+        "target": "leave(prepared food)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "access(containers)|||leave(prepared food)",
+        "occurrences": [
+          191
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.23555
+      },
+      {
+        "source": "access(containers)",
+        "target": "retrieve(containers)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "access(containers)|||retrieve(containers)",
+        "occurrences": [
+          17
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.49334
+      },
+      {
+        "source": "access(dairy and eggs)",
+        "target": "retrieve(containers)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "access(dairy and eggs)|||retrieve(containers)",
+        "occurrences": [
+          20
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.03555
+      },
+      {
+        "source": "access(furniture)",
+        "target": "leave(utensils)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "access(furniture)|||leave(utensils)",
+        "occurrences": [
+          34
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.04
+      },
+      {
+        "source": "access(furniture)",
+        "target": "retrieve(utensils)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "access(furniture)|||retrieve(utensils)",
+        "occurrences": [
+          26
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.01111
+      },
+      {
+        "source": "access(furniture)",
+        "target": "retrieve(vegetables)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "access(furniture)|||retrieve(vegetables)",
+        "occurrences": [
+          60
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.12
+      },
+      {
+        "source": "access(storage)",
+        "target": "manipulate(hand)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "access(storage)|||manipulate(hand)",
+        "occurrences": [
+          1
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.18667
+      },
+      {
+        "source": "access(storage)",
+        "target": "retrieve(crockery)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "access(storage)|||retrieve(crockery)",
+        "occurrences": [
+          203
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.72888
+      },
+      {
+        "source": "access(storage)",
+        "target": "transition(containers)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "access(storage)|||transition(containers)",
+        "occurrences": [
+          44
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.01111
+      },
+      {
+        "source": "access(utensils)",
+        "target": "retrieve(fruits and nuts)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "access(utensils)|||retrieve(fruits and nuts)",
+        "occurrences": [
+          29
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.44444
+      },
+      {
+        "source": "block(appliances)",
+        "target": "leave(crockery)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "block(appliances)|||leave(crockery)",
+        "occurrences": [
+          200
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.14
+      },
+      {
+        "source": "block(appliances)",
+        "target": "leave(dairy and eggs)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "block(appliances)|||leave(dairy and eggs)",
+        "occurrences": [
+          187
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.12444
+      },
+      {
+        "source": "block(appliances)",
+        "target": "manipulate(appliances)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "block(appliances)|||manipulate(appliances)",
+        "occurrences": [
+          24
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.55333
+      },
+      {
+        "source": "block(appliances)",
+        "target": "manipulate(crockery)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "block(appliances)|||manipulate(crockery)",
+        "occurrences": [
+          75
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.11556
+      },
+      {
+        "source": "block(appliances)",
+        "target": "manipulate(dairy and eggs)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "block(appliances)|||manipulate(dairy and eggs)",
+        "occurrences": [
+          15
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.51777
+      },
+      {
+        "source": "block(appliances)",
+        "target": "retrieve(cleaning equipment and material)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "block(appliances)|||retrieve(cleaning equipment and material)",
+        "occurrences": [
+          215
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.04889
+      },
+      {
+        "source": "block(appliances)",
+        "target": "retrieve(crockery)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "block(appliances)|||retrieve(crockery)",
+        "occurrences": [
+          221
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.16
+      },
+      {
+        "source": "block(appliances)",
+        "target": "retrieve(dairy and eggs)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "block(appliances)|||retrieve(dairy and eggs)",
+        "occurrences": [
+          104
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.40666
+      },
+      {
+        "source": "block(appliances)",
+        "target": "retrieve(rubbish)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "block(appliances)|||retrieve(rubbish)",
+        "occurrences": [
+          172
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.00445
+      },
+      {
+        "source": "block(containers)",
+        "target": "leave(crockery)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "block(containers)|||leave(crockery)",
+        "occurrences": [
+          194
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.31555
+      },
+      {
+        "source": "block(containers)",
+        "target": "manipulate(furniture)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "block(containers)|||manipulate(furniture)",
+        "occurrences": [
+          71
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.26889
+      },
+      {
+        "source": "block(furniture)",
+        "target": "manipulate(containers)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "block(furniture)|||manipulate(containers)",
+        "occurrences": [
+          66
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.00222
+      },
+      {
+        "source": "block(prepared food)",
+        "target": "retrieve(containers)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "block(prepared food)|||retrieve(containers)",
+        "occurrences": [
+          145
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.52
+      },
+      {
+        "source": "block(rubbish)",
+        "target": "retrieve(dairy and eggs)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "block(rubbish)|||retrieve(dairy and eggs)",
+        "occurrences": [
+          90
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.04222
+      },
+      {
+        "source": "block(storage)",
+        "target": "manipulate(appliances)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "block(storage)|||manipulate(appliances)",
+        "occurrences": [
+          5
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.09555
+      },
+      {
+        "source": "block(storage)",
+        "target": "transition(containers)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "block(storage)|||transition(containers)",
+        "occurrences": [
+          47
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.09111
+      },
+      {
+        "source": "block(utensils)",
+        "target": "access(furniture)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "block(utensils)|||access(furniture)",
+        "occurrences": [
+          33
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.00444
+      },
+      {
+        "source": "clean(cleaning equipment and material)",
+        "target": "leave(cleaning equipment and material)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "clean(cleaning equipment and material)|||leave(cleaning equipment and material)",
+        "occurrences": [
+          100
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.37778
+      },
+      {
+        "source": "clean(crockery)",
+        "target": "block(appliances)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "clean(crockery)|||block(appliances)",
+        "occurrences": [
+          220
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.2
+      },
+      {
+        "source": "clean(crockery)",
+        "target": "leave(cleaning equipment and material)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "clean(crockery)|||leave(cleaning equipment and material)",
+        "occurrences": [
+          217
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.14222
+      },
+      {
+        "source": "clean(crockery)",
+        "target": "manipulate(crockery)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "clean(crockery)|||manipulate(crockery)",
+        "occurrences": [
+          197
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.08444
+      },
+      {
+        "source": "clean(dairy and eggs)",
+        "target": "block(appliances)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "clean(dairy and eggs)|||block(appliances)",
+        "occurrences": [
+          186
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.31111
+      },
+      {
+        "source": "clean(dairy and eggs)",
+        "target": "clean(dairy and eggs)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "clean(dairy and eggs)|||clean(dairy and eggs)",
+        "occurrences": [
+          97
+        ],
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
+      },
+      {
+        "source": "clean(dairy and eggs)",
+        "target": "leave(cleaning equipment and material)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "clean(dairy and eggs)|||leave(cleaning equipment and material)",
+        "occurrences": [
+          184
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.36889
+      },
+      {
+        "source": "clean(dairy and eggs)",
+        "target": "manipulate(dairy and eggs)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "clean(dairy and eggs)|||manipulate(dairy and eggs)",
+        "occurrences": [
+          94
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.20666
+      },
+      {
+        "source": "clean(dairy and eggs)",
+        "target": "retrieve(cookware)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "clean(dairy and eggs)|||retrieve(cookware)",
+        "occurrences": [
+          102
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.20222
+      },
+      {
+        "source": "clean(prepared food)",
+        "target": "block(appliances)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "clean(prepared food)|||block(appliances)",
+        "occurrences": [
+          214
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.18667
+      },
+      {
+        "source": "clean(utensils)",
+        "target": "block(appliances)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "clean(utensils)|||block(appliances)",
+        "occurrences": [
+          199
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.12
+      },
+      {
+        "source": "leave(appliances)",
+        "target": "manipulate(appliances)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "leave(appliances)|||manipulate(appliances)",
+        "occurrences": [
+          40
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.03333
+      },
+      {
+        "source": "leave(cleaning equipment and material)",
+        "target": "access(appliances)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "leave(cleaning equipment and material)|||access(appliances)",
+        "occurrences": [
+          218
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.24666
+      },
+      {
+        "source": "leave(containers)",
+        "target": "access(storage)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "leave(containers)|||access(storage)",
+        "occurrences": [
+          43
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.00445
+      },
+      {
+        "source": "leave(containers)",
+        "target": "block(appliances)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "leave(containers)|||block(appliances)",
+        "occurrences": [
+          23
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.57333
+      },
+      {
+        "source": "leave(containers)",
+        "target": "block(containers)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "leave(containers)|||block(containers)",
+        "occurrences": [
+          70
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.39778
+      },
+      {
+        "source": "leave(crockery)",
+        "target": "access(appliances)",
+        "count": 1,
+        "probability": 0.1667,
+        "key": "leave(crockery)|||access(appliances)",
+        "occurrences": [
+          195
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.32888
+      },
+      {
+        "source": "leave(crockery)",
+        "target": "access(containers)",
+        "count": 1,
+        "probability": 0.1667,
+        "key": "leave(crockery)|||access(containers)",
+        "occurrences": [
+          212
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.28666
+      },
+      {
+        "source": "leave(crockery)",
+        "target": "leave(crockery)",
+        "count": 1,
+        "probability": 0.1667,
+        "key": "leave(crockery)|||leave(crockery)",
+        "occurrences": [
+          211
+        ],
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
+      },
+      {
+        "source": "leave(crockery)",
+        "target": "manipulate(crockery)",
+        "count": 1,
+        "probability": 0.1667,
+        "key": "leave(crockery)|||manipulate(crockery)",
+        "occurrences": [
+          206
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.02444
+      },
+      {
+        "source": "leave(crockery)",
+        "target": "retrieve(drinks)",
+        "count": 1,
+        "probability": 0.1667,
+        "key": "leave(crockery)|||retrieve(drinks)",
+        "occurrences": [
+          7
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.86888
+      },
+      {
+        "source": "leave(crockery)",
+        "target": "retrieve(materials)",
+        "count": 1,
+        "probability": 0.1667,
+        "key": "leave(crockery)|||retrieve(materials)",
+        "occurrences": [
+          201
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.00666
+      },
+      {
+        "source": "leave(cutlery)",
+        "target": "block(rubbish)",
+        "count": 1,
+        "probability": 0.2,
+        "key": "leave(cutlery)|||block(rubbish)",
+        "occurrences": [
+          89
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.19111
+      },
+      {
+        "source": "leave(cutlery)",
+        "target": "leave(furniture)",
+        "count": 1,
+        "probability": 0.2,
+        "key": "leave(cutlery)|||leave(furniture)",
+        "occurrences": [
+          152
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.08889
+      },
+      {
+        "source": "leave(cutlery)",
+        "target": "manipulate(fruits and nuts)",
+        "count": 1,
+        "probability": 0.2,
+        "key": "leave(cutlery)|||manipulate(fruits and nuts)",
+        "occurrences": [
+          112
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.01778
+      },
+      {
+        "source": "leave(cutlery)",
+        "target": "retrieve(dairy and eggs)",
+        "count": 1,
+        "probability": 0.2,
+        "key": "leave(cutlery)|||retrieve(dairy and eggs)",
+        "occurrences": [
+          178
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.23333
+      },
+      {
+        "source": "leave(cutlery)",
+        "target": "retrieve(fruits and nuts)",
+        "count": 1,
+        "probability": 0.2,
+        "key": "leave(cutlery)|||retrieve(fruits and nuts)",
+        "occurrences": [
+          133
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.01778
+      },
+      {
+        "source": "leave(dairy and eggs)",
+        "target": "clean(dairy and eggs)",
+        "count": 1,
+        "probability": 0.25,
+        "key": "leave(dairy and eggs)|||clean(dairy and eggs)",
+        "occurrences": [
+          181
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.18667
+      },
+      {
+        "source": "leave(dairy and eggs)",
+        "target": "leave(dairy and eggs)",
+        "count": 1,
+        "probability": 0.25,
+        "key": "leave(dairy and eggs)|||leave(dairy and eggs)",
+        "occurrences": [
+          106
+        ],
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
+      },
+      {
+        "source": "leave(dairy and eggs)",
+        "target": "manipulate(crockery)",
+        "count": 1,
+        "probability": 0.25,
+        "key": "leave(dairy and eggs)|||manipulate(crockery)",
+        "occurrences": [
+          188
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.24
+      },
+      {
+        "source": "leave(dairy and eggs)",
+        "target": "retrieve(containers)",
+        "count": 1,
+        "probability": 0.25,
+        "key": "leave(dairy and eggs)|||retrieve(containers)",
+        "occurrences": [
+          107
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.51556
+      },
+      {
+        "source": "leave(fruits and nuts)",
+        "target": "access(appliances)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "leave(fruits and nuts)|||access(appliances)",
+        "occurrences": [
+          166
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.05111
+      },
+      {
+        "source": "leave(fruits and nuts)",
+        "target": "access(furniture)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "leave(fruits and nuts)|||access(furniture)",
+        "occurrences": [
+          59
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.47556
+      },
+      {
+        "source": "leave(fruits and nuts)",
+        "target": "retrieve(fruits and nuts)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "leave(fruits and nuts)|||retrieve(fruits and nuts)",
+        "occurrences": [
+          140
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.05334
+      },
+      {
+        "source": "leave(furniture)",
+        "target": "retrieve(fruits and nuts)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "leave(furniture)|||retrieve(fruits and nuts)",
+        "occurrences": [
+          153
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.10667
+      },
+      {
+        "source": "leave(prepared food)",
+        "target": "sense(crockery)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "leave(prepared food)|||sense(crockery)",
+        "occurrences": [
+          192
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.00445
+      },
+      {
+        "source": "leave(rubbish)",
+        "target": "retrieve(cutlery)",
+        "count": 1,
+        "probability": 0.2,
+        "key": "leave(rubbish)|||retrieve(cutlery)",
+        "occurrences": [
+          175
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.02889
+      },
+      {
+        "source": "leave(vegetables)",
+        "target": "block(furniture)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "leave(vegetables)|||block(furniture)",
+        "occurrences": [
+          65
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.00444
+      },
+      {
+        "source": "manipulate(appliances)",
+        "target": "access(appliances)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "manipulate(appliances)|||access(appliances)",
+        "occurrences": [
+          54
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.36445
+      },
+      {
+        "source": "manipulate(appliances)",
+        "target": "access(furniture)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "manipulate(appliances)|||access(furniture)",
+        "occurrences": [
+          25
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.06
+      },
+      {
+        "source": "manipulate(appliances)",
+        "target": "block(appliances)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "manipulate(appliances)|||block(appliances)",
+        "occurrences": [
+          74
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.55333
+      },
+      {
+        "source": "manipulate(appliances)",
+        "target": "leave(crockery)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "manipulate(appliances)|||leave(crockery)",
+        "occurrences": [
+          6
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.69333
+      },
+      {
+        "source": "manipulate(appliances)",
+        "target": "manipulate(appliances)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "manipulate(appliances)|||manipulate(appliances)",
+        "occurrences": [
+          73
+        ],
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
+      },
+      {
+        "source": "manipulate(appliances)",
+        "target": "manipulate(containers)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "manipulate(appliances)|||manipulate(containers)",
+        "occurrences": [
+          41
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.08
+      },
+      {
+        "source": "manipulate(appliances)",
+        "target": "retrieve(cookware)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "manipulate(appliances)|||retrieve(cookware)",
+        "occurrences": [
+          9
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.04
+      },
+      {
+        "source": "manipulate(appliances)",
+        "target": "retrieve(fruits and nuts)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "manipulate(appliances)|||retrieve(fruits and nuts)",
+        "occurrences": [
+          57
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.36222
+      },
+      {
+        "source": "manipulate(containers)",
+        "target": "access(containers)",
+        "count": 1,
+        "probability": 0.25,
+        "key": "manipulate(containers)|||access(containers)",
+        "occurrences": [
+          68
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.32667
+      },
+      {
+        "source": "manipulate(containers)",
+        "target": "leave(containers)",
+        "count": 1,
+        "probability": 0.25,
+        "key": "manipulate(containers)|||leave(containers)",
+        "occurrences": [
+          42
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.1
+      },
+      {
+        "source": "manipulate(containers)",
+        "target": "leave(vegetables)",
+        "count": 1,
+        "probability": 0.25,
+        "key": "manipulate(containers)|||leave(vegetables)",
+        "occurrences": [
+          64
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.00222
+      },
+      {
+        "source": "manipulate(containers)",
+        "target": "manipulate(containers)",
+        "count": 1,
+        "probability": 0.25,
+        "key": "manipulate(containers)|||manipulate(containers)",
+        "occurrences": [
+          67
+        ],
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
+      },
+      {
+        "source": "manipulate(cookware)",
+        "target": "access(appliances)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "manipulate(cookware)|||access(appliances)",
+        "occurrences": [
+          12
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.52223
+      },
+      {
+        "source": "manipulate(crockery)",
+        "target": "block(storage)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "manipulate(crockery)|||block(storage)",
+        "occurrences": [
+          4
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.76444
+      },
+      {
+        "source": "manipulate(crockery)",
+        "target": "clean(utensils)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "manipulate(crockery)|||clean(utensils)",
+        "occurrences": [
+          198
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.00444
+      },
+      {
+        "source": "manipulate(crockery)",
+        "target": "leave(crockery)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "manipulate(crockery)|||leave(crockery)",
+        "occurrences": [
+          205
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.02444
+      },
+      {
+        "source": "manipulate(crockery)",
+        "target": "retrieve(dairy and eggs)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "manipulate(crockery)|||retrieve(dairy and eggs)",
+        "occurrences": [
+          76
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.52222
+      },
+      {
+        "source": "manipulate(crockery)",
+        "target": "retrieve(materials)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "manipulate(crockery)|||retrieve(materials)",
+        "occurrences": [
+          223
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.01778
+      },
+      {
+        "source": "manipulate(cutlery)",
+        "target": "access(containers)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "manipulate(cutlery)|||access(containers)",
+        "occurrences": [
+          87
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.23111
+      },
+      {
+        "source": "manipulate(dairy and eggs)",
+        "target": "access(containers)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "manipulate(dairy and eggs)|||access(containers)",
+        "occurrences": [
+          16
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.37111
+      },
+      {
+        "source": "manipulate(dairy and eggs)",
+        "target": "retrieve(baked goods and grains)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "manipulate(dairy and eggs)|||retrieve(baked goods and grains)",
+        "occurrences": [
+          95
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.10444
+      },
+      {
+        "source": "manipulate(drinks)",
+        "target": "manipulate(cookware)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "manipulate(drinks)|||manipulate(cookware)",
+        "occurrences": [
+          11
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.00444
+      },
+      {
+        "source": "manipulate(fruits and nuts)",
+        "target": "access(containers)",
+        "count": 1,
+        "probability": 0.0909,
+        "key": "manipulate(fruits and nuts)|||access(containers)",
+        "occurrences": [
+          126
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.00889
+      },
+      {
+        "source": "manipulate(fruits and nuts)",
+        "target": "access(prepared food)",
+        "count": 1,
+        "probability": 0.0909,
+        "key": "manipulate(fruits and nuts)|||access(prepared food)",
+        "occurrences": [
+          135
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.01111
+      },
+      {
+        "source": "manipulate(fruits and nuts)",
+        "target": "manipulate(fruits and nuts)",
+        "count": 1,
+        "probability": 0.0909,
+        "key": "manipulate(fruits and nuts)|||manipulate(fruits and nuts)",
+        "occurrences": [
+          159
+        ],
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
+      },
+      {
+        "source": "manipulate(fruits and nuts)",
+        "target": "manipulate(utensils)",
+        "count": 1,
+        "probability": 0.0909,
+        "key": "manipulate(fruits and nuts)|||manipulate(utensils)",
+        "occurrences": [
+          115
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.37778
+      },
+      {
+        "source": "manipulate(furniture)",
+        "target": "manipulate(appliances)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "manipulate(furniture)|||manipulate(appliances)",
+        "occurrences": [
+          72
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.10889
+      },
+      {
+        "source": "manipulate(hand)",
+        "target": "retrieve(crockery)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "manipulate(hand)|||retrieve(crockery)",
+        "occurrences": [
+          2
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.91555
+      },
+      {
+        "source": "manipulate(prepared food)",
+        "target": "block(prepared food)",
+        "count": 1,
+        "probability": 0.25,
+        "key": "manipulate(prepared food)|||block(prepared food)",
+        "occurrences": [
+          161
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.26666
+      },
+      {
+        "source": "manipulate(prepared food)",
+        "target": "manipulate(appliances)",
+        "count": 1,
+        "probability": 0.25,
+        "key": "manipulate(prepared food)|||manipulate(appliances)",
+        "occurrences": [
+          56
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.16667
+      },
+      {
+        "source": "manipulate(prepared food)",
+        "target": "manipulate(fruits and nuts)",
+        "count": 1,
+        "probability": 0.25,
+        "key": "manipulate(prepared food)|||manipulate(fruits and nuts)",
+        "occurrences": [
+          114
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.23111
+      },
+      {
+        "source": "manipulate(prepared food)",
+        "target": "retrieve(appliances)",
+        "count": 1,
+        "probability": 0.25,
+        "key": "manipulate(prepared food)|||retrieve(appliances)",
+        "occurrences": [
+          38
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.20445
+      },
+      {
+        "source": "manipulate(rubbish)",
+        "target": "leave(dairy and eggs)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "manipulate(rubbish)|||leave(dairy and eggs)",
+        "occurrences": [
+          180
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.16
+      },
+      {
+        "source": "manipulate(storage)",
+        "target": "leave(utensils)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "manipulate(storage)|||leave(utensils)",
+        "occurrences": [
+          50
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.02889
+      },
+      {
+        "source": "manipulate(storage)",
+        "target": "manipulate(storage)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "manipulate(storage)|||manipulate(storage)",
+        "occurrences": [
+          49
+        ],
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
+      },
+      {
+        "source": "manipulate(utensils)",
+        "target": "block(prepared food)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "manipulate(utensils)|||block(prepared food)",
+        "occurrences": [
+          116
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.41333
+      },
+      {
+        "source": "manipulate(utensils)",
+        "target": "retrieve(dairy and eggs)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "manipulate(utensils)|||retrieve(dairy and eggs)",
+        "occurrences": [
+          52
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.12667
+      },
+      {
+        "source": "manipulate(utensils)",
+        "target": "retrieve(prepared food)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "manipulate(utensils)|||retrieve(prepared food)",
+        "occurrences": [
+          36
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.06667
+      },
+      {
+        "source": "merge(drinks)",
+        "target": "merge(drinks)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "merge(drinks)|||merge(drinks)",
+        "occurrences": [
+          84
+        ],
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
+      },
+      {
+        "source": "merge(drinks)",
+        "target": "retrieve(other)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "merge(drinks)|||retrieve(other)",
+        "occurrences": [
+          85
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.00666
+      },
+      {
+        "source": "retrieve(appliances)",
+        "target": "leave(appliances)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "retrieve(appliances)|||leave(appliances)",
+        "occurrences": [
+          39
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.00445
+      },
+      {
+        "source": "retrieve(baked goods and grains)",
+        "target": "clean(dairy and eggs)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "retrieve(baked goods and grains)|||clean(dairy and eggs)",
+        "occurrences": [
+          96
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.10222
+      },
+      {
+        "source": "retrieve(baked goods and grains)",
+        "target": "sense(baked goods and grains)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "retrieve(baked goods and grains)|||sense(baked goods and grains)",
+        "occurrences": [
+          62
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.07111
+      },
+      {
+        "source": "retrieve(cleaning equipment and material)",
+        "target": "clean(cleaning equipment and material)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "retrieve(cleaning equipment and material)|||clean(cleaning equipment and material)",
+        "occurrences": [
+          99
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.36889
+      },
+      {
+        "source": "retrieve(cleaning equipment and material)",
+        "target": "clean(crockery)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "retrieve(cleaning equipment and material)|||clean(crockery)",
+        "occurrences": [
+          216
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.15111
+      },
+      {
+        "source": "retrieve(cleaning equipment and material)",
+        "target": "clean(dairy and eggs)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "retrieve(cleaning equipment and material)|||clean(dairy and eggs)",
+        "occurrences": [
+          183
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.36
+      },
+      {
+        "source": "retrieve(containers)",
+        "target": "access(appliances)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "retrieve(containers)|||access(appliances)",
+        "occurrences": [
+          21
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.45112
+      },
+      {
+        "source": "retrieve(containers)",
+        "target": "access(dairy and eggs)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "retrieve(containers)|||access(dairy and eggs)",
+        "occurrences": [
+          19
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.03555
+      },
+      {
+        "source": "retrieve(containers)",
+        "target": "access(utensils)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "retrieve(containers)|||access(utensils)",
+        "occurrences": [
+          28
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.00445
+      },
+      {
+        "source": "retrieve(containers)",
+        "target": "block(appliances)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "retrieve(containers)|||block(appliances)",
+        "occurrences": [
+          14
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.64
+      },
+      {
+        "source": "retrieve(containers)",
+        "target": "retrieve(containers)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "retrieve(containers)|||retrieve(containers)",
+        "occurrences": [
+          18
+        ],
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
+      },
+      {
+        "source": "retrieve(containers)",
+        "target": "retrieve(materials)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "retrieve(containers)|||retrieve(materials)",
+        "occurrences": [
+          108
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.77334
+      },
+      {
+        "source": "retrieve(containers)",
+        "target": "transition(cutlery)",
+        "count": 1,
+        "probability": 0.1111,
+        "key": "retrieve(containers)|||transition(cutlery)",
+        "occurrences": [
+          82
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.24445
+      },
+      {
+        "source": "retrieve(cookware)",
+        "target": "block(appliances)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "retrieve(cookware)|||block(appliances)",
+        "occurrences": [
+          103
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.51333
+      },
+      {
+        "source": "retrieve(cookware)",
+        "target": "manipulate(drinks)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "retrieve(cookware)|||manipulate(drinks)",
+        "occurrences": [
+          10
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.20222
+      },
+      {
+        "source": "retrieve(crockery)",
+        "target": "access(containers)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "retrieve(crockery)|||access(containers)",
+        "occurrences": [
+          190
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.30666
+      },
+      {
+        "source": "retrieve(crockery)",
+        "target": "leave(crockery)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "retrieve(crockery)|||leave(crockery)",
+        "occurrences": [
+          210
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.02
+      },
+      {
+        "source": "retrieve(cutlery)",
+        "target": "transition(prepared food)",
+        "count": 1,
+        "probability": 0.25,
+        "key": "retrieve(cutlery)|||transition(prepared food)",
+        "occurrences": [
+          176
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.16223
+      },
+      {
+        "source": "retrieve(dairy and eggs)",
+        "target": "access(appliances)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "retrieve(dairy and eggs)|||access(appliances)",
+        "occurrences": [
+          91
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.21778
+      },
+      {
+        "source": "retrieve(dairy and eggs)",
+        "target": "leave(dairy and eggs)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "retrieve(dairy and eggs)|||leave(dairy and eggs)",
+        "occurrences": [
+          105
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.28222
+      },
+      {
+        "source": "retrieve(dairy and eggs)",
+        "target": "manipulate(appliances)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "retrieve(dairy and eggs)|||manipulate(appliances)",
+        "occurrences": [
+          53
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.14667
+      },
+      {
+        "source": "retrieve(dairy and eggs)",
+        "target": "manipulate(rubbish)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "retrieve(dairy and eggs)|||manipulate(rubbish)",
+        "occurrences": [
+          179
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.44222
+      },
+      {
+        "source": "retrieve(dairy and eggs)",
+        "target": "retrieve(containers)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "retrieve(dairy and eggs)|||retrieve(containers)",
+        "occurrences": [
+          81
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.23334
+      },
+      {
+        "source": "retrieve(dairy and eggs)",
+        "target": "sense(dairy and eggs)",
+        "count": 1,
+        "probability": 0.125,
+        "key": "retrieve(dairy and eggs)|||sense(dairy and eggs)",
+        "occurrences": [
+          77
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.01111
+      },
+      {
+        "source": "retrieve(drinks)",
+        "target": "manipulate(appliances)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "retrieve(drinks)|||manipulate(appliances)",
+        "occurrences": [
+          8
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.17555
+      },
+      {
+        "source": "retrieve(fruits and nuts)",
+        "target": "access(appliances)",
+        "count": 1,
+        "probability": 0.0769,
+        "key": "retrieve(fruits and nuts)|||access(appliances)",
+        "occurrences": [
+          170
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.00223
+      },
+      {
+        "source": "retrieve(fruits and nuts)",
+        "target": "block(utensils)",
+        "count": 1,
+        "probability": 0.0769,
+        "key": "retrieve(fruits and nuts)|||block(utensils)",
+        "occurrences": [
+          32
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.42666
+      },
+      {
+        "source": "retrieve(fruits and nuts)",
+        "target": "manipulate(fruits and nuts)",
+        "count": 1,
+        "probability": 0.0769,
+        "key": "retrieve(fruits and nuts)|||manipulate(fruits and nuts)",
+        "occurrences": [
+          134
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.03556
+      },
+      {
+        "source": "retrieve(fruits and nuts)",
+        "target": "retrieve(containers)",
+        "count": 1,
+        "probability": 0.0769,
+        "key": "retrieve(fruits and nuts)|||retrieve(containers)",
+        "occurrences": [
+          118
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.44889
+      },
+      {
+        "source": "retrieve(materials)",
+        "target": "END",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "retrieve(materials)|||END",
+        "occurrences": [
+          224
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.10222
+      },
+      {
+        "source": "retrieve(materials)",
+        "target": "access(storage)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "retrieve(materials)|||access(storage)",
+        "occurrences": [
+          202
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.70222
+      },
+      {
+        "source": "retrieve(materials)",
+        "target": "retrieve(cutlery)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "retrieve(materials)|||retrieve(cutlery)",
+        "occurrences": [
+          109
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.27334
+      },
+      {
+        "source": "retrieve(other)",
+        "target": "manipulate(cutlery)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "retrieve(other)|||manipulate(cutlery)",
+        "occurrences": [
+          86
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.00445
+      },
+      {
+        "source": "retrieve(prepared food)",
+        "target": "manipulate(prepared food)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "retrieve(prepared food)|||manipulate(prepared food)",
+        "occurrences": [
+          37
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.21334
+      },
+      {
+        "source": "retrieve(rubbish)",
+        "target": "access(containers)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "retrieve(rubbish)|||access(containers)",
+        "occurrences": [
+          173
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.15111
+      },
+      {
+        "source": "retrieve(utensils)",
+        "target": "block(storage)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "retrieve(utensils)|||block(storage)",
+        "occurrences": [
+          46
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.04666
+      },
+      {
+        "source": "retrieve(utensils)",
+        "target": "retrieve(containers)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "retrieve(utensils)|||retrieve(containers)",
+        "occurrences": [
+          27
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.03778
+      },
+      {
+        "source": "retrieve(vegetables)",
+        "target": "retrieve(baked goods and grains)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "retrieve(vegetables)|||retrieve(baked goods and grains)",
+        "occurrences": [
+          61
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.08
+      },
+      {
+        "source": "sense(baked goods and grains)",
+        "target": "manipulate(containers)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "sense(baked goods and grains)|||manipulate(containers)",
+        "occurrences": [
+          63
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.01111
+      },
+      {
+        "source": "sense(crockery)",
+        "target": "block(containers)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "sense(crockery)|||block(containers)",
+        "occurrences": [
+          193
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.26889
+      },
+      {
+        "source": "sense(dairy and eggs)",
+        "target": "retrieve(dairy and eggs)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "sense(dairy and eggs)|||retrieve(dairy and eggs)",
+        "occurrences": [
+          78
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.01111
+      },
+      {
+        "source": "transition(containers)",
+        "target": "manipulate(storage)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "transition(containers)|||manipulate(storage)",
+        "occurrences": [
+          48
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.01333
+      },
+      {
+        "source": "transition(containers)",
+        "target": "retrieve(utensils)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "transition(containers)|||retrieve(utensils)",
+        "occurrences": [
+          45
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.04445
+      },
+      {
+        "source": "transition(cutlery)",
+        "target": "merge(drinks)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "transition(cutlery)|||merge(drinks)",
+        "occurrences": [
+          83
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.00667
+      },
+      {
+        "source": "transition(dairy and eggs)",
+        "target": "clean(dairy and eggs)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "transition(dairy and eggs)|||clean(dairy and eggs)",
+        "occurrences": [
+          93
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.04
+      },
+      {
+        "source": "transition(prepared food)",
+        "target": "leave(cutlery)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "transition(prepared food)|||leave(cutlery)",
+        "occurrences": [
+          177
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.19556
+      }
+    ]
+  },
+  "filter_report": {
+    "identity": "verb_category(noun_category)",
+    "rule": "An action is PRIMARY if its time window overlaps an annotated step_times window (with a per-side buffer). Non-primary actions are excluded from the motion graph only; they remain in the sequence, the swimlane and graph_unfiltered.",
+    "actions": {
+      "before": 226,
+      "after": 18,
+      "removed": 208,
+      "removed_fraction": 0.9204
+    },
+    "nodes": {
+      "before": 72,
+      "after": 12,
+      "removed": [
+        "access(appliances)",
+        "access(containers)",
+        "access(dairy and eggs)",
+        "access(furniture)",
+        "access(prepared food)",
+        "access(storage)",
+        "access(utensils)",
+        "block(appliances)",
+        "block(containers)",
+        "block(furniture)",
+        "block(prepared food)",
+        "block(rubbish)",
+        "block(storage)",
+        "block(utensils)",
+        "clean(cleaning equipment and material)",
+        "clean(crockery)",
+        "clean(dairy and eggs)",
+        "clean(prepared food)",
+        "clean(utensils)",
+        "leave(appliances)",
+        "leave(cleaning equipment and material)",
+        "leave(containers)",
+        "leave(crockery)",
+        "leave(cutlery)",
+        "leave(dairy and eggs)",
+        "leave(fruits and nuts)",
+        "leave(furniture)",
+        "leave(prepared food)",
+        "leave(rubbish)",
+        "leave(utensils)",
+        "leave(vegetables)",
+        "manipulate(containers)",
+        "manipulate(cookware)",
+        "manipulate(dairy and eggs)",
+        "manipulate(fruits and nuts)",
+        "manipulate(furniture)",
+        "manipulate(hand)",
+        "manipulate(prepared food)",
+        "manipulate(rubbish)",
+        "manipulate(storage)",
+        "manipulate(utensils)",
+        "retrieve(appliances)",
+        "retrieve(baked goods and grains)",
+        "retrieve(cleaning equipment and material)",
+        "retrieve(cookware)",
+        "retrieve(crockery)",
+        "retrieve(cutlery)",
+        "retrieve(drinks)",
+        "retrieve(fruits and nuts)",
+        "retrieve(materials)",
+        "retrieve(prepared food)",
+        "retrieve(rubbish)",
+        "retrieve(utensils)",
+        "retrieve(vegetables)",
+        "sense(baked goods and grains)",
+        "sense(crockery)",
+        "split(fruits and nuts)",
+        "transition(containers)",
+        "transition(dairy and eggs)",
+        "transition(prepared food)"
+      ]
+    },
+    "links": {
+      "before": 185,
+      "after": 16,
+      "removed_keys": [
+        "START|||access(storage)",
+        "access(appliances)|||block(appliances)",
+        "access(appliances)|||clean(crockery)",
+        "access(appliances)|||leave(containers)",
+        "access(appliances)|||manipulate(fruits and nuts)",
+        "access(appliances)|||manipulate(prepared food)",
+        "access(appliances)|||retrieve(containers)",
+        "access(appliances)|||transition(dairy and eggs)",
+        "access(containers)|||clean(prepared food)",
+        "access(containers)|||leave(containers)",
+        "access(containers)|||leave(cutlery)",
+        "access(containers)|||leave(fruits and nuts)",
+        "access(containers)|||leave(prepared food)",
+        "access(containers)|||leave(rubbish)",
+        "access(containers)|||retrieve(containers)",
+        "access(dairy and eggs)|||retrieve(containers)",
+        "access(furniture)|||leave(utensils)",
+        "access(furniture)|||retrieve(utensils)",
+        "access(furniture)|||retrieve(vegetables)",
+        "access(prepared food)|||manipulate(fruits and nuts)",
+        "access(storage)|||manipulate(hand)",
+        "access(storage)|||retrieve(crockery)",
+        "access(storage)|||transition(containers)",
+        "access(utensils)|||retrieve(fruits and nuts)",
+        "block(appliances)|||leave(crockery)",
+        "block(appliances)|||leave(dairy and eggs)",
+        "block(appliances)|||manipulate(appliances)",
+        "block(appliances)|||manipulate(crockery)",
+        "block(appliances)|||manipulate(dairy and eggs)",
+        "block(appliances)|||retrieve(cleaning equipment and material)",
+        "block(appliances)|||retrieve(crockery)",
+        "block(appliances)|||retrieve(dairy and eggs)",
+        "block(appliances)|||retrieve(rubbish)",
+        "block(containers)|||leave(crockery)",
+        "block(containers)|||manipulate(furniture)",
+        "block(furniture)|||manipulate(containers)",
+        "block(prepared food)|||access(containers)",
+        "block(prepared food)|||manipulate(fruits and nuts)",
+        "block(prepared food)|||retrieve(containers)",
+        "block(prepared food)|||retrieve(fruits and nuts)",
+        "block(rubbish)|||retrieve(dairy and eggs)",
+        "block(storage)|||manipulate(appliances)",
+        "block(storage)|||transition(containers)",
+        "block(utensils)|||access(furniture)",
+        "clean(cleaning equipment and material)|||leave(cleaning equipment and material)",
+        "clean(crockery)|||block(appliances)",
+        "clean(crockery)|||leave(cleaning equipment and material)",
+        "clean(crockery)|||manipulate(crockery)",
+        "clean(dairy and eggs)|||block(appliances)",
+        "clean(dairy and eggs)|||clean(dairy and eggs)",
+        "clean(dairy and eggs)|||leave(cleaning equipment and material)",
+        "clean(dairy and eggs)|||manipulate(dairy and eggs)",
+        "clean(dairy and eggs)|||retrieve(cleaning equipment and material)",
+        "clean(dairy and eggs)|||retrieve(cookware)",
+        "clean(prepared food)|||block(appliances)",
+        "clean(utensils)|||block(appliances)",
+        "leave(appliances)|||manipulate(appliances)",
+        "leave(cleaning equipment and material)|||access(appliances)",
+        "leave(cleaning equipment and material)|||clean(dairy and eggs)",
+        "leave(containers)|||access(storage)",
+        "leave(containers)|||block(appliances)",
+        "leave(containers)|||block(containers)",
+        "leave(crockery)|||access(appliances)",
+        "leave(crockery)|||access(containers)",
+        "leave(crockery)|||leave(crockery)",
+        "leave(crockery)|||manipulate(crockery)",
+        "leave(crockery)|||retrieve(drinks)",
+        "leave(crockery)|||retrieve(materials)",
+        "leave(cutlery)|||block(rubbish)",
+        "leave(cutlery)|||leave(furniture)",
+        "leave(cutlery)|||manipulate(fruits and nuts)",
+        "leave(cutlery)|||retrieve(dairy and eggs)",
+        "leave(cutlery)|||retrieve(fruits and nuts)",
+        "leave(dairy and eggs)|||clean(dairy and eggs)",
+        "leave(dairy and eggs)|||leave(dairy and eggs)",
+        "leave(dairy and eggs)|||manipulate(crockery)",
+        "leave(dairy and eggs)|||retrieve(containers)",
+        "leave(fruits and nuts)|||access(appliances)",
+        "leave(fruits and nuts)|||access(furniture)",
+        "leave(fruits and nuts)|||access(prepared food)",
+        "leave(fruits and nuts)|||retrieve(cutlery)",
+        "leave(fruits and nuts)|||retrieve(fruits and nuts)",
+        "leave(furniture)|||retrieve(fruits and nuts)",
+        "leave(prepared food)|||sense(crockery)",
+        "leave(rubbish)|||retrieve(cutlery)",
+        "leave(rubbish)|||retrieve(fruits and nuts)",
+        "leave(utensils)|||manipulate(utensils)",
+        "leave(vegetables)|||block(furniture)",
+        "manipulate(appliances)|||access(appliances)",
+        "manipulate(appliances)|||access(furniture)",
+        "manipulate(appliances)|||block(appliances)",
+        "manipulate(appliances)|||leave(crockery)",
+        "manipulate(appliances)|||manipulate(appliances)",
+        "manipulate(appliances)|||manipulate(containers)",
+        "manipulate(appliances)|||retrieve(cookware)",
+        "manipulate(appliances)|||retrieve(fruits and nuts)",
+        "manipulate(containers)|||access(containers)",
+        "manipulate(containers)|||leave(containers)",
+        "manipulate(containers)|||leave(vegetables)",
+        "manipulate(containers)|||manipulate(containers)",
+        "manipulate(cookware)|||access(appliances)",
+        "manipulate(crockery)|||block(storage)",
+        "manipulate(crockery)|||clean(utensils)",
+        "manipulate(crockery)|||leave(crockery)",
+        "manipulate(crockery)|||retrieve(crockery)",
+        "manipulate(crockery)|||retrieve(materials)",
+        "manipulate(cutlery)|||access(containers)",
+        "manipulate(dairy and eggs)|||access(containers)",
+        "manipulate(dairy and eggs)|||retrieve(baked goods and grains)",
+        "manipulate(drinks)|||manipulate(cookware)",
+        "manipulate(fruits and nuts)|||access(containers)",
+        "manipulate(fruits and nuts)|||access(prepared food)",
+        "manipulate(fruits and nuts)|||block(prepared food)",
+        "manipulate(fruits and nuts)|||manipulate(fruits and nuts)",
+        "manipulate(fruits and nuts)|||manipulate(prepared food)",
+        "manipulate(fruits and nuts)|||manipulate(utensils)",
+        "manipulate(furniture)|||manipulate(appliances)",
+        "manipulate(hand)|||retrieve(crockery)",
+        "manipulate(prepared food)|||block(prepared food)",
+        "manipulate(prepared food)|||manipulate(appliances)",
+        "manipulate(prepared food)|||manipulate(fruits and nuts)",
+        "manipulate(prepared food)|||retrieve(appliances)",
+        "manipulate(rubbish)|||leave(dairy and eggs)",
+        "manipulate(storage)|||leave(utensils)",
+        "manipulate(storage)|||manipulate(storage)",
+        "manipulate(utensils)|||block(prepared food)",
+        "manipulate(utensils)|||retrieve(dairy and eggs)",
+        "manipulate(utensils)|||retrieve(prepared food)",
+        "retrieve(appliances)|||leave(appliances)",
+        "retrieve(baked goods and grains)|||clean(dairy and eggs)",
+        "retrieve(baked goods and grains)|||sense(baked goods and grains)",
+        "retrieve(cleaning equipment and material)|||clean(cleaning equipment and material)",
+        "retrieve(cleaning equipment and material)|||clean(crockery)",
+        "retrieve(cleaning equipment and material)|||clean(dairy and eggs)",
+        "retrieve(containers)|||access(appliances)",
+        "retrieve(containers)|||access(dairy and eggs)",
+        "retrieve(containers)|||access(utensils)",
+        "retrieve(containers)|||block(appliances)",
+        "retrieve(containers)|||leave(rubbish)",
+        "retrieve(containers)|||retrieve(materials)",
+        "retrieve(containers)|||transition(cutlery)",
+        "retrieve(cookware)|||block(appliances)",
+        "retrieve(cookware)|||manipulate(drinks)",
+        "retrieve(crockery)|||access(containers)",
+        "retrieve(crockery)|||leave(crockery)",
+        "retrieve(crockery)|||manipulate(crockery)",
+        "retrieve(crockery)|||retrieve(crockery)",
+        "retrieve(cutlery)|||split(fruits and nuts)",
+        "retrieve(cutlery)|||transition(prepared food)",
+        "retrieve(dairy and eggs)|||access(appliances)",
+        "retrieve(dairy and eggs)|||leave(dairy and eggs)",
+        "retrieve(dairy and eggs)|||manipulate(appliances)",
+        "retrieve(dairy and eggs)|||manipulate(rubbish)",
+        "retrieve(dairy and eggs)|||retrieve(containers)",
+        "retrieve(drinks)|||manipulate(appliances)",
+        "retrieve(fruits and nuts)|||access(appliances)",
+        "retrieve(fruits and nuts)|||block(utensils)",
+        "retrieve(fruits and nuts)|||leave(fruits and nuts)",
+        "retrieve(fruits and nuts)|||manipulate(fruits and nuts)",
+        "retrieve(fruits and nuts)|||retrieve(containers)",
+        "retrieve(fruits and nuts)|||retrieve(fruits and nuts)",
+        "retrieve(materials)|||END",
+        "retrieve(materials)|||access(storage)",
+        "retrieve(materials)|||retrieve(cutlery)",
+        "retrieve(prepared food)|||manipulate(prepared food)",
+        "retrieve(rubbish)|||access(containers)",
+        "retrieve(utensils)|||block(storage)",
+        "retrieve(utensils)|||retrieve(containers)",
+        "retrieve(vegetables)|||retrieve(baked goods and grains)",
+        "sense(baked goods and grains)|||manipulate(containers)",
+        "sense(crockery)|||block(containers)",
+        "split(fruits and nuts)|||leave(cutlery)",
+        "transition(containers)|||manipulate(storage)",
+        "transition(containers)|||retrieve(utensils)",
+        "transition(dairy and eggs)|||clean(dairy and eggs)",
+        "transition(prepared food)|||leave(cutlery)"
+      ],
+      "introduced_keys": [
+        "START|||manipulate(appliances)",
+        "manipulate(appliances)|||manipulate(crockery)",
+        "manipulate(appliances)|||manipulate(drinks)",
+        "manipulate(cutlery)|||END",
+        "manipulate(drinks)|||retrieve(containers)",
+        "retrieve(containers)|||manipulate(appliances)",
+        "retrieve(dairy and eggs)|||transition(cutlery)"
+      ]
+    },
+    "removed_action_counts": {
+      "retrieve(fruits and nuts)": 13,
+      "manipulate(fruits and nuts)": 11,
+      "block(appliances)": 9,
+      "access(containers)": 9,
+      "access(appliances)": 8,
+      "leave(fruits and nuts)": 8,
+      "retrieve(crockery)": 7,
+      "retrieve(containers)": 7,
+      "clean(dairy and eggs)": 7,
+      "block(prepared food)": 7,
+      "manipulate(crockery)": 6,
+      "manipulate(appliances)": 6,
+      "leave(crockery)": 6,
+      "leave(cutlery)": 5,
+      "leave(rubbish)": 5,
+      "manipulate(prepared food)": 4,
+      "manipulate(containers)": 4,
+      "retrieve(dairy and eggs)": 4,
+      "leave(dairy and eggs)": 4,
+      "retrieve(cutlery)": 4,
+      "access(prepared food)": 4,
+      "access(storage)": 3,
+      "leave(containers)": 3,
+      "access(furniture)": 3,
+      "manipulate(utensils)": 3,
+      "retrieve(cleaning equipment and material)": 3,
+      "leave(cleaning equipment and material)": 3,
+      "retrieve(materials)": 3,
+      "split(fruits and nuts)": 3,
+      "clean(crockery)": 3,
+      "block(storage)": 2,
+      "retrieve(cookware)": 2,
+      "manipulate(dairy and eggs)": 2,
+      "retrieve(utensils)": 2,
+      "leave(utensils)": 2,
+      "transition(containers)": 2,
+      "manipulate(storage)": 2,
+      "retrieve(baked goods and grains)": 2,
+      "block(containers)": 2,
+      "manipulate(hand)": 1,
+      "retrieve(drinks)": 1,
+      "manipulate(cookware)": 1,
+      "access(dairy and eggs)": 1,
+      "access(utensils)": 1,
+      "block(utensils)": 1,
+      "retrieve(prepared food)": 1,
+      "retrieve(appliances)": 1,
+      "leave(appliances)": 1,
+      "retrieve(vegetables)": 1,
+      "sense(baked goods and grains)": 1,
+      "leave(vegetables)": 1,
+      "block(furniture)": 1,
+      "manipulate(furniture)": 1,
+      "block(rubbish)": 1,
+      "transition(dairy and eggs)": 1,
+      "clean(cleaning equipment and material)": 1,
+      "leave(furniture)": 1,
+      "retrieve(rubbish)": 1,
+      "transition(prepared food)": 1,
+      "manipulate(rubbish)": 1,
+      "leave(prepared food)": 1,
+      "sense(crockery)": 1,
+      "clean(utensils)": 1,
+      "clean(prepared food)": 1
+    },
+    "return_transitions": {
+      "count": 3,
+      "keys": [
+        "manipulate(appliances)|||manipulate(drinks)",
+        "retrieve(containers)|||manipulate(appliances)",
+        "retrieve(dairy and eggs)|||sense(dairy and eggs)"
+      ]
+    },
+    "self_loops": {
+      "count": 3,
+      "keys": [
+        "retrieve(dairy and eggs)|||retrieve(dairy and eggs)",
+        "merge(drinks)|||merge(drinks)",
+        "retrieve(containers)|||retrieve(containers)"
+      ]
+    }
   },
   "analysis": {
     "dead_ends": [

@@ -99,6 +99,7 @@ def aggregate_nodes(session_payloads):
     per_session_node_durations = defaultdict(lambda: defaultdict(list))  
     raw_onsets_by_action = defaultdict(list)      
     normalized_onsets_by_action = defaultdict(list)  
+    per_session_median_rank = defaultdict(list)
 
     for si, payload in session_payloads:
         nodes = payload.get("graph", {}).get("nodes", [])
@@ -106,6 +107,9 @@ def aggregate_nodes(session_payloads):
             action = normalize_special_nodes(n["id"])
             
             per_session_node_counts[action][si] = per_session_node_counts[action].get(si, 0) + n.get("count", 0)
+
+            if n.get("median_rank") is not None:
+                per_session_median_rank[action].append(float(n["median_rank"]))
             
             # If multiple nodes merge into one, prefer is_primary = True if any of them were primary
             if action not in per_session_node_primary or not per_session_node_primary[action].get(si, False):
@@ -121,7 +125,14 @@ def aggregate_nodes(session_payloads):
                 per_session_node_salient[action].append(bool(n["salient"]))
 
     for si, payload in session_payloads:
-        seq = payload.get("sequence", [])
+        # The graph is compiled from the PRIMARY subsequence, so node onset and
+        # duration statistics must be drawn from the same population. Iterating
+        # the full sequence here would pool secondary actions into stats for
+        # nodes whose counts never included them.
+        seq = [
+            item for item in payload.get("sequence", [])
+            if item.get("is_primary", True)
+        ]
         duration = session_durations.get(si, 1.0) or 1.0
         for item in seq:
             action = normalize_special_nodes(item["action"])
@@ -203,6 +214,16 @@ def aggregate_nodes(session_payloads):
             "min_duration": round(min_duration, 3),
             "max_duration": round(max_duration, 3),
         }
+
+        # Median rank is what return-transition classification runs on.
+        mr = per_session_median_rank.get(action, [])
+        if mr:
+            ordered = sorted(mr)
+            mid = len(ordered) // 2
+            node["median_rank"] = round(
+                ordered[mid] if len(ordered) % 2 else (ordered[mid - 1] + ordered[mid]) / 2.0,
+                5,
+            )
         if union_objects:
             node["objects"] = dict(union_objects)
         if union_verbs:
@@ -215,9 +236,11 @@ def aggregate_nodes(session_payloads):
     return merged_nodes, session_indices, session_durations
 
 
-def aggregate_edges(session_payloads, session_indices, n_sessions):
+def aggregate_edges(session_payloads, session_indices, n_sessions, median_ranks=None):
+    median_ranks = median_ranks or {}
     per_session_edge_counts = defaultdict(dict)
     per_session_edge_occurrences = defaultdict(lambda: defaultdict(list))
+    per_session_edge_return = defaultdict(dict)
 
     for si, payload in session_payloads:
         links = payload.get("graph", {}).get("links", [])
@@ -227,6 +250,8 @@ def aggregate_edges(session_payloads, session_indices, n_sessions):
             key = (src, dst)
             per_session_edge_counts[key][si] = per_session_edge_counts[key].get(si, 0) + link.get("count", 0)
             per_session_edge_occurrences[key][si].extend(link.get("occurrences", []))
+            if "is_return" in link:
+                per_session_edge_return[key][si] = bool(link["is_return"])
 
     out_totals = Counter()
     for (src, dst), by_session in per_session_edge_counts.items():
@@ -243,6 +268,14 @@ def aggregate_edges(session_payloads, session_indices, n_sessions):
             for si in session_indices
         }
 
+        # Re-derive direction from the MERGED median ranks rather than voting on
+        # the per-session flags: a transition can be a return in one session and
+        # not in another, and the merged graph needs one consistent answer.
+        r_src = median_ranks.get(src, 0.5)
+        r_dst = median_ranks.get(dst, 0.5)
+        delta = round(r_dst - r_src, 5)
+        is_self_loop = (src == dst)
+
         merged_links.append({
             "source": src,
             "target": dst,
@@ -255,6 +288,12 @@ def aggregate_edges(session_payloads, session_indices, n_sessions):
             "key": f"{src}|||{dst}",
             "per_session_occurrences": per_session_occ,
             "probability": round(total_count / out_totals[src], 4) if out_totals[src] else 0.0,
+            "is_self_loop": is_self_loop,
+            "is_return": bool(delta < 0) and not is_self_loop,
+            "rank_delta": delta,
+            "per_session_is_return": [
+                per_session_edge_return[(src, dst)].get(si) for si in session_indices
+            ],
         })
 
     merged_links.sort(key=lambda l: (-l["total_count"], l["source"], l["target"]))
@@ -465,7 +504,17 @@ def build_merged_payload(recipe_id, mode, session_payloads):
         )
 
     merged_nodes, session_indices, session_durations = aggregate_nodes(session_payloads)
-    merged_links = aggregate_edges(session_payloads, session_indices, n_sessions)
+
+    median_ranks = {n["id"]: n.get("median_rank", 0.5) for n in merged_nodes}
+    median_ranks["START"] = 0.0
+    median_ranks["END"] = 1.0
+    for n in merged_nodes:
+        if n["id"] in ("START", "END"):
+            n["median_rank"] = median_ranks[n["id"]]
+
+    merged_links = aggregate_edges(
+        session_payloads, session_indices, n_sessions, median_ranks
+    )
 
     multi_sequence = []
     for si, payload in session_payloads:
@@ -502,6 +551,39 @@ def build_merged_payload(recipe_id, mode, session_payloads):
 
     analysis = compute_merged_analysis(merged_nodes, merged_links, session_payloads)
 
+    # Roll the per-session filter ledgers up so the merged view can state, in
+    # one line, how much of the raw data the motion graph is standing on.
+    per_session_reports = [
+        {"session_index": si, **payload["filter_report"]}
+        for si, payload in session_payloads
+        if payload.get("filter_report")
+    ]
+    filter_report = None
+    if per_session_reports:
+        before = sum(r["actions"]["before"] for r in per_session_reports)
+        after = sum(r["actions"]["after"] for r in per_session_reports)
+        filter_report = {
+            "identity": per_session_reports[0]["identity"],
+            "rule": per_session_reports[0]["rule"],
+            "actions": {
+                "before": before,
+                "after": after,
+                "removed": before - after,
+                "removed_fraction": round(1 - after / before, 4) if before else 0.0,
+            },
+            "merged_nodes": len(merged_nodes),
+            "merged_links": len(merged_links),
+            "return_transitions": {
+                "count": sum(1 for l in merged_links if l.get("is_return")),
+                "keys": [l["key"] for l in merged_links if l.get("is_return")],
+            },
+            "self_loops": {
+                "count": sum(1 for l in merged_links if l.get("is_self_loop")),
+                "keys": [l["key"] for l in merged_links if l.get("is_self_loop")],
+            },
+            "per_session": per_session_reports,
+        }
+
     return {
         "recipe": {
             "id": recipe_id,
@@ -515,7 +597,8 @@ def build_merged_payload(recipe_id, mode, session_payloads):
         "steps": steps,
         "sequence": multi_sequence,
         "graph": {"nodes": merged_nodes, "links": merged_links},
-        "analysis": analysis
+        "analysis": analysis,
+        "filter_report": filter_report,
     }
 
 
@@ -564,10 +647,18 @@ def main():
         n_links = len(merged["graph"]["links"])
         support_3 = sum(1 for n in merged["graph"]["nodes"] if n["support"] == len(sessions))
         support_1 = sum(1 for n in merged["graph"]["nodes"] if n["support"] == 1)
+        n_return = sum(1 for l in merged["graph"]["links"] if l.get("is_return"))
+        n_loop = sum(1 for l in merged["graph"]["links"] if l.get("is_self_loop"))
         print(f"  ✓ {out_path.name}")
         print(f"    {n_nodes} nodes ({support_3} in all sessions, "
               f"{support_1} in only one)")
-        print(f"    {n_links} links")
+        print(f"    {n_links} links ({n_return} return, {n_loop} self-loop, "
+              f"{n_links - n_return - n_loop} forward)")
+        fr = merged.get("filter_report")
+        if fr:
+            a = fr["actions"]
+            print(f"    filter ledger: {a['before']} → {a['after']} actions "
+                  f"(−{a['removed']}, {a['removed_fraction']:.1%}) across all sessions")
 
     print("\n" + "=" * 80)
     print(f"DONE → {recipe_dir}/merged_*.json")

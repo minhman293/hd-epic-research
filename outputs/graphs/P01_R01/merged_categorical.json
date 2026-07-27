@@ -7567,110 +7567,32 @@
         "n_sessions": 3,
         "is_primary": false,
         "is_mandatory": true,
-        "is_mandatory": true,
         "merged_step_id": "P01_R01_S04",
         "per_session_step_ids": [
           "P01_R01_S04",
-          "P01_R01_S01",
+          "P01_R01_S05",
           "P01_R01_S04"
         ],
-        "mean_normalized_onset": 0.4599,
+        "mean_normalized_onset": 0.4698,
         "raw_onsets": [
-          9.34,
-          14.81,
-          16.06,
-          21.4,
           27.0,
           27.61,
-          34.14,
-          49.54,
-          50.17,
-          53.31,
-          55.26,
-          56.6,
-          66.2,
-          70.27,
-          84.55,
-          95.46,
-          101.81,
-          105.13,
-          106.2,
           136.72,
           137.7,
           139.92,
           141.14,
-          143.45,
           149.86,
-          155.41,
-          161.4,
-          168.14,
-          172.24,
-          174.12,
-          179.06,
-          180.72,
-          183.89,
-          202.24,
-          203.0,
-          204.23,
-          220.62,
-          221.79,
-          225.14,
-          239.49,
-          251.67,
-          253.67,
-          255.12,
-          260.22,
-          281.35,
-          295.08,
-          300.2,
-          302.99,
-          317.05,
-          322.51,
-          330.32,
-          349.64,
-          353.33,
-          358.59,
-          359.63,
-          360.37,
-          374.15,
-          386.66,
-          391.66,
-          12.4,
-          13.3,
-          17.82,
-          19.36,
-          23.63,
-          32.39,
           43.76,
-          50.88,
-          53.34,
-          70.28,
-          89.76,
-          109.01,
-          113.86,
-          134.34,
-          136.07,
-          141.54,
           145.8,
           149.65,
-          7.93,
-          13.41,
-          16.85,
           21.75,
-          26.14,
-          43.05,
-          46.32,
-          63.38,
           69.3,
-          75.23,
-          90.02,
-          101.76,
           112.84,
           121.68,
           152.01
         ],
-        "mean_duration": 1.359,
-        "min_duration": 0.23,
+        "mean_duration": 2.325,
+        "min_duration": 0.45,
         "max_duration": 9.16,
         "objects": {
           "cup": 6,
@@ -7728,90 +7650,22 @@
         "n_sessions": 3,
         "is_primary": false,
         "is_mandatory": true,
-        "is_mandatory": true,
         "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
+          null,
           "P01_R01_S01",
-          "P01_R01_S01",
-          "P01_R01_S04"
+          "P01_R01_S01"
         ],
-        "mean_normalized_onset": 0.5454,
+        "mean_normalized_onset": 0.5491,
         "raw_onsets": [
-          14.2,
-          37.17,
-          62.44,
-          71.03,
-          74.16,
-          93.43,
-          103.03,
-          116.76,
-          125.19,
-          153.63,
-          168.74,
-          175.59,
-          178.33,
-          186.95,
-          203.61,
-          204.77,
-          219.42,
-          221.17,
-          224.56,
-          238.72,
-          240.5,
-          252.72,
-          254.62,
-          258.71,
-          259.1,
-          260.67,
-          280.47,
-          282.15,
-          302.05,
-          315.35,
-          319.88,
-          324.71,
-          326.89,
-          333.57,
-          338.08,
-          346.95,
-          356.4,
-          367.3,
-          370.15,
-          380.5,
-          7.74,
-          13.9,
-          18.28,
-          26.67,
-          29.25,
-          36.86,
           46.12,
-          68.07,
-          71.01,
-          84.07,
-          130.63,
-          135.52,
-          138.65,
-          142.2,
           144.75,
-          151.17,
-          10.7,
-          17.4,
           24.68,
-          31.23,
-          46.69,
-          59.04,
-          73.74,
-          78.42,
-          84.28,
-          100.23,
-          131.28,
-          134.45,
-          145.82,
-          159.91,
-          163.57
+          131.28
         ],
-        "mean_duration": 0.713,
-        "min_duration": 0.21,
-        "max_duration": 3.04,
+        "mean_duration": 0.675,
+        "min_duration": 0.5,
+        "max_duration": 0.83,
         "objects": {
           "cup": 4,
           "bottle": 5,
@@ -7861,79 +7715,30 @@
         "n_sessions": 3,
         "is_primary": false,
         "is_mandatory": true,
-        "is_mandatory": true,
-        "merged_step_id": "P01_R01_S01",
+        "merged_step_id": "P01_R01_S02",
         "per_session_step_ids": [
-          "P01_R01_S01",
+          "P01_R01_S02",
           "P01_R01_S02",
           "P01_R01_S05"
         ],
-        "mean_normalized_onset": 0.4413,
+        "mean_normalized_onset": 0.4554,
         "raw_onsets": [
-          8.85,
-          11.15,
-          13.73,
           15.36,
           16.08,
-          17.4,
-          24.55,
           41.19,
-          64.86,
-          69.58,
-          71.93,
-          73.14,
-          89.36,
-          90.63,
-          94.49,
-          97.92,
-          100.09,
-          100.9,
-          116.01,
-          119.51,
-          123.5,
-          128.91,
-          130.41,
-          130.81,
           136.35,
           150.73,
-          160.97,
-          187.89,
-          188.63,
-          189.37,
-          193.02,
-          206.38,
-          218.13,
-          225.69,
-          226.85,
-          241.69,
-          262.35,
-          274.81,
-          275.5,
-          276.54,
-          284.0,
-          318.55,
-          329.17,
-          341.41,
-          355.72,
-          357.51,
-          386.83,
-          14.96,
           18.98,
-          22.84,
-          54.65,
-          78.2,
           79.49,
           107.1,
           68.28,
-          139.26,
-          142.07,
           150.58,
           151.67,
           157.29
         ],
-        "mean_duration": 1.762,
-        "min_duration": 0.25,
-        "max_duration": 10.72,
+        "mean_duration": 0.827,
+        "min_duration": 0.27,
+        "max_duration": 1.27,
         "objects": {
           "hand": 1,
           "cup": 4,
@@ -7985,75 +7790,21 @@
         "n_sessions": 3,
         "is_primary": false,
         "is_mandatory": true,
-        "is_mandatory": true,
-        "merged_step_id": "P01_R01_S03",
+        "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
-          "P01_R01_S03",
+          null,
           "P01_R01_S01",
-          "P01_R01_S03"
+          "P01_R01_S02"
         ],
-        "mean_normalized_onset": 0.4446,
+        "mean_normalized_onset": 0.1836,
         "raw_onsets": [
-          7.44,
-          19.75,
-          25.75,
-          30.7,
-          36.07,
-          48.28,
-          51.41,
-          61.54,
-          76.15,
-          98.98,
-          103.88,
-          124.43,
-          153.12,
-          157.91,
-          205.51,
-          218.64,
-          226.22,
-          238.05,
-          241.05,
-          261.77,
-          279.71,
-          283.07,
-          296.34,
-          301.6,
-          331.96,
-          338.79,
-          352.1,
-          370.47,
-          381.05,
-          38.47,
           45.6,
-          49.82,
-          67.69,
-          71.65,
-          82.82,
-          88.47,
-          131.18,
-          150.7,
-          6.63,
           17.93,
-          21.66,
-          23.61,
-          26.54,
-          32.25,
-          37.02,
-          38.82,
-          41.76,
-          48.04,
-          54.35,
-          58.1,
-          66.09,
-          88.28,
-          100.84,
-          134.88,
-          140.03,
-          159.38
+          23.61
         ],
-        "mean_duration": 0.934,
-        "min_duration": 0.25,
-        "max_duration": 5.19,
+        "mean_duration": 0.69,
+        "min_duration": 0.47,
+        "max_duration": 1.03,
         "objects": {
           "cupboard": 4,
           "fridge": 6,
@@ -8091,64 +7842,19 @@
         "n_sessions": 3,
         "is_primary": false,
         "is_mandatory": true,
-        "is_mandatory": true,
-        "merged_step_id": "P01_R01_S03",
+        "merged_step_id": "P01_R01_S01",
         "per_session_step_ids": [
-          "P01_R01_S01",
-          "P01_R01_S03",
-          "P01_R01_S03"
+          null,
+          null,
+          "P01_R01_S01"
         ],
-        "mean_normalized_onset": 0.4993,
+        "mean_normalized_onset": 0.1415,
         "raw_onsets": [
-          11.5,
-          22.1,
-          38.02,
-          58.66,
-          85.85,
-          117.89,
-          127.89,
-          132.85,
-          154.06,
-          173.24,
-          200.91,
-          217.02,
-          235.84,
-          250.37,
-          273.4,
-          277.93,
-          292.98,
-          298.69,
-          325.91,
-          337.2,
-          345.77,
-          373.5,
-          386.46,
-          27.96,
-          46.84,
-          64.55,
-          68.17,
-          76.68,
-          84.77,
-          140.72,
-          152.02,
-          8.61,
-          23.27,
-          25.59,
-          32.2,
-          44.06,
-          53.31,
-          56.11,
-          60.05,
-          79.98,
-          81.73,
-          103.34,
-          139.18,
-          141.63,
-          160.37
+          23.27
         ],
-        "mean_duration": 0.914,
-        "min_duration": 0.23,
-        "max_duration": 2.02,
+        "mean_duration": 0.31,
+        "min_duration": 0.31,
+        "max_duration": 0.31,
         "objects": {
           "cupboard": 3,
           "fridge": 6,
@@ -8186,38 +7892,17 @@
         "n_sessions": 3,
         "is_primary": false,
         "is_mandatory": true,
-        "is_mandatory": true,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
           null,
           null
         ],
-        "mean_normalized_onset": 0.7559,
-        "raw_onsets": [
-          159.45,
-          162.94,
-          163.58,
-          168.7,
-          170.35,
-          320.71,
-          322.97,
-          325.24,
-          339.08,
-          341.73,
-          370.77,
-          374.6,
-          381.45,
-          131.75,
-          136.62,
-          138.85,
-          135.42,
-          140.57,
-          147.61
-        ],
-        "mean_duration": 2.403,
-        "min_duration": 0.42,
-        "max_duration": 5.7,
+        "mean_normalized_onset": 0.0,
+        "raw_onsets": [],
+        "mean_duration": 0.0,
+        "min_duration": 0.0,
+        "max_duration": 0.0,
         "objects": {
           "milk": 9,
           "sponge": 1,
@@ -8247,30 +7932,25 @@
         "n_sessions": 3,
         "is_primary": true,
         "is_mandatory": true,
-        "is_mandatory": true,
-        "merged_step_id": "P01_R01_S01",
+        "merged_step_id": "P01_R01_S03",
         "per_session_step_ids": [
           "P01_R01_S05",
-          "P01_R01_S01",
+          "P01_R01_S03",
           "P01_R01_S03"
         ],
-        "mean_normalized_onset": 0.4781,
+        "mean_normalized_onset": 0.5914,
         "raw_onsets": [
           145.29,
           147.02,
-          24.64,
           73.5,
           115.15,
           146.11,
           27.59,
-          35.42,
-          48.88,
-          54.7,
           116.43,
           152.25
         ],
-        "mean_duration": 3.997,
-        "min_duration": 1.23,
+        "mean_duration": 4.929,
+        "min_duration": 1.83,
         "max_duration": 12.63,
         "objects": {
           "coffee": 4,
@@ -8297,26 +7977,19 @@
         "n_sessions": 3,
         "is_primary": false,
         "is_mandatory": false,
-        "is_mandatory": false,
-        "merged_step_id": "P01_R01_S03",
+        "merged_step_id": "P01_R01_S05",
         "per_session_step_ids": [
           "P01_R01_S05",
           null,
-          "P01_R01_S03"
+          null
         ],
-        "mean_normalized_onset": 0.3881,
+        "mean_normalized_onset": 0.367,
         "raw_onsets": [
-          81.51,
-          87.21,
-          144.86,
-          158.37,
-          303.62,
-          19.42,
-          104.28
+          144.86
         ],
-        "mean_duration": 2.657,
+        "mean_duration": 0.3,
         "min_duration": 0.3,
-        "max_duration": 11.21,
+        "max_duration": 0.3,
         "objects": {
           "package": 1,
           "box": 1,
@@ -8343,25 +8016,20 @@
         "n_sessions": 3,
         "is_primary": false,
         "is_mandatory": true,
-        "is_mandatory": true,
         "merged_step_id": "P01_R01_S04",
         "per_session_step_ids": [
           "P01_R01_S04",
           null,
-          "P01_R01_S05"
+          "P01_R01_S04"
         ],
-        "mean_normalized_onset": 0.4661,
+        "mean_normalized_onset": 0.5233,
         "raw_onsets": [
-          108.64,
           137.25,
-          334.56,
-          10.55,
-          91.78,
           114.94
         ],
-        "mean_duration": 3.545,
-        "min_duration": 0.52,
-        "max_duration": 8.82,
+        "mean_duration": 1.185,
+        "min_duration": 0.82,
+        "max_duration": 1.55,
         "objects": {
           "roll": 1,
           "milk": 2,
@@ -8388,22 +8056,17 @@
         "n_sessions": 3,
         "is_primary": false,
         "is_mandatory": false,
-        "is_mandatory": false,
         "merged_step_id": null,
         "per_session_step_ids": [
           null,
           null,
           null
         ],
-        "mean_normalized_onset": 0.5592,
-        "raw_onsets": [
-          184.78,
-          222.27,
-          255.14
-        ],
-        "mean_duration": 2.553,
-        "min_duration": 1.95,
-        "max_duration": 3.56,
+        "mean_normalized_onset": 0.0,
+        "raw_onsets": [],
+        "mean_duration": 0.0,
+        "min_duration": 0.0,
+        "max_duration": 0.0,
         "objects": {
           "orange": 3
         },
@@ -8425,21 +8088,17 @@
         "n_sessions": 3,
         "is_primary": false,
         "is_mandatory": false,
-        "is_mandatory": false,
-        "merged_step_id": "P01_R01_S03",
+        "merged_step_id": null,
         "per_session_step_ids": [
           null,
-          "P01_R01_S03",
+          null,
           null
         ],
-        "mean_normalized_onset": 0.3698,
-        "raw_onsets": [
-          56.15,
-          56.95
-        ],
-        "mean_duration": 3.715,
-        "min_duration": 0.7,
-        "max_duration": 6.73,
+        "mean_normalized_onset": 0.0,
+        "raw_onsets": [],
+        "mean_duration": 0.0,
+        "min_duration": 0.0,
+        "max_duration": 0.0,
         "objects": {
           "can": 1,
           "alarm": 1
@@ -8495,7 +8154,15 @@
             59
           ]
         },
-        "probability": 0.2527
+        "probability": 0.2527,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "leave",
@@ -8538,7 +8205,15 @@
             42
           ]
         },
-        "probability": 0.2714
+        "probability": 0.2714,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "leave",
@@ -8579,7 +8254,15 @@
             61
           ]
         },
-        "probability": 0.2429
+        "probability": 0.2429,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "manipulate",
@@ -8620,7 +8303,15 @@
             73
           ]
         },
-        "probability": 0.2833
+        "probability": 0.2833,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "retrieve",
@@ -8661,7 +8352,15 @@
             4
           ]
         },
-        "probability": 0.1868
+        "probability": 0.1868,
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "access",
@@ -8701,7 +8400,15 @@
             77
           ]
         },
-        "probability": 0.2857
+        "probability": 0.2857,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "access",
@@ -8740,7 +8447,15 @@
             52
           ]
         },
-        "probability": 0.2679
+        "probability": 0.2679,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "leave",
@@ -8778,7 +8493,15 @@
             78
           ]
         },
-        "probability": 0.2
+        "probability": 0.2,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "manipulate",
@@ -8816,7 +8539,15 @@
             72
           ]
         },
-        "probability": 0.2333
+        "probability": 0.2333,
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "block",
@@ -8853,7 +8584,15 @@
             37
           ]
         },
-        "probability": 0.2955
+        "probability": 0.2955,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "retrieve",
@@ -8889,7 +8628,15 @@
           ],
           "2": []
         },
-        "probability": 0.1429
+        "probability": 0.1429,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "retrieve",
@@ -8925,7 +8672,15 @@
             38
           ]
         },
-        "probability": 0.1319
+        "probability": 0.1319,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "block",
@@ -8960,7 +8715,15 @@
             68
           ]
         },
-        "probability": 0.25
+        "probability": 0.25,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "manipulate",
@@ -8995,7 +8758,15 @@
             76
           ]
         },
-        "probability": 0.1833
+        "probability": 0.1833,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "block",
@@ -9029,7 +8800,15 @@
             34
           ]
         },
-        "probability": 0.2273
+        "probability": 0.2273,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "manipulate",
@@ -9060,7 +8839,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.15
+        "probability": 0.15,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "access",
@@ -9091,7 +8878,15 @@
             39
           ]
         },
-        "probability": 0.1429
+        "probability": 0.1429,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "leave",
@@ -9122,7 +8917,15 @@
           ],
           "2": []
         },
-        "probability": 0.1143
+        "probability": 0.1143,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "retrieve",
@@ -9153,7 +8956,15 @@
             53
           ]
         },
-        "probability": 0.0879
+        "probability": 0.0879,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "block",
@@ -9184,7 +8995,15 @@
             79
           ]
         },
-        "probability": 0.1591
+        "probability": 0.1591,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "clean",
@@ -9215,7 +9034,15 @@
             67
           ]
         },
-        "probability": 0.3684
+        "probability": 0.3684,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "manipulate",
@@ -9245,7 +9072,15 @@
             69
           ]
         },
-        "probability": 0.1167
+        "probability": 0.1167,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "access",
@@ -9275,7 +9110,15 @@
             66
           ]
         },
-        "probability": 0.1071
+        "probability": 0.1071,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "access",
@@ -9303,7 +9146,15 @@
             32
           ]
         },
-        "probability": 0.0893
+        "probability": 0.0893,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "leave",
@@ -9332,7 +9183,15 @@
             70
           ]
         },
-        "probability": 0.0714
+        "probability": 0.0714,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "leave",
@@ -9361,7 +9220,15 @@
             60
           ]
         },
-        "probability": 0.0714
+        "probability": 0.0714,
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "retrieve",
@@ -9389,7 +9256,15 @@
           ],
           "2": []
         },
-        "probability": 0.0549
+        "probability": 0.0549,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "clean",
@@ -9416,7 +9291,15 @@
           ],
           "2": []
         },
-        "probability": 0.2105
+        "probability": 0.2105,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "clean",
@@ -9443,7 +9326,15 @@
           ],
           "2": []
         },
-        "probability": 0.2105
+        "probability": 0.2105,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "retrieve",
@@ -9470,7 +9361,15 @@
             74
           ]
         },
-        "probability": 0.044
+        "probability": 0.044,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "retrieve",
@@ -9497,7 +9396,15 @@
             56
           ]
         },
-        "probability": 0.044
+        "probability": 0.044,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "access",
@@ -9523,7 +9430,15 @@
             7
           ]
         },
-        "probability": 0.0536
+        "probability": 0.0536,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "clean",
@@ -9549,7 +9464,15 @@
             71
           ]
         },
-        "probability": 0.1579
+        "probability": 0.1579,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "merge",
@@ -9575,7 +9498,15 @@
             33
           ]
         },
-        "probability": 0.25
+        "probability": 0.25,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "merge",
@@ -9601,7 +9532,15 @@
             17
           ]
         },
-        "probability": 0.25
+        "probability": 0.25,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "merge",
@@ -9628,7 +9567,15 @@
             58
           ]
         },
-        "probability": 0.25
+        "probability": 0.25,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "retrieve",
@@ -9653,7 +9600,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.033
+        "probability": 0.033,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "split",
@@ -9678,7 +9633,15 @@
           "1": [],
           "2": []
         },
-        "probability": 1.0
+        "probability": 1.0,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "access",
@@ -9702,7 +9665,15 @@
             23
           ]
         },
-        "probability": 0.0357
+        "probability": 0.0357,
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "block",
@@ -9727,7 +9698,15 @@
             54
           ]
         },
-        "probability": 0.0455
+        "probability": 0.0455,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "leave",
@@ -9752,7 +9731,15 @@
           ],
           "2": []
         },
-        "probability": 0.0286
+        "probability": 0.0286,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "retrieve",
@@ -9776,7 +9763,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.022
+        "probability": 0.022,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "sense",
@@ -9801,7 +9796,15 @@
           ],
           "2": []
         },
-        "probability": 0.3333
+        "probability": 0.3333,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "transition",
@@ -9826,7 +9829,15 @@
             55
           ]
         },
-        "probability": 0.2857
+        "probability": 0.2857,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "access",
@@ -9849,7 +9860,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.0179
+        "probability": 0.0179,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "block",
@@ -9872,7 +9891,15 @@
             45
           ]
         },
-        "probability": 0.0227
+        "probability": 0.0227,
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "clean",
@@ -9895,7 +9922,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.0526
+        "probability": 0.0526,
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "manipulate",
@@ -9918,7 +9953,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.0167
+        "probability": 0.0167,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "manipulate",
@@ -9941,7 +9984,15 @@
           ],
           "2": []
         },
-        "probability": 0.0167
+        "probability": 0.0167,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "merge",
@@ -9964,7 +10015,15 @@
             21
           ]
         },
-        "probability": 0.0833
+        "probability": 0.0833,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "merge",
@@ -9987,7 +10046,15 @@
             75
           ]
         },
-        "probability": 0.0833
+        "probability": 0.0833,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "merge",
@@ -10010,7 +10077,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.0833
+        "probability": 0.0833,
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "monitor",
@@ -10033,7 +10108,15 @@
           ],
           "2": []
         },
-        "probability": 0.5
+        "probability": 0.5,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "monitor",
@@ -10056,7 +10139,15 @@
           ],
           "2": []
         },
-        "probability": 0.5
+        "probability": 0.5,
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "sense",
@@ -10079,7 +10170,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.1667
+        "probability": 0.1667,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "sense",
@@ -10102,7 +10201,15 @@
             50
           ]
         },
-        "probability": 0.1667
+        "probability": 0.1667,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "sense",
@@ -10125,7 +10232,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.1667
+        "probability": 0.1667,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "sense",
@@ -10148,7 +10263,15 @@
             57
           ]
         },
-        "probability": 0.1667
+        "probability": 0.1667,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "transition",
@@ -10171,7 +10294,15 @@
             8
           ]
         },
-        "probability": 0.1429
+        "probability": 0.1429,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "transition",
@@ -10194,7 +10325,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.1429
+        "probability": 0.1429,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "transition",
@@ -10217,7 +10356,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.1429
+        "probability": 0.1429,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "transition",
@@ -10240,7 +10387,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.1429
+        "probability": 0.1429,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       },
       {
         "source": "transition",
@@ -10263,7 +10418,15 @@
           "1": [],
           "2": []
         },
-        "probability": 0.1429
+        "probability": 0.1429,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "per_session_is_return": [
+          null,
+          null,
+          null
+        ]
       }
     ]
   },
@@ -10309,26 +10472,12 @@
       [
         "retrieve",
         "block",
-        "transition",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "block",
-        "manipulate",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "block",
-        "manipulate",
         "leave",
         "retrieve"
       ],
       [
         "retrieve",
         "block",
-        "manipulate",
         "leave",
         "access",
         "retrieve"
@@ -10336,61 +10485,17 @@
       [
         "retrieve",
         "block",
-        "manipulate",
         "leave",
-        "clean",
+        "access",
+        "manipulate",
         "retrieve"
       ],
       [
         "retrieve",
         "block",
-        "manipulate",
         "leave",
-        "sense",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "block",
-        "manipulate",
-        "access",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "block",
-        "manipulate",
-        "access",
-        "clean",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "block",
-        "manipulate",
-        "access",
-        "merge",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "block",
-        "manipulate",
         "access",
         "transition",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "block",
-        "leave",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "block",
-        "leave",
-        "access",
         "retrieve"
       ],
       [
@@ -10413,14 +10518,6 @@
         "retrieve",
         "block",
         "leave",
-        "access",
-        "transition",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "block",
-        "leave",
         "clean",
         "retrieve"
       ],
@@ -10428,21 +10525,86 @@
         "retrieve",
         "block",
         "leave",
-        "sense",
+        "clean",
+        "manipulate",
         "retrieve"
       ],
       [
         "retrieve",
         "block",
-        "access",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "block",
-        "access",
         "leave",
         "sense",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "leave",
+        "manipulate",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "manipulate",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "manipulate",
+        "access",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "manipulate",
+        "access",
+        "transition",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "manipulate",
+        "access",
+        "clean",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "manipulate",
+        "access",
+        "merge",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "manipulate",
+        "leave",
+        "sense",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "transition",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "access",
+        "retrieve"
+      ],
+      [
+        "retrieve",
+        "block",
+        "access",
+        "transition",
         "retrieve"
       ]
     ],
@@ -10450,5 +10612,6 @@
       "split",
       "monitor"
     ]
-  }
+  },
+  "filter_report": null
 }

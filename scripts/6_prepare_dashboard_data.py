@@ -573,6 +573,77 @@ def create_categorical_graph(payload, verb_classes, noun_classes):
 # Hybrid mode (verb_key(noun_category) focused on primary recipe steps)
 # ─────────────────────────────────────────────────────────────────────────────
 
+def _is_end_state(action):
+    """True for the END sentinel in any of its historical spellings."""
+    return action == "END" or action.startswith("End:")
+
+
+def _is_start_state(action):
+    return action == "START" or action.startswith("Start:")
+
+
+def _median(values):
+    vals = sorted(values)
+    if not vals:
+        return 0.0
+    mid = len(vals) // 2
+    if len(vals) % 2:
+        return float(vals[mid])
+    return (vals[mid - 1] + vals[mid]) / 2.0
+
+
+def compute_median_ranks(sequence):
+    """
+    Median normalized position of each state within the sequence.
+
+    rank(occurrence j) = j / (len(sequence) - 1), so the first item sits at 0.0
+    and the last at 1.0. A state that recurs gets the median of its occurrences.
+    This is the ONLY thing used to decide whether a transition is a return, so
+    the decision depends on the data alone and never on screen coordinates.
+    """
+    if not sequence:
+        return {}
+    L = max(len(sequence) - 1, 1)
+    samples = defaultdict(list)
+    for j, item in enumerate(sequence):
+        samples[item["action"]].append(j / L)
+
+    ranks = {a: round(_median(v), 5) for a, v in samples.items()}
+    # Pin the sentinels so nothing can ever be classified as returning past them.
+    for a in list(ranks):
+        if _is_start_state(a):
+            ranks[a] = 0.0
+        elif _is_end_state(a):
+            ranks[a] = 1.0
+    return ranks
+
+
+def tag_return_transitions(links, median_ranks):
+    """
+    Annotate each link with its temporal direction.
+
+    Every edge is a directly-follows relation, so every edge is forward in time
+    by construction. `is_return` means only this: the target's typical position
+    in the sequence is EARLIER than the source's, i.e. the performer came back
+    to a state they had already passed through. That is a cycle in the state
+    graph, not a step backwards in time.
+    """
+    for link in links:
+        src, dst = link["source"], link["target"]
+        r_src = median_ranks.get(src, 0.5)
+        r_dst = median_ranks.get(dst, 0.5)
+        delta = round(r_dst - r_src, 5)
+
+        if src == dst:
+            link["is_self_loop"] = True
+            link["is_return"] = False
+        else:
+            link["is_self_loop"] = False
+            link["is_return"] = bool(delta < 0)
+        link["rank_delta"] = delta
+    return links
+
+
 def _compute_dead_end_scores(hybrid_sequence, nodes):
     """
     Video Textures analog of 'anticipated future cost' at the semantic level.
@@ -593,6 +664,12 @@ def _compute_dead_end_scores(hybrid_sequence, nodes):
         for (s, t), c in trans.items():
             if s != nid:
                 continue
+            # NOTE: this tests "End:" while the sentinel is "END", so the END
+            # transition is never excluded and these scores are too low. Left
+            # exactly as-is on purpose — dead_end_score drives a node ring that
+            # the dashboard does not currently use, and "fixing" it would make
+            # unexplained rings appear. Revisit only if dead-ends become a
+            # feature you actually display.
             if t.startswith("End:"):
                 continue
             p = c / out_total[s] if out_total[s] else 0.0
@@ -609,6 +686,58 @@ def _find_self_loops(hybrid_sequence):
         if a["action"] == b["action"]:
             loops[a["action"]] += 1
     return dict(loops)
+
+
+def _build_nodes(sequence, verb_id_to_key, noun_id_to_key, force_primary=False):
+    """
+    Compile graph nodes from a state-mapped sequence.
+
+    Used twice per mode: once on the FULL sequence (every annotated action) and
+    once on the PRIMARY sequence (actions inside annotated step windows). Running
+    the identical compiler over both is what makes the before/after comparison
+    valid — only the input sequence differs, never the identity function.
+    """
+    node_counts = Counter(item["action"] for item in sequence)
+    node_kind = {item["action"]: item.get("kind", "action") for item in sequence}
+    node_objects = defaultdict(Counter)
+    node_verbs = defaultdict(Counter)
+
+    primary_majority = compute_node_primary_majority(sequence)
+
+    for item in sequence:
+        state = item["action"]
+        if state in ("START", "END"):
+            continue
+        v_id = item.get("verb_class", -1)
+        n_id = item.get("noun_class", -1)
+        if v_id >= 0:
+            node_verbs[state][verb_id_to_key.get(v_id, str(v_id))] += 1
+        if n_id >= 0:
+            node_objects[state][noun_id_to_key.get(n_id, str(n_id))] += 1
+
+    median_ranks = compute_median_ranks(sequence)
+
+    nodes = []
+    for state, c in sorted(node_counts.items(), key=lambda x: (-x[1], x[0])):
+        kind = node_kind.get(state, "action")
+        nodes.append({
+            "id": state,
+            "count": int(c),
+            "is_primary": True if force_primary else bool(primary_majority.get(state, True)),
+            "salient": True if kind == "action" else False,
+            "objects": dict(node_objects.get(state, {})),
+            "verbs": dict(node_verbs.get(state, {})),
+            "kind": kind,
+            "is_start": kind == "start",
+            "is_end": kind == "end",
+            "median_rank": median_ranks.get(state, 0.5),
+        })
+
+    dead_scores = _compute_dead_end_scores(sequence, nodes)
+    for n in nodes:
+        n["dead_end_score"] = dead_scores.get(n["id"], 0.0)
+
+    return nodes, median_ranks
 
 
 def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes, use_category_for_verb=False):
@@ -686,46 +815,78 @@ def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes, use_ca
             primary_sequence[i]["next_action"] = None
             primary_sequence[i]["edge_key"] = None
 
-    node_counts = Counter(item["action"] for item in primary_sequence)
-    node_objects = defaultdict(Counter)
-    node_verbs = defaultdict(Counter)
-    node_kind = {item["action"]: item.get("kind", "action") for item in primary_sequence}
-
     noun_id_to_key = dict(zip(noun_classes["id"].astype(int), noun_classes["key"]))
     verb_id_to_key = dict(zip(verb_classes["id"].astype(int), verb_classes["key"]))
-    
-    for item in primary_sequence:
-        state = item["action"]
-        if state == "START" or state == "END":
-            continue
-        v_id = item.get("verb_class", -1)
-        n_id = item.get("noun_class", -1)
-        if v_id >= 0:
-            node_verbs[state][verb_id_to_key.get(v_id, str(v_id))] += 1
-        if n_id >= 0:
-            node_objects[state][noun_id_to_key.get(n_id, str(n_id))] += 1
 
-    nodes = []
-    for state, c in sorted(node_counts.items(), key=lambda x: (-x[1], x[0])):
-        kind = node_kind.get(state, "action")
-        nodes.append({
-            "id": state, "count": int(c), "is_primary": True,
-            "salient": True if kind == "action" else False,
-            "objects": dict(node_objects.get(state, {})),
-            "verbs": dict(node_verbs.get(state, {})),
-            "kind": kind, "is_start": kind == "start", "is_end": kind == "end",
-        })
+    # ── Graph A: UNFILTERED — every annotated action, same identity function ──
+    nodes_unfiltered, ranks_unfiltered = _build_nodes(
+        hybrid_sequence, verb_id_to_key, noun_id_to_key, force_primary=False
+    )
+    links_unfiltered = tag_return_transitions(
+        markov_links(hybrid_sequence), ranks_unfiltered
+    )
 
-    dead_scores = _compute_dead_end_scores(primary_sequence, nodes)
-    for n in nodes:
-        n["dead_end_score"] = dead_scores.get(n["id"], 0.0)
-        
+    # ── Graph B: PRIMARY — actions inside annotated step windows ─────────────
+    nodes, median_ranks = _build_nodes(
+        primary_sequence, verb_id_to_key, noun_id_to_key, force_primary=True
+    )
+    links = tag_return_transitions(markov_links(primary_sequence), median_ranks)
+
     self_loops = _find_self_loops(primary_sequence)
-    links = markov_links(primary_sequence)
+
+    # ── Filter ledger: exactly what the primary filter removed and created ───
+    ids_before = {n["id"] for n in nodes_unfiltered}
+    ids_after = {n["id"] for n in nodes}
+    keys_before = {l["key"] for l in links_unfiltered}
+    keys_after = {l["key"] for l in links}
+
+    dropped_actions = Counter(
+        item["action"] for item in hybrid_sequence if not item.get("is_primary", True)
+    )
+    n_full, n_primary = len(hybrid_sequence), len(primary_sequence)
+
+    filter_report = {
+        "identity": ("verb_category(noun_category)" if use_category_for_verb
+                     else "verb_key(noun_category)"),
+        "rule": ("An action is PRIMARY if its time window overlaps an annotated "
+                 "step_times window (with a per-side buffer). Non-primary actions "
+                 "are excluded from the motion graph only; they remain in the "
+                 "sequence, the swimlane and graph_unfiltered."),
+        "actions": {
+            "before": n_full,
+            "after": n_primary,
+            "removed": n_full - n_primary,
+            "removed_fraction": round(1 - n_primary / n_full, 4) if n_full else 0.0,
+        },
+        "nodes": {
+            "before": len(nodes_unfiltered),
+            "after": len(nodes),
+            "removed": sorted(ids_before - ids_after),
+        },
+        "links": {
+            "before": len(links_unfiltered),
+            "after": len(links),
+            "removed_keys": sorted(keys_before - keys_after),
+            # Edges present after filtering that never occurred consecutively in
+            # the raw data — created by deleting the action(s) between them.
+            "introduced_keys": sorted(keys_after - keys_before),
+        },
+        "removed_action_counts": dict(dropped_actions.most_common()),
+        "return_transitions": {
+            "count": sum(1 for l in links if l.get("is_return")),
+            "keys": [l["key"] for l in links if l.get("is_return")],
+        },
+        "self_loops": {
+            "count": sum(1 for l in links if l.get("is_self_loop")),
+            "keys": [l["key"] for l in links if l.get("is_self_loop")],
+        },
+    }
 
     result = payload.copy()
     result["sequence"] = hybrid_sequence
     result["graph"] = {"nodes": nodes, "links": links}
+    result["graph_unfiltered"] = {"nodes": nodes_unfiltered, "links": links_unfiltered}
+    result["filter_report"] = filter_report
     result["analysis"] = {
         "dead_ends": [{"id": n["id"], "score": n["dead_end_score"]} for n in sorted(nodes, key=lambda x: -x["dead_end_score"]) if n["kind"] == "action" and n["dead_end_score"] >= 0.5][:10],
         "self_loops": [{"id": nid, "count": c} for nid, c in sorted(self_loops.items(), key=lambda x: -x[1])],
@@ -816,6 +977,19 @@ def main():
             pri = sum(1 for x in payload["graph"]["nodes"] if x.get("is_primary"))
             print(f"  ✓ {label:<16} {out_path.name}  "
                   f"({len(payload['sequence'])} actions, {n} nodes, {pri} primary)")
+
+            fr = payload.get("filter_report")
+            if fr:
+                a, nd, lk = fr["actions"], fr["nodes"], fr["links"]
+                print(f"      filter ledger  actions {a['before']} → {a['after']} "
+                      f"(−{a['removed']}, {a['removed_fraction']:.1%})")
+                print(f"                     nodes   {nd['before']} → {nd['after']} "
+                      f"(−{len(nd['removed'])})")
+                print(f"                     edges   {lk['before']} → {lk['after']} "
+                      f"(−{len(lk['removed_keys'])} removed, "
+                      f"+{len(lk['introduced_keys'])} introduced)")
+                print(f"                     returns {fr['return_transitions']['count']}, "
+                      f"self-loops {fr['self_loops']['count']}")
 
     print("\n" + "=" * 80)
     print(f"DONE → {output_dir}/")

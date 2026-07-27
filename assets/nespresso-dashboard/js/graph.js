@@ -160,6 +160,22 @@ function computeRankLayout(nodes, sequence, { maxRadius = 18 } = {}) {
     arr.sort((a, b) => a - b);
     medianRank[id] = arr[Math.floor(arr.length / 2)];
   });
+
+  // Prefer node.median_rank from the pipeline wherever it exists.
+  //
+  // The ranking derived above comes from `sequence`, which is the FULL action
+  // list including secondary actions that were excluded from the graph. Using
+  // it positions nodes by occurrences that aren't in the graph at all, and it
+  // disagrees with node.median_rank — the primary-only figure that decides
+  // is_return. That disagreement is visible: an edge can point rightward and
+  // still be a return, or point leftward and be forward, because position and
+  // direction were answering to two different populations.
+  //
+  // One rank, one population, used for both.
+  nodes.forEach((n) => {
+    if (typeof n.median_rank === "number") medianRank[n.id] = n.median_rank;
+  });
+
   nodes.forEach((n) => {
     if (isStartId(n.id)) medianRank[n.id] = 0;
     if (isEndId(n.id))   medianRank[n.id] = 1;
@@ -440,6 +456,30 @@ function getArcPath(link, layout, radiusMap) {
   return `M${x1},${y1} Q${mx},${cy} ${x2},${y2}`;
 }
 
+// Return transitions are routed as an arc BELOW the main band so they read as a
+// separate channel without occluding the dominant left-to-right flow. They are
+// drawn, not hidden — the arc is the visible proof that the node is connected.
+function getReturnArcPath(link, layout, radiusMap) {
+  const s = layout[link.source] || { x: 0, y: 0 };
+  const t = layout[link.target] || { x: 0, y: 0 };
+  const dx = t.x - s.x;
+  const dy = t.y - s.y;
+  const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+  const nx = dx / dist;
+  const ny = dy / dist;
+  const rS = radiusMap[link.source] || 18;
+  const rT = radiusMap[link.target] || 18;
+  const x1 = s.x + nx * rS;
+  const y1 = s.y + ny * rS;
+  const x2 = t.x - nx * (rT + 4);
+  const y2 = t.y - ny * (rT + 4);
+  const mx = (s.x + t.x) / 2;
+  const span = Math.abs(s.x - t.x);
+  const arcHeight = Math.max(90, span * 0.35);
+  const cy = Math.max(s.y, t.y) + arcHeight;
+  return `M${x1},${y1} Q${mx},${cy} ${x2},${y2}`;
+}
+
 function getCurvedPath(link, layout, radiusMap, curvature = 0.18) {
   const s = layout[link.source] || { x: 0, y: 0 };
   const t = layout[link.target] || { x: 0, y: 0 };
@@ -610,6 +650,8 @@ export function createGraphController({
   let lastActiveEdge = null;
   let lastActiveNode = null;
   let radiusMapCache = null;
+  let pathForCache = null;
+  let baseEdgeOpacityFn = null;
   let enrichedLinksCache = null;
   let enrichedLinksFullCache = null;   
   let edgeWidthScale = null;
@@ -820,6 +862,10 @@ export function createGraphController({
         .attr("markerWidth", 5).attr("markerHeight", 5).attr("orient", "auto")
         .append("path").attr("d", "M0,-4L10,0L0,4Z").attr("fill", color);
     });
+    defs.append("marker").attr("id", markerId("arrowReturn"))
+      .attr("viewBox", "0 -4 10 8").attr("refX", 9).attr("refY", 0)
+      .attr("markerWidth", 5).attr("markerHeight", 5).attr("orient", "auto")
+      .append("path").attr("d", "M0,-4L10,0L0,4Z").attr("fill", "#7C3AED");
     defs.append("marker").attr("id", markerId("arrowReverse"))
       .attr("viewBox", "0 -4 10 8").attr("refX", 1).attr("refY", 0)
       .attr("markerWidth", 5).attr("markerHeight", 5).attr("orient", "auto-start-reverse")
@@ -1009,25 +1055,73 @@ export function createGraphController({
       edgeOpacityScale = d3.scaleLinear().domain([1, Math.max(maxLinkCount, 2)]).range([0.15, 0.85]);
     }
 
+    // ─────────────────────────────────────────────────────────────────────────
+    // Edge classification
+    //
+    // Every edge here is a directly-follows relation, so every edge is forward
+    // in time. `is_return` is computed in the pipeline from median sequence
+    // rank and means only that the target is normally reached EARLIER than the
+    // source — the performer came back to a state they had already visited.
+    //
+    // This used to be decided by comparing node x-coordinates, which made the
+    // classification a property of the layout rather than of the data (and made
+    // it flip when a node was dragged). The layout comparison survives only as
+    // a fallback for payloads built before the pipeline emitted the flag.
+    //
+    // Nothing is dropped. Low-probability edges are faded, never removed, so no
+    // node can be left visually isolated.
+    // ─────────────────────────────────────────────────────────────────────────
     const forwardEdges = [];
-    const backEdges = [];
+    const returnEdges = [];
     const selfLoops = [];
-    const HYBRID_MIN_PROB = 0.08;
-    let hiddenEdges = 0;
-    enrichedLinks.forEach((link) => {
-      if (mode.startsWith("hybrid") && typeof link.probability === "number"
-          && link.probability < HYBRID_MIN_PROB
-          && !isStartId(link.source) && !isEndId(link.target)) {
-        hiddenEdges += 1; return;
-      }
-      if (link.source === link.target) { selfLoops.push(link); return; }
-      if (isStartId(link.source) || isEndId(link.target)) { forwardEdges.push(link); return; }
+    const WEAK_EDGE_PROB = 0.08;
+    let weakEdges = 0;
+    let usedRankData = false;
+
+    const classifyReturn = (link) => {
+      if (isStartId(link.source) || isEndId(link.target)) return false;
+      if (typeof link.is_return === "boolean") { usedRankData = true; return link.is_return; }
+      if (typeof link.rank_delta === "number") { usedRankData = true; return link.rank_delta < 0; }
       const sx = (layout[link.source] || { x: 0 }).x;
       const tx = (layout[link.target] || { x: 0 }).x;
-      if (tx >= sx) forwardEdges.push(link); else backEdges.push(link);
+      return tx < sx;
+    };
+
+    enrichedLinks.forEach((link) => {
+      link.__weak = mode.startsWith("hybrid")
+        && typeof link.probability === "number"
+        && link.probability < WEAK_EDGE_PROB
+        && !isStartId(link.source) && !isEndId(link.target);
+      if (link.__weak) weakEdges += 1;
+
+      if (link.source === link.target || link.is_self_loop) { selfLoops.push(link); return; }
+      link.__isReturn = classifyReturn(link);
+      if (link.__isReturn) returnEdges.push(link); else forwardEdges.push(link);
     });
 
     const medianCount = d3.median(forwardEdges, (d) => d.count || 1) || 1;
+
+    // Single source of truth for edge geometry, used by the initial draw AND by
+    // the drag handler, so dragging can no longer swap a curve family.
+    const pathFor = (link) => {
+      if (link.__isReturn) return getReturnArcPath(link, layout, radiusMap);
+      return currentMode.startsWith("hybrid")
+        ? getCurvedPath(link, layout, radiusMap)
+        : getStraightPath(link, layout, radiusMap);
+    };
+    pathForCache = pathFor;
+
+    // Weak edges are FADED, not removed. A node whose only transitions are
+    // low-probability still shows those transitions, so it cannot float.
+    const baseEdgeOpacity = (d) => {
+      const weakFactor = d.__weak ? 0.25 : 1;
+      if (d.__isReturn) return (d.__weak ? 0.18 : 0.65);
+      if (currentShowSupportBadges) return edgeOpacityScale(edgeMetricFn(d)) * weakFactor;
+      const c = d.count || 1;
+      const base = c > medianCount ? 0.75 : (c === medianCount ? 0.4 : 0.25);
+      return base * weakFactor;
+    };
+    baseEdgeOpacityFn = baseEdgeOpacity;
 
     const selfLoopSummary = [...d3.group(selfLoops, (d) => d.source)].map(([sid, edges]) => ({
       source: sid, target: sid,
@@ -1037,10 +1131,46 @@ export function createGraphController({
       probability: edges[0]?.probability, // Carry the probability forward
     }));
 
-    const backEdgesBySource = d3.group(backEdges, (d) => d.source);
+    // ── Return transitions: drawn as arcs, never as a badge alone ────────────
+    const RETURN_COLOR = "#7C3AED";
+    const returnGroups = gLinks.append("g").attr("class", "return-edges")
+      .selectAll(".return-group")
+      .data(returnEdges).enter().append("g").attr("class", "return-group");
+
+    returnGroups.append("path")
+      .attr("id", d => `path-${MARKER_NS}-${d.key.replace(/[^a-zA-Z0-9_-]/g, '_')}`)
+      .attr("class", "link return-edge")
+      .attr("data-key", (d) => d.key)
+      .attr("fill", "none")
+      .attr("stroke", RETURN_COLOR)
+      .attr("stroke-width", (d) => edgeWidthScale(edgeMetricFn(d)))
+      .attr("stroke-dasharray", "6 4")
+      .attr("stroke-opacity", (d) => d.__weak ? 0.18 : 0.65)
+      .attr("marker-end", markerUrl("arrowReturn"))
+      .attr("d", (d) => pathFor(d))
+      .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
+      .on("mouseout", hideEdgeTooltip);
+
+    returnGroups.filter(d => typeof d.probability === 'number' && d.probability > 0)
+      .append("text")
+      .attr("class", "edge-prob-text return-prob-text")
+      .attr("dy", -4)
+      .attr("font-size", "12px")
+      .attr("font-weight", "bold")
+      .attr("fill", RETURN_COLOR)
+      .attr("pointer-events", "none")
+      .append("textPath")
+      .attr("href", d => `#path-${MARKER_NS}-${d.key.replace(/[^a-zA-Z0-9_-]/g, '_')}`)
+      .attr("startOffset", "50%")
+      .attr("text-anchor", "middle")
+      .text(d => d.probability.toFixed(2));
+
+    // The badge stays, but now supplements the arcs rather than replacing them:
+    // it is the revisitation-hotspot cue (Insight B), not a substitute for a line.
+    const returnEdgesBySource = d3.group(returnEdges, (d) => d.source);
     zoomGroup.append("g").attr("class", "back-indicators")
       .selectAll("g.back-indicator")
-      .data([...backEdgesBySource.entries()].filter(([sid]) => !isSpecialId(sid)))
+      .data([...returnEdgesBySource.entries()].filter(([sid]) => !isSpecialId(sid)))
       .enter().append("g").attr("class", "back-indicator")
       .attr("transform", ([sid]) => {
         const p = layout[sid] || { x: 0, y: 0 };
@@ -1051,13 +1181,16 @@ export function createGraphController({
         const g = d3.select(this);
         g.append("circle").attr("class", "back-indicator-badge")
           .attr("cx", -r * 0.7).attr("cy", -r - 4).attr("r", 7)
-          .attr("fill", "#f1f5f9").attr("stroke", "#94a3b8").attr("stroke-width", 1);
+          .attr("fill", "#f5f3ff").attr("stroke", RETURN_COLOR).attr("stroke-width", 1);
         g.append("text")
           .attr("x", -r * 0.7).attr("y", -r - 4)
           .attr("text-anchor", "middle").attr("dy", "0.35em")
-          .attr("font-size", "7px").attr("fill", "#64748b")
+          .attr("font-size", "7px").attr("fill", RETURN_COLOR)
           .text(edges.length);
-        g.append("title").text(`Backward to:\n` + edges.map((e) => `• ${e.target} (P = ${(e.probability || 0).toFixed(2)})`).join("\n"));
+        g.append("title").text(
+          `Returns to an earlier state (all drawn below):\n` +
+          edges.map((e) => `• ${e.target} (P = ${(e.probability || 0).toFixed(2)})`).join("\n")
+        );
       });
 
     const edgeSet = new Set(forwardEdges.map((d) => `${d.source}|||${d.target}`));
@@ -1083,15 +1216,10 @@ export function createGraphController({
       .attr("class", (d) => `link fwd-edge ${(d.count || 1) > medianCount ? "dominant" : "minor"}`)
       .attr("data-key", (d) => d.key)
       .attr("stroke-width", (d) => edgeWidthScale(edgeMetricFn(d)))
-      .attr("stroke-opacity", (d) => {
-        if (currentShowSupportBadges) return edgeOpacityScale(edgeMetricFn(d));
-        const c = d.count || 1;
-        if (c > medianCount) return 0.75;
-        if (c === medianCount) return 0.4;
-        return 0.15;
-      })
+      .attr("stroke-opacity", (d) => baseEdgeOpacity(d))
+      .attr("stroke-dasharray", (d) => d.__weak ? "3 3" : null)
       .attr("marker-end", markerUrl("arrow"))
-      .attr("d", (d) => currentMode.startsWith("hybrid") ? getCurvedPath(d, layout, radiusMap) : getStraightPath(d, layout, radiusMap))
+      .attr("d", (d) => pathFor(d))
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
       .on("mouseout", hideEdgeTooltip);
 
@@ -1118,10 +1246,10 @@ export function createGraphController({
       .attr("data-key", (d) => d.key)
       .attr("data-pair-key", (d) => d.pairKey)
       .attr("stroke-width", (d) => edgeWidthScale(edgeMetricFn(d)))
-      .attr("stroke-opacity", currentShowSupportBadges ? (d) => edgeOpacityScale(edgeMetricFn(d)) : 0.6)
+      .attr("stroke-opacity", (d) => baseEdgeOpacity(d))
       .attr("marker-end", markerUrl("arrow"))
       .attr("marker-start", markerUrl("arrowReverse"))
-      .attr("d", (d) => currentMode.startsWith("hybrid") ? getCurvedPath(d, layout, radiusMap) : getStraightPath(d, layout, radiusMap))
+      .attr("d", (d) => pathFor(d))
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
       .on("mouseout", hideEdgeTooltip);
 
@@ -1332,8 +1460,8 @@ export function createGraphController({
         svg.selectAll(".link")
           .filter(link => link.source === d.id || link.target === d.id)
           .attr("d", link => {
-            const isBack = (layout[link.source]?.x || 0) > (layout[link.target]?.x || 0);
-            return isBack ? getArcPath(link, layout, radiusMapCache) : getStraightPath(link, layout, radiusMapCache);
+            return pathForCache ? pathForCache(link)
+              : getStraightPath(link, layout, radiusMapCache);
           });
         svg.selectAll(".back-indicator")
           .filter(([sid]) => sid === d.id)
@@ -1428,6 +1556,37 @@ export function createGraphController({
         selectedNodeId = d.id;
         if (options.onNodeClick) options.onNodeClick(d, currentSequenceCache);
       });
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Render ledger — states on-canvas exactly what this view is showing and
+    // what it is de-emphasising. Appended to the svg, not the zoom group, so it
+    // stays put while panning. `weakEdges` was previously counted and silently
+    // discarded; nothing told the viewer that edges had been removed at all.
+    // ─────────────────────────────────────────────────────────────────────────
+    svg.selectAll(".render-ledger").remove();
+    const isolated = filteredNodes.filter((n) =>
+      !enrichedLinks.some((l) => l.source === n.id || l.target === n.id)
+    ).length;
+
+    const ledger = svg.append("g").attr("class", "render-ledger");
+    const ledgerLines = [
+      `${filteredNodes.length} nodes · ${enrichedLinks.length} edges — all drawn, none hidden`,
+      `${forwardEdges.length} forward · ${returnEdges.length} return · ${selfLoops.length} self-loop`,
+      weakEdges > 0
+        ? `${weakEdges} edge${weakEdges === 1 ? "" : "s"} below P<${WEAK_EDGE_PROB} shown faded`
+        : `no edges below P<${WEAK_EDGE_PROB}`,
+      `${isolated} isolated node${isolated === 1 ? "" : "s"}` +
+        (usedRankData ? " · direction from sequence rank" : " · direction from layout (legacy payload)"),
+    ];
+    ledgerLines.forEach((line, i) => {
+      ledger.append("text")
+        .attr("x", 12)
+        .attr("y", height - 12 - (ledgerLines.length - 1 - i) * 13)
+        .attr("font-size", "10px")
+        .attr("fill", i === 3 && isolated > 0 ? "#b91c1c" : "#64748b")
+        .attr("pointer-events", "none")
+        .text(line);
+    });
 
     linkSelection = zoomGroup.selectAll(".link");
     nodeSelection = zoomGroup.selectAll(".node");
@@ -1813,20 +1972,11 @@ export function createGraphController({
 
     linkSelection.each(function(d) {
       const el = d3.select(this);
-      el.style("stroke", null)
+      el.style("stroke", d.__isReturn ? "#7C3AED" : null)
         .style("stroke-width", edgeWidthScale(edgeMetricFn(d)));
         
-      if (el.classed("fwd-edge")) {
-        el.style("stroke-opacity", () => {
-          if (currentShowSupportBadges) return edgeOpacityScale(edgeMetricFn(d));
-          const medianCount = d3.median(linkSelection.data(), l => l.count || 1) || 1;
-          const c = d.count || 1;
-          if (c > medianCount) return 0.75;
-          if (c === medianCount) return 0.4;
-          return 0.15;
-        });
-      } else if (el.classed("bidir-edge")) {
-        el.style("stroke-opacity", currentShowSupportBadges ? edgeOpacityScale(edgeMetricFn(d)) : 0.6);
+      if (baseEdgeOpacityFn) {
+        el.style("stroke-opacity", baseEdgeOpacityFn(d));
       } else {
         el.style("stroke-opacity", null);
       }
