@@ -61,6 +61,8 @@ const colorEncodeSelect = document.getElementById("colorEncodeSelect");
 const sizeEncodeSelect = document.getElementById("sizeEncodeSelect");
 const layoutModeSelect = document.getElementById("layoutModeSelect");
 const highlightSpineBtn = document.getElementById("highlightSpineBtn");
+const graphSourceSelect = document.getElementById("graphSourceSelect");
+const graphPanelTitle = document.getElementById("graphPanelTitle");
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Graph controller
@@ -81,6 +83,10 @@ const graphController = createGraphController({
 let manifest = null;
 let currentRecipeId = null;
 let currentSessionIndex = 'all';
+// "merged" | "session" | "session_raw"
+// session      -> that session's own primary graph (the "before merge" column)
+// session_raw  -> that session's graph_unfiltered (every action, nothing removed)
+let currentGraphSource = "merged";
 
 let mergedGraphPayload = null;
 let sessionPayloadsMap = {};
@@ -101,25 +107,125 @@ let occurrenceCycleIndex = 0;
 // Graph Settings & Refresh
 // ─────────────────────────────────────────────────────────────────────────────
 
+// Which session a per-session view should render. Falls back to the first
+// session when the "All" tab is active.
+function sessionIndexForGraph() {
+  if (currentSessionIndex !== "all") return currentSessionIndex;
+  const recipe = getCurrentRecipe();
+  return recipe?.sessions?.[0]?.index ?? 0;
+}
+
+// Session payloads carry no cross-session fields. Synthesize them so the
+// renderer and the highlight code can treat every source uniformly.
+function decorateSessionGraph(graph) {
+  const copy = {
+    nodes: graph.nodes.map((n) => ({ ...n })),
+    links: graph.links.map((l) => ({ ...l })),
+  };
+  copy.nodes.forEach((n) => {
+    n.per_session_counts = [n.count];
+    n.support = 1; n.support_fraction = 1; n.n_sessions = 1;
+  });
+  copy.links.forEach((l) => {
+    l.per_session_counts = [l.count];
+    l.support = 1; l.support_fraction = 1; l.n_sessions = 1;
+  });
+  return copy;
+}
+
+function synthSpine(sequence) {
+  const spine = [];
+  sequence.forEach((item) => {
+    if (spine.length === 0 || spine[spine.length - 1] !== item.action) {
+      spine.push(item.action);
+    }
+  });
+  return spine;
+}
+
+// Resolve whichever graph the source dropdown is asking for.
+// Returns null when the requested graph is unavailable (e.g. graph_unfiltered
+// missing because the JSON predates the filter-ledger pipeline).
+function getActiveGraphView() {
+  if (!mergedGraphPayload) return null;
+
+  if (currentGraphSource === "merged") {
+    const nSessions = mergedGraphPayload.recipe.n_sessions;
+    return {
+      graph: mergedGraphPayload.graph,
+      sequence: mergedGraphPayload.sequence,
+      nSessions,
+      spine: mergedGraphPayload.analysis?.canonical_spine || [],
+      showSupportBadges: nSessions > 1,
+      isMerged: true,
+      title: "Merged Motion Graph",
+    };
+  }
+
+  const si = sessionIndexForGraph();
+  const payload = sessionPayloadsMap[si];
+  if (!payload) return null;
+
+  const raw = currentGraphSource === "session_raw";
+  const source = raw ? payload.graph_unfiltered : payload.graph;
+  if (!source) return null;
+
+  const sequence = (raw
+    ? payload.sequence
+    : payload.sequence.filter((i) => i.is_primary !== false)
+  ).map((i) => ({ ...i, session_index: si }));
+
+  return {
+    graph: decorateSessionGraph(source),
+    sequence,
+    nSessions: 1,
+    spine: synthSpine(sequence),
+    showSupportBadges: false,
+    isMerged: false,
+    sessionIndex: si,
+    raw,
+    title: raw
+      ? `Session ${si} — Raw (unfiltered)`
+      : `Session ${si} — Filtered (primary only)`,
+  };
+}
+
 function reapplyGraphSettings(resetPositions = false) {
   if (!mergedGraphPayload) return;
-  const nSessions = mergedGraphPayload.recipe.n_sessions;
-  
+
+  let view = getActiveGraphView();
+  if (!view) {
+    // Requested graph is unavailable — revert rather than render nothing.
+    const wanted = currentGraphSource;
+    currentGraphSource = "merged";
+    if (graphSourceSelect) graphSourceSelect.value = "merged";
+    view = getActiveGraphView();
+    if (!view) return;
+    renderDataError(
+      summaryPill, header,
+      wanted === "session_raw"
+        ? "This recipe's JSON has no graph_unfiltered — re-run 6_prepare_dashboard_data.py to enable the raw view."
+        : "Session graph unavailable; showing the merged graph."
+    );
+  }
+
+  if (graphPanelTitle) graphPanelTitle.textContent = view.title;
+
   graphController.buildGraph(
-    mergedGraphPayload.graph,
-    mergedGraphPayload.sequence,
-    1, 
-    graphModeSelect.value, 
-    colorEncodeSelect.value, 
+    view.graph,
+    view.sequence,
+    1,
+    graphModeSelect.value,
+    colorEncodeSelect.value,
     sizeEncodeSelect.value,
     layoutModeSelect.value,
     { onNodeClick: handleNodeClick },
     resetPositions,
     {
-      showSupportBadges: nSessions > 1,
-      supportFilter: 1, 
-      nSessions: nSessions,
-      canonicalSpine: mergedGraphPayload.analysis?.canonical_spine || []
+      showSupportBadges: view.showSupportBadges,
+      supportFilter: 1,
+      nSessions: view.nSessions,
+      canonicalSpine: view.spine
     }
   );
 
@@ -348,7 +454,7 @@ function populateSessionTabs(recipe) {
     allBtn.className = "session-tab merged-tab";
     allBtn.dataset.sessionIndex = "all";
     allBtn.textContent = "All Sessions";
-    allBtn.addEventListener("click", () => selectSession("all"));
+    allBtn.addEventListener("click", () => onSessionTabClick("all"));
     sessionPickerTabs.appendChild(allBtn);
   }
 
@@ -357,11 +463,27 @@ function populateSessionTabs(recipe) {
     btn.className = "session-tab";
     btn.dataset.sessionIndex = String(session.index);
     btn.textContent = `Session ${session.index + 1}`;
-    btn.addEventListener("click", () => selectSession(session.index));
+    btn.addEventListener("click", () => onSessionTabClick(session.index));
     sessionPickerTabs.appendChild(btn);
   });
 
   sessionPickerRow.style.display = "";
+}
+
+// A session tab changes WHICH graph is drawn when a per-session source is
+// selected, so it needs a rebuild — not just a highlight update.
+function onSessionTabClick(idx) {
+  if (currentGraphSource !== "merged") {
+    currentSessionIndex = idx;
+    if (idx === "all" && graphSourceSelect) {
+      // "All" has no meaning for a per-session graph; go back to merged.
+      currentGraphSource = "merged";
+      graphSourceSelect.value = "merged";
+    }
+    reapplyGraphSettings(true);
+    return;
+  }
+  selectSession(idx);
 }
 
 function getCurrentRecipe() {
@@ -444,8 +566,11 @@ function selectSession(idx) {
   });
 
   // 2. Update Graph Highlights
-  // FIX: If it's the "All" tab OR there's only 1 session, clear highlights
-  if (idx === 'all' || recipe.sessions.length === 1) {
+  // Session highlighting only makes sense against the merged graph. When a
+  // per-session graph is on screen it already IS that session, and its nodes
+  // carry synthesized support fields that highlightSession would misread.
+  const usingSessionGraph = currentGraphSource !== "merged";
+  if (idx === 'all' || recipe.sessions.length === 1 || usingSessionGraph) {
       graphController.clearHighlight();
       highlightSpineBtn.classList.remove('active');
   } else {
@@ -556,13 +681,16 @@ highlightSpineBtn.addEventListener('click', function() {
       }
   } else {
       this.classList.add('active');
-      graphController.highlightSpine(mergedGraphPayload.analysis?.canonical_spine || []);
-      
-      // Ensure UI is in 'all' mode to explore the spine globally
-      if (currentSessionIndex !== 'all' && mergedGraphPayload.recipe.n_sessions > 1) {
+      const view = getActiveGraphView();
+      graphController.highlightSpine(view?.spine || []);
+
+      // Ensure UI is in 'all' mode to explore the spine globally — but only
+      // for the merged graph; a per-session graph has its own spine already.
+      if (view?.isMerged && currentSessionIndex !== 'all'
+          && mergedGraphPayload.recipe.n_sessions > 1) {
           selectSession('all');
           this.classList.add('active'); // Re-apply class because selectSession removes it
-          graphController.highlightSpine(mergedGraphPayload.analysis?.canonical_spine || []);
+          graphController.highlightSpine(view.spine || []);
       }
   }
 });
@@ -587,6 +715,18 @@ graphModeSelect.addEventListener("change", () => {
   updateColorEncodeAvailability();
   loadRecipeData();
 });
+
+if (graphSourceSelect) {
+  graphSourceSelect.addEventListener("change", () => {
+    currentGraphSource = graphSourceSelect.value;
+    const recipe = getCurrentRecipe();
+    // A per-session graph needs a concrete session; "All" isn't one.
+    if (currentGraphSource !== "merged" && currentSessionIndex === "all" && recipe) {
+      currentSessionIndex = recipe.sessions[0].index;
+    }
+    reapplyGraphSettings(true);
+  });
+}
 
 colorEncodeSelect.addEventListener("change", () => reapplyGraphSettings(false));
 sizeEncodeSelect.addEventListener("change", () => reapplyGraphSettings(false));

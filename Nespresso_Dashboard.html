@@ -43,6 +43,13 @@
         <option value="categorical">Categorical (Verb)</option> -->
       </select>
 
+      <label class="control-label">Graph source:</label>
+      <select id="graphSourceSelect" class="control-select">
+        <option value="merged">Merged (all sessions)</option>
+        <option value="session">This session</option>
+        <option value="session_raw">This session (raw, unfiltered)</option>
+      </select>
+
       <span class="encoding-controls-sep"></span>
 
       <label class="control-label">Color encodes:</label>
@@ -78,7 +85,7 @@
       <!-- LEFT PANEL: Unified Graph -->
       <article class="panel">
         <h2>
-          Merged Motion Graph
+          <span id="graphPanelTitle">Merged Motion Graph</span>
           <span class="graph-hint">— scroll to zoom · drag to pan</span>
         </h2>
         <div id="graphWrap">
