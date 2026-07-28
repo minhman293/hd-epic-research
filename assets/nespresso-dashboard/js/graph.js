@@ -148,7 +148,7 @@ function computeTemporalLayout(nodes, sequence, { maxRadius = 18 } = {}) {
   return { layout, totalDuration, xScale, secondaryLaneTop };
 }
 
-function computeRankLayout(nodes, sequence, { maxRadius = 18 } = {}) {
+function computeRankLayout(nodes, sequence, { maxRadius = 18, links = [], radiusMap = {} } = {}) {
   const positions = {};
   const L = Math.max(sequence.length - 1, 1);
   sequence.forEach((item, i) => {
@@ -181,49 +181,80 @@ function computeRankLayout(nodes, sequence, { maxRadius = 18 } = {}) {
     if (isEndId(n.id))   medianRank[n.id] = 1;
   });
 
-  const realNodes = nodes.filter((n) => !n.isSpecial);
-  const ordered = [...realNodes].sort(
-    (a, b) => (medianRank[a.id] ?? 0.5) - (medianRank[b.id] ?? 0.5)
-  );
-  const SPACING = Math.max(80, Math.round(maxRadius * 1.8)); // Increased horizontal spacing
-  const xOf = {};
-  const orderIdx = {};
-  ordered.forEach((n, i) => {
-    xOf[n.id] = (i + 1) * SPACING;
-    orderIdx[n.id] = i;
-  });
-  nodes.forEach((n) => {
-    if (isStartId(n.id)) xOf[n.id] = 0;
-    if (isEndId(n.id))   xOf[n.id] = (ordered.length + 1) * SPACING;
-  });
+  // ───────────────────────────────────────────────────────────────────────────
+  // Force layout with rank as a BIAS, not a pin.
+  //
+  // The previous version set x = (orderIndex + 1) * SPACING, which made width
+  // grow linearly with node count (~8700px at 102 nodes) while every node sat
+  // in one thin horizontal band. Rank decided position outright, so no amount
+  // of vertical space could be used and connectivity had no influence at all.
+  //
+  // Now: rank supplies a weak x target, edges supply springs, and nodes repel.
+  // Tightly-connected nodes settle near each other, reading order survives as
+  // a tendency, and the canvas is filled in both dimensions.
+  // ───────────────────────────────────────────────────────────────────────────
+  const idSet = new Set(nodes.map((n) => n.id));
+  const rOf = (id) => radiusMap[id] || maxRadius || 18;
 
-  const STAGGER = [-120, 0, 120]; // Increased vertical spread
-  const SALIENT_Y = 0, BACKGROUND_Y = 340;   
-  const laneY = (n) => (n.isSpecial || n.salient ? SALIENT_Y : BACKGROUND_Y);
+  const meanR = d3.mean(nodes, (n) => rOf(n.id)) || maxRadius || 18;
+  const area = nodes.length * Math.pow(meanR * 2.9, 2);
+  const ASPECT = 2.0;                       // wider than tall reads as a process
+  const SPREAD_X = Math.max(360, Math.sqrt(area * ASPECT));
 
   const simNodes = nodes.map((n) => {
-    const base = laneY(n);
-    const targetY = base + (n.isSpecial ? 0 : STAGGER[(orderIdx[n.id] ?? 0) % 3]);
+    const rank = medianRank[n.id] ?? 0.5;
     return {
       id: n.id,
-      x: xOf[n.id] ?? 0,
-      y: targetY,
-      targetY: targetY, // Save the staggered target
-      lane: base,
-      r: 40,
+      // Seed on the rank line; the simulation takes it from there.
+      x: (rank - 0.5) * SPREAD_X,
+      y: (Math.random() - 0.5) * SPREAD_X / ASPECT,
+      targetX: (rank - 0.5) * SPREAD_X,
+      r: rOf(n.id),
+      isSpecial: !!n.isSpecial,
     };
   });
-  
+  const byId = new Map(simNodes.map((d) => [d.id, d]));
+
+  // Self-loops carry no spatial information; returns pull just as hard as
+  // forward edges, because a cycle means those two states ARE related.
+  const simLinks = (links || [])
+    .filter((l) => l.source !== l.target
+                && idSet.has(l.source) && idSet.has(l.target))
+    .map((l) => ({
+      source: l.source,
+      target: l.target,
+      p: typeof l.probability === "number" ? l.probability : 0.5,
+    }));
+
   const sim = d3.forceSimulation(simNodes)
-    .force("x", d3.forceX((d) => xOf[d.id] ?? 0).strength(0.9))
-    .force("y", d3.forceY((d) => d.targetY).strength(0.4)) // Pull to stagger, not flat center!
-    .force("collide", d3.forceCollide((d) => d.r + Math.max(20, maxRadius * 0.5)))
+    .force("link", d3.forceLink(simLinks).id((d) => d.id)
+      // High-probability transitions sit closer together.
+      .distance((l) => byId.get(l.source.id || l.source).r
+                     + byId.get(l.target.id || l.target).r
+                     + 34 + 70 * (1 - l.p))
+      .strength(0.35))
+    .force("charge", d3.forceManyBody().strength((d) => -(90 + d.r * 6)))
+    .force("x", d3.forceX((d) => d.targetX).strength(0.055))
+    .force("y", d3.forceY(0).strength(0.045))
+    .force("collide", d3.forceCollide((d) => d.r + 14).strength(0.9))
     .stop();
-  for (let i = 0; i < 150; i++) sim.tick();
+
+  for (let i = 0; i < 460; i++) sim.tick();
+
+  // START and END are pinned to the extremes afterwards: they are the only two
+  // nodes whose position carries a fixed meaning, and anchoring them gives the
+  // graph a readable entry and exit without re-pinning anything else.
+  const xs = simNodes.filter((d) => !d.isSpecial).map((d) => d.x);
+  const minX = xs.length ? Math.min(...xs) : 0;
+  const maxX = xs.length ? Math.max(...xs) : 0;
+  simNodes.forEach((d) => {
+    if (isStartId(d.id)) { d.x = minX - 90; d.y = 0; }
+    if (isEndId(d.id))   { d.x = maxX + 90; d.y = 0; }
+  });
 
   const layout = {};
   simNodes.forEach((d) => { layout[d.id] = { x: d.x, y: d.y }; });
-  return { layout, secondaryLaneTop: BACKGROUND_Y };
+  return { layout, secondaryLaneTop: null };
 }
 
 function computeCategoryLayout(nodes, sequence, graphMode) {
@@ -473,11 +504,14 @@ function getReturnArcPath(link, layout, radiusMap) {
   const y1 = s.y + ny * rS;
   const x2 = t.x - nx * (rT + 4);
   const y2 = t.y - ny * (rT + 4);
-  const mx = (s.x + t.x) / 2;
-  const span = Math.abs(s.x - t.x);
-  const arcHeight = Math.max(90, span * 0.35);
-  const cy = Math.max(s.y, t.y) + arcHeight;
-  return `M${x1},${y1} Q${mx},${cy} ${x2},${y2}`;
+  // Bow the arc PERPENDICULAR to the edge and proportional to its length.
+  // The previous version always bulged straight down by at least 90px, which
+  // reads fine in a single horizontal band but sweeps across everything once
+  // nodes are distributed in two dimensions.
+  const bow = Math.min(70, Math.max(18, dist * 0.22));
+  const mx = (x1 + x2) / 2 - ny * bow;
+  const my = (y1 + y2) / 2 + nx * bow;
+  return `M${x1},${y1} Q${mx},${my} ${x2},${y2}`;
 }
 
 function getCurvedPath(link, layout, radiusMap, curvature = 0.18) {
@@ -544,7 +578,13 @@ function makeNodeSizeMap(filteredNodes, nodeDurationStats, sizeMode, nodeRadiusB
       .filter((d) => !d.isSpecial && d.support !== undefined)
       .map((d) => d.support);
 
-    if (supports.length === 0) {
+    // Every node having the same support (single-session views, where support
+    // is synthesized as 1) makes the scale degenerate and every node identical.
+    // Fall back to count so node size still carries information.
+    const uniform = supports.length > 0
+      && d3.min(supports) === d3.max(supports);
+
+    if (supports.length === 0 || uniform) {
       const fallback = {};
       filteredNodes.forEach((d) => {
         fallback[d.id] = d.isSpecial ? 18 : nodeRadiusByCount(d.count);
@@ -910,7 +950,8 @@ export function createGraphController({
     if (mode.startsWith("hybrid") && layoutMode === "temporal") {
       drawHRIBackgrounds(false);
       zoomGroup.selectAll(".hri-backgrounds").selectAll("*").remove();
-      const t = computeRankLayout(filteredNodes, sequence, { maxRadius });
+      const t = computeRankLayout(filteredNodes, sequence,
+        { maxRadius, links: enrichedLinks, radiusMap });
       layout = t.layout;
       xScale = null; 
     } else if (layoutMode === "temporal") {
@@ -1133,6 +1174,19 @@ export function createGraphController({
 
     // ── Return transitions: drawn as arcs, never as a badge alone ────────────
     const RETURN_COLOR = "#7C3AED";
+
+    // Density switches. The label and edge-label styling was tuned for a sparse
+    // horizontal band; at raw-graph density the same styling is what makes the
+    // picture unreadable, not the node positions.
+    // Labels sit BELOW the node for every hybrid view. Keeping this density-gated
+    // made the merged graph and the per-session graph look like different tools:
+    // one with labels outside, one with white text crammed inside the circles.
+    const denseLabels = mode.startsWith("hybrid") || filteredNodes.length > 24;
+    // Probability labels are always shown — they are the point of a Markov
+    // graph — but shrink and fade on dense graphs instead of disappearing.
+    const denseEdges = enrichedLinks.length > 34;
+    const probFontSize = denseEdges ? "10px" : "14px";
+    const probOpacity  = denseEdges ? 0.72 : 1;
     const returnGroups = gLinks.append("g").attr("class", "return-edges")
       .selectAll(".return-group")
       .data(returnEdges).enter().append("g").attr("class", "return-group");
@@ -1155,9 +1209,10 @@ export function createGraphController({
       .append("text")
       .attr("class", "edge-prob-text return-prob-text")
       .attr("dy", -4)
-      .attr("font-size", "12px")
+      .attr("font-size", probFontSize)
       .attr("font-weight", "bold")
       .attr("fill", RETURN_COLOR)
+      .attr("opacity", probOpacity)
       .attr("pointer-events", "none")
       .append("textPath")
       .attr("href", d => `#path-${MARKER_NS}-${d.key.replace(/[^a-zA-Z0-9_-]/g, '_')}`)
@@ -1227,9 +1282,10 @@ export function createGraphController({
       .append("text")
       .attr("class", "edge-prob-text")
       .attr("dy", -4)
-      .attr("font-size", "14px")
+      .attr("font-size", probFontSize)
       .attr("font-weight", "bold")
       .attr("fill", "#64748b")
+      .attr("opacity", probOpacity)
       .attr("pointer-events", "none")
       .append("textPath")
       .attr("href", d => `#path-${MARKER_NS}-${d.key.replace(/[^a-zA-Z0-9_-]/g, '_')}`)
@@ -1257,9 +1313,10 @@ export function createGraphController({
       .append("text")
       .attr("class", "edge-prob-text")
       .attr("dy", -4)
-      .attr("font-size", "14px")
+      .attr("font-size", probFontSize)
       .attr("font-weight", "bold")
       .attr("fill", "#64748b")
+      .attr("opacity", probOpacity)
       .attr("pointer-events", "none")
       .append("textPath")
       .attr("href", d => `#path-${MARKER_NS}-${d.key.replace(/[^a-zA-Z0-9_-]/g, '_')}`)
@@ -1356,6 +1413,31 @@ export function createGraphController({
         const isHybridSplit = currentMode.startsWith("hybrid") && label.includes("(");
         const text = d3.select(this);
         text.text(null);
+
+        // Dense graphs: put the label BELOW the node in dark text with a white
+        // halo. Inside-the-node white text needs a radius the data doesn't
+        // justify, and shrinking it to fit is what produced 9px three-line
+        // labels nobody can read.
+        if (denseLabels && !d.isSpecial) {
+          const r = radiusMap[d.id] || 20;
+          const m = label.match(/^([^\(]+)\((.*)\)$/);
+          const verb = m ? m[1] : label;
+          const noun = m ? m[2] : "";
+          text.attr("font-size", "11px")
+              .attr("font-weight", "600")
+              .attr("fill", "#1f2937")
+              .attr("stroke", "#ffffff")
+              .attr("stroke-width", 3)
+              .attr("paint-order", "stroke")
+              .attr("y", r + 12);
+          text.append("tspan").attr("x", 0).text(verb);
+          if (noun) {
+            text.append("tspan").attr("x", 0).attr("dy", "1.05em")
+                .attr("font-weight", "400").text(noun);
+          }
+          return;
+        }
+
         if (isHybridSplit) {
           const match = label.match(/^([^\(]+)\((.*)\)$/);
           const verbPart = match ? match[1] : label.split("(")[0];

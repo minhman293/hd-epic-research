@@ -184,9 +184,11 @@ function getActiveGraphView() {
     isMerged: false,
     sessionIndex: si,
     raw,
+    // Session tabs are labelled 1-based ("Session 2"); session.index is 0-based.
+    // Use the tab's numbering so the panel title and the active tab agree.
     title: raw
-      ? `Session ${si} — Raw (unfiltered)`
-      : `Session ${si} — Filtered (primary only)`,
+      ? `Session ${si + 1} — Raw (unfiltered)`
+      : `Session ${si + 1} — Filtered (primary only)`,
   };
 }
 
