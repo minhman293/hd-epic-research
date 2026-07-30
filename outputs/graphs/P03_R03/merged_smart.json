@@ -56364,157 +56364,155 @@
     ],
     "loops": [
       [
-        "take",
-        "dry",
-        "take"
+        "open",
+        "close",
+        "open"
       ],
       [
-        "take",
-        "dry",
-        "drop",
-        "take"
-      ],
-      [
-        "take",
-        "dry",
-        "drop",
+        "open",
+        "close",
+        "unroll",
         "put",
-        "take"
+        "open"
       ],
       [
-        "take",
-        "dry",
-        "drop",
-        "put",
-        "wrap",
-        "take"
-      ],
-      [
-        "take",
-        "dry",
-        "drop",
-        "put",
-        "slide",
-        "take"
-      ],
-      [
-        "take",
-        "dry",
-        "drop",
-        "put",
-        "move",
-        "take"
-      ],
-      [
-        "take",
-        "dry",
-        "drop",
-        "put",
-        "pull",
-        "take"
-      ],
-      [
-        "take",
-        "dry",
-        "drop",
-        "put",
-        "lift",
-        "take"
-      ],
-      [
-        "take",
-        "dry",
-        "drop",
+        "open",
+        "close",
+        "unroll",
         "put",
         "squeeze",
-        "take"
+        "open"
       ],
       [
-        "take",
-        "dry",
-        "drop",
-        "put",
-        "turn-on",
-        "take"
-      ],
-      [
-        "take",
-        "dry",
-        "drop",
-        "put",
-        "insert",
-        "take"
-      ],
-      [
-        "take",
-        "dry",
-        "drop",
-        "put",
-        "close",
-        "take"
-      ],
-      [
-        "take",
-        "dry",
-        "drop",
-        "put",
         "open",
-        "take"
-      ],
-      [
-        "take",
-        "dry",
-        "drop",
+        "close",
+        "unroll",
         "put",
         "sort",
-        "take"
+        "open"
       ],
       [
+        "open",
+        "close",
+        "unroll",
+        "put",
+        "turn-on",
+        "open"
+      ],
+      [
+        "open",
+        "close",
+        "unroll",
+        "put",
+        "slide",
+        "open"
+      ],
+      [
+        "open",
+        "close",
+        "unroll",
+        "put",
         "take",
-        "dry",
-        "drop",
+        "open"
+      ],
+      [
+        "open",
+        "close",
+        "unroll",
+        "put",
+        "attach",
+        "open"
+      ],
+      [
+        "open",
+        "close",
+        "unroll",
+        "put",
+        "press",
+        "open"
+      ],
+      [
+        "open",
+        "close",
+        "put",
+        "open"
+      ],
+      [
+        "open",
+        "close",
         "put",
         "shake",
-        "take"
+        "take",
+        "open"
       ],
       [
-        "take",
-        "dry",
-        "drop",
+        "open",
+        "close",
         "put",
+        "squeeze",
+        "open"
+      ],
+      [
+        "open",
+        "close",
+        "put",
+        "squeeze",
+        "take",
+        "open"
+      ],
+      [
+        "open",
+        "close",
+        "put",
+        "sort",
+        "open"
+      ],
+      [
+        "open",
+        "close",
+        "put",
+        "sort",
+        "take",
+        "open"
+      ],
+      [
+        "open",
+        "close",
+        "put",
+        "pull",
+        "take",
+        "open"
+      ],
+      [
+        "open",
+        "close",
+        "put",
+        "pull",
         "press",
-        "take"
+        "open"
       ],
       [
-        "take",
+        "open",
+        "close",
+        "put",
         "dry",
-        "drop",
-        "scoop",
-        "lift",
-        "take"
+        "take",
+        "open"
       ],
       [
-        "take",
-        "dry",
-        "drop",
-        "pull",
-        "take"
+        "open",
+        "close",
+        "put",
+        "turn-on",
+        "open"
       ],
       [
-        "take",
-        "dry",
-        "drop",
-        "pull",
-        "press",
-        "take"
-      ],
-      [
-        "take",
-        "dry",
-        "drop",
-        "pull",
-        "lift",
-        "take"
+        "open",
+        "close",
+        "put",
+        "turn-on",
+        "turn-off",
+        "open"
       ]
     ],
     "session_singleton_nodes": [

@@ -61,6 +61,11 @@ STEP_WINDOW_BUFFER_S = 0
 # ─────────────────────────────────────────────────────────────────────────────
 SCOPE_MODE = "span"
 
+# Cross-session support a state needs to keep its specific label.
+# None  -> require every session (cleanest graph)
+# 1     -> disable rollup entirely (reproduces the old behaviour)
+ROLLUP_MIN_SUPPORT = None
+
 def load_recipe_context(recipe_id, outputs_dir="../outputs"):
     outputs_path = Path(outputs_dir)
     selected_path = outputs_path / f"selected_recipe_{recipe_id}.json"
@@ -799,6 +804,14 @@ def _build_nodes(sequence, verb_id_to_key, noun_id_to_key, force_primary=False):
         if n_id >= 0:
             node_objects[state][noun_id_to_key.get(n_id, str(n_id))] += 1
 
+    node_level = {}
+    node_specific = defaultdict(Counter)
+    for item in sequence:
+        st = item["action"]
+        node_level[st] = min(node_level.get(st, 9), item.get("abstraction_level", 1))
+        if item.get("specific_action"):
+            node_specific[st][item["specific_action"]] += 1
+
     median_ranks = compute_median_ranks(sequence)
 
     nodes = []
@@ -815,6 +828,12 @@ def _build_nodes(sequence, verb_id_to_key, noun_id_to_key, force_primary=False):
             "is_start": kind == "start",
             "is_end": kind == "end",
             "median_rank": median_ranks.get(state, 0.5),
+            "abstraction_level": node_level.get(state, 1),
+            "rolled_up": node_level.get(state, 1) > 1,
+            # What actually got merged in — shown on hover so the detail is
+            # one gesture away rather than gone.
+            "merged_from": dict(node_specific[state].most_common(8))
+                            if state in node_specific else {},
         })
 
     dead_scores = _compute_dead_end_scores(sequence, nodes)
@@ -824,7 +843,96 @@ def _build_nodes(sequence, verb_id_to_key, noun_id_to_key, force_primary=False):
     return nodes, median_ranks
 
 
-def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes, use_category_for_verb=False):
+# ─────────────────────────────────────────────────────────────────────────────
+# ROLL UP THE TAIL — adaptive-granularity abstraction
+#
+# A fixed abstraction level cannot serve this data. verb_key(noun_category)
+# gives 244 states for P03_R03 (too many to read); verb_category alone gives 13
+# (compact but object-free, useless for a robot that needs to know WHAT to act
+# on). Neither is right, because the distribution is a power law: 102 of those
+# 244 states occur exactly once and together account for 5.9% of all actions.
+#
+# So specificity is EARNED rather than applied uniformly. A state keeps its
+# specific label if it recurs across sessions; otherwise it rolls up to a
+# coarser one:
+#
+#     verb_key(noun_category)        press(appliances)      level 1
+#              ↓ rolls up to
+#     verb_category(noun_category)   manipulate(appliances) level 2
+#              ↓ rolls up to
+#     verb_category                  manipulate             level 3
+#
+# Nothing is deleted. A one-off action still appears in the graph, inside a
+# coarser node, and its original verb and object remain in that node's `verbs`
+# and `objects` counters for the tooltip. This is merging, not filtering.
+#
+# The threshold is cross-session support, not raw frequency: for a MERGED
+# pattern, "happened in several sessions" is the property that earns detail.
+# ─────────────────────────────────────────────────────────────────────────────
+
+def build_rollup_taxonomy(payload_fulls, verb_classes, noun_classes,
+                          min_support, use_category_for_verb=False):
+    """
+    Decide a label and level for every (verb_class, noun_class) pair seen in
+    the recipe. Must run over ALL sessions before any payload is built, since
+    the criterion is cross-session support.
+    """
+    UNKNOWN = "unknown"
+    v_key = dict(zip(verb_classes["id"].astype(int), verb_classes["key"]))
+    v_cat = dict(zip(verb_classes["id"].astype(int), verb_classes["category"]))
+    n_cat = dict(zip(noun_classes["id"].astype(int), noun_classes["category"]))
+
+    # Level 1 is already verb_category for the *_cat modes, so those roll
+    # straight from level 1 to level 3.
+    level1_verb = v_cat if use_category_for_verb else v_key
+
+    def l1(v, n):
+        return (level1_verb.get(v, UNKNOWN) if v >= 0 else UNKNOWN,
+                n_cat.get(n, UNKNOWN) if n >= 0 else UNKNOWN)
+
+    def l2(v, n):
+        return (v_cat.get(v, UNKNOWN) if v >= 0 else UNKNOWN,
+                n_cat.get(n, UNKNOWN) if n >= 0 else UNKNOWN)
+
+    pairs = set()
+    sup1, sup2 = defaultdict(set), defaultdict(set)
+    for si, payload in enumerate(payload_fulls):
+        for item in payload.get("sequence", []):
+            if not item.get("is_primary", True):
+                continue          # scope decides membership; rollup only relabels
+            v = item.get("verb_class", -1)
+            n = item.get("noun_class", -1)
+            pairs.add((v, n))
+            sup1[l1(v, n)].add(si)
+            sup2[l2(v, n)].add(si)
+
+    keep1 = {k for k, ss in sup1.items() if len(ss) >= min_support}
+    # A level-2 label only earns detail from the actions that actually fall
+    # back to it, so recount support over just those.
+    sup2_fallback = defaultdict(set)
+    for si, payload in enumerate(payload_fulls):
+        for item in payload.get("sequence", []):
+            if not item.get("is_primary", True):
+                continue
+            v, n = item.get("verb_class", -1), item.get("noun_class", -1)
+            if l1(v, n) not in keep1:
+                sup2_fallback[l2(v, n)].add(si)
+    keep2 = {k for k, ss in sup2_fallback.items() if len(ss) >= min_support}
+
+    taxonomy = {}
+    for v, n in pairs:
+        a, b = l1(v, n), l2(v, n)
+        if a in keep1:
+            taxonomy[(v, n)] = (f"{a[0]}({a[1]})", 1)
+        elif b in keep2:
+            taxonomy[(v, n)] = (f"{b[0]}({b[1]})", 2)
+        else:
+            taxonomy[(v, n)] = (b[0], 3)
+    return taxonomy
+
+
+def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes, use_category_for_verb=False,
+                        taxonomy=None):
     UNKNOWN = "unknown"
     
     if use_category_for_verb:
@@ -844,11 +952,16 @@ def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes, use_ca
         v_str = verb_mapping.get(v_id, UNKNOWN) if v_id >= 0 else UNKNOWN
         n_cat = noun_id_to_cat.get(n_id, UNKNOWN) if n_id >= 0 else UNKNOWN 
         
-        state = f"{v_str}({n_cat})"
+        if taxonomy is not None and (v_id, n_id) in taxonomy:
+            state, level = taxonomy[(v_id, n_id)]
+        else:
+            state, level = f"{v_str}({n_cat})", 1
         
         m = seq_item.copy()
         m["raw_action"] = seq_item["action"]
         m["action"] = state
+        m["abstraction_level"] = level
+        m["specific_action"] = f"{v_str}({n_cat})"
         m["salient"] = True
         m["kind"] = "action"
         hybrid_sequence.append(m)
@@ -1008,12 +1121,21 @@ def main():
     parser.add_argument("--scope", choices=["window", "span"], default=None,
                         help="Override SCOPE_MODE. 'window' reproduces the old "
                              "behaviour for before/after comparison.")
+    parser.add_argument("--rollup", default=None,
+                        help="Sessions a state must appear in to keep its "
+                             "specific label. Integer, 'all' (default), or "
+                             "'off' to disable rollup.")
     args = parser.parse_args()
 
-    global SCOPE_MODE
+    global SCOPE_MODE, ROLLUP_MIN_SUPPORT
     if args.scope:
         SCOPE_MODE = args.scope
-    print(f"Scope mode: {SCOPE_MODE}")
+    if args.rollup is not None:
+        ROLLUP_MIN_SUPPORT = (1 if args.rollup == "off"
+                              else None if args.rollup == "all"
+                              else int(args.rollup))
+    print(f"Scope mode: {SCOPE_MODE}   Rollup: "
+          f"{'all sessions' if ROLLUP_MIN_SUPPORT is None else ROLLUP_MIN_SUPPORT}")
 
     recipe_id = args.recipe_id
     print("=" * 80)
@@ -1051,6 +1173,44 @@ def main():
             step_labels=step_labels, video_relative_dir=args.video_relative_dir,
         ))
 
+    # Phase 1b: the rollup taxonomy must be decided ACROSS sessions before any
+    # per-session payload is transformed, since the criterion is cross-session
+    # support. Every session then uses the same label map, which is what makes
+    # the merged graph coherent.
+    min_support = (len(sessions) if ROLLUP_MIN_SUPPORT is None
+                   else max(1, ROLLUP_MIN_SUPPORT))
+    taxonomies = {}
+    for use_cat in (False, True):
+        taxonomies[use_cat] = build_rollup_taxonomy(
+            payload_fulls, data["verb_classes"], data["noun_classes"],
+            min_support, use_category_for_verb=use_cat,
+        ) if min_support > 1 else None
+
+    if taxonomies[False]:
+        lv = Counter(l for _, l in taxonomies[False].values())
+        # Weight by actions as well as by pairs: 139 rare pairs rolling up may
+        # be a handful of one-off actions, or it may be half the recipe. Only
+        # the action-weighted figure says which.
+        act = Counter()
+        for payload in payload_fulls:
+            for item in payload.get("sequence", []):
+                if not item.get("is_primary", True):
+                    continue
+                key = (item.get("verb_class", -1), item.get("noun_class", -1))
+                act[taxonomies[False].get(key, (None, 1))[1]] += 1
+        n_act = sum(act.values()) or 1
+        print("")
+        print(f"Rollup taxonomy (state must appear in >= {min_support} "
+              f"of {len(sessions)} sessions to keep its specific label):")
+        print(f"  {len(taxonomies[False])} observed verb/noun pairs -> "
+              f"{len({l for l, _ in taxonomies[False].values()})} distinct labels")
+        print(f"  by pair   : L1 {lv.get(1,0):>4}   L2 {lv.get(2,0):>4}   L3 {lv.get(3,0):>4}")
+        print(f"  by action : L1 {act.get(1,0):>4} ({act.get(1,0)/n_act:>4.0%})  "
+              f"L2 {act.get(2,0):>4} ({act.get(2,0)/n_act:>4.0%})  "
+              f"L3 {act.get(3,0):>4} ({act.get(3,0)/n_act:>4.0%})")
+        print(f"  -> {act.get(1,0)/n_act:.0%} of in-scope actions keep a specific "
+              f"verb and object")
+
     # Phase 2: per-session mode files
     for s, payload_full in zip(sessions, payload_fulls):
         print(f"\n[Session {s['index']}]")
@@ -1061,11 +1221,13 @@ def main():
         )
         payload_hybrid = create_hybrid_graph(
             payload_full, recipe_meta,
-            data["verb_classes"], data["noun_classes"], use_category_for_verb=False
+            data["verb_classes"], data["noun_classes"], use_category_for_verb=False,
+            taxonomy=taxonomies[False]
         )
         payload_hybrid_cat = create_hybrid_graph(
             payload_full, recipe_meta,
-            data["verb_classes"], data["noun_classes"], use_category_for_verb=True
+            data["verb_classes"], data["noun_classes"], use_category_for_verb=True,
+            taxonomy=taxonomies[True]
         )
 
         for filename, payload, label in [
