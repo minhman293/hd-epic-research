@@ -211,6 +211,11 @@ function computeRankLayout(nodes, sequence, { maxRadius = 18, links = [], radius
       targetX: (rank - 0.5) * SPREAD_X,
       r: rOf(n.id),
       isSpecial: !!n.isSpecial,
+      // Emphasis shapes POSITION as well as colour. Foreground nodes get a
+      // strong left-to-right rank pull so the main trend reads as a sequence;
+      // background nodes get almost none and a small collision radius, so they
+      // settle around the trend as texture instead of pushing it apart.
+      bg: !!n.__bg,
     };
   });
   const byId = new Map(simNodes.map((d) => [d.id, d]));
@@ -234,9 +239,14 @@ function computeRankLayout(nodes, sequence, { maxRadius = 18, links = [], radius
                      + 34 + 70 * (1 - l.p))
       .strength(0.35))
     .force("charge", d3.forceManyBody().strength((d) => -(90 + d.r * 6)))
-    .force("x", d3.forceX((d) => d.targetX).strength(0.055))
-    .force("y", d3.forceY(0).strength(0.045))
-    .force("collide", d3.forceCollide((d) => d.r + 14).strength(0.9))
+    .force("x", d3.forceX((d) => d.targetX).strength((d) => d.bg ? 0.02 : 0.30))
+    .force("y", d3.forceY(0).strength((d) => d.bg ? 0.02 : 0.14))
+    // Foreground nodes carry a label below them that is often wider than the
+    // circle ("close appliances" is ~90px against a ~50px node), so collision
+    // has to reserve room for the text or labels overlap.
+    .force("collide", d3.forceCollide((d) => d.bg ? d.r * 0.45
+                                                  : Math.max(d.r + 16, 46))
+      .strength(0.9))
     .stop();
 
   for (let i = 0; i < 460; i++) sim.tick();
@@ -689,6 +699,7 @@ export function createGraphController({
   let nodeLayout = null;
   let lastActiveEdge = null;
   let lastActiveNode = null;
+  const BG_NODE_OPACITY = 0.18;
   let radiusMapCache = null;
   let pathForCache = null;
   let baseEdgeOpacityFn = null;
@@ -810,15 +821,40 @@ export function createGraphController({
     let enrichedNodes = [...graph.nodes];
     let enrichedLinks = [...graph.links];
 
-    if (currentShowSupportBadges && supportFilter > 1) {
-      enrichedNodes = enrichedNodes.filter(
-        (n) => (n.support || nSessionsHint || 1) >= supportFilter
-      );
-      const keepIds = new Set(enrichedNodes.map((n) => n.id));
-      enrichedLinks = enrichedLinks.filter(
-        (l) => keepIds.has(l.source) && keepIds.has(l.target)
-      );
-    }
+    // ─────────────────────────────────────────────────────────────────────────
+    // EMPHASIS, not removal.
+    //
+    // supportFilter used to DELETE nodes below the threshold and every edge
+    // touching them. That is the behaviour Prof. Lin objected to: the data
+    // vanished with no way back. Now the threshold only decides FOREGROUND vs
+    // BACKGROUND. Background nodes stay in the graph, stay connected, keep
+    // their tooltips — they simply fade and drop their labels, which is where
+    // most of the visual weight lives at 91 nodes.
+    // ─────────────────────────────────────────────────────────────────────────
+    const supportOf = (n) => n.support || nSessionsHint || 1;
+    enrichedNodes.forEach((n) => {
+      n.__bg = !n.isSpecial
+        && currentShowSupportBadges
+        && supportFilter > 1
+        && supportOf(n) < supportFilter;
+    });
+    const bgIds = new Set(enrichedNodes.filter((n) => n.__bg).map((n) => n.id));
+    enrichedLinks.forEach((l) => {
+      // An edge is foreground when BOTH endpoints are — nothing more.
+      //
+      // The earlier version also required the edge's own support to clear the
+      // threshold, which backgrounded everything: in this dataset NO edge has
+      // support 3, not even between two support-3 nodes. The result was a
+      // foreground of bright, totally unconnected nodes — the exact isolated-
+      // node problem this feature was supposed to help with.
+      //
+      // Node support and edge support answer different questions. An action
+      // occurring in every session does not mean one particular transition
+      // into it occurred in every session; people reach the same state by
+      // different routes. Gating on both is far stricter than intended.
+      l.__bg = bgIds.has(l.source) || bgIds.has(l.target);
+    });
+    const nBackground = enrichedNodes.filter((n) => n.__bg).length;
 
     const dataHasStart = enrichedNodes.some((n) => isStartId(n.id));
     const dataHasEnd   = enrichedNodes.some((n) => isEndId(n.id));
@@ -1155,6 +1191,7 @@ export function createGraphController({
     // Weak edges are FADED, not removed. A node whose only transitions are
     // low-probability still shows those transitions, so it cannot float.
     const baseEdgeOpacity = (d) => {
+      if (d.__bg) return d.__isReturn ? 0.10 : 0.12;
       const weakFactor = d.__weak ? 0.25 : 1;
       if (d.__isReturn) return (d.__weak ? 0.18 : 0.65);
       if (currentShowSupportBadges) return edgeOpacityScale(edgeMetricFn(d)) * weakFactor;
@@ -1186,10 +1223,27 @@ export function createGraphController({
     // graph — but shrink and fade on dense graphs instead of disappearing.
     const denseEdges = enrichedLinks.length > 34;
     const probFontSize = denseEdges ? "10px" : "14px";
+    // Sample size travels with the probability. A 1.00 from a single
+    // observation is not the same claim as a 1.00 from twenty, and the canvas
+    // gave no way to tell them apart.
+    const probLabel = (d) => {
+      const p = d.probability.toFixed(2);
+      const n = d.count || d.total_count || 0;
+      return n > 0 ? `${p} (n=${n})` : p;
+    };
     const probOpacity  = denseEdges ? 0.72 : 1;
     const returnGroups = gLinks.append("g").attr("class", "return-edges")
       .selectAll(".return-group")
       .data(returnEdges).enter().append("g").attr("class", "return-group");
+
+    // Edges the filter invented — present in the graph but never observed as
+    // consecutive actions. Zero under span scoping; drawn distinctly so that
+    // zero is something you can SEE rather than something a log claims.
+    const markIntroduced = (sel) => sel
+      .filter((d) => d.is_introduced)
+      .attr("stroke", "#DC2626")
+      .attr("stroke-dasharray", "2 5")
+      .attr("stroke-opacity", 0.9);
 
     returnGroups.append("path")
       .attr("id", d => `path-${MARKER_NS}-${d.key.replace(/[^a-zA-Z0-9_-]/g, '_')}`)
@@ -1199,11 +1253,12 @@ export function createGraphController({
       .attr("stroke", RETURN_COLOR)
       .attr("stroke-width", (d) => edgeWidthScale(edgeMetricFn(d)))
       .attr("stroke-dasharray", "6 4")
-      .attr("stroke-opacity", (d) => d.__weak ? 0.18 : 0.65)
+      .attr("stroke-opacity", (d) => d.__bg ? 0.10 : (d.__weak ? 0.18 : 0.65))
       .attr("marker-end", markerUrl("arrowReturn"))
       .attr("d", (d) => pathFor(d))
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
       .on("mouseout", hideEdgeTooltip);
+    markIntroduced(returnGroups.selectAll("path.return-edge"));
 
     returnGroups.filter(d => typeof d.probability === 'number' && d.probability > 0)
       .append("text")
@@ -1212,26 +1267,33 @@ export function createGraphController({
       .attr("font-size", probFontSize)
       .attr("font-weight", "bold")
       .attr("fill", RETURN_COLOR)
-      .attr("opacity", probOpacity)
+      .attr("opacity", (d) => d.__bg ? 0 : probOpacity)
       .attr("pointer-events", "none")
       .append("textPath")
       .attr("href", d => `#path-${MARKER_NS}-${d.key.replace(/[^a-zA-Z0-9_-]/g, '_')}`)
       .attr("startOffset", "50%")
       .attr("text-anchor", "middle")
-      .text(d => d.probability.toFixed(2));
+      .text(d => probLabel(d));
 
     // The badge stays, but now supplements the arcs rather than replacing them:
     // it is the revisitation-hotspot cue (Insight B), not a substitute for a line.
     const returnEdgesBySource = d3.group(returnEdges, (d) => d.source);
     zoomGroup.append("g").attr("class", "back-indicators")
       .selectAll("g.back-indicator")
-      .data([...returnEdgesBySource.entries()].filter(([sid]) => !isSpecialId(sid)))
+      // These badges are siblings of the node groups, not children, so they
+      // inherit nothing — neither background dimming nor highlight state. Each
+      // one carries its own bg flag and is driven explicitly.
+      .data([...returnEdgesBySource.entries()]
+        .filter(([sid]) => !isSpecialId(sid))
+        .map(([sid, edges]) => ({ sid, edges, bg: bgIds.has(sid) })))
       .enter().append("g").attr("class", "back-indicator")
-      .attr("transform", ([sid]) => {
-        const p = layout[sid] || { x: 0, y: 0 };
+      .style("opacity", (d) => d.bg ? BG_NODE_OPACITY : 1)
+      .attr("transform", (d) => {
+        const p = layout[d.sid] || { x: 0, y: 0 };
         return `translate(${p.x}, ${p.y})`;
       })
-      .each(function([sid, edges]) {
+      .each(function(d) {
+        const sid = d.sid, edges = d.edges;
         const r = radiusMap[sid] || 18;
         const g = d3.select(this);
         g.append("circle").attr("class", "back-indicator-badge")
@@ -1285,13 +1347,13 @@ export function createGraphController({
       .attr("font-size", probFontSize)
       .attr("font-weight", "bold")
       .attr("fill", "#64748b")
-      .attr("opacity", probOpacity)
+      .attr("opacity", (d) => d.__bg ? 0 : probOpacity)
       .attr("pointer-events", "none")
       .append("textPath")
       .attr("href", d => `#path-${MARKER_NS}-${d.key.replace(/[^a-zA-Z0-9_-]/g, '_')}`)
       .attr("startOffset", "50%")
       .attr("text-anchor", "middle")
-      .text(d => d.probability.toFixed(2));
+      .text(d => probLabel(d));
 
     const bidirGroups = gLinks.append("g").selectAll(".bidir-group")
       .data(bidirectionalForward).enter().append("g").attr("class", "bidir-group");
@@ -1316,17 +1378,32 @@ export function createGraphController({
       .attr("font-size", probFontSize)
       .attr("font-weight", "bold")
       .attr("fill", "#64748b")
-      .attr("opacity", probOpacity)
+      .attr("opacity", (d) => d.__bg ? 0 : probOpacity)
       .attr("pointer-events", "none")
       .append("textPath")
       .attr("href", d => `#path-${MARKER_NS}-${d.key.replace(/[^a-zA-Z0-9_-]/g, '_')}`)
       .attr("startOffset", "50%")
       .attr("text-anchor", "middle")
-      .text(d => d.probability.toFixed(2));
+      .text(d => probLabel(d));
 
+    // Background nodes fade to a hint of their colour. Hovering restores the
+    // node and its label to full strength, so nothing is lost — it is one
+    // gesture away rather than gone.
     const nodeGroups = zoomGroup.append("g").selectAll(".node")
       .data(filteredNodes).enter().append("g")
-      .attr("class", "node").attr("data-id", (d) => d.id)
+      .attr("class", (d) => d.__bg ? "node node-bg" : "node")
+      .attr("data-id", (d) => d.id)
+      .attr("opacity", (d) => d.__bg ? BG_NODE_OPACITY : 1)
+      .on("mouseenter.emph", function(event, d) {
+        if (!d.__bg) return;
+        d3.select(this).style("opacity", 1)
+          .select("text.node-label").attr("opacity", 1);
+      })
+      .on("mouseleave.emph", function(event, d) {
+        if (!d.__bg) return;
+        d3.select(this).style("opacity", BG_NODE_OPACITY)
+          .select("text.node-label").attr("opacity", 0);
+      })
       .attr("transform", (d) => {
         const p = layout[d.id] || { x: 0, y: 0 };
         return `translate(${p.x},${p.y})`;
@@ -1346,7 +1423,10 @@ export function createGraphController({
       .style("fill", colorFn)
       .style("stroke", (d) => (d.salient ? "#1e293b" : "none"))
       .style("stroke-width", (d) => (d.salient ? 2.5 : 0))
-      .style("opacity", (d) => isSecondaryNode(d) ? 0.55 : 1.0);
+      // NOTE: this is .style(), which overrides the presentation attribute set
+      // on the group. Background emphasis has to be applied here or it is lost.
+      .style("opacity", (d) => d.__bg ? BG_NODE_OPACITY
+                                      : (isSecondaryNode(d) ? 0.55 : 1.0));
 
     const nSessions = (extras && extras.nSessions) || 1;
  
@@ -1372,6 +1452,10 @@ export function createGraphController({
         .attr("pointer-events", "none");
 
     nodeGroups.append("text")
+      .attr("class", "node-label")
+      // Labels carry most of the visual weight at this density, so background
+      // nodes drop theirs entirely. Hover brings it back.
+      .attr("opacity", (d) => d.__bg ? 0 : 1)
       .attr("text-anchor", "middle")
       .attr("dy", (d) => (getNodeSubtitle(d, currentMode) ? "-0.12em" : "0.35em"))
       // .attr("font-size", (d) => {
@@ -1650,6 +1734,17 @@ export function createGraphController({
       !enrichedLinks.some((l) => l.source === n.id || l.target === n.id)
     ).length;
 
+    // Scope provenance, read from the payload the pipeline shipped.
+    let scopeInfo = null;
+    const fr = (graph && graph.__filterReport) || null;
+    if (fr && fr.scope_comparison && fr.scope_mode) {
+      const c = fr.scope_comparison[fr.scope_mode];
+      if (c) {
+        scopeInfo = `scope: ${fr.scope_mode} — ${c.actions_kept}/${c.actions_total} ` +
+                    `actions kept (${Math.round(c.kept_fraction * 100)}%)`;
+      }
+    }
+
     const ledger = svg.append("g").attr("class", "render-ledger");
     const ledgerLines = [
       `${filteredNodes.length} nodes · ${enrichedLinks.length} edges — all drawn, none hidden`,
@@ -1660,6 +1755,20 @@ export function createGraphController({
       `${isolated} isolated node${isolated === 1 ? "" : "s"}` +
         (usedRankData ? " · direction from sequence rank" : " · direction from layout (legacy payload)"),
     ];
+
+    const nIntroduced = enrichedLinks.filter((l) => l.is_introduced).length;
+    if (nBackground > 0) {
+      ledgerLines.push(
+        `${filteredNodes.length - nBackground} in focus · ${nBackground} dimmed ` +
+        `(support < ${supportFilter}) — hover to reveal`
+      );
+    }
+    ledgerLines.push(
+      nIntroduced > 0
+        ? `${nIntroduced} fabricated edge${nIntroduced === 1 ? "" : "s"} — never observed consecutively`
+        : `0 fabricated edges — every transition was observed`
+    );
+    if (scopeInfo) ledgerLines.push(scopeInfo);
     ledgerLines.forEach((line, i) => {
       ledger.append("text")
         .attr("x", 12)
@@ -1985,6 +2094,10 @@ export function createGraphController({
         const isActive = spineNodes.has(d.id);
         const el = d3.select(this);
         el.style("opacity", isActive ? 1.0 : 0.1);
+        // A spine node may sit below the emphasis threshold and therefore have
+        // no label. Highlighting is a reveal, so give it one back — otherwise
+        // the pattern runs through anonymous circles.
+        el.select("text.node-label").attr("opacity", isActive ? 1 : (d.__bg ? 0 : 1));
 
         const colorFn = currentExternalColorFn ? (n) => n.isSpecial ? "#d1d5db" : currentExternalColorFn(n.id) : makeNodeColorFn(currentFilteredNodes, currentSequenceCache, lastColorMode, lastMode);
         
@@ -2021,6 +2134,13 @@ export function createGraphController({
         return isActive ? 1.0 : 0.05;
       });
 
+      // Badges are siblings of the nodes, so they need explicit handling or
+      // they float at full strength over a dimmed graph.
+      svg.selectAll(".back-indicator").style("opacity", function(d) {
+        if (!d || !d.sid) return 0.1;
+        return spineNodes.has(d.sid) ? 1 : 0.08;
+      });
+
       if (selfLoopSelection) {
         selfLoopSelection.style("opacity", function(d) {
           const isActive = spineEdges.has(d.key);
@@ -2040,7 +2160,9 @@ export function createGraphController({
     
     nodeSelection.each(function(d) {
       const el = d3.select(this);
-      el.style("opacity", isSecondaryNode(d) ? 0.55 : 1.0);
+      el.style("opacity", d.__bg ? BG_NODE_OPACITY
+                                 : (isSecondaryNode(d) ? 0.55 : 1.0));
+      el.select("text.node-label").attr("opacity", d.__bg ? 0 : 1);
       
       const colorFn = currentExternalColorFn
         ? (n) => n.isSpecial ? "#d1d5db" : currentExternalColorFn(n.id)
@@ -2064,7 +2186,10 @@ export function createGraphController({
       }
     });
 
-    svg.selectAll("#zoomGroup .edge-prob-text").style("opacity", 1.0);
+    svg.selectAll("#zoomGroup .edge-prob-text")
+       .style("opacity", (d) => (d && d.__bg) ? 0 : 1.0);
+    svg.selectAll(".back-indicator")
+       .style("opacity", (d) => (d && d.bg) ? BG_NODE_OPACITY : 1);
     if (selfLoopSelection) selfLoopSelection.style("opacity", 1.0);
     svg.selectAll("#zoomGroup .self-loop-arc, #zoomGroup .self-loop-prob").style("opacity", 1.0);
   }

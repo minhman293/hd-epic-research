@@ -446,6 +446,43 @@ def compute_merged_analysis(merged_nodes, merged_links, session_payloads):
             cur = nxt
             if cur == "END":
                 break
+
+        # A canonical pattern has to describe a complete execution, so it must
+        # terminate at END. The greedy walk often cannot: every session finishes
+        # on a different action, so each edge into END carries support 1 and
+        # loses to any support-2 edge elsewhere. The walk then wanders among
+        # well-supported states until it runs out of unvisited edges and stops
+        # mid-recipe — which is why the highlighted path had no arrow to END.
+        #
+        # Close it with a shortest path to END (breadth-first, so the join is
+        # the fewest additional states), preferring higher-support edges among
+        # equals. Nothing is invented: every appended edge exists in the graph.
+        if path and path[-1] != "END" and "END" in {n["id"] for n in merged_nodes}:
+            frontier = [(path[-1], [])]
+            seen_bfs = {path[-1]}
+            tail = None
+            while frontier and tail is None:
+                nxt_frontier = []
+                for node, route in frontier:
+                    nbrs = sorted(successors.get(node, []),
+                                  key=lambda t: -support.get((node, t), 0))
+                    for t in nbrs:
+                        if t in seen_bfs:
+                            continue
+                        new_route = route + [t]
+                        if t == "END":
+                            tail = new_route
+                            break
+                        seen_bfs.add(t)
+                        nxt_frontier.append((t, new_route))
+                    if tail is not None:
+                        break
+                frontier = nxt_frontier
+            if tail:
+                for step in tail:
+                    score += support.get((path[-1], step), 0)
+                    path.append(step)
+
         if score > best_score:
             best_path, best_score = path, score
             

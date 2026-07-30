@@ -62,6 +62,7 @@ const sizeEncodeSelect = document.getElementById("sizeEncodeSelect");
 const layoutModeSelect = document.getElementById("layoutModeSelect");
 const highlightSpineBtn = document.getElementById("highlightSpineBtn");
 const graphSourceSelect = document.getElementById("graphSourceSelect");
+const emphasisSelect = document.getElementById("emphasisSelect");
 const graphPanelTitle = document.getElementById("graphPanelTitle");
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -213,6 +214,14 @@ function reapplyGraphSettings(resetPositions = false) {
 
   if (graphPanelTitle) graphPanelTitle.textContent = view.title;
 
+  // Attach the pipeline's filter ledger to the graph object so the renderer
+  // can state scope provenance on canvas without a second plumbing path.
+  if (view.graph) {
+    view.graph.__filterReport =
+      (view.isMerged ? mergedGraphPayload : sessionPayloadsMap[view.sessionIndex])
+        ?.filter_report || null;
+  }
+
   graphController.buildGraph(
     view.graph,
     view.sequence,
@@ -225,7 +234,13 @@ function reapplyGraphSettings(resetPositions = false) {
     resetPositions,
     {
       showSupportBadges: view.showSupportBadges,
-      supportFilter: 1,
+      // "all" resolves against the session count, so the option keeps meaning
+      // when a recipe has 3 captures or 4.
+      supportFilter: (() => {
+        const v = emphasisSelect ? emphasisSelect.value : "1";
+        if (v === "all") return view.nSessions;
+        return parseInt(v, 10) || 1;
+      })(),
       nSessions: view.nSessions,
       canonicalSpine: view.spine
     }
@@ -717,6 +732,10 @@ graphModeSelect.addEventListener("change", () => {
   updateColorEncodeAvailability();
   loadRecipeData();
 });
+
+if (emphasisSelect) {
+  emphasisSelect.addEventListener("change", () => reapplyGraphSettings(false));
+}
 
 if (graphSourceSelect) {
   graphSourceSelect.addEventListener("change", () => {
