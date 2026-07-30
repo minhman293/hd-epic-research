@@ -236,8 +236,27 @@ def aggregate_nodes(session_payloads):
     return merged_nodes, session_indices, session_durations
 
 
-def aggregate_edges(session_payloads, session_indices, n_sessions, median_ranks=None):
+def collect_fabricated_keys(session_payloads):
+    """
+    Union of edges each session's filter invented — pairs that never occurred
+    consecutively in that session's raw sequence. Under span scoping this is
+    empty by construction; it is kept as a permanent instrument, because any
+    future filtering scheme can fabricate and the graph must be able to say so.
+    """
+    keys, per_session = set(), {}
+    for si, payload in session_payloads:
+        fr = payload.get("filter_report") or {}
+        sc = (fr.get("scope_comparison") or {}).get(fr.get("scope_mode", "window"), {})
+        k = set(sc.get("fabricated_keys", []))
+        per_session[si] = sorted(k)
+        keys |= k
+    return keys, per_session
+
+
+def aggregate_edges(session_payloads, session_indices, n_sessions,
+                    median_ranks=None, fabricated_keys=None):
     median_ranks = median_ranks or {}
+    fabricated_keys = fabricated_keys or set()
     per_session_edge_counts = defaultdict(dict)
     per_session_edge_occurrences = defaultdict(lambda: defaultdict(list))
     per_session_edge_return = defaultdict(dict)
@@ -291,6 +310,7 @@ def aggregate_edges(session_payloads, session_indices, n_sessions, median_ranks=
             "is_self_loop": is_self_loop,
             "is_return": bool(delta < 0) and not is_self_loop,
             "rank_delta": delta,
+            "is_introduced": f"{src}|||{dst}" in fabricated_keys,
             "per_session_is_return": [
                 per_session_edge_return[(src, dst)].get(si) for si in session_indices
             ],
@@ -405,14 +425,24 @@ def compute_merged_analysis(merged_nodes, merged_links, session_payloads):
             if not cands:
                 break
                 
-            # Sort order (all descending): 
-            # 1. Edge Prob -> 2. Edge Support -> 3. Node Support -> 4. Node Count
-            cands.sort(key=lambda x: (-x[2], -x[1], -x[3], -x[4]))
+            # Sort order (all descending):
+            #   1. Edge Support -> 2. Edge Probability -> 3. Node Support -> 4. Node Count
+            #
+            # Probability was first. It is out-degree-normalised, so a node with
+            # a single exit scores 1.00 automatically and always beat a well-
+            # travelled hub offering 0.50. The walk therefore preferred the
+            # thinnest parts of the graph: ten of fifteen spine transitions came
+            # from one session, and a node occurring once in the whole dataset
+            # sat on the "canonical" path. Support answers "how many sessions
+            # agree", which is what canonical is supposed to mean.
+            cands.sort(key=lambda x: (-x[1], -x[2], -x[3], -x[4]))
             
             nxt = cands[0][0]
             path.append(nxt)
             visited_edges.add((cur, nxt))
-            score += cands[0][2]
+            # Score by support so the best-of-all-starts comparison rewards the
+            # path with the most cross-session agreement, not the most 1.00s.
+            score += cands[0][1]
             cur = nxt
             if cur == "END":
                 break
@@ -512,8 +542,9 @@ def build_merged_payload(recipe_id, mode, session_payloads):
         if n["id"] in ("START", "END"):
             n["median_rank"] = median_ranks[n["id"]]
 
+    fabricated_keys, fabricated_per_session = collect_fabricated_keys(session_payloads)
     merged_links = aggregate_edges(
-        session_payloads, session_indices, n_sessions, median_ranks
+        session_payloads, session_indices, n_sessions, median_ranks, fabricated_keys
     )
 
     multi_sequence = []
@@ -562,9 +593,34 @@ def build_merged_payload(recipe_id, mode, session_payloads):
     if per_session_reports:
         before = sum(r["actions"]["before"] for r in per_session_reports)
         after = sum(r["actions"]["after"] for r in per_session_reports)
+        scope_mode = per_session_reports[0].get("scope_mode", "window")
+        scope_totals = {}
+        for name in ("window", "span"):
+            rows = [r["scope_comparison"][name] for r in per_session_reports
+                    if r.get("scope_comparison", {}).get(name)]
+            if rows:
+                kept = sum(r["actions_kept"] for r in rows)
+                tot = sum(r["actions_total"] for r in rows)
+                edges = sum(r["edges"] for r in rows)
+                fab = sum(r["fabricated_edges"] for r in rows)
+                scope_totals[name] = {
+                    "actions_kept": kept,
+                    "actions_total": tot,
+                    "kept_fraction": round(kept / tot, 4) if tot else 0.0,
+                    "edges": edges,
+                    "fabricated_edges": fab,
+                    "fabricated_fraction": round(fab / edges, 4) if edges else 0.0,
+                }
+
         filter_report = {
             "identity": per_session_reports[0]["identity"],
             "rule": per_session_reports[0]["rule"],
+            "scope_mode": scope_mode,
+            "scope_comparison": scope_totals,
+            "fabricated_edges_in_merged": sum(
+                1 for l in merged_links if l.get("is_introduced")
+            ),
+            "fabricated_per_session": fabricated_per_session,
             "actions": {
                 "before": before,
                 "after": after,
@@ -659,6 +715,14 @@ def main():
             a = fr["actions"]
             print(f"    filter ledger: {a['before']} → {a['after']} actions "
                   f"(−{a['removed']}, {a['removed_fraction']:.1%}) across all sessions")
+            for name, c in (fr.get("scope_comparison") or {}).items():
+                mark = " <-- active" if name == fr.get("scope_mode") else ""
+                print(f"      scope [{name:<6}]  kept {c['actions_kept']:>3}/"
+                      f"{c['actions_total']:<3} ({c['kept_fraction']:.0%})  "
+                      f"edges {c['edges']:>3}  fabricated {c['fabricated_edges']:>2} "
+                      f"({c['fabricated_fraction']:.0%}){mark}")
+            print(f"    merged links flagged is_introduced: "
+                  f"{fr.get('fabricated_edges_in_merged', 0)} of {n_links}")
 
     print("\n" + "=" * 80)
     print(f"DONE → {recipe_dir}/merged_*.json")

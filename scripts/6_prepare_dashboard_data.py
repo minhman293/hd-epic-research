@@ -41,6 +41,26 @@ from utils import get_action_name, load_hd_epic_data
 
 STEP_WINDOW_BUFFER_S = 0
 
+# ─────────────────────────────────────────────────────────────────────────────
+# SCOPE MODE — which actions belong to the motion graph
+#
+#   "window"  an action is kept if its time window overlaps an annotated
+#             step_times window. Because those windows are point markers
+#             (median 2.46s in P01_R01, 32% under one second), the kept set is
+#             SCATTERED, and reading consecutive pairs from a scattered subset
+#             invents transitions between actions that had others between them.
+#
+#   "span"    an action is kept if it falls inside the task span, defined as
+#             min(first prep window, first step window) .. max(last step window).
+#             The kept set is CONTIGUOUS, so every consecutive pair in the
+#             filtered sequence was consecutive in reality. Fabrication becomes
+#             structurally impossible rather than merely rarer.
+#
+# Both are computed on every build; SCOPE_MODE selects which one feeds the
+# graph, and filter_report carries the comparison either way.
+# ─────────────────────────────────────────────────────────────────────────────
+SCOPE_MODE = "span"
+
 def load_recipe_context(recipe_id, outputs_dir="../outputs"):
     outputs_path = Path(outputs_dir)
     selected_path = outputs_path / f"selected_recipe_{recipe_id}.json"
@@ -307,23 +327,49 @@ def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
             item["is_primary"] = True
             item["phase"] = None
     else:
+        # Task span: from the earliest preparation or step marker to the last
+        # step marker. prep_times is included deliberately — a step-only span
+        # begins after the person has already started working, which would
+        # silently drop the preparation actions the prep-vs-execution analysis
+        # depends on (17 actions across the three P01_R01 captures).
+        # collect_windows_stitched returns TUPLES on the unified timeline:
+        #   (u_start, u_end, step_id, video_id, orig_start, orig_end)
+        # Elements 0 and 1 are already offset-corrected for multi-video
+        # captures, so the span is computed in the same coordinate space as
+        # item["start"] / item["end"].
+        bounds = [w[0] for w in step_windows] + [w[1] for w in step_windows]
+        bounds += [w[0] for w in prep_windows] + [w[1] for w in prep_windows]
+        span_lo, span_hi = (min(bounds), max(bounds)) if bounds else (0.0, 0.0)
+
         for item in action_items:
+            # Step tagging is UNCHANGED — step_id and phase still come from
+            # window overlap, so the swimlane and the step colour encoding are
+            # unaffected. Only the scope decision below is new.
             sid = find_overlapping_step(item["start"], item["end"], step_windows)
             if sid is not None:
                 item["step_id"] = sid
-                item["is_primary"] = True
                 item["phase"] = "exec"
             else:
                 pid = find_overlapping_step(item["start"], item["end"], prep_windows)
                 item["step_id"] = pid            # may be None
-                item["is_primary"] = False        # UNCHANGED semantics
                 item["phase"] = "prep" if pid is not None else None
-        primary = sum(1 for a in action_items if a["is_primary"])
-        secondary = len(action_items) - primary
-        print(
-            f"    Step-coverage: {primary} primary, {secondary} secondary "
-            f"({100 * secondary / len(action_items):.1f}% secondary)"
-        )
+
+            in_window = sid is not None
+            in_span = (item["start"] >= span_lo) and (item["end"] <= span_hi)
+            item["in_window_scope"] = in_window
+            item["in_span_scope"] = in_span
+            item["is_primary"] = in_span if SCOPE_MODE == "span" else in_window
+
+        n_win = sum(1 for a in action_items if a["in_window_scope"])
+        n_span = sum(1 for a in action_items if a["in_span_scope"])
+        total = len(action_items)
+        capture_end = max(a["end"] for a in action_items)
+        print(f"    Task span: {span_lo:.1f}s – {span_hi:.1f}s "
+              f"({span_hi - span_lo:.0f}s of {capture_end:.0f}s capture, "
+              f"{100 * (span_hi - span_lo) / capture_end:.0f}%)")
+        print(f"    Scope [{SCOPE_MODE}]: window keeps {n_win}/{total} "
+              f"({100 * n_win / total:.0f}%) · span keeps {n_span}/{total} "
+              f"({100 * n_span / total:.0f}%)")
 
     # 5. Nodes/edges + sequence
     node_counts = Counter(item["action"] for item in action_items)
@@ -342,6 +388,10 @@ def build_full_payload(data, recipe_id, recipe_meta, session, narrations_df,
             "edge_key": edge_key,
             "step_id": item.get("step_id"),
             "is_primary": item.get("is_primary", True),
+            # Both scope flags travel with the item so the comparison can be
+            # computed downstream without re-deriving windows.
+            "in_window_scope": item.get("in_window_scope", item.get("is_primary", True)),
+            "in_span_scope": item.get("in_span_scope", item.get("is_primary", True)),
             "phase": item.get("phase"),
             "verb_class": item.get("verb_class", -1),
             "noun_class": item.get("noun_class", -1),
@@ -688,6 +738,40 @@ def _find_self_loops(hybrid_sequence):
     return dict(loops)
 
 
+def _scope_comparison(hybrid_sequence):
+    """
+    For each scope, how many actions survive and how many of the resulting
+    edges never occurred as consecutive actions in the raw data.
+
+    An edge is FABRICATED when its (source, target) pair is absent from the
+    full sequence's adjacency set — it exists only because the actions between
+    them were removed. Sentinel edges are excluded: re-scoping legitimately
+    changes which action comes first and last.
+    """
+    real = {(a["action"], b["action"])
+            for a, b in zip(hybrid_sequence[:-1], hybrid_sequence[1:])}
+    sentinel = lambda p: p[0] in ("START", "END") or p[1] in ("START", "END")
+
+    out = {}
+    for scope, flag in (("window", "in_window_scope"), ("span", "in_span_scope")):
+        # Sentinels are always kept; only real actions are scoped.
+        kept = [i for i in hybrid_sequence
+                if i.get("kind") in ("start", "end")
+                or i.get(flag, i.get("is_primary", True))]
+        pairs = {(a["action"], b["action"]) for a, b in zip(kept[:-1], kept[1:])}
+        fabricated = sorted(f"{a}|||{b}" for a, b in pairs - real if not sentinel((a, b)))
+        out[scope] = {
+            "actions_kept": len(kept),
+            "actions_total": len(hybrid_sequence),
+            "kept_fraction": round(len(kept) / len(hybrid_sequence), 4) if hybrid_sequence else 0.0,
+            "edges": len(pairs),
+            "fabricated_edges": len(fabricated),
+            "fabricated_fraction": round(len(fabricated) / len(pairs), 4) if pairs else 0.0,
+            "fabricated_keys": fabricated,
+        }
+    return out
+
+
 def _build_nodes(sequence, verb_id_to_key, noun_id_to_key, force_primary=False):
     """
     Compile graph nodes from a state-mapped sequence.
@@ -848,10 +932,15 @@ def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes, use_ca
     filter_report = {
         "identity": ("verb_category(noun_category)" if use_category_for_verb
                      else "verb_key(noun_category)"),
-        "rule": ("An action is PRIMARY if its time window overlaps an annotated "
-                 "step_times window (with a per-side buffer). Non-primary actions "
-                 "are excluded from the motion graph only; they remain in the "
-                 "sequence, the swimlane and graph_unfiltered."),
+        "scope_mode": SCOPE_MODE,
+        "scope_comparison": _scope_comparison(hybrid_sequence),
+        "rule": (
+            "window: an action is kept if its window overlaps an annotated "
+            "step_times window. span: an action is kept if it falls inside the "
+            "task span, min(first prep, first step) to max(last step). Excluded "
+            "actions are removed from the motion graph only; they remain in the "
+            "sequence, the swimlane and graph_unfiltered."
+        ),
         "actions": {
             "before": n_full,
             "after": n_primary,
@@ -869,7 +958,16 @@ def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes, use_ca
             "removed_keys": sorted(keys_before - keys_after),
             # Edges present after filtering that never occurred consecutively in
             # the raw data — created by deleting the action(s) between them.
-            "introduced_keys": sorted(keys_after - keys_before),
+            # START/END edges are reported separately: re-scoping legitimately
+            # changes which action comes first and last, which is not fabrication.
+            "introduced_keys": sorted(
+                k for k in (keys_after - keys_before)
+                if not (k.startswith("START|||") or k.endswith("|||END"))
+            ),
+            "introduced_sentinel_keys": sorted(
+                k for k in (keys_after - keys_before)
+                if k.startswith("START|||") or k.endswith("|||END")
+            ),
         },
         "removed_action_counts": dict(dropped_actions.most_common()),
         "return_transitions": {
@@ -907,7 +1005,15 @@ def main():
     parser.add_argument("recipe_id", help="Recipe ID (e.g. P01_R01)")
     parser.add_argument("--outputs-dir", default="../outputs")
     parser.add_argument("--video-relative-dir", default="raw-video")
+    parser.add_argument("--scope", choices=["window", "span"], default=None,
+                        help="Override SCOPE_MODE. 'window' reproduces the old "
+                             "behaviour for before/after comparison.")
     args = parser.parse_args()
+
+    global SCOPE_MODE
+    if args.scope:
+        SCOPE_MODE = args.scope
+    print(f"Scope mode: {SCOPE_MODE}")
 
     recipe_id = args.recipe_id
     print("=" * 80)
@@ -990,6 +1096,16 @@ def main():
                       f"+{len(lk['introduced_keys'])} introduced)")
                 print(f"                     returns {fr['return_transitions']['count']}, "
                       f"self-loops {fr['self_loops']['count']}")
+                sc = fr.get("scope_comparison")
+                if sc:
+                    for name in ("window", "span"):
+                        c = sc[name]
+                        mark = " <-- active" if name == fr["scope_mode"] else ""
+                        print(f"      scope [{name:<6}]  kept {c['actions_kept']:>3}/"
+                              f"{c['actions_total']:<3} ({c['kept_fraction']:.0%})  "
+                              f"edges {c['edges']:>3}  "
+                              f"fabricated {c['fabricated_edges']:>2} "
+                              f"({c['fabricated_fraction']:.0%}){mark}")
 
     print("\n" + "=" * 80)
     print(f"DONE → {output_dir}/")

@@ -4,7 +4,7 @@
     "name": "Nespresso",
     "session_index": 2,
     "video_id": "P01-20240204-095114",
-    "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P01-20240204-095114.mp4",
+    "video_path": "raw-video/P01-20240204-095114.mp4",
     "narration_count": 81,
     "n_videos": 1,
     "total_capture_duration_s": 165.533333
@@ -12,7 +12,7 @@
   "videos": [
     {
       "video_id": "P01-20240204-095114",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P01-20240204-095114.mp4",
+      "video_path": "raw-video/P01-20240204-095114.mp4",
       "offset_s": 0.0,
       "duration_s": 165.533333
     }
@@ -199,6 +199,8 @@
       "edge_key": "open(appliances)|||take(containers)",
       "step_id": "P01_R01_S03",
       "is_primary": false,
+      "in_window_scope": false,
+      "in_span_scope": false,
       "phase": "prep",
       "verb_class": 3,
       "noun_class": 12,
@@ -218,7 +220,9 @@
       "next_action": "close(appliances)",
       "edge_key": "take(containers)|||close(appliances)",
       "step_id": "P01_R01_S03",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 0,
       "noun_class": 15,
@@ -238,7 +242,9 @@
       "next_action": "put(containers)",
       "edge_key": "close(appliances)|||put(containers)",
       "step_id": "P01_R01_S03",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 4,
       "noun_class": 12,
@@ -258,7 +264,9 @@
       "next_action": "take(crockery)",
       "edge_key": "put(containers)|||take(crockery)",
       "step_id": "P01_R01_S03",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 1,
       "noun_class": 15,
@@ -278,7 +286,9 @@
       "next_action": "lift(appliances)",
       "edge_key": "take(crockery)|||lift(appliances)",
       "step_id": "P01_R01_S04",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 0,
       "noun_class": 13,
@@ -298,7 +308,9 @@
       "next_action": "put(crockery)",
       "edge_key": "lift(appliances)|||put(crockery)",
       "step_id": "P01_R01_S04",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 33,
       "noun_class": 50,
@@ -318,7 +330,9 @@
       "next_action": "turn-on(appliances)",
       "edge_key": "put(crockery)|||turn-on(appliances)",
       "step_id": "P01_R01_S04",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 1,
       "noun_class": 13,
@@ -339,6 +353,8 @@
       "edge_key": "turn-on(appliances)|||move(dairy and eggs)",
       "step_id": "P01_R01_S02",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 6,
       "noun_class": 124,
@@ -358,7 +374,9 @@
       "next_action": "open(containers)",
       "edge_key": "move(dairy and eggs)|||open(containers)",
       "step_id": "P01_R01_S03",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 11,
       "noun_class": 64,
@@ -378,7 +396,9 @@
       "next_action": "take(drinks)",
       "edge_key": "open(containers)|||take(drinks)",
       "step_id": "P01_R01_S01",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 3,
       "noun_class": 23,
@@ -399,6 +419,8 @@
       "edge_key": "take(drinks)|||close(containers)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 0,
       "noun_class": 59,
@@ -419,6 +441,8 @@
       "edge_key": "close(containers)|||open(furniture)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 4,
       "noun_class": 23,
@@ -439,6 +463,8 @@
       "edge_key": "open(furniture)|||put(drinks)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 3,
       "noun_class": 8,
@@ -459,6 +485,8 @@
       "edge_key": "put(drinks)|||lock(drinks)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 1,
       "noun_class": 59,
@@ -478,7 +506,9 @@
       "next_action": "take(containers)",
       "edge_key": "lock(drinks)|||take(containers)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 86,
       "noun_class": 59,
@@ -498,7 +528,9 @@
       "next_action": "open(containers)",
       "edge_key": "take(containers)|||open(containers)",
       "step_id": "P01_R01_S03",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 0,
       "noun_class": 15,
@@ -518,7 +550,9 @@
       "next_action": "pour(dairy and eggs)",
       "edge_key": "open(containers)|||pour(dairy and eggs)",
       "step_id": "P01_R01_S03",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 3,
       "noun_class": 15,
@@ -539,6 +573,8 @@
       "edge_key": "pour(dairy and eggs)|||put(containers)",
       "step_id": "P01_R01_S03",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 9,
       "noun_class": 64,
@@ -558,7 +594,9 @@
       "next_action": "close(containers)",
       "edge_key": "put(containers)|||close(containers)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 1,
       "noun_class": 15,
@@ -578,7 +616,9 @@
       "next_action": "turn-on(dairy and eggs)",
       "edge_key": "close(containers)|||turn-on(dairy and eggs)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 4,
       "noun_class": 15,
@@ -598,7 +638,9 @@
       "next_action": "attach(dairy and eggs)",
       "edge_key": "turn-on(dairy and eggs)|||attach(dairy and eggs)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 6,
       "noun_class": 64,
@@ -618,7 +660,9 @@
       "next_action": "turn-on(appliances)",
       "edge_key": "attach(dairy and eggs)|||turn-on(appliances)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 64,
       "noun_class": 64,
@@ -638,7 +682,9 @@
       "next_action": "turn-on(dairy and eggs)",
       "edge_key": "turn-on(appliances)|||turn-on(dairy and eggs)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 6,
       "noun_class": 153,
@@ -658,7 +704,9 @@
       "next_action": "open(storage)",
       "edge_key": "turn-on(dairy and eggs)|||open(storage)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 6,
       "noun_class": 64,
@@ -678,7 +726,9 @@
       "next_action": "take(crockery)",
       "edge_key": "open(storage)|||take(crockery)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 3,
       "noun_class": 3,
@@ -698,7 +748,9 @@
       "next_action": "close(storage)",
       "edge_key": "take(crockery)|||close(storage)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 0,
       "noun_class": 7,
@@ -718,7 +770,9 @@
       "next_action": "take(dairy and eggs)",
       "edge_key": "close(storage)|||take(dairy and eggs)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 4,
       "noun_class": 3,
@@ -738,7 +792,9 @@
       "next_action": "put(crockery)",
       "edge_key": "take(dairy and eggs)|||put(crockery)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 0,
       "noun_class": 64,
@@ -758,7 +814,9 @@
       "next_action": "open(containers)",
       "edge_key": "put(crockery)|||open(containers)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 1,
       "noun_class": 7,
@@ -778,7 +836,9 @@
       "next_action": "pour(dairy and eggs)",
       "edge_key": "open(containers)|||pour(dairy and eggs)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 3,
       "noun_class": 15,
@@ -798,7 +858,9 @@
       "next_action": "close(containers)",
       "edge_key": "pour(dairy and eggs)|||close(containers)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 9,
       "noun_class": 64,
@@ -818,7 +880,9 @@
       "next_action": "open(containers)",
       "edge_key": "close(containers)|||open(containers)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 4,
       "noun_class": 15,
@@ -838,7 +902,9 @@
       "next_action": "pour(dairy and eggs)",
       "edge_key": "open(containers)|||pour(dairy and eggs)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 3,
       "noun_class": 15,
@@ -858,7 +924,9 @@
       "next_action": "close(containers)",
       "edge_key": "pour(dairy and eggs)|||close(containers)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 9,
       "noun_class": 64,
@@ -878,7 +946,9 @@
       "next_action": "open(appliances)",
       "edge_key": "close(containers)|||open(appliances)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 4,
       "noun_class": 15,
@@ -898,7 +968,9 @@
       "next_action": "put(containers)",
       "edge_key": "open(appliances)|||put(containers)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 3,
       "noun_class": 12,
@@ -918,7 +990,9 @@
       "next_action": "close(appliances)",
       "edge_key": "put(containers)|||close(appliances)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 1,
       "noun_class": 15,
@@ -938,7 +1012,9 @@
       "next_action": "take(containers)",
       "edge_key": "close(appliances)|||take(containers)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 4,
       "noun_class": 12,
@@ -958,7 +1034,9 @@
       "next_action": "open(containers)",
       "edge_key": "take(containers)|||open(containers)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 0,
       "noun_class": 23,
@@ -978,7 +1056,9 @@
       "next_action": "press(appliances)",
       "edge_key": "open(containers)|||press(appliances)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 3,
       "noun_class": 23,
@@ -999,6 +1079,8 @@
       "edge_key": "press(appliances)|||take(baked goods and grains)",
       "step_id": "P01_R01_S02",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 21,
       "noun_class": 92,
@@ -1019,6 +1101,8 @@
       "edge_key": "take(baked goods and grains)|||put(baked goods and grains)",
       "step_id": "P01_R01_S02",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 0,
       "noun_class": 99,
@@ -1038,7 +1122,9 @@
       "next_action": "take(baked goods and grains)",
       "edge_key": "put(baked goods and grains)|||take(baked goods and grains)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 1,
       "noun_class": 99,
@@ -1058,7 +1144,9 @@
       "next_action": "put(baked goods and grains)",
       "edge_key": "take(baked goods and grains)|||put(baked goods and grains)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 0,
       "noun_class": 99,
@@ -1078,7 +1166,9 @@
       "next_action": "close(containers)",
       "edge_key": "put(baked goods and grains)|||close(containers)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 1,
       "noun_class": 99,
@@ -1098,7 +1188,9 @@
       "next_action": "close(containers)",
       "edge_key": "close(containers)|||close(containers)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 4,
       "noun_class": 19,
@@ -1118,7 +1210,9 @@
       "next_action": "put(baked goods and grains)",
       "edge_key": "close(containers)|||put(baked goods and grains)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 4,
       "noun_class": 23,
@@ -1138,7 +1232,9 @@
       "next_action": "open(furniture)",
       "edge_key": "put(baked goods and grains)|||open(furniture)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 1,
       "noun_class": 99,
@@ -1158,7 +1254,9 @@
       "next_action": "take(cutlery)",
       "edge_key": "open(furniture)|||take(cutlery)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 3,
       "noun_class": 8,
@@ -1178,7 +1276,9 @@
       "next_action": "pat(furniture)",
       "edge_key": "take(cutlery)|||pat(furniture)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 0,
       "noun_class": 1,
@@ -1198,7 +1298,9 @@
       "next_action": "put(cutlery)",
       "edge_key": "pat(furniture)|||put(cutlery)",
       "step_id": "P01_R01_S05",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 32,
       "noun_class": 42,
@@ -1218,7 +1320,9 @@
       "next_action": "open(containers)",
       "edge_key": "put(cutlery)|||open(containers)",
       "step_id": "P01_R01_S05",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 1,
       "noun_class": 1,
@@ -1238,7 +1342,9 @@
       "next_action": "take(cutlery)",
       "edge_key": "open(containers)|||take(cutlery)",
       "step_id": "P01_R01_S05",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 3,
       "noun_class": 23,
@@ -1258,7 +1364,9 @@
       "next_action": "close(containers)",
       "edge_key": "take(cutlery)|||close(containers)",
       "step_id": "P01_R01_S05",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 0,
       "noun_class": 1,
@@ -1278,7 +1386,9 @@
       "next_action": "move(crockery)",
       "edge_key": "close(containers)|||move(crockery)",
       "step_id": "P01_R01_S05",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 4,
       "noun_class": 23,
@@ -1298,7 +1408,9 @@
       "next_action": "take(dairy and eggs)",
       "edge_key": "move(crockery)|||take(dairy and eggs)",
       "step_id": "P01_R01_S04",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 11,
       "noun_class": 13,
@@ -1319,6 +1431,8 @@
       "edge_key": "take(dairy and eggs)|||pat(dairy and eggs)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 0,
       "noun_class": 64,
@@ -1339,6 +1453,8 @@
       "edge_key": "pat(dairy and eggs)|||pour(dairy and eggs)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 32,
       "noun_class": 64,
@@ -1359,6 +1475,8 @@
       "edge_key": "pour(dairy and eggs)|||lift(dairy and eggs)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 9,
       "noun_class": 64,
@@ -1379,6 +1497,8 @@
       "edge_key": "lift(dairy and eggs)|||put(cutlery)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 33,
       "noun_class": 64,
@@ -1399,6 +1519,8 @@
       "edge_key": "put(cutlery)|||put(dairy and eggs)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 1,
       "noun_class": 1,
@@ -1418,7 +1540,9 @@
       "next_action": "open(appliances)",
       "edge_key": "put(dairy and eggs)|||open(appliances)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 1,
       "noun_class": 64,
@@ -1438,7 +1562,9 @@
       "next_action": "wash(dairy and eggs)",
       "edge_key": "open(appliances)|||wash(dairy and eggs)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 3,
       "noun_class": 0,
@@ -1458,7 +1584,9 @@
       "next_action": "close(appliances)",
       "edge_key": "wash(dairy and eggs)|||close(appliances)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 2,
       "noun_class": 64,
@@ -1478,7 +1606,9 @@
       "next_action": "turn(dairy and eggs)",
       "edge_key": "close(appliances)|||turn(dairy and eggs)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 4,
       "noun_class": 0,
@@ -1498,7 +1628,9 @@
       "next_action": "open(appliances)",
       "edge_key": "turn(dairy and eggs)|||open(appliances)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 23,
       "noun_class": 64,
@@ -1518,7 +1650,9 @@
       "next_action": "wash(dairy and eggs)",
       "edge_key": "open(appliances)|||wash(dairy and eggs)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 3,
       "noun_class": 0,
@@ -1538,7 +1672,9 @@
       "next_action": "close(appliances)",
       "edge_key": "wash(dairy and eggs)|||close(appliances)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 2,
       "noun_class": 64,
@@ -1558,7 +1694,9 @@
       "next_action": "turn(dairy and eggs)",
       "edge_key": "close(appliances)|||turn(dairy and eggs)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 4,
       "noun_class": 0,
@@ -1578,7 +1716,9 @@
       "next_action": "put(dairy and eggs)",
       "edge_key": "turn(dairy and eggs)|||put(dairy and eggs)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 23,
       "noun_class": 64,
@@ -1598,7 +1738,9 @@
       "next_action": "dry(hand)",
       "edge_key": "put(dairy and eggs)|||dry(hand)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 1,
       "noun_class": 64,
@@ -1618,7 +1760,9 @@
       "next_action": "hold(crockery)",
       "edge_key": "dry(hand)|||hold(crockery)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 14,
       "noun_class": 11,
@@ -1639,6 +1783,8 @@
       "edge_key": "hold(crockery)|||hold(cutlery)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 34,
       "noun_class": 13,
@@ -1659,6 +1805,8 @@
       "edge_key": "hold(cutlery)|||take(crockery)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 34,
       "noun_class": 1,
@@ -1679,6 +1827,8 @@
       "edge_key": "take(crockery)|||mix(drinks)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 0,
       "noun_class": 13,
@@ -1699,6 +1849,8 @@
       "edge_key": "mix(drinks)|||shake(cutlery)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 10,
       "noun_class": 59,
@@ -1718,7 +1870,9 @@
       "next_action": "open(containers)",
       "edge_key": "shake(cutlery)|||open(containers)",
       "step_id": "P01_R01_S05",
-      "is_primary": true,
+      "is_primary": false,
+      "in_window_scope": true,
+      "in_span_scope": false,
       "phase": "exec",
       "verb_class": 15,
       "noun_class": 1,
@@ -1739,6 +1893,8 @@
       "edge_key": "open(containers)|||throw(cutlery)",
       "step_id": null,
       "is_primary": false,
+      "in_window_scope": false,
+      "in_span_scope": false,
       "phase": null,
       "verb_class": 3,
       "noun_class": 6,
@@ -1759,6 +1915,8 @@
       "edge_key": "throw(cutlery)|||close(rubbish)",
       "step_id": null,
       "is_primary": false,
+      "in_window_scope": false,
+      "in_span_scope": false,
       "phase": null,
       "verb_class": 13,
       "noun_class": 1,
@@ -1779,6 +1937,8 @@
       "edge_key": "close(rubbish)|||put(crockery)",
       "step_id": null,
       "is_primary": false,
+      "in_window_scope": false,
+      "in_span_scope": false,
       "phase": null,
       "verb_class": 4,
       "noun_class": 36,
@@ -1799,6 +1959,8 @@
       "edge_key": "put(crockery)|||END",
       "step_id": null,
       "is_primary": false,
+      "in_window_scope": false,
+      "in_span_scope": false,
       "phase": null,
       "verb_class": 1,
       "noun_class": 13,
@@ -1833,7 +1995,219 @@
   "graph": {
     "nodes": [
       {
+        "id": "close(containers)",
+        "count": 7,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "box": 3,
+          "bottle": 3,
+          "bag": 1
+        },
+        "verbs": {
+          "close": 7
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.44737,
+        "dead_end_score": 0.857
+      },
+      {
+        "id": "open(containers)",
+        "count": 6,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "box": 3,
+          "bottle": 3
+        },
+        "verbs": {
+          "open": 6
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.40132,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "close(appliances)",
+        "count": 4,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "fridge": 2,
+          "tap": 2
+        },
+        "verbs": {
+          "close": 4
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.66447,
+        "dead_end_score": 0.5
+      },
+      {
         "id": "pour(dairy and eggs)",
+        "count": 4,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "milk": 4
+        },
+        "verbs": {
+          "pour": 4
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.41447,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "open(appliances)",
+        "count": 3,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "fridge": 1,
+          "tap": 2
+        },
+        "verbs": {
+          "open": 3
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.81579,
+        "dead_end_score": 0.333
+      },
+      {
+        "id": "put(baked goods and grains)",
+        "count": 3,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "cereal": 3
+        },
+        "verbs": {
+          "put": 3
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.57895,
+        "dead_end_score": 0.667
+      },
+      {
+        "id": "put(containers)",
+        "count": 3,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "bottle": 3
+        },
+        "verbs": {
+          "put": 3
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.23684,
+        "dead_end_score": 0.667
+      },
+      {
+        "id": "take(containers)",
+        "count": 3,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "bottle": 2,
+          "box": 1
+        },
+        "verbs": {
+          "take": 3
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.19737,
+        "dead_end_score": 0.333
+      },
+      {
+        "id": "take(crockery)",
+        "count": 3,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "cup": 2,
+          "bowl": 1
+        },
+        "verbs": {
+          "take": 3
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.32895,
+        "dead_end_score": 0.667
+      },
+      {
+        "id": "open(furniture)",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "drawer": 2
+        },
+        "verbs": {
+          "open": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.39474,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "put(crockery)",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "cup": 1,
+          "bowl": 1
+        },
+        "verbs": {
+          "put": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.22368,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "put(cutlery)",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "spoon": 2
+        },
+        "verbs": {
+          "put": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.73026,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "put(dairy and eggs)",
         "count": 2,
         "is_primary": true,
         "salient": true,
@@ -1841,13 +2215,133 @@
           "milk": 2
         },
         "verbs": {
-          "pour": 2
+          "put": 2
         },
         "kind": "action",
         "is_start": false,
         "is_end": false,
-        "median_rank": 0.44737,
+        "median_rank": 0.86184,
         "dead_end_score": 0.5
+      },
+      {
+        "id": "take(baked goods and grains)",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "cereal": 2
+        },
+        "verbs": {
+          "take": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.55263,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "take(cutlery)",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "spoon": 2
+        },
+        "verbs": {
+          "take": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.67105,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "take(dairy and eggs)",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "milk": 2
+        },
+        "verbs": {
+          "take": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.54605,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "turn(dairy and eggs)",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "milk": 2
+        },
+        "verbs": {
+          "turn": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.88158,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "turn-on(appliances)",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "machine:washing": 1,
+          "plug": 1
+        },
+        "verbs": {
+          "turn-on": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.19079,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "turn-on(dairy and eggs)",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "milk": 2
+        },
+        "verbs": {
+          "turn-on": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.28289,
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "wash(dairy and eggs)",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "milk": 2
+        },
+        "verbs": {
+          "wash": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.85526,
+        "dead_end_score": 0.0
       },
       {
         "id": "END",
@@ -1876,12 +2370,29 @@
         "dead_end_score": 0.0
       },
       {
-        "id": "close(containers)",
+        "id": "attach(dairy and eggs)",
         "count": 1,
         "is_primary": true,
         "salient": true,
         "objects": {
-          "box": 1
+          "milk": 1
+        },
+        "verbs": {
+          "attach": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.27632,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "close(storage)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "cupboard": 1
         },
         "verbs": {
           "close": 1
@@ -1889,7 +2400,24 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
-        "median_rank": 0.15789,
+        "median_rank": 0.34211,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "dry(hand)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "hand": 1
+        },
+        "verbs": {
+          "dry": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.93421,
         "dead_end_score": 0.0
       },
       {
@@ -1906,7 +2434,7 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
-        "median_rank": 0.73684,
+        "median_rank": 0.94737,
         "dead_end_score": 0.0
       },
       {
@@ -1923,7 +2451,24 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
-        "median_rank": 0.78947,
+        "median_rank": 0.96053,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "lift(appliances)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "maker:coffee": 1
+        },
+        "verbs": {
+          "lift": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.06579,
         "dead_end_score": 0.0
       },
       {
@@ -1940,7 +2485,24 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
-        "median_rank": 0.63158,
+        "median_rank": 0.77632,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "lock(drinks)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "coffee": 1
+        },
+        "verbs": {
+          "lock": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.18421,
         "dead_end_score": 0.0
       },
       {
@@ -1957,16 +2519,50 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
-        "median_rank": 0.89474,
+        "median_rank": 0.98684,
         "dead_end_score": 0.0
       },
       {
-        "id": "open(furniture)",
+        "id": "move(crockery)",
         "count": 1,
         "is_primary": true,
         "salient": true,
         "objects": {
-          "drawer": 1
+          "cup": 1
+        },
+        "verbs": {
+          "move": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.72368,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "move(dairy and eggs)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "milk": 1
+        },
+        "verbs": {
+          "move": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.10526,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "open(storage)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "cupboard": 1
         },
         "verbs": {
           "open": 1
@@ -1974,7 +2570,7 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
-        "median_rank": 0.21053,
+        "median_rank": 0.31579,
         "dead_end_score": 0.0
       },
       {
@@ -1991,7 +2587,24 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
-        "median_rank": 0.52632,
+        "median_rank": 0.75,
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "pat(furniture)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "top": 1
+        },
+        "verbs": {
+          "pat": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.65789,
         "dead_end_score": 0.0
       },
       {
@@ -2008,24 +2621,7 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
-        "median_rank": 0.36842,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "put(cutlery)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "spoon": 1
-        },
-        "verbs": {
-          "put": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.68421,
+        "median_rank": 0.52632,
         "dead_end_score": 0.0
       },
       {
@@ -2042,75 +2638,7 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
-        "median_rank": 0.26316,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "shake(cutlery)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "spoon": 1
-        },
-        "verbs": {
-          "shake": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.94737,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "take(baked goods and grains)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "cereal": 1
-        },
-        "verbs": {
-          "take": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.42105,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "take(crockery)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "cup": 1
-        },
-        "verbs": {
-          "take": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.84211,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "take(dairy and eggs)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "milk": 1
-        },
-        "verbs": {
-          "take": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.47368,
+        "median_rank": 0.17105,
         "dead_end_score": 0.0
       },
       {
@@ -2127,53 +2655,278 @@
         "kind": "action",
         "is_start": false,
         "is_end": false,
-        "median_rank": 0.10526,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "turn-on(appliances)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "machine:washing": 1
-        },
-        "verbs": {
-          "turn-on": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.05263,
+        "median_rank": 0.13158,
         "dead_end_score": 0.0
       }
     ],
     "links": [
       {
+        "source": "open(containers)",
+        "target": "pour(dairy and eggs)",
+        "count": 3,
+        "probability": 0.5,
+        "key": "open(containers)|||pour(dairy and eggs)",
+        "occurrences": [
+          16,
+          29,
+          32
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.01315
+      },
+      {
+        "source": "close(appliances)",
+        "target": "turn(dairy and eggs)",
+        "count": 2,
+        "probability": 0.5,
+        "key": "close(appliances)|||turn(dairy and eggs)",
+        "occurrences": [
+          64,
+          68
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.21711
+      },
+      {
+        "source": "open(appliances)",
+        "target": "wash(dairy and eggs)",
+        "count": 2,
+        "probability": 0.6667,
+        "key": "open(appliances)|||wash(dairy and eggs)",
+        "occurrences": [
+          62,
+          66
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.03947
+      },
+      {
+        "source": "pour(dairy and eggs)",
+        "target": "close(containers)",
+        "count": 2,
+        "probability": 0.5,
+        "key": "pour(dairy and eggs)|||close(containers)",
+        "occurrences": [
+          30,
+          33
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0329
+      },
+      {
+        "source": "take(baked goods and grains)",
+        "target": "put(baked goods and grains)",
+        "count": 2,
+        "probability": 1.0,
+        "key": "take(baked goods and grains)|||put(baked goods and grains)",
+        "occurrences": [
+          41,
+          43
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.02632
+      },
+      {
+        "source": "take(containers)",
+        "target": "open(containers)",
+        "count": 2,
+        "probability": 0.6667,
+        "key": "take(containers)|||open(containers)",
+        "occurrences": [
+          15,
+          38
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.20395
+      },
+      {
+        "source": "wash(dairy and eggs)",
+        "target": "close(appliances)",
+        "count": 2,
+        "probability": 1.0,
+        "key": "wash(dairy and eggs)|||close(appliances)",
+        "occurrences": [
+          63,
+          67
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.19079
+      },
+      {
         "source": "START",
-        "target": "turn-on(appliances)",
+        "target": "take(containers)",
         "count": 1,
         "probability": 1.0,
-        "key": "START|||turn-on(appliances)",
+        "key": "START|||take(containers)",
         "occurrences": [
           0
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.05263
+        "rank_delta": 0.19737
+      },
+      {
+        "source": "attach(dairy and eggs)",
+        "target": "turn-on(appliances)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "attach(dairy and eggs)|||turn-on(appliances)",
+        "occurrences": [
+          21
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.08553
+      },
+      {
+        "source": "close(appliances)",
+        "target": "put(containers)",
+        "count": 1,
+        "probability": 0.25,
+        "key": "close(appliances)|||put(containers)",
+        "occurrences": [
+          2
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.42763
+      },
+      {
+        "source": "close(appliances)",
+        "target": "take(containers)",
+        "count": 1,
+        "probability": 0.25,
+        "key": "close(appliances)|||take(containers)",
+        "occurrences": [
+          37
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.4671
+      },
+      {
+        "source": "close(containers)",
+        "target": "close(containers)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "close(containers)|||close(containers)",
+        "occurrences": [
+          45
+        ],
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
+      },
+      {
+        "source": "close(containers)",
+        "target": "move(crockery)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "close(containers)|||move(crockery)",
+        "occurrences": [
+          54
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.27631
+      },
+      {
+        "source": "close(containers)",
+        "target": "open(appliances)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "close(containers)|||open(appliances)",
+        "occurrences": [
+          34
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.36842
+      },
+      {
+        "source": "close(containers)",
+        "target": "open(containers)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "close(containers)|||open(containers)",
+        "occurrences": [
+          31
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.04605
       },
       {
         "source": "close(containers)",
         "target": "open(furniture)",
         "count": 1,
-        "probability": 1.0,
+        "probability": 0.1429,
         "key": "close(containers)|||open(furniture)",
         "occurrences": [
-          3
+          11
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.05263
+      },
+      {
+        "source": "close(containers)",
+        "target": "put(baked goods and grains)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "close(containers)|||put(baked goods and grains)",
+        "occurrences": [
+          46
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.05264
+        "rank_delta": 0.13158
+      },
+      {
+        "source": "close(containers)",
+        "target": "turn-on(dairy and eggs)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "close(containers)|||turn-on(dairy and eggs)",
+        "occurrences": [
+          19
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.16448
+      },
+      {
+        "source": "close(storage)",
+        "target": "take(dairy and eggs)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "close(storage)|||take(dairy and eggs)",
+        "occurrences": [
+          26
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.20394
+      },
+      {
+        "source": "dry(hand)",
+        "target": "hold(crockery)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "dry(hand)|||hold(crockery)",
+        "occurrences": [
+          71
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.01316
       },
       {
         "source": "hold(crockery)",
@@ -2182,11 +2935,11 @@
         "probability": 1.0,
         "key": "hold(crockery)|||hold(cutlery)",
         "occurrences": [
-          14
+          72
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.05263
+        "rank_delta": 0.01316
       },
       {
         "source": "hold(cutlery)",
@@ -2195,11 +2948,24 @@
         "probability": 1.0,
         "key": "hold(cutlery)|||take(crockery)",
         "occurrences": [
-          15
+          73
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.63158
+      },
+      {
+        "source": "lift(appliances)",
+        "target": "put(crockery)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "lift(appliances)|||put(crockery)",
+        "occurrences": [
+          5
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.05264
+        "rank_delta": 0.15789
       },
       {
         "source": "lift(dairy and eggs)",
@@ -2208,37 +2974,154 @@
         "probability": 1.0,
         "key": "lift(dairy and eggs)|||put(cutlery)",
         "occurrences": [
-          12
+          59
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.04606
+      },
+      {
+        "source": "lock(drinks)",
+        "target": "take(containers)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "lock(drinks)|||take(containers)",
+        "occurrences": [
+          14
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.05263
+        "rank_delta": 0.01316
       },
       {
         "source": "mix(drinks)",
-        "target": "shake(cutlery)",
+        "target": "END",
         "count": 1,
         "probability": 1.0,
-        "key": "mix(drinks)|||shake(cutlery)",
+        "key": "mix(drinks)|||END",
         "occurrences": [
-          17
+          75
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.05263
+        "rank_delta": 0.01316
+      },
+      {
+        "source": "move(crockery)",
+        "target": "take(dairy and eggs)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "move(crockery)|||take(dairy and eggs)",
+        "occurrences": [
+          55
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.17763
+      },
+      {
+        "source": "move(dairy and eggs)",
+        "target": "open(containers)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "move(dairy and eggs)|||open(containers)",
+        "occurrences": [
+          8
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.29606
+      },
+      {
+        "source": "open(appliances)",
+        "target": "put(containers)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "open(appliances)|||put(containers)",
+        "occurrences": [
+          35
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.57895
+      },
+      {
+        "source": "open(containers)",
+        "target": "press(appliances)",
+        "count": 1,
+        "probability": 0.1667,
+        "key": "open(containers)|||press(appliances)",
+        "occurrences": [
+          39
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.125
+      },
+      {
+        "source": "open(containers)",
+        "target": "take(cutlery)",
+        "count": 1,
+        "probability": 0.1667,
+        "key": "open(containers)|||take(cutlery)",
+        "occurrences": [
+          52
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.26973
+      },
+      {
+        "source": "open(containers)",
+        "target": "take(drinks)",
+        "count": 1,
+        "probability": 0.1667,
+        "key": "open(containers)|||take(drinks)",
+        "occurrences": [
+          9
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.26974
       },
       {
         "source": "open(furniture)",
         "target": "put(drinks)",
         "count": 1,
-        "probability": 1.0,
+        "probability": 0.5,
         "key": "open(furniture)|||put(drinks)",
         "occurrences": [
-          4
+          12
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.22369
+      },
+      {
+        "source": "open(furniture)",
+        "target": "take(cutlery)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "open(furniture)|||take(cutlery)",
+        "occurrences": [
+          48
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.05263
+        "rank_delta": 0.27631
+      },
+      {
+        "source": "open(storage)",
+        "target": "take(crockery)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "open(storage)|||take(crockery)",
+        "occurrences": [
+          24
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.01316
       },
       {
         "source": "pat(dairy and eggs)",
@@ -2247,37 +3130,50 @@
         "probability": 1.0,
         "key": "pat(dairy and eggs)|||pour(dairy and eggs)",
         "occurrences": [
-          10
+          57
         ],
         "is_self_loop": false,
         "is_return": true,
-        "rank_delta": -0.07895
+        "rank_delta": -0.33553
+      },
+      {
+        "source": "pat(furniture)",
+        "target": "put(cutlery)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "pat(furniture)|||put(cutlery)",
+        "occurrences": [
+          50
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.07237
       },
       {
         "source": "pour(dairy and eggs)",
         "target": "lift(dairy and eggs)",
         "count": 1,
-        "probability": 0.5,
+        "probability": 0.25,
         "key": "pour(dairy and eggs)|||lift(dairy and eggs)",
         "occurrences": [
-          11
+          58
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.18421
+        "rank_delta": 0.36185
       },
       {
         "source": "pour(dairy and eggs)",
-        "target": "press(appliances)",
+        "target": "put(containers)",
         "count": 1,
-        "probability": 0.5,
-        "key": "pour(dairy and eggs)|||press(appliances)",
+        "probability": 0.25,
+        "key": "pour(dairy and eggs)|||put(containers)",
         "occurrences": [
-          6
+          17
         ],
         "is_self_loop": false,
         "is_return": true,
-        "rank_delta": -0.07895
+        "rank_delta": -0.17763
       },
       {
         "source": "press(appliances)",
@@ -2286,89 +3182,284 @@
         "probability": 1.0,
         "key": "press(appliances)|||take(baked goods and grains)",
         "occurrences": [
-          7
+          40
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.05263
+        "rank_delta": 0.02631
       },
       {
-        "source": "put(cutlery)",
-        "target": "hold(crockery)",
+        "source": "put(baked goods and grains)",
+        "target": "close(containers)",
         "count": 1,
-        "probability": 1.0,
-        "key": "put(cutlery)|||hold(crockery)",
+        "probability": 0.3333,
+        "key": "put(baked goods and grains)|||close(containers)",
         "occurrences": [
-          13
+          44
         ],
         "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.05263
+        "is_return": true,
+        "rank_delta": -0.13158
       },
       {
-        "source": "put(drinks)",
-        "target": "pour(dairy and eggs)",
+        "source": "put(baked goods and grains)",
+        "target": "open(furniture)",
         "count": 1,
-        "probability": 1.0,
-        "key": "put(drinks)|||pour(dairy and eggs)",
+        "probability": 0.3333,
+        "key": "put(baked goods and grains)|||open(furniture)",
         "occurrences": [
-          5
+          47
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.18421
+      },
+      {
+        "source": "put(baked goods and grains)",
+        "target": "take(baked goods and grains)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "put(baked goods and grains)|||take(baked goods and grains)",
+        "occurrences": [
+          42
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.02632
+      },
+      {
+        "source": "put(containers)",
+        "target": "close(appliances)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "put(containers)|||close(appliances)",
+        "occurrences": [
+          36
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.18421
+        "rank_delta": 0.42763
       },
       {
-        "source": "shake(cutlery)",
-        "target": "END",
+        "source": "put(containers)",
+        "target": "close(containers)",
         "count": 1,
-        "probability": 1.0,
-        "key": "shake(cutlery)|||END",
+        "probability": 0.3333,
+        "key": "put(containers)|||close(containers)",
         "occurrences": [
           18
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.05263
+        "rank_delta": 0.21053
       },
       {
-        "source": "take(baked goods and grains)",
-        "target": "take(dairy and eggs)",
+        "source": "put(containers)",
+        "target": "take(crockery)",
         "count": 1,
-        "probability": 1.0,
-        "key": "take(baked goods and grains)|||take(dairy and eggs)",
+        "probability": 0.3333,
+        "key": "put(containers)|||take(crockery)",
         "occurrences": [
-          8
+          3
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.05263
+        "rank_delta": 0.09211
+      },
+      {
+        "source": "put(crockery)",
+        "target": "open(containers)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "put(crockery)|||open(containers)",
+        "occurrences": [
+          28
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.17764
+      },
+      {
+        "source": "put(crockery)",
+        "target": "turn-on(appliances)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "put(crockery)|||turn-on(appliances)",
+        "occurrences": [
+          6
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.03289
+      },
+      {
+        "source": "put(cutlery)",
+        "target": "open(containers)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "put(cutlery)|||open(containers)",
+        "occurrences": [
+          51
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.32894
+      },
+      {
+        "source": "put(cutlery)",
+        "target": "put(dairy and eggs)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "put(cutlery)|||put(dairy and eggs)",
+        "occurrences": [
+          60
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.13158
+      },
+      {
+        "source": "put(dairy and eggs)",
+        "target": "dry(hand)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "put(dairy and eggs)|||dry(hand)",
+        "occurrences": [
+          70
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.07237
+      },
+      {
+        "source": "put(dairy and eggs)",
+        "target": "open(appliances)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "put(dairy and eggs)|||open(appliances)",
+        "occurrences": [
+          61
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.04605
+      },
+      {
+        "source": "put(drinks)",
+        "target": "lock(drinks)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "put(drinks)|||lock(drinks)",
+        "occurrences": [
+          13
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.01316
+      },
+      {
+        "source": "take(containers)",
+        "target": "close(appliances)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "take(containers)|||close(appliances)",
+        "occurrences": [
+          1
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.4671
+      },
+      {
+        "source": "take(crockery)",
+        "target": "close(storage)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "take(crockery)|||close(storage)",
+        "occurrences": [
+          25
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.01316
+      },
+      {
+        "source": "take(crockery)",
+        "target": "lift(appliances)",
+        "count": 1,
+        "probability": 0.3333,
+        "key": "take(crockery)|||lift(appliances)",
+        "occurrences": [
+          4
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.26316
       },
       {
         "source": "take(crockery)",
         "target": "mix(drinks)",
         "count": 1,
-        "probability": 1.0,
+        "probability": 0.3333,
         "key": "take(crockery)|||mix(drinks)",
         "occurrences": [
-          16
+          74
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.05263
+        "rank_delta": 0.65789
+      },
+      {
+        "source": "take(cutlery)",
+        "target": "close(containers)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "take(cutlery)|||close(containers)",
+        "occurrences": [
+          53
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.22368
+      },
+      {
+        "source": "take(cutlery)",
+        "target": "pat(furniture)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "take(cutlery)|||pat(furniture)",
+        "occurrences": [
+          49
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.01316
       },
       {
         "source": "take(dairy and eggs)",
         "target": "pat(dairy and eggs)",
         "count": 1,
-        "probability": 1.0,
+        "probability": 0.5,
         "key": "take(dairy and eggs)|||pat(dairy and eggs)",
         "occurrences": [
-          9
+          56
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.05264
+        "rank_delta": 0.20395
+      },
+      {
+        "source": "take(dairy and eggs)",
+        "target": "put(crockery)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "take(dairy and eggs)|||put(crockery)",
+        "occurrences": [
+          27
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.32237
       },
       {
         "source": "take(drinks)",
@@ -2377,24 +3468,89 @@
         "probability": 1.0,
         "key": "take(drinks)|||close(containers)",
         "occurrences": [
-          2
+          10
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.05263
+        "rank_delta": 0.31579
+      },
+      {
+        "source": "turn(dairy and eggs)",
+        "target": "open(appliances)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "turn(dairy and eggs)|||open(appliances)",
+        "occurrences": [
+          65
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.06579
+      },
+      {
+        "source": "turn(dairy and eggs)",
+        "target": "put(dairy and eggs)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "turn(dairy and eggs)|||put(dairy and eggs)",
+        "occurrences": [
+          69
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.01974
       },
       {
         "source": "turn-on(appliances)",
-        "target": "take(drinks)",
+        "target": "move(dairy and eggs)",
         "count": 1,
-        "probability": 1.0,
-        "key": "turn-on(appliances)|||take(drinks)",
+        "probability": 0.5,
+        "key": "turn-on(appliances)|||move(dairy and eggs)",
         "occurrences": [
-          1
+          7
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.08553
+      },
+      {
+        "source": "turn-on(appliances)",
+        "target": "turn-on(dairy and eggs)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "turn-on(appliances)|||turn-on(dairy and eggs)",
+        "occurrences": [
+          22
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.05263
+        "rank_delta": 0.0921
+      },
+      {
+        "source": "turn-on(dairy and eggs)",
+        "target": "attach(dairy and eggs)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "turn-on(dairy and eggs)|||attach(dairy and eggs)",
+        "occurrences": [
+          20
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.00657
+      },
+      {
+        "source": "turn-on(dairy and eggs)",
+        "target": "open(storage)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "turn-on(dairy and eggs)|||open(storage)",
+        "occurrences": [
+          23
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0329
       }
     ]
   },
@@ -2403,7 +3559,7 @@
       {
         "id": "close(containers)",
         "count": 7,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "box": 3,
@@ -2422,7 +3578,7 @@
       {
         "id": "open(containers)",
         "count": 7,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "box": 3,
@@ -2441,7 +3597,7 @@
       {
         "id": "close(appliances)",
         "count": 4,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "fridge": 2,
@@ -2459,7 +3615,7 @@
       {
         "id": "open(appliances)",
         "count": 4,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "fridge": 2,
@@ -2494,7 +3650,7 @@
       {
         "id": "put(baked goods and grains)",
         "count": 3,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "cereal": 3
@@ -2511,7 +3667,7 @@
       {
         "id": "put(containers)",
         "count": 3,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "bottle": 3
@@ -2528,7 +3684,7 @@
       {
         "id": "put(crockery)",
         "count": 3,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "cup": 2,
@@ -2546,7 +3702,7 @@
       {
         "id": "take(containers)",
         "count": 3,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "bottle": 2,
@@ -2564,7 +3720,7 @@
       {
         "id": "take(crockery)",
         "count": 3,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "cup": 2,
@@ -2616,7 +3772,7 @@
       {
         "id": "put(dairy and eggs)",
         "count": 2,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "milk": 2
@@ -2650,7 +3806,7 @@
       {
         "id": "take(cutlery)",
         "count": 2,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "spoon": 2
@@ -2684,7 +3840,7 @@
       {
         "id": "turn(dairy and eggs)",
         "count": 2,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "milk": 2
@@ -2719,7 +3875,7 @@
       {
         "id": "turn-on(dairy and eggs)",
         "count": 2,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "milk": 2
@@ -2736,7 +3892,7 @@
       {
         "id": "wash(dairy and eggs)",
         "count": 2,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "milk": 2
@@ -2779,7 +3935,7 @@
       {
         "id": "attach(dairy and eggs)",
         "count": 1,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "milk": 1
@@ -2813,7 +3969,7 @@
       {
         "id": "close(storage)",
         "count": 1,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "cupboard": 1
@@ -2830,7 +3986,7 @@
       {
         "id": "dry(hand)",
         "count": 1,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "hand": 1
@@ -2881,7 +4037,7 @@
       {
         "id": "lift(appliances)",
         "count": 1,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "maker:coffee": 1
@@ -2915,7 +4071,7 @@
       {
         "id": "lock(drinks)",
         "count": 1,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "coffee": 1
@@ -2949,7 +4105,7 @@
       {
         "id": "move(crockery)",
         "count": 1,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "cup": 1
@@ -2966,7 +4122,7 @@
       {
         "id": "move(dairy and eggs)",
         "count": 1,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "milk": 1
@@ -2983,7 +4139,7 @@
       {
         "id": "open(storage)",
         "count": 1,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "cupboard": 1
@@ -3017,7 +4173,7 @@
       {
         "id": "pat(furniture)",
         "count": 1,
-        "is_primary": false,
+        "is_primary": true,
         "salient": true,
         "objects": {
           "top": 1
@@ -3068,7 +4224,7 @@
       {
         "id": "shake(cutlery)",
         "count": 1,
-        "is_primary": true,
+        "is_primary": false,
         "salient": true,
         "objects": {
           "spoon": 1
@@ -4092,172 +5248,166 @@
   },
   "filter_report": {
     "identity": "verb_key(noun_category)",
-    "rule": "An action is PRIMARY if its time window overlaps an annotated step_times window (with a per-side buffer). Non-primary actions are excluded from the motion graph only; they remain in the sequence, the swimlane and graph_unfiltered.",
+    "scope_mode": "span",
+    "scope_comparison": {
+      "window": {
+        "actions_kept": 20,
+        "actions_total": 83,
+        "kept_fraction": 0.241,
+        "edges": 19,
+        "fabricated_edges": 5,
+        "fabricated_fraction": 0.2632,
+        "fabricated_keys": [
+          "pour(dairy and eggs)|||press(appliances)",
+          "put(cutlery)|||hold(crockery)",
+          "put(drinks)|||pour(dairy and eggs)",
+          "take(baked goods and grains)|||take(dairy and eggs)",
+          "turn-on(appliances)|||take(drinks)"
+        ]
+      },
+      "span": {
+        "actions_kept": 77,
+        "actions_total": 83,
+        "kept_fraction": 0.9277,
+        "edges": 68,
+        "fabricated_edges": 0,
+        "fabricated_fraction": 0.0,
+        "fabricated_keys": []
+      }
+    },
+    "rule": "window: an action is kept if its window overlaps an annotated step_times window. span: an action is kept if it falls inside the task span, min(first prep, first step) to max(last step). Excluded actions are removed from the motion graph only; they remain in the sequence, the swimlane and graph_unfiltered.",
     "actions": {
       "before": 83,
-      "after": 20,
-      "removed": 63,
-      "removed_fraction": 0.759
+      "after": 77,
+      "removed": 6,
+      "removed_fraction": 0.0723
     },
     "nodes": {
       "before": 42,
-      "after": 19,
+      "after": 39,
       "removed": [
-        "attach(dairy and eggs)",
-        "close(appliances)",
         "close(rubbish)",
-        "close(storage)",
-        "dry(hand)",
-        "lift(appliances)",
-        "lock(drinks)",
-        "move(crockery)",
-        "move(dairy and eggs)",
-        "open(appliances)",
-        "open(containers)",
-        "open(storage)",
-        "pat(furniture)",
-        "put(baked goods and grains)",
-        "put(containers)",
-        "put(crockery)",
-        "put(dairy and eggs)",
-        "take(containers)",
-        "take(cutlery)",
-        "throw(cutlery)",
-        "turn(dairy and eggs)",
-        "turn-on(dairy and eggs)",
-        "wash(dairy and eggs)"
+        "shake(cutlery)",
+        "throw(cutlery)"
       ]
     },
     "links": {
       "before": 74,
-      "after": 19,
+      "after": 68,
       "removed_keys": [
         "START|||open(appliances)",
+        "close(rubbish)|||put(crockery)",
+        "mix(drinks)|||shake(cutlery)",
+        "open(appliances)|||take(containers)",
+        "open(containers)|||throw(cutlery)",
+        "put(crockery)|||END",
+        "shake(cutlery)|||open(containers)",
+        "throw(cutlery)|||close(rubbish)"
+      ],
+      "introduced_keys": [],
+      "introduced_sentinel_keys": [
+        "START|||take(containers)",
+        "mix(drinks)|||END"
+      ]
+    },
+    "removed_action_counts": {
+      "open(appliances)": 1,
+      "shake(cutlery)": 1,
+      "open(containers)": 1,
+      "throw(cutlery)": 1,
+      "close(rubbish)": 1,
+      "put(crockery)": 1
+    },
+    "return_transitions": {
+      "count": 29,
+      "keys": [
+        "wash(dairy and eggs)|||close(appliances)",
         "attach(dairy and eggs)|||turn-on(appliances)",
         "close(appliances)|||put(containers)",
         "close(appliances)|||take(containers)",
-        "close(appliances)|||turn(dairy and eggs)",
-        "close(containers)|||close(containers)",
-        "close(containers)|||move(crockery)",
-        "close(containers)|||open(appliances)",
         "close(containers)|||open(containers)",
-        "close(containers)|||put(baked goods and grains)",
+        "close(containers)|||open(furniture)",
         "close(containers)|||turn-on(dairy and eggs)",
-        "close(rubbish)|||put(crockery)",
-        "close(storage)|||take(dairy and eggs)",
-        "dry(hand)|||hold(crockery)",
-        "lift(appliances)|||put(crockery)",
-        "lock(drinks)|||take(containers)",
+        "hold(cutlery)|||take(crockery)",
+        "lift(dairy and eggs)|||put(cutlery)",
         "move(crockery)|||take(dairy and eggs)",
-        "move(dairy and eggs)|||open(containers)",
         "open(appliances)|||put(containers)",
-        "open(appliances)|||take(containers)",
-        "open(appliances)|||wash(dairy and eggs)",
-        "open(containers)|||pour(dairy and eggs)",
-        "open(containers)|||press(appliances)",
-        "open(containers)|||take(cutlery)",
         "open(containers)|||take(drinks)",
-        "open(containers)|||throw(cutlery)",
-        "open(furniture)|||take(cutlery)",
-        "open(storage)|||take(crockery)",
-        "pat(furniture)|||put(cutlery)",
-        "pour(dairy and eggs)|||close(containers)",
+        "open(furniture)|||put(drinks)",
+        "pat(dairy and eggs)|||pour(dairy and eggs)",
         "pour(dairy and eggs)|||put(containers)",
         "put(baked goods and grains)|||close(containers)",
         "put(baked goods and grains)|||open(furniture)",
         "put(baked goods and grains)|||take(baked goods and grains)",
-        "put(containers)|||close(appliances)",
-        "put(containers)|||close(containers)",
-        "put(containers)|||take(crockery)",
-        "put(crockery)|||END",
-        "put(crockery)|||open(containers)",
         "put(crockery)|||turn-on(appliances)",
         "put(cutlery)|||open(containers)",
-        "put(cutlery)|||put(dairy and eggs)",
-        "put(dairy and eggs)|||dry(hand)",
         "put(dairy and eggs)|||open(appliances)",
-        "put(drinks)|||lock(drinks)",
-        "shake(cutlery)|||open(containers)",
-        "take(baked goods and grains)|||put(baked goods and grains)",
-        "take(containers)|||close(appliances)",
-        "take(containers)|||open(containers)",
-        "take(crockery)|||close(storage)",
         "take(crockery)|||lift(appliances)",
         "take(cutlery)|||close(containers)",
         "take(cutlery)|||pat(furniture)",
         "take(dairy and eggs)|||put(crockery)",
-        "throw(cutlery)|||close(rubbish)",
         "turn(dairy and eggs)|||open(appliances)",
         "turn(dairy and eggs)|||put(dairy and eggs)",
         "turn-on(appliances)|||move(dairy and eggs)",
-        "turn-on(appliances)|||turn-on(dairy and eggs)",
-        "turn-on(dairy and eggs)|||attach(dairy and eggs)",
-        "turn-on(dairy and eggs)|||open(storage)",
-        "wash(dairy and eggs)|||close(appliances)"
-      ],
-      "introduced_keys": [
-        "START|||turn-on(appliances)",
-        "pour(dairy and eggs)|||press(appliances)",
-        "put(cutlery)|||hold(crockery)",
-        "put(drinks)|||pour(dairy and eggs)",
-        "shake(cutlery)|||END",
-        "take(baked goods and grains)|||take(dairy and eggs)",
-        "turn-on(appliances)|||take(drinks)"
-      ]
-    },
-    "removed_action_counts": {
-      "open(containers)": 7,
-      "close(containers)": 6,
-      "open(appliances)": 4,
-      "close(appliances)": 4,
-      "take(containers)": 3,
-      "put(containers)": 3,
-      "put(crockery)": 3,
-      "put(baked goods and grains)": 3,
-      "take(crockery)": 2,
-      "turn-on(dairy and eggs)": 2,
-      "pour(dairy and eggs)": 2,
-      "take(cutlery)": 2,
-      "put(dairy and eggs)": 2,
-      "wash(dairy and eggs)": 2,
-      "turn(dairy and eggs)": 2,
-      "lift(appliances)": 1,
-      "move(dairy and eggs)": 1,
-      "lock(drinks)": 1,
-      "attach(dairy and eggs)": 1,
-      "turn-on(appliances)": 1,
-      "open(storage)": 1,
-      "close(storage)": 1,
-      "take(dairy and eggs)": 1,
-      "take(baked goods and grains)": 1,
-      "open(furniture)": 1,
-      "pat(furniture)": 1,
-      "put(cutlery)": 1,
-      "move(crockery)": 1,
-      "dry(hand)": 1,
-      "throw(cutlery)": 1,
-      "close(rubbish)": 1
-    },
-    "return_transitions": {
-      "count": 2,
-      "keys": [
-        "pat(dairy and eggs)|||pour(dairy and eggs)",
-        "pour(dairy and eggs)|||press(appliances)"
+        "turn-on(dairy and eggs)|||attach(dairy and eggs)"
       ]
     },
     "self_loops": {
-      "count": 0,
-      "keys": []
+      "count": 1,
+      "keys": [
+        "close(containers)|||close(containers)"
+      ]
     }
   },
   "analysis": {
     "dead_ends": [
       {
+        "id": "close(containers)",
+        "score": 0.857
+      },
+      {
+        "id": "put(baked goods and grains)",
+        "score": 0.667
+      },
+      {
+        "id": "put(containers)",
+        "score": 0.667
+      },
+      {
+        "id": "take(crockery)",
+        "score": 0.667
+      },
+      {
+        "id": "open(containers)",
+        "score": 0.5
+      },
+      {
+        "id": "close(appliances)",
+        "score": 0.5
+      },
+      {
         "id": "pour(dairy and eggs)",
+        "score": 0.5
+      },
+      {
+        "id": "open(furniture)",
+        "score": 0.5
+      },
+      {
+        "id": "put(crockery)",
+        "score": 0.5
+      },
+      {
+        "id": "put(cutlery)",
         "score": 0.5
       }
     ],
-    "self_loops": [],
+    "self_loops": [
+      {
+        "id": "close(containers)",
+        "count": 1
+      }
+    ],
     "start_id": "START",
     "end_id": "END"
   }
