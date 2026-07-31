@@ -63,6 +63,7 @@ const layoutModeSelect = document.getElementById("layoutModeSelect");
 const highlightSpineBtn = document.getElementById("highlightSpineBtn");
 const graphSourceSelect = document.getElementById("graphSourceSelect");
 const emphasisSelect = document.getElementById("emphasisSelect");
+const edgeDetailSelect = document.getElementById("edgeDetailSelect");
 const graphPanelTitle = document.getElementById("graphPanelTitle");
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -241,6 +242,7 @@ function reapplyGraphSettings(resetPositions = false) {
         if (v === "all") return view.nSessions;
         return parseInt(v, 10) || 1;
       })(),
+      edgeDetail: edgeDetailSelect ? edgeDetailSelect.value : "all",
       nSessions: view.nSessions,
       canonicalSpine: view.spine
     }
@@ -733,6 +735,10 @@ graphModeSelect.addEventListener("change", () => {
   loadRecipeData();
 });
 
+if (edgeDetailSelect) {
+  edgeDetailSelect.addEventListener("change", () => reapplyGraphSettings(false));
+}
+
 if (emphasisSelect) {
   emphasisSelect.addEventListener("change", () => reapplyGraphSettings(false));
 }
@@ -773,6 +779,7 @@ async function init() {
   graphModeSelect.value = DEFAULT_DATA_MODE;
   colorEncodeSelect.value = DEFAULT_COLOR_ENCODE_MODE;
   sizeEncodeSelect.value = "support";
+  if (edgeDetailSelect) edgeDetailSelect.value = "top1"; // <-- Default to Backbone (Cleanest view!)
   if (layoutModeSelect) layoutModeSelect.value = "temporal";
 
   updateColorEncodeAvailability();

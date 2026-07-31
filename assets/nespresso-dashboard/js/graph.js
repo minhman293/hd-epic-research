@@ -197,9 +197,13 @@ function computeRankLayout(nodes, sequence, { maxRadius = 18, links = [], radius
   const rOf = (id) => radiusMap[id] || maxRadius || 18;
 
   const meanR = d3.mean(nodes, (n) => rOf(n.id)) || maxRadius || 18;
-  const area = nodes.length * Math.pow(meanR * 2.9, 2);
-  const ASPECT = 2.0;                       // wider than tall reads as a process
-  const SPREAD_X = Math.max(360, Math.sqrt(area * ASPECT));
+  // Room is set by how many collision-sized nodes must sit side by side. The
+  // old area formula gave 585px for 42 nodes with a ~92px collision diameter —
+  // barely six across — so they had nowhere to go but upward. That stacking is
+  // what produced the diamond.
+  const COLLIDE_R = Math.max(meanR + 16, 46);
+  const TARGET_ROWS = 3;
+  const SPREAD_X = Math.max(360, (nodes.length / TARGET_ROWS) * COLLIDE_R * 2);
 
   const simNodes = nodes.map((n) => {
     const rank = medianRank[n.id] ?? 0.5;
@@ -207,7 +211,9 @@ function computeRankLayout(nodes, sequence, { maxRadius = 18, links = [], radius
       id: n.id,
       // Seed on the rank line; the simulation takes it from there.
       x: (rank - 0.5) * SPREAD_X,
-      y: (Math.random() - 0.5) * SPREAD_X / ASPECT,
+      // Vertical seed spread matches the band the layout is aiming for —
+      // roughly TARGET_ROWS rows of collision-sized nodes.
+      y: (Math.random() - 0.5) * TARGET_ROWS * COLLIDE_R,
       targetX: (rank - 0.5) * SPREAD_X,
       r: rOf(n.id),
       isSpecial: !!n.isSpecial,
@@ -222,8 +228,13 @@ function computeRankLayout(nodes, sequence, { maxRadius = 18, links = [], radius
 
   // Self-loops carry no spatial information; returns pull just as hard as
   // forward edges, because a cycle means those two states ARE related.
+  // Only MAIN-FLOW edges shape the geometry. With 42 nodes and 410 transitions
+  // every node is springed to ~20 others, so forceLink collapses the graph into
+  // a ball however hard forceX pulls: measured 1.1:1 with all edges versus
+  // 2.7:1 with the backbone, at a GENTLER forceX. Demoted edges are still
+  // drawn — they just no longer vote on where nodes sit.
   const simLinks = (links || [])
-    .filter((l) => l.source !== l.target
+    .filter((l) => l.source !== l.target && !l.__minor
                 && idSet.has(l.source) && idSet.has(l.target))
     .map((l) => ({
       source: l.source,
@@ -239,13 +250,12 @@ function computeRankLayout(nodes, sequence, { maxRadius = 18, links = [], radius
                      + 34 + 70 * (1 - l.p))
       .strength(0.35))
     .force("charge", d3.forceManyBody().strength((d) => -(90 + d.r * 6)))
-    .force("x", d3.forceX((d) => d.targetX).strength((d) => d.bg ? 0.02 : 0.30))
-    .force("y", d3.forceY(0).strength((d) => d.bg ? 0.02 : 0.14))
+    .force("x", d3.forceX((d) => d.targetX).strength((d) => d.bg ? 0.02 : 0.45))
+    .force("y", d3.forceY(0).strength((d) => d.bg ? 0.02 : 0.10))
     // Foreground nodes carry a label below them that is often wider than the
     // circle ("close appliances" is ~90px against a ~50px node), so collision
     // has to reserve room for the text or labels overlap.
-    .force("collide", d3.forceCollide((d) => d.bg ? d.r * 0.45
-                                                  : Math.max(d.r + 16, 46))
+    .force("collide", d3.forceCollide((d) => d.bg ? d.r * 0.45 : COLLIDE_R)
       .strength(0.9))
     .stop();
 
@@ -803,6 +813,7 @@ export function createGraphController({
     activeHighlight = null; // reset highlight state on new build
 
     const supportFilter = extras.supportFilter || 1;
+    const edgeDetail = extras.edgeDetail || "all";
     const nSessionsHint = extras.nSessions || 0;
 
     if (resetPositions) userPositions = {};
@@ -839,7 +850,40 @@ export function createGraphController({
         && supportOf(n) < supportFilter;
     });
     const bgIds = new Set(enrichedNodes.filter((n) => n.__bg).map((n) => n.id));
+    // ─────────────────────────────────────────────────────────────────────────
+    // EDGE DETAIL — top-k outgoing transitions per action.
+    //
+    // Rolling up the tail moved the density problem from nodes to edges: 42
+    // nodes now carry 410 transitions, roughly a quarter of every possible
+    // directed pair. A global probability threshold is the wrong instrument
+    // here — an action with ten continuations at P=0.10 each would lose all of
+    // them and read as disconnected, which is the failure we just spent a week
+    // removing. Ranking each action's OWN outgoing edges adapts to out-degree
+    // and guarantees every action keeps its most likely continuation.
+    //
+    // Demoted edges are dimmed, never dropped: they keep their geometry, their
+    // arrowheads and their tooltips, and the ledger states how many there are.
+    // ─────────────────────────────────────────────────────────────────────────
+    const topK = edgeDetail === "top1" ? 1 : edgeDetail === "top2" ? 2 : Infinity;
+    const flowKeys = new Set();
+    if (topK !== Infinity) {
+      const bySource = d3.group(enrichedLinks, (l) => l.source);
+      bySource.forEach((links) => {
+        [...links]
+          .sort((a, b) => (b.probability || 0) - (a.probability || 0)
+                       || (b.count || 0) - (a.count || 0))
+          .slice(0, topK)
+          .forEach((l) => flowKeys.add(l.key));
+      });
+      // START and END are structural: always keep their connections prominent
+      // so the graph retains a visible entry and exit.
+      enrichedLinks.forEach((l) => {
+        if (isStartId(l.source) || isEndId(l.target)) flowKeys.add(l.key);
+      });
+    }
+
     enrichedLinks.forEach((l) => {
+      l.__minor = topK !== Infinity && !flowKeys.has(l.key);
       // An edge is foreground when BOTH endpoints are — nothing more.
       //
       // The earlier version also required the edge's own support to clear the
@@ -852,8 +896,9 @@ export function createGraphController({
       // occurring in every session does not mean one particular transition
       // into it occurred in every session; people reach the same state by
       // different routes. Gating on both is far stricter than intended.
-      l.__bg = bgIds.has(l.source) || bgIds.has(l.target);
+      l.__bg = bgIds.has(l.source) || bgIds.has(l.target) || l.__minor;
     });
+    const nMinor = enrichedLinks.filter((l) => l.__minor).length;
     const nBackground = enrichedNodes.filter((n) => n.__bg).length;
 
     const dataHasStart = enrichedNodes.some((n) => isStartId(n.id));
@@ -1253,7 +1298,7 @@ export function createGraphController({
       .attr("stroke", RETURN_COLOR)
       .attr("stroke-width", (d) => edgeWidthScale(edgeMetricFn(d)))
       .attr("stroke-dasharray", "6 4")
-      .attr("stroke-opacity", (d) => d.__bg ? 0.10 : (d.__weak ? 0.18 : 0.65))
+      .attr("opacity", (d) => d.__bg ? 0.10 : (d.__weak ? 0.18 : 0.65))
       .attr("marker-end", markerUrl("arrowReturn"))
       .attr("d", (d) => pathFor(d))
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
@@ -1333,7 +1378,7 @@ export function createGraphController({
       .attr("class", (d) => `link fwd-edge ${(d.count || 1) > medianCount ? "dominant" : "minor"}`)
       .attr("data-key", (d) => d.key)
       .attr("stroke-width", (d) => edgeWidthScale(edgeMetricFn(d)))
-      .attr("stroke-opacity", (d) => baseEdgeOpacity(d))
+      .attr("opacity", (d) => baseEdgeOpacity(d))
       .attr("stroke-dasharray", (d) => d.__weak ? "3 3" : null)
       .attr("marker-end", markerUrl("arrow"))
       .attr("d", (d) => pathFor(d))
@@ -1364,7 +1409,7 @@ export function createGraphController({
       .attr("data-key", (d) => d.key)
       .attr("data-pair-key", (d) => d.pairKey)
       .attr("stroke-width", (d) => edgeWidthScale(edgeMetricFn(d)))
-      .attr("stroke-opacity", (d) => baseEdgeOpacity(d))
+      .attr("opacity", (d) => baseEdgeOpacity(d))
       .attr("marker-end", markerUrl("arrow"))
       .attr("marker-start", markerUrl("arrowReverse"))
       .attr("d", (d) => pathFor(d))
@@ -1763,6 +1808,12 @@ export function createGraphController({
         `(support < ${supportFilter}) — hover to reveal`
       );
     }
+    if (nMinor > 0) {
+      ledgerLines.push(
+        `${enrichedLinks.length - nMinor} main transitions · ${nMinor} secondary ` +
+        `dimmed — hover an edge for its probability`
+      );
+    }
     ledgerLines.push(
       nIntroduced > 0
         ? `${nIntroduced} fabricated edge${nIntroduced === 1 ? "" : "s"} — never observed consecutively`
@@ -2059,7 +2110,7 @@ export function createGraphController({
       linkSelection.each(function(d) {
         const isActive = d.per_session_counts && d.per_session_counts[sessionIndex] > 0;
         const el = d3.select(this);
-        el.style("stroke-opacity", isActive ? 1.0 : 0.05);
+        el.style("opacity", isActive ? 1.0 : 0.05);
         el.style("stroke", isActive ? color : null);
         el.style("stroke-width", edgeWidthScale(edgeMetricFn(d)));
       });
@@ -2117,7 +2168,7 @@ export function createGraphController({
       linkSelection.each(function(d) {
         const isActive = spineEdges.has(d.key) || spineEdges.has(d.pairKey);
         const el = d3.select(this);
-        el.style("stroke-opacity", isActive ? 1.0 : 0.05);
+        el.style("opacity", isActive ? 1.0 : 0.05);
         
         if (isActive) {
           el.style("stroke", "#B8362A")
@@ -2180,9 +2231,9 @@ export function createGraphController({
         .style("stroke-width", edgeWidthScale(edgeMetricFn(d)));
         
       if (baseEdgeOpacityFn) {
-        el.style("stroke-opacity", baseEdgeOpacityFn(d));
+        el.style("opacity", baseEdgeOpacityFn(d));
       } else {
-        el.style("stroke-opacity", null);
+        el.style("opacity", null);
       }
     });
 

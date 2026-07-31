@@ -33,57 +33,80 @@
     </section>
 
     <!-- ENCODING CONTROLS — shared across both views ──────────────────────────── -->
-    <section class="encoding-controls-row" id="encodingControlsRow">
-      <label class="control-label">Detail Level:</label>
-      <select id="graphModeSelect" class="control-select">
-        <option value="hybrid">Abstraction (Verb_key)</option>
-        <option value="hybrid_cat">Abstraction (Verb_cat)</option>
-        <!-- <option value="smart">Smart-Merged (Clear)</option>
-        <option value="full">Full Raw (Complete)</option>
-        <option value="categorical">Categorical (Verb)</option> -->
-      </select>
+    <!-- PRIMARY CONTROLS — What you are looking at -->
+    <section class="encoding-controls-row" id="encodingControlsRow" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; padding: 10px 14px; background: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+      
+      <div class="control-group">
+        <label class="control-label" style="font-weight: 600; color: #334155;">View:</label>
+        <select id="graphSourceSelect" class="control-select">
+          <option value="merged">Merged (all sessions)</option>
+          <option value="session">This session (filtered)</option>
+          <option value="session_raw">This session (raw audit)</option>
+        </select>
+      </div>
 
-      <label class="control-label">Graph source:</label>
-      <select id="graphSourceSelect" class="control-select">
-        <option value="merged">Merged (all sessions)</option>
-        <option value="session">This session</option>
-        <option value="session_raw">This session (raw, unfiltered)</option>
-      </select>
+      <div class="control-group">
+        <label class="control-label" style="font-weight: 600; color: #334155;">Abstraction:</label>
+        <select id="graphModeSelect" class="control-select">
+          <option value="hybrid">Verb + Object</option>
+          <option value="hybrid_cat">Verb Category</option>
+        </select>
+      </div>
 
-      <span class="encoding-controls-sep"></span>
+      <div class="control-group">
+        <label class="control-label" style="font-weight: 600; color: #334155;">Flow Pattern:</label>
+        <select id="edgeDetailSelect" class="control-select">
+          <option value="top1">Backbone (Modal path only)</option>
+          <option value="top2">Main flow (Top 2 per action)</option>
+          <option value="all">All transitions</option>
+        </select>
+      </div>
 
-      <label class="control-label">Color encodes:</label>
-      <select id="colorEncodeSelect" class="control-select">
-        <option value="category">Action category</option>
-        <option value="phase">Recipe step</option>
-        <option value="duration">Mean duration</option>
-      </select>
-
-      <label class="control-label">Emphasis:</label>
-      <select id="emphasisSelect" class="control-select">
-        <option value="1">All actions</option>
-        <option value="2">Seen in 2+ sessions</option>
-        <option value="all">Seen in every session</option>
-      </select>
-
-      <label class="control-label">Node size:</label>
-      <select id="sizeEncodeSelect" class="control-select">
-        <option value="support">Frequency</option>
-        <option value="duration">Duration</option>
-      </select>
-
-      <label class="control-label" id="layoutLabel">Layout:</label>
-      <select id="layoutModeSelect" class="control-select">
-        <option value="temporal">Sequence Flow</option>
-        <option value="category">HRC Category</option>
-      </select>
-
-      <span class="encoding-controls-sep"></span>
+      
       
       <!-- Canonical Spine Button -->
-      <button id="highlightSpineBtn" class="control-btn" style="border-color: #ea580c; color: #B8362A; background-color: #fff; font-weight: bold; border: 1px solid #d1d5db; padding: 4px 8px; border-radius: 4px; cursor: pointer;">
-        Highlight Pattern
+      <button id="highlightSpineBtn" class="control-btn" style="border-color: #ea580c; color: #B8362A; background-color: #fff; font-weight: bold; border: 1px solid #d1d5db; padding: 6px 12px; border-radius: 6px; cursor: pointer;">
+        Highlight Canonical Pattern
       </button>
+    </section>
+
+    <!-- SECONDARY CONTROLS — How it is drawn (Visual Tuning) -->
+    <section class="encoding-controls-subrow" style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center; padding: 6px 14px; background: #ffffff; border-bottom: 1px solid #f1f5f9; font-size: 12px; color: #64748b;">
+      <span style="font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; font-size: 10px;">Styling:</span>
+      
+      <span>
+        <label for="colorEncodeSelect">Color:</label>
+        <select id="colorEncodeSelect" class="control-select-sub" style="border: none; background: transparent; font-weight: 500; color: #334155; cursor: pointer;">
+          <option value="category">Action category</option>
+          <option value="phase">Recipe step</option>
+          <option value="duration">Mean duration</option>
+        </select>
+      </span>
+
+      <span>
+        <label for="emphasisSelect">Emphasis:</label>
+        <select id="emphasisSelect" class="control-select-sub" style="border: none; background: transparent; font-weight: 500; color: #334155; cursor: pointer;">
+          <option value="1">All actions</option>
+          <option value="2">Seen in 2+ sessions</option>
+          <option value="all">Seen in every session</option>
+        </select>
+      </span>
+
+      <span>
+        <label for="sizeEncodeSelect">Size:</label>
+        <select id="sizeEncodeSelect" class="control-select-sub" style="border: none; background: transparent; font-weight: 500; color: #334155; cursor: pointer;">
+          <option value="support">Frequency</option>
+          <option value="duration">Duration</option>
+        </select>
+      </span>
+
+      <span>
+        <label for="layoutModeSelect">Layout:</label>
+        <select id="layoutModeSelect" class="control-select-sub" style="border: none; background: transparent; font-weight: 500; color: #334155; cursor: pointer;">
+          <option value="temporal">Sequence Flow</option>
+          <option value="category">HRC Category</option>
+        </select>
+      </span>
     </section>
 
     <!-- SINGLE UNIFIED VIEW ─────────────────────────────────────────── -->
