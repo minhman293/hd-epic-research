@@ -78,7 +78,7 @@
    "step_id": "P08_R01_S01",
    "video_id": "P08-20240613-122900",
    "n_actions": 18,
-   "repeats": 12,
+   "repeats": 1,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -262,7 +262,7 @@
    "step_id": "P08_R01_S02",
    "video_id": "P08-20240613-122900",
    "n_actions": 9,
-   "repeats": 5,
+   "repeats": 1,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -366,7 +366,7 @@
    "step_id": "P08_R01_S01",
    "video_id": "P08-20240613-122900",
    "n_actions": 5,
-   "repeats": 5,
+   "repeats": 1,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -435,7 +435,7 @@
    "step_id": "P08_R01_S02",
    "video_id": "P08-20240613-122900",
    "n_actions": 12,
-   "repeats": 11,
+   "repeats": 1,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -566,7 +566,7 @@
    "step_id": "P08_R01_S03",
    "video_id": "P08-20240613-122900",
    "n_actions": 9,
-   "repeats": 9,
+   "repeats": 1,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -1771,7 +1771,11 @@
     "n_raw_actions": 0,
     "verbs": {},
     "objects": {},
-    "verb": "START"
+    "verb": "START",
+    "head_action": null,
+    "top_action": null,
+    "top_objects": [],
+    "n_occurrences": 0
    },
    {
     "id": "grind weigh coffee",
@@ -1789,7 +1793,7 @@
     "is_primary": true,
     "median_rank": 0.25,
     "mean_onset": 0.3553,
-    "self_loop": 15,
+    "self_loop": 0,
     "n_raw_actions": 23,
     "verbs": {
      "take": 4,
@@ -1817,7 +1821,16 @@
      "cap": 1,
      "spoon": 1
     },
-    "verb": "grind weigh coffee"
+    "verb": "retrieve",
+    "head_action": null,
+    "top_action": "put(cup)",
+    "top_objects": [
+     "coffee",
+     "can",
+     "cup",
+     "scale"
+    ],
+    "n_occurrences": 2
    },
    {
     "id": "distribute tamp shot",
@@ -1835,7 +1848,7 @@
     "is_primary": true,
     "median_rank": 0.5,
     "mean_onset": 0.5952,
-    "self_loop": 14,
+    "self_loop": 0,
     "n_raw_actions": 21,
     "verbs": {
      "turn-on": 1,
@@ -1859,7 +1872,16 @@
      "presser": 1,
      "phone": 1
     },
-    "verb": "distribute tamp shot"
+    "verb": "leave",
+    "head_action": null,
+    "top_action": "take(cup)",
+    "top_objects": [
+     "cup",
+     "coffee",
+     "machine:washing",
+     "maker:coffee"
+    ],
+    "n_occurrences": 2
    },
    {
     "id": "pull espresso shot",
@@ -1877,7 +1899,7 @@
     "is_primary": true,
     "median_rank": 0.75,
     "mean_onset": 0.8382,
-    "self_loop": 8,
+    "self_loop": 0,
     "n_raw_actions": 9,
     "verbs": {
      "carry": 1,
@@ -1897,7 +1919,16 @@
      "drawer": 1,
      "plate": 1
     },
-    "verb": "pull espresso shot"
+    "verb": "access",
+    "head_action": null,
+    "top_action": "carry(cup)",
+    "top_objects": [
+     "cup",
+     "machine:washing",
+     "coffee",
+     "drawer"
+    ],
+    "n_occurrences": 1
    },
    {
     "id": "END",
@@ -1919,7 +1950,11 @@
     "n_raw_actions": 0,
     "verbs": {},
     "objects": {},
-    "verb": "END"
+    "verb": "END",
+    "head_action": null,
+    "top_action": null,
+    "top_objects": [],
+    "n_occurrences": 0
    }
   ],
   "links": [
@@ -1942,6 +1977,8 @@
     "is_bridge_edge": false,
     "is_introduced": false,
     "restored": false,
+    "session_only": false,
+    "kept_reason": "anchor",
     "weak": true,
     "evidence": "weak"
    },
@@ -1964,8 +2001,58 @@
     "is_bridge_edge": false,
     "is_introduced": false,
     "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
+   },
+   {
+    "source": "distribute tamp shot",
+    "target": "grind weigh coffee",
+    "key": "distribute tamp shot|||grind weigh coffee",
+    "pairKey": "distribute tamp shot|||grind weigh coffee",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "distribute tamp shot",
+    "target": "pull espresso shot",
+    "key": "distribute tamp shot|||pull espresso shot",
+    "pairKey": "distribute tamp shot|||pull espresso shot",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
    },
    {
     "source": "pull espresso shot",
@@ -1986,20 +2073,26 @@
     "is_bridge_edge": false,
     "is_introduced": false,
     "restored": false,
+    "session_only": false,
+    "kept_reason": "anchor",
     "weak": true,
     "evidence": "weak"
    }
   ]
  },
  "episode_report": {
-  "layer": "episode",
+  "layer": "step",
   "sessions": 1,
   "nodes": 5,
-  "edges": 3,
-  "out_degree": 0.6,
-  "edges_dropped": 2,
+  "edges": 5,
+  "out_degree": 1.0,
+  "edges_dropped": 0,
   "edges_restored": 0,
+  "edges_kept_for_single_session": 0,
   "fabricated_edges": 0,
+  "reachable_from_start": 5,
+  "can_reach_end": 5,
+  "total_states": 5,
   "isolated_nodes": 0,
   "raw_actions_covered": 53
  },
@@ -2054,6 +2147,8 @@
   "layer": "step",
   "verdict": "single_session",
   "headline": "Only one recording. This is one observed run, not a shared pattern.",
+  "starts_at_start": true,
+  "ends_at_end": true,
   "basis": "single_session",
   "n_sessions": 1,
   "spine_length": 5,
@@ -2066,20 +2161,11 @@
   ],
   "min_coverage": 1.0,
   "connectors": 0,
-  "direct_pairs": 2,
+  "direct_pairs": 4,
   "stitched_pairs": 0,
-  "broken_pairs": 2,
+  "broken_pairs": 0,
   "stitched": [],
-  "broken": [
-   [
-    "distribute tamp shot",
-    "grind weigh coffee"
-   ],
-   [
-    "distribute tamp shot",
-    "pull espresso shot"
-   ]
-  ],
+  "broken": [],
   "partial_pattern": null,
   "criteria": {
    "shared_pattern": "min session coverage >= 50%",
@@ -2087,6 +2173,781 @@
    "min_spine_length": 2
   },
   "note": "Every action in canonical_spine was performed by every session, in this order. tier='connector' nodes are the shortest observed route joining two spine actions that were never adjacent. No edge is fabricated."
+ },
+ "likely_path": [
+  "START",
+  "grind weigh coffee",
+  "distribute tamp shot",
+  "pull espresso shot",
+  "END"
+ ],
+ "likely_path_report": {
+  "method": "beam_search_max_probability",
+  "length": 5,
+  "reached_end": true,
+  "joint_probability": 0.5,
+  "mean_step_probability": 0.8409,
+  "weakest_edge": 0.5,
+  "candidates_considered": 2,
+  "note": "Each step is a common next move from that state. The route as a whole is a model, not necessarily a run anyone performed.",
+  "observed_in_full": true,
+  "sessions": [
+   0
+  ],
+  "longest_run": 3,
+  "path_length": 3,
+  "headline": "Most likely route \u2014 3 steps. Session(s) 1 performed exactly this run."
+ },
+ "likely_path_edges": [
+  1.0,
+  1.0,
+  0.5,
+  1.0
+ ],
+ "expansions": {
+  "grind weigh coffee": {
+   "nodes": [
+    {
+     "id": "put(cup)",
+     "count": 2,
+     "verb": "put",
+     "isSpecial": false
+    },
+    {
+     "id": "pour(coffee)",
+     "count": 2,
+     "verb": "pour",
+     "isSpecial": false
+    },
+    {
+     "id": "pat(maker:coffee)",
+     "count": 2,
+     "verb": "pat",
+     "isSpecial": false
+    },
+    {
+     "id": "take(cup)",
+     "count": 1,
+     "verb": "take",
+     "isSpecial": false
+    },
+    {
+     "id": "turn-on(scale)",
+     "count": 1,
+     "verb": "turn-on",
+     "isSpecial": false
+    },
+    {
+     "id": "adjust(scale)",
+     "count": 1,
+     "verb": "adjust",
+     "isSpecial": false
+    },
+    {
+     "id": "take(can)",
+     "count": 1,
+     "verb": "take",
+     "isSpecial": false
+    },
+    {
+     "id": "open(can)",
+     "count": 1,
+     "verb": "open",
+     "isSpecial": false
+    },
+    {
+     "id": "close(can)",
+     "count": 1,
+     "verb": "close",
+     "isSpecial": false
+    },
+    {
+     "id": "put(can)",
+     "count": 1,
+     "verb": "put",
+     "isSpecial": false
+    },
+    {
+     "id": "carry(phone)",
+     "count": 1,
+     "verb": "carry",
+     "isSpecial": false
+    },
+    {
+     "id": "write(coffee)",
+     "count": 1,
+     "verb": "write",
+     "isSpecial": false
+    },
+    {
+     "id": "move(phone)",
+     "count": 1,
+     "verb": "move",
+     "isSpecial": false
+    },
+    {
+     "id": "move(scale)",
+     "count": 1,
+     "verb": "move",
+     "isSpecial": false
+    },
+    {
+     "id": "take(maker:coffee)",
+     "count": 1,
+     "verb": "take",
+     "isSpecial": false
+    },
+    {
+     "id": "open(cap)",
+     "count": 1,
+     "verb": "open",
+     "isSpecial": false
+    },
+    {
+     "id": "crush(coffee)",
+     "count": 1,
+     "verb": "crush",
+     "isSpecial": false
+    },
+    {
+     "id": "take(spoon)",
+     "count": 1,
+     "verb": "take",
+     "isSpecial": false
+    },
+    {
+     "id": "mix(coffee)",
+     "count": 1,
+     "verb": "mix",
+     "isSpecial": false
+    },
+    {
+     "id": "scoop(coffee)",
+     "count": 1,
+     "verb": "scoop",
+     "isSpecial": false
+    }
+   ],
+   "links": [
+    {
+     "source": "take(cup)",
+     "target": "turn-on(scale)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "turn-on(scale)",
+     "target": "adjust(scale)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "adjust(scale)",
+     "target": "put(cup)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "put(cup)",
+     "target": "take(can)",
+     "count": 1,
+     "support": 1,
+     "probability": 0.5
+    },
+    {
+     "source": "take(can)",
+     "target": "open(can)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "open(can)",
+     "target": "pour(coffee)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "pour(coffee)",
+     "target": "close(can)",
+     "count": 1,
+     "support": 1,
+     "probability": 0.5
+    },
+    {
+     "source": "close(can)",
+     "target": "put(can)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "put(can)",
+     "target": "carry(phone)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "carry(phone)",
+     "target": "write(coffee)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "write(coffee)",
+     "target": "move(phone)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "move(phone)",
+     "target": "move(scale)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "move(scale)",
+     "target": "take(maker:coffee)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "take(maker:coffee)",
+     "target": "open(cap)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "open(cap)",
+     "target": "pour(coffee)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "pour(coffee)",
+     "target": "put(cup)",
+     "count": 1,
+     "support": 1,
+     "probability": 0.5
+    },
+    {
+     "source": "put(cup)",
+     "target": "crush(coffee)",
+     "count": 1,
+     "support": 1,
+     "probability": 0.5
+    },
+    {
+     "source": "pat(maker:coffee)",
+     "target": "take(spoon)",
+     "count": 1,
+     "support": 1,
+     "probability": 0.5
+    },
+    {
+     "source": "take(spoon)",
+     "target": "mix(coffee)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "mix(coffee)",
+     "target": "pat(maker:coffee)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "pat(maker:coffee)",
+     "target": "scoop(coffee)",
+     "count": 1,
+     "support": 1,
+     "probability": 0.5
+    }
+   ],
+   "n_raw_actions": 23,
+   "n_distinct_actions": 20,
+   "hidden_actions": 0,
+   "occurrences": [
+    {
+     "session": 0,
+     "start": 15.5,
+     "end": 96.38,
+     "video_id": "P08-20240613-122900",
+     "n_actions": 18,
+     "actions": [
+      "take(cup)",
+      "turn-on(scale)",
+      "adjust(scale)",
+      "put(cup)",
+      "take(can)",
+      "open(can)",
+      "pour(coffee)",
+      "close(can)",
+      "put(can)",
+      "carry(phone)",
+      "write(coffee)",
+      "move(phone)",
+      "move(scale)",
+      "take(maker:coffee)",
+      "open(cap)",
+      "pour(coffee)",
+      "put(cup)",
+      "crush(coffee)"
+     ]
+    },
+    {
+     "session": 0,
+     "start": 120.35,
+     "end": 130.2,
+     "video_id": "P08-20240613-122900",
+     "n_actions": 5,
+     "actions": [
+      "pat(maker:coffee)",
+      "take(spoon)",
+      "mix(coffee)",
+      "pat(maker:coffee)",
+      "scoop(coffee)"
+     ]
+    }
+   ],
+   "head_action": "take(cup)",
+   "synthetic": false,
+   "rolled_up": false,
+   "variants": []
+  },
+  "distribute tamp shot": {
+   "nodes": [
+    {
+     "id": "take(cup)",
+     "count": 3,
+     "verb": "take",
+     "isSpecial": false
+    },
+    {
+     "id": "put(cup)",
+     "count": 3,
+     "verb": "put",
+     "isSpecial": false
+    },
+    {
+     "id": "screw(cup)",
+     "count": 2,
+     "verb": "screw",
+     "isSpecial": false
+    },
+    {
+     "id": "pat(maker:coffee)",
+     "count": 2,
+     "verb": "pat",
+     "isSpecial": false
+    },
+    {
+     "id": "turn-on(machine:washing)",
+     "count": 1,
+     "verb": "turn-on",
+     "isSpecial": false
+    },
+    {
+     "id": "search(rack:drying)",
+     "count": 1,
+     "verb": "search",
+     "isSpecial": false
+    },
+    {
+     "id": "move(scale)",
+     "count": 1,
+     "verb": "move",
+     "isSpecial": false
+    },
+    {
+     "id": "put(coffee)",
+     "count": 1,
+     "verb": "put",
+     "isSpecial": false
+    },
+    {
+     "id": "crush(coffee)",
+     "count": 1,
+     "verb": "crush",
+     "isSpecial": false
+    },
+    {
+     "id": "put(spoon)",
+     "count": 1,
+     "verb": "put",
+     "isSpecial": false
+    },
+    {
+     "id": "pat(cup)",
+     "count": 1,
+     "verb": "pat",
+     "isSpecial": false
+    },
+    {
+     "id": "press(coffee)",
+     "count": 1,
+     "verb": "press",
+     "isSpecial": false
+    },
+    {
+     "id": "put(presser)",
+     "count": 1,
+     "verb": "put",
+     "isSpecial": false
+    },
+    {
+     "id": "put(machine:washing)",
+     "count": 1,
+     "verb": "put",
+     "isSpecial": false
+    },
+    {
+     "id": "move(phone)",
+     "count": 1,
+     "verb": "move",
+     "isSpecial": false
+    }
+   ],
+   "links": [
+    {
+     "source": "turn-on(machine:washing)",
+     "target": "take(cup)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "take(cup)",
+     "target": "search(rack:drying)",
+     "count": 1,
+     "support": 1,
+     "probability": 0.3333
+    },
+    {
+     "source": "search(rack:drying)",
+     "target": "take(cup)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "take(cup)",
+     "target": "take(cup)",
+     "count": 1,
+     "support": 1,
+     "probability": 0.3333
+    },
+    {
+     "source": "take(cup)",
+     "target": "screw(cup)",
+     "count": 1,
+     "support": 1,
+     "probability": 0.3333
+    },
+    {
+     "source": "screw(cup)",
+     "target": "put(cup)",
+     "count": 1,
+     "support": 1,
+     "probability": 0.5
+    },
+    {
+     "source": "put(cup)",
+     "target": "put(cup)",
+     "count": 1,
+     "support": 1,
+     "probability": 0.3333
+    },
+    {
+     "source": "put(cup)",
+     "target": "move(scale)",
+     "count": 1,
+     "support": 1,
+     "probability": 0.3333
+    },
+    {
+     "source": "put(coffee)",
+     "target": "pat(maker:coffee)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "pat(maker:coffee)",
+     "target": "crush(coffee)",
+     "count": 1,
+     "support": 1,
+     "probability": 0.5
+    },
+    {
+     "source": "crush(coffee)",
+     "target": "pat(maker:coffee)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "pat(maker:coffee)",
+     "target": "put(spoon)",
+     "count": 1,
+     "support": 1,
+     "probability": 0.5
+    },
+    {
+     "source": "put(spoon)",
+     "target": "pat(cup)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "pat(cup)",
+     "target": "press(coffee)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "press(coffee)",
+     "target": "put(presser)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "put(presser)",
+     "target": "put(cup)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "put(cup)",
+     "target": "screw(cup)",
+     "count": 1,
+     "support": 1,
+     "probability": 0.3333
+    },
+    {
+     "source": "screw(cup)",
+     "target": "put(machine:washing)",
+     "count": 1,
+     "support": 1,
+     "probability": 0.5
+    },
+    {
+     "source": "put(machine:washing)",
+     "target": "move(phone)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    }
+   ],
+   "n_raw_actions": 21,
+   "n_distinct_actions": 15,
+   "hidden_actions": 0,
+   "occurrences": [
+    {
+     "session": 0,
+     "start": 97.41,
+     "end": 118.96,
+     "video_id": "P08-20240613-122900",
+     "n_actions": 9,
+     "actions": [
+      "turn-on(machine:washing)",
+      "take(cup)",
+      "search(rack:drying)",
+      "take(cup)",
+      "take(cup)",
+      "screw(cup)",
+      "put(cup)",
+      "put(cup)",
+      "move(scale)"
+     ]
+    },
+    {
+     "session": 0,
+     "start": 130.13,
+     "end": 160.13,
+     "video_id": "P08-20240613-122900",
+     "n_actions": 12,
+     "actions": [
+      "put(coffee)",
+      "pat(maker:coffee)",
+      "crush(coffee)",
+      "pat(maker:coffee)",
+      "put(spoon)",
+      "pat(cup)",
+      "press(coffee)",
+      "put(presser)",
+      "put(cup)",
+      "screw(cup)",
+      "put(machine:washing)",
+      "move(phone)"
+     ]
+    }
+   ],
+   "head_action": "take(cup)",
+   "synthetic": false,
+   "rolled_up": false,
+   "variants": []
+  },
+  "pull espresso shot": {
+   "nodes": [
+    {
+     "id": "carry(cup)",
+     "count": 1,
+     "verb": "carry",
+     "isSpecial": false
+    },
+    {
+     "id": "put(cup)",
+     "count": 1,
+     "verb": "put",
+     "isSpecial": false
+    },
+    {
+     "id": "turn-on(machine:washing)",
+     "count": 1,
+     "verb": "turn-on",
+     "isSpecial": false
+    },
+    {
+     "id": "check(coffee)",
+     "count": 1,
+     "verb": "check",
+     "isSpecial": false
+    },
+    {
+     "id": "open(drawer)",
+     "count": 1,
+     "verb": "open",
+     "isSpecial": false
+    },
+    {
+     "id": "take(plate)",
+     "count": 1,
+     "verb": "take",
+     "isSpecial": false
+    },
+    {
+     "id": "finish(machine:washing)",
+     "count": 1,
+     "verb": "finish",
+     "isSpecial": false
+    },
+    {
+     "id": "wait(machine:washing)",
+     "count": 1,
+     "verb": "wait",
+     "isSpecial": false
+    },
+    {
+     "id": "squeeze(cup)",
+     "count": 1,
+     "verb": "squeeze",
+     "isSpecial": false
+    }
+   ],
+   "links": [
+    {
+     "source": "carry(cup)",
+     "target": "put(cup)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "put(cup)",
+     "target": "turn-on(machine:washing)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "turn-on(machine:washing)",
+     "target": "check(coffee)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "check(coffee)",
+     "target": "open(drawer)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "open(drawer)",
+     "target": "take(plate)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "take(plate)",
+     "target": "finish(machine:washing)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "finish(machine:washing)",
+     "target": "wait(machine:washing)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    },
+    {
+     "source": "wait(machine:washing)",
+     "target": "squeeze(cup)",
+     "count": 1,
+     "support": 1,
+     "probability": 1.0
+    }
+   ],
+   "n_raw_actions": 9,
+   "n_distinct_actions": 9,
+   "hidden_actions": 0,
+   "occurrences": [
+    {
+     "session": 0,
+     "start": 160.23,
+     "end": 191.15,
+     "video_id": "P08-20240613-122900",
+     "n_actions": 9,
+     "actions": [
+      "carry(cup)",
+      "put(cup)",
+      "turn-on(machine:washing)",
+      "check(coffee)",
+      "open(drawer)",
+      "take(plate)",
+      "finish(machine:washing)",
+      "wait(machine:washing)",
+      "squeeze(cup)"
+     ]
+    }
+   ],
+   "head_action": "carry(cup)",
+   "synthetic": false,
+   "rolled_up": false,
+   "variants": []
+  }
  },
  "analysis": {
   "canonical_spine": [
@@ -2140,6 +3001,8 @@
    "layer": "step",
    "verdict": "single_session",
    "headline": "Only one recording. This is one observed run, not a shared pattern.",
+   "starts_at_start": true,
+   "ends_at_end": true,
    "basis": "single_session",
    "n_sessions": 1,
    "spine_length": 5,
@@ -2152,20 +3015,11 @@
    ],
    "min_coverage": 1.0,
    "connectors": 0,
-   "direct_pairs": 2,
+   "direct_pairs": 4,
    "stitched_pairs": 0,
-   "broken_pairs": 2,
+   "broken_pairs": 0,
    "stitched": [],
-   "broken": [
-    [
-     "distribute tamp shot",
-     "grind weigh coffee"
-    ],
-    [
-     "distribute tamp shot",
-     "pull espresso shot"
-    ]
-   ],
+   "broken": [],
    "partial_pattern": null,
    "criteria": {
     "shared_pattern": "min session coverage >= 50%",

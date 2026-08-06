@@ -300,9 +300,29 @@ ever invented.
    Since a session's path is a sequence, an isolated state there is impossible in
    reality, so this is always a drawing artefact and is always repaired.
 
-The arrows restored by the third repair are marked `session only`. They are
-**not** part of the shared structure, so they are drawn **only when their own
-session is selected**. This keeps the merged picture honest without inflating it:
+### Every arrow records why it is in the graph
+
+Each arrow carries a reason, so the picture never depends on the order the
+repairs happened to run:
+
+| Reason | Meaning | Drawn in the all-sessions view? |
+|---|---|---|
+| `reproducible` | passed the support / repeat threshold | yes, solid |
+| `anchor` | a Start or End arrow | yes |
+| `connectivity` | restored so the merged chain stays walkable | yes, faint and dashed |
+| `session_path` | restored so one session's own path stays whole | only with that session |
+
+**Equal evidence gets equal treatment.** An early version had a real flaw here:
+`manipulate(drinks)` has two exits, each seen exactly once, in different
+sessions. One was restored by the reachability repair and drawn; the other was
+restored by the session repair and hidden. Two identical pieces of evidence,
+two different fates, decided by nothing but which repair ran first — and the
+reader saw a lone arrow labelled `P = 0.50` with no visible sibling.
+
+Now, whenever connectivity forces one exit from a state to be shown, **every
+equally-supported exit from that state is shown with it.** The drawn
+probabilities out of that state add up again, and the choice is no longer
+arbitrary. This keeps the merged picture honest without inflating it:
 
 | Drip Coffee, episode level | arrows |
 |---|---|
@@ -398,6 +418,14 @@ still correctly reports that it accounts for half the exits.
 | **total observed exits** | **3** | 1.00 | |
 
 Two of the three exits went one way, one went the other.
+
+### When several arrows leave a state, they are shown together
+
+Since the sibling rule above, a state whose exits have equal evidence shows all
+of them or none. So `manipulate(drinks)` now displays both of its arrows, each
+at `0.50 (n=1)`, and they sum to 1.00. A visible shortfall now only happens when
+the missing arrows have **less** evidence than the visible ones — that is, when
+the hidden exits really were rarer.
 
 ### Why not renormalise over the drawn arrows only?
 

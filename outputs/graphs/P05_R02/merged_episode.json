@@ -6078,6 +6078,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "anchor",
     "weak": true,
     "evidence": "weak"
    },
@@ -6094,7 +6095,7 @@
      "0": 1,
      "2": 1
     },
-    "probability": 0.6667,
+    "probability": 1.0,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -6102,6 +6103,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -6127,6 +6129,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "strong"
    },
@@ -6143,7 +6146,7 @@
      "0": 1,
      "2": 2
     },
-    "probability": 0.375,
+    "probability": 0.3,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -6151,6 +6154,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -6175,6 +6179,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -6191,7 +6196,7 @@
      "0": 1,
      "1": 1
     },
-    "probability": 0.5,
+    "probability": 0.4,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -6199,6 +6204,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -6222,6 +6228,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "anchor",
     "weak": true,
     "evidence": "weak"
    },
@@ -6245,6 +6252,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "anchor",
     "weak": true,
     "evidence": "weak"
    },
@@ -6269,6 +6277,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -6285,7 +6294,7 @@
      "1": 1,
      "2": 1
     },
-    "probability": 1.0,
+    "probability": 0.6667,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -6293,6 +6302,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -6317,6 +6327,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -6341,6 +6352,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -6365,6 +6377,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -6381,7 +6394,7 @@
      "1": 1,
      "2": 1
     },
-    "probability": 0.2857,
+    "probability": 0.25,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -6389,6 +6402,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "anchor",
     "weak": false,
     "evidence": "moderate"
    },
@@ -6412,6 +6426,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "anchor",
     "weak": true,
     "evidence": "weak"
    },
@@ -6427,7 +6442,7 @@
     "per_session_counts": {
      "2": 2
     },
-    "probability": 0.5,
+    "probability": 0.4,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -6435,6 +6450,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -6458,6 +6474,31 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "pour(baked goods and grains)",
+    "target": "pour(dairy and eggs)",
+    "key": "pour(baked goods and grains)|||pour(dairy and eggs)",
+    "pairKey": "pour(baked goods and grains)|||pour(dairy and eggs)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
@@ -6481,45 +6522,23 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
    {
-    "source": "shake(baked goods and grains)",
-    "target": "pour(dairy and eggs)",
-    "key": "shake(baked goods and grains)|||pour(dairy and eggs)",
-    "pairKey": "shake(baked goods and grains)|||pour(dairy and eggs)",
+    "source": "mix(baked goods and grains)",
+    "target": "scrape(fruits and nuts)",
+    "key": "mix(baked goods and grains)|||scrape(fruits and nuts)",
+    "pairKey": "mix(baked goods and grains)|||scrape(fruits and nuts)",
     "count": 1,
     "support": 1,
     "support_fraction": 0.333,
     "n_sessions": 3,
     "per_session_counts": {
-     "0": 1
+     "2": 1
     },
-    "probability": 0.125,
-    "is_self_loop": false,
-    "is_return": true,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": false,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "pour(drinks)",
-    "target": "manipulate(appliances)",
-    "key": "pour(drinks)|||manipulate(appliances)",
-    "pairKey": "pour(drinks)|||manipulate(appliances)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "0": 1
-    },
-    "probability": 0.25,
+    "probability": 0.0909,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -6527,29 +6546,7 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "press(appliances)",
-    "target": "put(containers)",
-    "key": "press(appliances)|||put(containers)",
-    "pairKey": "press(appliances)|||put(containers)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "0": 1
-    },
-    "probability": 0.2,
-    "is_self_loop": false,
-    "is_return": true,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
@@ -6573,6 +6570,31 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "pour(drinks)",
+    "target": "manipulate(appliances)",
+    "key": "pour(drinks)|||manipulate(appliances)",
+    "pairKey": "pour(drinks)|||manipulate(appliances)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.25,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
@@ -6596,14 +6618,111 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
    {
-    "source": "take(crockery)",
-    "target": "peel(rubbish)",
-    "key": "take(crockery)|||peel(rubbish)",
-    "pairKey": "take(crockery)|||peel(rubbish)",
+    "source": "drink(drinks)",
+    "target": "take(crockery)",
+    "key": "drink(drinks)|||take(crockery)",
+    "pairKey": "drink(drinks)|||take(crockery)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "pour(fruits and nuts)",
+    "target": "shake(containers)",
+    "key": "pour(fruits and nuts)|||shake(containers)",
+    "pairKey": "pour(fruits and nuts)|||shake(containers)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.2,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "pour(fruits and nuts)",
+    "target": "manipulate(appliances)",
+    "key": "pour(fruits and nuts)|||manipulate(appliances)",
+    "pairKey": "pour(fruits and nuts)|||manipulate(appliances)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.2,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "pour(fruits and nuts)",
+    "target": "press(appliances)",
+    "key": "pour(fruits and nuts)|||press(appliances)",
+    "pairKey": "pour(fruits and nuts)|||press(appliances)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.2,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "press(appliances)",
+    "target": "put(containers)",
+    "key": "press(appliances)|||put(containers)",
+    "pairKey": "press(appliances)|||put(containers)",
     "count": 1,
     "support": 1,
     "support_fraction": 0.333,
@@ -6613,35 +6732,13 @@
     },
     "probability": 0.1429,
     "is_self_loop": false,
-    "is_return": false,
+    "is_return": true,
     "is_bridged": false,
     "is_bridge_edge": false,
     "is_introduced": false,
     "restored": true,
     "session_only": false,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "peel(rubbish)",
-    "target": "cut(fruits and nuts)",
-    "key": "peel(rubbish)|||cut(fruits and nuts)",
-    "pairKey": "peel(rubbish)|||cut(fruits and nuts)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "0": 1
-    },
-    "probability": 0.5,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
@@ -6657,7 +6754,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.2,
+    "probability": 0.1429,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -6665,60 +6762,15 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
    {
-    "source": "take(containers)",
-    "target": "take(cutlery)",
-    "key": "take(containers)|||take(cutlery)",
-    "pairKey": "take(containers)|||take(cutlery)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "0": 1
-    },
-    "probability": 0.5,
-    "is_self_loop": false,
-    "is_return": true,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": false,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "shake(baked goods and grains)",
-    "target": "pour(fruits and nuts)",
-    "key": "shake(baked goods and grains)|||pour(fruits and nuts)",
-    "pairKey": "shake(baked goods and grains)|||pour(fruits and nuts)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "0": 1
-    },
-    "probability": 0.125,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": false,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "take(crockery)",
-    "target": "shake(containers)",
-    "key": "take(crockery)|||shake(containers)",
-    "pairKey": "take(crockery)|||shake(containers)",
+    "source": "press(appliances)",
+    "target": "drink(drinks)",
+    "key": "press(appliances)|||drink(drinks)",
+    "pairKey": "press(appliances)|||drink(drinks)",
     "count": 1,
     "support": 1,
     "support_fraction": 0.333,
@@ -6734,52 +6786,7 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "cut(fruits and nuts)",
-    "target": "shake(drinks)",
-    "key": "cut(fruits and nuts)|||shake(drinks)",
-    "pairKey": "cut(fruits and nuts)|||shake(drinks)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "1": 1
-    },
-    "probability": 0.3333,
-    "is_self_loop": false,
-    "is_return": true,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": false,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "take(cutlery)",
-    "target": "pull(furniture)",
-    "key": "take(cutlery)|||pull(furniture)",
-    "pairKey": "take(cutlery)|||pull(furniture)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "1": 1
-    },
-    "probability": 0.25,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
@@ -6795,7 +6802,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.2,
+    "probability": 0.1429,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -6803,14 +6810,15 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
    {
-    "source": "shake(baked goods and grains)",
-    "target": "scrape(fruits and nuts)",
-    "key": "shake(baked goods and grains)|||scrape(fruits and nuts)",
-    "pairKey": "shake(baked goods and grains)|||scrape(fruits and nuts)",
+    "source": "press(appliances)",
+    "target": "mix(baked goods and grains)",
+    "key": "press(appliances)|||mix(baked goods and grains)",
+    "pairKey": "press(appliances)|||mix(baked goods and grains)",
     "count": 1,
     "support": 1,
     "support_fraction": 0.333,
@@ -6818,7 +6826,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.125,
+    "probability": 0.1429,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -6826,22 +6834,23 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
    {
-    "source": "manipulate(appliances)",
-    "target": "press(appliances)",
-    "key": "manipulate(appliances)|||press(appliances)",
-    "pairKey": "manipulate(appliances)|||press(appliances)",
+    "source": "press(appliances)",
+    "target": "put(crockery)",
+    "key": "press(appliances)|||put(crockery)",
+    "pairKey": "press(appliances)|||put(crockery)",
     "count": 1,
     "support": 1,
     "support_fraction": 0.333,
     "n_sessions": 3,
     "per_session_counts": {
-     "0": 1
+     "2": 1
     },
-    "probability": 0.5,
+    "probability": 0.1429,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -6849,6 +6858,55 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "press(appliances)",
+    "target": "take(crockery)",
+    "key": "press(appliances)|||take(crockery)",
+    "pairKey": "press(appliances)|||take(crockery)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.1429,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "put(containers)",
+    "target": "take(cutlery)",
+    "key": "put(containers)|||take(cutlery)",
+    "pairKey": "put(containers)|||take(cutlery)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
@@ -6872,6 +6930,223 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "screw(containers)",
+    "target": "shake(drinks)",
+    "key": "screw(containers)|||shake(drinks)",
+    "pairKey": "screw(containers)|||shake(drinks)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.3333,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "shake(baked goods and grains)",
+    "target": "cut(fruits and nuts)",
+    "key": "shake(baked goods and grains)|||cut(fruits and nuts)",
+    "pairKey": "shake(baked goods and grains)|||cut(fruits and nuts)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.1,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "shake(baked goods and grains)",
+    "target": "pour(dairy and eggs)",
+    "key": "shake(baked goods and grains)|||pour(dairy and eggs)",
+    "pairKey": "shake(baked goods and grains)|||pour(dairy and eggs)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.1,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "shake(baked goods and grains)",
+    "target": "pour(fruits and nuts)",
+    "key": "shake(baked goods and grains)|||pour(fruits and nuts)",
+    "pairKey": "shake(baked goods and grains)|||pour(fruits and nuts)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.1,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "shake(baked goods and grains)",
+    "target": "press(appliances)",
+    "key": "shake(baked goods and grains)|||press(appliances)",
+    "pairKey": "shake(baked goods and grains)|||press(appliances)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.1,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "shake(baked goods and grains)",
+    "target": "scrape(fruits and nuts)",
+    "key": "shake(baked goods and grains)|||scrape(fruits and nuts)",
+    "pairKey": "shake(baked goods and grains)|||scrape(fruits and nuts)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.1,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "shake(baked goods and grains)",
+    "target": "peel(rubbish)",
+    "key": "shake(baked goods and grains)|||peel(rubbish)",
+    "pairKey": "shake(baked goods and grains)|||peel(rubbish)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.1,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "shake(baked goods and grains)",
+    "target": "take(cutlery)",
+    "key": "shake(baked goods and grains)|||take(cutlery)",
+    "pairKey": "shake(baked goods and grains)|||take(cutlery)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.1,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "cut(fruits and nuts)",
+    "target": "pull(furniture)",
+    "key": "cut(fruits and nuts)|||pull(furniture)",
+    "pairKey": "cut(fruits and nuts)|||pull(furniture)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.3333,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
@@ -6895,6 +7170,103 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "cut(fruits and nuts)",
+    "target": "shake(drinks)",
+    "key": "cut(fruits and nuts)|||shake(drinks)",
+    "pairKey": "cut(fruits and nuts)|||shake(drinks)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.3333,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "manipulate(appliances)",
+    "target": "press(appliances)",
+    "key": "manipulate(appliances)|||press(appliances)",
+    "pairKey": "manipulate(appliances)|||press(appliances)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "peel(rubbish)",
+    "target": "cut(fruits and nuts)",
+    "key": "peel(rubbish)|||cut(fruits and nuts)",
+    "pairKey": "peel(rubbish)|||cut(fruits and nuts)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "take(crockery)",
+    "target": "cut(fruits and nuts)",
+    "key": "take(crockery)|||cut(fruits and nuts)",
+    "pairKey": "take(crockery)|||cut(fruits and nuts)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.125,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
@@ -6918,29 +7290,55 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
    {
     "source": "shake(drinks)",
-    "target": "shake(containers)",
-    "key": "shake(drinks)|||shake(containers)",
-    "pairKey": "shake(drinks)|||shake(containers)",
+    "target": "mix(baked goods and grains)",
+    "key": "shake(drinks)|||mix(baked goods and grains)",
+    "pairKey": "shake(drinks)|||mix(baked goods and grains)",
     "count": 1,
     "support": 1,
     "support_fraction": 0.333,
     "n_sessions": 3,
     "per_session_counts": {
-     "1": 1
+     "2": 1
     },
     "probability": 0.3333,
     "is_self_loop": false,
-    "is_return": true,
+    "is_return": false,
     "is_bridged": false,
     "is_bridge_edge": false,
     "is_introduced": false,
     "restored": true,
     "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "take(crockery)",
+    "target": "mix(baked goods and grains)",
+    "key": "take(crockery)|||mix(baked goods and grains)",
+    "pairKey": "take(crockery)|||mix(baked goods and grains)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.125,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
@@ -6964,6 +7362,7 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
@@ -6987,6 +7386,79 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "take(containers)",
+    "target": "take(crockery)",
+    "key": "take(containers)|||take(crockery)",
+    "pairKey": "take(containers)|||take(crockery)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "manipulate(appliances)",
+    "target": "take(crockery)",
+    "key": "manipulate(appliances)|||take(crockery)",
+    "pairKey": "manipulate(appliances)|||take(crockery)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "take(cutlery)",
+    "target": "take(crockery)",
+    "key": "take(cutlery)|||take(crockery)",
+    "pairKey": "take(cutlery)|||take(crockery)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.2,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
@@ -7010,6 +7482,55 @@
     "is_introduced": false,
     "restored": true,
     "session_only": true,
+    "kept_reason": "session_path",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "take(crockery)",
+    "target": "peel(rubbish)",
+    "key": "take(crockery)|||peel(rubbish)",
+    "pairKey": "take(crockery)|||peel(rubbish)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.125,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": true,
+    "kept_reason": "session_path",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "take(containers)",
+    "target": "take(cutlery)",
+    "key": "take(containers)|||take(cutlery)",
+    "pairKey": "take(containers)|||take(cutlery)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": true,
+    "kept_reason": "session_path",
     "weak": true,
     "evidence": "weak"
    },
@@ -7025,7 +7546,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.25,
+    "probability": 0.2,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -7033,60 +7554,15 @@
     "is_introduced": false,
     "restored": true,
     "session_only": true,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "press(appliances)",
-    "target": "drink(drinks)",
-    "key": "press(appliances)|||drink(drinks)",
-    "pairKey": "press(appliances)|||drink(drinks)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "1": 1
-    },
-    "probability": 0.2,
-    "is_self_loop": false,
-    "is_return": true,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "drink(drinks)",
-    "target": "take(crockery)",
-    "key": "drink(drinks)|||take(crockery)",
-    "pairKey": "drink(drinks)|||take(crockery)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "1": 1
-    },
-    "probability": 0.5,
-    "is_self_loop": false,
-    "is_return": true,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
+    "kept_reason": "session_path",
     "weak": true,
     "evidence": "weak"
    },
    {
     "source": "take(crockery)",
-    "target": "cut(fruits and nuts)",
-    "key": "take(crockery)|||cut(fruits and nuts)",
-    "pairKey": "take(crockery)|||cut(fruits and nuts)",
+    "target": "shake(containers)",
+    "key": "take(crockery)|||shake(containers)",
+    "pairKey": "take(crockery)|||shake(containers)",
     "count": 1,
     "support": 1,
     "support_fraction": 0.333,
@@ -7094,14 +7570,39 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.1429,
+    "probability": 0.125,
     "is_self_loop": false,
-    "is_return": false,
+    "is_return": true,
     "is_bridged": false,
     "is_bridge_edge": false,
     "is_introduced": false,
     "restored": true,
     "session_only": true,
+    "kept_reason": "session_path",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "shake(drinks)",
+    "target": "shake(containers)",
+    "key": "shake(drinks)|||shake(containers)",
+    "pairKey": "shake(drinks)|||shake(containers)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.3333,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": true,
+    "kept_reason": "session_path",
     "weak": true,
     "evidence": "weak"
    },
@@ -7125,14 +7626,15 @@
     "is_introduced": false,
     "restored": true,
     "session_only": true,
+    "kept_reason": "session_path",
     "weak": true,
     "evidence": "weak"
    },
    {
-    "source": "put(containers)",
-    "target": "take(cutlery)",
-    "key": "put(containers)|||take(cutlery)",
-    "pairKey": "put(containers)|||take(cutlery)",
+    "source": "take(cutlery)",
+    "target": "pull(furniture)",
+    "key": "take(cutlery)|||pull(furniture)",
+    "pairKey": "take(cutlery)|||pull(furniture)",
     "count": 1,
     "support": 1,
     "support_fraction": 0.333,
@@ -7140,7 +7642,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.5,
+    "probability": 0.2,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -7148,6 +7650,7 @@
     "is_introduced": false,
     "restored": true,
     "session_only": true,
+    "kept_reason": "session_path",
     "weak": true,
     "evidence": "weak"
    },
@@ -7171,52 +7674,7 @@
     "is_introduced": false,
     "restored": true,
     "session_only": true,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "pour(fruits and nuts)",
-    "target": "manipulate(appliances)",
-    "key": "pour(fruits and nuts)|||manipulate(appliances)",
-    "pairKey": "pour(fruits and nuts)|||manipulate(appliances)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "1": 1
-    },
-    "probability": 0.25,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "manipulate(appliances)",
-    "target": "take(crockery)",
-    "key": "manipulate(appliances)|||take(crockery)",
-    "pairKey": "manipulate(appliances)|||take(crockery)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "1": 1
-    },
-    "probability": 0.5,
-    "is_self_loop": false,
-    "is_return": true,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
+    "kept_reason": "session_path",
     "weak": true,
     "evidence": "weak"
    },
@@ -7240,75 +7698,7 @@
     "is_introduced": false,
     "restored": true,
     "session_only": true,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "pour(baked goods and grains)",
-    "target": "pour(dairy and eggs)",
-    "key": "pour(baked goods and grains)|||pour(dairy and eggs)",
-    "pairKey": "pour(baked goods and grains)|||pour(dairy and eggs)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "2": 1
-    },
-    "probability": 0.5,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "press(appliances)",
-    "target": "put(crockery)",
-    "key": "press(appliances)|||put(crockery)",
-    "pairKey": "press(appliances)|||put(crockery)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "2": 1
-    },
-    "probability": 0.2,
-    "is_self_loop": false,
-    "is_return": true,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "put(crockery)",
-    "target": "take(cutlery)",
-    "key": "put(crockery)|||take(cutlery)",
-    "pairKey": "put(crockery)|||take(cutlery)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "2": 1
-    },
-    "probability": 0.3333,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
+    "kept_reason": "session_path",
     "weak": true,
     "evidence": "weak"
    },
@@ -7324,7 +7714,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.1429,
+    "probability": 0.125,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -7332,29 +7722,7 @@
     "is_introduced": false,
     "restored": true,
     "session_only": true,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "take(containers)",
-    "target": "take(crockery)",
-    "key": "take(containers)|||take(crockery)",
-    "pairKey": "take(containers)|||take(crockery)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "2": 1
-    },
-    "probability": 0.5,
-    "is_self_loop": false,
-    "is_return": true,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
+    "kept_reason": "session_path",
     "weak": true,
     "evidence": "weak"
    },
@@ -7370,60 +7738,15 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.1429,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "shake(drinks)",
-    "target": "mix(baked goods and grains)",
-    "key": "shake(drinks)|||mix(baked goods and grains)",
-    "pairKey": "shake(drinks)|||mix(baked goods and grains)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "2": 1
-    },
-    "probability": 0.3333,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "shake(baked goods and grains)",
-    "target": "peel(rubbish)",
-    "key": "shake(baked goods and grains)|||peel(rubbish)",
-    "pairKey": "shake(baked goods and grains)|||peel(rubbish)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "2": 1
-    },
     "probability": 0.125,
     "is_self_loop": false,
-    "is_return": true,
+    "is_return": false,
     "is_bridged": false,
     "is_bridge_edge": false,
     "is_introduced": false,
     "restored": true,
     "session_only": true,
+    "kept_reason": "session_path",
     "weak": true,
     "evidence": "weak"
    },
@@ -7447,98 +7770,7 @@
     "is_introduced": false,
     "restored": true,
     "session_only": true,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "shake(baked goods and grains)",
-    "target": "cut(fruits and nuts)",
-    "key": "shake(baked goods and grains)|||cut(fruits and nuts)",
-    "pairKey": "shake(baked goods and grains)|||cut(fruits and nuts)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "2": 1
-    },
-    "probability": 0.125,
-    "is_self_loop": false,
-    "is_return": true,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "cut(fruits and nuts)",
-    "target": "pull(furniture)",
-    "key": "cut(fruits and nuts)|||pull(furniture)",
-    "pairKey": "cut(fruits and nuts)|||pull(furniture)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "2": 1
-    },
-    "probability": 0.3333,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "mix(baked goods and grains)",
-    "target": "scrape(fruits and nuts)",
-    "key": "mix(baked goods and grains)|||scrape(fruits and nuts)",
-    "pairKey": "mix(baked goods and grains)|||scrape(fruits and nuts)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "2": 1
-    },
-    "probability": 0.0909,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "pour(fruits and nuts)",
-    "target": "shake(containers)",
-    "key": "pour(fruits and nuts)|||shake(containers)",
-    "pairKey": "pour(fruits and nuts)|||shake(containers)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "2": 1
-    },
-    "probability": 0.25,
-    "is_self_loop": false,
-    "is_return": true,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
+    "kept_reason": "session_path",
     "weak": true,
     "evidence": "weak"
    },
@@ -7562,6 +7794,7 @@
     "is_introduced": false,
     "restored": true,
     "session_only": true,
+    "kept_reason": "session_path",
     "weak": true,
     "evidence": "weak"
    }
@@ -7571,11 +7804,11 @@
   "layer": "episode",
   "sessions": 3,
   "nodes": 27,
-  "edges": 65,
-  "out_degree": 2.41,
+  "edges": 72,
+  "out_degree": 2.67,
   "edges_dropped": 60,
-  "edges_restored": 49,
-  "edges_kept_for_single_session": 25,
+  "edges_restored": 56,
+  "edges_kept_for_single_session": 14,
   "fabricated_edges": 0,
   "reachable_from_start": 27,
   "can_reach_end": 27,
@@ -7584,27 +7817,19 @@
   "raw_actions_covered": 572
  },
  "canonical_spine": [
-  "START",
   "pour(dairy and eggs)",
   "pour(drinks)",
   "press(appliances)",
-  "take(containers)",
   "take(crockery)",
   "cut(fruits and nuts)",
-  "shake(drinks)",
+  "pull(furniture)",
   "mix(baked goods and grains)",
   "shake(baked goods and grains)",
   "mix(baked goods and grains)",
   "shake(baked goods and grains)",
-  "pour(fruits and nuts)",
-  "END"
+  "pour(fruits and nuts)"
  ],
  "canonical_spine_path": [
-  {
-   "id": "START",
-   "tier": "spine",
-   "spine_index": -1
-  },
   {
    "id": "pour(dairy and eggs)",
    "tier": "spine",
@@ -7621,11 +7846,6 @@
    "spine_index": 2
   },
   {
-   "id": "take(containers)",
-   "tier": "connector",
-   "spine_index": null
-  },
-  {
    "id": "take(crockery)",
    "tier": "spine",
    "spine_index": 3
@@ -7636,7 +7856,7 @@
    "spine_index": 4
   },
   {
-   "id": "shake(drinks)",
+   "id": "pull(furniture)",
    "tier": "connector",
    "spine_index": null
   },
@@ -7664,18 +7884,15 @@
    "id": "pour(fruits and nuts)",
    "tier": "spine",
    "spine_index": 8
-  },
-  {
-   "id": "END",
-   "tier": "spine",
-   "spine_index": 9
   }
  ],
  "canonical_spine_report": {
   "method": "longest_common_subsequence",
   "layer": "episode",
   "verdict": "partial_pattern",
-  "headline": "Partial pattern: 9 steps are common to all 3 sessions, but they explain only 24%-38% of each run. Most of what happens is not shared.",
+  "headline": "Partial pattern: 9 steps are common to all 3 sessions, but they explain only 24%-38% of each run. Most of what happens is not shared. The sessions did not all begin the same way, so the pattern starts partway in. They did not all finish the same way either.",
+  "starts_at_start": false,
+  "ends_at_end": false,
   "basis": "cross_session",
   "n_sessions": 3,
   "spine_length": 9,
@@ -7691,23 +7908,16 @@
    0.2432
   ],
   "min_coverage": 0.2432,
-  "connectors": 3,
-  "direct_pairs": 5,
-  "stitched_pairs": 3,
+  "connectors": 2,
+  "direct_pairs": 6,
+  "stitched_pairs": 2,
   "broken_pairs": 0,
   "stitched": [
-   {
-    "from": "press(appliances)",
-    "to": "take(crockery)",
-    "via": [
-     "take(containers)"
-    ]
-   },
    {
     "from": "cut(fruits and nuts)",
     "to": "mix(baked goods and grains)",
     "via": [
-     "shake(drinks)"
+     "pull(furniture)"
     ]
    },
    {
@@ -7766,10 +7976,10 @@
   "method": "beam_search_max_probability",
   "length": 10,
   "reached_end": true,
-  "joint_probability": 0.00264537,
-  "mean_step_probability": 0.5171,
+  "joint_probability": 0.00231481,
+  "mean_step_probability": 0.5095,
   "weakest_edge": 0.25,
-  "candidates_considered": 367,
+  "candidates_considered": 339,
   "note": "Each step is a common next move from that state. The route as a whole is a model, not necessarily a run anyone performed.",
   "observed_in_full": false,
   "sessions": [],
@@ -7782,11 +7992,11 @@
   1.0,
   0.5,
   0.6667,
-  1.0,
+  0.6667,
   0.25,
   0.5,
-  0.6667,
-  0.2857
+  1.0,
+  0.25
  ],
  "expansions": {
   "manipulate(crockery)": {
@@ -14762,27 +14972,19 @@
  },
  "analysis": {
   "canonical_spine": [
-   "START",
    "pour(dairy and eggs)",
    "pour(drinks)",
    "press(appliances)",
-   "take(containers)",
    "take(crockery)",
    "cut(fruits and nuts)",
-   "shake(drinks)",
+   "pull(furniture)",
    "mix(baked goods and grains)",
    "shake(baked goods and grains)",
    "mix(baked goods and grains)",
    "shake(baked goods and grains)",
-   "pour(fruits and nuts)",
-   "END"
+   "pour(fruits and nuts)"
   ],
   "canonical_spine_path": [
-   {
-    "id": "START",
-    "tier": "spine",
-    "spine_index": -1
-   },
    {
     "id": "pour(dairy and eggs)",
     "tier": "spine",
@@ -14799,11 +15001,6 @@
     "spine_index": 2
    },
    {
-    "id": "take(containers)",
-    "tier": "connector",
-    "spine_index": null
-   },
-   {
     "id": "take(crockery)",
     "tier": "spine",
     "spine_index": 3
@@ -14814,7 +15011,7 @@
     "spine_index": 4
    },
    {
-    "id": "shake(drinks)",
+    "id": "pull(furniture)",
     "tier": "connector",
     "spine_index": null
    },
@@ -14842,18 +15039,15 @@
     "id": "pour(fruits and nuts)",
     "tier": "spine",
     "spine_index": 8
-   },
-   {
-    "id": "END",
-    "tier": "spine",
-    "spine_index": 9
    }
   ],
   "canonical_spine_report": {
    "method": "longest_common_subsequence",
    "layer": "episode",
    "verdict": "partial_pattern",
-   "headline": "Partial pattern: 9 steps are common to all 3 sessions, but they explain only 24%-38% of each run. Most of what happens is not shared.",
+   "headline": "Partial pattern: 9 steps are common to all 3 sessions, but they explain only 24%-38% of each run. Most of what happens is not shared. The sessions did not all begin the same way, so the pattern starts partway in. They did not all finish the same way either.",
+   "starts_at_start": false,
+   "ends_at_end": false,
    "basis": "cross_session",
    "n_sessions": 3,
    "spine_length": 9,
@@ -14869,23 +15063,16 @@
     0.2432
    ],
    "min_coverage": 0.2432,
-   "connectors": 3,
-   "direct_pairs": 5,
-   "stitched_pairs": 3,
+   "connectors": 2,
+   "direct_pairs": 6,
+   "stitched_pairs": 2,
    "broken_pairs": 0,
    "stitched": [
-    {
-     "from": "press(appliances)",
-     "to": "take(crockery)",
-     "via": [
-      "take(containers)"
-     ]
-    },
     {
      "from": "cut(fruits and nuts)",
      "to": "mix(baked goods and grains)",
      "via": [
-      "shake(drinks)"
+      "pull(furniture)"
      ]
     },
     {

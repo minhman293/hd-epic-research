@@ -11862,6 +11862,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "anchor",
     "weak": true,
     "evidence": "weak"
    },
@@ -11886,6 +11887,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -11911,6 +11913,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -11937,6 +11940,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "strong"
    },
@@ -11963,6 +11967,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "strong"
    },
@@ -11986,6 +11991,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "anchor",
     "weak": true,
     "evidence": "weak"
    },
@@ -12010,6 +12016,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "anchor",
     "weak": false,
     "evidence": "moderate"
    },
@@ -12035,6 +12042,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -12060,6 +12068,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "anchor",
     "weak": false,
     "evidence": "moderate"
    },
@@ -12083,6 +12092,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "anchor",
     "weak": true,
     "evidence": "weak"
    },
@@ -12106,6 +12116,7 @@
     "is_introduced": false,
     "restored": true,
     "session_only": true,
+    "kept_reason": "session_path",
     "weak": true,
     "evidence": "weak"
    },
@@ -12129,6 +12140,7 @@
     "is_introduced": false,
     "restored": true,
     "session_only": true,
+    "kept_reason": "session_path",
     "weak": true,
     "evidence": "weak"
    },
@@ -12152,6 +12164,7 @@
     "is_introduced": false,
     "restored": true,
     "session_only": true,
+    "kept_reason": "session_path",
     "weak": true,
     "evidence": "weak"
    },
@@ -12175,6 +12188,7 @@
     "is_introduced": false,
     "restored": true,
     "session_only": true,
+    "kept_reason": "session_path",
     "weak": true,
     "evidence": "weak"
    }
@@ -12241,6 +12255,8 @@
   "layer": "step",
   "verdict": "partial_pattern",
   "headline": "Partial pattern: 4 steps are common to all 4 sessions, but they explain only 44%-80% of each run. Most of what happens is not shared.",
+  "starts_at_start": true,
+  "ends_at_end": true,
   "basis": "cross_session",
   "n_sessions": 4,
   "spine_length": 4,
@@ -17470,6 +17486,8 @@
    "layer": "step",
    "verdict": "partial_pattern",
    "headline": "Partial pattern: 4 steps are common to all 4 sessions, but they explain only 44%-80% of each run. Most of what happens is not shared.",
+   "starts_at_start": true,
+   "ends_at_end": true,
    "basis": "cross_session",
    "n_sessions": 4,
    "spine_length": 4,

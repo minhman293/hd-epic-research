@@ -5967,6 +5967,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "anchor",
     "weak": false,
     "evidence": "moderate"
    },
@@ -5991,6 +5992,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -6007,7 +6009,7 @@
      "0": 1,
      "1": 1
     },
-    "probability": 0.3333,
+    "probability": 0.4,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -6015,6 +6017,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -6039,6 +6042,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -6063,6 +6067,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "anchor",
     "weak": false,
     "evidence": "moderate"
    },
@@ -6087,6 +6092,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -6103,7 +6109,7 @@
      "1": 1,
      "2": 1
     },
-    "probability": 0.3333,
+    "probability": 0.4,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -6111,6 +6117,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -6135,6 +6142,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
@@ -6158,6 +6166,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "anchor",
     "weak": true,
     "evidence": "weak"
    },
@@ -6181,6 +6190,7 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "anchor",
     "weak": true,
     "evidence": "weak"
    },
@@ -6204,43 +6214,21 @@
     "is_introduced": false,
     "restored": false,
     "session_only": false,
+    "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
    },
    {
-    "source": "press(appliances)",
-    "target": "turn(containers)",
-    "key": "press(appliances)|||turn(containers)",
-    "pairKey": "press(appliances)|||turn(containers)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "0": 1
-    },
-    "probability": 0.1667,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": false,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "turn(crockery)",
+    "source": "manipulate(dairy and eggs)",
     "target": "mix(drinks)",
-    "key": "turn(crockery)|||mix(drinks)",
-    "pairKey": "turn(crockery)|||mix(drinks)",
+    "key": "manipulate(dairy and eggs)|||mix(drinks)",
+    "pairKey": "manipulate(dairy and eggs)|||mix(drinks)",
     "count": 1,
     "support": 1,
     "support_fraction": 0.333,
     "n_sessions": 3,
     "per_session_counts": {
-     "0": 1
+     "2": 1
     },
     "probability": 0.3333,
     "is_self_loop": false,
@@ -6250,29 +6238,7 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "press(appliances)",
-    "target": "turn(crockery)",
-    "key": "press(appliances)|||turn(crockery)",
-    "pairKey": "press(appliances)|||turn(crockery)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "0": 1
-    },
-    "probability": 0.1667,
-    "is_self_loop": false,
-    "is_return": true,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
@@ -6296,6 +6262,55 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "manipulate(dairy and eggs)",
+    "target": "wash(dairy and eggs)",
+    "key": "manipulate(dairy and eggs)|||wash(dairy and eggs)",
+    "pairKey": "manipulate(dairy and eggs)|||wash(dairy and eggs)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.3333,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "manipulate(drinks)",
+    "target": "turn(containers)",
+    "key": "manipulate(drinks)|||turn(containers)",
+    "pairKey": "manipulate(drinks)|||turn(containers)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
@@ -6319,29 +6334,7 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "turn(containers)",
-    "target": "press(appliances)",
-    "key": "turn(containers)|||press(appliances)",
-    "pairKey": "turn(containers)|||press(appliances)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "0": 1
-    },
-    "probability": 0.5,
-    "is_self_loop": false,
-    "is_return": true,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": false,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
@@ -6365,29 +6358,7 @@
     "is_introduced": false,
     "restored": true,
     "session_only": false,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "manipulate(drinks)",
-    "target": "turn(containers)",
-    "key": "manipulate(drinks)|||turn(containers)",
-    "pairKey": "manipulate(drinks)|||turn(containers)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "1": 1
-    },
-    "probability": 0.5,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
+    "kept_reason": "connectivity",
     "weak": true,
     "evidence": "weak"
    },
@@ -6410,7 +6381,80 @@
     "is_bridge_edge": false,
     "is_introduced": false,
     "restored": true,
+    "session_only": false,
+    "kept_reason": "connectivity",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "press(appliances)",
+    "target": "turn(containers)",
+    "key": "press(appliances)|||turn(containers)",
+    "pairKey": "press(appliances)|||turn(containers)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.2,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
     "session_only": true,
+    "kept_reason": "session_path",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "turn(containers)",
+    "target": "press(appliances)",
+    "key": "turn(containers)|||press(appliances)",
+    "pairKey": "turn(containers)|||press(appliances)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": true,
+    "kept_reason": "session_path",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "turn(crockery)",
+    "target": "mix(drinks)",
+    "key": "turn(crockery)|||mix(drinks)",
+    "pairKey": "turn(crockery)|||mix(drinks)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.3333,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": true,
+    "session_only": true,
+    "kept_reason": "session_path",
     "weak": true,
     "evidence": "weak"
    },
@@ -6434,52 +6478,7 @@
     "is_introduced": false,
     "restored": true,
     "session_only": true,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "manipulate(dairy and eggs)",
-    "target": "wash(dairy and eggs)",
-    "key": "manipulate(dairy and eggs)|||wash(dairy and eggs)",
-    "pairKey": "manipulate(dairy and eggs)|||wash(dairy and eggs)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "2": 1
-    },
-    "probability": 0.3333,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "manipulate(dairy and eggs)",
-    "target": "mix(drinks)",
-    "key": "manipulate(dairy and eggs)|||mix(drinks)",
-    "pairKey": "manipulate(dairy and eggs)|||mix(drinks)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "2": 1
-    },
-    "probability": 0.3333,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
+    "kept_reason": "session_path",
     "weak": true,
     "evidence": "weak"
    }
@@ -6489,11 +6488,11 @@
   "layer": "episode",
   "sessions": 3,
   "nodes": 12,
-  "edges": 23,
-  "out_degree": 1.92,
+  "edges": 22,
+  "out_degree": 1.83,
   "edges_dropped": 12,
-  "edges_restored": 12,
-  "edges_kept_for_single_session": 5,
+  "edges_restored": 11,
+  "edges_kept_for_single_session": 4,
   "fabricated_edges": 0,
   "reachable_from_start": 12,
   "can_reach_end": 12,
@@ -6503,7 +6502,8 @@
  },
  "canonical_spine": [
   "press(appliances)",
-  "turn(crockery)",
+  "manipulate(drinks)",
+  "manipulate(dairy and eggs)",
   "mix(drinks)",
   "END"
  ],
@@ -6514,7 +6514,12 @@
    "spine_index": 0
   },
   {
-   "id": "turn(crockery)",
+   "id": "manipulate(drinks)",
+   "tier": "connector",
+   "spine_index": null
+  },
+  {
+   "id": "manipulate(dairy and eggs)",
    "tier": "connector",
    "spine_index": null
   },
@@ -6551,7 +6556,7 @@
    0.2
   ],
   "min_coverage": 0.2,
-  "connectors": 1,
+  "connectors": 2,
   "direct_pairs": 0,
   "stitched_pairs": 1,
   "broken_pairs": 0,
@@ -6560,7 +6565,8 @@
     "from": "press(appliances)",
     "to": "mix(drinks)",
     "via": [
-     "turn(crockery)"
+     "manipulate(drinks)",
+     "manipulate(dairy and eggs)"
     ]
    }
   ],
@@ -6599,7 +6605,7 @@
   "joint_probability": 0.14814815,
   "mean_step_probability": 0.6204,
   "weakest_edge": 0.3333,
-  "candidates_considered": 31,
+  "candidates_considered": 27,
   "note": "Each step is a common next move from that state. The route as a whole is a model, not necessarily a run anyone performed.",
   "observed_in_full": true,
   "sessions": [
@@ -9537,7 +9543,8 @@
  "analysis": {
   "canonical_spine": [
    "press(appliances)",
-   "turn(crockery)",
+   "manipulate(drinks)",
+   "manipulate(dairy and eggs)",
    "mix(drinks)",
    "END"
   ],
@@ -9548,7 +9555,12 @@
     "spine_index": 0
    },
    {
-    "id": "turn(crockery)",
+    "id": "manipulate(drinks)",
+    "tier": "connector",
+    "spine_index": null
+   },
+   {
+    "id": "manipulate(dairy and eggs)",
     "tier": "connector",
     "spine_index": null
    },
@@ -9585,7 +9597,7 @@
     0.2
    ],
    "min_coverage": 0.2,
-   "connectors": 1,
+   "connectors": 2,
    "direct_pairs": 0,
    "stitched_pairs": 1,
    "broken_pairs": 0,
@@ -9594,7 +9606,8 @@
      "from": "press(appliances)",
      "to": "mix(drinks)",
      "via": [
-      "turn(crockery)"
+      "manipulate(drinks)",
+      "manipulate(dairy and eggs)"
      ]
     }
    ],

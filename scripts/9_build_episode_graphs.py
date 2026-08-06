@@ -229,7 +229,7 @@ def graph_from(sessions, cfg, n_sessions, layer="episode"):
                 return
             # Prefer the strongest dropped edge that joins the good set.
             best, best_v = None, -1
-            for (a, b), v in dropped.items():
+            for (a, b), v in sorted(dropped.items(), key=lambda kv: (-kv[1], kv[0])):
                 if (a, b) in kept:
                     continue
                 joins = (a in good and b in missing) if forward \
@@ -240,6 +240,22 @@ def graph_from(sessions, cfg, n_sessions, layer="episode"):
                 return                      # genuinely unreachable; report it
             kept[best] = ecount[best]
             restored.add(best)
+            # If connectivity forces us to show one exit from a state, show
+            # every equally-supported exit from it. Otherwise the choice
+            # between two identical single-observation edges is made by the
+            # order the repairs happen to run — and the reader sees one lone
+            # arrow marked P = 0.50 with no visible sibling. Siblings are
+            # restored together so the drawn probabilities out of that state
+            # add up.
+            src, tgt = best
+            for (a, b), v in list(dropped.items()):
+                if (a, b) in kept:
+                    continue
+                same_exit = forward and a == src and v == best_v
+                same_entry = (not forward) and b == tgt and v == best_v
+                if same_exit or same_entry:
+                    kept[(a, b)] = ecount[(a, b)]
+                    restored.add((a, b))
 
     _repair(forward=True)
     _repair(forward=False)
@@ -391,6 +407,16 @@ def graph_from(sessions, cfg, n_sessions, layer="episode"):
             # Kept only so one session's own walk stays connected. Faint in the
             # merged view, full strength when that session is highlighted.
             "session_only": (src, tgt) in session_repairs,
+            # Why this edge is in the graph at all:
+            #   reproducible – passed the support / repeat threshold
+            #   anchor       – a START or END edge
+            #   connectivity – restored so the merged chain stays walkable
+            #   session_path – restored so one session's own path stays whole
+            "kept_reason": (
+                "anchor" if src == "START" or tgt == "END"
+                else "session_path" if (src, tgt) in session_repairs
+                else "connectivity" if (src, tgt) in restored
+                else "reproducible"),
             "weak": v < cfg.min_edge_count,
             "evidence": "weak" if v <= 1 else ("moderate" if v <= 3 else "strong"),
         })
