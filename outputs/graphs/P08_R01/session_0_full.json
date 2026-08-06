@@ -4,7 +4,7 @@
     "name": "Coffee",
     "session_index": 0,
     "video_id": "P08-20240613-122900",
-    "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P08-20240613-122900.mp4",
+    "video_path": "raw-video/P08-20240613-122900.mp4",
     "narration_count": 57,
     "n_videos": 1,
     "total_capture_duration_s": 198.8
@@ -12,7 +12,7 @@
   "videos": [
     {
       "video_id": "P08-20240613-122900",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P08-20240613-122900.mp4",
+      "video_path": "raw-video/P08-20240613-122900.mp4",
       "offset_s": 0.0,
       "duration_s": 198.8
     }
@@ -144,6 +144,8 @@
       "edge_key": "slide(phone)|||open(phone)",
       "step_id": null,
       "is_primary": false,
+      "in_window_scope": false,
+      "in_span_scope": false,
       "phase": null,
       "verb_class": 61,
       "noun_class": 165,
@@ -161,6 +163,8 @@
       "edge_key": "open(phone)|||move(scale)",
       "step_id": null,
       "is_primary": false,
+      "in_window_scope": false,
+      "in_span_scope": false,
       "phase": null,
       "verb_class": 3,
       "noun_class": 165,
@@ -178,6 +182,8 @@
       "edge_key": "move(scale)|||take(cup)",
       "step_id": null,
       "is_primary": false,
+      "in_window_scope": false,
+      "in_span_scope": false,
       "phase": null,
       "verb_class": 11,
       "noun_class": 108,
@@ -195,6 +201,8 @@
       "edge_key": "take(cup)|||turn-on(scale)",
       "step_id": "P08_R01_S01",
       "is_primary": false,
+      "in_window_scope": false,
+      "in_span_scope": false,
       "phase": "prep",
       "verb_class": 0,
       "noun_class": 13,
@@ -211,7 +219,9 @@
       "next_action": "adjust(scale)",
       "edge_key": "turn-on(scale)|||adjust(scale)",
       "step_id": "P08_R01_S01",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 6,
       "noun_class": 108,
@@ -228,7 +238,9 @@
       "next_action": "put(cup)",
       "edge_key": "adjust(scale)|||put(cup)",
       "step_id": "P08_R01_S01",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 17,
       "noun_class": 108,
@@ -246,6 +258,8 @@
       "edge_key": "put(cup)|||take(can)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 1,
       "noun_class": 13,
@@ -262,7 +276,9 @@
       "next_action": "open(can)",
       "edge_key": "take(can)|||open(can)",
       "step_id": "P08_R01_S01",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 0,
       "noun_class": 61,
@@ -279,7 +295,9 @@
       "next_action": "pour(coffee)",
       "edge_key": "open(can)|||pour(coffee)",
       "step_id": "P08_R01_S01",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 3,
       "noun_class": 61,
@@ -297,6 +315,8 @@
       "edge_key": "pour(coffee)|||close(can)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 9,
       "noun_class": 59,
@@ -313,7 +333,9 @@
       "next_action": "put(can)",
       "edge_key": "close(can)|||put(can)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 4,
       "noun_class": 61,
@@ -330,7 +352,9 @@
       "next_action": "carry(phone)",
       "edge_key": "put(can)|||carry(phone)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 1,
       "noun_class": 61,
@@ -347,7 +371,9 @@
       "next_action": "write(coffee)",
       "edge_key": "carry(phone)|||write(coffee)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 89,
       "noun_class": 165,
@@ -364,7 +390,9 @@
       "next_action": "move(phone)",
       "edge_key": "write(coffee)|||move(phone)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 97,
       "noun_class": 59,
@@ -381,7 +409,9 @@
       "next_action": "move(scale)",
       "edge_key": "move(phone)|||move(scale)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 11,
       "noun_class": 165,
@@ -398,7 +428,9 @@
       "next_action": "take(maker:coffee)",
       "edge_key": "move(scale)|||take(maker:coffee)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 11,
       "noun_class": 108,
@@ -416,6 +448,8 @@
       "edge_key": "take(maker:coffee)|||open(cap)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 0,
       "noun_class": 50,
@@ -433,6 +467,8 @@
       "edge_key": "open(cap)|||pour(coffee)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 3,
       "noun_class": 118,
@@ -450,6 +486,8 @@
       "edge_key": "pour(coffee)|||put(cup)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 9,
       "noun_class": 59,
@@ -467,6 +505,8 @@
       "edge_key": "put(cup)|||crush(coffee)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 1,
       "noun_class": 13,
@@ -484,6 +524,8 @@
       "edge_key": "crush(coffee)|||turn-on(machine:washing)",
       "step_id": "P08_R01_S01",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 49,
       "noun_class": 59,
@@ -500,7 +542,9 @@
       "next_action": "take(cup)",
       "edge_key": "turn-on(machine:washing)|||take(cup)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 6,
       "noun_class": 124,
@@ -517,7 +561,9 @@
       "next_action": "search(rack:drying)",
       "edge_key": "take(cup)|||search(rack:drying)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 0,
       "noun_class": 13,
@@ -534,7 +580,9 @@
       "next_action": "take(cup)",
       "edge_key": "search(rack:drying)|||take(cup)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 48,
       "noun_class": 110,
@@ -551,7 +599,9 @@
       "next_action": "take(cup)",
       "edge_key": "take(cup)|||take(cup)",
       "step_id": "P08_R01_S02",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 0,
       "noun_class": 13,
@@ -568,7 +618,9 @@
       "next_action": "screw(cup)",
       "edge_key": "take(cup)|||screw(cup)",
       "step_id": "P08_R01_S02",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 0,
       "noun_class": 13,
@@ -585,7 +637,9 @@
       "next_action": "put(cup)",
       "edge_key": "screw(cup)|||put(cup)",
       "step_id": "P08_R01_S02",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 78,
       "noun_class": 13,
@@ -602,7 +656,9 @@
       "next_action": "put(cup)",
       "edge_key": "put(cup)|||put(cup)",
       "step_id": "P08_R01_S02",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 1,
       "noun_class": 13,
@@ -619,7 +675,9 @@
       "next_action": "move(scale)",
       "edge_key": "put(cup)|||move(scale)",
       "step_id": "P08_R01_S02",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 1,
       "noun_class": 13,
@@ -636,7 +694,9 @@
       "next_action": "pat(maker:coffee)",
       "edge_key": "move(scale)|||pat(maker:coffee)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 11,
       "noun_class": 108,
@@ -653,7 +713,9 @@
       "next_action": "take(spoon)",
       "edge_key": "pat(maker:coffee)|||take(spoon)",
       "step_id": "P08_R01_S01",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 32,
       "noun_class": 50,
@@ -670,7 +732,9 @@
       "next_action": "mix(coffee)",
       "edge_key": "take(spoon)|||mix(coffee)",
       "step_id": "P08_R01_S01",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 0,
       "noun_class": 1,
@@ -687,7 +751,9 @@
       "next_action": "pat(maker:coffee)",
       "edge_key": "mix(coffee)|||pat(maker:coffee)",
       "step_id": "P08_R01_S01",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 10,
       "noun_class": 59,
@@ -704,7 +770,9 @@
       "next_action": "scoop(coffee)",
       "edge_key": "pat(maker:coffee)|||scoop(coffee)",
       "step_id": "P08_R01_S01",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 32,
       "noun_class": 50,
@@ -721,7 +789,9 @@
       "next_action": "put(coffee)",
       "edge_key": "scoop(coffee)|||put(coffee)",
       "step_id": "P08_R01_S01",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 16,
       "noun_class": 59,
@@ -738,7 +808,9 @@
       "next_action": "pat(maker:coffee)",
       "edge_key": "put(coffee)|||pat(maker:coffee)",
       "step_id": "P08_R01_S02",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 1,
       "noun_class": 59,
@@ -755,7 +827,9 @@
       "next_action": "crush(coffee)",
       "edge_key": "pat(maker:coffee)|||crush(coffee)",
       "step_id": "P08_R01_S02",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 32,
       "noun_class": 50,
@@ -772,7 +846,9 @@
       "next_action": "pat(maker:coffee)",
       "edge_key": "crush(coffee)|||pat(maker:coffee)",
       "step_id": "P08_R01_S02",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 49,
       "noun_class": 59,
@@ -789,7 +865,9 @@
       "next_action": "put(spoon)",
       "edge_key": "pat(maker:coffee)|||put(spoon)",
       "step_id": "P08_R01_S02",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 32,
       "noun_class": 50,
@@ -806,7 +884,9 @@
       "next_action": "pat(cup)",
       "edge_key": "put(spoon)|||pat(cup)",
       "step_id": "P08_R01_S02",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 1,
       "noun_class": 1,
@@ -823,7 +903,9 @@
       "next_action": "press(coffee)",
       "edge_key": "pat(cup)|||press(coffee)",
       "step_id": "P08_R01_S02",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 32,
       "noun_class": 13,
@@ -841,6 +923,8 @@
       "edge_key": "press(coffee)|||put(presser)",
       "step_id": "P08_R01_S02",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 21,
       "noun_class": 59,
@@ -858,6 +942,8 @@
       "edge_key": "put(presser)|||put(cup)",
       "step_id": "P08_R01_S02",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 1,
       "noun_class": 172,
@@ -875,6 +961,8 @@
       "edge_key": "put(cup)|||screw(cup)",
       "step_id": "P08_R01_S02",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 1,
       "noun_class": 13,
@@ -892,6 +980,8 @@
       "edge_key": "screw(cup)|||put(machine:washing)",
       "step_id": "P08_R01_S02",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 78,
       "noun_class": 13,
@@ -909,6 +999,8 @@
       "edge_key": "put(machine:washing)|||move(phone)",
       "step_id": "P08_R01_S02",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 1,
       "noun_class": 124,
@@ -925,7 +1017,9 @@
       "next_action": "carry(cup)",
       "edge_key": "move(phone)|||carry(cup)",
       "step_id": null,
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": null,
       "verb_class": 11,
       "noun_class": 165,
@@ -942,7 +1036,9 @@
       "next_action": "put(cup)",
       "edge_key": "carry(cup)|||put(cup)",
       "step_id": "P08_R01_S03",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 89,
       "noun_class": 13,
@@ -959,7 +1055,9 @@
       "next_action": "turn-on(machine:washing)",
       "edge_key": "put(cup)|||turn-on(machine:washing)",
       "step_id": "P08_R01_S03",
-      "is_primary": false,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
       "phase": "prep",
       "verb_class": 1,
       "noun_class": 13,
@@ -977,6 +1075,8 @@
       "edge_key": "turn-on(machine:washing)|||check(coffee)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 6,
       "noun_class": 124,
@@ -994,6 +1094,8 @@
       "edge_key": "check(coffee)|||open(drawer)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 24,
       "noun_class": 59,
@@ -1011,6 +1113,8 @@
       "edge_key": "open(drawer)|||take(plate)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 3,
       "noun_class": 8,
@@ -1028,6 +1132,8 @@
       "edge_key": "take(plate)|||finish(machine:washing)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 0,
       "noun_class": 2,
@@ -1045,6 +1151,8 @@
       "edge_key": "finish(machine:washing)|||wait(machine:washing)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 80,
       "noun_class": 124,
@@ -1062,6 +1170,8 @@
       "edge_key": "wait(machine:washing)|||squeeze(cup)",
       "step_id": "P08_R01_S03",
       "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
       "phase": "exec",
       "verb_class": 72,
       "noun_class": 124,
@@ -1078,7 +1188,9 @@
       "next_action": "turn-off(machine:washing)",
       "edge_key": "squeeze(cup)|||turn-off(machine:washing)",
       "step_id": "P08_R01_S03",
-      "is_primary": true,
+      "is_primary": false,
+      "in_window_scope": true,
+      "in_span_scope": false,
       "phase": "exec",
       "verb_class": 18,
       "noun_class": 13,
@@ -1096,6 +1208,8 @@
       "edge_key": null,
       "step_id": null,
       "is_primary": false,
+      "in_window_scope": false,
+      "in_span_scope": false,
       "phase": null,
       "verb_class": 8,
       "noun_class": 124,
@@ -1114,17 +1228,17 @@
       {
         "id": "pat(maker:coffee)",
         "count": 4,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "take(cup)",
         "count": 4,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "move(scale)",
         "count": 3,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "crush(coffee)",
@@ -1134,7 +1248,7 @@
       {
         "id": "move(phone)",
         "count": 2,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "pour(coffee)",
@@ -1154,17 +1268,17 @@
       {
         "id": "adjust(scale)",
         "count": 1,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "carry(cup)",
         "count": 1,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "carry(phone)",
         "count": 1,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "check(coffee)",
@@ -1174,7 +1288,7 @@
       {
         "id": "close(can)",
         "count": 1,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "finish(machine:washing)",
@@ -1184,12 +1298,12 @@
       {
         "id": "mix(coffee)",
         "count": 1,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "open(can)",
         "count": 1,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "open(cap)",
@@ -1209,7 +1323,7 @@
       {
         "id": "pat(cup)",
         "count": 1,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "press(coffee)",
@@ -1219,12 +1333,12 @@
       {
         "id": "put(can)",
         "count": 1,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "put(coffee)",
         "count": 1,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "put(machine:washing)",
@@ -1239,17 +1353,17 @@
       {
         "id": "put(spoon)",
         "count": 1,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "scoop(coffee)",
         "count": 1,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "search(rack:drying)",
         "count": 1,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "slide(phone)",
@@ -1259,12 +1373,12 @@
       {
         "id": "squeeze(cup)",
         "count": 1,
-        "is_primary": true
+        "is_primary": false
       },
       {
         "id": "take(can)",
         "count": 1,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "take(maker:coffee)",
@@ -1279,7 +1393,7 @@
       {
         "id": "take(spoon)",
         "count": 1,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "turn-off(machine:washing)",
@@ -1289,7 +1403,7 @@
       {
         "id": "turn-on(scale)",
         "count": 1,
-        "is_primary": false
+        "is_primary": true
       },
       {
         "id": "wait(machine:washing)",
@@ -1299,7 +1413,7 @@
       {
         "id": "write(coffee)",
         "count": 1,
-        "is_primary": false
+        "is_primary": true
       }
     ],
     "links": [

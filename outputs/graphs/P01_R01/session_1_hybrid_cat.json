@@ -193,7 +193,8 @@
       "kind": "start",
       "index": 0,
       "next_action": "leave(crockery)",
-      "edge_key": "START|||leave(crockery)"
+      "edge_key": "START|||leave(crockery)",
+      "spine_role": "spine"
     },
     {
       "index": 1,
@@ -214,8 +215,11 @@
       "video_start": 7.74,
       "video_end": 8.56,
       "raw_action": "put(plate)",
+      "abstraction_level": 1,
+      "specific_action": "leave(crockery)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 2,
@@ -236,8 +240,11 @@
       "video_start": 10.55,
       "video_end": 11.07,
       "raw_action": "feel(cupboard)",
+      "abstraction_level": 1,
+      "specific_action": "sense(storage)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 3,
@@ -258,8 +265,11 @@
       "video_start": 12.4,
       "video_end": 13.17,
       "raw_action": "lift(pot)",
+      "abstraction_level": 1,
+      "specific_action": "retrieve(cookware)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 4,
@@ -267,8 +277,8 @@
       "start": 13.3,
       "end": 14.1,
       "duration": 0.7999999999999989,
-      "next_action": "leave(cookware)",
-      "edge_key": "retrieve(crockery)|||leave(cookware)",
+      "next_action": "leave",
+      "edge_key": "retrieve(crockery)|||leave",
       "step_id": "P01_R01_S04",
       "is_primary": false,
       "in_window_scope": false,
@@ -280,17 +290,20 @@
       "video_start": 13.3,
       "video_end": 14.1,
       "raw_action": "take(cup)",
+      "abstraction_level": 1,
+      "specific_action": "retrieve(crockery)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 5,
-      "action": "leave(cookware)",
+      "action": "leave",
       "start": 13.9,
       "end": 14.76,
       "duration": 0.8599999999999994,
       "next_action": "manipulate(crockery)",
-      "edge_key": "leave(cookware)|||manipulate(crockery)",
+      "edge_key": "leave|||manipulate(crockery)",
       "step_id": "P01_R01_S04",
       "is_primary": true,
       "in_window_scope": false,
@@ -302,8 +315,11 @@
       "video_start": 13.9,
       "video_end": 14.76,
       "raw_action": "put(pot)",
+      "abstraction_level": 3,
+      "specific_action": "leave(cookware)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 6,
@@ -311,8 +327,8 @@
       "start": 14.96,
       "end": 16.13,
       "duration": 1.1699999999999982,
-      "next_action": "retrieve(furniture)",
-      "edge_key": "manipulate(crockery)|||retrieve(furniture)",
+      "next_action": "retrieve",
+      "edge_key": "manipulate(crockery)|||retrieve",
       "step_id": "P01_R01_S04",
       "is_primary": true,
       "in_window_scope": false,
@@ -324,17 +340,20 @@
       "video_start": 14.96,
       "video_end": 16.13,
       "raw_action": "turn(cup)",
+      "abstraction_level": 1,
+      "specific_action": "manipulate(crockery)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "spine"
     },
     {
       "index": 7,
-      "action": "retrieve(furniture)",
+      "action": "retrieve",
       "start": 17.82,
       "end": 18.32,
       "duration": 0.5,
       "next_action": "leave(crockery)",
-      "edge_key": "retrieve(furniture)|||leave(crockery)",
+      "edge_key": "retrieve|||leave(crockery)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
       "in_window_scope": false,
@@ -346,8 +365,11 @@
       "video_start": 17.82,
       "video_end": 18.32,
       "raw_action": "lift(shelf)",
+      "abstraction_level": 3,
+      "specific_action": "retrieve(furniture)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 8,
@@ -368,8 +390,11 @@
       "video_start": 18.28,
       "video_end": 18.53,
       "raw_action": "put(cup)",
+      "abstraction_level": 1,
+      "specific_action": "leave(crockery)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 9,
@@ -390,8 +415,11 @@
       "video_start": 18.98,
       "video_end": 19.25,
       "raw_action": "press(button)",
+      "abstraction_level": 1,
+      "specific_action": "manipulate(appliances)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "spine"
     },
     {
       "index": 10,
@@ -399,8 +427,8 @@
       "start": 19.36,
       "end": 22.0,
       "duration": 2.6400000000000006,
-      "next_action": "manipulate(drinks)",
-      "edge_key": "retrieve(containers)|||manipulate(drinks)",
+      "next_action": "manipulate",
+      "edge_key": "retrieve(containers)|||manipulate",
       "step_id": "P01_R01_S01",
       "is_primary": true,
       "in_window_scope": false,
@@ -412,17 +440,20 @@
       "video_start": 19.36,
       "video_end": 22.0,
       "raw_action": "lift(lid)",
+      "abstraction_level": 1,
+      "specific_action": "retrieve(containers)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 11,
-      "action": "manipulate(drinks)",
+      "action": "manipulate",
       "start": 22.84,
       "end": 23.59,
       "duration": 0.75,
       "next_action": "retrieve(crockery)",
-      "edge_key": "manipulate(drinks)|||retrieve(crockery)",
+      "edge_key": "manipulate|||retrieve(crockery)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
       "in_window_scope": false,
@@ -434,8 +465,11 @@
       "video_start": 22.84,
       "video_end": 23.59,
       "raw_action": "hold(water)",
+      "abstraction_level": 3,
+      "specific_action": "manipulate(drinks)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "spine"
     },
     {
       "index": 12,
@@ -456,8 +490,11 @@
       "video_start": 23.63,
       "video_end": 24.54,
       "raw_action": "take(jug)",
+      "abstraction_level": 1,
+      "specific_action": "retrieve(crockery)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 13,
@@ -478,8 +515,11 @@
       "video_start": 24.64,
       "video_end": 26.83,
       "raw_action": "pour(water)",
+      "abstraction_level": 1,
+      "specific_action": "merge(drinks)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "spine"
     },
     {
       "index": 14,
@@ -500,8 +540,11 @@
       "video_start": 26.67,
       "video_end": 27.86,
       "raw_action": "put(jug)",
+      "abstraction_level": 1,
+      "specific_action": "leave(crockery)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 15,
@@ -509,8 +552,8 @@
       "start": 27.96,
       "end": 29.15,
       "duration": 1.1899999999999977,
-      "next_action": "leave(drinks)",
-      "edge_key": "block(containers)|||leave(drinks)",
+      "next_action": "leave",
+      "edge_key": "block(containers)|||leave",
       "step_id": "P01_R01_S01",
       "is_primary": true,
       "in_window_scope": false,
@@ -522,17 +565,20 @@
       "video_start": 27.96,
       "video_end": 29.15,
       "raw_action": "close(lid)",
+      "abstraction_level": 1,
+      "specific_action": "block(containers)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 16,
-      "action": "leave(drinks)",
+      "action": "leave",
       "start": 29.25,
       "end": 32.29,
       "duration": 3.039999999999999,
       "next_action": "retrieve(containers)",
-      "edge_key": "leave(drinks)|||retrieve(containers)",
+      "edge_key": "leave|||retrieve(containers)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
       "in_window_scope": false,
@@ -544,8 +590,11 @@
       "video_start": 29.25,
       "video_end": 32.29,
       "raw_action": "put(water)",
+      "abstraction_level": 3,
+      "specific_action": "leave(drinks)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 17,
@@ -566,8 +615,11 @@
       "video_start": 32.39,
       "video_end": 36.76,
       "raw_action": "take(box)",
+      "abstraction_level": 1,
+      "specific_action": "retrieve(containers)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 18,
@@ -588,8 +640,11 @@
       "video_start": 36.86,
       "video_end": 38.37,
       "raw_action": "put(box)",
+      "abstraction_level": 1,
+      "specific_action": "leave(containers)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 19,
@@ -610,8 +665,11 @@
       "video_start": 38.47,
       "video_end": 43.66,
       "raw_action": "open(box)",
+      "abstraction_level": 1,
+      "specific_action": "access(containers)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 20,
@@ -632,8 +690,11 @@
       "video_start": 43.76,
       "video_end": 45.51,
       "raw_action": "take(coffee)",
+      "abstraction_level": 1,
+      "specific_action": "retrieve(drinks)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 21,
@@ -641,8 +702,8 @@
       "start": 45.6,
       "end": 46.07,
       "duration": 0.46999999999999886,
-      "next_action": "leave(drinks)",
-      "edge_key": "access(furniture)|||leave(drinks)",
+      "next_action": "leave",
+      "edge_key": "access(furniture)|||leave",
       "step_id": "P01_R01_S01",
       "is_primary": true,
       "in_window_scope": true,
@@ -654,17 +715,20 @@
       "video_start": 45.6,
       "video_end": 46.07,
       "raw_action": "open(drawer)",
+      "abstraction_level": 1,
+      "specific_action": "access(furniture)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 22,
-      "action": "leave(drinks)",
+      "action": "leave",
       "start": 46.12,
       "end": 46.74,
       "duration": 0.6200000000000045,
       "next_action": "block(appliances)",
-      "edge_key": "leave(drinks)|||block(appliances)",
+      "edge_key": "leave|||block(appliances)",
       "step_id": "P01_R01_S01",
       "is_primary": true,
       "in_window_scope": true,
@@ -676,8 +740,11 @@
       "video_start": 46.12,
       "video_end": 46.74,
       "raw_action": "put(coffee)",
+      "abstraction_level": 3,
+      "specific_action": "leave(drinks)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 23,
@@ -698,8 +765,11 @@
       "video_start": 46.84,
       "video_end": 47.39,
       "raw_action": "close(machine:washing)",
+      "abstraction_level": 1,
+      "specific_action": "block(appliances)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 24,
@@ -720,8 +790,11 @@
       "video_start": 49.82,
       "video_end": 50.58,
       "raw_action": "open(fridge)",
+      "abstraction_level": 1,
+      "specific_action": "access(appliances)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 25,
@@ -742,8 +815,11 @@
       "video_start": 50.88,
       "video_end": 51.54,
       "raw_action": "take(bottle)",
+      "abstraction_level": 1,
+      "specific_action": "retrieve(containers)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 26,
@@ -751,8 +827,8 @@
       "start": 53.34,
       "end": 55.35,
       "duration": 2.009999999999998,
-      "next_action": "manipulate(containers)",
-      "edge_key": "retrieve(containers)|||manipulate(containers)",
+      "next_action": "manipulate",
+      "edge_key": "retrieve(containers)|||manipulate",
       "step_id": "P01_R01_S03",
       "is_primary": true,
       "in_window_scope": false,
@@ -764,17 +840,20 @@
       "video_start": 53.34,
       "video_end": 55.35,
       "raw_action": "take(can)",
+      "abstraction_level": 1,
+      "specific_action": "retrieve(containers)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 27,
-      "action": "manipulate(containers)",
+      "action": "manipulate",
       "start": 54.65,
       "end": 56.06,
       "duration": 1.4100000000000037,
-      "next_action": "monitor(containers)",
-      "edge_key": "manipulate(containers)|||monitor(containers)",
+      "next_action": "monitor",
+      "edge_key": "manipulate|||monitor",
       "step_id": "P01_R01_S03",
       "is_primary": true,
       "in_window_scope": false,
@@ -786,17 +865,20 @@
       "video_start": 54.65,
       "video_end": 56.06,
       "raw_action": "turn(can)",
+      "abstraction_level": 3,
+      "specific_action": "manipulate(containers)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "spine"
     },
     {
       "index": 28,
-      "action": "monitor(containers)",
+      "action": "monitor",
       "start": 56.15,
       "end": 56.85,
       "duration": 0.7000000000000028,
-      "next_action": "monitor(appliances)",
-      "edge_key": "monitor(containers)|||monitor(appliances)",
+      "next_action": "monitor",
+      "edge_key": "monitor|||monitor",
       "step_id": "P01_R01_S03",
       "is_primary": true,
       "in_window_scope": false,
@@ -808,17 +890,20 @@
       "video_start": 56.15,
       "video_end": 56.85,
       "raw_action": "look(can)",
+      "abstraction_level": 3,
+      "specific_action": "monitor(containers)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 29,
-      "action": "monitor(appliances)",
+      "action": "monitor",
       "start": 56.95,
       "end": 63.68,
       "duration": 6.729999999999997,
       "next_action": "block(appliances)",
-      "edge_key": "monitor(appliances)|||block(appliances)",
+      "edge_key": "monitor|||block(appliances)",
       "step_id": "P01_R01_S03",
       "is_primary": true,
       "in_window_scope": false,
@@ -830,8 +915,11 @@
       "video_start": 56.95,
       "video_end": 63.68,
       "raw_action": "look(alarm)",
+      "abstraction_level": 3,
+      "specific_action": "monitor(appliances)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 30,
@@ -839,8 +927,8 @@
       "start": 64.55,
       "end": 66.51,
       "duration": 1.960000000000008,
-      "next_action": "access(rubbish)",
-      "edge_key": "block(appliances)|||access(rubbish)",
+      "next_action": "access",
+      "edge_key": "block(appliances)|||access",
       "step_id": "P01_R01_S03",
       "is_primary": true,
       "in_window_scope": false,
@@ -852,17 +940,20 @@
       "video_start": 64.55,
       "video_end": 66.51,
       "raw_action": "close(fridge)",
+      "abstraction_level": 1,
+      "specific_action": "block(appliances)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 31,
-      "action": "access(rubbish)",
+      "action": "access",
       "start": 67.69,
       "end": 67.97,
       "duration": 0.28000000000000114,
       "next_action": "leave(containers)",
-      "edge_key": "access(rubbish)|||leave(containers)",
+      "edge_key": "access|||leave(containers)",
       "step_id": "P01_R01_S03",
       "is_primary": true,
       "in_window_scope": false,
@@ -874,8 +965,11 @@
       "video_start": 67.69,
       "video_end": 67.97,
       "raw_action": "open(bin)",
+      "abstraction_level": 3,
+      "specific_action": "access(rubbish)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 32,
@@ -883,8 +977,8 @@
       "start": 68.07,
       "end": 68.39,
       "duration": 0.3200000000000074,
-      "next_action": "block(rubbish)",
-      "edge_key": "leave(containers)|||block(rubbish)",
+      "next_action": "block",
+      "edge_key": "leave(containers)|||block",
       "step_id": "P01_R01_S03",
       "is_primary": true,
       "in_window_scope": false,
@@ -896,17 +990,20 @@
       "video_start": 68.07,
       "video_end": 68.39,
       "raw_action": "throw(can)",
+      "abstraction_level": 1,
+      "specific_action": "leave(containers)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 33,
-      "action": "block(rubbish)",
+      "action": "block",
       "start": 68.17,
       "end": 68.42,
       "duration": 0.25,
       "next_action": "retrieve(containers)",
-      "edge_key": "block(rubbish)|||retrieve(containers)",
+      "edge_key": "block|||retrieve(containers)",
       "step_id": "P01_R01_S03",
       "is_primary": true,
       "in_window_scope": false,
@@ -918,8 +1015,11 @@
       "video_start": 68.17,
       "video_end": 68.42,
       "raw_action": "close(bin)",
+      "abstraction_level": 3,
+      "specific_action": "block(rubbish)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 34,
@@ -940,8 +1040,11 @@
       "video_start": 70.28,
       "video_end": 70.91,
       "raw_action": "lift(lid)",
+      "abstraction_level": 1,
+      "specific_action": "retrieve(containers)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 35,
@@ -962,8 +1065,11 @@
       "video_start": 71.01,
       "video_end": 71.23,
       "raw_action": "put(lid)",
+      "abstraction_level": 1,
+      "specific_action": "leave(containers)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 36,
@@ -971,8 +1077,8 @@
       "start": 71.65,
       "end": 73.0,
       "duration": 1.3499999999999943,
-      "next_action": "merge(dairy and eggs)",
-      "edge_key": "access(containers)|||merge(dairy and eggs)",
+      "next_action": "merge",
+      "edge_key": "access(containers)|||merge",
       "step_id": "P01_R01_S03",
       "is_primary": true,
       "in_window_scope": false,
@@ -984,17 +1090,20 @@
       "video_start": 71.65,
       "video_end": 73.0,
       "raw_action": "open(bottle)",
+      "abstraction_level": 1,
+      "specific_action": "access(containers)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 37,
-      "action": "merge(dairy and eggs)",
+      "action": "merge",
       "start": 73.5,
       "end": 76.57,
       "duration": 3.069999999999993,
       "next_action": "block(containers)",
-      "edge_key": "merge(dairy and eggs)|||block(containers)",
+      "edge_key": "merge|||block(containers)",
       "step_id": "P01_R01_S03",
       "is_primary": true,
       "in_window_scope": true,
@@ -1006,8 +1115,11 @@
       "video_start": 73.5,
       "video_end": 76.57,
       "raw_action": "pour(milk)",
+      "abstraction_level": 3,
+      "specific_action": "merge(dairy and eggs)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "spine"
     },
     {
       "index": 38,
@@ -1028,8 +1140,11 @@
       "video_start": 76.68,
       "video_end": 77.9,
       "raw_action": "close(bottle)",
+      "abstraction_level": 1,
+      "specific_action": "block(containers)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 39,
@@ -1050,8 +1165,11 @@
       "video_start": 78.2,
       "video_end": 78.95,
       "raw_action": "press(button)",
+      "abstraction_level": 1,
+      "specific_action": "manipulate(appliances)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "spine"
     },
     {
       "index": 40,
@@ -1072,8 +1190,11 @@
       "video_start": 79.49,
       "video_end": 80.06,
       "raw_action": "press(button)",
+      "abstraction_level": 1,
+      "specific_action": "manipulate(appliances)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "spine"
     },
     {
       "index": 41,
@@ -1094,8 +1215,11 @@
       "video_start": 82.82,
       "video_end": 83.83,
       "raw_action": "open(fridge)",
+      "abstraction_level": 1,
+      "specific_action": "access(appliances)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 42,
@@ -1116,8 +1240,11 @@
       "video_start": 84.07,
       "video_end": 84.69,
       "raw_action": "put(bottle)",
+      "abstraction_level": 1,
+      "specific_action": "leave(containers)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 43,
@@ -1138,8 +1265,11 @@
       "video_start": 84.77,
       "video_end": 86.2,
       "raw_action": "close(fridge)",
+      "abstraction_level": 1,
+      "specific_action": "block(appliances)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 44,
@@ -1147,8 +1277,8 @@
       "start": 88.47,
       "end": 89.44,
       "duration": 0.9699999999999989,
-      "next_action": "retrieve(cutlery)",
-      "edge_key": "access(containers)|||retrieve(cutlery)",
+      "next_action": "retrieve",
+      "edge_key": "access(containers)|||retrieve",
       "step_id": "P01_R01_S05",
       "is_primary": true,
       "in_window_scope": false,
@@ -1160,17 +1290,20 @@
       "video_start": 88.47,
       "video_end": 89.44,
       "raw_action": "open(box)",
+      "abstraction_level": 1,
+      "specific_action": "access(containers)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 45,
-      "action": "retrieve(cutlery)",
+      "action": "retrieve",
       "start": 89.76,
       "end": 90.38,
       "duration": 0.6199999999999903,
       "next_action": "manipulate(appliances)",
-      "edge_key": "retrieve(cutlery)|||manipulate(appliances)",
+      "edge_key": "retrieve|||manipulate(appliances)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
       "in_window_scope": false,
@@ -1182,8 +1315,11 @@
       "video_start": 89.76,
       "video_end": 90.38,
       "raw_action": "take(spoon)",
+      "abstraction_level": 3,
+      "specific_action": "retrieve(cutlery)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 46,
@@ -1204,8 +1340,11 @@
       "video_start": 107.1,
       "video_end": 108.36,
       "raw_action": "press(button)",
+      "abstraction_level": 1,
+      "specific_action": "manipulate(appliances)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "spine"
     },
     {
       "index": 47,
@@ -1226,8 +1365,11 @@
       "video_start": 109.01,
       "video_end": 113.56,
       "raw_action": "take(cup)",
+      "abstraction_level": 1,
+      "specific_action": "retrieve(crockery)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 48,
@@ -1235,8 +1377,8 @@
       "start": 113.86,
       "end": 114.58,
       "duration": 0.7199999999999989,
-      "next_action": "merge(dairy and eggs)",
-      "edge_key": "retrieve(dairy and eggs)|||merge(dairy and eggs)",
+      "next_action": "merge",
+      "edge_key": "retrieve(dairy and eggs)|||merge",
       "step_id": "P01_R01_S04",
       "is_primary": true,
       "in_window_scope": false,
@@ -1248,17 +1390,20 @@
       "video_start": 113.86,
       "video_end": 114.58,
       "raw_action": "take(milk)",
+      "abstraction_level": 1,
+      "specific_action": "retrieve(dairy and eggs)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 49,
-      "action": "merge(dairy and eggs)",
+      "action": "merge",
       "start": 115.15,
       "end": 127.78,
       "duration": 12.629999999999995,
-      "next_action": "leave(dairy and eggs)",
-      "edge_key": "merge(dairy and eggs)|||leave(dairy and eggs)",
+      "next_action": "leave",
+      "edge_key": "merge|||leave",
       "step_id": "P01_R01_S04",
       "is_primary": true,
       "in_window_scope": true,
@@ -1270,17 +1415,20 @@
       "video_start": 115.15,
       "video_end": 127.78,
       "raw_action": "pour(milk)",
+      "abstraction_level": 3,
+      "specific_action": "merge(dairy and eggs)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "spine"
     },
     {
       "index": 50,
-      "action": "leave(dairy and eggs)",
+      "action": "leave",
       "start": 130.63,
       "end": 131.03,
       "duration": 0.4000000000000057,
       "next_action": "access(appliances)",
-      "edge_key": "leave(dairy and eggs)|||access(appliances)",
+      "edge_key": "leave|||access(appliances)",
       "step_id": null,
       "is_primary": true,
       "in_window_scope": false,
@@ -1292,8 +1440,11 @@
       "video_start": 130.63,
       "video_end": 131.03,
       "raw_action": "put(milk)",
+      "abstraction_level": 3,
+      "specific_action": "leave(dairy and eggs)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 51,
@@ -1301,8 +1452,8 @@
       "start": 131.18,
       "end": 131.53,
       "duration": 0.3499999999999943,
-      "next_action": "clean(dairy and eggs)",
-      "edge_key": "access(appliances)|||clean(dairy and eggs)",
+      "next_action": "clean",
+      "edge_key": "access(appliances)|||clean",
       "step_id": null,
       "is_primary": true,
       "in_window_scope": false,
@@ -1314,17 +1465,20 @@
       "video_start": 131.18,
       "video_end": 131.53,
       "raw_action": "open(tap)",
+      "abstraction_level": 1,
+      "specific_action": "access(appliances)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 52,
-      "action": "clean(dairy and eggs)",
+      "action": "clean",
       "start": 131.75,
       "end": 134.09,
       "duration": 2.3400000000000034,
-      "next_action": "retrieve(furniture)",
-      "edge_key": "clean(dairy and eggs)|||retrieve(furniture)",
+      "next_action": "retrieve",
+      "edge_key": "clean|||retrieve",
       "step_id": null,
       "is_primary": true,
       "in_window_scope": false,
@@ -1336,17 +1490,20 @@
       "video_start": 131.75,
       "video_end": 134.09,
       "raw_action": "wash(milk)",
+      "abstraction_level": 3,
+      "specific_action": "clean(dairy and eggs)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 53,
-      "action": "retrieve(furniture)",
+      "action": "retrieve",
       "start": 134.34,
       "end": 135.17,
       "duration": 0.8299999999999841,
       "next_action": "leave(crockery)",
-      "edge_key": "retrieve(furniture)|||leave(crockery)",
+      "edge_key": "retrieve|||leave(crockery)",
       "step_id": null,
       "is_primary": true,
       "in_window_scope": false,
@@ -1358,8 +1515,11 @@
       "video_start": 134.34,
       "video_end": 135.17,
       "raw_action": "remove(top)",
+      "abstraction_level": 3,
+      "specific_action": "retrieve(furniture)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 54,
@@ -1367,8 +1527,8 @@
       "start": 135.52,
       "end": 135.75,
       "duration": 0.22999999999998977,
-      "next_action": "retrieve(cleaning equipment and material)",
-      "edge_key": "leave(crockery)|||retrieve(cleaning equipment and material)",
+      "next_action": "retrieve",
+      "edge_key": "leave(crockery)|||retrieve",
       "step_id": null,
       "is_primary": true,
       "in_window_scope": false,
@@ -1380,17 +1540,20 @@
       "video_start": 135.52,
       "video_end": 135.75,
       "raw_action": "put(plate)",
+      "abstraction_level": 1,
+      "specific_action": "leave(crockery)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 55,
-      "action": "retrieve(cleaning equipment and material)",
+      "action": "retrieve",
       "start": 136.07,
       "end": 136.52,
       "duration": 0.45000000000001705,
-      "next_action": "clean(dairy and eggs)",
-      "edge_key": "retrieve(cleaning equipment and material)|||clean(dairy and eggs)",
+      "next_action": "clean",
+      "edge_key": "retrieve|||clean",
       "step_id": null,
       "is_primary": true,
       "in_window_scope": false,
@@ -1402,17 +1565,20 @@
       "video_start": 136.07,
       "video_end": 136.52,
       "raw_action": "take(sponge)",
+      "abstraction_level": 3,
+      "specific_action": "retrieve(cleaning equipment and material)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 56,
-      "action": "clean(dairy and eggs)",
+      "action": "clean",
       "start": 136.62,
       "end": 138.22,
       "duration": 1.5999999999999943,
-      "next_action": "leave(cleaning equipment and material)",
-      "edge_key": "clean(dairy and eggs)|||leave(cleaning equipment and material)",
+      "next_action": "leave",
+      "edge_key": "clean|||leave",
       "step_id": null,
       "is_primary": true,
       "in_window_scope": false,
@@ -1424,17 +1590,20 @@
       "video_start": 136.62,
       "video_end": 138.22,
       "raw_action": "wash(milk)",
+      "abstraction_level": 3,
+      "specific_action": "clean(dairy and eggs)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 57,
-      "action": "leave(cleaning equipment and material)",
+      "action": "leave",
       "start": 138.65,
       "end": 138.88,
       "duration": 0.22999999999998977,
-      "next_action": "clean(dairy and eggs)",
-      "edge_key": "leave(cleaning equipment and material)|||clean(dairy and eggs)",
+      "next_action": "clean",
+      "edge_key": "leave|||clean",
       "step_id": null,
       "is_primary": true,
       "in_window_scope": false,
@@ -1446,17 +1615,20 @@
       "video_start": 138.65,
       "video_end": 138.88,
       "raw_action": "put(sponge)",
+      "abstraction_level": 3,
+      "specific_action": "leave(cleaning equipment and material)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 58,
-      "action": "clean(dairy and eggs)",
+      "action": "clean",
       "start": 138.85,
       "end": 140.82999999999998,
       "duration": 1.9799999999999898,
       "next_action": "block(appliances)",
-      "edge_key": "clean(dairy and eggs)|||block(appliances)",
+      "edge_key": "clean|||block(appliances)",
       "step_id": null,
       "is_primary": true,
       "in_window_scope": false,
@@ -1468,8 +1640,11 @@
       "video_start": 138.85,
       "video_end": 140.82999999999998,
       "raw_action": "wash(milk)",
+      "abstraction_level": 3,
+      "specific_action": "clean(dairy and eggs)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 59,
@@ -1477,8 +1652,8 @@
       "start": 140.72,
       "end": 141.03,
       "duration": 0.3100000000000023,
-      "next_action": "retrieve(furniture)",
-      "edge_key": "block(appliances)|||retrieve(furniture)",
+      "next_action": "retrieve",
+      "edge_key": "block(appliances)|||retrieve",
       "step_id": null,
       "is_primary": true,
       "in_window_scope": false,
@@ -1490,17 +1665,20 @@
       "video_start": 140.72,
       "video_end": 141.03,
       "raw_action": "close(tap)",
+      "abstraction_level": 1,
+      "specific_action": "block(appliances)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 60,
-      "action": "retrieve(furniture)",
+      "action": "retrieve",
       "start": 141.54,
       "end": 142.01,
       "duration": 0.46999999999999886,
-      "next_action": "leave(furniture)",
-      "edge_key": "retrieve(furniture)|||leave(furniture)",
+      "next_action": "leave",
+      "edge_key": "retrieve|||leave",
       "step_id": null,
       "is_primary": true,
       "in_window_scope": false,
@@ -1512,17 +1690,20 @@
       "video_start": 141.54,
       "video_end": 142.01,
       "raw_action": "take(top)",
+      "abstraction_level": 3,
+      "specific_action": "retrieve(furniture)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 61,
-      "action": "leave(furniture)",
+      "action": "leave",
       "start": 142.2,
       "end": 142.57,
       "duration": 0.37000000000000455,
-      "next_action": "leave(dairy and eggs)",
-      "edge_key": "leave(furniture)|||leave(dairy and eggs)",
+      "next_action": "leave",
+      "edge_key": "leave|||leave",
       "step_id": null,
       "is_primary": true,
       "in_window_scope": false,
@@ -1534,17 +1715,20 @@
       "video_start": 142.2,
       "video_end": 142.57,
       "raw_action": "put(top)",
+      "abstraction_level": 3,
+      "specific_action": "leave(furniture)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 62,
-      "action": "leave(dairy and eggs)",
+      "action": "leave",
       "start": 144.75,
       "end": 145.25,
       "duration": 0.5,
       "next_action": "retrieve(crockery)",
-      "edge_key": "leave(dairy and eggs)|||retrieve(crockery)",
+      "edge_key": "leave|||retrieve(crockery)",
       "step_id": "P01_R01_S05",
       "is_primary": true,
       "in_window_scope": true,
@@ -1556,8 +1740,11 @@
       "video_start": 144.75,
       "video_end": 145.25,
       "raw_action": "put(milk)",
+      "abstraction_level": 3,
+      "specific_action": "leave(dairy and eggs)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 63,
@@ -1578,8 +1765,11 @@
       "video_start": 145.8,
       "video_end": 146.35,
       "raw_action": "take(cup)",
+      "abstraction_level": 1,
+      "specific_action": "retrieve(crockery)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 64,
@@ -1600,8 +1790,11 @@
       "video_start": 146.11,
       "video_end": 149.72,
       "raw_action": "mix(coffee)",
+      "abstraction_level": 1,
+      "specific_action": "merge(drinks)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "spine"
     },
     {
       "index": 65,
@@ -1609,8 +1802,8 @@
       "start": 149.65,
       "end": 150.51,
       "duration": 0.8599999999999852,
-      "next_action": "access(rubbish)",
-      "edge_key": "retrieve(utensils)|||access(rubbish)",
+      "next_action": "access",
+      "edge_key": "retrieve(utensils)|||access",
       "step_id": "P01_R01_S05",
       "is_primary": false,
       "in_window_scope": true,
@@ -1622,17 +1815,20 @@
       "video_start": 149.65,
       "video_end": 150.51,
       "raw_action": "lift(colander)",
+      "abstraction_level": 1,
+      "specific_action": "retrieve(utensils)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 66,
-      "action": "access(rubbish)",
+      "action": "access",
       "start": 150.7,
       "end": 151.02,
       "duration": 0.3200000000000216,
       "next_action": "leave(cutlery)",
-      "edge_key": "access(rubbish)|||leave(cutlery)",
+      "edge_key": "access|||leave(cutlery)",
       "step_id": null,
       "is_primary": false,
       "in_window_scope": false,
@@ -1644,8 +1840,11 @@
       "video_start": 150.7,
       "video_end": 151.02,
       "raw_action": "open(bin)",
+      "abstraction_level": 3,
+      "specific_action": "access(rubbish)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 67,
@@ -1653,8 +1852,8 @@
       "start": 151.17000000000002,
       "end": 151.77,
       "duration": 0.5999999999999943,
-      "next_action": "block(rubbish)",
-      "edge_key": "leave(cutlery)|||block(rubbish)",
+      "next_action": "block",
+      "edge_key": "leave(cutlery)|||block",
       "step_id": null,
       "is_primary": false,
       "in_window_scope": false,
@@ -1666,17 +1865,20 @@
       "video_start": 151.17000000000002,
       "video_end": 151.77,
       "raw_action": "throw(spoon)",
+      "abstraction_level": 1,
+      "specific_action": "leave(cutlery)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "index": 68,
-      "action": "block(rubbish)",
+      "action": "block",
       "start": 152.02,
       "end": 152.93,
       "duration": 0.9099999999999966,
       "next_action": "END",
-      "edge_key": "block(rubbish)|||END",
+      "edge_key": "block|||END",
       "step_id": null,
       "is_primary": false,
       "in_window_scope": false,
@@ -1688,8 +1890,11 @@
       "video_start": 152.02,
       "video_end": 152.93,
       "raw_action": "close(bin)",
+      "abstraction_level": 3,
+      "specific_action": "block(rubbish)",
       "salient": true,
-      "kind": "action"
+      "kind": "action",
+      "spine_role": "bridge"
     },
     {
       "action": "END",
@@ -1709,11 +1914,72 @@
       "kind": "end",
       "index": 69,
       "next_action": null,
-      "edge_key": null
+      "edge_key": null,
+      "spine_role": "spine"
     }
   ],
   "graph": {
     "nodes": [
+      {
+        "id": "leave",
+        "count": 7,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "pot": 1,
+          "water": 1,
+          "coffee": 1,
+          "milk": 2,
+          "sponge": 1,
+          "top": 1
+        },
+        "verbs": {
+          "put": 7
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.7541,
+        "abstraction_level": 3,
+        "rolled_up": true,
+        "merged_from": {
+          "leave(drinks)": 2,
+          "leave(dairy and eggs)": 2,
+          "leave(cookware)": 1,
+          "leave(cleaning equipment and material)": 1,
+          "leave(furniture)": 1
+        },
+        "dead_end_score": 0.857
+      },
+      {
+        "id": "retrieve",
+        "count": 5,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "shelf": 1,
+          "spoon": 1,
+          "top": 2,
+          "sponge": 1
+        },
+        "verbs": {
+          "lift": 1,
+          "take": 3,
+          "remove": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.80328,
+        "abstraction_level": 3,
+        "rolled_up": true,
+        "merged_from": {
+          "retrieve(furniture)": 3,
+          "retrieve(cutlery)": 1,
+          "retrieve(cleaning equipment and material)": 1
+        },
+        "dead_end_score": 0.6
+      },
       {
         "id": "retrieve(containers)",
         "count": 5,
@@ -1733,6 +1999,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.34426,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "retrieve(containers)": 5
+        },
         "dead_end_score": 0.6
       },
       {
@@ -1752,6 +2023,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.53279,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "block(appliances)": 4
+        },
         "dead_end_score": 0.75
       },
       {
@@ -1773,6 +2049,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.48361,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "leave(containers)": 4
+        },
         "dead_end_score": 0.5
       },
       {
@@ -1790,6 +2071,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.58197,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "manipulate(appliances)": 4
+        },
         "dead_end_score": 0.75
       },
       {
@@ -1808,6 +2094,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.60656,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "access(appliances)": 3
+        },
         "dead_end_score": 0.667
       },
       {
@@ -1826,10 +2117,15 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.52459,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "access(containers)": 3
+        },
         "dead_end_score": 0.667
       },
       {
-        "id": "clean(dairy and eggs)",
+        "id": "clean",
         "count": 3,
         "is_primary": true,
         "salient": true,
@@ -1843,6 +2139,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.85246,
+        "abstraction_level": 3,
+        "rolled_up": true,
+        "merged_from": {
+          "clean(dairy and eggs)": 3
+        },
         "dead_end_score": 0.667
       },
       {
@@ -1862,6 +2163,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.16393,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "leave(crockery)": 3
+        },
         "dead_end_score": 0.667
       },
       {
@@ -1880,26 +2186,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.70492,
-        "dead_end_score": 0.333
-      },
-      {
-        "id": "retrieve(furniture)",
-        "count": 3,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "shelf": 1,
-          "top": 2
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "retrieve(crockery)": 3
         },
-        "verbs": {
-          "lift": 1,
-          "remove": 1,
-          "take": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.80328,
         "dead_end_score": 0.333
       },
       {
@@ -1918,45 +2209,40 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.36885,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "block(containers)": 2
+        },
         "dead_end_score": 0.5
       },
       {
-        "id": "leave(dairy and eggs)",
-        "count": 2,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "milk": 2
-        },
-        "verbs": {
-          "put": 2
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.85246,
-        "dead_end_score": 0.5
-      },
-      {
-        "id": "leave(drinks)",
+        "id": "manipulate",
         "count": 2,
         "is_primary": true,
         "salient": true,
         "objects": {
           "water": 1,
-          "coffee": 1
+          "can": 1
         },
         "verbs": {
-          "put": 2
+          "hold": 1,
+          "turn": 1
         },
         "kind": "action",
         "is_start": false,
         "is_end": false,
         "median_rank": 0.2459,
+        "abstraction_level": 3,
+        "rolled_up": true,
+        "merged_from": {
+          "manipulate(drinks)": 1,
+          "manipulate(containers)": 1
+        },
         "dead_end_score": 0.5
       },
       {
-        "id": "merge(dairy and eggs)",
+        "id": "merge",
         "count": 2,
         "is_primary": true,
         "salient": true,
@@ -1970,6 +2256,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.63934,
+        "abstraction_level": 3,
+        "rolled_up": true,
+        "merged_from": {
+          "merge(dairy and eggs)": 2
+        },
         "dead_end_score": 0.5
       },
       {
@@ -1989,6 +2280,35 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.56557,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "merge(drinks)": 2
+        },
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "monitor",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "can": 1,
+          "alarm": 1
+        },
+        "verbs": {
+          "look": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.40164,
+        "abstraction_level": 3,
+        "rolled_up": true,
+        "merged_from": {
+          "monitor(containers)": 1,
+          "monitor(appliances)": 1
+        },
         "dead_end_score": 0.5
       },
       {
@@ -2002,6 +2322,9 @@
         "is_start": false,
         "is_end": true,
         "median_rank": 1.0,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {},
         "dead_end_score": 1.0
       },
       {
@@ -2015,6 +2338,31 @@
         "is_start": true,
         "is_end": false,
         "median_rank": 0.0,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {},
+        "dead_end_score": 0.0
+      },
+      {
+        "id": "access",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "bin": 1
+        },
+        "verbs": {
+          "open": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.44262,
+        "abstraction_level": 3,
+        "rolled_up": true,
+        "merged_from": {
+          "access(rubbish)": 1
+        },
         "dead_end_score": 0.0
       },
       {
@@ -2032,27 +2380,15 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.27869,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "access(furniture)": 1
+        },
         "dead_end_score": 0.0
       },
       {
-        "id": "access(rubbish)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "bin": 1
-        },
-        "verbs": {
-          "open": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.44262,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "block(rubbish)",
+        "id": "block",
         "count": 1,
         "is_primary": true,
         "salient": true,
@@ -2066,74 +2402,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.47541,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "leave(cleaning equipment and material)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "sponge": 1
+        "abstraction_level": 3,
+        "rolled_up": true,
+        "merged_from": {
+          "block(rubbish)": 1
         },
-        "verbs": {
-          "put": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.86885,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "leave(cookware)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "pot": 1
-        },
-        "verbs": {
-          "put": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.01639,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "leave(furniture)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "top": 1
-        },
-        "verbs": {
-          "put": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.93443,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "manipulate(containers)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "can": 1
-        },
-        "verbs": {
-          "turn": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.37705,
         "dead_end_score": 0.0
       },
       {
@@ -2151,91 +2424,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.03279,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "manipulate(drinks)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "water": 1
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "manipulate(crockery)": 1
         },
-        "verbs": {
-          "hold": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.11475,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "monitor(appliances)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "alarm": 1
-        },
-        "verbs": {
-          "look": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.40984,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "monitor(containers)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "can": 1
-        },
-        "verbs": {
-          "look": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.39344,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "retrieve(cleaning equipment and material)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "sponge": 1
-        },
-        "verbs": {
-          "take": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.83607,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "retrieve(cutlery)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "spoon": 1
-        },
-        "verbs": {
-          "take": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.67213,
         "dead_end_score": 0.0
       },
       {
@@ -2253,6 +2446,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.72131,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "retrieve(dairy and eggs)": 1
+        },
         "dead_end_score": 0.0
       },
       {
@@ -2270,6 +2468,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.2623,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "retrieve(drinks)": 1
+        },
         "dead_end_score": 0.0
       }
     ],
@@ -2289,6 +2492,20 @@
         "rank_delta": 0.04098
       },
       {
+        "source": "retrieve",
+        "target": "leave(crockery)",
+        "count": 2,
+        "probability": 0.4,
+        "key": "retrieve|||leave(crockery)",
+        "occurrences": [
+          3,
+          49
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.63935
+      },
+      {
         "source": "retrieve(containers)",
         "target": "leave(containers)",
         "count": 2,
@@ -2301,6 +2518,20 @@
         "is_self_loop": false,
         "is_return": false,
         "rank_delta": 0.13935
+      },
+      {
+        "source": "retrieve(containers)",
+        "target": "manipulate",
+        "count": 2,
+        "probability": 0.4,
+        "key": "retrieve(containers)|||manipulate",
+        "occurrences": [
+          6,
+          22
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.09836
       },
       {
         "source": "retrieve(crockery)",
@@ -2317,38 +2548,37 @@
         "rank_delta": -0.13935
       },
       {
-        "source": "retrieve(furniture)",
-        "target": "leave(crockery)",
-        "count": 2,
-        "probability": 0.6667,
-        "key": "retrieve(furniture)|||leave(crockery)",
-        "occurrences": [
-          3,
-          49
-        ],
-        "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.63935
-      },
-      {
         "source": "START",
-        "target": "leave(cookware)",
+        "target": "leave",
         "count": 1,
         "probability": 1.0,
-        "key": "START|||leave(cookware)",
+        "key": "START|||leave",
         "occurrences": [
           0
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.01639
+        "rank_delta": 0.7541
+      },
+      {
+        "source": "access",
+        "target": "leave(containers)",
+        "count": 1,
+        "probability": 1.0,
+        "key": "access|||leave(containers)",
+        "occurrences": [
+          27
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.04099
       },
       {
         "source": "access(appliances)",
-        "target": "clean(dairy and eggs)",
+        "target": "clean",
         "count": 1,
         "probability": 0.3333,
-        "key": "access(appliances)|||clean(dairy and eggs)",
+        "key": "access(appliances)|||clean",
         "occurrences": [
           47
         ],
@@ -2384,10 +2614,10 @@
       },
       {
         "source": "access(containers)",
-        "target": "merge(dairy and eggs)",
+        "target": "merge",
         "count": 1,
         "probability": 0.3333,
-        "key": "access(containers)|||merge(dairy and eggs)",
+        "key": "access(containers)|||merge",
         "occurrences": [
           32
         ],
@@ -2397,16 +2627,16 @@
       },
       {
         "source": "access(containers)",
-        "target": "retrieve(cutlery)",
+        "target": "retrieve",
         "count": 1,
         "probability": 0.3333,
-        "key": "access(containers)|||retrieve(cutlery)",
+        "key": "access(containers)|||retrieve",
         "occurrences": [
           40
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.14754
+        "rank_delta": 0.27869
       },
       {
         "source": "access(containers)",
@@ -2423,29 +2653,42 @@
       },
       {
         "source": "access(furniture)",
-        "target": "leave(drinks)",
+        "target": "leave",
         "count": 1,
         "probability": 1.0,
-        "key": "access(furniture)|||leave(drinks)",
+        "key": "access(furniture)|||leave",
         "occurrences": [
           17
         ],
         "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.03279
+        "is_return": false,
+        "rank_delta": 0.47541
       },
       {
-        "source": "access(rubbish)",
-        "target": "leave(containers)",
+        "source": "block",
+        "target": "retrieve(containers)",
         "count": 1,
         "probability": 1.0,
-        "key": "access(rubbish)|||leave(containers)",
+        "key": "block|||retrieve(containers)",
         "occurrences": [
-          27
+          29
         ],
         "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.04099
+        "is_return": true,
+        "rank_delta": -0.13115
+      },
+      {
+        "source": "block(appliances)",
+        "target": "access",
+        "count": 1,
+        "probability": 0.25,
+        "key": "block(appliances)|||access",
+        "occurrences": [
+          26
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.09017
       },
       {
         "source": "block(appliances)",
@@ -2475,23 +2718,10 @@
       },
       {
         "source": "block(appliances)",
-        "target": "access(rubbish)",
+        "target": "retrieve",
         "count": 1,
         "probability": 0.25,
-        "key": "block(appliances)|||access(rubbish)",
-        "occurrences": [
-          26
-        ],
-        "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.09017
-      },
-      {
-        "source": "block(appliances)",
-        "target": "retrieve(furniture)",
-        "count": 1,
-        "probability": 0.25,
-        "key": "block(appliances)|||retrieve(furniture)",
+        "key": "block(appliances)|||retrieve",
         "occurrences": [
           55
         ],
@@ -2501,16 +2731,16 @@
       },
       {
         "source": "block(containers)",
-        "target": "leave(drinks)",
+        "target": "leave",
         "count": 1,
         "probability": 0.5,
-        "key": "block(containers)|||leave(drinks)",
+        "key": "block(containers)|||leave",
         "occurrences": [
           11
         ],
         "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.12295
+        "is_return": false,
+        "rank_delta": 0.38525
       },
       {
         "source": "block(containers)",
@@ -2526,24 +2756,11 @@
         "rank_delta": 0.21312
       },
       {
-        "source": "block(rubbish)",
-        "target": "retrieve(containers)",
-        "count": 1,
-        "probability": 1.0,
-        "key": "block(rubbish)|||retrieve(containers)",
-        "occurrences": [
-          29
-        ],
-        "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.13115
-      },
-      {
-        "source": "clean(dairy and eggs)",
+        "source": "clean",
         "target": "block(appliances)",
         "count": 1,
         "probability": 0.3333,
-        "key": "clean(dairy and eggs)|||block(appliances)",
+        "key": "clean|||block(appliances)",
         "occurrences": [
           54
         ],
@@ -2552,24 +2769,24 @@
         "rank_delta": -0.31967
       },
       {
-        "source": "clean(dairy and eggs)",
-        "target": "leave(cleaning equipment and material)",
+        "source": "clean",
+        "target": "leave",
         "count": 1,
         "probability": 0.3333,
-        "key": "clean(dairy and eggs)|||leave(cleaning equipment and material)",
+        "key": "clean|||leave",
         "occurrences": [
           52
         ],
         "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.01639
+        "is_return": true,
+        "rank_delta": -0.09836
       },
       {
-        "source": "clean(dairy and eggs)",
-        "target": "retrieve(furniture)",
+        "source": "clean",
+        "target": "retrieve",
         "count": 1,
         "probability": 0.3333,
-        "key": "clean(dairy and eggs)|||retrieve(furniture)",
+        "key": "clean|||retrieve",
         "occurrences": [
           48
         ],
@@ -2578,17 +2795,108 @@
         "rank_delta": -0.04918
       },
       {
-        "source": "leave(cleaning equipment and material)",
-        "target": "clean(dairy and eggs)",
+        "source": "leave",
+        "target": "access(appliances)",
         "count": 1,
-        "probability": 1.0,
-        "key": "leave(cleaning equipment and material)|||clean(dairy and eggs)",
+        "probability": 0.1429,
+        "key": "leave|||access(appliances)",
+        "occurrences": [
+          46
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.14754
+      },
+      {
+        "source": "leave",
+        "target": "block(appliances)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "leave|||block(appliances)",
+        "occurrences": [
+          18
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.22131
+      },
+      {
+        "source": "leave",
+        "target": "clean",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "leave|||clean",
         "occurrences": [
           53
         ],
         "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.09836
+      },
+      {
+        "source": "leave",
+        "target": "leave",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "leave|||leave",
+        "occurrences": [
+          57
+        ],
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
+      },
+      {
+        "source": "leave",
+        "target": "manipulate(crockery)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "leave|||manipulate(crockery)",
+        "occurrences": [
+          1
+        ],
+        "is_self_loop": false,
         "is_return": true,
-        "rank_delta": -0.01639
+        "rank_delta": -0.72131
+      },
+      {
+        "source": "leave",
+        "target": "retrieve(containers)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "leave|||retrieve(containers)",
+        "occurrences": [
+          12
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.40984
+      },
+      {
+        "source": "leave",
+        "target": "retrieve(crockery)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "leave|||retrieve(crockery)",
+        "occurrences": [
+          58
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.04918
+      },
+      {
+        "source": "leave(containers)",
+        "target": "block",
+        "count": 1,
+        "probability": 0.25,
+        "key": "leave(containers)|||block",
+        "occurrences": [
+          28
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.0082
       },
       {
         "source": "leave(containers)",
@@ -2602,32 +2910,6 @@
         "is_self_loop": false,
         "is_return": false,
         "rank_delta": 0.04918
-      },
-      {
-        "source": "leave(containers)",
-        "target": "block(rubbish)",
-        "count": 1,
-        "probability": 0.25,
-        "key": "leave(containers)|||block(rubbish)",
-        "occurrences": [
-          28
-        ],
-        "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.0082
-      },
-      {
-        "source": "leave(cookware)",
-        "target": "manipulate(crockery)",
-        "count": 1,
-        "probability": 1.0,
-        "key": "leave(cookware)|||manipulate(crockery)",
-        "occurrences": [
-          1
-        ],
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.0164
       },
       {
         "source": "leave(crockery)",
@@ -2657,81 +2939,42 @@
       },
       {
         "source": "leave(crockery)",
-        "target": "retrieve(cleaning equipment and material)",
+        "target": "retrieve",
         "count": 1,
         "probability": 0.3333,
-        "key": "leave(crockery)|||retrieve(cleaning equipment and material)",
+        "key": "leave(crockery)|||retrieve",
         "occurrences": [
           50
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.67214
+        "rank_delta": 0.63935
       },
       {
-        "source": "leave(dairy and eggs)",
-        "target": "access(appliances)",
+        "source": "manipulate",
+        "target": "monitor",
         "count": 1,
         "probability": 0.5,
-        "key": "leave(dairy and eggs)|||access(appliances)",
+        "key": "manipulate|||monitor",
         "occurrences": [
-          46
+          23
         ],
         "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.2459
+        "is_return": false,
+        "rank_delta": 0.15574
       },
       {
-        "source": "leave(dairy and eggs)",
+        "source": "manipulate",
         "target": "retrieve(crockery)",
         "count": 1,
         "probability": 0.5,
-        "key": "leave(dairy and eggs)|||retrieve(crockery)",
+        "key": "manipulate|||retrieve(crockery)",
         "occurrences": [
-          58
-        ],
-        "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.14754
-      },
-      {
-        "source": "leave(drinks)",
-        "target": "block(appliances)",
-        "count": 1,
-        "probability": 0.5,
-        "key": "leave(drinks)|||block(appliances)",
-        "occurrences": [
-          18
+          7
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.28689
-      },
-      {
-        "source": "leave(drinks)",
-        "target": "retrieve(containers)",
-        "count": 1,
-        "probability": 0.5,
-        "key": "leave(drinks)|||retrieve(containers)",
-        "occurrences": [
-          12
-        ],
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.09836
-      },
-      {
-        "source": "leave(furniture)",
-        "target": "leave(dairy and eggs)",
-        "count": 1,
-        "probability": 1.0,
-        "key": "leave(furniture)|||leave(dairy and eggs)",
-        "occurrences": [
-          57
-        ],
-        "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.08197
+        "rank_delta": 0.45902
       },
       {
         "source": "manipulate(appliances)",
@@ -2786,24 +3029,11 @@
         "rank_delta": 0.12295
       },
       {
-        "source": "manipulate(containers)",
-        "target": "monitor(containers)",
-        "count": 1,
-        "probability": 1.0,
-        "key": "manipulate(containers)|||monitor(containers)",
-        "occurrences": [
-          23
-        ],
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.01639
-      },
-      {
         "source": "manipulate(crockery)",
-        "target": "retrieve(furniture)",
+        "target": "retrieve",
         "count": 1,
         "probability": 1.0,
-        "key": "manipulate(crockery)|||retrieve(furniture)",
+        "key": "manipulate(crockery)|||retrieve",
         "occurrences": [
           2
         ],
@@ -2812,24 +3042,11 @@
         "rank_delta": 0.77049
       },
       {
-        "source": "manipulate(drinks)",
-        "target": "retrieve(crockery)",
-        "count": 1,
-        "probability": 1.0,
-        "key": "manipulate(drinks)|||retrieve(crockery)",
-        "occurrences": [
-          7
-        ],
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.59017
-      },
-      {
-        "source": "merge(dairy and eggs)",
+        "source": "merge",
         "target": "block(containers)",
         "count": 1,
         "probability": 0.5,
-        "key": "merge(dairy and eggs)|||block(containers)",
+        "key": "merge|||block(containers)",
         "occurrences": [
           33
         ],
@@ -2838,17 +3055,17 @@
         "rank_delta": -0.27049
       },
       {
-        "source": "merge(dairy and eggs)",
-        "target": "leave(dairy and eggs)",
+        "source": "merge",
+        "target": "leave",
         "count": 1,
         "probability": 0.5,
-        "key": "merge(dairy and eggs)|||leave(dairy and eggs)",
+        "key": "merge|||leave",
         "occurrences": [
           45
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.21312
+        "rank_delta": 0.11476
       },
       {
         "source": "merge(drinks)",
@@ -2877,69 +3094,69 @@
         "rank_delta": -0.40164
       },
       {
-        "source": "monitor(appliances)",
+        "source": "monitor",
         "target": "block(appliances)",
         "count": 1,
-        "probability": 1.0,
-        "key": "monitor(appliances)|||block(appliances)",
+        "probability": 0.5,
+        "key": "monitor|||block(appliances)",
         "occurrences": [
           25
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.12295
+        "rank_delta": 0.13115
       },
       {
-        "source": "monitor(containers)",
-        "target": "monitor(appliances)",
+        "source": "monitor",
+        "target": "monitor",
         "count": 1,
-        "probability": 1.0,
-        "key": "monitor(containers)|||monitor(appliances)",
+        "probability": 0.5,
+        "key": "monitor|||monitor",
         "occurrences": [
           24
         ],
-        "is_self_loop": false,
+        "is_self_loop": true,
         "is_return": false,
-        "rank_delta": 0.0164
+        "rank_delta": 0.0
       },
       {
-        "source": "retrieve(cleaning equipment and material)",
-        "target": "clean(dairy and eggs)",
+        "source": "retrieve",
+        "target": "clean",
         "count": 1,
-        "probability": 1.0,
-        "key": "retrieve(cleaning equipment and material)|||clean(dairy and eggs)",
+        "probability": 0.2,
+        "key": "retrieve|||clean",
         "occurrences": [
           51
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.01639
+        "rank_delta": 0.04918
       },
       {
-        "source": "retrieve(containers)",
-        "target": "manipulate(containers)",
+        "source": "retrieve",
+        "target": "leave",
         "count": 1,
         "probability": 0.2,
-        "key": "retrieve(containers)|||manipulate(containers)",
+        "key": "retrieve|||leave",
         "occurrences": [
-          22
-        ],
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.03279
-      },
-      {
-        "source": "retrieve(containers)",
-        "target": "manipulate(drinks)",
-        "count": 1,
-        "probability": 0.2,
-        "key": "retrieve(containers)|||manipulate(drinks)",
-        "occurrences": [
-          6
+          56
         ],
         "is_self_loop": false,
         "is_return": true,
-        "rank_delta": -0.22951
+        "rank_delta": -0.04918
+      },
+      {
+        "source": "retrieve",
+        "target": "manipulate(appliances)",
+        "count": 1,
+        "probability": 0.2,
+        "key": "retrieve|||manipulate(appliances)",
+        "occurrences": [
+          41
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.22131
       },
       {
         "source": "retrieve(containers)",
@@ -2968,24 +3185,11 @@
         "rank_delta": 0.01639
       },
       {
-        "source": "retrieve(cutlery)",
-        "target": "manipulate(appliances)",
-        "count": 1,
-        "probability": 1.0,
-        "key": "retrieve(cutlery)|||manipulate(appliances)",
-        "occurrences": [
-          41
-        ],
-        "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.09016
-      },
-      {
         "source": "retrieve(dairy and eggs)",
-        "target": "merge(dairy and eggs)",
+        "target": "merge",
         "count": 1,
         "probability": 1.0,
-        "key": "retrieve(dairy and eggs)|||merge(dairy and eggs)",
+        "key": "retrieve(dairy and eggs)|||merge",
         "occurrences": [
           44
         ],
@@ -3005,24 +3209,71 @@
         "is_self_loop": false,
         "is_return": false,
         "rank_delta": 0.01639
-      },
-      {
-        "source": "retrieve(furniture)",
-        "target": "leave(furniture)",
-        "count": 1,
-        "probability": 0.3333,
-        "key": "retrieve(furniture)|||leave(furniture)",
-        "occurrences": [
-          56
-        ],
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.13115
       }
     ]
   },
   "graph_unfiltered": {
     "nodes": [
+      {
+        "id": "leave",
+        "count": 7,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "pot": 1,
+          "water": 1,
+          "coffee": 1,
+          "milk": 2,
+          "sponge": 1,
+          "top": 1
+        },
+        "verbs": {
+          "put": 7
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.72464,
+        "abstraction_level": 3,
+        "rolled_up": true,
+        "merged_from": {
+          "leave(drinks)": 2,
+          "leave(dairy and eggs)": 2,
+          "leave(cookware)": 1,
+          "leave(cleaning equipment and material)": 1,
+          "leave(furniture)": 1
+        },
+        "dead_end_score": 0.857
+      },
+      {
+        "id": "retrieve",
+        "count": 5,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "shelf": 1,
+          "spoon": 1,
+          "top": 2,
+          "sponge": 1
+        },
+        "verbs": {
+          "lift": 1,
+          "take": 3,
+          "remove": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.76812,
+        "abstraction_level": 3,
+        "rolled_up": true,
+        "merged_from": {
+          "retrieve(furniture)": 3,
+          "retrieve(cutlery)": 1,
+          "retrieve(cleaning equipment and material)": 1
+        },
+        "dead_end_score": 0.6
+      },
       {
         "id": "retrieve(containers)",
         "count": 5,
@@ -3042,6 +3293,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.36232,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "retrieve(containers)": 5
+        },
         "dead_end_score": 0.6
       },
       {
@@ -3061,6 +3317,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.52899,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "block(appliances)": 4
+        },
         "dead_end_score": 0.75
       },
       {
@@ -3082,6 +3343,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.48551,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "leave(containers)": 4
+        },
         "dead_end_score": 0.5
       },
       {
@@ -3101,6 +3367,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.15942,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "leave(crockery)": 4
+        },
         "dead_end_score": 0.75
       },
       {
@@ -3118,6 +3389,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.57246,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "manipulate(appliances)": 4
+        },
         "dead_end_score": 0.75
       },
       {
@@ -3136,6 +3412,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.42754,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "retrieve(crockery)": 4
+        },
         "dead_end_score": 0.5
       },
       {
@@ -3154,6 +3435,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.5942,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "access(appliances)": 3
+        },
         "dead_end_score": 0.667
       },
       {
@@ -3172,10 +3458,15 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.52174,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "access(containers)": 3
+        },
         "dead_end_score": 0.667
       },
       {
-        "id": "clean(dairy and eggs)",
+        "id": "clean",
         "count": 3,
         "is_primary": true,
         "salient": true,
@@ -3189,30 +3480,15 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.81159,
+        "abstraction_level": 3,
+        "rolled_up": true,
+        "merged_from": {
+          "clean(dairy and eggs)": 3
+        },
         "dead_end_score": 0.667
       },
       {
-        "id": "retrieve(furniture)",
-        "count": 3,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "shelf": 1,
-          "top": 2
-        },
-        "verbs": {
-          "lift": 1,
-          "remove": 1,
-          "take": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.76812,
-        "dead_end_score": 0.333
-      },
-      {
-        "id": "access(rubbish)",
+        "id": "access",
         "count": 2,
         "is_primary": true,
         "salient": true,
@@ -3226,6 +3502,33 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.7029,
+        "abstraction_level": 3,
+        "rolled_up": true,
+        "merged_from": {
+          "access(rubbish)": 2
+        },
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "block",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "bin": 2
+        },
+        "verbs": {
+          "close": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.73188,
+        "abstraction_level": 3,
+        "rolled_up": true,
+        "merged_from": {
+          "block(rubbish)": 2
+        },
         "dead_end_score": 0.5
       },
       {
@@ -3244,62 +3547,40 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.38406,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "block(containers)": 2
+        },
         "dead_end_score": 0.5
       },
       {
-        "id": "block(rubbish)",
-        "count": 2,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "bin": 2
-        },
-        "verbs": {
-          "close": 2
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.73188,
-        "dead_end_score": 0.5
-      },
-      {
-        "id": "leave(dairy and eggs)",
-        "count": 2,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "milk": 2
-        },
-        "verbs": {
-          "put": 2
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.81159,
-        "dead_end_score": 0.5
-      },
-      {
-        "id": "leave(drinks)",
+        "id": "manipulate",
         "count": 2,
         "is_primary": true,
         "salient": true,
         "objects": {
           "water": 1,
-          "coffee": 1
+          "can": 1
         },
         "verbs": {
-          "put": 2
+          "hold": 1,
+          "turn": 1
         },
         "kind": "action",
         "is_start": false,
         "is_end": false,
         "median_rank": 0.27536,
+        "abstraction_level": 3,
+        "rolled_up": true,
+        "merged_from": {
+          "manipulate(drinks)": 1,
+          "manipulate(containers)": 1
+        },
         "dead_end_score": 0.5
       },
       {
-        "id": "merge(dairy and eggs)",
+        "id": "merge",
         "count": 2,
         "is_primary": true,
         "salient": true,
@@ -3313,6 +3594,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.62319,
+        "abstraction_level": 3,
+        "rolled_up": true,
+        "merged_from": {
+          "merge(dairy and eggs)": 2
+        },
         "dead_end_score": 0.5
       },
       {
@@ -3332,6 +3618,35 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.55797,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "merge(drinks)": 2
+        },
+        "dead_end_score": 0.5
+      },
+      {
+        "id": "monitor",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "can": 1,
+          "alarm": 1
+        },
+        "verbs": {
+          "look": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.41304,
+        "abstraction_level": 3,
+        "rolled_up": true,
+        "merged_from": {
+          "monitor(containers)": 1,
+          "monitor(appliances)": 1
+        },
         "dead_end_score": 0.5
       },
       {
@@ -3345,6 +3660,9 @@
         "is_start": false,
         "is_end": true,
         "median_rank": 1.0,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {},
         "dead_end_score": 1.0
       },
       {
@@ -3358,6 +3676,9 @@
         "is_start": true,
         "is_end": false,
         "median_rank": 0.0,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {},
         "dead_end_score": 0.0
       },
       {
@@ -3375,40 +3696,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.30435,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "leave(cleaning equipment and material)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "sponge": 1
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "access(furniture)": 1
         },
-        "verbs": {
-          "put": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.82609,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "leave(cookware)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "pot": 1
-        },
-        "verbs": {
-          "put": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.07246,
         "dead_end_score": 0.0
       },
       {
@@ -3426,40 +3718,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.97101,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "leave(furniture)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "top": 1
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "leave(cutlery)": 1
         },
-        "verbs": {
-          "put": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.88406,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "manipulate(containers)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "can": 1
-        },
-        "verbs": {
-          "turn": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.3913,
         "dead_end_score": 0.0
       },
       {
@@ -3477,74 +3740,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.08696,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "manipulate(drinks)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "water": 1
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "manipulate(crockery)": 1
         },
-        "verbs": {
-          "hold": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.15942,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "monitor(appliances)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "alarm": 1
-        },
-        "verbs": {
-          "look": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.42029,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "monitor(containers)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "can": 1
-        },
-        "verbs": {
-          "look": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.4058,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "retrieve(cleaning equipment and material)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "sponge": 1
-        },
-        "verbs": {
-          "take": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.7971,
         "dead_end_score": 0.0
       },
       {
@@ -3562,23 +3762,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.04348,
-        "dead_end_score": 0.0
-      },
-      {
-        "id": "retrieve(cutlery)",
-        "count": 1,
-        "is_primary": true,
-        "salient": true,
-        "objects": {
-          "spoon": 1
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "retrieve(cookware)": 1
         },
-        "verbs": {
-          "take": 1
-        },
-        "kind": "action",
-        "is_start": false,
-        "is_end": false,
-        "median_rank": 0.65217,
         "dead_end_score": 0.0
       },
       {
@@ -3596,6 +3784,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.69565,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "retrieve(dairy and eggs)": 1
+        },
         "dead_end_score": 0.0
       },
       {
@@ -3613,6 +3806,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.28986,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "retrieve(drinks)": 1
+        },
         "dead_end_score": 0.0
       },
       {
@@ -3630,6 +3828,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.94203,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "retrieve(utensils)": 1
+        },
         "dead_end_score": 0.0
       },
       {
@@ -3647,6 +3850,11 @@
         "is_start": false,
         "is_end": false,
         "median_rank": 0.02899,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "sense(storage)": 1
+        },
         "dead_end_score": 0.0
       }
     ],
@@ -3666,6 +3874,20 @@
         "rank_delta": 0.03623
       },
       {
+        "source": "retrieve",
+        "target": "leave(crockery)",
+        "count": 2,
+        "probability": 0.4,
+        "key": "retrieve|||leave(crockery)",
+        "occurrences": [
+          7,
+          53
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.6087
+      },
+      {
         "source": "retrieve(containers)",
         "target": "leave(containers)",
         "count": 2,
@@ -3678,6 +3900,20 @@
         "is_self_loop": false,
         "is_return": false,
         "rank_delta": 0.12319
+      },
+      {
+        "source": "retrieve(containers)",
+        "target": "manipulate",
+        "count": 2,
+        "probability": 0.4,
+        "key": "retrieve(containers)|||manipulate",
+        "occurrences": [
+          10,
+          26
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.08696
       },
       {
         "source": "retrieve(crockery)",
@@ -3694,20 +3930,6 @@
         "rank_delta": 0.13043
       },
       {
-        "source": "retrieve(furniture)",
-        "target": "leave(crockery)",
-        "count": 2,
-        "probability": 0.6667,
-        "key": "retrieve(furniture)|||leave(crockery)",
-        "occurrences": [
-          7,
-          53
-        ],
-        "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.6087
-      },
-      {
         "source": "START",
         "target": "leave(crockery)",
         "count": 1,
@@ -3721,11 +3943,37 @@
         "rank_delta": 0.15942
       },
       {
+        "source": "access",
+        "target": "leave(containers)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "access|||leave(containers)",
+        "occurrences": [
+          31
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.21739
+      },
+      {
+        "source": "access",
+        "target": "leave(cutlery)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "access|||leave(cutlery)",
+        "occurrences": [
+          66
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.26811
+      },
+      {
         "source": "access(appliances)",
-        "target": "clean(dairy and eggs)",
+        "target": "clean",
         "count": 1,
         "probability": 0.3333,
-        "key": "access(appliances)|||clean(dairy and eggs)",
+        "key": "access(appliances)|||clean",
         "occurrences": [
           51
         ],
@@ -3761,10 +4009,10 @@
       },
       {
         "source": "access(containers)",
-        "target": "merge(dairy and eggs)",
+        "target": "merge",
         "count": 1,
         "probability": 0.3333,
-        "key": "access(containers)|||merge(dairy and eggs)",
+        "key": "access(containers)|||merge",
         "occurrences": [
           36
         ],
@@ -3774,16 +4022,16 @@
       },
       {
         "source": "access(containers)",
-        "target": "retrieve(cutlery)",
+        "target": "retrieve",
         "count": 1,
         "probability": 0.3333,
-        "key": "access(containers)|||retrieve(cutlery)",
+        "key": "access(containers)|||retrieve",
         "occurrences": [
           44
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.13043
+        "rank_delta": 0.24638
       },
       {
         "source": "access(containers)",
@@ -3800,42 +4048,55 @@
       },
       {
         "source": "access(furniture)",
-        "target": "leave(drinks)",
+        "target": "leave",
         "count": 1,
         "probability": 1.0,
-        "key": "access(furniture)|||leave(drinks)",
+        "key": "access(furniture)|||leave",
         "occurrences": [
           21
         ],
         "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.02899
+        "is_return": false,
+        "rank_delta": 0.42029
       },
       {
-        "source": "access(rubbish)",
-        "target": "leave(containers)",
+        "source": "block",
+        "target": "END",
         "count": 1,
         "probability": 0.5,
-        "key": "access(rubbish)|||leave(containers)",
+        "key": "block|||END",
         "occurrences": [
-          31
-        ],
-        "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.21739
-      },
-      {
-        "source": "access(rubbish)",
-        "target": "leave(cutlery)",
-        "count": 1,
-        "probability": 0.5,
-        "key": "access(rubbish)|||leave(cutlery)",
-        "occurrences": [
-          66
+          68
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.26811
+        "rank_delta": 0.26812
+      },
+      {
+        "source": "block",
+        "target": "retrieve(containers)",
+        "count": 1,
+        "probability": 0.5,
+        "key": "block|||retrieve(containers)",
+        "occurrences": [
+          33
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.36956
+      },
+      {
+        "source": "block(appliances)",
+        "target": "access",
+        "count": 1,
+        "probability": 0.25,
+        "key": "block(appliances)|||access",
+        "occurrences": [
+          30
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.17391
       },
       {
         "source": "block(appliances)",
@@ -3865,23 +4126,10 @@
       },
       {
         "source": "block(appliances)",
-        "target": "access(rubbish)",
+        "target": "retrieve",
         "count": 1,
         "probability": 0.25,
-        "key": "block(appliances)|||access(rubbish)",
-        "occurrences": [
-          30
-        ],
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.17391
-      },
-      {
-        "source": "block(appliances)",
-        "target": "retrieve(furniture)",
-        "count": 1,
-        "probability": 0.25,
-        "key": "block(appliances)|||retrieve(furniture)",
+        "key": "block(appliances)|||retrieve",
         "occurrences": [
           59
         ],
@@ -3891,16 +4139,16 @@
       },
       {
         "source": "block(containers)",
-        "target": "leave(drinks)",
+        "target": "leave",
         "count": 1,
         "probability": 0.5,
-        "key": "block(containers)|||leave(drinks)",
+        "key": "block(containers)|||leave",
         "occurrences": [
           15
         ],
         "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.1087
+        "is_return": false,
+        "rank_delta": 0.34058
       },
       {
         "source": "block(containers)",
@@ -3916,37 +4164,11 @@
         "rank_delta": 0.1884
       },
       {
-        "source": "block(rubbish)",
-        "target": "END",
-        "count": 1,
-        "probability": 0.5,
-        "key": "block(rubbish)|||END",
-        "occurrences": [
-          68
-        ],
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.26812
-      },
-      {
-        "source": "block(rubbish)",
-        "target": "retrieve(containers)",
-        "count": 1,
-        "probability": 0.5,
-        "key": "block(rubbish)|||retrieve(containers)",
-        "occurrences": [
-          33
-        ],
-        "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.36956
-      },
-      {
-        "source": "clean(dairy and eggs)",
+        "source": "clean",
         "target": "block(appliances)",
         "count": 1,
         "probability": 0.3333,
-        "key": "clean(dairy and eggs)|||block(appliances)",
+        "key": "clean|||block(appliances)",
         "occurrences": [
           58
         ],
@@ -3955,24 +4177,24 @@
         "rank_delta": -0.2826
       },
       {
-        "source": "clean(dairy and eggs)",
-        "target": "leave(cleaning equipment and material)",
+        "source": "clean",
+        "target": "leave",
         "count": 1,
         "probability": 0.3333,
-        "key": "clean(dairy and eggs)|||leave(cleaning equipment and material)",
+        "key": "clean|||leave",
         "occurrences": [
           56
         ],
         "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.0145
+        "is_return": true,
+        "rank_delta": -0.08695
       },
       {
-        "source": "clean(dairy and eggs)",
-        "target": "retrieve(furniture)",
+        "source": "clean",
+        "target": "retrieve",
         "count": 1,
         "probability": 0.3333,
-        "key": "clean(dairy and eggs)|||retrieve(furniture)",
+        "key": "clean|||retrieve",
         "occurrences": [
           52
         ],
@@ -3981,17 +4203,108 @@
         "rank_delta": -0.04347
       },
       {
-        "source": "leave(cleaning equipment and material)",
-        "target": "clean(dairy and eggs)",
+        "source": "leave",
+        "target": "access(appliances)",
         "count": 1,
-        "probability": 1.0,
-        "key": "leave(cleaning equipment and material)|||clean(dairy and eggs)",
+        "probability": 0.1429,
+        "key": "leave|||access(appliances)",
+        "occurrences": [
+          50
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.13044
+      },
+      {
+        "source": "leave",
+        "target": "block(appliances)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "leave|||block(appliances)",
+        "occurrences": [
+          22
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.19565
+      },
+      {
+        "source": "leave",
+        "target": "clean",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "leave|||clean",
         "occurrences": [
           57
         ],
         "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.08695
+      },
+      {
+        "source": "leave",
+        "target": "leave",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "leave|||leave",
+        "occurrences": [
+          61
+        ],
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
+      },
+      {
+        "source": "leave",
+        "target": "manipulate(crockery)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "leave|||manipulate(crockery)",
+        "occurrences": [
+          5
+        ],
+        "is_self_loop": false,
         "is_return": true,
-        "rank_delta": -0.0145
+        "rank_delta": -0.63768
+      },
+      {
+        "source": "leave",
+        "target": "retrieve(containers)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "leave|||retrieve(containers)",
+        "occurrences": [
+          16
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.36232
+      },
+      {
+        "source": "leave",
+        "target": "retrieve(crockery)",
+        "count": 1,
+        "probability": 0.1429,
+        "key": "leave|||retrieve(crockery)",
+        "occurrences": [
+          62
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.2971
+      },
+      {
+        "source": "leave(containers)",
+        "target": "block",
+        "count": 1,
+        "probability": 0.25,
+        "key": "leave(containers)|||block",
+        "occurrences": [
+          32
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.24637
       },
       {
         "source": "leave(containers)",
@@ -4005,32 +4318,6 @@
         "is_self_loop": false,
         "is_return": false,
         "rank_delta": 0.04348
-      },
-      {
-        "source": "leave(containers)",
-        "target": "block(rubbish)",
-        "count": 1,
-        "probability": 0.25,
-        "key": "leave(containers)|||block(rubbish)",
-        "occurrences": [
-          32
-        ],
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.24637
-      },
-      {
-        "source": "leave(cookware)",
-        "target": "manipulate(crockery)",
-        "count": 1,
-        "probability": 1.0,
-        "key": "leave(cookware)|||manipulate(crockery)",
-        "occurrences": [
-          5
-        ],
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.0145
       },
       {
         "source": "leave(crockery)",
@@ -4060,16 +4347,16 @@
       },
       {
         "source": "leave(crockery)",
-        "target": "retrieve(cleaning equipment and material)",
+        "target": "retrieve",
         "count": 1,
         "probability": 0.25,
-        "key": "leave(crockery)|||retrieve(cleaning equipment and material)",
+        "key": "leave(crockery)|||retrieve",
         "occurrences": [
           54
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.63768
+        "rank_delta": 0.6087
       },
       {
         "source": "leave(crockery)",
@@ -4086,10 +4373,10 @@
       },
       {
         "source": "leave(cutlery)",
-        "target": "block(rubbish)",
+        "target": "block",
         "count": 1,
         "probability": 1.0,
-        "key": "leave(cutlery)|||block(rubbish)",
+        "key": "leave(cutlery)|||block",
         "occurrences": [
           67
         ],
@@ -4098,69 +4385,30 @@
         "rank_delta": -0.23913
       },
       {
-        "source": "leave(dairy and eggs)",
-        "target": "access(appliances)",
+        "source": "manipulate",
+        "target": "monitor",
         "count": 1,
         "probability": 0.5,
-        "key": "leave(dairy and eggs)|||access(appliances)",
+        "key": "manipulate|||monitor",
         "occurrences": [
-          50
+          27
         ],
         "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.21739
+        "is_return": false,
+        "rank_delta": 0.13768
       },
       {
-        "source": "leave(dairy and eggs)",
+        "source": "manipulate",
         "target": "retrieve(crockery)",
         "count": 1,
         "probability": 0.5,
-        "key": "leave(dairy and eggs)|||retrieve(crockery)",
+        "key": "manipulate|||retrieve(crockery)",
         "occurrences": [
-          62
-        ],
-        "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.38405
-      },
-      {
-        "source": "leave(drinks)",
-        "target": "block(appliances)",
-        "count": 1,
-        "probability": 0.5,
-        "key": "leave(drinks)|||block(appliances)",
-        "occurrences": [
-          22
+          11
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.25363
-      },
-      {
-        "source": "leave(drinks)",
-        "target": "retrieve(containers)",
-        "count": 1,
-        "probability": 0.5,
-        "key": "leave(drinks)|||retrieve(containers)",
-        "occurrences": [
-          16
-        ],
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.08696
-      },
-      {
-        "source": "leave(furniture)",
-        "target": "leave(dairy and eggs)",
-        "count": 1,
-        "probability": 1.0,
-        "key": "leave(furniture)|||leave(dairy and eggs)",
-        "occurrences": [
-          61
-        ],
-        "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.07247
+        "rank_delta": 0.15218
       },
       {
         "source": "manipulate(appliances)",
@@ -4215,24 +4463,11 @@
         "rank_delta": -0.14492
       },
       {
-        "source": "manipulate(containers)",
-        "target": "monitor(containers)",
-        "count": 1,
-        "probability": 1.0,
-        "key": "manipulate(containers)|||monitor(containers)",
-        "occurrences": [
-          27
-        ],
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.0145
-      },
-      {
         "source": "manipulate(crockery)",
-        "target": "retrieve(furniture)",
+        "target": "retrieve",
         "count": 1,
         "probability": 1.0,
-        "key": "manipulate(crockery)|||retrieve(furniture)",
+        "key": "manipulate(crockery)|||retrieve",
         "occurrences": [
           6
         ],
@@ -4241,24 +4476,11 @@
         "rank_delta": 0.68116
       },
       {
-        "source": "manipulate(drinks)",
-        "target": "retrieve(crockery)",
-        "count": 1,
-        "probability": 1.0,
-        "key": "manipulate(drinks)|||retrieve(crockery)",
-        "occurrences": [
-          11
-        ],
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.26812
-      },
-      {
-        "source": "merge(dairy and eggs)",
+        "source": "merge",
         "target": "block(containers)",
         "count": 1,
         "probability": 0.5,
-        "key": "merge(dairy and eggs)|||block(containers)",
+        "key": "merge|||block(containers)",
         "occurrences": [
           37
         ],
@@ -4267,17 +4489,17 @@
         "rank_delta": -0.23913
       },
       {
-        "source": "merge(dairy and eggs)",
-        "target": "leave(dairy and eggs)",
+        "source": "merge",
+        "target": "leave",
         "count": 1,
         "probability": 0.5,
-        "key": "merge(dairy and eggs)|||leave(dairy and eggs)",
+        "key": "merge|||leave",
         "occurrences": [
           49
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.1884
+        "rank_delta": 0.10145
       },
       {
         "source": "merge(drinks)",
@@ -4306,69 +4528,69 @@
         "rank_delta": 0.38406
       },
       {
-        "source": "monitor(appliances)",
+        "source": "monitor",
         "target": "block(appliances)",
         "count": 1,
-        "probability": 1.0,
-        "key": "monitor(appliances)|||block(appliances)",
+        "probability": 0.5,
+        "key": "monitor|||block(appliances)",
         "occurrences": [
           29
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.1087
+        "rank_delta": 0.11595
       },
       {
-        "source": "monitor(containers)",
-        "target": "monitor(appliances)",
+        "source": "monitor",
+        "target": "monitor",
         "count": 1,
-        "probability": 1.0,
-        "key": "monitor(containers)|||monitor(appliances)",
+        "probability": 0.5,
+        "key": "monitor|||monitor",
         "occurrences": [
           28
         ],
-        "is_self_loop": false,
+        "is_self_loop": true,
         "is_return": false,
-        "rank_delta": 0.01449
+        "rank_delta": 0.0
       },
       {
-        "source": "retrieve(cleaning equipment and material)",
-        "target": "clean(dairy and eggs)",
+        "source": "retrieve",
+        "target": "clean",
         "count": 1,
-        "probability": 1.0,
-        "key": "retrieve(cleaning equipment and material)|||clean(dairy and eggs)",
+        "probability": 0.2,
+        "key": "retrieve|||clean",
         "occurrences": [
           55
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.01449
+        "rank_delta": 0.04347
       },
       {
-        "source": "retrieve(containers)",
-        "target": "manipulate(containers)",
+        "source": "retrieve",
+        "target": "leave",
         "count": 1,
         "probability": 0.2,
-        "key": "retrieve(containers)|||manipulate(containers)",
+        "key": "retrieve|||leave",
         "occurrences": [
-          26
-        ],
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.02898
-      },
-      {
-        "source": "retrieve(containers)",
-        "target": "manipulate(drinks)",
-        "count": 1,
-        "probability": 0.2,
-        "key": "retrieve(containers)|||manipulate(drinks)",
-        "occurrences": [
-          10
+          60
         ],
         "is_self_loop": false,
         "is_return": true,
-        "rank_delta": -0.2029
+        "rank_delta": -0.04348
+      },
+      {
+        "source": "retrieve",
+        "target": "manipulate(appliances)",
+        "count": 1,
+        "probability": 0.2,
+        "key": "retrieve|||manipulate(appliances)",
+        "occurrences": [
+          45
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.19566
       },
       {
         "source": "retrieve(containers)",
@@ -4398,16 +4620,16 @@
       },
       {
         "source": "retrieve(crockery)",
-        "target": "leave(cookware)",
+        "target": "leave",
         "count": 1,
         "probability": 0.25,
-        "key": "retrieve(crockery)|||leave(cookware)",
+        "key": "retrieve(crockery)|||leave",
         "occurrences": [
           4
         ],
         "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.35508
+        "is_return": false,
+        "rank_delta": 0.2971
       },
       {
         "source": "retrieve(crockery)",
@@ -4423,24 +4645,11 @@
         "rank_delta": 0.26811
       },
       {
-        "source": "retrieve(cutlery)",
-        "target": "manipulate(appliances)",
-        "count": 1,
-        "probability": 1.0,
-        "key": "retrieve(cutlery)|||manipulate(appliances)",
-        "occurrences": [
-          45
-        ],
-        "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.07971
-      },
-      {
         "source": "retrieve(dairy and eggs)",
-        "target": "merge(dairy and eggs)",
+        "target": "merge",
         "count": 1,
         "probability": 1.0,
-        "key": "retrieve(dairy and eggs)|||merge(dairy and eggs)",
+        "key": "retrieve(dairy and eggs)|||merge",
         "occurrences": [
           48
         ],
@@ -4462,24 +4671,11 @@
         "rank_delta": 0.01449
       },
       {
-        "source": "retrieve(furniture)",
-        "target": "leave(furniture)",
-        "count": 1,
-        "probability": 0.3333,
-        "key": "retrieve(furniture)|||leave(furniture)",
-        "occurrences": [
-          60
-        ],
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.11594
-      },
-      {
         "source": "retrieve(utensils)",
-        "target": "access(rubbish)",
+        "target": "access",
         "count": 1,
         "probability": 1.0,
-        "key": "retrieve(utensils)|||access(rubbish)",
+        "key": "retrieve(utensils)|||access",
         "occurrences": [
           65
         ],
@@ -4502,6 +4698,1491 @@
       }
     ]
   },
+  "graph_macro": {
+    "nodes": [
+      {
+        "id": "manipulate(appliances)",
+        "count": 4,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "button": 4
+        },
+        "verbs": {
+          "press": 4
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.625,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "manipulate(appliances)": 4
+        },
+        "dead_end_score": 0.5,
+        "role": "spine",
+        "mean_duration_s": 0.71,
+        "median_duration_s": 0.66,
+        "mean_gap_out_s": 9.49,
+        "median_gap_out_s": 5.19,
+        "mean_bridge_out_actions": 2.0
+      },
+      {
+        "id": "manipulate",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "water": 1,
+          "can": 1
+        },
+        "verbs": {
+          "hold": 1,
+          "turn": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.33333,
+        "abstraction_level": 3,
+        "rolled_up": true,
+        "merged_from": {
+          "manipulate(drinks)": 1,
+          "manipulate(containers)": 1
+        },
+        "dead_end_score": 0.5,
+        "role": "spine",
+        "mean_duration_s": 1.08,
+        "median_duration_s": 1.08,
+        "mean_gap_out_s": 9.25,
+        "median_gap_out_s": 9.25,
+        "mean_bridge_out_actions": 5.0
+      },
+      {
+        "id": "merge",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "milk": 2
+        },
+        "verbs": {
+          "pour": 2
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.66667,
+        "abstraction_level": 3,
+        "rolled_up": true,
+        "merged_from": {
+          "merge(dairy and eggs)": 2
+        },
+        "dead_end_score": 0.5,
+        "role": "spine",
+        "mean_duration_s": 7.85,
+        "median_duration_s": 7.85,
+        "mean_gap_out_s": 9.98,
+        "median_gap_out_s": 9.98,
+        "mean_bridge_out_actions": 7.5
+      },
+      {
+        "id": "merge(drinks)",
+        "count": 2,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "water": 1,
+          "coffee": 1
+        },
+        "verbs": {
+          "pour": 1,
+          "mix": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.625,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "merge(drinks)": 2
+        },
+        "dead_end_score": 0.5,
+        "role": "spine",
+        "mean_duration_s": 2.9,
+        "median_duration_s": 2.9,
+        "mean_gap_out_s": 15.52,
+        "median_gap_out_s": 15.52,
+        "mean_bridge_out_actions": 6.5
+      },
+      {
+        "id": "END",
+        "count": 1,
+        "is_primary": true,
+        "salient": false,
+        "objects": {},
+        "verbs": {},
+        "kind": "end",
+        "is_start": false,
+        "is_end": true,
+        "median_rank": 1.0,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {},
+        "dead_end_score": 1.0,
+        "role": "spine"
+      },
+      {
+        "id": "START",
+        "count": 1,
+        "is_primary": true,
+        "salient": false,
+        "objects": {},
+        "verbs": {},
+        "kind": "start",
+        "is_start": true,
+        "is_end": false,
+        "median_rank": 0.0,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {},
+        "dead_end_score": 0.0,
+        "role": "spine",
+        "mean_duration_s": 0.0,
+        "median_duration_s": 0.0,
+        "mean_gap_out_s": 7.22,
+        "median_gap_out_s": 7.22,
+        "mean_bridge_out_actions": 1.0
+      },
+      {
+        "id": "manipulate(crockery)",
+        "count": 1,
+        "is_primary": true,
+        "salient": true,
+        "objects": {
+          "cup": 1
+        },
+        "verbs": {
+          "turn": 1
+        },
+        "kind": "action",
+        "is_start": false,
+        "is_end": false,
+        "median_rank": 0.08333,
+        "abstraction_level": 1,
+        "rolled_up": false,
+        "merged_from": {
+          "manipulate(crockery)": 1
+        },
+        "dead_end_score": 0.0,
+        "role": "spine",
+        "mean_duration_s": 1.17,
+        "median_duration_s": 1.17,
+        "mean_gap_out_s": 2.85,
+        "median_gap_out_s": 2.85,
+        "mean_bridge_out_actions": 2.0
+      }
+    ],
+    "links": [
+      {
+        "source": "manipulate(appliances)",
+        "target": "manipulate(appliances)",
+        "key": "manipulate(appliances)|||manipulate(appliances)",
+        "count": 2,
+        "occurrences": [
+          7,
+          8
+        ],
+        "probability": 0.5,
+        "n": 2,
+        "n_out": 4,
+        "ci_low": 0.15,
+        "ci_high": 0.85,
+        "p_laplace": 0.4286,
+        "evidence": "moderate",
+        "gap_s_mean": 13.79,
+        "gap_s_median": 13.79,
+        "gap_s_min": 0.54,
+        "gap_s_max": 27.04,
+        "is_bridged": true,
+        "bridge_len_mean": 2.5,
+        "bridge_len_median": 2.5,
+        "bridge_len_min": 0,
+        "bridge_len_max": 5,
+        "bridge_actions": {
+          "access(appliances)": 1,
+          "leave(containers)": 1,
+          "block(appliances)": 1,
+          "access(containers)": 1,
+          "retrieve": 1
+        },
+        "bridge_raw_actions": {
+          "open(fridge)": 1,
+          "put(bottle)": 1,
+          "close(fridge)": 1,
+          "open(box)": 1,
+          "take(spoon)": 1
+        },
+        "bridge_samples": [
+          {
+            "spine_index": 7,
+            "n_actions": 0,
+            "gap_s": 0.54,
+            "start": 78.95,
+            "end": 79.49,
+            "session_index": null,
+            "actions": [],
+            "raw_actions": [],
+            "starts": [],
+            "ends": []
+          },
+          {
+            "spine_index": 8,
+            "n_actions": 5,
+            "gap_s": 27.04,
+            "start": 80.06,
+            "end": 107.1,
+            "session_index": null,
+            "actions": [
+              "access(appliances)",
+              "leave(containers)",
+              "block(appliances)",
+              "access(containers)",
+              "retrieve"
+            ],
+            "raw_actions": [
+              "open(fridge)",
+              "put(bottle)",
+              "close(fridge)",
+              "open(box)",
+              "take(spoon)"
+            ],
+            "starts": [
+              82.82,
+              84.07,
+              84.77,
+              88.47,
+              89.76
+            ],
+            "ends": [
+              83.83,
+              84.69,
+              86.2,
+              89.44,
+              90.38
+            ]
+          }
+        ],
+        "bridge_total_actions": 5,
+        "is_self_loop": true,
+        "is_return": false,
+        "rank_delta": 0.0
+      },
+      {
+        "source": "START",
+        "target": "manipulate(crockery)",
+        "key": "START|||manipulate(crockery)",
+        "count": 1,
+        "occurrences": [
+          0
+        ],
+        "probability": 1.0,
+        "n": 1,
+        "n_out": 1,
+        "ci_low": 0.2065,
+        "ci_high": 1.0,
+        "p_laplace": 1.0,
+        "evidence": "weak",
+        "gap_s_mean": 7.22,
+        "gap_s_median": 7.22,
+        "gap_s_min": 7.22,
+        "gap_s_max": 7.22,
+        "is_bridged": true,
+        "bridge_len_mean": 1.0,
+        "bridge_len_median": 1.0,
+        "bridge_len_min": 1,
+        "bridge_len_max": 1,
+        "bridge_actions": {
+          "leave": 1
+        },
+        "bridge_raw_actions": {
+          "put(pot)": 1
+        },
+        "bridge_samples": [
+          {
+            "spine_index": 0,
+            "n_actions": 1,
+            "gap_s": 7.22,
+            "start": 7.74,
+            "end": 14.96,
+            "session_index": null,
+            "actions": [
+              "leave"
+            ],
+            "raw_actions": [
+              "put(pot)"
+            ],
+            "starts": [
+              13.9
+            ],
+            "ends": [
+              14.76
+            ]
+          }
+        ],
+        "bridge_total_actions": 1,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.08333
+      },
+      {
+        "source": "manipulate",
+        "target": "merge",
+        "key": "manipulate|||merge",
+        "count": 1,
+        "occurrences": [
+          5
+        ],
+        "probability": 0.5,
+        "n": 1,
+        "n_out": 2,
+        "ci_low": 0.0945,
+        "ci_high": 0.9055,
+        "p_laplace": 0.5,
+        "evidence": "weak",
+        "gap_s_mean": 17.44,
+        "gap_s_median": 17.44,
+        "gap_s_min": 17.44,
+        "gap_s_max": 17.44,
+        "is_bridged": true,
+        "bridge_len_mean": 9.0,
+        "bridge_len_median": 9.0,
+        "bridge_len_min": 9,
+        "bridge_len_max": 9,
+        "bridge_actions": {
+          "monitor": 2,
+          "leave(containers)": 2,
+          "block(appliances)": 1,
+          "access": 1,
+          "block": 1,
+          "retrieve(containers)": 1,
+          "access(containers)": 1
+        },
+        "bridge_raw_actions": {
+          "look(can)": 1,
+          "look(alarm)": 1,
+          "close(fridge)": 1,
+          "open(bin)": 1,
+          "throw(can)": 1,
+          "close(bin)": 1,
+          "lift(lid)": 1,
+          "put(lid)": 1,
+          "open(bottle)": 1
+        },
+        "bridge_samples": [
+          {
+            "spine_index": 5,
+            "n_actions": 9,
+            "gap_s": 17.44,
+            "start": 56.06,
+            "end": 73.5,
+            "session_index": null,
+            "actions": [
+              "monitor",
+              "monitor",
+              "block(appliances)",
+              "access",
+              "leave(containers)",
+              "block",
+              "retrieve(containers)",
+              "leave(containers)",
+              "access(containers)"
+            ],
+            "raw_actions": [
+              "look(can)",
+              "look(alarm)",
+              "close(fridge)",
+              "open(bin)",
+              "throw(can)",
+              "close(bin)",
+              "lift(lid)",
+              "put(lid)",
+              "open(bottle)"
+            ],
+            "starts": [
+              56.15,
+              56.95,
+              64.55,
+              67.69,
+              68.07,
+              68.17,
+              70.28,
+              71.01,
+              71.65
+            ],
+            "ends": [
+              56.85,
+              63.68,
+              66.51,
+              67.97,
+              68.39,
+              68.42,
+              70.91,
+              71.23,
+              73.0
+            ]
+          }
+        ],
+        "bridge_total_actions": 9,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.33334
+      },
+      {
+        "source": "manipulate",
+        "target": "merge(drinks)",
+        "key": "manipulate|||merge(drinks)",
+        "count": 1,
+        "occurrences": [
+          3
+        ],
+        "probability": 0.5,
+        "n": 1,
+        "n_out": 2,
+        "ci_low": 0.0945,
+        "ci_high": 0.9055,
+        "p_laplace": 0.5,
+        "evidence": "weak",
+        "gap_s_mean": 1.05,
+        "gap_s_median": 1.05,
+        "gap_s_min": 1.05,
+        "gap_s_max": 1.05,
+        "is_bridged": true,
+        "bridge_len_mean": 1.0,
+        "bridge_len_median": 1.0,
+        "bridge_len_min": 1,
+        "bridge_len_max": 1,
+        "bridge_actions": {
+          "retrieve(crockery)": 1
+        },
+        "bridge_raw_actions": {
+          "take(jug)": 1
+        },
+        "bridge_samples": [
+          {
+            "spine_index": 3,
+            "n_actions": 1,
+            "gap_s": 1.05,
+            "start": 23.59,
+            "end": 24.64,
+            "session_index": null,
+            "actions": [
+              "retrieve(crockery)"
+            ],
+            "raw_actions": [
+              "take(jug)"
+            ],
+            "starts": [
+              23.63
+            ],
+            "ends": [
+              24.54
+            ]
+          }
+        ],
+        "bridge_total_actions": 1,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.29167
+      },
+      {
+        "source": "manipulate(appliances)",
+        "target": "manipulate",
+        "key": "manipulate(appliances)|||manipulate",
+        "count": 1,
+        "occurrences": [
+          2
+        ],
+        "probability": 0.25,
+        "n": 1,
+        "n_out": 4,
+        "ci_low": 0.0456,
+        "ci_high": 0.6994,
+        "p_laplace": 0.2857,
+        "evidence": "weak",
+        "gap_s_mean": 3.59,
+        "gap_s_median": 3.59,
+        "gap_s_min": 3.59,
+        "gap_s_max": 3.59,
+        "is_bridged": true,
+        "bridge_len_mean": 1.0,
+        "bridge_len_median": 1.0,
+        "bridge_len_min": 1,
+        "bridge_len_max": 1,
+        "bridge_actions": {
+          "retrieve(containers)": 1
+        },
+        "bridge_raw_actions": {
+          "lift(lid)": 1
+        },
+        "bridge_samples": [
+          {
+            "spine_index": 2,
+            "n_actions": 1,
+            "gap_s": 3.59,
+            "start": 19.25,
+            "end": 22.84,
+            "session_index": null,
+            "actions": [
+              "retrieve(containers)"
+            ],
+            "raw_actions": [
+              "lift(lid)"
+            ],
+            "starts": [
+              19.36
+            ],
+            "ends": [
+              22.0
+            ]
+          }
+        ],
+        "bridge_total_actions": 1,
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.29167
+      },
+      {
+        "source": "manipulate(appliances)",
+        "target": "merge",
+        "key": "manipulate(appliances)|||merge",
+        "count": 1,
+        "occurrences": [
+          9
+        ],
+        "probability": 0.25,
+        "n": 1,
+        "n_out": 4,
+        "ci_low": 0.0456,
+        "ci_high": 0.6994,
+        "p_laplace": 0.2857,
+        "evidence": "weak",
+        "gap_s_mean": 6.79,
+        "gap_s_median": 6.79,
+        "gap_s_min": 6.79,
+        "gap_s_max": 6.79,
+        "is_bridged": true,
+        "bridge_len_mean": 2.0,
+        "bridge_len_median": 2.0,
+        "bridge_len_min": 2,
+        "bridge_len_max": 2,
+        "bridge_actions": {
+          "retrieve(crockery)": 1,
+          "retrieve(dairy and eggs)": 1
+        },
+        "bridge_raw_actions": {
+          "take(cup)": 1,
+          "take(milk)": 1
+        },
+        "bridge_samples": [
+          {
+            "spine_index": 9,
+            "n_actions": 2,
+            "gap_s": 6.79,
+            "start": 108.36,
+            "end": 115.15,
+            "session_index": null,
+            "actions": [
+              "retrieve(crockery)",
+              "retrieve(dairy and eggs)"
+            ],
+            "raw_actions": [
+              "take(cup)",
+              "take(milk)"
+            ],
+            "starts": [
+              109.01,
+              113.86
+            ],
+            "ends": [
+              113.56,
+              114.58
+            ]
+          }
+        ],
+        "bridge_total_actions": 2,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.04167
+      },
+      {
+        "source": "manipulate(crockery)",
+        "target": "manipulate(appliances)",
+        "key": "manipulate(crockery)|||manipulate(appliances)",
+        "count": 1,
+        "occurrences": [
+          1
+        ],
+        "probability": 1.0,
+        "n": 1,
+        "n_out": 1,
+        "ci_low": 0.2065,
+        "ci_high": 1.0,
+        "p_laplace": 1.0,
+        "evidence": "weak",
+        "gap_s_mean": 2.85,
+        "gap_s_median": 2.85,
+        "gap_s_min": 2.85,
+        "gap_s_max": 2.85,
+        "is_bridged": true,
+        "bridge_len_mean": 2.0,
+        "bridge_len_median": 2.0,
+        "bridge_len_min": 2,
+        "bridge_len_max": 2,
+        "bridge_actions": {
+          "retrieve": 1,
+          "leave(crockery)": 1
+        },
+        "bridge_raw_actions": {
+          "lift(shelf)": 1,
+          "put(cup)": 1
+        },
+        "bridge_samples": [
+          {
+            "spine_index": 1,
+            "n_actions": 2,
+            "gap_s": 2.85,
+            "start": 16.13,
+            "end": 18.98,
+            "session_index": null,
+            "actions": [
+              "retrieve",
+              "leave(crockery)"
+            ],
+            "raw_actions": [
+              "lift(shelf)",
+              "put(cup)"
+            ],
+            "starts": [
+              17.82,
+              18.28
+            ],
+            "ends": [
+              18.32,
+              18.53
+            ]
+          }
+        ],
+        "bridge_total_actions": 2,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.54167
+      },
+      {
+        "source": "merge",
+        "target": "manipulate(appliances)",
+        "key": "merge|||manipulate(appliances)",
+        "count": 1,
+        "occurrences": [
+          6
+        ],
+        "probability": 0.5,
+        "n": 1,
+        "n_out": 2,
+        "ci_low": 0.0945,
+        "ci_high": 0.9055,
+        "p_laplace": 0.5,
+        "evidence": "weak",
+        "gap_s_mean": 1.63,
+        "gap_s_median": 1.63,
+        "gap_s_min": 1.63,
+        "gap_s_max": 1.63,
+        "is_bridged": true,
+        "bridge_len_mean": 1.0,
+        "bridge_len_median": 1.0,
+        "bridge_len_min": 1,
+        "bridge_len_max": 1,
+        "bridge_actions": {
+          "block(containers)": 1
+        },
+        "bridge_raw_actions": {
+          "close(bottle)": 1
+        },
+        "bridge_samples": [
+          {
+            "spine_index": 6,
+            "n_actions": 1,
+            "gap_s": 1.63,
+            "start": 76.57,
+            "end": 78.2,
+            "session_index": null,
+            "actions": [
+              "block(containers)"
+            ],
+            "raw_actions": [
+              "close(bottle)"
+            ],
+            "starts": [
+              76.68
+            ],
+            "ends": [
+              77.9
+            ]
+          }
+        ],
+        "bridge_total_actions": 1,
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.04167
+      },
+      {
+        "source": "merge",
+        "target": "merge(drinks)",
+        "key": "merge|||merge(drinks)",
+        "count": 1,
+        "occurrences": [
+          10
+        ],
+        "probability": 0.5,
+        "n": 1,
+        "n_out": 2,
+        "ci_low": 0.0945,
+        "ci_high": 0.9055,
+        "p_laplace": 0.5,
+        "evidence": "weak",
+        "gap_s_mean": 18.33,
+        "gap_s_median": 18.33,
+        "gap_s_min": 18.33,
+        "gap_s_max": 18.33,
+        "is_bridged": true,
+        "bridge_len_mean": 14.0,
+        "bridge_len_median": 14.0,
+        "bridge_len_min": 14,
+        "bridge_len_max": 14,
+        "bridge_actions": {
+          "leave": 4,
+          "clean": 3,
+          "retrieve": 3,
+          "access(appliances)": 1,
+          "leave(crockery)": 1,
+          "block(appliances)": 1,
+          "retrieve(crockery)": 1
+        },
+        "bridge_raw_actions": {
+          "wash(milk)": 3,
+          "put(milk)": 2,
+          "open(tap)": 1,
+          "remove(top)": 1,
+          "put(plate)": 1,
+          "take(sponge)": 1,
+          "put(sponge)": 1,
+          "close(tap)": 1,
+          "take(top)": 1,
+          "put(top)": 1,
+          "take(cup)": 1
+        },
+        "bridge_samples": [
+          {
+            "spine_index": 10,
+            "n_actions": 14,
+            "gap_s": 18.33,
+            "start": 127.78,
+            "end": 146.11,
+            "session_index": null,
+            "actions": [
+              "leave",
+              "access(appliances)",
+              "clean",
+              "retrieve",
+              "leave(crockery)",
+              "retrieve",
+              "clean",
+              "leave",
+              "clean",
+              "block(appliances)",
+              "retrieve",
+              "leave",
+              "leave",
+              "retrieve(crockery)"
+            ],
+            "raw_actions": [
+              "put(milk)",
+              "open(tap)",
+              "wash(milk)",
+              "remove(top)",
+              "put(plate)",
+              "take(sponge)",
+              "wash(milk)",
+              "put(sponge)",
+              "wash(milk)",
+              "close(tap)",
+              "take(top)",
+              "put(top)",
+              "put(milk)",
+              "take(cup)"
+            ],
+            "starts": [
+              130.63,
+              131.18,
+              131.75,
+              134.34,
+              135.52,
+              136.07,
+              136.62,
+              138.65,
+              138.85,
+              140.72,
+              141.54,
+              142.2,
+              144.75,
+              145.8
+            ],
+            "ends": [
+              131.03,
+              131.53,
+              134.09,
+              135.17,
+              135.75,
+              136.52,
+              138.22,
+              138.88,
+              140.83,
+              141.03,
+              142.01,
+              142.57,
+              145.25,
+              146.35
+            ]
+          }
+        ],
+        "bridge_total_actions": 14,
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.04167
+      },
+      {
+        "source": "merge(drinks)",
+        "target": "END",
+        "key": "merge(drinks)|||END",
+        "count": 1,
+        "occurrences": [
+          11
+        ],
+        "probability": 0.5,
+        "n": 1,
+        "n_out": 2,
+        "ci_low": 0.0945,
+        "ci_high": 0.9055,
+        "p_laplace": 0.5,
+        "evidence": "weak",
+        "gap_s_mean": 3.21,
+        "gap_s_median": 3.21,
+        "gap_s_min": 3.21,
+        "gap_s_max": 3.21,
+        "is_bridged": false,
+        "bridge_len_mean": 0.0,
+        "bridge_len_median": 0.0,
+        "bridge_len_min": 0,
+        "bridge_len_max": 0,
+        "bridge_actions": {},
+        "bridge_raw_actions": {},
+        "bridge_samples": [
+          {
+            "spine_index": 11,
+            "n_actions": 0,
+            "gap_s": 3.21,
+            "start": 149.72,
+            "end": 152.93,
+            "session_index": null,
+            "actions": [],
+            "raw_actions": [],
+            "starts": [],
+            "ends": []
+          }
+        ],
+        "bridge_total_actions": 0,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.375
+      },
+      {
+        "source": "merge(drinks)",
+        "target": "manipulate",
+        "key": "merge(drinks)|||manipulate",
+        "count": 1,
+        "occurrences": [
+          4
+        ],
+        "probability": 0.5,
+        "n": 1,
+        "n_out": 2,
+        "ci_low": 0.0945,
+        "ci_high": 0.9055,
+        "p_laplace": 0.5,
+        "evidence": "weak",
+        "gap_s_mean": 27.82,
+        "gap_s_median": 27.82,
+        "gap_s_min": 27.82,
+        "gap_s_max": 27.82,
+        "is_bridged": true,
+        "bridge_len_mean": 13.0,
+        "bridge_len_median": 13.0,
+        "bridge_len_min": 13,
+        "bridge_len_max": 13,
+        "bridge_actions": {
+          "retrieve(containers)": 3,
+          "leave": 2,
+          "leave(crockery)": 1,
+          "block(containers)": 1,
+          "leave(containers)": 1,
+          "access(containers)": 1,
+          "retrieve(drinks)": 1,
+          "access(furniture)": 1,
+          "block(appliances)": 1,
+          "access(appliances)": 1
+        },
+        "bridge_raw_actions": {
+          "put(jug)": 1,
+          "close(lid)": 1,
+          "put(water)": 1,
+          "take(box)": 1,
+          "put(box)": 1,
+          "open(box)": 1,
+          "take(coffee)": 1,
+          "open(drawer)": 1,
+          "put(coffee)": 1,
+          "close(machine:washing)": 1,
+          "open(fridge)": 1,
+          "take(bottle)": 1
+        },
+        "bridge_samples": [
+          {
+            "spine_index": 4,
+            "n_actions": 13,
+            "gap_s": 27.82,
+            "start": 26.83,
+            "end": 54.65,
+            "session_index": null,
+            "actions": [
+              "leave(crockery)",
+              "block(containers)",
+              "leave",
+              "retrieve(containers)",
+              "leave(containers)",
+              "access(containers)",
+              "retrieve(drinks)",
+              "access(furniture)",
+              "leave",
+              "block(appliances)",
+              "access(appliances)",
+              "retrieve(containers)",
+              "retrieve(containers)"
+            ],
+            "raw_actions": [
+              "put(jug)",
+              "close(lid)",
+              "put(water)",
+              "take(box)",
+              "put(box)",
+              "open(box)",
+              "take(coffee)",
+              "open(drawer)",
+              "put(coffee)",
+              "close(machine:washing)",
+              "open(fridge)",
+              "take(bottle)",
+              "take(can)"
+            ],
+            "starts": [
+              26.67,
+              27.96,
+              29.25,
+              32.39,
+              36.86,
+              38.47,
+              43.76,
+              45.6,
+              46.12,
+              46.84,
+              49.82,
+              50.88,
+              53.34
+            ],
+            "ends": [
+              27.86,
+              29.15,
+              32.29,
+              36.76,
+              38.37,
+              43.66,
+              45.51,
+              46.07,
+              46.74,
+              47.39,
+              50.58,
+              51.54,
+              55.35
+            ]
+          }
+        ],
+        "bridge_total_actions": 13,
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.29167
+      }
+    ]
+  },
+  "macro_sequence": [
+    {
+      "action": "START",
+      "raw_action": "START",
+      "start": 7.739,
+      "end": 7.74,
+      "duration": 0.0,
+      "step_id": null,
+      "is_primary": true,
+      "phase": null,
+      "verb_class": -1,
+      "noun_class": -1,
+      "video_id": "P01-20240203-093333",
+      "video_start": 0.0,
+      "video_end": 0.0,
+      "salient": false,
+      "kind": "start",
+      "index": 0,
+      "next_action": "manipulate(crockery)",
+      "edge_key": "START|||manipulate(crockery)",
+      "spine_role": "spine",
+      "bridge_after": [
+        "put(pot)"
+      ]
+    },
+    {
+      "index": 1,
+      "action": "manipulate(crockery)",
+      "start": 14.96,
+      "end": 16.13,
+      "duration": 1.1699999999999982,
+      "next_action": "manipulate(appliances)",
+      "edge_key": "manipulate(crockery)|||manipulate(appliances)",
+      "step_id": "P01_R01_S04",
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
+      "phase": "prep",
+      "verb_class": 23,
+      "noun_class": 13,
+      "video_id": "P01-20240203-093333",
+      "video_start": 14.96,
+      "video_end": 16.13,
+      "raw_action": "turn(cup)",
+      "abstraction_level": 1,
+      "specific_action": "manipulate(crockery)",
+      "salient": true,
+      "kind": "action",
+      "spine_role": "spine",
+      "bridge_after": [
+        "lift(shelf)",
+        "put(cup)"
+      ]
+    },
+    {
+      "index": 2,
+      "action": "manipulate(appliances)",
+      "start": 18.98,
+      "end": 19.25,
+      "duration": 0.2699999999999996,
+      "next_action": "manipulate",
+      "edge_key": "manipulate(appliances)|||manipulate",
+      "step_id": "P01_R01_S02",
+      "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
+      "phase": "exec",
+      "verb_class": 21,
+      "noun_class": 92,
+      "video_id": "P01-20240203-093333",
+      "video_start": 18.98,
+      "video_end": 19.25,
+      "raw_action": "press(button)",
+      "abstraction_level": 1,
+      "specific_action": "manipulate(appliances)",
+      "salient": true,
+      "kind": "action",
+      "spine_role": "spine",
+      "bridge_after": [
+        "lift(lid)"
+      ]
+    },
+    {
+      "index": 3,
+      "action": "manipulate",
+      "start": 22.84,
+      "end": 23.59,
+      "duration": 0.75,
+      "next_action": "merge(drinks)",
+      "edge_key": "manipulate|||merge(drinks)",
+      "step_id": "P01_R01_S01",
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
+      "phase": "prep",
+      "verb_class": 34,
+      "noun_class": 27,
+      "video_id": "P01-20240203-093333",
+      "video_start": 22.84,
+      "video_end": 23.59,
+      "raw_action": "hold(water)",
+      "abstraction_level": 3,
+      "specific_action": "manipulate(drinks)",
+      "salient": true,
+      "kind": "action",
+      "spine_role": "spine",
+      "bridge_after": [
+        "take(jug)"
+      ]
+    },
+    {
+      "index": 4,
+      "action": "merge(drinks)",
+      "start": 24.64,
+      "end": 26.83,
+      "duration": 2.1899999999999977,
+      "next_action": "manipulate",
+      "edge_key": "merge(drinks)|||manipulate",
+      "step_id": "P01_R01_S01",
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
+      "phase": "prep",
+      "verb_class": 9,
+      "noun_class": 27,
+      "video_id": "P01-20240203-093333",
+      "video_start": 24.64,
+      "video_end": 26.83,
+      "raw_action": "pour(water)",
+      "abstraction_level": 1,
+      "specific_action": "merge(drinks)",
+      "salient": true,
+      "kind": "action",
+      "spine_role": "spine",
+      "bridge_after": [
+        "put(jug)",
+        "close(lid)",
+        "put(water)",
+        "take(box)",
+        "put(box)",
+        "open(box)",
+        "take(coffee)",
+        "open(drawer)",
+        "put(coffee)",
+        "close(machine:washing)",
+        "open(fridge)",
+        "take(bottle)",
+        "take(can)"
+      ]
+    },
+    {
+      "index": 5,
+      "action": "manipulate",
+      "start": 54.65,
+      "end": 56.06,
+      "duration": 1.4100000000000037,
+      "next_action": "merge",
+      "edge_key": "manipulate|||merge",
+      "step_id": "P01_R01_S03",
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
+      "phase": "prep",
+      "verb_class": 23,
+      "noun_class": 61,
+      "video_id": "P01-20240203-093333",
+      "video_start": 54.65,
+      "video_end": 56.06,
+      "raw_action": "turn(can)",
+      "abstraction_level": 3,
+      "specific_action": "manipulate(containers)",
+      "salient": true,
+      "kind": "action",
+      "spine_role": "spine",
+      "bridge_after": [
+        "look(can)",
+        "look(alarm)",
+        "close(fridge)",
+        "open(bin)",
+        "throw(can)",
+        "close(bin)",
+        "lift(lid)",
+        "put(lid)",
+        "open(bottle)"
+      ]
+    },
+    {
+      "index": 6,
+      "action": "merge",
+      "start": 73.5,
+      "end": 76.57,
+      "duration": 3.069999999999993,
+      "next_action": "manipulate(appliances)",
+      "edge_key": "merge|||manipulate(appliances)",
+      "step_id": "P01_R01_S03",
+      "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
+      "phase": "exec",
+      "verb_class": 9,
+      "noun_class": 64,
+      "video_id": "P01-20240203-093333",
+      "video_start": 73.5,
+      "video_end": 76.57,
+      "raw_action": "pour(milk)",
+      "abstraction_level": 3,
+      "specific_action": "merge(dairy and eggs)",
+      "salient": true,
+      "kind": "action",
+      "spine_role": "spine",
+      "bridge_after": [
+        "close(bottle)"
+      ]
+    },
+    {
+      "index": 7,
+      "action": "manipulate(appliances)",
+      "start": 78.2,
+      "end": 78.95,
+      "duration": 0.75,
+      "next_action": "manipulate(appliances)",
+      "edge_key": "manipulate(appliances)|||manipulate(appliances)",
+      "step_id": null,
+      "is_primary": true,
+      "in_window_scope": false,
+      "in_span_scope": true,
+      "phase": null,
+      "verb_class": 21,
+      "noun_class": 92,
+      "video_id": "P01-20240203-093333",
+      "video_start": 78.2,
+      "video_end": 78.95,
+      "raw_action": "press(button)",
+      "abstraction_level": 1,
+      "specific_action": "manipulate(appliances)",
+      "salient": true,
+      "kind": "action",
+      "spine_role": "spine",
+      "bridge_after": []
+    },
+    {
+      "index": 8,
+      "action": "manipulate(appliances)",
+      "start": 79.49,
+      "end": 80.06,
+      "duration": 0.5700000000000074,
+      "next_action": "manipulate(appliances)",
+      "edge_key": "manipulate(appliances)|||manipulate(appliances)",
+      "step_id": "P01_R01_S02",
+      "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
+      "phase": "exec",
+      "verb_class": 21,
+      "noun_class": 92,
+      "video_id": "P01-20240203-093333",
+      "video_start": 79.49,
+      "video_end": 80.06,
+      "raw_action": "press(button)",
+      "abstraction_level": 1,
+      "specific_action": "manipulate(appliances)",
+      "salient": true,
+      "kind": "action",
+      "spine_role": "spine",
+      "bridge_after": [
+        "open(fridge)",
+        "put(bottle)",
+        "close(fridge)",
+        "open(box)",
+        "take(spoon)"
+      ]
+    },
+    {
+      "index": 9,
+      "action": "manipulate(appliances)",
+      "start": 107.1,
+      "end": 108.36,
+      "duration": 1.2600000000000051,
+      "next_action": "merge",
+      "edge_key": "manipulate(appliances)|||merge",
+      "step_id": "P01_R01_S02",
+      "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
+      "phase": "exec",
+      "verb_class": 21,
+      "noun_class": 92,
+      "video_id": "P01-20240203-093333",
+      "video_start": 107.1,
+      "video_end": 108.36,
+      "raw_action": "press(button)",
+      "abstraction_level": 1,
+      "specific_action": "manipulate(appliances)",
+      "salient": true,
+      "kind": "action",
+      "spine_role": "spine",
+      "bridge_after": [
+        "take(cup)",
+        "take(milk)"
+      ]
+    },
+    {
+      "index": 10,
+      "action": "merge",
+      "start": 115.15,
+      "end": 127.78,
+      "duration": 12.629999999999995,
+      "next_action": "merge(drinks)",
+      "edge_key": "merge|||merge(drinks)",
+      "step_id": "P01_R01_S04",
+      "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
+      "phase": "exec",
+      "verb_class": 9,
+      "noun_class": 64,
+      "video_id": "P01-20240203-093333",
+      "video_start": 115.15,
+      "video_end": 127.78,
+      "raw_action": "pour(milk)",
+      "abstraction_level": 3,
+      "specific_action": "merge(dairy and eggs)",
+      "salient": true,
+      "kind": "action",
+      "spine_role": "spine",
+      "bridge_after": [
+        "put(milk)",
+        "open(tap)",
+        "wash(milk)",
+        "remove(top)",
+        "put(plate)",
+        "take(sponge)",
+        "wash(milk)",
+        "put(sponge)",
+        "wash(milk)",
+        "close(tap)",
+        "take(top)",
+        "put(top)",
+        "put(milk)",
+        "take(cup)"
+      ]
+    },
+    {
+      "index": 11,
+      "action": "merge(drinks)",
+      "start": 146.11,
+      "end": 149.72,
+      "duration": 3.609999999999985,
+      "next_action": "END",
+      "edge_key": "merge(drinks)|||END",
+      "step_id": "P01_R01_S05",
+      "is_primary": true,
+      "in_window_scope": true,
+      "in_span_scope": true,
+      "phase": "exec",
+      "verb_class": 10,
+      "noun_class": 59,
+      "video_id": "P01-20240203-093333",
+      "video_start": 146.11,
+      "video_end": 149.72,
+      "raw_action": "mix(coffee)",
+      "abstraction_level": 1,
+      "specific_action": "merge(drinks)",
+      "salient": true,
+      "kind": "action",
+      "spine_role": "spine",
+      "bridge_after": []
+    },
+    {
+      "action": "END",
+      "raw_action": "END",
+      "start": 152.93,
+      "end": 152.931,
+      "duration": 0.0,
+      "step_id": null,
+      "is_primary": true,
+      "phase": null,
+      "verb_class": -1,
+      "noun_class": -1,
+      "video_id": "P01-20240203-093333",
+      "video_start": 0.0,
+      "video_end": 0.0,
+      "salient": false,
+      "kind": "end",
+      "index": 12,
+      "next_action": null,
+      "edge_key": null,
+      "spine_role": "spine",
+      "bridge_after": []
+    }
+  ],
+  "macro_report": {
+    "usable": true,
+    "model": "embedded_jump_chain",
+    "markov_assumption": "first_order_approximation",
+    "semi_markov": "jump chain + bridge holding time (gap_s_*) per edge",
+    "note": "P(next spine | current spine) is recomputed over the spine state space. It is NOT the micro P(next action | current action) and the two must never be shown on the same edge. Lumping a Markov chain is not guaranteed to preserve the Markov property (Kemeny & Snell), so this is a first-order approximation of the induced process, not an exact rewrite of the original chain.",
+    "spine_mode": "process",
+    "spine_categories": [
+      "manipulate",
+      "merge",
+      "split"
+    ],
+    "evidence_basis": "single_session",
+    "n_sessions": 1,
+    "actions": {
+      "in_scope": 62,
+      "spine": 13,
+      "bridge": 49,
+      "spine_fraction": 0.2097,
+      "lead_in_dropped": 0,
+      "tail_dropped": 0
+    },
+    "bridges": {
+      "count": 12,
+      "mean_len": 4.08,
+      "median_len": 1.5,
+      "max_len": 14,
+      "empty": 2,
+      "largest_bridges": [
+        14,
+        13,
+        9,
+        5,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    "edges": {
+      "count": 11,
+      "bridged": 10,
+      "direct": 1,
+      "weak_evidence": 10,
+      "weak_evidence_fraction": 0.9091,
+      "p_equals_one": 2,
+      "p_equals_one_with_n1": 2
+    },
+    "faithfulness": {
+      "direct_edges": 2,
+      "direct_edges_not_in_raw": [],
+      "items_in": 62,
+      "items_accounted": 62,
+      "items_unaccounted": 0,
+      "fabricated_edges": 0,
+      "rule": "A macro edge is legal iff the two spine actions were consecutive in the spine, with every action between them recorded on the edge. An edge with an empty bridge is a direct transition and must also occur in the raw adjacency set. Bridged edges are NOT expected in the raw adjacency set \u2014 testing them with the micro fabrication rule would flag every one of them by design."
+    }
+  },
   "filter_report": {
     "identity": "verb_category(noun_category)",
     "scope_mode": "span",
@@ -4514,17 +6195,17 @@
         "fabricated_edges": 4,
         "fabricated_fraction": 0.3077,
         "fabricated_keys": [
-          "leave(drinks)|||merge(dairy and eggs)",
-          "manipulate(appliances)|||merge(dairy and eggs)",
+          "leave|||merge",
+          "manipulate(appliances)|||merge",
           "manipulate(appliances)|||retrieve(drinks)",
-          "merge(dairy and eggs)|||manipulate(appliances)"
+          "merge|||manipulate(appliances)"
         ]
       },
       "span": {
         "actions_kept": 62,
         "actions_total": 70,
         "kept_fraction": 0.8857,
-        "edges": 57,
+        "edges": 56,
         "fabricated_edges": 0,
         "fabricated_fraction": 0.0,
         "fabricated_keys": []
@@ -4538,8 +6219,8 @@
       "removed_fraction": 0.1143
     },
     "nodes": {
-      "before": 36,
-      "after": 32,
+      "before": 28,
+      "after": 24,
       "removed": [
         "leave(cutlery)",
         "retrieve(cookware)",
@@ -4548,23 +6229,23 @@
       ]
     },
     "links": {
-      "before": 65,
-      "after": 57,
+      "before": 64,
+      "after": 56,
       "removed_keys": [
         "START|||leave(crockery)",
-        "access(rubbish)|||leave(cutlery)",
-        "block(rubbish)|||END",
+        "access|||leave(cutlery)",
+        "block|||END",
         "leave(crockery)|||sense(storage)",
-        "leave(cutlery)|||block(rubbish)",
+        "leave(cutlery)|||block",
         "merge(drinks)|||retrieve(utensils)",
         "retrieve(cookware)|||retrieve(crockery)",
-        "retrieve(crockery)|||leave(cookware)",
-        "retrieve(utensils)|||access(rubbish)",
+        "retrieve(crockery)|||leave",
+        "retrieve(utensils)|||access",
         "sense(storage)|||retrieve(cookware)"
       ],
       "introduced_keys": [],
       "introduced_sentinel_keys": [
-        "START|||leave(cookware)",
+        "START|||leave",
         "merge(drinks)|||END"
       ]
     },
@@ -4574,48 +6255,55 @@
       "retrieve(cookware)": 1,
       "retrieve(crockery)": 1,
       "retrieve(utensils)": 1,
-      "access(rubbish)": 1,
+      "access": 1,
       "leave(cutlery)": 1,
-      "block(rubbish)": 1
+      "block": 1
     },
     "return_transitions": {
-      "count": 23,
+      "count": 24,
       "keys": [
+        "retrieve|||leave(crockery)",
+        "retrieve(containers)|||manipulate",
         "retrieve(crockery)|||merge(drinks)",
-        "retrieve(furniture)|||leave(crockery)",
         "access(appliances)|||leave(containers)",
         "access(appliances)|||retrieve(containers)",
         "access(containers)|||retrieve(drinks)",
-        "access(furniture)|||leave(drinks)",
+        "block|||retrieve(containers)",
+        "block(appliances)|||access",
         "block(appliances)|||access(containers)",
-        "block(appliances)|||access(rubbish)",
-        "block(containers)|||leave(drinks)",
-        "block(rubbish)|||retrieve(containers)",
-        "clean(dairy and eggs)|||block(appliances)",
-        "clean(dairy and eggs)|||retrieve(furniture)",
-        "leave(cleaning equipment and material)|||clean(dairy and eggs)",
-        "leave(containers)|||block(rubbish)",
-        "leave(dairy and eggs)|||access(appliances)",
-        "leave(dairy and eggs)|||retrieve(crockery)",
-        "leave(furniture)|||leave(dairy and eggs)",
+        "clean|||block(appliances)",
+        "clean|||leave",
+        "clean|||retrieve",
+        "leave|||access(appliances)",
+        "leave|||block(appliances)",
+        "leave|||manipulate(crockery)",
+        "leave|||retrieve(containers)",
+        "leave|||retrieve(crockery)",
+        "leave(containers)|||block",
         "manipulate(appliances)|||retrieve(containers)",
-        "merge(dairy and eggs)|||block(containers)",
+        "merge|||block(containers)",
         "merge(drinks)|||leave(crockery)",
-        "retrieve(containers)|||manipulate(drinks)",
-        "retrieve(cutlery)|||manipulate(appliances)",
-        "retrieve(dairy and eggs)|||merge(dairy and eggs)"
+        "retrieve|||leave",
+        "retrieve|||manipulate(appliances)",
+        "retrieve(dairy and eggs)|||merge"
       ]
     },
     "self_loops": {
-      "count": 2,
+      "count": 4,
       "keys": [
+        "leave|||leave",
         "manipulate(appliances)|||manipulate(appliances)",
+        "monitor|||monitor",
         "retrieve(containers)|||retrieve(containers)"
       ]
     }
   },
   "analysis": {
     "dead_ends": [
+      {
+        "id": "leave",
+        "score": 0.857
+      },
       {
         "id": "block(appliances)",
         "score": 0.75
@@ -4633,7 +6321,7 @@
         "score": 0.667
       },
       {
-        "id": "clean(dairy and eggs)",
+        "id": "clean",
         "score": 0.667
       },
       {
@@ -4641,19 +6329,15 @@
         "score": 0.667
       },
       {
+        "id": "retrieve",
+        "score": 0.6
+      },
+      {
         "id": "retrieve(containers)",
         "score": 0.6
       },
       {
         "id": "leave(containers)",
-        "score": 0.5
-      },
-      {
-        "id": "block(containers)",
-        "score": 0.5
-      },
-      {
-        "id": "leave(dairy and eggs)",
         "score": 0.5
       }
     ],
@@ -4663,7 +6347,15 @@
         "count": 1
       },
       {
+        "id": "monitor",
+        "count": 1
+      },
+      {
         "id": "manipulate(appliances)",
+        "count": 1
+      },
+      {
+        "id": "leave",
         "count": 1
       }
     ],

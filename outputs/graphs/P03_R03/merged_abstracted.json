@@ -43803,6 +43803,8 @@
       }
     ]
   },
+  "graph_macro": null,
+  "macro_report": null,
   "analysis": {
     "mandatory_nodes": [
       "unassigned",
@@ -43811,8 +43813,31 @@
       "S01",
       "S04"
     ],
+    "modal_walk": [],
+    "modal_walk_score": -1.0,
     "canonical_spine": [],
-    "canonical_spine_score": -1.0,
+    "canonical_spine_path": [],
+    "canonical_spine_report": {
+      "method": "longest_common_subsequence",
+      "basis": "single_session",
+      "n_sessions": 0,
+      "spine_length": 0,
+      "distinct_nodes": 0,
+      "session_lengths": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "session_coverage": [],
+      "connectors": 0,
+      "direct_pairs": 0,
+      "stitched_pairs": 0,
+      "broken_pairs": 0,
+      "stitched": [],
+      "broken": [],
+      "note": "Every action in canonical_spine was performed by every session, in this order. Nodes marked tier='connector' were NOT part of that common sequence; they are the shortest observed route joining two spine actions that were never directly adjacent. Every edge on the path was observed \u2014 none is fabricated."
+    },
     "dead_ends": [],
     "session_similarity": [
       [
@@ -43963,22 +43988,6 @@
     ],
     "loops": [
       [
-        "S03",
-        "unassigned",
-        "S03"
-      ],
-      [
-        "S03",
-        "S04",
-        "unassigned",
-        "S03"
-      ],
-      [
-        "S05",
-        "unassigned",
-        "S05"
-      ],
-      [
         "unassigned",
         "S04",
         "unassigned"
@@ -43990,7 +43999,23 @@
       ],
       [
         "unassigned",
+        "S03",
+        "unassigned"
+      ],
+      [
+        "unassigned",
+        "S03",
+        "S04",
+        "unassigned"
+      ],
+      [
+        "unassigned",
         "S06",
+        "unassigned"
+      ],
+      [
+        "unassigned",
+        "S05",
         "unassigned"
       ],
       [

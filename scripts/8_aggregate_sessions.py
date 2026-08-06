@@ -16,6 +16,9 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from macro_chain import wilson_interval, grade_evidence, _median
+from canonical_spine import compute_canonical_spine
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Normalization Helper (Fixes Multiple Start/End Nodes)
@@ -320,8 +323,157 @@ def aggregate_edges(session_payloads, session_indices, n_sessions,
     return merged_links
 
 from collections import defaultdict
- 
- 
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# MACRO GRAPH AGGREGATION
+#
+# The macro chain is a second model with its own state space, so it cannot ride
+# along inside aggregate_edges() — that function normalises probabilities over
+# the MICRO out-degree. Pooling has to happen on the macro counts and the
+# interval has to be recomputed on the pooled n, otherwise the merged view would
+# inherit each session's n=1 certainty and multiply it.
+#
+# The trick used here: present each session's macro graph to the EXISTING
+# aggregate_nodes / aggregate_edges by swapping `graph` and `sequence`, so node
+# pooling, support counting and return-direction logic stay in one place and
+# stay tested. Only the probability, the interval and the bridge payload are
+# recomputed afterwards, because only those are macro-specific.
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _macro_view(payload):
+    """A shallow payload whose `graph`/`sequence` are the macro ones."""
+    view = dict(payload)
+    view["graph"] = payload.get("graph_macro") or {"nodes": [], "links": []}
+    view["sequence"] = payload.get("macro_sequence") or []
+    return view
+
+
+def aggregate_macro_graph(session_payloads):
+    """
+    Merge the per-session macro graphs into one, pooling evidence properly.
+
+    Returns (graph, report) or (None, None) when no session carries a macro
+    graph — which happens for JSONs produced before this pipeline existed.
+    """
+    usable = [(si, p) for si, p in session_payloads if p.get("graph_macro")]
+    if not usable:
+        return None, None
+
+    macro_payloads = [(si, _macro_view(p)) for si, p in usable]
+
+    merged_nodes, session_indices, _ = aggregate_nodes(macro_payloads)
+
+    median_ranks = {n["id"]: n.get("median_rank", 0.5) for n in merged_nodes}
+    median_ranks["START"] = 0.0
+    median_ranks["END"] = 1.0
+    for n in merged_nodes:
+        if n["id"] in ("START", "END"):
+            n["median_rank"] = median_ranks[n["id"]]
+        n["role"] = "spine"
+
+    merged_links = aggregate_edges(
+        macro_payloads, session_indices, len(macro_payloads), median_ranks, set()
+    )
+
+    # ── Recompute the probability on the POOLED counts ───────────────────────
+    # aggregate_edges already normalises by pooled out-degree, so `probability`
+    # is correct. What it cannot know is the interval, the smoothing or the
+    # evidence grade, all of which depend on the macro n.
+    out_total = defaultdict(int)
+    out_targets = defaultdict(set)
+    for l in merged_links:
+        out_total[l["source"]] += l["count"]
+        out_targets[l["source"]].add(l["target"])
+
+    # ── Pool the bridge payload across sessions ──────────────────────────────
+    bridge_samples = defaultdict(list)
+    hidden = defaultdict(Counter)
+    hidden_raw = defaultdict(Counter)
+    gaps = defaultdict(list)
+    lengths = defaultdict(list)
+
+    for si, payload in usable:
+        for l in payload["graph_macro"]["links"]:
+            key = (normalize_special_nodes(l["source"]),
+                   normalize_special_nodes(l["target"]))
+            for r in l.get("bridge_samples", []):
+                rec = dict(r)
+                rec["session_index"] = si
+                bridge_samples[key].append(rec)
+                gaps[key].append(r.get("gap_s", 0.0))
+                lengths[key].append(r.get("n_actions", 0))
+            hidden[key].update(l.get("bridge_actions", {}))
+            hidden_raw[key].update(l.get("bridge_raw_actions", {}))
+
+    for l in merged_links:
+        key = (l["source"], l["target"])
+        n = l["count"]
+        n_out = out_total[l["source"]] or 1
+        n_targets = max(len(out_targets[l["source"]]), 1)
+        lo, hi = wilson_interval(n, n_out)
+
+        l["n"] = n
+        l["n_out"] = n_out
+        l["ci_low"] = round(lo, 4)
+        l["ci_high"] = round(hi, 4)
+        l["p_laplace"] = round((n + 1) / (n_out + n_targets), 4)
+        l["evidence"] = grade_evidence(n)
+
+        g, ln = gaps.get(key, []), lengths.get(key, [])
+        l["gap_s_mean"] = round(sum(g) / len(g), 2) if g else 0.0
+        l["gap_s_median"] = round(_median(g), 2)
+        l["gap_s_min"] = round(min(g), 2) if g else 0.0
+        l["gap_s_max"] = round(max(g), 2) if g else 0.0
+        l["bridge_len_mean"] = round(sum(ln) / len(ln), 2) if ln else 0.0
+        l["bridge_len_median"] = round(_median(ln), 2)
+        l["bridge_len_min"] = int(min(ln)) if ln else 0
+        l["bridge_len_max"] = int(max(ln)) if ln else 0
+        l["is_bridged"] = any(x > 0 for x in ln)
+        l["bridge_total_actions"] = int(sum(ln))
+        l["bridge_actions"] = dict(hidden[key].most_common(12))
+        l["bridge_raw_actions"] = dict(hidden_raw[key].most_common(12))
+        l["bridge_samples"] = bridge_samples.get(key, [])[:8]
+        # Macro edges are legal by construction; the micro fabrication flag is
+        # meaningless here and is forced off so the on-canvas ledger cannot
+        # report a fabrication that did not happen.
+        l["is_introduced"] = False
+
+    n_weak = sum(1 for l in merged_links if l["evidence"] == "weak")
+    per_session = [p.get("macro_report") for _, p in usable if p.get("macro_report")]
+
+    report = {
+        "usable": True,
+        "model": "embedded_jump_chain",
+        "markov_assumption": "first_order_approximation",
+        "evidence_basis": "cross_session" if len(usable) > 1 else "single_session",
+        "n_sessions": len(usable),
+        "spine_mode": per_session[0].get("spine_mode") if per_session else None,
+        "nodes": len(merged_nodes),
+        "edges": {
+            "count": len(merged_links),
+            "bridged": sum(1 for l in merged_links if l["is_bridged"]),
+            "weak_evidence": n_weak,
+            "weak_evidence_fraction": round(n_weak / len(merged_links), 4) if merged_links else 0.0,
+            "p_equals_one": sum(1 for l in merged_links if l["probability"] >= 1.0),
+            "p_equals_one_with_n1": sum(
+                1 for l in merged_links if l["probability"] >= 1.0 and l["n"] <= 1
+            ),
+        },
+        "faithfulness": {
+            "fabricated_edges": sum(
+                r["faithfulness"]["fabricated_edges"] for r in per_session
+            ),
+            "items_unaccounted": sum(
+                r["faithfulness"]["items_unaccounted"] for r in per_session
+            ),
+        },
+        "per_session": per_session,
+    }
+
+    return {"nodes": merged_nodes, "links": merged_links}, report
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 # Helpers — merged-graph analysis
 # ─────────────────────────────────────────────────────────────────────────────
@@ -548,8 +700,14 @@ def compute_merged_analysis(merged_nodes, merged_links, session_payloads):
  
     return {
         "mandatory_nodes": mandatory,
-        "canonical_spine": best_path,
-        "canonical_spine_score": round(best_score, 3),
+        # The greedy walk is kept under a different key. It is connected by
+        # construction but has no guarantee of being a sequence any session
+        # performed — on P01_R01 it emitted press three times and mix twice.
+        # The LCS spine below replaces it as the headline result; the walk stays
+        # so the two can be compared rather than argued about.
+        "modal_walk": best_path,
+        "modal_walk_score": round(best_score, 3),
+        **compute_canonical_spine(session_payloads, merged_nodes, merged_links),
         "dead_ends": dead_ends,
         "session_similarity": similarity,
         "session_shared_prefix": shared_prefix,
@@ -677,6 +835,8 @@ def build_merged_payload(recipe_id, mode, session_payloads):
             "per_session": per_session_reports,
         }
 
+    macro_graph, macro_report = aggregate_macro_graph(session_payloads)
+
     return {
         "recipe": {
             "id": recipe_id,
@@ -690,6 +850,8 @@ def build_merged_payload(recipe_id, mode, session_payloads):
         "steps": steps,
         "sequence": multi_sequence,
         "graph": {"nodes": merged_nodes, "links": merged_links},
+        "graph_macro": macro_graph,
+        "macro_report": macro_report,
         "analysis": analysis,
         "filter_report": filter_report,
     }
@@ -760,6 +922,17 @@ def main():
                       f"({c['fabricated_fraction']:.0%}){mark}")
             print(f"    merged links flagged is_introduced: "
                   f"{fr.get('fabricated_edges_in_merged', 0)} of {n_links}")
+
+        mr = merged.get("macro_report")
+        if mr and mr.get("usable"):
+            e = mr["edges"]
+            print(f"    macro [{mr['spine_mode']}]: {mr['nodes']} nodes · "
+                  f"{e['count']} edges ({e['bridged']} bridged) · "
+                  f"basis {mr['evidence_basis']}")
+            print(f"      evidence: {e['weak_evidence']}/{e['count']} edges seen "
+                  f"once ({e['weak_evidence_fraction']:.0%}) · "
+                  f"{e['p_equals_one_with_n1']} of {e['p_equals_one']} P=1.00 "
+                  f"edges rest on n=1")
 
     print("\n" + "=" * 80)
     print(f"DONE → {recipe_dir}/merged_*.json")

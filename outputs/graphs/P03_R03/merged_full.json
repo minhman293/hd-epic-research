@@ -96846,6 +96846,8 @@
       }
     ]
   },
+  "graph_macro": null,
+  "macro_report": null,
   "analysis": {
     "mandatory_nodes": [
       "open(cupboard)",
@@ -96894,8 +96896,31 @@
       "turn-on(kettle)",
       "wash(spoon)"
     ],
+    "modal_walk": [],
+    "modal_walk_score": -1.0,
     "canonical_spine": [],
-    "canonical_spine_score": -1.0,
+    "canonical_spine_path": [],
+    "canonical_spine_report": {
+      "method": "longest_common_subsequence",
+      "basis": "single_session",
+      "n_sessions": 0,
+      "spine_length": 0,
+      "distinct_nodes": 0,
+      "session_lengths": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "session_coverage": [],
+      "connectors": 0,
+      "direct_pairs": 0,
+      "stitched_pairs": 0,
+      "broken_pairs": 0,
+      "stitched": [],
+      "broken": [],
+      "note": "Every action in canonical_spine was performed by every session, in this order. Nodes marked tier='connector' were NOT part of that common sequence; they are the shortest observed route joining two spine actions that were never directly adjacent. Every edge on the path was observed \u2014 none is fabricated."
+    },
     "dead_ends": [],
     "session_similarity": [
       [
@@ -96927,17 +96952,12 @@
     "session_shared_suffix": [],
     "loops": [
       [
-        "wash(cloth)",
+        "turn-on(tap)",
+        "fill(kettle)",
         "turn-off(tap)",
         "shake(hand)",
         "take(cloth)",
-        "turn-on(tap)",
-        "wash(cloth)"
-      ],
-      [
-        "press(rack:drying)",
-        "pull(cupboard)",
-        "press(rack:drying)"
+        "turn-on(tap)"
       ],
       [
         "turn-on(tap)",
@@ -96957,121 +96977,124 @@
       ],
       [
         "turn-on(tap)",
-        "fill(kettle)",
+        "wash(cloth)",
         "turn-off(tap)",
         "shake(hand)",
         "take(cloth)",
         "turn-on(tap)"
       ],
       [
-        "take(pan)",
-        "put(pan)",
-        "take(clothes)",
-        "put(clothes)",
-        "take(pan)"
+        "put(spoon)",
+        "put(knife)",
+        "put(spoon)"
       ],
       [
-        "lift(kettle)",
-        "put(kettle)",
+        "put(spoon)",
+        "put(fork)",
         "open(cupboard)",
+        "take(knife)",
+        "put(knife)",
+        "put(spoon)"
+      ],
+      [
+        "put(spoon)",
+        "put(fork)",
+        "put(knife)",
+        "put(spoon)"
+      ],
+      [
+        "put(spoon)",
         "close(cupboard)",
-        "take(kettle)",
-        "lift(kettle)"
+        "open(cupboard)",
+        "take(knife)",
+        "put(knife)",
+        "put(spoon)"
       ],
       [
-        "lift(kettle)",
-        "put(kettle)",
-        "take(kettle)",
-        "lift(kettle)"
+        "put(spoon)",
+        "close(cupboard)",
+        "take(spoon)",
+        "scoop(coffee)",
+        "drop(coffee)",
+        "put(spoon)"
       ],
       [
-        "lift(kettle)",
-        "put(kettle)",
-        "take(plate)",
-        "put(plate)",
-        "take(kettle)",
-        "lift(kettle)"
+        "put(spoon)",
+        "close(cupboard)",
+        "take(fork)",
+        "put(fork)",
+        "put(knife)",
+        "put(spoon)"
       ],
       [
-        "put(kettle)",
+        "put(spoon)",
+        "close(cupboard)",
         "take(fork)",
         "take(knife)",
-        "close(cupboard)",
-        "take(kettle)",
-        "put(kettle)"
+        "put(knife)",
+        "put(spoon)"
       ],
       [
-        "put(kettle)",
-        "open(cupboard)",
-        "put(bag)",
-        "close(cupboard)",
-        "take(kettle)",
-        "put(kettle)"
-      ],
-      [
-        "put(kettle)",
+        "pull(cupboard)",
+        "put(plate)",
         "open(cupboard)",
         "take(plate)",
+        "open(oven)",
+        "pull(cupboard)"
+      ],
+      [
+        "pull(cupboard)",
+        "press(rack:drying)",
+        "pull(cupboard)"
+      ],
+      [
+        "take(kettle)",
+        "lift(kettle)",
+        "put(kettle)",
+        "take(kettle)"
+      ],
+      [
+        "take(kettle)",
+        "lift(kettle)",
+        "put(kettle)",
+        "take(plate)",
         "put(plate)",
-        "take(kettle)",
-        "put(kettle)"
+        "take(kettle)"
       ],
       [
-        "put(kettle)",
-        "open(cupboard)",
-        "take(tea)",
-        "close(cupboard)",
         "take(kettle)",
-        "put(kettle)"
-      ],
-      [
+        "lift(kettle)",
         "put(kettle)",
         "open(cupboard)",
         "close(cupboard)",
-        "take(kettle)",
-        "put(kettle)"
+        "take(kettle)"
       ],
       [
+        "take(kettle)",
         "put(kettle)",
-        "open(cupboard)",
-        "close(cupboard)",
-        "take(kettle)",
-        "pour(water)",
-        "put(kettle)"
+        "take(kettle)"
       ],
       [
+        "take(kettle)",
+        "put(kettle)",
+        "take(plate)",
+        "put(plate)",
+        "take(kettle)"
+      ],
+      [
+        "take(kettle)",
         "put(kettle)",
         "open(cupboard)",
         "take(knife)",
         "close(cupboard)",
-        "take(kettle)",
-        "put(kettle)"
+        "take(kettle)"
       ],
       [
-        "put(kettle)",
         "take(kettle)",
-        "put(kettle)"
-      ],
-      [
         "put(kettle)",
-        "take(kettle)",
-        "pour(water)",
-        "put(kettle)"
-      ],
-      [
-        "put(kettle)",
-        "take(plate)",
-        "put(plate)",
-        "take(kettle)",
-        "put(kettle)"
-      ],
-      [
-        "put(kettle)",
-        "take(plate)",
-        "put(plate)",
-        "take(kettle)",
-        "pour(water)",
-        "put(kettle)"
+        "open(cupboard)",
+        "close(cupboard)",
+        "take(kettle)"
       ]
     ],
     "session_singleton_nodes": [

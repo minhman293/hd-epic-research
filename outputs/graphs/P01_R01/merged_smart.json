@@ -15126,6 +15126,8 @@
       }
     ]
   },
+  "graph_macro": null,
+  "macro_report": null,
   "analysis": {
     "mandatory_nodes": [
       "take",
@@ -15140,8 +15142,30 @@
       "hold",
       "mix"
     ],
+    "modal_walk": [],
+    "modal_walk_score": -1.0,
     "canonical_spine": [],
-    "canonical_spine_score": -1.0,
+    "canonical_spine_path": [],
+    "canonical_spine_report": {
+      "method": "longest_common_subsequence",
+      "basis": "single_session",
+      "n_sessions": 0,
+      "spine_length": 0,
+      "distinct_nodes": 0,
+      "session_lengths": [
+        0,
+        0,
+        0
+      ],
+      "session_coverage": [],
+      "connectors": 0,
+      "direct_pairs": 0,
+      "stitched_pairs": 0,
+      "broken_pairs": 0,
+      "stitched": [],
+      "broken": [],
+      "note": "Every action in canonical_spine was performed by every session, in this order. Nodes marked tier='connector' were NOT part of that common sequence; they are the shortest observed route joining two spine actions that were never directly adjacent. Every edge on the path was observed \u2014 none is fabricated."
+    },
     "dead_ends": [],
     "session_similarity": [
       [
@@ -15165,118 +15189,124 @@
     "loops": [
       [
         "take",
-        "turn",
+        "press",
+        "take"
+      ],
+      [
+        "take",
+        "press",
+        "lift",
+        "take"
+      ],
+      [
+        "take",
+        "press",
+        "lift",
         "put",
         "take"
       ],
       [
         "take",
-        "turn",
+        "press",
+        "lift",
         "put",
         "open",
         "take"
       ],
       [
         "take",
-        "turn",
+        "press",
+        "lift",
         "put",
+        "close",
+        "take"
+      ],
+      [
+        "take",
+        "press",
+        "lift",
+        "open",
+        "take"
+      ],
+      [
+        "take",
+        "press",
+        "open",
+        "take"
+      ],
+      [
+        "take",
+        "press",
+        "open",
+        "pour",
+        "put",
+        "take"
+      ],
+      [
+        "take",
+        "press",
+        "open",
+        "pour",
+        "close",
+        "take"
+      ],
+      [
+        "take",
+        "press",
+        "open",
+        "throw",
+        "close",
+        "take"
+      ],
+      [
+        "take",
+        "press",
+        "open",
         "wash",
         "close",
         "take"
       ],
       [
         "take",
-        "turn",
-        "put",
-        "press",
-        "take"
-      ],
-      [
-        "take",
-        "turn",
-        "put",
-        "press",
-        "lift",
-        "take"
-      ],
-      [
-        "take",
-        "turn",
-        "put",
         "press",
         "open",
+        "wash",
+        "put",
         "take"
       ],
       [
         "take",
-        "turn",
-        "put",
-        "close",
-        "take"
-      ],
-      [
-        "take",
-        "turn",
-        "put",
-        "close",
-        "move",
-        "take"
-      ],
-      [
-        "take",
-        "turn",
-        "put",
-        "close",
-        "open",
-        "take"
-      ],
-      [
-        "take",
-        "turn",
-        "put",
-        "close",
-        "lift",
-        "take"
-      ],
-      [
-        "take",
-        "turn",
-        "put",
-        "close",
         "press",
-        "take"
-      ],
-      [
-        "take",
-        "turn",
-        "lift",
-        "take"
-      ],
-      [
-        "take",
-        "turn",
-        "lift",
-        "open",
-        "take"
-      ],
-      [
-        "take",
-        "turn",
-        "lift",
         "open",
         "put",
         "take"
       ],
       [
         "take",
-        "turn",
-        "lift",
+        "press",
+        "open",
+        "put",
+        "close",
+        "take"
+      ],
+      [
+        "take",
+        "open",
+        "take"
+      ],
+      [
+        "take",
+        "open",
+        "pour",
         "put",
         "take"
       ],
       [
         "take",
         "open",
+        "pour",
+        "put",
+        "close",
         "take"
       ],
       [
@@ -15292,14 +15322,6 @@
         "pour",
         "close",
         "move",
-        "take"
-      ],
-      [
-        "take",
-        "open",
-        "pour",
-        "close",
-        "put",
         "take"
       ],
       [

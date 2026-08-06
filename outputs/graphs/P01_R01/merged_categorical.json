@@ -11415,6 +11415,8 @@
       }
     ]
   },
+  "graph_macro": null,
+  "macro_report": null,
   "analysis": {
     "mandatory_nodes": [
       "retrieve",
@@ -11426,8 +11428,30 @@
       "merge",
       "sense"
     ],
+    "modal_walk": [],
+    "modal_walk_score": -1.0,
     "canonical_spine": [],
-    "canonical_spine_score": -1.0,
+    "canonical_spine_path": [],
+    "canonical_spine_report": {
+      "method": "longest_common_subsequence",
+      "basis": "single_session",
+      "n_sessions": 0,
+      "spine_length": 0,
+      "distinct_nodes": 0,
+      "session_lengths": [
+        0,
+        0,
+        0
+      ],
+      "session_coverage": [],
+      "connectors": 0,
+      "direct_pairs": 0,
+      "stitched_pairs": 0,
+      "broken_pairs": 0,
+      "stitched": [],
+      "broken": [],
+      "note": "Every action in canonical_spine was performed by every session, in this order. Nodes marked tier='connector' were NOT part of that common sequence; they are the shortest observed route joining two spine actions that were never directly adjacent. Every edge on the path was observed \u2014 none is fabricated."
+    },
     "dead_ends": [],
     "session_similarity": [
       [
@@ -11450,152 +11474,149 @@
     "session_shared_suffix": [],
     "loops": [
       [
-        "transition",
-        "retrieve",
         "clean",
-        "block",
-        "transition"
+        "manipulate",
+        "leave",
+        "clean"
       ],
       [
-        "transition",
-        "retrieve",
         "clean",
+        "manipulate",
+        "leave",
+        "sense",
+        "retrieve",
+        "clean"
+      ],
+      [
+        "clean",
+        "manipulate",
+        "leave",
+        "access",
+        "clean"
+      ],
+      [
+        "clean",
+        "manipulate",
+        "leave",
+        "access",
+        "retrieve",
+        "clean"
+      ],
+      [
+        "clean",
+        "manipulate",
+        "leave",
+        "block",
+        "retrieve",
+        "clean"
+      ],
+      [
+        "clean",
+        "manipulate",
+        "leave",
         "block",
         "access",
-        "transition"
+        "clean"
       ],
       [
-        "transition",
+        "clean",
+        "manipulate",
+        "leave",
         "retrieve",
+        "clean"
+      ],
+      [
         "clean",
         "manipulate",
         "access",
-        "transition"
+        "clean"
       ],
       [
-        "transition",
-        "retrieve",
         "clean",
-        "leave",
-        "access",
-        "transition"
-      ],
-      [
-        "transition",
-        "retrieve",
-        "clean",
-        "leave",
-        "block",
-        "transition"
-      ],
-      [
-        "transition",
-        "retrieve",
-        "block",
-        "transition"
-      ],
-      [
-        "transition",
-        "retrieve",
-        "block",
-        "leave",
-        "access",
-        "transition"
-      ],
-      [
-        "transition",
-        "retrieve",
-        "block",
         "manipulate",
         "access",
-        "transition"
+        "merge",
+        "leave",
+        "clean"
       ],
       [
+        "clean",
+        "manipulate",
+        "access",
+        "merge",
+        "retrieve",
+        "clean"
+      ],
+      [
+        "clean",
+        "manipulate",
+        "access",
+        "retrieve",
+        "clean"
+      ],
+      [
+        "clean",
+        "manipulate",
+        "access",
         "transition",
+        "retrieve",
+        "clean"
+      ],
+      [
+        "clean",
+        "manipulate",
+        "retrieve",
+        "clean"
+      ],
+      [
+        "clean",
+        "manipulate",
         "retrieve",
         "block",
         "access",
-        "transition"
+        "clean"
       ],
       [
-        "transition",
+        "clean",
+        "manipulate",
         "retrieve",
         "merge",
         "leave",
-        "access",
-        "transition"
+        "clean"
       ],
       [
-        "transition",
-        "retrieve",
-        "merge",
-        "leave",
-        "block",
-        "transition"
-      ],
-      [
-        "transition",
-        "retrieve",
-        "merge",
-        "block",
-        "transition"
-      ],
-      [
-        "transition",
-        "retrieve",
-        "merge",
-        "block",
-        "access",
-        "transition"
-      ],
-      [
-        "transition",
-        "retrieve",
-        "leave",
-        "access",
-        "transition"
-      ],
-      [
-        "transition",
-        "retrieve",
-        "leave",
-        "block",
-        "transition"
-      ],
-      [
-        "transition",
-        "retrieve",
-        "leave",
-        "manipulate",
-        "access",
-        "transition"
-      ],
-      [
-        "transition",
-        "retrieve",
-        "manipulate",
-        "leave",
-        "block",
-        "transition"
-      ],
-      [
-        "transition",
-        "retrieve",
-        "manipulate",
-        "access",
-        "transition"
-      ],
-      [
-        "transition",
-        "retrieve",
-        "access",
-        "transition"
-      ],
-      [
-        "access",
         "clean",
-        "block",
-        "access"
+        "leave",
+        "clean"
+      ],
+      [
+        "clean",
+        "leave",
+        "sense",
+        "retrieve",
+        "clean"
+      ],
+      [
+        "clean",
+        "leave",
+        "sense",
+        "retrieve",
+        "access",
+        "clean"
+      ],
+      [
+        "clean",
+        "leave",
+        "access",
+        "clean"
+      ],
+      [
+        "clean",
+        "leave",
+        "access",
+        "merge",
+        "retrieve",
+        "clean"
       ]
     ],
     "session_singleton_nodes": [

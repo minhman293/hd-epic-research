@@ -56303,6 +56303,8 @@
       }
     ]
   },
+  "graph_macro": null,
+  "macro_report": null,
   "analysis": {
     "mandatory_nodes": [
       "take",
@@ -56329,8 +56331,31 @@
       "unroll",
       "wrap"
     ],
+    "modal_walk": [],
+    "modal_walk_score": -1.0,
     "canonical_spine": [],
-    "canonical_spine_score": -1.0,
+    "canonical_spine_path": [],
+    "canonical_spine_report": {
+      "method": "longest_common_subsequence",
+      "basis": "single_session",
+      "n_sessions": 0,
+      "spine_length": 0,
+      "distinct_nodes": 0,
+      "session_lengths": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "session_coverage": [],
+      "connectors": 0,
+      "direct_pairs": 0,
+      "stitched_pairs": 0,
+      "broken_pairs": 0,
+      "stitched": [],
+      "broken": [],
+      "note": "Every action in canonical_spine was performed by every session, in this order. Nodes marked tier='connector' were NOT part of that common sequence; they are the shortest observed route joining two spine actions that were never directly adjacent. Every edge on the path was observed \u2014 none is fabricated."
+    },
     "dead_ends": [],
     "session_similarity": [
       [
@@ -56364,155 +56389,153 @@
     ],
     "loops": [
       [
-        "open",
-        "close",
-        "open"
-      ],
-      [
-        "open",
-        "close",
-        "unroll",
-        "put",
-        "open"
-      ],
-      [
-        "open",
-        "close",
-        "unroll",
-        "put",
-        "squeeze",
-        "open"
-      ],
-      [
-        "open",
-        "close",
-        "unroll",
-        "put",
-        "sort",
-        "open"
-      ],
-      [
-        "open",
-        "close",
-        "unroll",
-        "put",
-        "turn-on",
-        "open"
-      ],
-      [
-        "open",
-        "close",
-        "unroll",
-        "put",
-        "slide",
-        "open"
-      ],
-      [
-        "open",
-        "close",
-        "unroll",
-        "put",
         "take",
-        "open"
+        "move",
+        "take"
       ],
       [
-        "open",
-        "close",
-        "unroll",
-        "put",
-        "attach",
-        "open"
-      ],
-      [
-        "open",
-        "close",
-        "unroll",
-        "put",
-        "press",
-        "open"
-      ],
-      [
-        "open",
-        "close",
-        "put",
-        "open"
-      ],
-      [
-        "open",
-        "close",
-        "put",
-        "shake",
         "take",
-        "open"
+        "move",
+        "put",
+        "take"
       ],
       [
-        "open",
-        "close",
-        "put",
-        "squeeze",
-        "open"
-      ],
-      [
-        "open",
-        "close",
-        "put",
-        "squeeze",
         "take",
-        "open"
-      ],
-      [
-        "open",
-        "close",
-        "put",
-        "sort",
-        "open"
-      ],
-      [
-        "open",
-        "close",
-        "put",
-        "sort",
-        "take",
-        "open"
-      ],
-      [
-        "open",
-        "close",
-        "put",
-        "pull",
-        "take",
-        "open"
-      ],
-      [
-        "open",
-        "close",
-        "put",
-        "pull",
-        "press",
-        "open"
-      ],
-      [
-        "open",
-        "close",
+        "move",
         "put",
         "dry",
-        "take",
-        "open"
+        "take"
       ],
       [
-        "open",
-        "close",
+        "take",
+        "move",
+        "put",
+        "dry",
+        "hang",
+        "take"
+      ],
+      [
+        "take",
+        "move",
+        "put",
+        "dry",
+        "drop",
+        "take"
+      ],
+      [
+        "take",
+        "move",
+        "put",
+        "shake",
+        "take"
+      ],
+      [
+        "take",
+        "move",
+        "put",
+        "shake",
+        "lift",
+        "take"
+      ],
+      [
+        "take",
+        "move",
         "put",
         "turn-on",
-        "open"
+        "take"
       ],
       [
-        "open",
-        "close",
+        "take",
+        "move",
         "put",
         "turn-on",
         "turn-off",
-        "open"
+        "take"
+      ],
+      [
+        "take",
+        "move",
+        "put",
+        "turn-on",
+        "open",
+        "take"
+      ],
+      [
+        "take",
+        "move",
+        "put",
+        "attach",
+        "open",
+        "take"
+      ],
+      [
+        "take",
+        "move",
+        "put",
+        "sort",
+        "take"
+      ],
+      [
+        "take",
+        "move",
+        "put",
+        "sort",
+        "open",
+        "take"
+      ],
+      [
+        "take",
+        "move",
+        "put",
+        "reach",
+        "insert",
+        "take"
+      ],
+      [
+        "take",
+        "move",
+        "put",
+        "press",
+        "take"
+      ],
+      [
+        "take",
+        "move",
+        "put",
+        "press",
+        "open",
+        "take"
+      ],
+      [
+        "take",
+        "move",
+        "put",
+        "press",
+        "close",
+        "take"
+      ],
+      [
+        "take",
+        "move",
+        "put",
+        "press",
+        "turn-on",
+        "take"
+      ],
+      [
+        "take",
+        "move",
+        "put",
+        "press",
+        "pull",
+        "take"
+      ],
+      [
+        "take",
+        "move",
+        "put",
+        "open",
+        "take"
       ]
     ],
     "session_singleton_nodes": [

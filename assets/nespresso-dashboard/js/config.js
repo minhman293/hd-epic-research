@@ -40,7 +40,16 @@ export function getDataUrl(mode = "hybrid", recipeId = null, sessionIndex = 0) {
   return getSessionDataUrl(recipeId, sessionIndex, mode);
 }
 
-export const DEFAULT_DATA_MODE = "hybrid";
+// Modes whose x-position carries no meaning, so no time ruler may be drawn.
+// Prof. Lin, 22 May: an axis with no encoded variable makes readers believe
+// nodes in one column happened at the same moment.
+export const RANK_LAYOUT_MODES = ["hybrid", "episode", "step"];
+
+// Modes built by 9_build_episode_graphs.py. Their edges are already thinned by
+// evidence in the pipeline, so render-time edge pruning has nothing left to do.
+export const PRETHINNED_MODES = ["episode", "step"];
+
+export const DEFAULT_DATA_MODE = "episode";
 export const DEFAULT_COLOR_ENCODE_MODE = "category";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -532,3 +541,99 @@ export const HRI_CENTERS = {
   collab: { id: "collab", x: 0,    y: 0, title: "Collaborative", subtitle: "(Monitor, State Change)" },
   human:  { id: "human", x: 350,  y: 0, title: "Human-led", subtitle: "(Dexterous, Judgment)" }
 };
+// ─────────────────────────────────────────────────────────────────────────────
+// MACRO CHAIN — spine nodes, bridge edges
+//
+// The macro graph is a SECOND model shipped in the same payload under
+// `graph_macro`. Nodes are the recipe's state-changing actions; the logistics
+// between them ride on the edge as payload instead of taking up a node.
+//
+// Everything below is display-side only. The classification itself is decided
+// in macro_chain.py and travels in `macro_report.spine_categories`, so the two
+// can never drift: this map exists for the legend, not for the maths.
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Mirrors macro_chain.py. Process = changes the food. Transfer = changes where
+// things are. Parameter = tells you when a process step is finished.
+export const MACRO_ROLE_OF_CATEGORY = {
+  split: "process", merge: "process", manipulate: "process", clean: "process",
+
+  retrieve: "transfer", leave: "transfer", transition: "transfer",
+  distribute: "transfer", access: "transfer", block: "transfer",
+  order: "transfer",
+
+  sense: "parameter", monitor: "parameter",
+};
+
+export const MACRO_ROLE_COLORS = {
+  process:   "#0F766E",   // deep teal — the recipe's own actions
+  transfer:  "#94A3B8",   // slate     — movement, delegable
+  parameter: "#A16207",   // ochre     — "is it done yet?"
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Evidence grades.
+//
+// 93% of per-session macro edges rest on a single observation, and those show
+// P = 1.00. A bare probability is therefore misleading by default in this
+// dataset, so the renderer is required to carry `n` everywhere and to style an
+// edge by how much data is behind it, not only by how likely it looks.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const EVIDENCE_STYLE = {
+  weak:     { dash: "2 4", opacity: 0.42, label: "seen once" },
+  moderate: { dash: "6 3", opacity: 0.70, label: "seen 2–3 times" },
+  strong:   { dash: null,  opacity: 1.00, label: "seen 4+ times" },
+};
+
+export function evidenceStyle(link) {
+  return EVIDENCE_STYLE[link && link.evidence] || EVIDENCE_STYLE.strong;
+}
+
+// Format a probability so it can never appear on its own. Used by the tooltip
+// and by any future export — if you find yourself writing `.toFixed(2)` on a
+// probability somewhere else, use this instead.
+export function formatProbability(link) {
+  if (!link || typeof link.probability !== "number") return "—";
+  const p = link.probability.toFixed(2);
+  const n = link.n, nOut = link.n_out;
+  if (n === undefined || nOut === undefined) return p;
+  const ci = (typeof link.ci_low === "number")
+    ? `  95% CI [${link.ci_low.toFixed(2)}–${link.ci_high.toFixed(2)}]`
+    : "";
+  return `${p}   (${n} of ${nOut} times)${ci}`;
+}
+
+export function formatBridge(link) {
+  if (!link || !link.is_bridged) return "no actions in between";
+  const med = link.bridge_len_median;
+  const range = (link.bridge_len_min === link.bridge_len_max)
+    ? `${link.bridge_len_max}`
+    : `${link.bridge_len_min}–${link.bridge_len_max}`;
+  return `${range} actions in between (median ${med}), about ${link.gap_s_median}s`;
+}
+
+// Legend for the macro view. Kept separate from getLegendItems() because the
+// two views encode different things and merging them produced a legend that
+// described neither.
+export function getMacroLegendItems(macroReport) {
+  const basis = macroReport && macroReport.evidence_basis === "cross_session"
+    ? `pooled across ${macroReport.n_sessions} sessions`
+    : "one session only — treat probabilities as provisional";
+
+  return {
+    node: [
+      { type: "dot", color: MACRO_ROLE_COLORS.process,
+        label: "Node: an action that changes the food" },
+      { type: "badge", dashed: false, label: "Node size: how often it happens" },
+      { type: "label", label: "Inside label: action" },
+    ],
+    edge: [
+      { type: "line", dashed: false,
+        label: "Thick line: actions were collapsed into this edge — click to open" },
+      { type: "line", dashed: true,
+        label: "Dotted line: seen once — probability is not reliable" },
+      { type: "label", label: `Evidence: ${basis}` },
+    ],
+  };
+}

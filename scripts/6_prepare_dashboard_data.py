@@ -34,6 +34,13 @@ import pandas as pd
 
 from utils import get_action_name, load_hd_epic_data
 
+# Macro-state (spine/bridge) chain. Kept in its own module because it is a
+# SECOND model over the same sequence, not a variation of the micro one: it has
+# its own state space, its own probability estimator and its own faithfulness
+# test. Mixing it into markov_links() would silently corrupt the micro graph.
+import macro_chain
+from macro_chain import build_macro_graph
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Tuning parameters
@@ -60,6 +67,24 @@ STEP_WINDOW_BUFFER_S = 0
 # graph, and filter_report carries the comparison either way.
 # ─────────────────────────────────────────────────────────────────────────────
 SCOPE_MODE = "span"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SPINE MODE — which in-scope actions become NODES in the macro graph
+#
+#   "process"  spine = HD-EPIC verb categories that change the food
+#              (manipulate, split, merge, clean). Needs no step annotation, so
+#              it works on every capture, and the collapsed runs come out even:
+#              largest bridge 11 actions on P01_R01 s0.
+#
+#   "exec"     spine = actions whose phase is "exec" (HD-EPIC step_times).
+#              Kept for comparison only. Coverage is thin and uneven — on
+#              P01_R01 s0 one bridge swallows 137 consecutive actions, 61% of
+#              the capture, so expanding it returns the original hairball.
+#
+# SCOPE decides which actions EXIST; SPINE decides which of those are DRAWN as
+# nodes. They are independent and compose: neither deletes anything.
+# ─────────────────────────────────────────────────────────────────────────────
+SPINE_MODE = "process"
 
 # Cross-session support a state needs to keep its specific label.
 # None  -> require every session (cleanest graph)
@@ -1031,6 +1056,35 @@ def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes, use_ca
 
     self_loops = _find_self_loops(primary_sequence)
 
+    # ── Graph C: MACRO — spine actions as nodes, logistics collapsed onto edges ─
+    #
+    # Built from primary_sequence, NOT from hybrid_sequence, so that scope and
+    # collapse compose: the actions the scope excluded never enter the macro
+    # chain, and the actions the scope kept are all either a spine node or
+    # payload on a bridge edge. Nothing is deleted a second time.
+    #
+    # _build_nodes and tag_return_transitions are handed in rather than
+    # re-implemented, so macro nodes are compiled by exactly the same code as
+    # micro nodes. Only the input sequence differs, which is what keeps the two
+    # graphs comparable.
+    verb_id_to_cat = dict(zip(verb_classes["id"].astype(int),
+                              verb_classes["category"]))
+    macro = build_macro_graph(
+        primary_sequence,
+        verb_id_to_cat,
+        build_nodes_fn=lambda seq, force_primary=True: _build_nodes(
+            seq, verb_id_to_key, noun_id_to_key, force_primary=force_primary
+        ),
+        tag_returns_fn=tag_return_transitions,
+        mode=SPINE_MODE,
+        evidence_basis="single_session",
+        n_sessions=1,
+    )
+
+    # The spine_role tag is written back onto the FULL sequence too, so the
+    # swimlane, barcode and timeline can shade logistics without re-deriving it.
+    macro_chain.tag_spine_roles(hybrid_sequence, verb_id_to_cat, SPINE_MODE)
+
     # ── Filter ledger: exactly what the primary filter removed and created ───
     ids_before = {n["id"] for n in nodes_unfiltered}
     ids_after = {n["id"] for n in nodes}
@@ -1097,6 +1151,9 @@ def create_hybrid_graph(payload, recipe_meta, verb_classes, noun_classes, use_ca
     result["sequence"] = hybrid_sequence
     result["graph"] = {"nodes": nodes, "links": links}
     result["graph_unfiltered"] = {"nodes": nodes_unfiltered, "links": links_unfiltered}
+    result["graph_macro"] = macro["graph"]
+    result["macro_sequence"] = macro["spine_sequence"]
+    result["macro_report"] = macro["report"]
     result["filter_report"] = filter_report
     result["analysis"] = {
         "dead_ends": [{"id": n["id"], "score": n["dead_end_score"]} for n in sorted(nodes, key=lambda x: -x["dead_end_score"]) if n["kind"] == "action" and n["dead_end_score"] >= 0.5][:10],
@@ -1121,20 +1178,27 @@ def main():
     parser.add_argument("--scope", choices=["window", "span"], default=None,
                         help="Override SCOPE_MODE. 'window' reproduces the old "
                              "behaviour for before/after comparison.")
+    parser.add_argument("--spine", choices=["process", "exec"], default=None,
+                        help="Override SPINE_MODE for the macro graph. "
+                             "'process' uses HD-EPIC verb categories; 'exec' "
+                             "uses step_times phase, for comparison only.")
     parser.add_argument("--rollup", default=None,
                         help="Sessions a state must appear in to keep its "
                              "specific label. Integer, 'all' (default), or "
                              "'off' to disable rollup.")
     args = parser.parse_args()
 
-    global SCOPE_MODE, ROLLUP_MIN_SUPPORT
+    global SCOPE_MODE, ROLLUP_MIN_SUPPORT, SPINE_MODE
     if args.scope:
         SCOPE_MODE = args.scope
+    if args.spine:
+        SPINE_MODE = args.spine
+        macro_chain.SPINE_MODE = args.spine
     if args.rollup is not None:
         ROLLUP_MIN_SUPPORT = (1 if args.rollup == "off"
                               else None if args.rollup == "all"
                               else int(args.rollup))
-    print(f"Scope mode: {SCOPE_MODE}   Rollup: "
+    print(f"Scope mode: {SCOPE_MODE}   Spine mode: {SPINE_MODE}   Rollup: "
           f"{'all sessions' if ROLLUP_MIN_SUPPORT is None else ROLLUP_MIN_SUPPORT}")
 
     recipe_id = args.recipe_id
@@ -1268,6 +1332,30 @@ def main():
                               f"edges {c['edges']:>3}  "
                               f"fabricated {c['fabricated_edges']:>2} "
                               f"({c['fabricated_fraction']:.0%}){mark}")
+
+            mr = payload.get("macro_report")
+            if mr and mr.get("usable"):
+                a, b, e, fa = mr["actions"], mr["bridges"], mr["edges"], mr["faithfulness"]
+                print(f"      macro [{mr['spine_mode']:<7}] spine {a['spine']}/"
+                      f"{a['in_scope']} ({a['spine_fraction']:.0%})  "
+                      f"nodes {len(payload['graph_macro']['nodes'])}  "
+                      f"edges {e['count']} ({e['bridged']} bridged)")
+                print(f"                     bridges: median {b['median_len']:.0f} "
+                      f"max {b['max_len']}  |  largest {b['largest_bridges'][:4]}")
+                # The number that decides whether the probabilities mean anything.
+                print(f"                     evidence: {e['weak_evidence']}/{e['count']} "
+                      f"edges seen once ({e['weak_evidence_fraction']:.0%}), "
+                      f"{e['p_equals_one_with_n1']} of {e['p_equals_one']} P=1.00 "
+                      f"edges rest on n=1")
+                if fa["fabricated_edges"] or fa["items_unaccounted"]:
+                    print(f"                     ⚠ MACRO INTEGRITY: "
+                          f"{fa['fabricated_edges']} bad direct edges, "
+                          f"{fa['items_unaccounted']} actions unaccounted")
+                else:
+                    print(f"                     0 fabricated macro edges · "
+                          f"all {fa['items_accounted']} in-scope actions accounted for")
+            elif mr:
+                print(f"      macro [{mr.get('spine_mode')}] unusable — {mr.get('reason')}")
 
     print("\n" + "=" * 80)
     print(f"DONE → {output_dir}/")

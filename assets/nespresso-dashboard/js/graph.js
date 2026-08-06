@@ -1,3 +1,5 @@
+import { formatProbability, formatBridge, evidenceStyle, MACRO_ROLE_COLORS }
+  from "./config.js";
 import { nodeColor } from "./utils.js";
 import {
   PHASE_COLORS,
@@ -10,9 +12,21 @@ import {
   HRI_ROLES,
   HRI_CENTERS,
   SESSION_PALETTE,
+  RANK_LAYOUT_MODES,
+  PRETHINNED_MODES,
 } from "./config.js";
 
 const d3 = window.d3;
+
+// d3.forceLink rewrites link.source/target from an id string to the node
+// object, but only for the links it simulates. Anything comparing endpoints
+// has to cope with both forms.
+const endId = (v) => (v && typeof v === "object") ? v.id : v;
+
+// Which session's numbers the edge labels and tooltips should report.
+// null = the merged graph.
+let activeSessionForStats = null;
+let currentProbLabel = null;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // HRI role time-budget
@@ -148,7 +162,17 @@ function computeTemporalLayout(nodes, sequence, { maxRadius = 18 } = {}) {
   return { layout, totalDuration, xScale, secondaryLaneTop };
 }
 
-function computeRankLayout(nodes, sequence, { maxRadius = 18, links = [], radiusMap = {} } = {}) {
+// First occurrence wins: a node revisited later in the path still has one
+// circle, and placing it at its first position makes the revisit visible as a
+// backward edge instead of dragging the node into the middle.
+function buildSpineOrder(pathIds) {
+  const m = new Map();
+  pathIds.forEach((id, i) => { if (!m.has(id)) m.set(id, i); });
+  return m;
+}
+
+function computeRankLayout(nodes, sequence,
+    { maxRadius = 18, links = [], radiusMap = {}, spineOrder = null } = {}) {
   const positions = {};
   const L = Math.max(sequence.length - 1, 1);
   sequence.forEach((item, i) => {
@@ -182,6 +206,27 @@ function computeRankLayout(nodes, sequence, { maxRadius = 18, links = [], radius
   });
 
   // ───────────────────────────────────────────────────────────────────────────
+  // SPINE ORDER OVERRIDES MEDIAN RANK
+  //
+  // A node that appears both early and late gets a median rank in the middle,
+  // which is why the highlighted path zig-zagged across the canvas instead of
+  // reading left to right. On the spine we know the exact position the path
+  // visits, so that position is used directly.
+  //
+  // A node can occur twice in the spine (P01_R01 visits open(containers) and
+  // close(appliances) twice each). Only ONE circle exists for it, so it is
+  // placed at its FIRST spine position and the path doubles back to it — a
+  // visible return, which is honest: the person really did go back.
+  // ───────────────────────────────────────────────────────────────────────────
+  if (spineOrder && spineOrder.size > 0) {
+    const maxIdx = Math.max(...spineOrder.values());
+    spineOrder.forEach((idx, id) => {
+      if (medianRank[id] === undefined && !nodes.some((n) => n.id === id)) return;
+      medianRank[id] = maxIdx > 0 ? idx / maxIdx : 0.5;
+    });
+  }
+
+  // ───────────────────────────────────────────────────────────────────────────
   // Force layout with rank as a BIAS, not a pin.
   //
   // The previous version set x = (orderIndex + 1) * SPACING, which made width
@@ -202,8 +247,22 @@ function computeRankLayout(nodes, sequence, { maxRadius = 18, links = [], radius
   // barely six across — so they had nowhere to go but upward. That stacking is
   // what produced the diamond.
   const COLLIDE_R = Math.max(meanR + 16, 46);
-  const TARGET_ROWS = 3;
-  const SPREAD_X = Math.max(360, (nodes.length / TARGET_ROWS) * COLLIDE_R * 2);
+  // Rows scale with node count instead of being fixed at 3. With SPREAD_X tied
+  // to node count and forceY pinned hard to 0, the graph grew sideways forever
+  // and never upward: 12 nodes came out 800px wide and one node tall, leaving
+  // most of the canvas empty. Aiming for a roughly 2:1 box uses both axes.
+  // Space has to answer to BOTH counts. Node count alone sized the canvas as
+  // if every graph were equally busy, so a 12-node graph with 20 edges came
+  // out as cramped as a 43-node one: the edges, not the circles, are what
+  // needs room. Density (edges per node) widens the spacing on top of the
+  // node-count term.
+  const nN = Math.max(nodes.length, 1);
+  const nE = (links || []).filter((l) => l.source !== l.target).length;
+  const density = nE / nN;                       // ~1.0 sparse, ~3 busy
+  const roomy = 1 + Math.min(Math.max(density - 1, 0), 2) * 0.45;
+  const TARGET_ROWS = Math.max(3, Math.round(Math.sqrt(nN)));
+  const SPREAD_Y = TARGET_ROWS * COLLIDE_R * roomy;
+  const SPREAD_X = Math.max(560, SPREAD_Y * 1.9);
 
   const simNodes = nodes.map((n) => {
     const rank = medianRank[n.id] ?? 0.5;
@@ -213,10 +272,14 @@ function computeRankLayout(nodes, sequence, { maxRadius = 18, links = [], radius
       x: (rank - 0.5) * SPREAD_X,
       // Vertical seed spread matches the band the layout is aiming for —
       // roughly TARGET_ROWS rows of collision-sized nodes.
-      y: (Math.random() - 0.5) * TARGET_ROWS * COLLIDE_R,
+      y: (Math.random() - 0.5) * SPREAD_Y,
       targetX: (rank - 0.5) * SPREAD_X,
       r: rOf(n.id),
       isSpecial: !!n.isSpecial,
+      // On-path nodes are pulled hard to their sequence position and hard to
+      // the horizontal centre line, so the path reads as one straight run.
+      // Everything else is left almost free and drifts around it.
+      onPath: !!(spineOrder && spineOrder.has(n.id)),
       // Emphasis shapes POSITION as well as colour. Foreground nodes get a
       // strong left-to-right rank pull so the main trend reads as a sequence;
       // background nodes get almost none and a small collision radius, so they
@@ -242,24 +305,36 @@ function computeRankLayout(nodes, sequence, { maxRadius = 18, links = [], radius
       p: typeof l.probability === "number" ? l.probability : 0.5,
     }));
 
+  
+
   const sim = d3.forceSimulation(simNodes)
+    // 1. Links: Very weak. Do not let edges bunch the nodes together.
     .force("link", d3.forceLink(simLinks).id((d) => d.id)
-      // High-probability transitions sit closer together.
-      .distance((l) => byId.get(l.source.id || l.source).r
-                     + byId.get(l.target.id || l.target).r
-                     + 34 + 70 * (1 - l.p))
-      .strength(0.35))
-    .force("charge", d3.forceManyBody().strength((d) => -(90 + d.r * 6)))
-    .force("x", d3.forceX((d) => d.targetX).strength((d) => d.bg ? 0.02 : 0.45))
-    .force("y", d3.forceY(0).strength((d) => d.bg ? 0.02 : 0.10))
-    // Foreground nodes carry a label below them that is often wider than the
-    // circle ("close appliances" is ~90px against a ~50px node), so collision
-    // has to reserve room for the text or labels overlap.
-    .force("collide", d3.forceCollide((d) => d.bg ? d.r * 0.45 : COLLIDE_R)
-      .strength(0.9))
+      .distance(60)
+      .strength(0.05)) // Extremely weak link force
+
+    // 2. Charge: Moderate push apart to prevent exact overlap
+    .force("charge", d3.forceManyBody().strength(-80))
+
+    // 3. X-Axis (Time/Rank): IRON GRIP. Force nodes into their chronological order.
+    // Rank is a strong hint, not a pin. At strength 1.5 nothing could ever
+    // move off its rank column, so collision had to resolve sideways and the
+    // graph could only get wider.
+    .force("x", d3.forceX((d) => d.targetX)
+      .strength((d) => d.isSpecial ? 1.2 : 0.55))
+
+    // 4. Y-Axis (Linearity): Keep them in a tight horizontal band.
+    // Weak centring only. Nodes settle into rows because collision pushes them
+    // apart vertically, which is what fills the canvas.
+    .force("y", d3.forceY(0)
+      .strength((d) => d.bg ? 0.02 : (d.onPath ? 0.30 : 0.06)))
+
+    // 5. Collision: Just enough to let edges route around them
+    .force("collide", d3.forceCollide((d) => d.r * (1.15 + roomy * 0.35)).strength(1))
     .stop();
 
-  for (let i = 0; i < 460; i++) sim.tick();
+  // Run the simulation
+  for (let i = 0; i < 300; i++) sim.tick();
 
   // START and END are pinned to the extremes afterwards: they are the only two
   // nodes whose position carries a fixed meaning, and anchoring them gives the
@@ -549,6 +624,9 @@ function getCurvedPath(link, layout, radiusMap, curvature = 0.18) {
 
 function getNodeLabel(node, mode) {
   if (node.isSpecial) return specialLabel(node.id);
+  // Expanded bridge nodes carry a synthetic id so they stay unique per edge;
+  // the label is the action the person actually performed.
+  if (node.label) return node.label;
   if (mode === "abstracted") return node.step_label || node.id;
   if (mode.startsWith("hybrid")) return node.id; // Return full id, parsed later
   const verb = node.id.split("(")[0];
@@ -556,7 +634,11 @@ function getNodeLabel(node, mode) {
 }
 
 function getNodeSubtitle(node, mode) {
-  if (node.isSpecial || mode === "abstracted" || mode.startsWith("hybrid")) return "";
+  // In episode and step modes the label is already drawn as two lines —
+  // verb on top, noun beneath. Adding the subtitle printed the noun a second
+  // time directly under itself.
+  if (node.isSpecial || mode === "abstracted" || mode.startsWith("hybrid")
+      || PRETHINNED_MODES.includes(mode)) return "";
   const match = node.id.match(/\((.+)\)/);
   return match ? match[1] : "";
 }
@@ -638,7 +720,11 @@ function makeNodeSizeMap(filteredNodes, nodeDurationStats, sizeMode, nodeRadiusB
 
 function makeNodeColorFn(filteredNodes, sequence, colorMode, graphMode) {
   if (colorMode === "category") {
-    return (d) => d.isSpecial ? "#d1d5db" : nodeColor(d.id);
+    // Prefer the node's own verb field. Deriving the verb from the id only
+    // works when the id looks like verb(noun); step nodes are named after the
+    // recipe wording, so every one of them came out grey.
+    return (d) => d.isSpecial ? "#d1d5db"
+                : nodeColor(d.verb || d.id);
   }
   if (colorMode === "phase") {
     if (graphMode === "abstracted") {
@@ -715,6 +801,7 @@ export function createGraphController({
   let baseEdgeOpacityFn = null;
   let enrichedLinksCache = null;
   let enrichedLinksFullCache = null;   
+  let labelPathForCache = null;
   let edgeWidthScale = null;
   let edgeOpacityScale = null;
   let edgeMetricFn = (d) => d.count || 1;   
@@ -813,7 +900,28 @@ export function createGraphController({
     activeHighlight = null; // reset highlight state on new build
 
     const supportFilter = extras.supportFilter || 1;
-    const edgeDetail = extras.edgeDetail || "all";
+    // In macro view every edge is drawn: 26 edges do not need pruning, and
+    // top-k would hide real alternatives at that size.
+    const isMacro = !!extras.isMacro;
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // THE CANONICAL SPINE PATH
+    //
+    // `canonicalSpinePath` is an ordered list of {id, tier} from the pipeline.
+    // tier "spine"     — every session performed this, in this order (LCS)
+    // tier "connector" — inserted to join two spine actions that were never
+    //                    directly adjacent. A real observed edge, but not part
+    //                    of the common sequence.
+    //
+    // The two tiers are drawn differently on purpose: a reader is entitled to
+    // know which nodes are the finding and which are the glue. The old flat
+    // array could not express that.
+    // ─────────────────────────────────────────────────────────────────────────
+    const spinePath = extras.canonicalSpinePath
+      || (extras.canonicalSpine || []).map((id) => ({ id, tier: "spine" }));
+    const spinePathIds = spinePath.map((p) => p.id);
+    const expandedEdges = extras.expandedEdges || new Set();
+    const edgeDetail = isMacro ? "all" : (extras.edgeDetail || "all");
     const nSessionsHint = extras.nSessions || 0;
 
     if (resetPositions) userPositions = {};
@@ -1028,11 +1136,17 @@ export function createGraphController({
     let totalDuration = sequence[sequence.length - 1]?.end || 1;
     let xScale = null;
 
-    if (mode.startsWith("hybrid") && layoutMode === "temporal") {
+    if (RANK_LAYOUT_MODES.some((m) => mode.startsWith(m)) && layoutMode === "temporal") {
       drawHRIBackgrounds(false);
       zoomGroup.selectAll(".hri-backgrounds").selectAll("*").remove();
+      // Only order by the spine when the spine is actually being shown.
+      // Re-laying-out on every render would make the graph jump whenever the
+      // user toggled the highlight off.
+      const spineOrder = (extras.spineHighlightActive && spinePathIds.length)
+        ? buildSpineOrder(spinePathIds)
+        : null;
       const t = computeRankLayout(filteredNodes, sequence,
-        { maxRadius, links: enrichedLinks, radiusMap });
+        { maxRadius, links: enrichedLinks, radiusMap, spineOrder });
       layout = t.layout;
       xScale = null; 
     } else if (layoutMode === "temporal") {
@@ -1210,10 +1324,19 @@ export function createGraphController({
     };
 
     enrichedLinks.forEach((link) => {
-      link.__weak = mode.startsWith("hybrid")
-        && typeof link.probability === "number"
-        && link.probability < WEAK_EDGE_PROB
-        && !isStartId(link.source) && !isEndId(link.target);
+      // Two different reasons an edge is untrustworthy, and they are NOT the
+      // same reason:
+      //   micro view  — the transition is rare (low probability)
+      //   macro view  — the estimate rests on too little data (low n)
+      // In macro view a P = 1.00 edge from a single observation is the LEAST
+      // trustworthy thing on screen, so grading it by probability would style
+      // it as the strongest. Evidence is used instead.
+      link.__weak = isMacro
+        ? (link.evidence === "weak" && !isStartId(link.source) && !isEndId(link.target))
+        : (mode.startsWith("hybrid")
+            && typeof link.probability === "number"
+            && link.probability < WEAK_EDGE_PROB
+            && !isStartId(link.source) && !isEndId(link.target));
       if (link.__weak) weakEdges += 1;
 
       if (link.source === link.target || link.is_self_loop) { selfLoops.push(link); return; }
@@ -1225,6 +1348,32 @@ export function createGraphController({
 
     // Single source of truth for edge geometry, used by the initial draw AND by
     // the drag handler, so dragging can no longer swap a curve family.
+    // Geometry for the label only.
+    //
+    // Every path helper here emits a quadratic Bezier: "M x1 y1 Q mx my x2 y2".
+    // Such a curve reverses EXACTLY by swapping its two endpoints and keeping
+    // the control point, so the label rides the identical arc that is drawn,
+    // just traversed the other way. That is all a right-to-left edge needs in
+    // order to render its text upright.
+    //
+    // An earlier attempt rebuilt the geometry from the reversed link instead,
+    // which produced a mirrored arc — the label then sat beside its edge rather
+    // than on it. Reversing the string avoids that entirely, and lets return
+    // edges use exactly the same mechanism as forward edges.
+    const reverseQuadratic = (dStr) => {
+      const n = dStr.match(/-?\d*\.?\d+(?:e[-+]?\d+)?/gi);
+      if (!n || n.length < 6) return dStr;
+      const [x1, y1, mx, my, x2, y2] = n.slice(0, 6).map(Number);
+      return `M ${x2} ${y2} Q ${mx} ${my} ${x1} ${y1}`;
+    };
+
+    const labelPathFor = (link) => {
+      const d = pathFor(link);
+      const a = layout[endId(link.source)], b = layout[endId(link.target)];
+      return (a && b && b.x < a.x) ? reverseQuadratic(d) : d;
+    };
+    labelPathForCache = labelPathFor;
+
     const pathFor = (link) => {
       if (link.__isReturn) return getReturnArcPath(link, layout, radiusMap);
       return currentMode.startsWith("hybrid")
@@ -1238,7 +1387,12 @@ export function createGraphController({
     const baseEdgeOpacity = (d) => {
       if (d.__bg) return d.__isReturn ? 0.10 : 0.12;
       const weakFactor = d.__weak ? 0.25 : 1;
-      if (d.__isReturn) return (d.__weak ? 0.18 : 0.65);
+      // Return edges used to be dimmed on top of being purple and dashed.
+      // They are ordinary transitions; the arrowhead already shows direction.
+      if (d.__isReturn) {
+        const c = d.count || 1;
+        return (c > medianCount ? 0.75 : (c === medianCount ? 0.4 : 0.25)) * (d.__weak ? 0.25 : 1);
+      }
       if (currentShowSupportBadges) return edgeOpacityScale(edgeMetricFn(d)) * weakFactor;
       const c = d.count || 1;
       const base = c > medianCount ? 0.75 : (c === medianCount ? 0.4 : 0.25);
@@ -1263,7 +1417,13 @@ export function createGraphController({
     // Labels sit BELOW the node for every hybrid view. Keeping this density-gated
     // made the merged graph and the per-session graph look like different tools:
     // one with labels outside, one with white text crammed inside the circles.
-    const denseLabels = mode.startsWith("hybrid") || filteredNodes.length > 24;
+    // Label placement must not depend on how many nodes a recipe happens to
+    // have. Deciding it by node count put P01's 12 labels inside the circles
+    // and P03's 43 below them — same dashboard, two different conventions.
+    // Episode and step labels are always verb(noun), so they always go below.
+    const denseLabels = mode.startsWith("hybrid")
+      || PRETHINNED_MODES.includes(mode)
+      || filteredNodes.length > 24;
     // Probability labels are always shown — they are the point of a Markov
     // graph — but shrink and fade on dense graphs instead of disappearing.
     const denseEdges = enrichedLinks.length > 34;
@@ -1272,11 +1432,29 @@ export function createGraphController({
     // observation is not the same claim as a 1.00 from twenty, and the canvas
     // gave no way to tell them apart.
     const probLabel = (d) => {
-      const p = d.probability.toFixed(2);
-      const n = d.count || d.total_count || 0;
+      const st = edgeStats(d);
+      const p = (st.probability !== undefined ? st.probability : d.probability).toFixed(2);
+      const n = st.scoped ? st.count
+        : ((d.n !== undefined) ? d.n : (d.count || d.total_count || 0));
+      const nOut = d.n_out;
+      // A macro probability is meaningless without its denominator: "1.00" and
+      // "1.00 (1/1)" look identical to a reader and are completely different
+      // claims. The denominator is therefore mandatory here.
+      if (isMacro && nOut) return `${p} (${n}/${nOut})`;
       return n > 0 ? `${p} (n=${n})` : p;
     };
+    currentProbLabel = probLabel;
     const probOpacity  = denseEdges ? 0.72 : 1;
+    // Labels ride on their own copies of the edges, always oriented
+    // left-to-right. A <textPath> follows the direction of its path, so a
+    // right-to-left edge rendered its probability mirrored and upside down.
+    const labelPathId = (d) =>
+      `lpath-${MARKER_NS}-${d.key.replace(/[^a-zA-Z0-9_-]/g, '_')}`;
+    const addLabelPath = (sel) => sel.append("path")
+      .attr("id", (d) => labelPathId(d))
+      .attr("fill", "none").attr("stroke", "none")
+      .attr("d", (d) => labelPathFor(d));
+
     const returnGroups = gLinks.append("g").attr("class", "return-edges")
       .selectAll(".return-group")
       .data(returnEdges).enter().append("g").attr("class", "return-group");
@@ -1292,18 +1470,23 @@ export function createGraphController({
 
     returnGroups.append("path")
       .attr("id", d => `path-${MARKER_NS}-${d.key.replace(/[^a-zA-Z0-9_-]/g, '_')}`)
-      .attr("class", "link return-edge")
+      .attr("class", (d) => `link fwd-edge return-edge ${(d.count || 1) > medianCount ? "dominant" : "minor"}`)
       .attr("data-key", (d) => d.key)
       .attr("fill", "none")
-      .attr("stroke", RETURN_COLOR)
+      // A return edge is a transition like any other — the arrowhead already
+      // says which way it goes. Colouring and dashing it as well made it read
+      // as a different KIND of thing, and three encodings for one fact is two
+      // too many.
       .attr("stroke-width", (d) => edgeWidthScale(edgeMetricFn(d)))
-      .attr("stroke-dasharray", "6 4")
-      .attr("opacity", (d) => d.__bg ? 0.10 : (d.__weak ? 0.18 : 0.65))
-      .attr("marker-end", markerUrl("arrowReturn"))
+      .attr("stroke-dasharray", (d) => d.__weak ? "3 3" : null)
+      .attr("opacity", (d) => baseEdgeOpacity(d)) // <-- CHANGED from hardcoded ternary to baseEdgeOpacity(d)
+      .attr("marker-end", markerUrl("arrow"))
       .attr("d", (d) => pathFor(d))
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
       .on("mouseout", hideEdgeTooltip);
     markIntroduced(returnGroups.selectAll("path.return-edge"));
+
+    addLabelPath(returnGroups);
 
     returnGroups.filter(d => typeof d.probability === 'number' && d.probability > 0)
       .append("text")
@@ -1311,14 +1494,16 @@ export function createGraphController({
       .attr("dy", -4)
       .attr("font-size", probFontSize)
       .attr("font-weight", "bold")
-      .attr("fill", RETURN_COLOR)
+      .attr("fill", "#64748b")
       .attr("opacity", (d) => d.__bg ? 0 : probOpacity)
       .attr("pointer-events", "none")
+      .classed("prob-label", true)
       .append("textPath")
-      .attr("href", d => `#path-${MARKER_NS}-${d.key.replace(/[^a-zA-Z0-9_-]/g, '_')}`)
+      .attr("href", d => `#${labelPathId(d)}`)
       .attr("startOffset", "50%")
       .attr("text-anchor", "middle")
       .text(d => probLabel(d));
+
 
     // The badge stays, but now supplements the arcs rather than replacing them:
     // it is the revisitation-hotspot cue (Insight B), not a substitute for a line.
@@ -1345,14 +1530,12 @@ export function createGraphController({
           .attr("cx", -r * 0.7).attr("cy", -r - 4).attr("r", 7)
           .attr("fill", "#f5f3ff").attr("stroke", RETURN_COLOR).attr("stroke-width", 1);
         g.append("text")
+          .attr("class", "back-indicator-count")
           .attr("x", -r * 0.7).attr("y", -r - 4)
           .attr("text-anchor", "middle").attr("dy", "0.35em")
           .attr("font-size", "7px").attr("fill", RETURN_COLOR)
           .text(edges.length);
-        g.append("title").text(
-          `Returns to an earlier state (all drawn below):\n` +
-          edges.map((e) => `• ${e.target} (P = ${(e.probability || 0).toFixed(2)})`).join("\n")
-        );
+        g.append("title").text("");
       });
 
     const edgeSet = new Set(forwardEdges.map((d) => `${d.source}|||${d.target}`));
@@ -1370,6 +1553,50 @@ export function createGraphController({
       }
     });
 
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // BRIDGED EDGES
+    //
+    // An edge that collapsed a run of logistics is thicker, gets a pointer
+    // cursor, and shows how many actions are folded under it. It is the only
+    // clickable edge in the graph, so it has to look different from an edge
+    // that merely happens to be frequent — width alone would be ambiguous.
+    //
+    // An OPEN edge is not drawn at all: app.js has already replaced it with the
+    // chain it contained, so drawing it too would show a shortcut next to the
+    // route, which is exactly the phantom edge this whole design avoids.
+    // ─────────────────────────────────────────────────────────────────────────
+    const bridgeWidthBonus = (d) => {
+      if (!isMacro || !d.is_bridged) return 0;
+      return Math.min(4, 1 + Math.log2(1 + (d.bridge_len_median || 1)));
+    };
+    const applyBridgeAffordance = (sel) => {
+      if (!isMacro) return sel;
+      sel.filter((d) => d.is_bridged)
+        .attr("stroke-linecap", "round")
+        .style("cursor", "pointer")
+        .attr("stroke-width", (d) =>
+          edgeWidthScale(edgeMetricFn(d)) + bridgeWidthBonus(d));
+      sel.filter((d) => d.is_bridge_edge)
+        .attr("stroke", "#0F766E")
+        .attr("stroke-dasharray", null);
+      sel.on("click", function (event, d) {
+        if (!d) return;
+        if (d.is_bridge_edge && d.bridge_of) {
+          // Clicking any hop of an opened run closes the whole run.
+          event.stopPropagation();
+          if (lastOptions && lastOptions.onEdgeClick) {
+            lastOptions.onEdgeClick({ key: d.bridge_of, is_bridged: true });
+          }
+          return;
+        }
+        if (!d.is_bridged) return;
+        event.stopPropagation();
+        if (lastOptions && lastOptions.onEdgeClick) lastOptions.onEdgeClick(d);
+      });
+      return sel;
+    };
+
     const unidirGroups = gLinks.append("g").selectAll(".unidir-group")
       .data(unidirectionalForward).enter().append("g").attr("class", "unidir-group");
 
@@ -1383,7 +1610,10 @@ export function createGraphController({
       .attr("marker-end", markerUrl("arrow"))
       .attr("d", (d) => pathFor(d))
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
-      .on("mouseout", hideEdgeTooltip);
+      .on("mouseout", hideEdgeTooltip)
+      .call(applyBridgeAffordance);
+
+    addLabelPath(unidirGroups);
 
     unidirGroups.filter(d => typeof d.probability === 'number' && d.probability > 0)
       .append("text")
@@ -1394,11 +1624,30 @@ export function createGraphController({
       .attr("fill", "#64748b")
       .attr("opacity", (d) => d.__bg ? 0 : probOpacity)
       .attr("pointer-events", "none")
+      .classed("prob-label", true)
       .append("textPath")
-      .attr("href", d => `#path-${MARKER_NS}-${d.key.replace(/[^a-zA-Z0-9_-]/g, '_')}`)
+      .attr("href", d => `#${labelPathId(d)}`)
       .attr("startOffset", "50%")
       .attr("text-anchor", "middle")
       .text(d => probLabel(d));
+
+    // How many actions are hidden, written on the edge. Without this the only
+    // way to know an edge is worth opening is to hover it.
+    if (isMacro) {
+      unidirGroups.filter((d) => d.is_bridged && !expandedEdges.has(d.key))
+        .append("text")
+        .attr("class", "bridge-count-text")
+        .attr("dy", 11)
+        .attr("font-size", denseEdges ? "9px" : "11px")
+        .attr("fill", "#0F766E")
+        .attr("opacity", (d) => d.__bg ? 0 : 0.9)
+        .attr("pointer-events", "none")
+        .append("textPath")
+        .attr("href", d => `#${labelPathId(d)}`)
+        .attr("startOffset", "50%")
+        .attr("text-anchor", "middle")
+        .text((d) => `+${d.bridge_len_median} · ${Math.round(d.gap_s_median || 0)}s`);
+    }
 
     const bidirGroups = gLinks.append("g").selectAll(".bidir-group")
       .data(bidirectionalForward).enter().append("g").attr("class", "bidir-group");
@@ -1414,7 +1663,10 @@ export function createGraphController({
       .attr("marker-start", markerUrl("arrowReverse"))
       .attr("d", (d) => pathFor(d))
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
-      .on("mouseout", hideEdgeTooltip);
+      .on("mouseout", hideEdgeTooltip)
+      .call(applyBridgeAffordance);
+
+    addLabelPath(bidirGroups);
 
     bidirGroups.filter(d => typeof d.probability === 'number' && d.probability > 0)
       .append("text")
@@ -1425,8 +1677,9 @@ export function createGraphController({
       .attr("fill", "#64748b")
       .attr("opacity", (d) => d.__bg ? 0 : probOpacity)
       .attr("pointer-events", "none")
+      .classed("prob-label", true)
       .append("textPath")
-      .attr("href", d => `#path-${MARKER_NS}-${d.key.replace(/[^a-zA-Z0-9_-]/g, '_')}`)
+      .attr("href", d => `#${labelPathId(d)}`)
       .attr("startOffset", "50%")
       .attr("text-anchor", "middle")
       .text(d => probLabel(d));
@@ -1453,6 +1706,60 @@ export function createGraphController({
         const p = layout[d.id] || { x: 0, y: 0 };
         return `translate(${p.x},${p.y})`;
       });
+
+    // ─────────────────────────────────────────────────────────────────────
+    // NODE HOVER
+    //
+    // Every field read here is already in the payload; nothing is computed at
+    // render time. Kept as a native <title> so it cannot be clipped by the
+    // zoom layer or fall out of sync with the node it belongs to.
+    // ─────────────────────────────────────────────────────────────────────
+    nodeGroups.each(function (d) {
+      if (d.isSpecial) return;
+      const top = (obj, n) => Object.entries(obj || {})
+        .sort((a, b) => b[1] - a[1]).slice(0, n)
+        .map(([k, v]) => `${k} x${v}`).join(", ");
+
+      const lines = [d.label || d.id];
+      // "named after" is a statement about where the LABEL came from.
+      // "most common action" is a statement about the contents. They are
+      // different claims and only one of them applies to a given node.
+      if (d.head_action && d.head_action !== d.id) {
+        lines.push(`named after: ${d.head_action}`);
+      } else if (d.top_action) {
+        lines.push(`most common action inside: ${d.top_action}`);
+      }
+      if (typeof d.support === "number" && d.n_sessions > 1) {
+        lines.push(`seen in ${d.support} of ${d.n_sessions} sessions - ${d.count}x total`);
+      } else if (typeof d.count === "number") {
+        lines.push(`${d.count}x in this session`);
+      }
+      if (d.n_raw_actions) lines.push(`${d.n_raw_actions} raw actions inside`);
+      if (d.self_loop) lines.push(`repeats itself ${d.self_loop}x`);
+      const v = top(d.verbs, 5); if (v) lines.push(`verbs: ${v}`);
+      const o = top(d.objects, 5); if (o) lines.push(`objects: ${o}`);
+      if (d.per_session_counts && Object.keys(d.per_session_counts).length > 1) {
+        lines.push("per session: " + Object.entries(d.per_session_counts)
+          .map(([s, n]) => `S${Number(s) + 1}:${n}`).join("  "));
+      }
+      const outs = (enrichedLinksFullCache || [])
+        .filter((l) => endId(l.source) === d.id && endId(l.target) !== d.id);
+      const hiddenMass = outs.filter((l) => !sessionOnlyVisible(l))
+        .reduce((s, l) => s + (l.probability || 0), 0);
+      if (hiddenMass > 0.01) {
+        // Probabilities are computed over EVERY observed exit, so when some
+        // exits are session-specific and not drawn, the visible arrows can sum
+        // to less than 1. Saying so is better than silently renormalising.
+        lines.push(`${Math.round(hiddenMass * 100)}% of exits go to session-specific`);
+        lines.push("transitions, shown only when that session is selected");
+      }
+      if (d.rolled_up) {
+        lines.push("label was generalised - this exact verb+object was seen in");
+        lines.push("only one session, so the label uses the broader category");
+      }
+      if (d.n_raw_actions > 1) lines.push("double-click to open the actions inside");
+      d3.select(this).append("title").text(lines.join("\n"));
+    });
 
     const colorFn = currentExternalColorFn
       ? (d) => d.isSpecial ? "#d1d5db" : currentExternalColorFn(d.id)
@@ -1668,14 +1975,22 @@ export function createGraphController({
           userPositions[d.id] = { x: nx, y: ny };
         }
         d3.select(this).attr("transform", `translate(${nx}, ${ny})`);
+        const touches = (link) =>
+          endId(link.source) === d.id || endId(link.target) === d.id;
         svg.selectAll(".link")
-          .filter(link => link.source === d.id || link.target === d.id)
+          .filter(touches)
           .attr("d", link => {
             return pathForCache ? pathForCache(link)
               : getStraightPath(link, layout, radiusMapCache);
           });
+        // The invisible label paths have to move with the edges, or the
+        // probabilities stay behind where the edge used to be.
+        svg.selectAll("path[id^='lpath-']")
+          .filter(touches)
+          .attr("d", link => labelPathForCache ? labelPathForCache(link)
+            : getStraightPath(link, layout, radiusMapCache));
         svg.selectAll(".back-indicator")
-          .filter(([sid]) => sid === d.id)
+          .filter((b) => b && b.sid === d.id)
           .attr("transform", `translate(${nx}, ${ny})`);
         svg.selectAll(".self-loop-indicator")
           .filter(sl => sl.source === d.id)
@@ -1689,7 +2004,7 @@ export function createGraphController({
       });
     nodeGroups.call(dragBehavior);
 
-    if (currentMode.startsWith("hybrid")) {
+    if (currentMode.startsWith("hybrid") || PRETHINNED_MODES.includes(currentMode)) {
       const loopInfo = {};
       selfLoopSummary.forEach((d) => {
         if (isSpecialId(d.source)) return;
@@ -1765,7 +2080,7 @@ export function createGraphController({
       .on("click", function(event, d) {
         if (d.__dragMoved) { d.__dragMoved = false; return; }
         selectedNodeId = d.id;
-        if (options.onNodeClick) options.onNodeClick(d, currentSequenceCache);
+        if (options.onNodeClick) options.onNodeClick(d, currentSequenceCache, event);
       });
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -1789,6 +2104,7 @@ export function createGraphController({
                     `actions kept (${Math.round(c.kept_fraction * 100)}%)`;
       }
     }
+    const mr = (graph && graph.__macroReport) || null;
 
     const ledger = svg.append("g").attr("class", "render-ledger");
     const ledgerLines = [
@@ -1800,6 +2116,10 @@ export function createGraphController({
       `${isolated} isolated node${isolated === 1 ? "" : "s"}` +
         (usedRankData ? " · direction from sequence rank" : " · direction from layout (legacy payload)"),
     ];
+
+    // First paint: session-only edges stay hidden until a session is chosen.
+    applySessionOnlyVisibility();
+
 
     const nIntroduced = enrichedLinks.filter((l) => l.is_introduced).length;
     if (nBackground > 0) {
@@ -1820,6 +2140,42 @@ export function createGraphController({
         : `0 fabricated edges — every transition was observed`
     );
     if (scopeInfo) ledgerLines.push(scopeInfo);
+
+    // ── Macro provenance ─────────────────────────────────────────────────────
+    // Three claims the reader is entitled to, in the order they matter:
+    //   1. how much of the data is folded away and still reachable
+    //   2. how much evidence the probabilities rest on
+    //   3. whether pooling across sessions was possible at all
+    // Point 2 is the honest one. Per session, 70-93% of macro edges are seen
+    // once; a viewer who does not know that will read P = 1.00 as certainty.
+    if (isMacro && mr && mr.usable !== false) {
+      const a = mr.actions || {};
+      const e = mr.edges || {};
+      if (a.spine !== undefined) {
+        ledgerLines.push(
+          `main steps: ${a.spine} of ${a.in_scope} actions drawn as nodes · ` +
+          `${a.bridge || 0} folded onto edges, none deleted`
+        );
+      }
+      if (e.count) {
+        ledgerLines.push(
+          `evidence: ${e.weak_evidence}/${e.count} edges seen once ` +
+          `(${Math.round(e.weak_evidence_fraction * 100)}%) — ` +
+          `dotted edges are not reliable`
+        );
+      }
+      ledgerLines.push(
+        mr.evidence_basis === "cross_session"
+          ? `probabilities pooled across ${mr.n_sessions} sessions`
+          : `one session only — probabilities are provisional`
+      );
+      if (expandedEdges && expandedEdges.size > 0) {
+        ledgerLines.push(
+          `${expandedEdges.size} edge${expandedEdges.size === 1 ? "" : "s"} opened — ` +
+          `click again to fold back`
+        );
+      }
+    }
     ledgerLines.forEach((line, i) => {
       ledger.append("text")
         .attr("x", 12)
@@ -1894,11 +2250,72 @@ export function createGraphController({
     const detailLines = [...detailMap.entries()].map(([p, c]) => `${p}: ${c}`).join("\n");
 
     const tooltip = document.getElementById("edgeTooltip");
-    let txt = `${d.source} → ${d.target}\nCount: ${d.count} (${pct}% of outgoing)`;
-    if (typeof d.probability === "number") {
-      txt += `\nP(${d.target} | ${d.source}) = ${d.probability.toFixed(2)}`;
+
+    // ── MACRO EDGE ──────────────────────────────────────────────────────────
+    // Deliberately a different tooltip, not the micro one with extra lines.
+    // The two answer different questions and the wording has to say which:
+    //   micro  P(next action | current action)      "what does the hand do next"
+    //   macro  P(next main step | current main step) "what is the next step"
+    // The probability NEVER appears without its denominator, because 93% of
+    // per-session macro edges rest on a single observation.
+    if (d.n_out !== undefined || d.is_bridged || d.is_bridge_edge) {
+      const lines = [];
+
+      if (d.is_bridge_edge) {
+        lines.push(`${d.source.split("::").pop()} → ${d.target.split("::").pop()}`);
+        lines.push(`Part of an opened run. Click to close it.`);
+      } else {
+        lines.push(`${d.source} → ${d.target}`);
+        lines.push(`Chance the next main step is ${d.target}:`);
+        lines.push(`  ${formatProbability(d)}`);
+        if (d.evidence === "weak") {
+          lines.push(`  Seen once — this number is not reliable yet.`);
+        }
+        if (typeof d.p_laplace === "number") {
+          lines.push(`  Smoothed estimate: ${d.p_laplace.toFixed(2)}`);
+        }
+        lines.push(``);
+        lines.push(`In between: ${formatBridge(d)}`);
+        if (d.is_bridged) {
+          const hidden = d.bridge_raw_actions || d.bridge_actions || {};
+          const top = Object.entries(hidden)
+            .sort((a, b) => b[1] - a[1]).slice(0, 6);
+          top.forEach(([a, c]) => lines.push(`  ${a} × ${c}`));
+          const more = Object.keys(hidden).length - top.length;
+          if (more > 0) lines.push(`  … and ${more} more`);
+          lines.push(``);
+          lines.push(`Wait before the next step: ${d.gap_s_median}s ` +
+                     `(${d.gap_s_min}–${d.gap_s_max}s)`);
+          lines.push(`Click the edge to open it.`);
+        }
+        if (d.support !== undefined && d.n_sessions !== undefined && d.n_sessions > 1) {
+          lines.push(`Seen in ${d.support} of ${d.n_sessions} sessions`);
+        }
+      }
+
+      tooltip.textContent = lines.join("\n");
+      tooltip.style.display = "block";
+      tooltip.style.left = (event.clientX + 12) + "px";
+      tooltip.style.top = (event.clientY - 10) + "px";
+      return;
     }
-    if (d.support !== undefined && d.n_sessions !== undefined) {
+
+    // ── MICRO EDGE (unchanged) ──────────────────────────────────────────────
+    const st = edgeStats(d);
+    const scopePct = st.scoped
+      ? (() => { const o = (enrichedLinksFullCache || [])
+            .filter(l => endId(l.source) === endId(d.source))
+            .reduce((s, l) => s + Number((l.per_session_counts || {})[activeSessionForStats] ||
+                                         (l.per_session_counts || {})[String(activeSessionForStats)] || 0), 0);
+          return o > 0 ? (st.count / o * 100).toFixed(0) : "0"; })()
+      : pct;
+    let txt = `${d.source} → ${d.target}`;
+    txt += st.scoped ? `\nSession ${activeSessionForStats + 1} only` : `\nAll sessions`;
+    txt += `\nCount: ${st.count} (${scopePct}% of outgoing)`;
+    if (typeof st.probability === "number") {
+      txt += `\nP(${d.target} | ${d.source}) = ${st.probability.toFixed(2)}`;
+    }
+    if (!st.scoped && d.support !== undefined && d.n_sessions !== undefined) {
       txt += `\nSupport: ${d.support}/${d.n_sessions}`;
     }
     if (detailLines) txt += `\n${detailLines}`;
@@ -1921,6 +2338,35 @@ export function createGraphController({
       lines.push(`Support: ${d.support}/${d.n_sessions} sessions`);
       if (d.per_session_counts) {
         lines.push(`Per session: [${d.per_session_counts.join(", ")}]`);
+      }
+    }
+    if (d.is_bridge_node) {
+      lines.length = 0;
+      lines.push(`${d.label || d.id}`);
+      lines.push(`One of the actions folded under this edge.`);
+      lines.push(`Happened ${d.count} time${d.count === 1 ? "" : "s"} on this route.`);
+      const t = document.getElementById("nodeTooltip");
+      t.textContent = lines.join("\n");
+      t.style.display = "block";
+      t.style.left = (event.clientX + 12) + "px";
+      t.style.top = (event.clientY - 10) + "px";
+      return;
+    }
+    if (d.role === "spine") {
+      lines.push(`A main step — it changes the food.`);
+      if (d.mean_duration_s !== undefined) {
+        lines.push(`Takes about ${d.mean_duration_s}s`);
+      }
+      // The number a collaborating robot actually needs.
+      if (d.mean_gap_out_s) {
+        lines.push(`Then about ${d.median_gap_out_s}s of fetching and moving ` +
+                   `before the next main step`);
+      }
+      if (d.parameters && Object.keys(d.parameters).length > 0) {
+        const p = Object.entries(d.parameters)
+          .sort((a, b) => b[1] - a[1]).slice(0, 5)
+          .map(([a, c]) => `  ${a} × ${c}`).join("\n");
+        lines.push(`Checked for doneness by:\n${p}`);
       }
     }
     if (d.is_primary === false) lines.push(`Lane: secondary (outside recipe steps)`);
@@ -2054,15 +2500,18 @@ export function createGraphController({
 
   function highlightSession(sessionIndex) {
     if (sessionIndex === null || sessionIndex === undefined || sessionIndex === "Merged") {
+      activeSessionForStats = null;
       activeHighlight = null;
       resetHighlight();
       return;
     }
+    activeSessionForStats = sessionIndex;
     activeHighlight = { type: 'session', value: sessionIndex };
     applyHighlightState();
   }
 
   function highlightSpine(canonicalArray) {
+    activeSessionForStats = null;
     if (!canonicalArray || canonicalArray.length === 0) {
       activeHighlight = null;
       resetHighlight();
@@ -2073,11 +2522,92 @@ export function createGraphController({
   }
 
   function clearHighlight() {
+    activeSessionForStats = null;
     activeHighlight = null;
     resetHighlight();
   }
 
+  // ───────────────────────────────────────────────────────────────────────
+  // edgeStats
+  //
+  // count, probability and support on a merged link describe ALL sessions.
+  // While one session is highlighted the reader is looking at one run, so
+  // "n=2, support 2/3" answers a question they did not ask and reads as an
+  // error. When a session is active these are recomputed from
+  // per_session_counts, renormalised over that session's own outgoing edges.
+  // ───────────────────────────────────────────────────────────────────────
+  function edgeStats(d) {
+    const i = activeSessionForStats;
+    if (i === null || !d || !d.per_session_counts) {
+      return { count: d.count, probability: d.probability,
+               support: d.support, nSessions: d.n_sessions, scoped: false };
+    }
+    const c = Number(d.per_session_counts[i] || d.per_session_counts[String(i)] || 0);
+    const out = (enrichedLinksFullCache || [])
+      .filter((l) => l.source === d.source)
+      .reduce((sum, l) => sum + Number(
+        (l.per_session_counts || {})[i] ||
+        (l.per_session_counts || {})[String(i)] || 0), 0);
+    return { count: c, probability: out > 0 ? c / out : 0,
+             support: c > 0 ? 1 : 0, nSessions: 1, scoped: true };
+  }
+
+  function refreshProbLabels() {
+    if (typeof currentProbLabel !== "function") return;
+    svg.selectAll("text.prob-label textPath").text((d) => currentProbLabel(d));
+  }
+
+  // ───────────────────────────────────────────────────────────────────────
+  // session_only edges
+  //
+  // A session's own walk is a SEQUENCE, so it can never contain a node with
+  // no neighbour — that is true by definition, not by observation. When the
+  // merged graph's support threshold drops a transition only one session
+  // made, highlighting that session strands the node. The pipeline therefore
+  // keeps those edges and flags them.
+  //
+  // But they are not part of the shared structure, so they do not belong in
+  // the merged picture: on P03_R03 they would take it from 63 edges to 116.
+  // They appear only while their own session is highlighted.
+  // ───────────────────────────────────────────────────────────────────────
+  function sessionOnlyVisible(d) {
+    if (!d || !d.session_only) return true;
+    const i = activeSessionForStats;
+    if (i === null || i === undefined) return false;
+    const psc = d.per_session_counts || {};
+    return Number(psc[i] || psc[String(i)] || 0) > 0;
+  }
+
+  function applySessionOnlyVisibility() {
+    svg.selectAll("#zoomGroup .link, #zoomGroup .edge-prob-text")
+      .style("display", (d) => sessionOnlyVisible(d) ? null : "none");
+    refreshReturnBadges();
+  }
+
+  // The badge said "5" while only 2 return arrows were drawn, because it
+  // counted every return edge stored on the node — including the session-only
+  // ones that are hidden in the merged view. A badge that disagrees with what
+  // is on screen is worse than no badge, so it is recounted from the visible
+  // edges whenever visibility changes, and disappears when the count is zero.
+  function refreshReturnBadges() {
+    svg.selectAll(".back-indicator").each(function (d) {
+      if (!d || !d.edges) return;
+      const shown = d.edges.filter(sessionOnlyVisible);
+      const sel = d3.select(this);
+      sel.style("display", shown.length ? null : "none");
+      sel.select("text.back-indicator-count").text(shown.length);
+      sel.select("title").text(
+        shown.length
+          ? "Returns to an earlier state (all drawn below):\n" +
+            shown.map((e) => `\u2022 ${e.target} (P = ${(e.probability || 0).toFixed(2)})`).join("\n")
+          : ""
+      );
+    });
+  }
+
   function applyHighlightState() {
+    refreshProbLabels();
+    applySessionOnlyVisibility();
     if (!activeHighlight) {
       resetHighlight();
       return;
@@ -2091,7 +2621,7 @@ export function createGraphController({
       nodeSelection.each(function(d) {
         const isActive = d.per_session_counts && d.per_session_counts[sessionIndex] > 0;
         const el = d3.select(this);
-        el.style("opacity", isActive ? 1.0 : 0.1);
+        el.style("opacity", isActive ? 1.0 : 0.28);
 
         if (isActive && !d.isSpecial) {
           el.select("circle:not(.selection-ring):not(.mandatory-ring):not(.dead-end-ring)")
@@ -2110,7 +2640,10 @@ export function createGraphController({
       linkSelection.each(function(d) {
         const isActive = d.per_session_counts && d.per_session_counts[sessionIndex] > 0;
         const el = d3.select(this);
-        el.style("opacity", isActive ? 1.0 : 0.05);
+        // 0.05 was effectively invisible, so a node whose edges were all
+        // off-selection looked isolated. Context should stay readable as
+        // context — visible, clearly secondary.
+        el.style("opacity", isActive ? 1.0 : 0.22);
         el.style("stroke", isActive ? color : null);
         el.style("stroke-width", edgeWidthScale(edgeMetricFn(d)));
       });
@@ -2134,56 +2667,90 @@ export function createGraphController({
 
     } 
     else if (activeHighlight.type === 'spine') {
-      const canonicalArray = activeHighlight.value;
-      const spineNodes = new Set(canonicalArray);
-      const spineEdges = new Set();
-      for (let i = 0; i < canonicalArray.length - 1; i++) {
-        spineEdges.add(canonicalArray[i] + "|||" + canonicalArray[i + 1]);
+      // The value is the ordered PATH, not a set: order is what lets an edge be
+      // recognised as "step i to step i+1" rather than merely "both ends are on
+      // the spine". Without that, any edge between two spine nodes lit up, and
+      // the highlighted route grew extra branches it never had.
+      const path = activeHighlight.value || [];
+      const tierOf = new Map();
+      path.forEach((p) => {
+        const id = p.id !== undefined ? p.id : p;
+        const tier = p.tier || "spine";
+        // A node visited twice keeps the stronger tier.
+        if (tierOf.get(id) !== "spine") tierOf.set(id, tier);
+      });
+      const ids = path.map((p) => (p.id !== undefined ? p.id : p));
+      const pathEdges = new Set();
+      for (let i = 0; i < ids.length - 1; i++) {
+        pathEdges.add(ids[i] + "|||" + ids[i + 1]);
       }
 
-      nodeSelection.each(function(d) {
-        const isActive = spineNodes.has(d.id);
-        const el = d3.select(this);
-        el.style("opacity", isActive ? 1.0 : 0.1);
-        // A spine node may sit below the emphasis threshold and therefore have
-        // no label. Highlighting is a reveal, so give it one back — otherwise
-        // the pattern runs through anonymous circles.
-        el.select("text.node-label").attr("opacity", isActive ? 1 : (d.__bg ? 0 : 1));
+      const SPINE_STROKE = "#B8362A";     // the finding
+      const CONNECT_STROKE = "#C99B93";   // the glue
 
-        const colorFn = currentExternalColorFn ? (n) => n.isSpecial ? "#d1d5db" : currentExternalColorFn(n.id) : makeNodeColorFn(currentFilteredNodes, currentSequenceCache, lastColorMode, lastMode);
-        
-        if (isActive && !d.isSpecial) {
-          el.select("circle:not(.selection-ring):not(.mandatory-ring):not(.dead-end-ring)")
-            .style("fill", colorFn(d))
-            .style("stroke", "#B8362A")
-            .style("stroke-width", d.salient ? 4 : 3);
-        } else if (!isActive && !d.isSpecial) {
-          el.select("circle:not(.selection-ring):not(.mandatory-ring):not(.dead-end-ring)")
-            .style("fill", colorFn(d))
-            .style("stroke", d.salient ? "#1e293b" : "none")
-            .style("stroke-width", d.salient ? 2.5 : 0);
+      nodeSelection.each(function (d) {
+        const tier = tierOf.get(d.id);
+        const onPath = tier !== undefined;
+        const el = d3.select(this);
+        el.style("opacity", onPath ? 1.0 : 0.14);
+
+        // ── THIS IS THE FIX FOR THE CLUTTER ──────────────────────────────────
+        // Previously off-path foreground nodes kept full-strength labels, so a
+        // 26-node graph still showed ~26 labels behind the highlighted path.
+        // Under a highlight only the path is named. Everything else is shape.
+        el.select("text.node-label").attr("opacity", onPath ? 1 : 0);
+
+        const colorFn = currentExternalColorFn
+          ? (n) => n.isSpecial ? "#d1d5db" : currentExternalColorFn(n.id)
+          : makeNodeColorFn(currentFilteredNodes, currentSequenceCache,
+                            lastColorMode, lastMode);
+
+        if (d.isSpecial) return;
+        const circle = el.select(
+          "circle:not(.selection-ring):not(.mandatory-ring):not(.dead-end-ring)");
+        circle.style("fill", colorFn(d));
+        if (tier === "spine") {
+          circle.style("stroke", SPINE_STROKE).style("stroke-width", 3.5);
+        } else if (tier === "connector") {
+          // Dashed ring: on the route, but not part of what every session did.
+          circle.style("stroke", CONNECT_STROKE)
+                .style("stroke-width", 2.5)
+                .style("stroke-dasharray", "4 3");
+        } else {
+          circle.style("stroke", "none").style("stroke-width", 0)
+                .style("stroke-dasharray", null);
         }
       });
 
-      linkSelection.each(function(d) {
-        const isActive = spineEdges.has(d.key) || spineEdges.has(d.pairKey);
+      linkSelection.each(function (d) {
+        const isActive = pathEdges.has(d.key) || pathEdges.has(d.pairKey);
         const el = d3.select(this);
-        el.style("opacity", isActive ? 1.0 : 0.05);
-        
+        // Same reason as the session view: at 0.06 an off-pattern edge is
+        // invisible, so its nodes read as isolated rather than as context.
+        el.style("opacity", isActive ? 1.0 : 0.22);
         if (isActive) {
-          el.style("stroke", "#B8362A")
-            .style("stroke-width", (edgeWidthScale(edgeMetricFn(d))) + 2);
-          this.parentNode.appendChild(this); 
+          const bothSpine = tierOf.get(d.source) === "spine"
+                         && tierOf.get(d.target) === "spine";
+          el.style("stroke", bothSpine ? SPINE_STROKE : CONNECT_STROKE)
+            .style("stroke-width", edgeWidthScale(edgeMetricFn(d)) + 2);
+          this.parentNode.appendChild(this);
         } else {
           el.style("stroke", null)
             .style("stroke-width", edgeWidthScale(edgeMetricFn(d)));
         }
       });
 
-      svg.selectAll("#zoomGroup .edge-prob-text").style("opacity", function(d) {
-        const isActive = spineEdges.has(d.key) || spineEdges.has(d.pairKey);
-        return isActive ? 1.0 : 0.05;
-      });
+      // Every text layer that rides on an edge has to be listed here. The
+      // probability label was handled before; the bridge badge was not, which
+      // is why "+7 · 8s" stayed dark over a dimmed graph.
+      const onPathEdge = (d) =>
+        d && (pathEdges.has(d.key) || pathEdges.has(d.pairKey));
+      svg.selectAll("#zoomGroup .edge-prob-text")
+        .style("opacity", (d) => onPathEdge(d) ? 1.0 : 0.18);
+      svg.selectAll("#zoomGroup .bridge-count-text")
+        .style("opacity", (d) => onPathEdge(d) ? 0.9 : 0);
+      svg.selectAll("#zoomGroup .edge-gap-text")
+        .style("opacity", (d) => onPathEdge(d) ? 0.9 : 0);
 
       // Badges are siblings of the nodes, so they need explicit handling or
       // they float at full strength over a dimmed graph.
@@ -2207,6 +2774,10 @@ export function createGraphController({
   }
 
   function resetHighlight() {
+    // Back to the merged view: the edge labels must go back to merged numbers.
+    activeSessionForStats = null;
+    refreshProbLabels();
+    applySessionOnlyVisibility();
     if (!nodeSelection || !linkSelection) return;
     
     nodeSelection.each(function(d) {
@@ -2233,7 +2804,7 @@ export function createGraphController({
       if (baseEdgeOpacityFn) {
         el.style("opacity", baseEdgeOpacityFn(d));
       } else {
-        el.style("opacity", null);
+        el.style("opacity", d.__bg ? 0.12 : 0.65);
       }
     });
 
