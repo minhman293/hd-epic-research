@@ -229,8 +229,20 @@ export function getVerbColor(verbOrAction) {
   const verb = verbOrAction.includes("(")
     ? verbOrAction.split("(")[0]
     : verbOrAction;
+  // Accept either a verb KEY ("press") or a verb CATEGORY ("manipulate").
+  // Step-level nodes are named after the recipe, so they carry the commonest
+  // verb category of the actions inside them instead of a key — and 12 of the
+  // 13 categories are not verb keys, so a key-only lookup returned nothing and
+  // every step node and legend swatch fell back to grey.
   const category = VERB_TO_CATEGORY[verb];
-  return category ? CATEGORY_COLORS[category] : DEFAULT_NODE_COLOR;
+  if (category) return CATEGORY_COLORS[category];
+  if (CATEGORY_COLORS[verb]) return CATEGORY_COLORS[verb];
+  return DEFAULT_NODE_COLOR;
+}
+
+// True when the string names a verb category or a verb key we can colour.
+export function isColourableVerb(v) {
+  return !!(v && (VERB_TO_CATEGORY[v] || CATEGORY_COLORS[v]));
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -459,7 +471,12 @@ export function getLegendItems(
     const activeCategories = new Set();
     if (sequence && sequence.length > 0) {
       sequence.forEach(item => {
-        const verb = item.action.includes("(") ? item.action.split("(")[0] : item.action;
+        // Prefer the row's own verb field. Parsing the action string only
+        // works when it looks like verb(noun) — step rows are named after the
+        // recipe ("brew espresso"), so parsing produced nothing and the legend
+        // came out empty or half-filled.
+        const verb = item.verb
+          || (item.action.includes("(") ? item.action.split("(")[0] : item.action);
         const category = VERB_TO_CATEGORY[verb] || "unknown";
         activeCategories.add(category);
       });

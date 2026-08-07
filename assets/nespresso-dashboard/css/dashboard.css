@@ -33,7 +33,7 @@ body {
   margin: 0 auto;
   padding: 14px;
   display: grid;
-  grid-template-rows: auto auto auto 1fr auto;
+  align-content: start;
   gap: 12px;
   min-height: 100vh;
 }

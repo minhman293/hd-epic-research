@@ -383,7 +383,10 @@ function resetExpansion() {
 
 function reapplyGraphSettings(resetPositions = false) {
   if (!mergedGraphPayload) return;
-  queueMicrotask(() => { if (typeof applyPattern === "function") applyPattern(); });
+  queueMicrotask(() => {
+    if (typeof applyPattern === "function") applyPattern();
+    rebuildLegend();
+  });
 
   let view = getActiveGraphView();
   if (!view) {
@@ -522,8 +525,20 @@ function refresh() {
 }
 
 function rebuildLegend() {
-  const seq = mergedGraphPayload?.sequence || [];
   const stepLabelLookup = buildStepLabelLookup(mergedGraphPayload?.steps || []);
+
+  // The legend must describe what is ON THE CANVAS, so it is built from the
+  // graph's own nodes rather than from a sequence.
+  //
+  // `mergedGraphPayload.sequence` is one session's episode list — there is no
+  // single timeline across three sessions — so any category that appeared only
+  // in the other sessions was missing from the legend while being plainly
+  // visible in the picture. On P01_R01 that lost `block`, `pour` and `wash`.
+  const drawn = getActiveGraphView()?.graph?.nodes || [];
+  const seq = drawn.length
+    ? drawn.filter((n) => !n.isSpecial)
+           .map((n) => ({ action: n.id, verb: n.verb, step_id: n.step_id }))
+    : (mergedGraphPayload?.sequence || []);
 
   // The macro view encodes different things, so it gets its own legend rather
   // than a filtered version of the micro one — a merged legend described
@@ -920,7 +935,9 @@ function selectSession(idx) {
       videoQueueApi.setActiveSession(0);
       updateMetaLabels(0);
 
-      timelineRows = drawTimeline(timelineBody, rawSequence(mergedGraphPayload));
+      // The per-action table describes ONE session's timeline, so it has no
+      // meaning in the merged view — there is no single timeline to list.
+      footerPanel.style.display = 'none';
       const mandatoryCount = (mergedGraphPayload.analysis?.mandatory_nodes || []).length;
       summaryPill.textContent = `${recipe.sessions.length} sessions merged · ${mergedGraphPayload.graph.nodes.length} nodes · ${mandatoryCount} mandatory`;
 
@@ -938,6 +955,7 @@ function selectSession(idx) {
           onVideoChange: (v) => { videoLabel.textContent = v.video_id; }
       });
 
+      footerPanel.style.display = '';
       timelineRows = drawTimeline(timelineBody, rawSequence(payload));
       rebuildAnnotationTimeline(withRawSequence(payload));
       rebuildSwimlane(withRawSequence(payload));
@@ -1314,9 +1332,20 @@ function applyPattern() {
   const choice = patternSelect.value;
   const src = patternSource() || {};
 
+  // Show the strip only when it has something to say, and collapse it fully
+  // otherwise — an empty coloured band between the controls and the styling
+  // row reads as a layout fault.
+  const setNote = (text) => {
+    if (patternNote) patternNote.textContent = text || "";
+    if (patternNoteRow) {
+      patternNoteRow.style.display = text ? "block" : "none";
+      patternNoteRow.style.margin = "0";
+    }
+  };
+
   if (choice === "none") {
     graphController.clearHighlight();
-    if (patternNoteRow) patternNoteRow.style.display = "none";
+    setNote("");
     return;
   }
 
@@ -1334,10 +1363,7 @@ function applyPattern() {
     ok = !!rep.reached_end;
   }
 
-  if (patternNoteRow) {
-    patternNoteRow.style.display = note ? "block" : "none";
-    if (patternNote) patternNote.textContent = note;
-  }
+  setNote(note);
   // A verdict of "no pattern" is a result, not a failure: say it and highlight
   // nothing, rather than highlighting two nodes with no explanation.
   graphController.highlightSpine(ok ? ids : []);

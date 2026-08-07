@@ -115,10 +115,21 @@ def episode_sequence(eps):
     for i, e in enumerate(eps):
         verbs = collections.Counter(m["_vkey"] for m in e.members)
         objs = collections.Counter(m["_nkey"] for m in e.members)
+        # The legend derives its colour swatches by parsing `action` for a
+        # verb. That works for episode labels like press(appliances) and fails
+        # for step labels like "brew espresso", which is why the step legend
+        # came out empty. Carry the verb explicitly, using the same rule the
+        # node colouring uses, so legend and canvas can never disagree.
+        if "(" in e.label:
+            row_verb = e.label.split("(")[0]
+        else:
+            row_verb = collections.Counter(
+                m["_vcat"] for m in e.members).most_common(1)[0][0]
         rows.append({
             "index": i,
             "kind": "action",
             "action": e.label,
+            "verb": row_verb,
             "start": round(e.start, 3),
             "end": round(e.end, 3),
             "duration": round(e.end - e.start, 3),
