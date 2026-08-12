@@ -242,60 +242,45 @@ function computeRankLayout(nodes, sequence,
   const rOf = (id) => radiusMap[id] || maxRadius || 18;
 
   const meanR = d3.mean(nodes, (n) => rOf(n.id)) || maxRadius || 18;
-  // Room is set by how many collision-sized nodes must sit side by side. The
-  // old area formula gave 585px for 42 nodes with a ~92px collision diameter —
-  // barely six across — so they had nowhere to go but upward. That stacking is
-  // what produced the diamond.
-  const COLLIDE_R = Math.max(meanR + 16, 46);
-  // Rows scale with node count instead of being fixed at 3. With SPREAD_X tied
-  // to node count and forceY pinned hard to 0, the graph grew sideways forever
-  // and never upward: 12 nodes came out 800px wide and one node tall, leaving
-  // most of the canvas empty. Aiming for a roughly 2:1 box uses both axes.
-  // Space has to answer to BOTH counts. Node count alone sized the canvas as
-  // if every graph were equally busy, so a 12-node graph with 20 edges came
-  // out as cramped as a 43-node one: the edges, not the circles, are what
-  // needs room. Density (edges per node) widens the spacing on top of the
-  // node-count term.
   const nN = Math.max(nodes.length, 1);
   const nE = (links || []).filter((l) => l.source !== l.target).length;
-  const density = nE / nN;                       // ~1.0 sparse, ~3 busy
+  const density = nE / nN;
   const roomy = 1 + Math.min(Math.max(density - 1, 0), 2) * 0.45;
-  const TARGET_ROWS = Math.max(3, Math.round(Math.sqrt(nN)));
-  const SPREAD_Y = TARGET_ROWS * COLLIDE_R * roomy;
-  const SPREAD_X = Math.max(560, SPREAD_Y * 1.9);
+
+  // Scale-free constants. Every distance is in units of node radius, so the
+  // layout behaves the same whether a node is 18px or 60px, and whether the
+  // graph has 7 nodes or 120.
+  const TARGET_ROWS = Math.max(2, Math.round(Math.sqrt(nN * 0.75)));
+  const SPREAD_Y = TARGET_ROWS * (meanR * 2.4) * roomy;
+  const SPREAD_X = Math.max(560, SPREAD_Y * 1.4);
+  const LINK_DIST = meanR * (2.2 + Math.min(density, 4) * 0.35);
+  const COLLIDE = (d) => d.r + meanR * 0.55;
+
+  if (nN <= 2) {
+    const layout = {}
+    nodes.forEach((n) => {
+      const rank = Number.isFinite(medianRank[n.id]) ? medianRank[n.id] : 0.5;
+      layout[n.id] = { x: (rank - 0.5) * SPREAD_X, y: 0 };
+    });
+    return { layout, secondaryLaneTop: null };
+  }
 
   const simNodes = nodes.map((n) => {
-    const rank = medianRank[n.id] ?? 0.5;
+    const rank = Number.isFinite(medianRank[n.id]) ? medianRank[n.id] : 0.5;
+    const seedY = (Math.random() - 0.5) * SPREAD_Y;
     return {
       id: n.id,
-      // Seed on the rank line; the simulation takes it from there.
       x: (rank - 0.5) * SPREAD_X,
-      // Vertical seed spread matches the band the layout is aiming for —
-      // roughly TARGET_ROWS rows of collision-sized nodes.
-      y: (Math.random() - 0.5) * SPREAD_Y,
+      y: seedY,
+      seedY,
       targetX: (rank - 0.5) * SPREAD_X,
       r: rOf(n.id),
       isSpecial: !!n.isSpecial,
-      // On-path nodes are pulled hard to their sequence position and hard to
-      // the horizontal centre line, so the path reads as one straight run.
-      // Everything else is left almost free and drifts around it.
       onPath: !!(spineOrder && spineOrder.has(n.id)),
-      // Emphasis shapes POSITION as well as colour. Foreground nodes get a
-      // strong left-to-right rank pull so the main trend reads as a sequence;
-      // background nodes get almost none and a small collision radius, so they
-      // settle around the trend as texture instead of pushing it apart.
       bg: !!n.__bg,
     };
   });
-  const byId = new Map(simNodes.map((d) => [d.id, d]));
 
-  // Self-loops carry no spatial information; returns pull just as hard as
-  // forward edges, because a cycle means those two states ARE related.
-  // Only MAIN-FLOW edges shape the geometry. With 42 nodes and 410 transitions
-  // every node is springed to ~20 others, so forceLink collapses the graph into
-  // a ball however hard forceX pulls: measured 1.1:1 with all edges versus
-  // 2.7:1 with the backbone, at a GENTLER forceX. Demoted edges are still
-  // drawn — they just no longer vote on where nodes sit.
   const simLinks = (links || [])
     .filter((l) => l.source !== l.target && !l.__minor
                 && idSet.has(l.source) && idSet.has(l.target))
@@ -304,37 +289,32 @@ function computeRankLayout(nodes, sequence,
       target: l.target,
       p: typeof l.probability === "number" ? l.probability : 0.5,
     }));
-
-  
+  const deg = {};
+  simNodes.forEach((node) => { deg[node.id] = 0; });
+  simLinks.forEach((l) => {
+    const s = typeof l.source === "object" ? l.source.id : l.source;
+    const t = typeof l.target === "object" ? l.target.id : l.target;
+    deg[s] = (deg[s] || 0) + 1;
+    deg[t] = (deg[t] || 0) + 1;
+  });
+  const countOf = (id) => Math.max(deg[id] || 1, 1);
 
   const sim = d3.forceSimulation(simNodes)
-    // 1. Links: Very weak. Do not let edges bunch the nodes together.
     .force("link", d3.forceLink(simLinks).id((d) => d.id)
-      .distance(60)
-      .strength(0.05)) // Extremely weak link force
-
-    // 2. Charge: Moderate push apart to prevent exact overlap
-    .force("charge", d3.forceManyBody().strength(-80))
-
-    // 3. X-Axis (Time/Rank): IRON GRIP. Force nodes into their chronological order.
-    // Rank is a strong hint, not a pin. At strength 1.5 nothing could ever
-    // move off its rank column, so collision had to resolve sideways and the
-    // graph could only get wider.
+      .distance(LINK_DIST)
+      .strength((l) => 0.15 / Math.min(
+        countOf(l.source.id ?? l.source),
+        countOf(l.target.id ?? l.target))))
+    .force("charge", d3.forceManyBody().strength(-12 * meanR * Math.sqrt(24 / Math.max(nN, 4))).distanceMax(meanR * 14))
     .force("x", d3.forceX((d) => d.targetX)
-      .strength((d) => d.isSpecial ? 1.2 : 0.55))
-
-    // 4. Y-Axis (Linearity): Keep them in a tight horizontal band.
-    // Weak centring only. Nodes settle into rows because collision pushes them
-    // apart vertically, which is what fills the canvas.
-    .force("y", d3.forceY(0)
-      .strength((d) => d.bg ? 0.02 : (d.onPath ? 0.30 : 0.06)))
-
-    // 5. Collision: Just enough to let edges route around them
-    .force("collide", d3.forceCollide((d) => d.r * (1.15 + roomy * 0.35)).strength(1))
+      .strength((d) => d.isSpecial ? 1.0 : 0.28))
+    .force("y", d3.forceY((d) => d.seedY)
+      .strength(0.05))
+    .force("collide", d3.forceCollide(COLLIDE).strength(0.9).iterations(2))
     .stop();
 
-  // Run the simulation
-  for (let i = 0; i < 300; i++) sim.tick();
+  const ticks = Math.max(1, Math.ceil(Math.log(sim.alphaMin()) / Math.log(1 - sim.alphaDecay())));
+  for (let i = 0; i < ticks; i += 1) sim.tick();
 
   // START and END are pinned to the extremes afterwards: they are the only two
   // nodes whose position carries a fixed meaning, and anchoring them gives the
@@ -803,7 +783,6 @@ export function createGraphController({
   let enrichedLinksFullCache = null;   
   let labelPathForCache = null;
   let edgeWidthScale = null;
-  let edgeOpacityScale = null;
   let edgeMetricFn = (d) => d.count || 1;   
   let currentMode = "hybrid";
   let currentSequenceCache = [];
@@ -1268,28 +1247,8 @@ export function createGraphController({
       drawLanes(zoomGroup, filteredNodes, layout, radiusMap);
     }
 
-    if (currentShowSupportBadges) {
-      edgeMetricFn = (d) => d.support || 1;
-      const supports = enrichedLinks.map(edgeMetricFn);
-      const minSup = supports.length > 0 ? Math.min(...supports) : 1;
-      const maxSup = supports.length > 0 ? Math.max(...supports) : 1;
-      if (minSup === maxSup) {
-        edgeWidthScale = () => 2;
-        edgeOpacityScale = () => supportToOpacity(minSup, nSessionsHint || 1);
-      } else {
-        edgeWidthScale = d3.scaleLinear().domain([minSup, maxSup]).range([0.8, 5]);
-        edgeOpacityScale = (support) => supportToOpacity(support, nSessionsHint || 1);
-      }
-    } else if (mode.startsWith("hybrid")) {
-      edgeMetricFn = (d) => (typeof d.probability === "number" ? d.probability : 0);
-      edgeWidthScale = d3.scaleLinear().domain([0, 1]).range([0.8, 6]);
-      edgeOpacityScale = d3.scaleLinear().domain([0, 1]).range([0.2, 0.9]);
-    } else {
-      edgeMetricFn = (d) => d.count || 1;
-      const maxLinkCount = d3.max(enrichedLinks, edgeMetricFn) || 1;
-      edgeWidthScale = d3.scaleSqrt().domain([1, Math.max(maxLinkCount, 2)]).range([0.8, 5]);
-      edgeOpacityScale = d3.scaleLinear().domain([1, Math.max(maxLinkCount, 2)]).range([0.15, 0.85]);
-    }
+    edgeMetricFn = (d) => (typeof d.probability === "number" ? d.probability : 0);
+    edgeWidthScale = d3.scaleSqrt().domain([0, 1]).range([1.5, 5.5]);
 
     // ─────────────────────────────────────────────────────────────────────────
     // Edge classification
@@ -1383,20 +1342,14 @@ export function createGraphController({
     pathForCache = pathFor;
 
     // Weak edges are FADED, not removed. A node whose only transitions are
-    // low-probability still shows those transitions, so it cannot float.
+    // low-support still shows those transitions, so it cannot float.
     const baseEdgeOpacity = (d) => {
-      if (d.__bg) return d.__isReturn ? 0.10 : 0.12;
-      const weakFactor = d.__weak ? 0.25 : 1;
-      // Return edges used to be dimmed on top of being purple and dashed.
-      // They are ordinary transitions; the arrowhead already shows direction.
-      if (d.__isReturn) {
-        const c = d.count || 1;
-        return (c > medianCount ? 0.75 : (c === medianCount ? 0.4 : 0.25)) * (d.__weak ? 0.25 : 1);
-      }
-      if (currentShowSupportBadges) return edgeOpacityScale(edgeMetricFn(d)) * weakFactor;
-      const c = d.count || 1;
-      const base = c > medianCount ? 0.75 : (c === medianCount ? 0.4 : 0.25);
-      return base * weakFactor;
+      if (d.__bg) return 0.12;
+      // Opacity = evidence (how many sessions), not probability.
+      const support = d.support || 1;
+      const nS = nSessionsHint || 1;
+      const op = 0.45 + 0.45 * ((support - 1) / Math.max(1, nS - 1));
+      return d.__weak ? op * 0.6 : op;
     };
     baseEdgeOpacityFn = baseEdgeOpacity;
 
@@ -1408,8 +1361,7 @@ export function createGraphController({
       probability: edges[0]?.probability, // Carry the probability forward
     }));
 
-    // ── Return transitions: drawn as arcs, never as a badge alone ────────────
-    const RETURN_COLOR = "#7C3AED";
+    // ── Return transitions: drawn as arcs for geometry only ─────────────────
 
     // Density switches. The label and edge-label styling was tuned for a sparse
     // horizontal band; at raw-graph density the same styling is what makes the
@@ -1436,11 +1388,12 @@ export function createGraphController({
       const p = (st.probability !== undefined ? st.probability : d.probability).toFixed(2);
       const n = st.scoped ? st.count
         : ((d.n !== undefined) ? d.n : (d.count || d.total_count || 0));
-      const nOut = d.n_out;
+      const s = d.support, nS = d.n_sessions;
       // A macro probability is meaningless without its denominator: "1.00" and
       // "1.00 (1/1)" look identical to a reader and are completely different
       // claims. The denominator is therefore mandatory here.
-      if (isMacro && nOut) return `${p} (${n}/${nOut})`;
+      if (isMacro && d.n_out) return `${p} (${n}/${d.n_out})`;
+      if (s && nS) return `${p} · ${s}/${nS} sessions`;
       return n > 0 ? `${p} (n=${n})` : p;
     };
     currentProbLabel = probLabel;
@@ -1473,10 +1426,6 @@ export function createGraphController({
       .attr("class", (d) => `link fwd-edge return-edge ${(d.count || 1) > medianCount ? "dominant" : "minor"}`)
       .attr("data-key", (d) => d.key)
       .attr("fill", "none")
-      // A return edge is a transition like any other — the arrowhead already
-      // says which way it goes. Colouring and dashing it as well made it read
-      // as a different KIND of thing, and three encodings for one fact is two
-      // too many.
       .attr("stroke-width", (d) => edgeWidthScale(edgeMetricFn(d)))
       .attr("stroke-dasharray", (d) => d.__weak ? "3 3" : null)
       .attr("opacity", (d) => baseEdgeOpacity(d)) // <-- CHANGED from hardcoded ternary to baseEdgeOpacity(d)
@@ -1490,7 +1439,7 @@ export function createGraphController({
 
     returnGroups.filter(d => typeof d.probability === 'number' && d.probability > 0)
       .append("text")
-      .attr("class", "edge-prob-text return-prob-text")
+      .attr("class", "edge-prob-text")
       .attr("dy", -4)
       .attr("font-size", probFontSize)
       .attr("font-weight", "bold")
@@ -1503,40 +1452,6 @@ export function createGraphController({
       .attr("startOffset", "50%")
       .attr("text-anchor", "middle")
       .text(d => probLabel(d));
-
-
-    // The badge stays, but now supplements the arcs rather than replacing them:
-    // it is the revisitation-hotspot cue (Insight B), not a substitute for a line.
-    const returnEdgesBySource = d3.group(returnEdges, (d) => d.source);
-    zoomGroup.append("g").attr("class", "back-indicators")
-      .selectAll("g.back-indicator")
-      // These badges are siblings of the node groups, not children, so they
-      // inherit nothing — neither background dimming nor highlight state. Each
-      // one carries its own bg flag and is driven explicitly.
-      .data([...returnEdgesBySource.entries()]
-        .filter(([sid]) => !isSpecialId(sid))
-        .map(([sid, edges]) => ({ sid, edges, bg: bgIds.has(sid) })))
-      .enter().append("g").attr("class", "back-indicator")
-      .style("opacity", (d) => d.bg ? BG_NODE_OPACITY : 1)
-      .attr("transform", (d) => {
-        const p = layout[d.sid] || { x: 0, y: 0 };
-        return `translate(${p.x}, ${p.y})`;
-      })
-      .each(function(d) {
-        const sid = d.sid, edges = d.edges;
-        const r = radiusMap[sid] || 18;
-        const g = d3.select(this);
-        g.append("circle").attr("class", "back-indicator-badge")
-          .attr("cx", -r * 0.7).attr("cy", -r - 4).attr("r", 7)
-          .attr("fill", "#f5f3ff").attr("stroke", RETURN_COLOR).attr("stroke-width", 1);
-        g.append("text")
-          .attr("class", "back-indicator-count")
-          .attr("x", -r * 0.7).attr("y", -r - 4)
-          .attr("text-anchor", "middle").attr("dy", "0.35em")
-          .attr("font-size", "7px").attr("fill", RETURN_COLOR)
-          .text(edges.length);
-        g.append("title").text("");
-      });
 
     const edgeSet = new Set(forwardEdges.map((d) => `${d.source}|||${d.target}`));
     const bidirectionalPairs = new Set();
@@ -1989,9 +1904,6 @@ export function createGraphController({
           .filter(touches)
           .attr("d", link => labelPathForCache ? labelPathForCache(link)
             : getStraightPath(link, layout, radiusMapCache));
-        svg.selectAll(".back-indicator")
-          .filter((b) => b && b.sid === d.id)
-          .attr("transform", `translate(${nx}, ${ny})`);
         svg.selectAll(".self-loop-indicator")
           .filter(sl => sl.source === d.id)
           .attr("transform", `translate(${nx}, ${ny})`);
@@ -2059,7 +1971,7 @@ export function createGraphController({
         linkSelection.attr("stroke-opacity", 0.05).attr("stroke-width", 0.5);
         linkSelection
           .filter(link => link.source === d.id || link.target === d.id)
-          .attr("stroke-opacity", link => edgeOpacityScale(edgeMetricFn(link)))
+          .attr("stroke-opacity", link => baseEdgeOpacityFn ? baseEdgeOpacityFn(link) : 0.65)
           .attr("stroke-width", link => edgeWidthScale(edgeMetricFn(link)) * 1.5)
           .attr("stroke", "#ea580c");
         nodeSelection
@@ -2581,28 +2493,6 @@ export function createGraphController({
   function applySessionOnlyVisibility() {
     svg.selectAll("#zoomGroup .link, #zoomGroup .edge-prob-text")
       .style("display", (d) => sessionOnlyVisible(d) ? null : "none");
-    refreshReturnBadges();
-  }
-
-  // The badge said "5" while only 2 return arrows were drawn, because it
-  // counted every return edge stored on the node — including the session-only
-  // ones that are hidden in the merged view. A badge that disagrees with what
-  // is on screen is worse than no badge, so it is recounted from the visible
-  // edges whenever visibility changes, and disappears when the count is zero.
-  function refreshReturnBadges() {
-    svg.selectAll(".back-indicator").each(function (d) {
-      if (!d || !d.edges) return;
-      const shown = d.edges.filter(sessionOnlyVisible);
-      const sel = d3.select(this);
-      sel.style("display", shown.length ? null : "none");
-      sel.select("text.back-indicator-count").text(shown.length);
-      sel.select("title").text(
-        shown.length
-          ? "Returns to an earlier state (all drawn below):\n" +
-            shown.map((e) => `\u2022 ${e.target} (P = ${(e.probability || 0).toFixed(2)})`).join("\n")
-          : ""
-      );
-    });
   }
 
   function applyHighlightState() {
@@ -2752,13 +2642,6 @@ export function createGraphController({
       svg.selectAll("#zoomGroup .edge-gap-text")
         .style("opacity", (d) => onPathEdge(d) ? 0.9 : 0);
 
-      // Badges are siblings of the nodes, so they need explicit handling or
-      // they float at full strength over a dimmed graph.
-      svg.selectAll(".back-indicator").style("opacity", function(d) {
-        if (!d || !d.sid) return 0.1;
-        return spineNodes.has(d.sid) ? 1 : 0.08;
-      });
-
       if (selfLoopSelection) {
         selfLoopSelection.style("opacity", function(d) {
           const isActive = spineEdges.has(d.key);
@@ -2798,7 +2681,7 @@ export function createGraphController({
 
     linkSelection.each(function(d) {
       const el = d3.select(this);
-      el.style("stroke", d.__isReturn ? "#7C3AED" : null)
+      el.style("stroke", null)
         .style("stroke-width", edgeWidthScale(edgeMetricFn(d)));
         
       if (baseEdgeOpacityFn) {
@@ -2810,8 +2693,6 @@ export function createGraphController({
 
     svg.selectAll("#zoomGroup .edge-prob-text")
        .style("opacity", (d) => (d && d.__bg) ? 0 : 1.0);
-    svg.selectAll(".back-indicator")
-       .style("opacity", (d) => (d && d.bg) ? BG_NODE_OPACITY : 1);
     if (selfLoopSelection) selfLoopSelection.style("opacity", 1.0);
     svg.selectAll("#zoomGroup .self-loop-arc, #zoomGroup .self-loop-prob").style("opacity", 1.0);
   }

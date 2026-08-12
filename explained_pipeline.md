@@ -113,7 +113,7 @@ was seen **1.3 times**.
 This level is unusable as a picture, but it is kept because it is the unedited
 ground truth and every other level is derived from it.
 
-### Level 2 — `merged_hybrid.json` : verb + object category
+### Level 2 — `merged_hybrid.json` : keep verbs, merge nouns from the same category
 
 A state is the **fine verb** plus the **coarse noun**: *take(crockery)*.
 
@@ -690,23 +690,6 @@ Pattern A is unavailable and reports *single session*. Pattern B is available bu
 means only "this is the run that happened" — with one recording, the most likely
 route and the observed route are the same thing.
 
----
-
-## Part 6 — Guarantees the pipeline enforces
-
-Every build is checked automatically and fails loudly if any of these break:
-
-| Guarantee | Meaning |
-|---|---|
-| 100% coverage | every annotated action is inside exactly one state, at every level |
-| 0 invented arrows | every arrow drawn was observed in the recordings |
-| 0 isolated states | every state has at least one arrow, in every view |
-| Start reaches everything | the chain can be walked from Start |
-| Everything reaches End | and walked to the end |
-| Probabilities sum to 1 | outgoing probabilities from each state total 1.00 |
-| Arrow density 1–2 | roughly one to two arrows per state, so the picture stays readable |
-
-Measured across all four recipes and both levels: no failures.
 
 ---
 

@@ -520,12 +520,12 @@ export function getLegendItems(
     node: [
       ...nodeColorItems,
       { type: "badge",  dashed: false, label: nodeSizeLabel },
-      { type: "badge1", label: "Top-left badge: backward connection count" },
       { type: "label",  label: "Inside label: action" },
     ],
     edge: [
-      { type: "line",  dashed: false, label: "Solid line: transition" },
-      { type: "line",  dashed: true,  label: "Dashed line: transition while video plays" },
+      { type: "line",  dashed: false, label: "Edge width: probability of this next step" },
+      { type: "line",  dashed: false, label: "Edge opacity: how many sessions did it" },
+      { type: "line",  dashed: true,  label: "Dashed: weak evidence" },
     ],
   };
 }
