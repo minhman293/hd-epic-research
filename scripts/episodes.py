@@ -65,6 +65,8 @@ class Config:
     min_edge_sessions: int = 2
     # ...or this many times in total.
     min_edge_count: int = 2
+    # False = draw every observed transition (no thinning).
+    thin_edges: bool = False
     # Keep a node only if seen in at least this many sessions.
     min_node_sessions: int = 2
     # Trust the annotator: a change of step_id is always a boundary.
@@ -482,3 +484,61 @@ def fold_one_offs(sessions: dict, cfg: Config | None = None) -> dict:
                 out[-1].variants.append(e.label)
         out_all[s] = _collapse_repeats(out)
     return out_all
+
+
+# --------------------------------------------------------------------------
+# 6. AUDIT — does the label describe the episode, or only its head action?
+#
+# An episode is named after ONE member (its head). Nothing so far has checked
+# whether the other members belong under that name. If a press(appliances)
+# episode is mostly fetching, the name is a label rather than a summary, and
+# both a reader and an executing agent are misled by it.
+#
+# Purity is the share of members that match the head. It is the standard
+# measure for "does this cluster's name describe its contents".
+# --------------------------------------------------------------------------
+
+def label_faithfulness(sessions: dict) -> dict:
+    """How much of each episode actually matches its own name?"""
+    per_label = collections.defaultdict(lambda: {"v": [], "o": [], "n": []})
+    all_v, all_o, sizes = [], [], []
+
+    for s, eps in sessions.items():
+        for e in eps:
+            if not e.members or not e.head:
+                continue
+            hv, ho = e.head["_vcat"], e.head["_ncat"]
+            v = sum(1 for m in e.members if m["_vcat"] == hv) / len(e.members)
+            o = sum(1 for m in e.members if m["_ncat"] == ho) / len(e.members)
+            per_label[e.label]["v"].append(v)
+            per_label[e.label]["o"].append(o)
+            per_label[e.label]["n"].append(len(e.members))
+            all_v.append(v)
+            all_o.append(o)
+            sizes.append(len(e.members))
+
+    def mean(xs):
+        return round(sum(xs) / len(xs), 3) if xs else 0.0
+
+    worst = sorted(
+        ({"label": lab,
+          "verb_purity": mean(d["v"]),
+          "object_purity": mean(d["o"]),
+          "mean_size": mean(d["n"]),
+          "occurrences": len(d["n"])}
+         for lab, d in per_label.items()),
+        key=lambda r: r["verb_purity"],
+    )
+
+    return {
+        "verb_purity": mean(all_v),
+        "object_purity": mean(all_o),
+        "mean_episode_size": mean(sizes),
+        "singleton_fraction": mean([1.0 if n == 1 else 0.0 for n in sizes]),
+        "n_episodes": len(sizes),
+        "per_label": {r["label"]: r for r in worst},
+        "worst_labels": worst[:5],
+        "note": ("Purity = share of an episode's members whose verb/noun "
+                 "category matches the head action that names it. Low purity "
+                 "means the label describes one member, not the group."),
+    }

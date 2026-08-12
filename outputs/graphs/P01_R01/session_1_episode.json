@@ -2878,6 +2878,123 @@
   "isolated_nodes": 0,
   "raw_actions_covered": 62
  },
+ "label_audit": {
+  "verb_purity": 0.363,
+  "object_purity": 0.47,
+  "mean_episode_size": 7.759,
+  "singleton_fraction": 0.069,
+  "n_episodes": 29,
+  "per_label": {
+   "pour(dairy and eggs)": {
+    "label": "pour(dairy and eggs)",
+    "verb_purity": 0.198,
+    "object_purity": 0.48,
+    "mean_size": 9.5,
+    "occurrences": 4
+   },
+   "block(appliances)": {
+    "label": "block(appliances)",
+    "verb_purity": 0.214,
+    "object_purity": 0.286,
+    "mean_size": 14.0,
+    "occurrences": 1
+   },
+   "turn(containers)": {
+    "label": "turn(containers)",
+    "verb_purity": 0.229,
+    "object_purity": 0.406,
+    "mean_size": 22.0,
+    "occurrences": 2
+   },
+   "wash(dairy and eggs)": {
+    "label": "wash(dairy and eggs)",
+    "verb_purity": 0.285,
+    "object_purity": 0.399,
+    "mean_size": 6.0,
+    "occurrences": 3
+   },
+   "manipulate(drinks)": {
+    "label": "manipulate(drinks)",
+    "verb_purity": 0.292,
+    "object_purity": 0.292,
+    "mean_size": 8.0,
+    "occurrences": 2
+   },
+   "mix(drinks)": {
+    "label": "mix(drinks)",
+    "verb_purity": 0.333,
+    "object_purity": 0.333,
+    "mean_size": 4.667,
+    "occurrences": 3
+   },
+   "press(appliances)": {
+    "label": "press(appliances)",
+    "verb_purity": 0.352,
+    "object_purity": 0.501,
+    "mean_size": 9.0,
+    "occurrences": 6
+   },
+   "turn(crockery)": {
+    "label": "turn(crockery)",
+    "verb_purity": 0.417,
+    "object_purity": 0.583,
+    "mean_size": 4.0,
+    "occurrences": 3
+   },
+   "manipulate(dairy and eggs)": {
+    "label": "manipulate(dairy and eggs)",
+    "verb_purity": 0.589,
+    "object_purity": 0.522,
+    "mean_size": 4.0,
+    "occurrences": 3
+   },
+   "shake(cutlery)": {
+    "label": "shake(cutlery)",
+    "verb_purity": 0.75,
+    "object_purity": 0.75,
+    "mean_size": 1.5,
+    "occurrences": 2
+   }
+  },
+  "worst_labels": [
+   {
+    "label": "pour(dairy and eggs)",
+    "verb_purity": 0.198,
+    "object_purity": 0.48,
+    "mean_size": 9.5,
+    "occurrences": 4
+   },
+   {
+    "label": "block(appliances)",
+    "verb_purity": 0.214,
+    "object_purity": 0.286,
+    "mean_size": 14.0,
+    "occurrences": 1
+   },
+   {
+    "label": "turn(containers)",
+    "verb_purity": 0.229,
+    "object_purity": 0.406,
+    "mean_size": 22.0,
+    "occurrences": 2
+   },
+   {
+    "label": "wash(dairy and eggs)",
+    "verb_purity": 0.285,
+    "object_purity": 0.399,
+    "mean_size": 6.0,
+    "occurrences": 3
+   },
+   {
+    "label": "manipulate(drinks)",
+    "verb_purity": 0.292,
+    "object_purity": 0.292,
+    "mean_size": 8.0,
+    "occurrences": 2
+   }
+  ],
+  "note": "Purity = share of an episode's members whose verb/noun category matches the head action that names it. Low purity means the label describes one member, not the group."
+ },
  "likely_path": [
   "START",
   "turn(crockery)",

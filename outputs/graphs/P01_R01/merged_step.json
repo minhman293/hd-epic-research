@@ -5731,7 +5731,7 @@
      "0": 1,
      "1": 1
     },
-    "probability": 0.3333,
+    "probability": 0.2857,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -5808,7 +5808,7 @@
      "0": 1,
      "1": 1
     },
-    "probability": 0.3333,
+    "probability": 0.2857,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -5834,7 +5834,7 @@
      "1": 1,
      "2": 1
     },
-    "probability": 1.0,
+    "probability": 0.6,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -5860,7 +5860,7 @@
      "1": 1,
      "2": 1
     },
-    "probability": 1.0,
+    "probability": 0.6,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -5897,6 +5897,30 @@
     "evidence": "weak"
    },
    {
+    "source": "pour foam in coffee",
+    "target": "load coffee capsule",
+    "key": "pour foam in coffee|||load coffee capsule",
+    "pairKey": "pour foam in coffee|||load coffee capsule",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.2,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
     "source": "brew espresso",
     "target": "stir",
     "key": "brew espresso|||stir",
@@ -5909,7 +5933,7 @@
      "1": 1,
      "2": 1
     },
-    "probability": 0.3333,
+    "probability": 0.2857,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -5920,6 +5944,30 @@
     "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
+   },
+   {
+    "source": "stir",
+    "target": "brew espresso",
+    "key": "stir|||brew espresso",
+    "pairKey": "stir|||brew espresso",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.2,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
    },
    {
     "source": "START",
@@ -5963,9 +6011,57 @@
     "is_bridged": false,
     "is_bridge_edge": false,
     "is_introduced": false,
-    "restored": true,
-    "session_only": true,
-    "kept_reason": "session_path",
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "pour foam in coffee",
+    "target": "brew espresso",
+    "key": "pour foam in coffee|||brew espresso",
+    "pairKey": "pour foam in coffee|||brew espresso",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.2,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "brew espresso",
+    "target": "froth milk",
+    "key": "brew espresso|||froth milk",
+    "pairKey": "brew espresso|||froth milk",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.1429,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
     "weak": true,
     "evidence": "weak"
    },
@@ -5987,9 +6083,33 @@
     "is_bridged": false,
     "is_bridge_edge": false,
     "is_introduced": false,
-    "restored": true,
-    "session_only": true,
-    "kept_reason": "session_path",
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "stir",
+    "target": "pour foam in coffee",
+    "key": "stir|||pour foam in coffee",
+    "pairKey": "stir|||pour foam in coffee",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.2,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
     "weak": true,
     "evidence": "weak"
    }
@@ -5999,11 +6119,11 @@
   "layer": "step",
   "sessions": 3,
   "nodes": 7,
-  "edges": 13,
-  "out_degree": 1.86,
-  "edges_dropped": 7,
-  "edges_restored": 2,
-  "edges_kept_for_single_session": 2,
+  "edges": 18,
+  "out_degree": 2.57,
+  "edges_dropped": 0,
+  "edges_restored": 0,
+  "edges_kept_for_single_session": 0,
   "fabricated_edges": 0,
   "reachable_from_start": 7,
   "can_reach_end": 7,
@@ -6103,10 +6223,10 @@
   "method": "beam_search_max_probability",
   "length": 4,
   "reached_end": true,
-  "joint_probability": 0.3333,
-  "mean_step_probability": 0.6933,
+  "joint_probability": 0.119988,
+  "mean_step_probability": 0.4932,
   "weakest_edge": 0.3333,
-  "candidates_considered": 13,
+  "candidates_considered": 24,
   "note": "Each step is a common next move from that state. The route as a whole is a model, not necessarily a run anyone performed.",
   "observed_in_full": true,
   "sessions": [
@@ -6120,8 +6240,8 @@
  },
  "likely_path_edges": [
   0.3333,
-  1.0,
-  1.0
+  0.6,
+  0.6
  ],
  "expansions": {
   "load coffee capsule": {

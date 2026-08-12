@@ -276,6 +276,7 @@
    "index": 0,
    "kind": "action",
    "action": "merge(containers)",
+   "verb": "merge",
    "start": 266.8,
    "end": 274.2,
    "duration": 7.4,
@@ -337,6 +338,7 @@
    "index": 1,
    "kind": "action",
    "action": "fill(appliances)",
+   "verb": "fill",
    "start": 275.94,
    "end": 289.69,
    "duration": 13.75,
@@ -424,6 +426,7 @@
    "index": 2,
    "kind": "action",
    "action": "open(containers)",
+   "verb": "open",
    "start": 292.25,
    "end": 309.13,
    "duration": 16.88,
@@ -512,6 +515,7 @@
    "index": 3,
    "kind": "action",
    "action": "retrieve(cutlery)",
+   "verb": "retrieve",
    "start": 299.62,
    "end": 326.3,
    "duration": 26.68,
@@ -608,6 +612,7 @@
    "index": 4,
    "kind": "action",
    "action": "block(containers)",
+   "verb": "block",
    "start": 317.66,
    "end": 333.94,
    "duration": 16.28,
@@ -660,6 +665,7 @@
    "index": 5,
    "kind": "action",
    "action": "pull(storage)",
+   "verb": "pull",
    "start": 334.37,
    "end": 336.86,
    "duration": 2.49,
@@ -711,6 +717,7 @@
    "index": 6,
    "kind": "action",
    "action": "shake(appliances)",
+   "verb": "shake",
    "start": 337.93,
    "end": 340.91,
    "duration": 2.98,
@@ -753,6 +760,7 @@
    "index": 7,
    "kind": "action",
    "action": "wash(cutlery)",
+   "verb": "wash",
    "start": 339.7,
    "end": 348.43,
    "duration": 8.73,
@@ -831,6 +839,7 @@
    "index": 8,
    "kind": "action",
    "action": "shake(cutlery)",
+   "verb": "shake",
    "start": 348.53,
    "end": 349.94,
    "duration": 1.41,
@@ -872,6 +881,7 @@
    "index": 9,
    "kind": "action",
    "action": "pull(storage)",
+   "verb": "pull",
    "start": 351.89,
    "end": 353.86,
    "duration": 1.97,
@@ -904,6 +914,7 @@
    "index": 10,
    "kind": "action",
    "action": "clean(crockery)",
+   "verb": "clean",
    "start": 354.3,
    "end": 358.8,
    "duration": 4.5,
@@ -955,6 +966,7 @@
    "index": 11,
    "kind": "action",
    "action": "pull(storage)",
+   "verb": "pull",
    "start": 358.69,
    "end": 371.43,
    "duration": 12.74,
@@ -1034,6 +1046,7 @@
    "index": 12,
    "kind": "action",
    "action": "press(storage)",
+   "verb": "press",
    "start": 363.21,
    "end": 373.01,
    "duration": 9.8,
@@ -1093,6 +1106,7 @@
    "index": 13,
    "kind": "action",
    "action": "pull(storage)",
+   "verb": "pull",
    "start": 372.87,
    "end": 398.9,
    "duration": 26.03,
@@ -1214,6 +1228,7 @@
    "index": 14,
    "kind": "action",
    "action": "manipulate(crockery)",
+   "verb": "manipulate",
    "start": 399.42,
    "end": 418.35,
    "duration": 18.93,
@@ -1305,6 +1320,7 @@
    "index": 15,
    "kind": "action",
    "action": "press(containers)",
+   "verb": "press",
    "start": 419.78,
    "end": 424.77,
    "duration": 4.99,
@@ -1347,6 +1363,7 @@
    "index": 16,
    "kind": "action",
    "action": "press(crockery)",
+   "verb": "press",
    "start": 425.22,
    "end": 432.47,
    "duration": 7.25,
@@ -1399,6 +1416,7 @@
    "index": 17,
    "kind": "action",
    "action": "pull(storage)",
+   "verb": "pull",
    "start": 434.26,
    "end": 465.48,
    "duration": 31.22,
@@ -1520,6 +1538,7 @@
    "index": 18,
    "kind": "action",
    "action": "press(containers)",
+   "verb": "press",
    "start": 457.68,
    "end": 479.84,
    "duration": 22.16,
@@ -1607,6 +1626,7 @@
    "index": 19,
    "kind": "action",
    "action": "access(materials)",
+   "verb": "access",
    "start": 469.2,
    "end": 497.4,
    "duration": 28.2,
@@ -1720,6 +1740,7 @@
    "index": 20,
    "kind": "action",
    "action": "pull(storage)",
+   "verb": "pull",
    "start": 493.36,
    "end": 517.19,
    "duration": 23.83,
@@ -1809,6 +1830,7 @@
    "index": 21,
    "kind": "action",
    "action": "take(crockery)",
+   "verb": "take",
    "start": 510.08,
    "end": 530.49,
    "duration": 20.41,
@@ -1893,6 +1915,7 @@
    "index": 22,
    "kind": "action",
    "action": "lift(appliances)",
+   "verb": "lift",
    "start": 526.56,
    "end": 545.0,
    "duration": 18.44,
@@ -1952,6 +1975,7 @@
    "index": 23,
    "kind": "action",
    "action": "pull(storage)",
+   "verb": "pull",
    "start": 548.75,
    "end": 554.13,
    "duration": 5.38,
@@ -2004,6 +2028,7 @@
    "index": 24,
    "kind": "action",
    "action": "lift(appliances)",
+   "verb": "lift",
    "start": 550.18,
    "end": 569.42,
    "duration": 19.24,
@@ -2072,6 +2097,7 @@
    "index": 25,
    "kind": "action",
    "action": "clean(cutlery)",
+   "verb": "clean",
    "start": 568.17,
    "end": 575.24,
    "duration": 7.07,
@@ -2140,6 +2166,7 @@
    "index": 26,
    "kind": "action",
    "action": "pull(storage)",
+   "verb": "pull",
    "start": 575.59,
    "end": 589.9,
    "duration": 14.31,
@@ -2234,6 +2261,7 @@
    "index": 27,
    "kind": "action",
    "action": "press(storage)",
+   "verb": "press",
    "start": 592.35,
    "end": 599.55,
    "duration": 7.2,
@@ -2296,6 +2324,7 @@
    "index": 28,
    "kind": "action",
    "action": "press(appliances)",
+   "verb": "press",
    "start": 599.06,
    "end": 600.57,
    "duration": 1.51,
@@ -2328,6 +2357,7 @@
    "index": 29,
    "kind": "action",
    "action": "press(crockery)",
+   "verb": "press",
    "start": 600.28,
    "end": 600.89,
    "duration": 0.61,
@@ -2360,6 +2390,7 @@
    "index": 30,
    "kind": "action",
    "action": "press(appliances)",
+   "verb": "press",
    "start": 600.93,
    "end": 614.95,
    "duration": 14.02,
@@ -2420,6 +2451,7 @@
    "index": 31,
    "kind": "action",
    "action": "pull(storage)",
+   "verb": "pull",
    "start": 605.43,
    "end": 626.97,
    "duration": 21.54,
@@ -2482,6 +2514,7 @@
    "index": 32,
    "kind": "action",
    "action": "squeeze(containers)",
+   "verb": "squeeze",
    "start": 627.07,
    "end": 647.27,
    "duration": 20.2,
@@ -2551,6 +2584,7 @@
    "index": 33,
    "kind": "action",
    "action": "reach(containers)",
+   "verb": "reach",
    "start": 645.0,
    "end": 662.35,
    "duration": 17.35,
@@ -2618,6 +2652,7 @@
    "index": 34,
    "kind": "action",
    "action": "pull(storage)",
+   "verb": "pull",
    "start": 662.39,
    "end": 693.37,
    "duration": 30.98,
@@ -2705,6 +2740,7 @@
    "index": 35,
    "kind": "action",
    "action": "pull(containers)",
+   "verb": "pull",
    "start": 693.47,
    "end": 723.36,
    "duration": 29.89,
@@ -2791,6 +2827,7 @@
    "index": 36,
    "kind": "action",
    "action": "lift(appliances)",
+   "verb": "lift",
    "start": 723.38,
    "end": 768.52,
    "duration": 45.14,
@@ -12220,6 +12257,340 @@
   "total_states": 24,
   "isolated_nodes": 0,
   "raw_actions_covered": 197
+ },
+ "label_audit": {
+  "verb_purity": 0.392,
+  "object_purity": 0.488,
+  "mean_episode_size": 5.245,
+  "singleton_fraction": 0.101,
+  "n_episodes": 159,
+  "per_label": {
+   "clean(utensils)": {
+    "label": "clean(utensils)",
+    "verb_purity": 0.083,
+    "object_purity": 0.167,
+    "mean_size": 12.0,
+    "occurrences": 1
+   },
+   "attach(utensils)": {
+    "label": "attach(utensils)",
+    "verb_purity": 0.164,
+    "object_purity": 0.327,
+    "mean_size": 14.0,
+    "occurrences": 2
+   },
+   "fill(appliances)": {
+    "label": "fill(appliances)",
+    "verb_purity": 0.171,
+    "object_purity": 0.9,
+    "mean_size": 6.0,
+    "occurrences": 2
+   },
+   "slide(crockery)": {
+    "label": "slide(crockery)",
+    "verb_purity": 0.181,
+    "object_purity": 0.39,
+    "mean_size": 5.667,
+    "occurrences": 3
+   },
+   "wash(cutlery)": {
+    "label": "wash(cutlery)",
+    "verb_purity": 0.196,
+    "object_purity": 0.393,
+    "mean_size": 5.75,
+    "occurrences": 4
+   },
+   "clean(cutlery)": {
+    "label": "clean(cutlery)",
+    "verb_purity": 0.225,
+    "object_purity": 0.425,
+    "mean_size": 4.5,
+    "occurrences": 2
+   },
+   "pour(drinks)": {
+    "label": "pour(drinks)",
+    "verb_purity": 0.245,
+    "object_purity": 0.245,
+    "mean_size": 7.125,
+    "occurrences": 16
+   },
+   "open(storage)": {
+    "label": "open(storage)",
+    "verb_purity": 0.251,
+    "object_purity": 0.503,
+    "mean_size": 6.0,
+    "occurrences": 3
+   },
+   "dry(hand)": {
+    "label": "dry(hand)",
+    "verb_purity": 0.263,
+    "object_purity": 0.367,
+    "mean_size": 8.667,
+    "occurrences": 3
+   },
+   "access(materials)": {
+    "label": "access(materials)",
+    "verb_purity": 0.275,
+    "object_purity": 0.275,
+    "mean_size": 9.0,
+    "occurrences": 2
+   },
+   "shake(appliances)": {
+    "label": "shake(appliances)",
+    "verb_purity": 0.288,
+    "object_purity": 0.465,
+    "mean_size": 5.4,
+    "occurrences": 5
+   },
+   "block(containers)": {
+    "label": "block(containers)",
+    "verb_purity": 0.292,
+    "object_purity": 0.354,
+    "mean_size": 5.5,
+    "occurrences": 2
+   },
+   "press(storage)": {
+    "label": "press(storage)",
+    "verb_purity": 0.293,
+    "object_purity": 0.293,
+    "mean_size": 4.833,
+    "occurrences": 6
+   },
+   "manipulate(crockery)": {
+    "label": "manipulate(crockery)",
+    "verb_purity": 0.298,
+    "object_purity": 0.631,
+    "mean_size": 4.333,
+    "occurrences": 3
+   },
+   "clean(crockery)": {
+    "label": "clean(crockery)",
+    "verb_purity": 0.317,
+    "object_purity": 0.427,
+    "mean_size": 4.8,
+    "occurrences": 5
+   },
+   "wash(cleaning equipment and material)": {
+    "label": "wash(cleaning equipment and material)",
+    "verb_purity": 0.321,
+    "object_purity": 0.433,
+    "mean_size": 3.5,
+    "occurrences": 4
+   },
+   "press(containers)": {
+    "label": "press(containers)",
+    "verb_purity": 0.328,
+    "object_purity": 0.467,
+    "mean_size": 4.143,
+    "occurrences": 7
+   },
+   "pull(storage)": {
+    "label": "pull(storage)",
+    "verb_purity": 0.338,
+    "object_purity": 0.371,
+    "mean_size": 6.2,
+    "occurrences": 15
+   },
+   "reach(containers)": {
+    "label": "reach(containers)",
+    "verb_purity": 0.367,
+    "object_purity": 0.467,
+    "mean_size": 4.0,
+    "occurrences": 2
+   },
+   "open(containers)": {
+    "label": "open(containers)",
+    "verb_purity": 0.371,
+    "object_purity": 0.619,
+    "mean_size": 5.25,
+    "occurrences": 4
+   },
+   "take(crockery)": {
+    "label": "take(crockery)",
+    "verb_purity": 0.373,
+    "object_purity": 0.385,
+    "mean_size": 5.667,
+    "occurrences": 3
+   },
+   "shake(containers)": {
+    "label": "shake(containers)",
+    "verb_purity": 0.375,
+    "object_purity": 1.0,
+    "mean_size": 3.0,
+    "occurrences": 2
+   },
+   "merge(containers)": {
+    "label": "merge(containers)",
+    "verb_purity": 0.375,
+    "object_purity": 0.625,
+    "mean_size": 3.0,
+    "occurrences": 2
+   },
+   "slide(containers)": {
+    "label": "slide(containers)",
+    "verb_purity": 0.393,
+    "object_purity": 0.393,
+    "mean_size": 4.5,
+    "occurrences": 2
+   },
+   "shake(cutlery)": {
+    "label": "shake(cutlery)",
+    "verb_purity": 0.4,
+    "object_purity": 0.633,
+    "mean_size": 3.667,
+    "occurrences": 3
+   },
+   "pull(containers)": {
+    "label": "pull(containers)",
+    "verb_purity": 0.405,
+    "object_purity": 0.726,
+    "mean_size": 3.5,
+    "occurrences": 4
+   },
+   "put(crockery)": {
+    "label": "put(crockery)",
+    "verb_purity": 0.44,
+    "object_purity": 0.335,
+    "mean_size": 10.0,
+    "occurrences": 2
+   },
+   "wash(furniture)": {
+    "label": "wash(furniture)",
+    "verb_purity": 0.477,
+    "object_purity": 0.386,
+    "mean_size": 7.571,
+    "occurrences": 7
+   },
+   "press(crockery)": {
+    "label": "press(crockery)",
+    "verb_purity": 0.479,
+    "object_purity": 0.562,
+    "mean_size": 2.75,
+    "occurrences": 4
+   },
+   "pull(appliances)": {
+    "label": "pull(appliances)",
+    "verb_purity": 0.492,
+    "object_purity": 0.492,
+    "mean_size": 3.667,
+    "occurrences": 3
+   },
+   "scoop(drinks)": {
+    "label": "scoop(drinks)",
+    "verb_purity": 0.5,
+    "object_purity": 0.278,
+    "mean_size": 7.5,
+    "occurrences": 2
+   },
+   "squeeze(containers)": {
+    "label": "squeeze(containers)",
+    "verb_purity": 0.511,
+    "object_purity": 0.8,
+    "mean_size": 3.0,
+    "occurrences": 3
+   },
+   "retrieve(cutlery)": {
+    "label": "retrieve(cutlery)",
+    "verb_purity": 0.551,
+    "object_purity": 0.376,
+    "mean_size": 6.667,
+    "occurrences": 3
+   },
+   "shake(cleaning equipment and material)": {
+    "label": "shake(cleaning equipment and material)",
+    "verb_purity": 0.556,
+    "object_purity": 0.667,
+    "mean_size": 2.333,
+    "occurrences": 3
+   },
+   "lift(appliances)": {
+    "label": "lift(appliances)",
+    "verb_purity": 0.578,
+    "object_purity": 0.559,
+    "mean_size": 7.0,
+    "occurrences": 4
+   },
+   "press(appliances)": {
+    "label": "press(appliances)",
+    "verb_purity": 0.588,
+    "object_purity": 0.825,
+    "mean_size": 3.5,
+    "occurrences": 4
+   },
+   "leave(cleaning equipment and material)": {
+    "label": "leave(cleaning equipment and material)",
+    "verb_purity": 0.6,
+    "object_purity": 0.425,
+    "mean_size": 3.5,
+    "occurrences": 4
+   },
+   "manipulate(containers)": {
+    "label": "manipulate(containers)",
+    "verb_purity": 0.6,
+    "object_purity": 0.8,
+    "mean_size": 3.0,
+    "occurrences": 2
+   },
+   "manipulate(cleaning equipment and material)": {
+    "label": "manipulate(cleaning equipment and material)",
+    "verb_purity": 0.667,
+    "object_purity": 0.667,
+    "mean_size": 2.0,
+    "occurrences": 2
+   },
+   "squeeze(cleaning equipment and material)": {
+    "label": "squeeze(cleaning equipment and material)",
+    "verb_purity": 0.767,
+    "object_purity": 0.933,
+    "mean_size": 1.6,
+    "occurrences": 5
+   },
+   "pull(furniture)": {
+    "label": "pull(furniture)",
+    "verb_purity": 0.875,
+    "object_purity": 0.875,
+    "mean_size": 1.25,
+    "occurrences": 4
+   }
+  },
+  "worst_labels": [
+   {
+    "label": "clean(utensils)",
+    "verb_purity": 0.083,
+    "object_purity": 0.167,
+    "mean_size": 12.0,
+    "occurrences": 1
+   },
+   {
+    "label": "attach(utensils)",
+    "verb_purity": 0.164,
+    "object_purity": 0.327,
+    "mean_size": 14.0,
+    "occurrences": 2
+   },
+   {
+    "label": "fill(appliances)",
+    "verb_purity": 0.171,
+    "object_purity": 0.9,
+    "mean_size": 6.0,
+    "occurrences": 2
+   },
+   {
+    "label": "slide(crockery)",
+    "verb_purity": 0.181,
+    "object_purity": 0.39,
+    "mean_size": 5.667,
+    "occurrences": 3
+   },
+   {
+    "label": "wash(cutlery)",
+    "verb_purity": 0.196,
+    "object_purity": 0.393,
+    "mean_size": 5.75,
+    "occurrences": 4
+   }
+  ],
+  "note": "Purity = share of an episode's members whose verb/noun category matches the head action that names it. Low purity means the label describes one member, not the group."
  },
  "likely_path": [
   "START",

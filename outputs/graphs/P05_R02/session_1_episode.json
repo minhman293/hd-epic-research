@@ -245,6 +245,7 @@
    "index": 0,
    "kind": "action",
    "action": "take(crockery)",
+   "verb": "take",
    "start": 9.04,
    "end": 37.12,
    "duration": 28.08,
@@ -369,6 +370,7 @@
    "index": 1,
    "kind": "action",
    "action": "shake(containers)",
+   "verb": "shake",
    "start": 35.05,
    "end": 48.25,
    "duration": 13.2,
@@ -420,6 +422,7 @@
    "index": 2,
    "kind": "action",
    "action": "pour(dairy and eggs)",
+   "verb": "pour",
    "start": 47.76,
    "end": 60.27,
    "duration": 12.51,
@@ -481,6 +484,7 @@
    "index": 3,
    "kind": "action",
    "action": "screw(containers)",
+   "verb": "screw",
    "start": 60.37,
    "end": 74.15,
    "duration": 13.78,
@@ -581,6 +585,7 @@
    "index": 4,
    "kind": "action",
    "action": "pour(drinks)",
+   "verb": "pour",
    "start": 75.59,
    "end": 89.79,
    "duration": 14.2,
@@ -632,6 +637,7 @@
    "index": 5,
    "kind": "action",
    "action": "press(appliances)",
+   "verb": "press",
    "start": 84.46,
    "end": 95.38,
    "duration": 10.92,
@@ -713,6 +719,7 @@
    "index": 6,
    "kind": "action",
    "action": "drink(drinks)",
+   "verb": "drink",
    "start": 97.42,
    "end": 106.06,
    "duration": 8.64,
@@ -764,6 +771,7 @@
    "index": 7,
    "kind": "action",
    "action": "take(crockery)",
+   "verb": "take",
    "start": 110.02,
    "end": 164.73,
    "duration": 54.71,
@@ -993,6 +1001,7 @@
    "index": 8,
    "kind": "action",
    "action": "cut(fruits and nuts)",
+   "verb": "cut",
    "start": 161.14,
    "end": 179.56,
    "duration": 18.42,
@@ -1062,6 +1071,7 @@
    "index": 9,
    "kind": "action",
    "action": "shake(drinks)",
+   "verb": "shake",
    "start": 187.35,
    "end": 195.34,
    "duration": 7.99,
@@ -1132,6 +1142,7 @@
    "index": 10,
    "kind": "action",
    "action": "shake(containers)",
+   "verb": "shake",
    "start": 195.22,
    "end": 203.29,
    "duration": 8.07,
@@ -1200,6 +1211,7 @@
    "index": 11,
    "kind": "action",
    "action": "shake(drinks)",
+   "verb": "shake",
    "start": 200.47,
    "end": 208.18,
    "duration": 7.71,
@@ -1269,6 +1281,7 @@
    "index": 12,
    "kind": "action",
    "action": "screw(containers)",
+   "verb": "screw",
    "start": 209.77,
    "end": 215.71,
    "duration": 5.94,
@@ -1320,6 +1333,7 @@
    "index": 13,
    "kind": "action",
    "action": "shake(drinks)",
+   "verb": "shake",
    "start": 215.81,
    "end": 218.96,
    "duration": 3.15,
@@ -1362,6 +1376,7 @@
    "index": 14,
    "kind": "action",
    "action": "put(containers)",
+   "verb": "put",
    "start": 218.24,
    "end": 222.02,
    "duration": 3.78,
@@ -1394,6 +1409,7 @@
    "index": 15,
    "kind": "action",
    "action": "take(cutlery)",
+   "verb": "take",
    "start": 221.96,
    "end": 246.43,
    "duration": 24.47,
@@ -1536,6 +1552,7 @@
    "index": 16,
    "kind": "action",
    "action": "pull(furniture)",
+   "verb": "pull",
    "start": 244.41,
    "end": 256.02,
    "duration": 11.61,
@@ -1597,6 +1614,7 @@
    "index": 17,
    "kind": "action",
    "action": "mix(baked goods and grains)",
+   "verb": "mix",
    "start": 247.18,
    "end": 263.43,
    "duration": 16.25,
@@ -1695,6 +1713,7 @@
    "index": 18,
    "kind": "action",
    "action": "press(appliances)",
+   "verb": "press",
    "start": 260.08,
    "end": 267.03,
    "duration": 6.95,
@@ -1747,6 +1766,7 @@
    "index": 19,
    "kind": "action",
    "action": "take(baked goods and grains)",
+   "verb": "take",
    "start": 294.6,
    "end": 308.98,
    "duration": 14.38,
@@ -1815,6 +1835,7 @@
    "index": 20,
    "kind": "action",
    "action": "mix(baked goods and grains)",
+   "verb": "mix",
    "start": 310.3,
    "end": 317.83,
    "duration": 7.53,
@@ -1857,6 +1878,7 @@
    "index": 21,
    "kind": "action",
    "action": "shake(baked goods and grains)",
+   "verb": "shake",
    "start": 317.9,
    "end": 327.47,
    "duration": 9.57,
@@ -1926,6 +1948,7 @@
    "index": 22,
    "kind": "action",
    "action": "press(appliances)",
+   "verb": "press",
    "start": 322.09,
    "end": 390.74,
    "duration": 68.65,
@@ -2089,6 +2112,7 @@
    "index": 23,
    "kind": "action",
    "action": "mix(baked goods and grains)",
+   "verb": "mix",
    "start": 382.73,
    "end": 398.43,
    "duration": 15.7,
@@ -2139,6 +2163,7 @@
    "index": 24,
    "kind": "action",
    "action": "shake(baked goods and grains)",
+   "verb": "shake",
    "start": 398.47,
    "end": 405.79,
    "duration": 7.32,
@@ -2190,6 +2215,7 @@
    "index": 25,
    "kind": "action",
    "action": "scrape(fruits and nuts)",
+   "verb": "scrape",
    "start": 427.04,
    "end": 439.99,
    "duration": 12.95,
@@ -2269,6 +2295,7 @@
    "index": 26,
    "kind": "action",
    "action": "pour(fruits and nuts)",
+   "verb": "pour",
    "start": 440.02,
    "end": 456.63,
    "duration": 16.61,
@@ -2340,6 +2367,7 @@
    "index": 27,
    "kind": "action",
    "action": "set(appliances)",
+   "verb": "set",
    "start": 457.13,
    "end": 460.4,
    "duration": 3.27,
@@ -2382,6 +2410,7 @@
    "index": 28,
    "kind": "action",
    "action": "pour(fruits and nuts)",
+   "verb": "pour",
    "start": 460.5,
    "end": 486.13,
    "duration": 25.63,
@@ -2462,6 +2491,7 @@
    "index": 29,
    "kind": "action",
    "action": "manipulate(appliances)",
+   "verb": "manipulate",
    "start": 478.7,
    "end": 496.06,
    "duration": 17.36,
@@ -2560,6 +2590,7 @@
    "index": 30,
    "kind": "action",
    "action": "take(crockery)",
+   "verb": "take",
    "start": 496.07,
    "end": 499.4,
    "duration": 3.33,
@@ -7655,6 +7686,228 @@
   "total_states": 21,
   "isolated_nodes": 0,
   "raw_actions_covered": 180
+ },
+ "label_audit": {
+  "verb_purity": 0.317,
+  "object_purity": 0.431,
+  "mean_episode_size": 6.217,
+  "singleton_fraction": 0.043,
+  "n_episodes": 92,
+  "per_label": {
+   "scrape(fruits and nuts)": {
+    "label": "scrape(fruits and nuts)",
+    "verb_purity": 0.146,
+    "object_purity": 0.146,
+    "mean_size": 7.0,
+    "occurrences": 2
+   },
+   "cut(fruits and nuts)": {
+    "label": "cut(fruits and nuts)",
+    "verb_purity": 0.167,
+    "object_purity": 0.4,
+    "mean_size": 6.667,
+    "occurrences": 3
+   },
+   "pour(baked goods and grains)": {
+    "label": "pour(baked goods and grains)",
+    "verb_purity": 0.2,
+    "object_purity": 0.6,
+    "mean_size": 5.0,
+    "occurrences": 2
+   },
+   "pour(dairy and eggs)": {
+    "label": "pour(dairy and eggs)",
+    "verb_purity": 0.214,
+    "object_purity": 0.476,
+    "mean_size": 5.0,
+    "occurrences": 3
+   },
+   "pour(drinks)": {
+    "label": "pour(drinks)",
+    "verb_purity": 0.221,
+    "object_purity": 0.221,
+    "mean_size": 5.5,
+    "occurrences": 4
+   },
+   "pull(furniture)": {
+    "label": "pull(furniture)",
+    "verb_purity": 0.225,
+    "object_purity": 0.35,
+    "mean_size": 7.0,
+    "occurrences": 2
+   },
+   "manipulate(appliances)": {
+    "label": "manipulate(appliances)",
+    "verb_purity": 0.229,
+    "object_purity": 0.292,
+    "mean_size": 5.5,
+    "occurrences": 2
+   },
+   "shake(baked goods and grains)": {
+    "label": "shake(baked goods and grains)",
+    "verb_purity": 0.236,
+    "object_purity": 0.312,
+    "mean_size": 7.2,
+    "occurrences": 10
+   },
+   "screw(containers)": {
+    "label": "screw(containers)",
+    "verb_purity": 0.236,
+    "object_purity": 0.389,
+    "mean_size": 5.0,
+    "occurrences": 3
+   },
+   "shake(drinks)": {
+    "label": "shake(drinks)",
+    "verb_purity": 0.242,
+    "object_purity": 0.242,
+    "mean_size": 6.75,
+    "occurrences": 4
+   },
+   "press(appliances)": {
+    "label": "press(appliances)",
+    "verb_purity": 0.25,
+    "object_purity": 0.337,
+    "mean_size": 8.714,
+    "occurrences": 7
+   },
+   "retrieve(appliances)": {
+    "label": "retrieve(appliances)",
+    "verb_purity": 0.25,
+    "object_purity": 0.375,
+    "mean_size": 8.0,
+    "occurrences": 1
+   },
+   "pour(fruits and nuts)": {
+    "label": "pour(fruits and nuts)",
+    "verb_purity": 0.252,
+    "object_purity": 0.325,
+    "mean_size": 4.8,
+    "occurrences": 5
+   },
+   "peel(rubbish)": {
+    "label": "peel(rubbish)",
+    "verb_purity": 0.267,
+    "object_purity": 0.533,
+    "mean_size": 4.0,
+    "occurrences": 2
+   },
+   "shake(containers)": {
+    "label": "shake(containers)",
+    "verb_purity": 0.289,
+    "object_purity": 0.822,
+    "mean_size": 3.667,
+    "occurrences": 3
+   },
+   "take(baked goods and grains)": {
+    "label": "take(baked goods and grains)",
+    "verb_purity": 0.3,
+    "object_purity": 0.3,
+    "mean_size": 5.0,
+    "occurrences": 2
+   },
+   "take(containers)": {
+    "label": "take(containers)",
+    "verb_purity": 0.325,
+    "object_purity": 0.588,
+    "mean_size": 6.5,
+    "occurrences": 2
+   },
+   "manipulate(crockery)": {
+    "label": "manipulate(crockery)",
+    "verb_purity": 0.333,
+    "object_purity": 1.0,
+    "mean_size": 3.0,
+    "occurrences": 1
+   },
+   "drink(drinks)": {
+    "label": "drink(drinks)",
+    "verb_purity": 0.333,
+    "object_purity": 0.333,
+    "mean_size": 3.0,
+    "occurrences": 2
+   },
+   "set(appliances)": {
+    "label": "set(appliances)",
+    "verb_purity": 0.375,
+    "object_purity": 0.375,
+    "mean_size": 5.0,
+    "occurrences": 2
+   },
+   "mix(baked goods and grains)": {
+    "label": "mix(baked goods and grains)",
+    "verb_purity": 0.378,
+    "object_purity": 0.48,
+    "mean_size": 3.727,
+    "occurrences": 11
+   },
+   "take(crockery)": {
+    "label": "take(crockery)",
+    "verb_purity": 0.486,
+    "object_purity": 0.524,
+    "mean_size": 8.889,
+    "occurrences": 9
+   },
+   "take(cutlery)": {
+    "label": "take(cutlery)",
+    "verb_purity": 0.507,
+    "object_purity": 0.486,
+    "mean_size": 6.0,
+    "occurrences": 5
+   },
+   "put(crockery)": {
+    "label": "put(crockery)",
+    "verb_purity": 0.533,
+    "object_purity": 0.842,
+    "mean_size": 6.333,
+    "occurrences": 3
+   },
+   "put(containers)": {
+    "label": "put(containers)",
+    "verb_purity": 0.574,
+    "object_purity": 0.537,
+    "mean_size": 14.0,
+    "occurrences": 2
+   }
+  },
+  "worst_labels": [
+   {
+    "label": "scrape(fruits and nuts)",
+    "verb_purity": 0.146,
+    "object_purity": 0.146,
+    "mean_size": 7.0,
+    "occurrences": 2
+   },
+   {
+    "label": "cut(fruits and nuts)",
+    "verb_purity": 0.167,
+    "object_purity": 0.4,
+    "mean_size": 6.667,
+    "occurrences": 3
+   },
+   {
+    "label": "pour(baked goods and grains)",
+    "verb_purity": 0.2,
+    "object_purity": 0.6,
+    "mean_size": 5.0,
+    "occurrences": 2
+   },
+   {
+    "label": "pour(dairy and eggs)",
+    "verb_purity": 0.214,
+    "object_purity": 0.476,
+    "mean_size": 5.0,
+    "occurrences": 3
+   },
+   {
+    "label": "pour(drinks)",
+    "verb_purity": 0.221,
+    "object_purity": 0.221,
+    "mean_size": 5.5,
+    "occurrences": 4
+   }
+  ],
+  "note": "Purity = share of an episode's members whose verb/noun category matches the head action that names it. Low purity means the label describes one member, not the group."
  },
  "likely_path": [
   "START",

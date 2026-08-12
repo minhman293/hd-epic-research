@@ -6019,7 +6019,7 @@
      "0": 1,
      "1": 1
     },
-    "probability": 0.4,
+    "probability": 0.3333,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -6030,6 +6030,150 @@
     "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
+   },
+   {
+    "source": "manipulate(drinks)",
+    "target": "manipulate(dairy and eggs)",
+    "key": "manipulate(drinks)|||manipulate(dairy and eggs)",
+    "pairKey": "manipulate(drinks)|||manipulate(dairy and eggs)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "manipulate(dairy and eggs)",
+    "target": "press(appliances)",
+    "key": "manipulate(dairy and eggs)|||press(appliances)",
+    "pairKey": "manipulate(dairy and eggs)|||press(appliances)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.3333,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "press(appliances)",
+    "target": "turn(containers)",
+    "key": "press(appliances)|||turn(containers)",
+    "pairKey": "press(appliances)|||turn(containers)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.1667,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "turn(containers)",
+    "target": "press(appliances)",
+    "key": "turn(containers)|||press(appliances)",
+    "pairKey": "turn(containers)|||press(appliances)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "press(appliances)",
+    "target": "turn(crockery)",
+    "key": "press(appliances)|||turn(crockery)",
+    "pairKey": "press(appliances)|||turn(crockery)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.1667,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "turn(crockery)",
+    "target": "mix(drinks)",
+    "key": "turn(crockery)|||mix(drinks)",
+    "pairKey": "turn(crockery)|||mix(drinks)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.3333,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
    },
    {
     "source": "mix(drinks)",
@@ -6082,6 +6226,54 @@
     "evidence": "moderate"
    },
    {
+    "source": "manipulate(drinks)",
+    "target": "turn(containers)",
+    "key": "manipulate(drinks)|||turn(containers)",
+    "pairKey": "manipulate(drinks)|||turn(containers)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "turn(containers)",
+    "target": "pour(dairy and eggs)",
+    "key": "turn(containers)|||pour(dairy and eggs)",
+    "pairKey": "turn(containers)|||pour(dairy and eggs)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": false,
+    "is_return": true,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
     "source": "pour(dairy and eggs)",
     "target": "press(appliances)",
     "key": "pour(dairy and eggs)|||press(appliances)",
@@ -6119,7 +6311,7 @@
      "1": 1,
      "2": 1
     },
-    "probability": 0.4,
+    "probability": 0.3333,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -6155,6 +6347,30 @@
     "kept_reason": "reproducible",
     "weak": false,
     "evidence": "moderate"
+   },
+   {
+    "source": "wash(dairy and eggs)",
+    "target": "mix(drinks)",
+    "key": "wash(dairy and eggs)|||mix(drinks)",
+    "pairKey": "wash(dairy and eggs)|||mix(drinks)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.3333,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
    },
    {
     "source": "mix(drinks)",
@@ -6205,6 +6421,30 @@
     "evidence": "weak"
    },
    {
+    "source": "block(appliances)",
+    "target": "pour(dairy and eggs)",
+    "key": "block(appliances)|||pour(dairy and eggs)",
+    "pairKey": "block(appliances)|||pour(dairy and eggs)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.333,
+    "n_sessions": 3,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 1.0,
+    "is_self_loop": false,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
     "source": "wash(dairy and eggs)",
     "target": "manipulate(dairy and eggs)",
     "key": "wash(dairy and eggs)|||manipulate(dairy and eggs)",
@@ -6230,54 +6470,6 @@
    },
    {
     "source": "manipulate(dairy and eggs)",
-    "target": "mix(drinks)",
-    "key": "manipulate(dairy and eggs)|||mix(drinks)",
-    "pairKey": "manipulate(dairy and eggs)|||mix(drinks)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "2": 1
-    },
-    "probability": 0.3333,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": false,
-    "kept_reason": "connectivity",
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "manipulate(dairy and eggs)",
-    "target": "press(appliances)",
-    "key": "manipulate(dairy and eggs)|||press(appliances)",
-    "pairKey": "manipulate(dairy and eggs)|||press(appliances)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "0": 1
-    },
-    "probability": 0.3333,
-    "is_self_loop": false,
-    "is_return": true,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": false,
-    "kept_reason": "connectivity",
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "manipulate(dairy and eggs)",
     "target": "wash(dairy and eggs)",
     "key": "manipulate(dairy and eggs)|||wash(dairy and eggs)",
     "pairKey": "manipulate(dairy and eggs)|||wash(dairy and eggs)",
@@ -6294,65 +6486,17 @@
     "is_bridged": false,
     "is_bridge_edge": false,
     "is_introduced": false,
-    "restored": true,
+    "restored": false,
     "session_only": false,
-    "kept_reason": "connectivity",
+    "kept_reason": "reproducible",
     "weak": true,
     "evidence": "weak"
    },
    {
-    "source": "manipulate(drinks)",
-    "target": "turn(containers)",
-    "key": "manipulate(drinks)|||turn(containers)",
-    "pairKey": "manipulate(drinks)|||turn(containers)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "1": 1
-    },
-    "probability": 0.5,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": false,
-    "kept_reason": "connectivity",
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "manipulate(drinks)",
-    "target": "manipulate(dairy and eggs)",
-    "key": "manipulate(drinks)|||manipulate(dairy and eggs)",
-    "pairKey": "manipulate(drinks)|||manipulate(dairy and eggs)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "0": 1
-    },
-    "probability": 0.5,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": false,
-    "kept_reason": "connectivity",
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "block(appliances)",
-    "target": "pour(dairy and eggs)",
-    "key": "block(appliances)|||pour(dairy and eggs)",
-    "pairKey": "block(appliances)|||pour(dairy and eggs)",
+    "source": "manipulate(dairy and eggs)",
+    "target": "mix(drinks)",
+    "key": "manipulate(dairy and eggs)|||mix(drinks)",
+    "pairKey": "manipulate(dairy and eggs)|||mix(drinks)",
     "count": 1,
     "support": 1,
     "support_fraction": 0.333,
@@ -6360,135 +6504,15 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 1.0,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": false,
-    "kept_reason": "connectivity",
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "turn(containers)",
-    "target": "pour(dairy and eggs)",
-    "key": "turn(containers)|||pour(dairy and eggs)",
-    "pairKey": "turn(containers)|||pour(dairy and eggs)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "1": 1
-    },
-    "probability": 0.5,
-    "is_self_loop": false,
-    "is_return": true,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": false,
-    "kept_reason": "connectivity",
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "press(appliances)",
-    "target": "turn(containers)",
-    "key": "press(appliances)|||turn(containers)",
-    "pairKey": "press(appliances)|||turn(containers)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "0": 1
-    },
-    "probability": 0.2,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
-    "kept_reason": "session_path",
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "turn(containers)",
-    "target": "press(appliances)",
-    "key": "turn(containers)|||press(appliances)",
-    "pairKey": "turn(containers)|||press(appliances)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "0": 1
-    },
-    "probability": 0.5,
-    "is_self_loop": false,
-    "is_return": true,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
-    "kept_reason": "session_path",
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "turn(crockery)",
-    "target": "mix(drinks)",
-    "key": "turn(crockery)|||mix(drinks)",
-    "pairKey": "turn(crockery)|||mix(drinks)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "0": 1
-    },
     "probability": 0.3333,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
     "is_bridge_edge": false,
     "is_introduced": false,
-    "restored": true,
-    "session_only": true,
-    "kept_reason": "session_path",
-    "weak": true,
-    "evidence": "weak"
-   },
-   {
-    "source": "wash(dairy and eggs)",
-    "target": "mix(drinks)",
-    "key": "wash(dairy and eggs)|||mix(drinks)",
-    "pairKey": "wash(dairy and eggs)|||mix(drinks)",
-    "count": 1,
-    "support": 1,
-    "support_fraction": 0.333,
-    "n_sessions": 3,
-    "per_session_counts": {
-     "1": 1
-    },
-    "probability": 0.3333,
-    "is_self_loop": false,
-    "is_return": false,
-    "is_bridged": false,
-    "is_bridge_edge": false,
-    "is_introduced": false,
-    "restored": true,
-    "session_only": true,
-    "kept_reason": "session_path",
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
     "weak": true,
     "evidence": "weak"
    }
@@ -6498,11 +6522,11 @@
   "layer": "episode",
   "sessions": 3,
   "nodes": 12,
-  "edges": 22,
-  "out_degree": 1.83,
-  "edges_dropped": 12,
-  "edges_restored": 11,
-  "edges_kept_for_single_session": 4,
+  "edges": 23,
+  "out_degree": 1.92,
+  "edges_dropped": 0,
+  "edges_restored": 0,
+  "edges_kept_for_single_session": 0,
   "fabricated_edges": 0,
   "reachable_from_start": 12,
   "can_reach_end": 12,
@@ -6510,10 +6534,126 @@
   "isolated_nodes": 0,
   "raw_actions_covered": 225
  },
+ "label_audit": {
+  "verb_purity": 0.363,
+  "object_purity": 0.47,
+  "mean_episode_size": 7.759,
+  "singleton_fraction": 0.069,
+  "n_episodes": 29,
+  "per_label": {
+   "pour(dairy and eggs)": {
+    "label": "pour(dairy and eggs)",
+    "verb_purity": 0.198,
+    "object_purity": 0.48,
+    "mean_size": 9.5,
+    "occurrences": 4
+   },
+   "block(appliances)": {
+    "label": "block(appliances)",
+    "verb_purity": 0.214,
+    "object_purity": 0.286,
+    "mean_size": 14.0,
+    "occurrences": 1
+   },
+   "turn(containers)": {
+    "label": "turn(containers)",
+    "verb_purity": 0.229,
+    "object_purity": 0.406,
+    "mean_size": 22.0,
+    "occurrences": 2
+   },
+   "wash(dairy and eggs)": {
+    "label": "wash(dairy and eggs)",
+    "verb_purity": 0.285,
+    "object_purity": 0.399,
+    "mean_size": 6.0,
+    "occurrences": 3
+   },
+   "manipulate(drinks)": {
+    "label": "manipulate(drinks)",
+    "verb_purity": 0.292,
+    "object_purity": 0.292,
+    "mean_size": 8.0,
+    "occurrences": 2
+   },
+   "mix(drinks)": {
+    "label": "mix(drinks)",
+    "verb_purity": 0.333,
+    "object_purity": 0.333,
+    "mean_size": 4.667,
+    "occurrences": 3
+   },
+   "press(appliances)": {
+    "label": "press(appliances)",
+    "verb_purity": 0.352,
+    "object_purity": 0.501,
+    "mean_size": 9.0,
+    "occurrences": 6
+   },
+   "turn(crockery)": {
+    "label": "turn(crockery)",
+    "verb_purity": 0.417,
+    "object_purity": 0.583,
+    "mean_size": 4.0,
+    "occurrences": 3
+   },
+   "manipulate(dairy and eggs)": {
+    "label": "manipulate(dairy and eggs)",
+    "verb_purity": 0.589,
+    "object_purity": 0.522,
+    "mean_size": 4.0,
+    "occurrences": 3
+   },
+   "shake(cutlery)": {
+    "label": "shake(cutlery)",
+    "verb_purity": 0.75,
+    "object_purity": 0.75,
+    "mean_size": 1.5,
+    "occurrences": 2
+   }
+  },
+  "worst_labels": [
+   {
+    "label": "pour(dairy and eggs)",
+    "verb_purity": 0.198,
+    "object_purity": 0.48,
+    "mean_size": 9.5,
+    "occurrences": 4
+   },
+   {
+    "label": "block(appliances)",
+    "verb_purity": 0.214,
+    "object_purity": 0.286,
+    "mean_size": 14.0,
+    "occurrences": 1
+   },
+   {
+    "label": "turn(containers)",
+    "verb_purity": 0.229,
+    "object_purity": 0.406,
+    "mean_size": 22.0,
+    "occurrences": 2
+   },
+   {
+    "label": "wash(dairy and eggs)",
+    "verb_purity": 0.285,
+    "object_purity": 0.399,
+    "mean_size": 6.0,
+    "occurrences": 3
+   },
+   {
+    "label": "manipulate(drinks)",
+    "verb_purity": 0.292,
+    "object_purity": 0.292,
+    "mean_size": 8.0,
+    "occurrences": 2
+   }
+  ],
+  "note": "Purity = share of an episode's members whose verb/noun category matches the head action that names it. Low purity means the label describes one member, not the group."
+ },
  "canonical_spine": [
   "press(appliances)",
-  "manipulate(drinks)",
-  "manipulate(dairy and eggs)",
+  "turn(crockery)",
   "mix(drinks)",
   "END"
  ],
@@ -6524,12 +6664,7 @@
    "spine_index": 0
   },
   {
-   "id": "manipulate(drinks)",
-   "tier": "connector",
-   "spine_index": null
-  },
-  {
-   "id": "manipulate(dairy and eggs)",
+   "id": "turn(crockery)",
    "tier": "connector",
    "spine_index": null
   },
@@ -6566,7 +6701,7 @@
    0.2
   ],
   "min_coverage": 0.2,
-  "connectors": 2,
+  "connectors": 1,
   "direct_pairs": 0,
   "stitched_pairs": 1,
   "broken_pairs": 0,
@@ -6575,8 +6710,7 @@
     "from": "press(appliances)",
     "to": "mix(drinks)",
     "via": [
-     "manipulate(drinks)",
-     "manipulate(dairy and eggs)"
+     "turn(crockery)"
     ]
    }
   ],
@@ -6615,7 +6749,7 @@
   "joint_probability": 0.14814815,
   "mean_step_probability": 0.6204,
   "weakest_edge": 0.3333,
-  "candidates_considered": 27,
+  "candidates_considered": 31,
   "note": "Each step is a common next move from that state. The route as a whole is a model, not necessarily a run anyone performed.",
   "observed_in_full": true,
   "sessions": [
@@ -9553,8 +9687,7 @@
  "analysis": {
   "canonical_spine": [
    "press(appliances)",
-   "manipulate(drinks)",
-   "manipulate(dairy and eggs)",
+   "turn(crockery)",
    "mix(drinks)",
    "END"
   ],
@@ -9565,12 +9698,7 @@
     "spine_index": 0
    },
    {
-    "id": "manipulate(drinks)",
-    "tier": "connector",
-    "spine_index": null
-   },
-   {
-    "id": "manipulate(dairy and eggs)",
+    "id": "turn(crockery)",
     "tier": "connector",
     "spine_index": null
    },
@@ -9607,7 +9735,7 @@
     0.2
    ],
    "min_coverage": 0.2,
-   "connectors": 2,
+   "connectors": 1,
    "direct_pairs": 0,
    "stitched_pairs": 1,
    "broken_pairs": 0,
@@ -9616,8 +9744,7 @@
      "from": "press(appliances)",
      "to": "mix(drinks)",
      "via": [
-      "manipulate(drinks)",
-      "manipulate(dairy and eggs)"
+      "turn(crockery)"
      ]
     }
    ],

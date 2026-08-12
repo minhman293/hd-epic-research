@@ -32,7 +32,7 @@ import json
 from pathlib import Path
 
 from episodes import (Config, segment, apply_rollup, fold_one_offs,
-                      TRANSPARENT_NOUNS)
+                      label_faithfulness, TRANSPARENT_NOUNS)
 
 from spine_verdict import spine_with_verdict, compare_layers
 from likely_path import likely_path_block, build_expansions
@@ -187,18 +187,20 @@ def graph_from(sessions, cfg, n_sessions, layer="episode"):
             esess[(x, y)].add(s)
             epersess[(x, y)][s] += 1
 
-    # thin: an edge must be reproducible, or be a START/END anchor
-    # Support thresholds measure REPRODUCIBILITY. With one session there is
-    # nothing to reproduce, so thinning would just delete the person's actual
-    # sequence. Keep everything.
-    if n_sessions < 2:
+    # ── no thinning (default) ───────────────────────────────────────────────
+    # Every observed transition is drawn. Rarity is encoded in the drawing —
+    # width by probability, opacity by session support — not by removal.
+    #
+    # Thinning can be re-enabled with cfg.thin_edges for experiments.
+    if not cfg.thin_edges or n_sessions < 2:
         kept = dict(ecount)
+        dropped = {}
     else:
         kept = {k: v for k, v in ecount.items()
                 if len(esess[k]) >= cfg.min_edge_sessions
                 or v >= cfg.min_edge_count
                 or k[0] == "START" or k[1] == "END"}
-    dropped = {k: v for k, v in ecount.items() if k not in kept}
+        dropped = {k: v for k, v in ecount.items() if k not in kept}
 
     # ── reconnect ──────────────────────────────────────────────────────────
     # Having "no isolated node" is not enough for a Markov chain. Thinning left
@@ -297,6 +299,8 @@ def graph_from(sessions, cfg, n_sessions, layer="episode"):
             has_out.add(a)
             has_in.add(b)
 
+        
+
     # Collapsing adjacent repeats into a count made self-loops invisible: the
     # graph reported "0 self-loop" while the data held plenty. A repeat is a
     # transition from a state to itself and belongs in the chain, including in
@@ -311,6 +315,11 @@ def graph_from(sessions, cfg, n_sessions, layer="episode"):
                     esess[(label, label)].add(s_i)
                     epersess[(label, label)][s_i] += 1
 
+    obs_total = sum(ecount.values())
+    kept_total = sum(kept.values())
+    print(f"  [{layer}] observed transitions {obs_total}, in graph {kept_total} "
+                        f"({100 * kept_total / obs_total:.1f}%)")
+    
     out_total = collections.Counter()
     for (src, _), v in kept.items():
         out_total[src] += v
@@ -484,6 +493,21 @@ def build(recipe_id, graphs_dir, narr_dir, cfg):
     sessions = apply_rollup(sessions, cfg)
     sessions = fold_one_offs(sessions, cfg)
 
+    audit = label_faithfulness(sessions)
+    print(f"\n  LABEL AUDIT — does the name describe the episode?")
+    print(f"    verb purity        {audit['verb_purity']:.2f}  "
+        f"(1.00 = every member matches the head's verb category)")
+    print(f"    object purity      {audit['object_purity']:.2f}")
+    print(f"    mean episode size  {audit['mean_episode_size']:.1f} actions")
+    print(f"    singletons         {audit['singleton_fraction']:.0%} "
+        f"of episodes hold only one action")
+    print(f"    weakest labels:")
+    for r in audit["worst_labels"]:
+        print(f"      {r['label']:<34} verb {r['verb_purity']:.2f}  "
+            f"obj {r['object_purity']:.2f}  size {r['mean_size']:.1f}  "
+            f"×{r['occurrences']}")
+    print()
+
     print(f"{'session':>8}{'actions':>9}{'in span':>9}{'episodes':>10}{'coverage':>10}")
     for (f, d, span, n_all, n_sc) in docs:
         s = int(f.stem.split("_")[1])
@@ -511,6 +535,7 @@ def build(recipe_id, graphs_dir, narr_dir, cfg):
             "raw_sequence": d["sequence"],
             "graph": g,
             "episode_report": rep,
+            "label_audit": audit,
             **likely_path_block(g["nodes"], g["links"], {s: sessions[s]}),
             "expansions": build_expansions({s: sessions[s]}),
         }
@@ -530,6 +555,7 @@ def build(recipe_id, graphs_dir, narr_dir, cfg):
         "raw_sequence": docs[0][1]["sequence"],
         "graph": g,
         "episode_report": rep,
+        "label_audit": audit,
     }
     spine = spine_with_verdict(session_payloads, g["nodes"], g["links"],
                                layer="episode")
@@ -614,9 +640,12 @@ def main():
     ap.add_argument("--narrations-dir", default="../narrations-and-action-segments")
     ap.add_argument("--max-members", type=int, default=8)
     ap.add_argument("--min-edge-sessions", type=int, default=2)
+    ap.add_argument("--thin-edges", action="store_true",
+                    help="Enable legacy edge thinning before connectivity repair.")
     a = ap.parse_args()
     cfg = Config(max_members=a.max_members,
-                 min_edge_sessions=a.min_edge_sessions)
+                 min_edge_sessions=a.min_edge_sessions,
+                 thin_edges=a.thin_edges)
     print("=" * 70)
     print(f"EPISODE GRAPH — {a.recipe_id}")
     print("=" * 70)

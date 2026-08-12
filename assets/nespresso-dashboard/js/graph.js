@@ -1290,12 +1290,19 @@ export function createGraphController({
       // In macro view a P = 1.00 edge from a single observation is the LEAST
       // trustworthy thing on screen, so grading it by probability would style
       // it as the strongest. Evidence is used instead.
+      // A low-probability transition is worth marking in EVERY mode. The test
+      // used to be gated on `hybrid`, which meant nothing was ever dashed on
+      // the episode or step layer — while the legend claimed otherwise.
+      //
+      // This matters more now that no edges are filtered. Rarity used to be
+      // handled by removing the edge; it is now handled entirely in the
+      // drawing, so the drawing has to actually show it.
+      const isAnchorEdge = isStartId(link.source) || isEndId(link.target);
       link.__weak = isMacro
-        ? (link.evidence === "weak" && !isStartId(link.source) && !isEndId(link.target))
-        : (mode.startsWith("hybrid")
-            && typeof link.probability === "number"
-            && link.probability < WEAK_EDGE_PROB
-            && !isStartId(link.source) && !isEndId(link.target));
+        ? (link.evidence === "weak" && !isAnchorEdge)
+        : (typeof link.probability === "number"
+        && link.probability < WEAK_EDGE_PROB
+        && !isAnchorEdge);
       if (link.__weak) weakEdges += 1;
 
       if (link.source === link.target || link.is_self_loop) { selfLoops.push(link); return; }
@@ -1393,7 +1400,7 @@ export function createGraphController({
       // "1.00 (1/1)" look identical to a reader and are completely different
       // claims. The denominator is therefore mandatory here.
       if (isMacro && d.n_out) return `${p} (${n}/${d.n_out})`;
-      if (s && nS) return `${p} · ${s}/${nS} sessions`;
+      if (s && nS) return `${p} · ${s}/${nS}`;
       return n > 0 ? `${p} (n=${n})` : p;
     };
     currentProbLabel = probLabel;
@@ -1659,15 +1666,6 @@ export function createGraphController({
       }
       const outs = (enrichedLinksFullCache || [])
         .filter((l) => endId(l.source) === d.id && endId(l.target) !== d.id);
-      const hiddenMass = outs.filter((l) => !sessionOnlyVisible(l))
-        .reduce((s, l) => s + (l.probability || 0), 0);
-      if (hiddenMass > 0.01) {
-        // Probabilities are computed over EVERY observed exit, so when some
-        // exits are session-specific and not drawn, the visible arrows can sum
-        // to less than 1. Saying so is better than silently renormalising.
-        lines.push(`${Math.round(hiddenMass * 100)}% of exits go to session-specific`);
-        lines.push("transitions, shown only when that session is selected");
-      }
       if (d.rolled_up) {
         lines.push("label was generalised - this exact verb+object was seen in");
         lines.push("only one session, so the label uses the broader category");
@@ -2020,7 +2018,7 @@ export function createGraphController({
 
     const ledger = svg.append("g").attr("class", "render-ledger");
     const ledgerLines = [
-      `${filteredNodes.length} nodes · ${enrichedLinks.length} edges — all drawn, none hidden`,
+      `${filteredNodes.length} nodes · ${enrichedLinks.length} edges — every observed transition drawn`,
       `${forwardEdges.length} forward · ${returnEdges.length} return · ${selfLoops.length} self-loop`,
       weakEdges > 0
         ? `${weakEdges} edge${weakEdges === 1 ? "" : "s"} below P<${WEAK_EDGE_PROB} shown faded`
@@ -2028,9 +2026,6 @@ export function createGraphController({
       `${isolated} isolated node${isolated === 1 ? "" : "s"}` +
         (usedRankData ? " · direction from sequence rank" : " · direction from layout (legacy payload)"),
     ];
-
-    // First paint: session-only edges stay hidden until a session is chosen.
-    applySessionOnlyVisibility();
 
 
     const nIntroduced = enrichedLinks.filter((l) => l.is_introduced).length;
@@ -2469,35 +2464,8 @@ export function createGraphController({
     svg.selectAll("text.prob-label textPath").text((d) => currentProbLabel(d));
   }
 
-  // ───────────────────────────────────────────────────────────────────────
-  // session_only edges
-  //
-  // A session's own walk is a SEQUENCE, so it can never contain a node with
-  // no neighbour — that is true by definition, not by observation. When the
-  // merged graph's support threshold drops a transition only one session
-  // made, highlighting that session strands the node. The pipeline therefore
-  // keeps those edges and flags them.
-  //
-  // But they are not part of the shared structure, so they do not belong in
-  // the merged picture: on P03_R03 they would take it from 63 edges to 116.
-  // They appear only while their own session is highlighted.
-  // ───────────────────────────────────────────────────────────────────────
-  function sessionOnlyVisible(d) {
-    if (!d || !d.session_only) return true;
-    const i = activeSessionForStats;
-    if (i === null || i === undefined) return false;
-    const psc = d.per_session_counts || {};
-    return Number(psc[i] || psc[String(i)] || 0) > 0;
-  }
-
-  function applySessionOnlyVisibility() {
-    svg.selectAll("#zoomGroup .link, #zoomGroup .edge-prob-text")
-      .style("display", (d) => sessionOnlyVisible(d) ? null : "none");
-  }
-
   function applyHighlightState() {
     refreshProbLabels();
-    applySessionOnlyVisibility();
     if (!activeHighlight) {
       resetHighlight();
       return;
@@ -2660,7 +2628,6 @@ export function createGraphController({
     // Back to the merged view: the edge labels must go back to merged numbers.
     activeSessionForStats = null;
     refreshProbLabels();
-    applySessionOnlyVisibility();
     if (!nodeSelection || !linkSelection) return;
     
     nodeSelection.each(function(d) {
