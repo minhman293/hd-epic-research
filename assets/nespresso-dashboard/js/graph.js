@@ -615,10 +615,17 @@ function getNodeLabel(node, mode) {
 
 function getNodeSubtitle(node, mode) {
   // In episode and step modes the label is already drawn as two lines —
-  // verb on top, noun beneath. Adding the subtitle printed the noun a second
-  // time directly under itself.
-  if (node.isSpecial || mode === "abstracted" || mode.startsWith("hybrid")
-      || PRETHINNED_MODES.includes(mode)) return "";
+  // verb on top, noun beneath. Adding the noun again would print it twice.
+  //
+  // What IS worth adding on the episode layer is the episode's SIZE. A node
+  // called press(appliances) may hold eight actions, of which only one is a
+  // press; without the count it reads as a single action. Measured verb
+  // purity is 0.32-0.39, so the name describes a minority of its contents.
+  if (node.isSpecial || mode === "abstracted" || mode.startsWith("hybrid")) return "";
+  if (mode === "episode" && node.mean_members > 1) {
+    return `${node.mean_members} actions`;
+  }
+  if (PRETHINNED_MODES.includes(mode)) return "";
   const match = node.id.match(/\((.+)\)/);
   return match ? match[1] : "";
 }
@@ -2239,6 +2246,11 @@ export function createGraphController({
 
   function showNodeTooltip(event, d, graphMode) {
     const stats = nodeDurationStatsCache?.[d.id];
+    const escapeHtml = (value) => String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\"/g, "&quot;");
     const lines = [`${d.id}`, `Count: ${d.count}`];
 
     if (d.support !== undefined && d.n_sessions !== undefined) {
@@ -2253,7 +2265,7 @@ export function createGraphController({
       lines.push(`One of the actions folded under this edge.`);
       lines.push(`Happened ${d.count} time${d.count === 1 ? "" : "s"} on this route.`);
       const t = document.getElementById("nodeTooltip");
-      t.textContent = lines.join("\n");
+      t.innerHTML = lines.map((line) => escapeHtml(line)).join("<br>");
       t.style.display = "block";
       t.style.left = (event.clientX + 12) + "px";
       t.style.top = (event.clientY - 10) + "px";
@@ -2315,7 +2327,35 @@ export function createGraphController({
     if (d.step_text) lines.push(`Step text: ${d.step_text}`);
 
     const tooltip = document.getElementById("nodeTooltip");
-    tooltip.textContent = lines.join("\n");
+    let html = lines.map((line) => escapeHtml(line)).join("<br>");
+
+    // What is inside this episode. The label names only the goal action;
+    // these are the support actions that served it.
+    if (d.verb_categories && Object.keys(d.verb_categories).length) {
+      const total = Object.values(d.verb_categories).reduce((a, b) => a + b, 0);
+      const rows = Object.entries(d.verb_categories)
+        .slice(0, 5)
+        .map(([cat, n]) => {
+          const pct = Math.round((n / total) * 100);
+          const bar = "█".repeat(Math.max(1, Math.round(pct / 8)));
+          const isGoal = cat === d.head_verb_category;
+          return `<div style="font-family:monospace;font-size:11px;
+                  ${isGoal ? "font-weight:700;color:#0f172a;" : "color:#64748b;"}">
+                  ${escapeHtml(cat).padEnd(11)} ${bar} ${pct}%${isGoal ? " ← goal" : ""}</div>`;
+        }).join("");
+      html += `<div style="margin-top:8px;border-top:1px solid #e2e8f0;padding-top:6px;">
+               <div style="font-size:11px;color:#475569;margin-bottom:3px;">
+               Contains ${d.mean_members} actions on average:</div>${rows}</div>`;
+    }
+
+    if (d.object_categories) {
+      const objs = Object.entries(d.object_categories).slice(0, 3)
+        .map(([o]) => escapeHtml(o)).join(", ");
+      html += `<div style="font-size:11px;color:#64748b;margin-top:4px;">
+               Acts on: ${objs}</div>`;
+    }
+
+    tooltip.innerHTML = html;
     tooltip.style.display = "block";
     tooltip.style.left = (event.clientX + 12) + "px";
     tooltip.style.top = (event.clientY - 10) + "px";

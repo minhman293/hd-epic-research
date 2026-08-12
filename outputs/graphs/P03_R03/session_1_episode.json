@@ -12592,6 +12592,280 @@
   ],
   "note": "Purity = share of an episode's members whose verb/noun category matches the head action that names it. Low purity means the label describes one member, not the group."
  },
+ "episode_structure": {
+  "head_is_modal_verb": 0.384,
+  "anchor_position_mean": 0.445,
+  "anchor_position_sd": 0.361,
+  "internal_consistency": 0.34,
+  "n_repeated_labels": 40,
+  "most_consistent": [
+   {
+    "label": "pull(furniture)",
+    "mean_distance": 0.25,
+    "occurrences": 4,
+    "consistency": 0.75
+   },
+   {
+    "label": "wash(cleaning equipment and material)",
+    "mean_distance": 0.381,
+    "occurrences": 4,
+    "consistency": 0.619
+   },
+   {
+    "label": "squeeze(cleaning equipment and material)",
+    "mean_distance": 0.383,
+    "occurrences": 5,
+    "consistency": 0.617
+   },
+   {
+    "label": "reach(containers)",
+    "mean_distance": 0.4,
+    "occurrences": 2,
+    "consistency": 0.6
+   },
+   {
+    "label": "lift(appliances)",
+    "mean_distance": 0.424,
+    "occurrences": 4,
+    "consistency": 0.576
+   }
+  ],
+  "least_consistent": [
+   {
+    "label": "press(appliances)",
+    "mean_distance": 0.817,
+    "occurrences": 4,
+    "consistency": 0.183
+   },
+   {
+    "label": "dry(hand)",
+    "mean_distance": 0.841,
+    "occurrences": 3,
+    "consistency": 0.159
+   },
+   {
+    "label": "manipulate(crockery)",
+    "mean_distance": 0.857,
+    "occurrences": 3,
+    "consistency": 0.143
+   },
+   {
+    "label": "shake(containers)",
+    "mean_distance": 1.0,
+    "occurrences": 2,
+    "consistency": 0.0
+   },
+   {
+    "label": "merge(containers)",
+    "mean_distance": 1.0,
+    "occurrences": 2,
+    "consistency": 0.0
+   }
+  ],
+  "per_label": {
+   "open(containers)": {
+    "mean_distance": 0.566,
+    "occurrences": 4,
+    "consistency": 0.434
+   },
+   "slide(containers)": {
+    "mean_distance": 0.714,
+    "occurrences": 2,
+    "consistency": 0.286
+   },
+   "wash(cutlery)": {
+    "mean_distance": 0.488,
+    "occurrences": 4,
+    "consistency": 0.512
+   },
+   "clean(cutlery)": {
+    "mean_distance": 0.6,
+    "occurrences": 2,
+    "consistency": 0.4
+   },
+   "scoop(drinks)": {
+    "mean_distance": 0.556,
+    "occurrences": 2,
+    "consistency": 0.444
+   },
+   "shake(appliances)": {
+    "mean_distance": 0.755,
+    "occurrences": 5,
+    "consistency": 0.245
+   },
+   "open(storage)": {
+    "mean_distance": 0.757,
+    "occurrences": 3,
+    "consistency": 0.243
+   },
+   "attach(utensils)": {
+    "mean_distance": 0.632,
+    "occurrences": 2,
+    "consistency": 0.368
+   },
+   "press(containers)": {
+    "mean_distance": 0.714,
+    "occurrences": 7,
+    "consistency": 0.286
+   },
+   "pull(containers)": {
+    "mean_distance": 0.802,
+    "occurrences": 4,
+    "consistency": 0.198
+   },
+   "pull(furniture)": {
+    "mean_distance": 0.25,
+    "occurrences": 4,
+    "consistency": 0.75
+   },
+   "pull(appliances)": {
+    "mean_distance": 0.746,
+    "occurrences": 3,
+    "consistency": 0.254
+   },
+   "shake(containers)": {
+    "mean_distance": 1.0,
+    "occurrences": 2,
+    "consistency": 0.0
+   },
+   "merge(containers)": {
+    "mean_distance": 1.0,
+    "occurrences": 2,
+    "consistency": 0.0
+   },
+   "wash(cleaning equipment and material)": {
+    "mean_distance": 0.381,
+    "occurrences": 4,
+    "consistency": 0.619
+   },
+   "squeeze(cleaning equipment and material)": {
+    "mean_distance": 0.383,
+    "occurrences": 5,
+    "consistency": 0.617
+   },
+   "shake(cleaning equipment and material)": {
+    "mean_distance": 0.667,
+    "occurrences": 3,
+    "consistency": 0.333
+   },
+   "wash(furniture)": {
+    "mean_distance": 0.697,
+    "occurrences": 7,
+    "consistency": 0.303
+   },
+   "dry(hand)": {
+    "mean_distance": 0.841,
+    "occurrences": 3,
+    "consistency": 0.159
+   },
+   "leave(cleaning equipment and material)": {
+    "mean_distance": 0.708,
+    "occurrences": 4,
+    "consistency": 0.292
+   },
+   "pull(storage)": {
+    "mean_distance": 0.686,
+    "occurrences": 15,
+    "consistency": 0.314
+   },
+   "press(storage)": {
+    "mean_distance": 0.704,
+    "occurrences": 6,
+    "consistency": 0.296
+   },
+   "take(crockery)": {
+    "mean_distance": 0.651,
+    "occurrences": 3,
+    "consistency": 0.349
+   },
+   "put(crockery)": {
+    "mean_distance": 0.769,
+    "occurrences": 2,
+    "consistency": 0.231
+   },
+   "slide(crockery)": {
+    "mean_distance": 0.714,
+    "occurrences": 3,
+    "consistency": 0.286
+   },
+   "clean(crockery)": {
+    "mean_distance": 0.667,
+    "occurrences": 5,
+    "consistency": 0.333
+   },
+   "manipulate(crockery)": {
+    "mean_distance": 0.857,
+    "occurrences": 3,
+    "consistency": 0.143
+   },
+   "press(crockery)": {
+    "mean_distance": 0.722,
+    "occurrences": 4,
+    "consistency": 0.278
+   },
+   "pour(drinks)": {
+    "mean_distance": 0.609,
+    "occurrences": 16,
+    "consistency": 0.391
+   },
+   "reach(containers)": {
+    "mean_distance": 0.4,
+    "occurrences": 2,
+    "consistency": 0.6
+   },
+   "press(appliances)": {
+    "mean_distance": 0.817,
+    "occurrences": 4,
+    "consistency": 0.183
+   },
+   "manipulate(containers)": {
+    "mean_distance": 0.8,
+    "occurrences": 2,
+    "consistency": 0.2
+   },
+   "fill(appliances)": {
+    "mean_distance": 0.571,
+    "occurrences": 2,
+    "consistency": 0.429
+   },
+   "retrieve(cutlery)": {
+    "mean_distance": 0.571,
+    "occurrences": 3,
+    "consistency": 0.429
+   },
+   "block(containers)": {
+    "mean_distance": 0.75,
+    "occurrences": 2,
+    "consistency": 0.25
+   },
+   "shake(cutlery)": {
+    "mean_distance": 0.5,
+    "occurrences": 3,
+    "consistency": 0.5
+   },
+   "access(materials)": {
+    "mean_distance": 0.5,
+    "occurrences": 2,
+    "consistency": 0.5
+   },
+   "lift(appliances)": {
+    "mean_distance": 0.424,
+    "occurrences": 4,
+    "consistency": 0.576
+   },
+   "squeeze(containers)": {
+    "mean_distance": 0.756,
+    "occurrences": 3,
+    "consistency": 0.244
+   },
+   "manipulate(cleaning equipment and material)": {
+    "mean_distance": 0.667,
+    "occurrences": 2,
+    "consistency": 0.333
+   }
+  },
+  "note": "consistency = 1 - mean normalised edit distance between the verb-category sequences of episodes sharing a label. 1.0 = identical routine every time (a skill); 0.0 = unrelated contents under one name."
+ },
  "likely_path": [
   "START",
   "merge(containers)",

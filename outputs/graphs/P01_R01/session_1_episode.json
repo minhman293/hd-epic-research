@@ -2995,6 +2995,125 @@
   ],
   "note": "Purity = share of an episode's members whose verb/noun category matches the head action that names it. Low purity means the label describes one member, not the group."
  },
+ "episode_structure": {
+  "head_is_modal_verb": 0.31,
+  "anchor_position_mean": 0.439,
+  "anchor_position_sd": 0.348,
+  "internal_consistency": 0.307,
+  "n_repeated_labels": 9,
+  "most_consistent": [
+   {
+    "label": "shake(cutlery)",
+    "mean_distance": 0.5,
+    "occurrences": 2,
+    "consistency": 0.5
+   },
+   {
+    "label": "wash(dairy and eggs)",
+    "mean_distance": 0.568,
+    "occurrences": 3,
+    "consistency": 0.432
+   },
+   {
+    "label": "mix(drinks)",
+    "mean_distance": 0.625,
+    "occurrences": 3,
+    "consistency": 0.375
+   },
+   {
+    "label": "turn(crockery)",
+    "mean_distance": 0.694,
+    "occurrences": 3,
+    "consistency": 0.306
+   },
+   {
+    "label": "pour(dairy and eggs)",
+    "mean_distance": 0.7,
+    "occurrences": 4,
+    "consistency": 0.3
+   }
+  ],
+  "least_consistent": [
+   {
+    "label": "pour(dairy and eggs)",
+    "mean_distance": 0.7,
+    "occurrences": 4,
+    "consistency": 0.3
+   },
+   {
+    "label": "manipulate(drinks)",
+    "mean_distance": 0.75,
+    "occurrences": 2,
+    "consistency": 0.25
+   },
+   {
+    "label": "turn(containers)",
+    "mean_distance": 0.75,
+    "occurrences": 2,
+    "consistency": 0.25
+   },
+   {
+    "label": "press(appliances)",
+    "mean_distance": 0.773,
+    "occurrences": 6,
+    "consistency": 0.227
+   },
+   {
+    "label": "manipulate(dairy and eggs)",
+    "mean_distance": 0.878,
+    "occurrences": 3,
+    "consistency": 0.122
+   }
+  ],
+  "per_label": {
+   "turn(crockery)": {
+    "mean_distance": 0.694,
+    "occurrences": 3,
+    "consistency": 0.306
+   },
+   "press(appliances)": {
+    "mean_distance": 0.773,
+    "occurrences": 6,
+    "consistency": 0.227
+   },
+   "manipulate(drinks)": {
+    "mean_distance": 0.75,
+    "occurrences": 2,
+    "consistency": 0.25
+   },
+   "manipulate(dairy and eggs)": {
+    "mean_distance": 0.878,
+    "occurrences": 3,
+    "consistency": 0.122
+   },
+   "turn(containers)": {
+    "mean_distance": 0.75,
+    "occurrences": 2,
+    "consistency": 0.25
+   },
+   "mix(drinks)": {
+    "mean_distance": 0.625,
+    "occurrences": 3,
+    "consistency": 0.375
+   },
+   "shake(cutlery)": {
+    "mean_distance": 0.5,
+    "occurrences": 2,
+    "consistency": 0.5
+   },
+   "pour(dairy and eggs)": {
+    "mean_distance": 0.7,
+    "occurrences": 4,
+    "consistency": 0.3
+   },
+   "wash(dairy and eggs)": {
+    "mean_distance": 0.568,
+    "occurrences": 3,
+    "consistency": 0.432
+   }
+  },
+  "note": "consistency = 1 - mean normalised edit distance between the verb-category sequences of episodes sharing a label. 1.0 = identical routine every time (a skill); 0.0 = unrelated contents under one name."
+ },
  "likely_path": [
   "START",
   "turn(crockery)",

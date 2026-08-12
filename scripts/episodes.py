@@ -395,6 +395,18 @@ def build_graph(sessions: dict, cfg: Config | None = None) -> dict:
             "self_loop": self_loops.get(label, 0),
             "verbs": dict(collections.Counter(m["_vkey"] for m in node_members[label])),
             "objects": dict(collections.Counter(m["_nkey"] for m in node_members[label])),
+            # Verb-CATEGORY breakdown. `verbs` above is by verb key (take,
+            # remove, scoop separately); the category is what a reader needs
+            # to see the shape of the episode at a glance.
+            "verb_categories": dict(collections.Counter(
+                m["_vcat"] for m in node_members[label]).most_common()),
+            "object_categories": dict(collections.Counter(
+                m["_ncat"] for m in node_members[label]).most_common(5)),
+            "mean_members": round(
+                len(node_members[label]) / max(1, count), 1),
+            "head_verb_category": (
+                collections.Counter(m["_vcat"] for m in node_members[label])
+                .most_common(1)[0][0] if node_members[label] else None),
             "rolled_up": any(getattr(m, "rolled_up", False) for m in []) or label.split()[0] in (TRANSFORM | LOGISTIC | NEUTRAL),
         })
     nodes.sort(key=lambda n: n["mean_onset"])
@@ -541,4 +553,87 @@ def label_faithfulness(sessions: dict) -> dict:
         "note": ("Purity = share of an episode's members whose verb/noun "
                  "category matches the head action that names it. Low purity "
                  "means the label describes one member, not the group."),
+    }
+
+def episode_structure(sessions: dict) -> dict:
+    """Is an episode a SKILL (consistent internal routine) or just a NAME?
+
+    Three questions, none of which needs any annotation:
+
+      1. Is the head's verb category even the most common one inside the
+         episode? Purity says how much matches; this says whether the name
+         describes the majority or a minority.
+      2. When the same label occurs several times, does it contain the same
+         routine each time? Consistent internals = a reusable skill.
+      3. Does the goal action sit at a consistent position? A stable
+         "support first, goal last" shape means the grouping found structure
+         rather than cutting the stream arbitrarily.
+    """
+    import statistics
+
+    # ---- 1. is the head verb the modal verb? -------------------------------
+    modal_hits, anchor_pos = [], []
+    for eps in sessions.values():
+        for e in eps:
+            if not e.members or not e.head:
+                continue
+            vc = collections.Counter(m["_vcat"] for m in e.members)
+            modal_hits.append(1.0 if vc.most_common(1)[0][0] == e.head["_vcat"] else 0.0)
+            if len(e.members) > 1:
+                try:
+                    idx = e.members.index(e.head)
+                except ValueError:
+                    continue
+                anchor_pos.append(idx / (len(e.members) - 1))
+
+    # ---- 2. internal consistency across occurrences ------------------------
+    def _edit(a, b):
+        """Normalised Levenshtein over verb-category sequences."""
+        if not a and not b:
+            return 0.0
+        prev = list(range(len(b) + 1))
+        for i, x in enumerate(a, 1):
+            cur = [i]
+            for j, y in enumerate(b, 1):
+                cur.append(min(prev[j] + 1, cur[j - 1] + 1,
+                               prev[j - 1] + (x != y)))
+            prev = cur
+        return prev[-1] / max(len(a), len(b))
+
+    by_label = collections.defaultdict(list)
+    for eps in sessions.values():
+        for e in eps:
+            if e.members:
+                by_label[e.label].append([m["_vcat"] for m in e.members])
+
+    per_label, repeated = {}, []
+    for lab, seqs in by_label.items():
+        if len(seqs) < 2:
+            continue
+        ds = [_edit(seqs[i], seqs[j])
+              for i in range(len(seqs)) for j in range(i + 1, len(seqs))]
+        d = round(sum(ds) / len(ds), 3)
+        per_label[lab] = {"mean_distance": d, "occurrences": len(seqs),
+                          "consistency": round(1 - d, 3)}
+        repeated.append(d)
+
+    ranked = sorted(per_label.items(), key=lambda kv: kv[1]["mean_distance"])
+
+    return {
+        "head_is_modal_verb": round(sum(modal_hits) / len(modal_hits), 3)
+                              if modal_hits else 0.0,
+        "anchor_position_mean": round(statistics.mean(anchor_pos), 3)
+                                if anchor_pos else None,
+        "anchor_position_sd": round(statistics.pstdev(anchor_pos), 3)
+                              if len(anchor_pos) > 1 else None,
+        "internal_consistency": round(1 - sum(repeated) / len(repeated), 3)
+                                if repeated else None,
+        "n_repeated_labels": len(per_label),
+        "most_consistent": [{"label": k, **v} for k, v in ranked[:5]],
+        "least_consistent": [{"label": k, **v} for k, v in ranked[-5:]],
+        "per_label": per_label,
+        "note": ("consistency = 1 - mean normalised edit distance between the "
+                 "verb-category sequences of episodes sharing a label. 1.0 = "
+                 "identical routine every time (a skill); 0.0 = unrelated "
+                 "contents under one name."),
     }

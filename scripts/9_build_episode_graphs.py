@@ -32,7 +32,8 @@ import json
 from pathlib import Path
 
 from episodes import (Config, segment, apply_rollup, fold_one_offs,
-                      label_faithfulness, TRANSPARENT_NOUNS)
+                      label_faithfulness, episode_structure,
+                      TRANSPARENT_NOUNS)
 
 from spine_verdict import spine_with_verdict, compare_layers
 from likely_path import likely_path_block, build_expansions
@@ -508,6 +509,25 @@ def build(recipe_id, graphs_dir, narr_dir, cfg):
             f"×{r['occurrences']}")
     print()
 
+    struct = episode_structure(sessions)
+    print(f"  EPISODE STRUCTURE — is this a skill or just a name?")
+    print(f"    head verb is modal    {struct['head_is_modal_verb']:.2f}  "
+          f"(is the name even the most common verb inside?)")
+    if struct["anchor_position_mean"] is not None:
+        print(f"    goal position         {struct['anchor_position_mean']:.2f} "
+              f"± {struct['anchor_position_sd']:.2f}  "
+              f"(0 = goal first, 1 = goal last)")
+    if struct["internal_consistency"] is not None:
+        print(f"    internal consistency  {struct['internal_consistency']:.2f}  "
+              f"across {struct['n_repeated_labels']} repeated labels")
+        print(f"    most consistent:")
+        for r in struct["most_consistent"][:3]:
+            print(f"      {r['label']:<34} {r['consistency']:.2f}  ×{r['occurrences']}")
+        print(f"    least consistent:")
+        for r in struct["least_consistent"][-3:]:
+            print(f"      {r['label']:<34} {r['consistency']:.2f}  ×{r['occurrences']}")
+    print()
+
     print(f"{'session':>8}{'actions':>9}{'in span':>9}{'episodes':>10}{'coverage':>10}")
     for (f, d, span, n_all, n_sc) in docs:
         s = int(f.stem.split("_")[1])
@@ -536,6 +556,7 @@ def build(recipe_id, graphs_dir, narr_dir, cfg):
             "graph": g,
             "episode_report": rep,
             "label_audit": audit,
+            "episode_structure": struct,
             **likely_path_block(g["nodes"], g["links"], {s: sessions[s]}),
             "expansions": build_expansions({s: sessions[s]}),
         }
@@ -556,6 +577,7 @@ def build(recipe_id, graphs_dir, narr_dir, cfg):
         "graph": g,
         "episode_report": rep,
         "label_audit": audit,
+        "episode_structure": struct,
     }
     spine = spine_with_verdict(session_payloads, g["nodes"], g["links"],
                                layer="episode")
