@@ -15,21 +15,21 @@
     {
       "index": 0,
       "video_id": "P01-20240202-110250",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P01-20240202-110250.mp4",
+      "video_path": "raw-video/P01-20240202-110250.mp4",
       "action_count": 224,
       "duration_s": 394.72
     },
     {
       "index": 1,
       "video_id": "P01-20240203-093333",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P01-20240203-093333.mp4",
+      "video_path": "raw-video/P01-20240203-093333.mp4",
       "action_count": 68,
       "duration_s": 152.93
     },
     {
       "index": 2,
       "video_id": "P01-20240204-095114",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P01-20240204-095114.mp4",
+      "video_path": "raw-video/P01-20240204-095114.mp4",
       "action_count": 81,
       "duration_s": 164.47
     }
@@ -11475,13 +11475,11 @@
     "loops": [
       [
         "clean",
-        "manipulate",
         "leave",
         "clean"
       ],
       [
         "clean",
-        "manipulate",
         "leave",
         "sense",
         "retrieve",
@@ -11489,14 +11487,20 @@
       ],
       [
         "clean",
-        "manipulate",
+        "leave",
+        "sense",
+        "retrieve",
+        "access",
+        "clean"
+      ],
+      [
+        "clean",
         "leave",
         "access",
         "clean"
       ],
       [
         "clean",
-        "manipulate",
         "leave",
         "access",
         "retrieve",
@@ -11504,59 +11508,15 @@
       ],
       [
         "clean",
-        "manipulate",
         "leave",
-        "block",
+        "access",
+        "manipulate",
         "retrieve",
         "clean"
       ],
       [
         "clean",
-        "manipulate",
         "leave",
-        "block",
-        "access",
-        "clean"
-      ],
-      [
-        "clean",
-        "manipulate",
-        "leave",
-        "retrieve",
-        "clean"
-      ],
-      [
-        "clean",
-        "manipulate",
-        "access",
-        "clean"
-      ],
-      [
-        "clean",
-        "manipulate",
-        "access",
-        "merge",
-        "leave",
-        "clean"
-      ],
-      [
-        "clean",
-        "manipulate",
-        "access",
-        "merge",
-        "retrieve",
-        "clean"
-      ],
-      [
-        "clean",
-        "manipulate",
-        "access",
-        "retrieve",
-        "clean"
-      ],
-      [
-        "clean",
-        "manipulate",
         "access",
         "transition",
         "retrieve",
@@ -11564,13 +11524,21 @@
       ],
       [
         "clean",
-        "manipulate",
+        "leave",
+        "access",
+        "merge",
         "retrieve",
         "clean"
       ],
       [
         "clean",
-        "manipulate",
+        "leave",
+        "retrieve",
+        "clean"
+      ],
+      [
+        "clean",
+        "leave",
         "retrieve",
         "block",
         "access",
@@ -11578,44 +11546,74 @@
       ],
       [
         "clean",
+        "leave",
+        "manipulate",
+        "access",
+        "clean"
+      ],
+      [
+        "clean",
+        "leave",
         "manipulate",
         "retrieve",
+        "clean"
+      ],
+      [
+        "clean",
+        "leave",
+        "block",
+        "access",
+        "clean"
+      ],
+      [
+        "clean",
+        "leave",
+        "block",
+        "manipulate",
+        "access",
+        "clean"
+      ],
+      [
+        "clean",
+        "leave",
+        "block",
+        "manipulate",
+        "retrieve",
+        "clean"
+      ],
+      [
+        "clean",
+        "leave",
+        "block",
+        "retrieve",
+        "clean"
+      ],
+      [
+        "clean",
+        "leave",
+        "block",
+        "transition",
+        "retrieve",
+        "clean"
+      ],
+      [
+        "clean",
+        "retrieve",
+        "clean"
+      ],
+      [
+        "clean",
+        "retrieve",
         "merge",
         "leave",
         "clean"
       ],
       [
         "clean",
-        "leave",
-        "clean"
-      ],
-      [
-        "clean",
-        "leave",
-        "sense",
         "retrieve",
-        "clean"
-      ],
-      [
-        "clean",
-        "leave",
-        "sense",
-        "retrieve",
-        "access",
-        "clean"
-      ],
-      [
-        "clean",
-        "leave",
-        "access",
-        "clean"
-      ],
-      [
-        "clean",
-        "leave",
-        "access",
         "merge",
-        "retrieve",
+        "block",
+        "access",
         "clean"
       ]
     ],

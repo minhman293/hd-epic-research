@@ -4,7 +4,7 @@
     "name": "Drip Coffee",
     "session_index": 3,
     "video_id": "P03-20240218-144430",
-    "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240218-144430.mp4",
+    "video_path": "raw-video/P03-20240218-144430.mp4",
     "narration_count": 417,
     "n_videos": 1,
     "total_capture_duration_s": 875.733333
@@ -12,7 +12,7 @@
   "videos": [
     {
       "video_id": "P03-20240218-144430",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240218-144430.mp4",
+      "video_path": "raw-video/P03-20240218-144430.mp4",
       "offset_s": 0.0,
       "duration_s": 875.733333
     }
@@ -700,8 +700,8 @@
       "start": 45.81,
       "end": 46.53,
       "duration": 0.7199999999999989,
-      "next_action": "open(dishwasher)",
-      "edge_key": "sort(bowl)|||open(dishwasher)",
+      "next_action": "put(bowl)",
+      "edge_key": "sort(bowl)|||put(bowl)",
       "step_id": null,
       "is_primary": false,
       "in_window_scope": false,
@@ -716,32 +716,12 @@
     },
     {
       "index": 24,
-      "action": "open",
-      "start": 49.2,
-      "end": 50.81,
-      "duration": 1.6099999999999994,
-      "next_action": "put(bowl)",
-      "edge_key": "open(dishwasher)|||put(bowl)",
-      "step_id": null,
-      "is_primary": false,
-      "in_window_scope": false,
-      "in_span_scope": false,
-      "phase": null,
-      "verb_class": 3,
-      "noun_class": 70,
-      "video_id": "P03-20240218-144430",
-      "video_start": 49.2,
-      "video_end": 50.81,
-      "raw_action": "open(dishwasher)"
-    },
-    {
-      "index": 25,
       "action": "put",
       "start": 49.2,
       "end": 49.62,
       "duration": 0.4199999999999946,
-      "next_action": "pull(rack:drying)",
-      "edge_key": "put(bowl)|||pull(rack:drying)",
+      "next_action": "open(dishwasher)",
+      "edge_key": "put(bowl)|||open(dishwasher)",
       "step_id": null,
       "is_primary": false,
       "in_window_scope": false,
@@ -753,6 +733,26 @@
       "video_start": 49.2,
       "video_end": 49.62,
       "raw_action": "put(bowl)"
+    },
+    {
+      "index": 25,
+      "action": "open",
+      "start": 49.2,
+      "end": 50.81,
+      "duration": 1.6099999999999994,
+      "next_action": "pull(rack:drying)",
+      "edge_key": "open(dishwasher)|||pull(rack:drying)",
+      "step_id": null,
+      "is_primary": false,
+      "in_window_scope": false,
+      "in_span_scope": false,
+      "phase": null,
+      "verb_class": 3,
+      "noun_class": 70,
+      "video_id": "P03-20240218-144430",
+      "video_start": 49.2,
+      "video_end": 50.81,
+      "raw_action": "open(dishwasher)"
     },
     {
       "index": 26,
@@ -9294,6 +9294,21 @@
         ]
       },
       {
+        "source": "put",
+        "target": "open",
+        "count": 6,
+        "probability": 0.1034,
+        "key": "put|||open",
+        "occurrences": [
+          24,
+          100,
+          123,
+          284,
+          299,
+          396
+        ]
+      },
+      {
         "source": "take",
         "target": "move",
         "count": 6,
@@ -9353,34 +9368,6 @@
         ]
       },
       {
-        "source": "open",
-        "target": "put",
-        "count": 5,
-        "probability": 0.2083,
-        "key": "open|||put",
-        "occurrences": [
-          24,
-          96,
-          152,
-          300,
-          369
-        ]
-      },
-      {
-        "source": "put",
-        "target": "open",
-        "count": 5,
-        "probability": 0.0862,
-        "key": "put|||open",
-        "occurrences": [
-          100,
-          123,
-          284,
-          299,
-          396
-        ]
-      },
-      {
         "source": "take",
         "target": "wash",
         "count": 5,
@@ -9418,6 +9405,19 @@
           139,
           390,
           403
+        ]
+      },
+      {
+        "source": "open",
+        "target": "put",
+        "count": 4,
+        "probability": 0.1667,
+        "key": "open|||put",
+        "occurrences": [
+          96,
+          152,
+          300,
+          369
         ]
       },
       {
@@ -9554,18 +9554,6 @@
           159,
           203,
           322
-        ]
-      },
-      {
-        "source": "put",
-        "target": "pull",
-        "count": 3,
-        "probability": 0.0517,
-        "key": "put|||pull",
-        "occurrences": [
-          25,
-          158,
-          206
         ]
       },
       {
@@ -9795,6 +9783,17 @@
         "occurrences": [
           37,
           54
+        ]
+      },
+      {
+        "source": "put",
+        "target": "pull",
+        "count": 2,
+        "probability": 0.0345,
+        "key": "put|||pull",
+        "occurrences": [
+          158,
+          206
         ]
       },
       {
@@ -10445,6 +10444,16 @@
       },
       {
         "source": "open",
+        "target": "pull",
+        "count": 1,
+        "probability": 0.0417,
+        "key": "open|||pull",
+        "occurrences": [
+          25
+        ]
+      },
+      {
+        "source": "open",
         "target": "squeeze",
         "count": 1,
         "probability": 0.0417,
@@ -10825,10 +10834,10 @@
       },
       {
         "source": "sort",
-        "target": "open",
+        "target": "put",
         "count": 1,
         "probability": 0.3333,
-        "key": "sort|||open",
+        "key": "sort|||put",
         "occurrences": [
           23
         ]

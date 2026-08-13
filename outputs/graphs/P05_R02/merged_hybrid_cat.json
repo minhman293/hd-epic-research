@@ -15,21 +15,21 @@
     {
       "index": 0,
       "video_id": "P05-20240424-085204",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P05-20240424-085204.mp4",
+      "video_path": "raw-video/P05-20240424-085204.mp4",
       "action_count": 150,
       "duration_s": 438.79
     },
     {
       "index": 1,
       "video_id": "P05-20240425-082420",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P05-20240425-082420.mp4",
+      "video_path": "raw-video/P05-20240425-082420.mp4",
       "action_count": 182,
       "duration_s": 499.4
     },
     {
       "index": 2,
       "video_id": "P05-20240426-085333",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P05-20240426-085333.mp4",
+      "video_path": "raw-video/P05-20240426-085333.mp4",
       "action_count": 265,
       "duration_s": 644.53
     }
@@ -37807,154 +37807,153 @@
     "session_shared_suffix": [],
     "loops": [
       [
-        "access(furniture)",
-        "leave",
-        "block(furniture)",
-        "block(storage)",
-        "retrieve(cutlery)",
-        "access(furniture)"
+        "leave(containers)",
+        "retrieve(containers)",
+        "leave(containers)"
       ],
       [
-        "access(furniture)",
-        "leave",
-        "block(storage)",
-        "manipulate(appliances)",
-        "retrieve(cutlery)",
-        "access(furniture)"
+        "leave(containers)",
+        "retrieve(containers)",
+        "manipulate",
+        "leave(containers)"
       ],
       [
-        "access(furniture)",
-        "leave",
-        "block(storage)",
-        "retrieve(cutlery)",
-        "access(furniture)"
+        "leave(containers)",
+        "retrieve(containers)",
+        "leave(fruits and nuts)",
+        "leave(containers)"
       ],
       [
-        "access(furniture)",
-        "leave",
-        "retrieve(crockery)",
-        "sense(drinks)",
-        "leave(crockery)",
-        "access(furniture)"
-      ],
-      [
-        "access(furniture)",
-        "leave",
-        "retrieve(crockery)",
-        "leave(crockery)",
-        "access(furniture)"
-      ],
-      [
-        "access(furniture)",
-        "leave",
-        "retrieve(crockery)",
-        "leave(crockery)",
-        "retrieve",
-        "access(furniture)"
-      ],
-      [
-        "access(furniture)",
-        "leave",
-        "retrieve(crockery)",
-        "retrieve(cutlery)",
-        "access(furniture)"
-      ],
-      [
-        "access(furniture)",
-        "leave",
-        "retrieve(crockery)",
-        "leave(baked goods and grains)",
-        "retrieve(cutlery)",
-        "access(furniture)"
-      ],
-      [
-        "access(furniture)",
-        "retrieve",
-        "access(furniture)"
-      ],
-      [
-        "access(furniture)",
-        "retrieve",
-        "block(furniture)",
-        "block(storage)",
-        "retrieve(cutlery)",
-        "access(furniture)"
-      ],
-      [
-        "access(furniture)",
+        "leave(containers)",
+        "retrieve(containers)",
+        "leave(fruits and nuts)",
         "retrieve",
         "manipulate",
+        "leave(containers)"
+      ],
+      [
+        "leave(containers)",
+        "retrieve(containers)",
+        "leave(fruits and nuts)",
+        "block(appliances)",
+        "manipulate",
+        "leave(containers)"
+      ],
+      [
         "leave(containers)",
         "retrieve(cutlery)",
-        "access(furniture)"
-      ],
-      [
-        "access(furniture)",
-        "retrieve(cutlery)",
-        "access(furniture)"
-      ],
-      [
-        "access(furniture)",
-        "retrieve(cutlery)",
         "leave(cutlery)",
-        "retrieve(crockery)",
-        "leave(crockery)",
-        "access(furniture)"
+        "access(appliances)",
+        "retrieve(containers)",
+        "leave(containers)"
       ],
       [
+        "leave(containers)",
+        "retrieve(cutlery)",
+        "block(furniture)",
+        "access(appliances)",
+        "retrieve(containers)",
+        "leave(containers)"
+      ],
+      [
+        "leave(containers)",
+        "retrieve(cutlery)",
         "access(furniture)",
         "merge(dairy and eggs)",
         "manipulate",
-        "leave(containers)",
-        "retrieve",
-        "access(furniture)"
+        "leave(containers)"
       ],
       [
+        "leave(containers)",
+        "retrieve(cutlery)",
+        "access(furniture)",
+        "retrieve",
+        "manipulate",
+        "leave(containers)"
+      ],
+      [
+        "leave(containers)",
+        "retrieve",
+        "manipulate",
+        "leave(containers)"
+      ],
+      [
+        "leave(containers)",
+        "retrieve",
+        "block(furniture)",
+        "access(appliances)",
+        "retrieve(containers)",
+        "leave(containers)"
+      ],
+      [
+        "leave(containers)",
+        "retrieve",
         "access(furniture)",
         "merge(dairy and eggs)",
         "manipulate",
+        "leave(containers)"
+      ],
+      [
         "leave(containers)",
-        "retrieve(cutlery)",
-        "access(furniture)"
+        "retrieve(crockery)",
+        "access(appliances)",
+        "retrieve(containers)",
+        "leave(containers)"
       ],
       [
-        "access(furniture)",
-        "leave(cutlery)",
+        "leave(containers)",
+        "retrieve(crockery)",
         "access(appliances)",
+        "retrieve(containers)",
+        "manipulate",
+        "leave(containers)"
+      ],
+      [
+        "leave(containers)",
+        "retrieve(crockery)",
+        "access(appliances)",
+        "retrieve(containers)",
+        "leave(fruits and nuts)",
+        "leave(containers)"
+      ],
+      [
+        "leave(containers)",
+        "retrieve(crockery)",
+        "access(appliances)",
+        "transition(baked goods and grains)",
+        "retrieve(containers)",
+        "leave(containers)"
+      ],
+      [
+        "leave(containers)",
+        "retrieve(crockery)",
+        "access(appliances)",
+        "block(appliances)",
+        "manipulate",
+        "leave(containers)"
+      ],
+      [
+        "leave(containers)",
         "retrieve(crockery)",
         "leave(crockery)",
-        "access(furniture)"
-      ],
-      [
-        "access(furniture)",
-        "leave(cutlery)",
         "access(appliances)",
+        "retrieve(containers)",
+        "leave(containers)"
+      ],
+      [
+        "leave(containers)",
         "retrieve(crockery)",
-        "retrieve(cutlery)",
-        "access(furniture)"
-      ],
-      [
-        "access(furniture)",
-        "leave(cutlery)",
-        "block(storage)",
-        "manipulate(appliances)",
-        "retrieve(cutlery)",
-        "access(furniture)"
-      ],
-      [
-        "access(furniture)",
-        "leave(cutlery)",
-        "block(storage)",
-        "retrieve(cutlery)",
-        "access(furniture)"
-      ],
-      [
-        "access(furniture)",
-        "leave(cutlery)",
-        "retrieve(crockery)",
-        "sense(drinks)",
         "leave(crockery)",
-        "access(furniture)"
+        "retrieve(containers)",
+        "leave(containers)"
+      ],
+      [
+        "leave(containers)",
+        "retrieve(crockery)",
+        "leave(crockery)",
+        "retrieve(containers)",
+        "manipulate",
+        "leave(containers)"
       ]
     ],
     "session_singleton_nodes": [

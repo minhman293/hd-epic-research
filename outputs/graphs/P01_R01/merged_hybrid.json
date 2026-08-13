@@ -15,21 +15,21 @@
     {
       "index": 0,
       "video_id": "P01-20240202-110250",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P01-20240202-110250.mp4",
+      "video_path": "raw-video/P01-20240202-110250.mp4",
       "action_count": 226,
       "duration_s": 394.72
     },
     {
       "index": 1,
       "video_id": "P01-20240203-093333",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P01-20240203-093333.mp4",
+      "video_path": "raw-video/P01-20240203-093333.mp4",
       "action_count": 70,
       "duration_s": 152.93
     },
     {
       "index": 2,
       "video_id": "P01-20240204-095114",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P01-20240204-095114.mp4",
+      "video_path": "raw-video/P01-20240204-095114.mp4",
       "action_count": 83,
       "duration_s": 164.47
     }
@@ -19879,81 +19879,81 @@
     "session_shared_suffix": [],
     "loops": [
       [
-        "open(furniture)",
         "leave",
-        "open(furniture)"
+        "open(furniture)",
+        "leave"
       ],
       [
-        "open(furniture)",
-        "retrieve",
         "leave",
-        "open(furniture)"
-      ],
-      [
         "open(furniture)",
         "retrieve",
-        "manipulate",
-        "leave",
-        "open(furniture)"
+        "leave"
       ],
       [
-        "close(appliances)",
+        "leave",
+        "open(furniture)",
+        "retrieve",
         "manipulate",
+        "leave"
+      ],
+      [
         "leave",
         "clean",
-        "close(appliances)"
-      ],
-      [
         "close(appliances)",
         "manipulate",
-        "leave",
-        "open(appliances)",
-        "clean",
-        "close(appliances)"
+        "leave"
       ],
       [
-        "close(appliances)",
-        "manipulate",
         "leave",
         "open(appliances)",
         "take(containers)",
-        "close(appliances)"
-      ],
-      [
         "close(appliances)",
         "manipulate",
+        "leave"
+      ],
+      [
         "leave",
         "open(appliances)",
-        "put(containers)",
-        "close(appliances)"
-      ],
-      [
-        "close(appliances)",
-        "manipulate",
-        "open(appliances)",
         "clean",
-        "close(appliances)"
-      ],
-      [
         "close(appliances)",
         "manipulate",
-        "open(appliances)",
-        "take(containers)",
-        "close(appliances)"
+        "leave"
       ],
       [
-        "close(appliances)",
-        "manipulate",
-        "open(appliances)",
-        "put(containers)",
-        "close(appliances)"
-      ],
-      [
+        "leave",
         "open(appliances)",
         "put(containers)",
         "close(containers)",
+        "leave"
+      ],
+      [
         "leave",
-        "open(appliances)"
+        "open(appliances)",
+        "put(containers)",
+        "close(appliances)",
+        "manipulate",
+        "leave"
+      ],
+      [
+        "take(containers)",
+        "close(appliances)",
+        "manipulate",
+        "open(appliances)",
+        "take(containers)"
+      ],
+      [
+        "manipulate",
+        "open(appliances)",
+        "clean",
+        "close(appliances)",
+        "manipulate"
+      ],
+      [
+        "manipulate",
+        "open(appliances)",
+        "put(containers)",
+        "close(appliances)",
+        "manipulate"
       ]
     ],
     "session_singleton_nodes": [

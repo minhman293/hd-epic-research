@@ -72,6 +72,24 @@ class Config:
     # Trust the annotator: a change of step_id is always a boundary.
     respect_step_boundaries: bool = True
 
+    # ---- ABLATION SWITCHES ------------------------------------------------
+    # Each of these turns OFF one rule that Part 6 named as a suspect for the
+    # low internal consistency (0.31-0.34). They exist so the question "is the
+    # variation in the person or in our rule?" can be answered by measurement
+    # instead of argument. Defaults reproduce the current pipeline exactly.
+    #
+    #   reach_mode="object"  an action joins the anchor that touches the SAME
+    #                        object category, falling back to time only when
+    #                        neither neighbour shares it. A skill boundary is
+    #                        about object state, not elapsed seconds.
+    #   use_cap=False        do not cut a bucket at max_members.
+    #   use_synthetic=False  do not invent an anchor for anchor-less runs.
+    #   use_fold=False       do not absorb one-off labels into their neighbour.
+    reach_mode: str = "time"          # "time" | "object"
+    use_cap: bool = True
+    use_synthetic: bool = True
+    use_fold: bool = True
+
 
 # --------------------------------------------------------------------------
 # 3. EPISODE
@@ -185,7 +203,7 @@ def _insert_synthetic_anchors(acts: list, anchors: list, cfg: Config) -> list:
         run = stack.pop()
         if not run:
             continue
-        too_many = len(run) > cfg.max_members
+        too_many = cfg.use_cap and len(run) > cfg.max_members
         too_long = (acts[run[-1]]["end"] - acts[run[0]]["start"]) > cfg.max_span_s
         if not (too_many or too_long):
             continue
@@ -215,7 +233,8 @@ def segment(actions: list, verb_map: dict, noun_map: dict,
 
     # pass 1: real anchors, then synthetic ones so no run is left uncovered.
     anchors = [i for i, a in enumerate(acts) if _is_anchor(a)]
-    anchors = _insert_synthetic_anchors(acts, anchors, cfg)
+    if cfg.use_synthetic:
+        anchors = _insert_synthetic_anchors(acts, anchors, cfg)
     if not anchors:                       # a session with no anchor at all
         anchors = [max(range(len(acts)),
                        key=lambda i: acts[i]["end"] - acts[i]["start"])]
@@ -227,6 +246,28 @@ def segment(actions: list, verb_map: dict, noun_map: dict,
         prev = max((j for j in anchors if j <= i), default=None)
         nxt = min((j for j in anchors if j >= i), default=None)
         want = _preferred_direction(a)
+
+        # ABLATION A - object continuity instead of a 12-second window.
+        # An action belongs with the anchor it shares an object with:
+        # fetch the milk, open the milk, pour the milk, put the milk back.
+        # Only when neither neighbour shares the object does time decide.
+        if cfg.reach_mode == "object":
+            same = [j for j in (prev, nxt)
+                    if j is not None and acts[j]["_ncat"] == a["_ncat"]]
+            if len(same) == 1:
+                buckets[same[0]].append(a)
+                continue
+            if len(same) == 2:
+                if want > 0:
+                    pick = nxt
+                elif want < 0:
+                    pick = prev
+                else:
+                    pick = (nxt if _reach(acts, i, nxt) <= _reach(acts, i, prev)
+                            else prev)
+                buckets[pick].append(a)
+                continue
+            # neither anchor shares the object -> fall through to the time rule
 
         if prev is None:
             pick = nxt
@@ -245,8 +286,9 @@ def segment(actions: list, verb_map: dict, noun_map: dict,
     eps = []
     for j in sorted(buckets):
         members = sorted(buckets[j], key=lambda m: m["start"])
-        for k in range(0, len(members), cfg.max_members):
-            chunk = members[k:k + cfg.max_members]
+        step = cfg.max_members if cfg.use_cap else max(1, len(members))
+        for k in range(0, len(members), step):
+            chunk = members[k:k + step]
             head = acts[j] if acts[j] in chunk else max(
                 chunk, key=lambda m: (_head_priority(m["_vcat"]),
                                       m["end"] - m["start"]))
@@ -262,6 +304,12 @@ def segment(actions: list, verb_map: dict, noun_map: dict,
             # "press appliances" parses as an unknown verb and renders grey.
             ep.label = f"{head['_vkey']}({head['_ncat']})"
             ep.synthetic = bool(head.get("_synthetic_anchor"))
+            # BUGFIX. _collapse_repeats() compares anchor_ids to tell a real
+            # repeat from a bucket that max_members happened to cut in two.
+            # Nothing ever set this attribute, so the comparison was always
+            # between two empty sets, `repeats` was never incremented, and
+            # every genuine self-loop was silently lost from the graph.
+            ep.anchor_ids = {j}
             eps.append(ep)
 
     return _collapse_repeats(eps)
@@ -407,7 +455,15 @@ def build_graph(sessions: dict, cfg: Config | None = None) -> dict:
             "head_verb_category": (
                 collections.Counter(m["_vcat"] for m in node_members[label])
                 .most_common(1)[0][0] if node_members[label] else None),
-            "rolled_up": any(getattr(m, "rolled_up", False) for m in []) or label.split()[0] in (TRANSFORM | LOGISTIC | NEUTRAL),
+            # BUGFIX. This used to read
+            #     any(... for m in []) or label.split()[0] in (...)
+            # The first half loops over an empty list, so it is always False.
+            # The second half splits on a SPACE, but labels are written
+            # "press(appliances)" with no space, so label.split()[0] is the
+            # whole label and never matches a category name. The field was
+            # therefore always False. A rolled-up label is one whose verb slot
+            # holds a verb CATEGORY rather than a verb key.
+            "rolled_up": label.split("(")[0] in (TRANSFORM | LOGISTIC | NEUTRAL),
         })
     nodes.sort(key=lambda n: n["mean_onset"])
 
@@ -475,6 +531,8 @@ def fold_one_offs(sessions: dict, cfg: Config | None = None) -> dict:
     `variants`, so the drill-down inspector can still show it.
     """
     cfg = cfg or Config()
+    if not cfg.use_fold:                  # ABLATION D
+        return sessions
     single = len(sessions) < 2
     label_sessions = collections.defaultdict(set)
     for s, eps in sessions.items():

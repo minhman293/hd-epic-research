@@ -43,11 +43,15 @@ export function getDataUrl(mode = "hybrid", recipeId = null, sessionIndex = 0) {
 // Modes whose x-position carries no meaning, so no time ruler may be drawn.
 // Prof. Lin, 22 May: an axis with no encoded variable makes readers believe
 // nodes in one column happened at the same moment.
-export const RANK_LAYOUT_MODES = ["hybrid", "episode", "step"];
+export const RANK_LAYOUT_MODES = ["full", "hybrid", "episode", "step"];
 
 // Modes built by 9_build_episode_graphs.py. Their edges are already thinned by
 // evidence in the pipeline, so render-time edge pruning has nothing left to do.
-export const PRETHINNED_MODES = ["episode", "step"];
+// Thinning was removed from 9_build_episode_graphs.py (cfg.thin_edges
+// defaults to False), so no mode arrives pre-thinned any more. Leaving
+// "episode" and "step" listed here made the UI claim edges had been
+// filtered when every observed transition is now drawn.
+export const PRETHINNED_MODES = [];
 
 export const DEFAULT_DATA_MODE = "episode";
 export const DEFAULT_COLOR_ENCODE_MODE = "category";

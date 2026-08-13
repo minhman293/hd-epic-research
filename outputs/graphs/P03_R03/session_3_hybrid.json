@@ -4,7 +4,7 @@
     "name": "Drip Coffee",
     "session_index": 3,
     "video_id": "P03-20240218-144430",
-    "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240218-144430.mp4",
+    "video_path": "raw-video/P03-20240218-144430.mp4",
     "narration_count": 417,
     "n_videos": 1,
     "total_capture_duration_s": 875.733333
@@ -12,7 +12,7 @@
   "videos": [
     {
       "video_id": "P03-20240218-144430",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240218-144430.mp4",
+      "video_path": "raw-video/P03-20240218-144430.mp4",
       "offset_s": 0.0,
       "duration_s": 875.733333
     }
@@ -836,8 +836,8 @@
       "start": 45.81,
       "end": 46.53,
       "duration": 0.7199999999999989,
-      "next_action": "access",
-      "edge_key": "sort(crockery)|||access",
+      "next_action": "put(crockery)",
+      "edge_key": "sort(crockery)|||put(crockery)",
       "step_id": null,
       "is_primary": false,
       "in_window_scope": false,
@@ -857,37 +857,12 @@
     },
     {
       "index": 25,
-      "action": "access",
-      "start": 49.2,
-      "end": 50.81,
-      "duration": 1.6099999999999994,
-      "next_action": "put(crockery)",
-      "edge_key": "access|||put(crockery)",
-      "step_id": null,
-      "is_primary": false,
-      "in_window_scope": false,
-      "in_span_scope": false,
-      "phase": null,
-      "verb_class": 3,
-      "noun_class": 70,
-      "video_id": "P03-20240218-144430",
-      "video_start": 49.2,
-      "video_end": 50.81,
-      "raw_action": "open(dishwasher)",
-      "abstraction_level": 3,
-      "specific_action": "open(appliances)",
-      "salient": true,
-      "kind": "action",
-      "spine_role": "bridge"
-    },
-    {
-      "index": 26,
       "action": "put(crockery)",
       "start": 49.2,
       "end": 49.62,
       "duration": 0.4199999999999946,
-      "next_action": "manipulate",
-      "edge_key": "put(crockery)|||manipulate",
+      "next_action": "access",
+      "edge_key": "put(crockery)|||access",
       "step_id": null,
       "is_primary": false,
       "in_window_scope": false,
@@ -901,6 +876,31 @@
       "raw_action": "put(bowl)",
       "abstraction_level": 1,
       "specific_action": "put(crockery)",
+      "salient": true,
+      "kind": "action",
+      "spine_role": "bridge"
+    },
+    {
+      "index": 26,
+      "action": "access",
+      "start": 49.2,
+      "end": 50.81,
+      "duration": 1.6099999999999994,
+      "next_action": "manipulate",
+      "edge_key": "access|||manipulate",
+      "step_id": null,
+      "is_primary": false,
+      "in_window_scope": false,
+      "in_span_scope": false,
+      "phase": null,
+      "verb_class": 3,
+      "noun_class": 70,
+      "video_id": "P03-20240218-144430",
+      "video_start": 49.2,
+      "video_end": 50.81,
+      "raw_action": "open(dishwasher)",
+      "abstraction_level": 3,
+      "specific_action": "open(appliances)",
       "salient": true,
       "kind": "action",
       "spine_role": "bridge"
@@ -16072,20 +16072,6 @@
         "rank_delta": -0.02512
       },
       {
-        "source": "access",
-        "target": "put(crockery)",
-        "count": 2,
-        "probability": 0.1429,
-        "key": "access|||put(crockery)",
-        "occurrences": [
-          25,
-          97
-        ],
-        "is_self_loop": false,
-        "is_return": true,
-        "rank_delta": -0.13397
-      },
-      {
         "source": "clean",
         "target": "put(appliances)",
         "count": 2,
@@ -16308,20 +16294,6 @@
         "is_self_loop": false,
         "is_return": true,
         "rank_delta": -0.22249
-      },
-      {
-        "source": "put(crockery)",
-        "target": "manipulate",
-        "count": 2,
-        "probability": 0.1818,
-        "key": "put(crockery)|||manipulate",
-        "occurrences": [
-          26,
-          400
-        ],
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.32177
       },
       {
         "source": "put(crockery)",
@@ -16631,6 +16603,19 @@
       },
       {
         "source": "access",
+        "target": "manipulate",
+        "count": 1,
+        "probability": 0.0714,
+        "key": "access|||manipulate",
+        "occurrences": [
+          26
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.1878
+      },
+      {
+        "source": "access",
         "target": "monitor",
         "count": 1,
         "probability": 0.0714,
@@ -16654,6 +16639,19 @@
         "is_self_loop": false,
         "is_return": true,
         "rank_delta": -0.01436
+      },
+      {
+        "source": "access",
+        "target": "put(crockery)",
+        "count": 1,
+        "probability": 0.0714,
+        "key": "access|||put(crockery)",
+        "occurrences": [
+          97
+        ],
+        "is_self_loop": false,
+        "is_return": true,
+        "rank_delta": -0.13397
       },
       {
         "source": "adjust(containers)",
@@ -18295,6 +18293,19 @@
       },
       {
         "source": "put(crockery)",
+        "target": "access",
+        "count": 1,
+        "probability": 0.0909,
+        "key": "put(crockery)|||access",
+        "occurrences": [
+          25
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.13397
+      },
+      {
+        "source": "put(crockery)",
         "target": "close(storage)",
         "count": 1,
         "probability": 0.0909,
@@ -18305,6 +18316,19 @@
         "is_self_loop": false,
         "is_return": false,
         "rank_delta": 0.25837
+      },
+      {
+        "source": "put(crockery)",
+        "target": "manipulate",
+        "count": 1,
+        "probability": 0.0909,
+        "key": "put(crockery)|||manipulate",
+        "occurrences": [
+          400
+        ],
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.32177
       },
       {
         "source": "put(crockery)",
@@ -18932,16 +18956,16 @@
       },
       {
         "source": "sort(crockery)",
-        "target": "access",
+        "target": "put(crockery)",
         "count": 1,
         "probability": 1.0,
-        "key": "sort(crockery)|||access",
+        "key": "sort(crockery)|||put(crockery)",
         "occurrences": [
           24
         ],
         "is_self_loop": false,
         "is_return": false,
-        "rank_delta": 0.31818
+        "rank_delta": 0.18421
       },
       {
         "source": "spray(cleaning equipment and material)",
@@ -22962,11 +22986,12 @@
       ]
     },
     "links": {
-      "before": 321,
+      "before": 323,
       "after": 127,
       "removed_keys": [
         "START|||take(crockery)",
         "access|||adjust(containers)",
+        "access|||manipulate",
         "access|||monitor",
         "access|||open(containers)",
         "access|||put(crockery)",
@@ -23053,6 +23078,7 @@
         "put(cookware)|||insert(utensils)",
         "put(cookware)|||take(cookware)",
         "put(crockery)|||END",
+        "put(crockery)|||access",
         "put(crockery)|||close(storage)",
         "put(crockery)|||open(storage)",
         "put(crockery)|||press(appliances)",
@@ -23086,7 +23112,7 @@
         "slide(furniture)|||take(rubbish)",
         "slide(hand)|||take(prepared food)",
         "sort(containers)|||lift(cleaning equipment and material)",
-        "sort(crockery)|||access",
+        "sort(crockery)|||put(crockery)",
         "spray(cleaning equipment and material)|||clean(hand)",
         "squeeze(drinks)|||manipulate",
         "squeeze(drinks)|||open(storage)",

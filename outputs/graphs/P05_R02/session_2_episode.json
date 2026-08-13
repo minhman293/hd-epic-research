@@ -4,7 +4,7 @@
   "name": "Porridge",
   "session_index": 2,
   "video_id": "P05-20240426-085333",
-  "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P05-20240426-085333.mp4",
+  "video_path": "raw-video/P05-20240426-085333.mp4",
   "narration_count": 263,
   "n_videos": 3,
   "total_capture_duration_s": 645.366667
@@ -12,19 +12,19 @@
  "videos": [
   {
    "video_id": "P05-20240426-085333",
-   "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P05-20240426-085333.mp4",
+   "video_path": "raw-video/P05-20240426-085333.mp4",
    "offset_s": 0.0,
    "duration_s": 433.333333
   },
   {
    "video_id": "P05-20240426-091011",
-   "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P05-20240426-091011.mp4",
+   "video_path": "raw-video/P05-20240426-091011.mp4",
    "offset_s": 433.333333,
    "duration_s": 113.366667
   },
   {
    "video_id": "P05-20240426-092000",
-   "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P05-20240426-092000.mp4",
+   "video_path": "raw-video/P05-20240426-092000.mp4",
    "offset_s": 546.7,
    "duration_s": 98.666667
   }
@@ -1223,7 +1223,7 @@
    "step_id": null,
    "video_id": "P05-20240426-085333",
    "n_actions": 5,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": true,
    "rolled_up": false,
    "variants": [
@@ -2603,7 +2603,7 @@
    "step_id": "P05_R02_S02",
    "video_id": "P05-20240426-085333",
    "n_actions": 7,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -8886,7 +8886,7 @@
     "is_primary": true,
     "median_rank": 0.33333,
     "mean_onset": 0.2434,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 5,
     "verbs": {
      "take": 2,
@@ -9241,7 +9241,7 @@
     "is_primary": true,
     "median_rank": 0.71429,
     "mean_onset": 0.6215,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 54,
     "verbs": {
      "shake": 6,
@@ -9819,7 +9819,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 1.0,
+    "probability": 0.5,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -9963,7 +9963,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.2,
+    "probability": 0.1667,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -10035,7 +10035,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.2,
+    "probability": 0.1667,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -10107,7 +10107,7 @@
     "per_session_counts": {
      "2": 2
     },
-    "probability": 0.4,
+    "probability": 0.3333,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -10131,7 +10131,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.2,
+    "probability": 0.1667,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -10310,6 +10310,54 @@
     "kept_reason": "anchor",
     "weak": true,
     "evidence": "weak"
+   },
+   {
+    "source": "take(containers)",
+    "target": "take(containers)",
+    "key": "take(containers)|||take(containers)",
+    "pairKey": "take(containers)|||take(containers)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "shake(baked goods and grains)",
+    "target": "shake(baked goods and grains)",
+    "key": "shake(baked goods and grains)|||shake(baked goods and grains)",
+    "pairKey": "shake(baked goods and grains)|||shake(baked goods and grains)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.1667,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
    }
   ]
  },
@@ -10317,8 +10365,8 @@
   "layer": "episode",
   "sessions": 1,
   "nodes": 22,
-  "edges": 32,
-  "out_degree": 1.45,
+  "edges": 34,
+  "out_degree": 1.55,
   "edges_dropped": 0,
   "edges_restored": 0,
   "edges_kept_for_single_session": 0,
@@ -10550,6 +10598,195 @@
    }
   ],
   "note": "Purity = share of an episode's members whose verb/noun category matches the head action that names it. Low purity means the label describes one member, not the group."
+ },
+ "episode_structure": {
+  "head_is_modal_verb": 0.261,
+  "anchor_position_mean": 0.446,
+  "anchor_position_sd": 0.386,
+  "internal_consistency": 0.336,
+  "n_repeated_labels": 23,
+  "most_consistent": [
+   {
+    "label": "pour(dairy and eggs)",
+    "mean_distance": 0.286,
+    "occurrences": 3,
+    "consistency": 0.714
+   },
+   {
+    "label": "peel(rubbish)",
+    "mean_distance": 0.4,
+    "occurrences": 2,
+    "consistency": 0.6
+   },
+   {
+    "label": "shake(containers)",
+    "mean_distance": 0.444,
+    "occurrences": 3,
+    "consistency": 0.556
+   },
+   {
+    "label": "scrape(fruits and nuts)",
+    "mean_distance": 0.5,
+    "occurrences": 2,
+    "consistency": 0.5
+   },
+   {
+    "label": "shake(baked goods and grains)",
+    "mean_distance": 0.58,
+    "occurrences": 10,
+    "consistency": 0.42
+   }
+  ],
+  "least_consistent": [
+   {
+    "label": "put(crockery)",
+    "mean_distance": 0.758,
+    "occurrences": 3,
+    "consistency": 0.242
+   },
+   {
+    "label": "press(appliances)",
+    "mean_distance": 0.76,
+    "occurrences": 7,
+    "consistency": 0.24
+   },
+   {
+    "label": "pour(baked goods and grains)",
+    "mean_distance": 0.8,
+    "occurrences": 2,
+    "consistency": 0.2
+   },
+   {
+    "label": "shake(drinks)",
+    "mean_distance": 0.811,
+    "occurrences": 4,
+    "consistency": 0.189
+   },
+   {
+    "label": "put(containers)",
+    "mean_distance": 0.963,
+    "occurrences": 2,
+    "consistency": 0.037
+   }
+  ],
+  "per_label": {
+   "pour(baked goods and grains)": {
+    "mean_distance": 0.8,
+    "occurrences": 2,
+    "consistency": 0.2
+   },
+   "shake(baked goods and grains)": {
+    "mean_distance": 0.58,
+    "occurrences": 10,
+    "consistency": 0.42
+   },
+   "pour(dairy and eggs)": {
+    "mean_distance": 0.286,
+    "occurrences": 3,
+    "consistency": 0.714
+   },
+   "pour(drinks)": {
+    "mean_distance": 0.717,
+    "occurrences": 4,
+    "consistency": 0.283
+   },
+   "manipulate(appliances)": {
+    "mean_distance": 0.75,
+    "occurrences": 2,
+    "consistency": 0.25
+   },
+   "press(appliances)": {
+    "mean_distance": 0.76,
+    "occurrences": 7,
+    "consistency": 0.24
+   },
+   "put(containers)": {
+    "mean_distance": 0.963,
+    "occurrences": 2,
+    "consistency": 0.037
+   },
+   "drink(drinks)": {
+    "mean_distance": 0.667,
+    "occurrences": 2,
+    "consistency": 0.333
+   },
+   "put(crockery)": {
+    "mean_distance": 0.758,
+    "occurrences": 3,
+    "consistency": 0.242
+   },
+   "take(crockery)": {
+    "mean_distance": 0.731,
+    "occurrences": 9,
+    "consistency": 0.269
+   },
+   "peel(rubbish)": {
+    "mean_distance": 0.4,
+    "occurrences": 2,
+    "consistency": 0.6
+   },
+   "cut(fruits and nuts)": {
+    "mean_distance": 0.7,
+    "occurrences": 3,
+    "consistency": 0.3
+   },
+   "mix(baked goods and grains)": {
+    "mean_distance": 0.596,
+    "occurrences": 11,
+    "consistency": 0.404
+   },
+   "take(containers)": {
+    "mean_distance": 0.625,
+    "occurrences": 2,
+    "consistency": 0.375
+   },
+   "take(cutlery)": {
+    "mean_distance": 0.702,
+    "occurrences": 5,
+    "consistency": 0.298
+   },
+   "pour(fruits and nuts)": {
+    "mean_distance": 0.674,
+    "occurrences": 5,
+    "consistency": 0.326
+   },
+   "set(appliances)": {
+    "mean_distance": 0.75,
+    "occurrences": 2,
+    "consistency": 0.25
+   },
+   "shake(containers)": {
+    "mean_distance": 0.444,
+    "occurrences": 3,
+    "consistency": 0.556
+   },
+   "screw(containers)": {
+    "mean_distance": 0.75,
+    "occurrences": 3,
+    "consistency": 0.25
+   },
+   "shake(drinks)": {
+    "mean_distance": 0.811,
+    "occurrences": 4,
+    "consistency": 0.189
+   },
+   "pull(furniture)": {
+    "mean_distance": 0.7,
+    "occurrences": 2,
+    "consistency": 0.3
+   },
+   "take(baked goods and grains)": {
+    "mean_distance": 0.6,
+    "occurrences": 2,
+    "consistency": 0.4
+   },
+   "scrape(fruits and nuts)": {
+    "mean_distance": 0.5,
+    "occurrences": 2,
+    "consistency": 0.5
+   }
+  },
+  "note": "consistency = 1 - mean normalised edit distance between the verb-category sequences of episodes sharing a label. 1.0 = identical routine every time (a skill); 0.0 = unrelated contents under one name."
  },
  "likely_path": [
   "START",

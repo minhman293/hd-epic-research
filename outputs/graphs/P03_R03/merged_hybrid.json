@@ -16,28 +16,28 @@
     {
       "index": 0,
       "video_id": "P03-20240216-084005",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240216-084005.mp4",
+      "video_path": "raw-video/P03-20240216-084005.mp4",
       "action_count": 457,
       "duration_s": 1058.0
     },
     {
       "index": 1,
       "video_id": "P03-20240217-091657",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240217-091657.mp4",
+      "video_path": "raw-video/P03-20240217-091657.mp4",
       "action_count": 393,
       "duration_s": 943.02
     },
     {
       "index": 2,
       "video_id": "P03-20240218-094452",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240218-094452.mp4",
+      "video_path": "raw-video/P03-20240218-094452.mp4",
       "action_count": 482,
       "duration_s": 1021.8
     },
     {
       "index": 3,
       "video_id": "P03-20240218-144430",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240218-144430.mp4",
+      "video_path": "raw-video/P03-20240218-144430.mp4",
       "action_count": 419,
       "duration_s": 874.84
     }
@@ -36730,8 +36730,8 @@
       "start": 45.81,
       "end": 46.53,
       "duration": 0.7199999999999989,
-      "next_action": "access",
-      "edge_key": "sort(crockery)|||access",
+      "next_action": "put(crockery)",
+      "edge_key": "sort(crockery)|||put(crockery)",
       "step_id": null,
       "is_primary": false,
       "in_window_scope": false,
@@ -36753,39 +36753,12 @@
     },
     {
       "index": 25,
-      "action": "access",
-      "start": 49.2,
-      "end": 50.81,
-      "duration": 1.6099999999999994,
-      "next_action": "put(crockery)",
-      "edge_key": "access|||put(crockery)",
-      "step_id": null,
-      "is_primary": false,
-      "in_window_scope": false,
-      "in_span_scope": false,
-      "phase": null,
-      "verb_class": 3,
-      "noun_class": 70,
-      "video_id": "P03-20240218-144430",
-      "video_start": 49.2,
-      "video_end": 50.81,
-      "raw_action": "open(dishwasher)",
-      "abstraction_level": 3,
-      "specific_action": "open(appliances)",
-      "salient": true,
-      "kind": "action",
-      "spine_role": "bridge",
-      "session_index": 3,
-      "normalized_rank": 0.05981
-    },
-    {
-      "index": 26,
       "action": "put(crockery)",
       "start": 49.2,
       "end": 49.62,
       "duration": 0.4199999999999946,
-      "next_action": "manipulate",
-      "edge_key": "put(crockery)|||manipulate",
+      "next_action": "access",
+      "edge_key": "put(crockery)|||access",
       "step_id": null,
       "is_primary": false,
       "in_window_scope": false,
@@ -36799,6 +36772,33 @@
       "raw_action": "put(bowl)",
       "abstraction_level": 1,
       "specific_action": "put(crockery)",
+      "salient": true,
+      "kind": "action",
+      "spine_role": "bridge",
+      "session_index": 3,
+      "normalized_rank": 0.05981
+    },
+    {
+      "index": 26,
+      "action": "access",
+      "start": 49.2,
+      "end": 50.81,
+      "duration": 1.6099999999999994,
+      "next_action": "manipulate",
+      "edge_key": "access|||manipulate",
+      "step_id": null,
+      "is_primary": false,
+      "in_window_scope": false,
+      "in_span_scope": false,
+      "phase": null,
+      "verb_class": 3,
+      "noun_class": 70,
+      "video_id": "P03-20240218-144430",
+      "video_start": 49.2,
+      "video_end": 50.81,
+      "raw_action": "open(dishwasher)",
+      "abstraction_level": 3,
+      "specific_action": "open(appliances)",
       "salient": true,
       "kind": "action",
       "spine_role": "bridge",
@@ -72246,153 +72246,157 @@
     "session_shared_suffix": [],
     "loops": [
       [
-        "take(containers)",
-        "leave",
-        "take(containers)"
-      ],
-      [
-        "take(containers)",
-        "leave",
-        "open(storage)",
-        "take(containers)"
-      ],
-      [
-        "take(containers)",
-        "leave",
-        "open(storage)",
-        "take(cutlery)",
         "turn-on(appliances)",
-        "take(containers)"
-      ],
-      [
-        "take(containers)",
-        "leave",
-        "open(storage)",
-        "take(cutlery)",
-        "put(cutlery)",
-        "take(containers)"
-      ],
-      [
-        "take(containers)",
-        "leave",
-        "open(storage)",
-        "retrieve",
-        "put(containers)",
-        "take(containers)"
-      ],
-      [
-        "take(containers)",
-        "leave",
-        "open(storage)",
-        "put(containers)",
-        "take(containers)"
-      ],
-      [
-        "take(containers)",
-        "leave",
-        "open(storage)",
-        "put(containers)",
-        "turn-on(appliances)",
-        "take(containers)"
-      ],
-      [
-        "take(containers)",
-        "leave",
-        "take(appliances)",
-        "put(appliances)",
-        "open(storage)",
-        "take(containers)"
-      ],
-      [
-        "take(containers)",
-        "leave",
-        "take(appliances)",
-        "put(appliances)",
-        "turn-on(appliances)",
-        "take(containers)"
-      ],
-      [
-        "take(containers)",
-        "leave",
-        "take(appliances)",
-        "access",
-        "turn-on(appliances)",
-        "take(containers)"
-      ],
-      [
-        "take(containers)",
-        "leave",
-        "take(appliances)",
-        "merge",
-        "open(storage)",
-        "take(containers)"
-      ],
-      [
-        "take(containers)",
-        "leave",
-        "take(appliances)",
-        "merge",
-        "put(containers)",
-        "take(containers)"
-      ],
-      [
-        "take(containers)",
-        "leave",
-        "manipulate(containers)",
-        "put(containers)",
-        "take(containers)"
-      ],
-      [
-        "take(containers)",
-        "leave",
-        "manipulate(containers)",
-        "put(containers)",
-        "turn-on(appliances)",
-        "take(containers)"
-      ],
-      [
-        "take(containers)",
-        "leave",
-        "put(cutlery)",
-        "take(containers)"
-      ],
-      [
-        "take(containers)",
-        "leave",
-        "put(cutlery)",
+        "wash(cutlery)",
         "manipulate",
         "open(storage)",
-        "take(containers)"
+        "take(cutlery)",
+        "turn-on(appliances)"
       ],
       [
-        "take(containers)",
+        "turn-on(appliances)",
+        "wash(cutlery)",
+        "manipulate",
+        "open(storage)",
+        "put(containers)",
+        "turn-on(appliances)"
+      ],
+      [
+        "turn-on(appliances)",
+        "wash(cutlery)",
+        "manipulate",
+        "retrieve",
+        "put(containers)",
+        "turn-on(appliances)"
+      ],
+      [
+        "turn-on(appliances)",
+        "wash(cutlery)",
+        "manipulate",
+        "take(cleaning equipment and material)",
+        "turn-on(appliances)"
+      ],
+      [
+        "turn-on(appliances)",
+        "wash(cutlery)",
+        "manipulate",
+        "close(appliances)",
+        "put(containers)",
+        "turn-on(appliances)"
+      ],
+      [
+        "turn-on(appliances)",
+        "wash(cutlery)",
+        "manipulate",
+        "close(appliances)",
+        "access",
+        "turn-on(appliances)"
+      ],
+      [
+        "turn-on(appliances)",
+        "wash(cutlery)",
+        "manipulate",
+        "turn-off(appliances)",
+        "access",
+        "turn-on(appliances)"
+      ],
+      [
+        "turn-on(appliances)",
+        "wash(cutlery)",
+        "manipulate",
+        "put(appliances)",
+        "turn-on(appliances)"
+      ],
+      [
+        "turn-on(appliances)",
+        "wash(cutlery)",
+        "manipulate",
+        "put(appliances)",
+        "take(cutlery)",
+        "turn-on(appliances)"
+      ],
+      [
+        "turn-on(appliances)",
+        "wash(cutlery)",
+        "manipulate",
+        "manipulate(appliances)",
+        "turn-on(appliances)"
+      ],
+      [
+        "turn-on(appliances)",
+        "wash(cutlery)",
+        "manipulate",
+        "take(appliances)",
+        "put(appliances)",
+        "turn-on(appliances)"
+      ],
+      [
+        "turn-on(appliances)",
+        "wash(cutlery)",
+        "manipulate",
+        "take(appliances)",
+        "access",
+        "turn-on(appliances)"
+      ],
+      [
+        "turn-on(appliances)",
+        "wash(cutlery)",
+        "manipulate",
         "leave",
         "take(cleaning equipment and material)",
+        "turn-on(appliances)"
+      ],
+      [
         "turn-on(appliances)",
-        "take(containers)"
+        "wash(cutlery)",
+        "turn-off(appliances)",
+        "manipulate",
+        "take(cleaning equipment and material)",
+        "turn-on(appliances)"
       ],
       [
-        "take(containers)",
-        "leave",
-        "close(storage)",
-        "merge",
-        "open(storage)",
-        "take(containers)"
+        "turn-on(appliances)",
+        "wash(cutlery)",
+        "turn-off(appliances)",
+        "manipulate",
+        "put(appliances)",
+        "turn-on(appliances)"
       ],
       [
-        "take(containers)",
-        "leave",
-        "close(storage)",
-        "merge",
-        "put(containers)",
-        "take(containers)"
+        "turn-on(appliances)",
+        "wash(cutlery)",
+        "turn-off(appliances)",
+        "manipulate",
+        "manipulate(appliances)",
+        "turn-on(appliances)"
       ],
       [
-        "take(containers)",
-        "leave",
-        "close(storage)",
-        "open(storage)",
-        "take(containers)"
+        "turn-on(appliances)",
+        "wash(cutlery)",
+        "turn-off(appliances)",
+        "access",
+        "turn-on(appliances)"
+      ],
+      [
+        "turn-on(appliances)",
+        "take(appliances)",
+        "lift(appliances)",
+        "put(appliances)",
+        "turn-on(appliances)"
+      ],
+      [
+        "turn-on(appliances)",
+        "take(appliances)",
+        "lift(appliances)",
+        "put(appliances)",
+        "take(cutlery)",
+        "turn-on(appliances)"
+      ],
+      [
+        "turn-on(appliances)",
+        "take(appliances)",
+        "put(appliances)",
+        "turn-on(appliances)"
       ]
     ],
     "session_singleton_nodes": []
@@ -73848,11 +73852,12 @@
           ]
         },
         "links": {
-          "before": 321,
+          "before": 323,
           "after": 127,
           "removed_keys": [
             "START|||take(crockery)",
             "access|||adjust(containers)",
+            "access|||manipulate",
             "access|||monitor",
             "access|||open(containers)",
             "access|||put(crockery)",
@@ -73939,6 +73944,7 @@
             "put(cookware)|||insert(utensils)",
             "put(cookware)|||take(cookware)",
             "put(crockery)|||END",
+            "put(crockery)|||access",
             "put(crockery)|||close(storage)",
             "put(crockery)|||open(storage)",
             "put(crockery)|||press(appliances)",
@@ -73972,7 +73978,7 @@
             "slide(furniture)|||take(rubbish)",
             "slide(hand)|||take(prepared food)",
             "sort(containers)|||lift(cleaning equipment and material)",
-            "sort(crockery)|||access",
+            "sort(crockery)|||put(crockery)",
             "spray(cleaning equipment and material)|||clean(hand)",
             "squeeze(drinks)|||manipulate",
             "squeeze(drinks)|||open(storage)",

@@ -4,7 +4,7 @@
   "name": "Drip Coffee",
   "session_index": 0,
   "video_id": "P03-20240216-084005",
-  "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240216-084005.mp4",
+  "video_path": "raw-video/P03-20240216-084005.mp4",
   "narration_count": 455,
   "n_videos": 1,
   "total_capture_duration_s": 1064.2
@@ -12,25 +12,25 @@
  "videos": [
   {
    "video_id": "P03-20240216-084005",
-   "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240216-084005.mp4",
+   "video_path": "raw-video/P03-20240216-084005.mp4",
    "offset_s": 0.0,
    "duration_s": 1064.2
   },
   {
    "video_id": "P03-20240217-091657",
-   "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240217-091657.mp4",
+   "video_path": "raw-video/P03-20240217-091657.mp4",
    "offset_s": 0.0,
    "duration_s": 944.966667
   },
   {
    "video_id": "P03-20240218-094452",
-   "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240218-094452.mp4",
+   "video_path": "raw-video/P03-20240218-094452.mp4",
    "offset_s": 0.0,
    "duration_s": 1024.666667
   },
   {
    "video_id": "P03-20240218-144430",
-   "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240218-144430.mp4",
+   "video_path": "raw-video/P03-20240218-144430.mp4",
    "offset_s": 0.0,
    "duration_s": 875.733333
   }
@@ -797,7 +797,7 @@
    "step_id": null,
    "video_id": "P03-20240216-084005",
    "n_actions": 19,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [
@@ -1700,7 +1700,7 @@
    "step_id": null,
    "video_id": "P03-20240216-084005",
    "n_actions": 11,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [
@@ -1824,7 +1824,7 @@
    "step_id": null,
    "video_id": "P03-20240216-084005",
    "n_actions": 9,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -2232,7 +2232,7 @@
    "step_id": null,
    "video_id": "P03-20240216-084005",
    "n_actions": 4,
-   "repeats": 1,
+   "repeats": 3,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -2335,7 +2335,7 @@
    "step_id": null,
    "video_id": "P03-20240216-084005",
    "n_actions": 4,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -2984,7 +2984,7 @@
    "step_id": null,
    "video_id": "P03-20240216-084005",
    "n_actions": 10,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": true,
    "variants": [
@@ -3586,7 +3586,7 @@
    "step_id": null,
    "video_id": "P03-20240216-084005",
    "n_actions": 5,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -4045,7 +4045,7 @@
    "step_id": "P03_R03_S05",
    "video_id": "P03-20240216-084005",
    "n_actions": 5,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -13209,7 +13209,7 @@
     "is_primary": true,
     "median_rank": 0.21429,
     "mean_onset": 0.479,
-    "self_loop": 0,
+    "self_loop": 2,
     "n_raw_actions": 28,
     "verbs": {
      "take": 5,
@@ -13491,7 +13491,7 @@
     "is_primary": true,
     "median_rank": 0.35714,
     "mean_onset": 0.6498,
-    "self_loop": 0,
+    "self_loop": 5,
     "n_raw_actions": 53,
     "verbs": {
      "take": 12,
@@ -13643,7 +13643,7 @@
     "is_primary": true,
     "median_rank": 0.42857,
     "mean_onset": 0.6181,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 20,
     "verbs": {
      "take": 3,
@@ -13696,7 +13696,7 @@
     "is_primary": true,
     "median_rank": 0.45238,
     "mean_onset": 0.6218,
-    "self_loop": 0,
+    "self_loop": 9,
     "n_raw_actions": 93,
     "verbs": {
      "take": 23,
@@ -13774,7 +13774,7 @@
     "is_primary": true,
     "median_rank": 0.47619,
     "mean_onset": 0.6267,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 18,
     "verbs": {
      "take": 5,
@@ -13871,7 +13871,7 @@
     "is_primary": true,
     "median_rank": 0.52381,
     "mean_onset": 0.5965,
-    "self_loop": 0,
+    "self_loop": 2,
     "n_raw_actions": 29,
     "verbs": {
      "take": 12,
@@ -14215,7 +14215,7 @@
     "is_primary": true,
     "median_rank": 0.69048,
     "mean_onset": 0.6387,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 24,
     "verbs": {
      "take": 4,
@@ -14500,7 +14500,7 @@
     "is_primary": true,
     "median_rank": 0.83333,
     "mean_onset": 0.745,
-    "self_loop": 0,
+    "self_loop": 2,
     "n_raw_actions": 14,
     "verbs": {
      "reach": 1,
@@ -14553,7 +14553,7 @@
     "is_primary": true,
     "median_rank": 0.85714,
     "mean_onset": 0.6714,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 14,
     "verbs": {
      "pull": 5,
@@ -14601,7 +14601,7 @@
     "is_primary": true,
     "median_rank": 0.88095,
     "mean_onset": 0.813,
-    "self_loop": 0,
+    "self_loop": 7,
     "n_raw_actions": 114,
     "verbs": {
      "lift": 4,
@@ -14758,7 +14758,7 @@
     "is_primary": true,
     "median_rank": 0.95238,
     "mean_onset": 0.8308,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 8,
     "verbs": {
      "reach": 3,
@@ -14796,7 +14796,7 @@
     "is_primary": true,
     "median_rank": 0.97619,
     "mean_onset": 0.801,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 28,
     "verbs": {
      "take": 10,
@@ -15063,7 +15063,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.5,
+    "probability": 0.25,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -15111,7 +15111,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.25,
+    "probability": 0.2,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -15382,7 +15382,7 @@
      "0": 1,
      "2": 1
     },
-    "probability": 0.2857,
+    "probability": 0.1667,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -15455,7 +15455,7 @@
      "0": 2,
      "1": 2
     },
-    "probability": 0.2667,
+    "probability": 0.1667,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -15480,7 +15480,7 @@
      "0": 2,
      "1": 1
     },
-    "probability": 0.5,
+    "probability": 0.375,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -15505,7 +15505,7 @@
      "0": 1,
      "1": 1
     },
-    "probability": 0.1333,
+    "probability": 0.0833,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -15553,7 +15553,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.5,
+    "probability": 0.3333,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -15577,7 +15577,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.0667,
+    "probability": 0.0417,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -15625,7 +15625,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.1667,
+    "probability": 0.125,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -15697,7 +15697,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.1667,
+    "probability": 0.125,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -15721,7 +15721,7 @@
     "per_session_counts": {
      "0": 2
     },
-    "probability": 0.4,
+    "probability": 0.3333,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -15769,7 +15769,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.2,
+    "probability": 0.1667,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -15817,7 +15817,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.0625,
+    "probability": 0.0435,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -15841,7 +15841,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.2,
+    "probability": 0.1667,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -15914,7 +15914,7 @@
      "0": 1,
      "3": 1
     },
-    "probability": 0.125,
+    "probability": 0.087,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -15962,7 +15962,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.0625,
+    "probability": 0.0435,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -15986,7 +15986,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.25,
+    "probability": 0.2,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -16010,7 +16010,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.5,
+    "probability": 0.3333,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -16034,7 +16034,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.25,
+    "probability": 0.1667,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -16058,7 +16058,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.0625,
+    "probability": 0.0435,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -16130,7 +16130,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.0625,
+    "probability": 0.0435,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -16179,7 +16179,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.0667,
+    "probability": 0.0417,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -16205,7 +16205,7 @@
      "2": 1,
      "3": 1
     },
-    "probability": 0.1875,
+    "probability": 0.1304,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -16374,7 +16374,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.0667,
+    "probability": 0.0417,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -16472,7 +16472,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.0667,
+    "probability": 0.0417,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -16496,7 +16496,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.2,
+    "probability": 0.1667,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -16520,7 +16520,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.0667,
+    "probability": 0.0417,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -16592,7 +16592,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.0667,
+    "probability": 0.0417,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -16640,7 +16640,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.5,
+    "probability": 0.3333,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -16688,7 +16688,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.25,
+    "probability": 0.2,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -16712,7 +16712,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.0667,
+    "probability": 0.0417,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -16736,7 +16736,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.25,
+    "probability": 0.2,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -16784,7 +16784,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.1667,
+    "probability": 0.125,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -16808,7 +16808,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.25,
+    "probability": 0.1667,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -16856,7 +16856,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.25,
+    "probability": 0.1667,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -16880,7 +16880,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.0667,
+    "probability": 0.0417,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -16928,7 +16928,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.5,
+    "probability": 0.3333,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -16952,7 +16952,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.0667,
+    "probability": 0.0417,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -16976,7 +16976,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.25,
+    "probability": 0.2,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -17000,7 +17000,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.25,
+    "probability": 0.2,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -17144,7 +17144,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.25,
+    "probability": 0.2,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -17192,7 +17192,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.25,
+    "probability": 0.1667,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -17216,7 +17216,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.5,
+    "probability": 0.25,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -17288,7 +17288,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.5,
+    "probability": 0.3333,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -17312,7 +17312,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.5,
+    "probability": 0.3333,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -17360,7 +17360,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.0625,
+    "probability": 0.0435,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -17456,7 +17456,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.0625,
+    "probability": 0.0435,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -17552,7 +17552,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.0625,
+    "probability": 0.0435,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -17600,7 +17600,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.25,
+    "probability": 0.2,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -17696,7 +17696,7 @@
     "per_session_counts": {
      "3": 2
     },
-    "probability": 0.2857,
+    "probability": 0.1667,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -17720,7 +17720,7 @@
     "per_session_counts": {
      "3": 1
     },
-    "probability": 0.1429,
+    "probability": 0.0833,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -17768,7 +17768,7 @@
     "per_session_counts": {
      "3": 1
     },
-    "probability": 0.1429,
+    "probability": 0.0833,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -17960,7 +17960,7 @@
     "per_session_counts": {
      "3": 1
     },
-    "probability": 0.0625,
+    "probability": 0.0435,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -18056,7 +18056,7 @@
     "per_session_counts": {
      "3": 2
     },
-    "probability": 0.125,
+    "probability": 0.087,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -18080,7 +18080,7 @@
     "per_session_counts": {
      "3": 1
     },
-    "probability": 0.1429,
+    "probability": 0.0833,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -18176,7 +18176,7 @@
     "per_session_counts": {
      "3": 1
     },
-    "probability": 0.0625,
+    "probability": 0.0435,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -18187,6 +18187,300 @@
     "kept_reason": "reproducible",
     "weak": true,
     "evidence": "weak"
+   },
+   {
+    "source": "attach(utensils)",
+    "target": "attach(utensils)",
+    "key": "attach(utensils)|||attach(utensils)",
+    "pairKey": "attach(utensils)|||attach(utensils)",
+    "count": 2,
+    "support": 2,
+    "support_fraction": 0.5,
+    "n_sessions": 4,
+    "per_session_counts": {
+     "0": 1,
+     "2": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": false,
+    "evidence": "moderate"
+   },
+   {
+    "source": "pull(storage)",
+    "target": "pull(storage)",
+    "key": "pull(storage)|||pull(storage)",
+    "pairKey": "pull(storage)|||pull(storage)",
+    "count": 9,
+    "support": 2,
+    "support_fraction": 0.5,
+    "n_sessions": 4,
+    "per_session_counts": {
+     "0": 1,
+     "1": 1
+    },
+    "probability": 0.375,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": false,
+    "evidence": "strong"
+   },
+   {
+    "source": "press(storage)",
+    "target": "press(storage)",
+    "key": "press(storage)|||press(storage)",
+    "pairKey": "press(storage)|||press(storage)",
+    "count": 2,
+    "support": 1,
+    "support_fraction": 0.25,
+    "n_sessions": 4,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.25,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": false,
+    "evidence": "moderate"
+   },
+   {
+    "source": "clean(crockery)",
+    "target": "clean(crockery)",
+    "key": "clean(crockery)|||clean(crockery)",
+    "pairKey": "clean(crockery)|||clean(crockery)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.25,
+    "n_sessions": 4,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.1667,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "press(appliances)",
+    "target": "press(appliances)",
+    "key": "press(appliances)|||press(appliances)",
+    "pairKey": "press(appliances)|||press(appliances)",
+    "count": 2,
+    "support": 2,
+    "support_fraction": 0.5,
+    "n_sessions": 4,
+    "per_session_counts": {
+     "0": 1,
+     "2": 1
+    },
+    "probability": 0.3333,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": false,
+    "evidence": "moderate"
+   },
+   {
+    "source": "pour(drinks)",
+    "target": "pour(drinks)",
+    "key": "pour(drinks)|||pour(drinks)",
+    "pairKey": "pour(drinks)|||pour(drinks)",
+    "count": 7,
+    "support": 3,
+    "support_fraction": 0.75,
+    "n_sessions": 4,
+    "per_session_counts": {
+     "0": 1,
+     "2": 1,
+     "3": 1
+    },
+    "probability": 0.3043,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": false,
+    "evidence": "strong"
+   },
+   {
+    "source": "access(materials)",
+    "target": "access(materials)",
+    "key": "access(materials)|||access(materials)",
+    "pairKey": "access(materials)|||access(materials)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.25,
+    "n_sessions": 4,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.3333,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "reach(containers)",
+    "target": "reach(containers)",
+    "key": "reach(containers)|||reach(containers)",
+    "pairKey": "reach(containers)|||reach(containers)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.25,
+    "n_sessions": 4,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.3333,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "pull(containers)",
+    "target": "pull(containers)",
+    "key": "pull(containers)|||pull(containers)",
+    "pairKey": "pull(containers)|||pull(containers)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.25,
+    "n_sessions": 4,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.2,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "lift(appliances)",
+    "target": "lift(appliances)",
+    "key": "lift(appliances)|||lift(appliances)",
+    "pairKey": "lift(appliances)|||lift(appliances)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.25,
+    "n_sessions": 4,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.2,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "put(crockery)",
+    "target": "put(crockery)",
+    "key": "put(crockery)|||put(crockery)",
+    "pairKey": "put(crockery)|||put(crockery)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 0.25,
+    "n_sessions": 4,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.3333,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "wash(furniture)",
+    "target": "wash(furniture)",
+    "key": "wash(furniture)|||wash(furniture)",
+    "pairKey": "wash(furniture)|||wash(furniture)",
+    "count": 5,
+    "support": 2,
+    "support_fraction": 0.5,
+    "n_sessions": 4,
+    "per_session_counts": {
+     "2": 1,
+     "3": 1
+    },
+    "probability": 0.4167,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": false,
+    "evidence": "strong"
    }
   ]
  },
@@ -18194,8 +18488,8 @@
   "layer": "episode",
   "sessions": 4,
   "nodes": 43,
-  "edges": 138,
-  "out_degree": 3.21,
+  "edges": 150,
+  "out_degree": 3.49,
   "edges_dropped": 0,
   "edges_restored": 0,
   "edges_kept_for_single_session": 0,
@@ -18904,6 +19198,14 @@
  },
  "likely_path": [
   "START",
+  "fill(appliances)",
+  "open(containers)",
+  "retrieve(cutlery)",
+  "block(containers)",
+  "wash(cutlery)",
+  "shake(cutlery)",
+  "shake(appliances)",
+  "shake(containers)",
   "merge(containers)",
   "wash(cleaning equipment and material)",
   "squeeze(cleaning equipment and material)",
@@ -18916,29 +19218,37 @@
  ],
  "likely_path_report": {
   "method": "beam_search_max_probability",
-  "length": 10,
+  "length": 18,
   "reached_end": true,
-  "joint_probability": 0.00089277,
-  "mean_step_probability": 0.4583,
-  "weakest_edge": 0.1875,
-  "candidates_considered": 555,
+  "joint_probability": 3.8e-07,
+  "mean_step_probability": 0.4189,
+  "weakest_edge": 0.1304,
+  "candidates_considered": 501,
   "note": "Each step is a common next move from that state. The route as a whole is a model, not necessarily a run anyone performed.",
   "observed_in_full": false,
   "sessions": [],
-  "longest_run": 6,
-  "path_length": 8,
-  "headline": "Most likely route \u2014 8 steps. No session performed the whole route; the longest part anyone did in one go was 6 steps."
+  "longest_run": 4,
+  "path_length": 16,
+  "headline": "Most likely route \u2014 16 steps. No session performed the whole route; the longest part anyone did in one go was 4 steps."
  },
  "likely_path_edges": [
   0.25,
   0.5,
+  0.5,
+  0.3333,
+  0.5,
+  0.75,
+  0.3333,
+  0.2,
+  0.5,
+  0.5,
   1.0,
   0.6,
   1.0,
-  0.2857,
+  0.1667,
   0.3333,
   0.6667,
-  0.1875
+  0.1304
  ],
  "expansions": {
   "open(containers)": {

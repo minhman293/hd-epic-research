@@ -4,7 +4,7 @@
   "name": "Nespresso",
   "session_index": 2,
   "video_id": "P01-20240204-095114",
-  "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P01-20240204-095114.mp4",
+  "video_path": "raw-video/P01-20240204-095114.mp4",
   "narration_count": 81,
   "n_videos": 1,
   "total_capture_duration_s": 165.533333
@@ -12,7 +12,7 @@
  "videos": [
   {
    "video_id": "P01-20240204-095114",
-   "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P01-20240204-095114.mp4",
+   "video_path": "raw-video/P01-20240204-095114.mp4",
    "offset_s": 0.0,
    "duration_s": 165.533333
   }
@@ -340,7 +340,7 @@
    "step_id": "P01_R01_S03",
    "video_id": "P01-20240204-095114",
    "n_actions": 23,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [
@@ -2792,7 +2792,7 @@
     "is_primary": true,
     "median_rank": 0.375,
     "mean_onset": 0.4033,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 29,
     "verbs": {
      "open": 5,
@@ -3060,7 +3060,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.5,
+    "probability": 0.3333,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -3108,7 +3108,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.5,
+    "probability": 0.3333,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -3239,6 +3239,30 @@
     "kept_reason": "anchor",
     "weak": true,
     "evidence": "weak"
+   },
+   {
+    "source": "pour(dairy and eggs)",
+    "target": "pour(dairy and eggs)",
+    "key": "pour(dairy and eggs)|||pour(dairy and eggs)",
+    "pairKey": "pour(dairy and eggs)|||pour(dairy and eggs)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.3333,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
    }
   ]
  },
@@ -3246,8 +3270,8 @@
   "layer": "episode",
   "sessions": 1,
   "nodes": 9,
-  "edges": 10,
-  "out_degree": 1.11,
+  "edges": 11,
+  "out_degree": 1.22,
   "edges_dropped": 0,
   "edges_restored": 0,
   "edges_kept_for_single_session": 0,
@@ -3508,9 +3532,9 @@
   "method": "beam_search_max_probability",
   "length": 8,
   "reached_end": true,
-  "joint_probability": 0.25,
-  "mean_step_probability": 0.8203,
-  "weakest_edge": 0.5,
+  "joint_probability": 0.16665,
+  "mean_step_probability": 0.7742,
+  "weakest_edge": 0.3333,
   "candidates_considered": 2,
   "note": "Each step is a common next move from that state. The route as a whole is a model, not necessarily a run anyone performed.",
   "observed_in_full": false,
@@ -3522,7 +3546,7 @@
  "likely_path_edges": [
   1.0,
   1.0,
-  0.5,
+  0.3333,
   1.0,
   0.5,
   1.0,

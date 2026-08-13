@@ -1,0 +1,286 @@
+{
+ "recipes": [
+  {
+   "recipe": "P01_R01",
+   "layers": {
+    "full": {
+     "name": "Level 1 - every distinct action",
+     "file": "merged_full.json",
+     "present": true,
+     "states": 163,
+     "states_incl_start_end": 163,
+     "links": 311,
+     "n_sessions": 3,
+     "prob_sums_to_one": true,
+     "sessions": 3,
+     "events_all": 373,
+     "states_all": 163,
+     "events_span": 225,
+     "states_span": 120,
+     "span_fraction": 0.6032
+    },
+    "hybrid": {
+     "name": "Level 2 - verb + object category",
+     "file": "merged_hybrid.json",
+     "present": true,
+     "states": 24,
+     "states_incl_start_end": 26,
+     "links": 147,
+     "n_sessions": 3,
+     "prob_sums_to_one": true,
+     "sessions": 3,
+     "events_all": 373,
+     "states_all": 63,
+     "events_span": 225,
+     "states_span": 26,
+     "span_fraction": 0.6032
+    },
+    "episode": {
+     "name": "Level 3 - episodes",
+     "file": "merged_episode.json",
+     "present": true,
+     "states": 10,
+     "states_incl_start_end": 12,
+     "links": 27,
+     "n_sessions": 3,
+     "prob_sums_to_one": true,
+     "audit": {
+      "verb_purity": 0.363,
+      "object_purity": 0.47,
+      "mean_episode_size": 7.759,
+      "singleton_fraction": 0.069,
+      "n_episodes": 29,
+      "head_is_modal_verb": 0.31,
+      "anchor_position_mean": 0.439,
+      "anchor_position_sd": 0.348,
+      "internal_consistency": 0.307,
+      "n_repeated_labels": 9
+     },
+     "pattern": {
+      "verdict": "partial_pattern",
+      "length": null,
+      "coverage": null
+     },
+     "likely_path": {
+      "length": 5,
+      "observed_in_full": true,
+      "longest_run": 3
+     }
+    },
+    "step": {
+     "name": "Level 4 - recipe steps",
+     "file": "merged_step.json",
+     "present": true,
+     "states": 5,
+     "states_incl_start_end": 7,
+     "links": 18,
+     "n_sessions": 3,
+     "prob_sums_to_one": true,
+     "pattern": {
+      "verdict": "shared_pattern",
+      "length": null,
+      "coverage": null
+     },
+     "likely_path": {
+      "length": 4,
+      "observed_in_full": true,
+      "longest_run": 2
+     }
+    }
+   },
+   "warnings": [
+    "merged_hybrid graph has 24 states but the sessions contain 63 distinct labels over the whole recording and 26 inside the span \u2014 the graph is scoped, so quote the scoped figure"
+   ],
+   "hybrid_reduction_all": 0.613,
+   "hybrid_reduction_span": 0.783
+  },
+  {
+   "recipe": "P03_R03",
+   "layers": {
+    "full": {
+     "name": "Level 1 - every distinct action",
+     "file": "merged_full.json",
+     "present": true,
+     "states": 425,
+     "states_incl_start_end": 425,
+     "links": 1328,
+     "n_sessions": 4,
+     "prob_sums_to_one": true,
+     "sessions": 4,
+     "events_all": 1743,
+     "states_all": 425,
+     "events_span": 834,
+     "states_span": 250,
+     "span_fraction": 0.4785
+    },
+    "hybrid": {
+     "name": "Level 2 - verb + object category",
+     "file": "merged_hybrid.json",
+     "present": true,
+     "states": 40,
+     "states_incl_start_end": 42,
+     "links": 410,
+     "n_sessions": 4,
+     "prob_sums_to_one": true,
+     "sessions": 4,
+     "events_all": 1743,
+     "states_all": 162,
+     "events_span": 834,
+     "states_span": 42,
+     "span_fraction": 0.4785
+    },
+    "episode": {
+     "name": "Level 3 - episodes",
+     "file": "merged_episode.json",
+     "present": true,
+     "states": 41,
+     "states_incl_start_end": 43,
+     "links": 150,
+     "n_sessions": 4,
+     "prob_sums_to_one": true,
+     "audit": {
+      "verb_purity": 0.392,
+      "object_purity": 0.488,
+      "mean_episode_size": 5.245,
+      "singleton_fraction": 0.101,
+      "n_episodes": 159,
+      "head_is_modal_verb": 0.384,
+      "anchor_position_mean": 0.445,
+      "anchor_position_sd": 0.361,
+      "internal_consistency": 0.34,
+      "n_repeated_labels": 40
+     },
+     "pattern": {
+      "verdict": "no_shared_pattern",
+      "length": null,
+      "coverage": null
+     },
+     "likely_path": {
+      "length": 18,
+      "observed_in_full": false,
+      "longest_run": 4
+     }
+    },
+    "step": {
+     "name": "Level 4 - recipe steps",
+     "file": "merged_step.json",
+     "present": true,
+     "states": 6,
+     "states_incl_start_end": 8,
+     "links": 15,
+     "n_sessions": 4,
+     "prob_sums_to_one": true,
+     "pattern": {
+      "verdict": "partial_pattern",
+      "length": null,
+      "coverage": null
+     },
+     "likely_path": {
+      "length": 6,
+      "observed_in_full": true,
+      "longest_run": 4
+     }
+    }
+   },
+   "warnings": [
+    "merged_hybrid graph has 40 states but the sessions contain 162 distinct labels over the whole recording and 42 inside the span \u2014 the graph is scoped, so quote the scoped figure"
+   ],
+   "hybrid_reduction_all": 0.619,
+   "hybrid_reduction_span": 0.832
+  },
+  {
+   "recipe": "P05_R02",
+   "layers": {
+    "full": {
+     "name": "Level 1 - every distinct action",
+     "file": "merged_full.json",
+     "present": true,
+     "states": 157,
+     "states_incl_start_end": 157,
+     "links": 436,
+     "n_sessions": 3,
+     "prob_sums_to_one": true,
+     "sessions": 3,
+     "events_all": 591,
+     "states_all": 157,
+     "events_span": 572,
+     "states_span": 152,
+     "span_fraction": 0.9679
+    },
+    "hybrid": {
+     "name": "Level 2 - verb + object category",
+     "file": "merged_hybrid.json",
+     "present": true,
+     "states": 48,
+     "states_incl_start_end": 50,
+     "links": 328,
+     "n_sessions": 3,
+     "prob_sums_to_one": true,
+     "sessions": 3,
+     "events_all": 591,
+     "states_all": 53,
+     "events_span": 572,
+     "states_span": 48,
+     "span_fraction": 0.9679
+    },
+    "episode": {
+     "name": "Level 3 - episodes",
+     "file": "merged_episode.json",
+     "present": true,
+     "states": 25,
+     "states_incl_start_end": 27,
+     "links": 81,
+     "n_sessions": 3,
+     "prob_sums_to_one": true,
+     "audit": {
+      "verb_purity": 0.317,
+      "object_purity": 0.431,
+      "mean_episode_size": 6.217,
+      "singleton_fraction": 0.043,
+      "n_episodes": 92,
+      "head_is_modal_verb": 0.261,
+      "anchor_position_mean": 0.446,
+      "anchor_position_sd": 0.386,
+      "internal_consistency": 0.336,
+      "n_repeated_labels": 23
+     },
+     "pattern": {
+      "verdict": "partial_pattern",
+      "length": null,
+      "coverage": null
+     },
+     "likely_path": {
+      "length": 11,
+      "observed_in_full": false,
+      "longest_run": 6
+     }
+    },
+    "step": {
+     "name": "Level 4 - recipe steps",
+     "file": "merged_step.json",
+     "present": true,
+     "states": 3,
+     "states_incl_start_end": 5,
+     "links": 6,
+     "n_sessions": 3,
+     "prob_sums_to_one": true,
+     "pattern": {
+      "verdict": "partial_pattern",
+      "length": null,
+      "coverage": null
+     },
+     "likely_path": {
+      "length": 4,
+      "observed_in_full": true,
+      "longest_run": 2
+     }
+    }
+   },
+   "warnings": [
+    "merged_hybrid graph has 48 states but the sessions contain 53 distinct labels over the whole recording and 48 inside the span \u2014 the graph is scoped, so quote the scoped figure"
+   ],
+   "hybrid_reduction_all": 0.662,
+   "hybrid_reduction_span": 0.684
+  }
+ ]
+}

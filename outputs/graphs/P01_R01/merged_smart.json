@@ -15,21 +15,21 @@
     {
       "index": 0,
       "video_id": "P01-20240202-110250",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P01-20240202-110250.mp4",
+      "video_path": "raw-video/P01-20240202-110250.mp4",
       "action_count": 224,
       "duration_s": 394.72
     },
     {
       "index": 1,
       "video_id": "P01-20240203-093333",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P01-20240203-093333.mp4",
+      "video_path": "raw-video/P01-20240203-093333.mp4",
       "action_count": 68,
       "duration_s": 152.93
     },
     {
       "index": 2,
       "video_id": "P01-20240204-095114",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P01-20240204-095114.mp4",
+      "video_path": "raw-video/P01-20240204-095114.mp4",
       "action_count": 81,
       "duration_s": 164.47
     }
@@ -15188,149 +15188,156 @@
     "session_shared_suffix": [],
     "loops": [
       [
-        "take",
-        "press",
-        "take"
-      ],
-      [
-        "take",
-        "press",
-        "lift",
-        "take"
-      ],
-      [
-        "take",
-        "press",
-        "lift",
-        "put",
-        "take"
-      ],
-      [
-        "take",
-        "press",
-        "lift",
-        "put",
-        "open",
-        "take"
-      ],
-      [
-        "take",
-        "press",
-        "lift",
-        "put",
-        "close",
-        "take"
-      ],
-      [
-        "take",
-        "press",
-        "lift",
-        "open",
-        "take"
-      ],
-      [
-        "take",
-        "press",
-        "open",
-        "take"
-      ],
-      [
-        "take",
-        "press",
-        "open",
         "pour",
         "put",
-        "take"
+        "take",
+        "lift",
+        "open",
+        "pour"
       ],
       [
-        "take",
-        "press",
-        "open",
         "pour",
+        "put",
+        "take",
         "close",
-        "take"
+        "open",
+        "pour"
       ],
       [
+        "pour",
+        "put",
         "take",
         "press",
         "open",
-        "throw",
-        "close",
-        "take"
+        "pour"
       ],
       [
+        "pour",
+        "put",
         "take",
+        "open",
+        "pour"
+      ],
+      [
+        "pour",
+        "put",
+        "close",
         "press",
         "open",
+        "pour"
+      ],
+      [
+        "pour",
+        "put",
+        "close",
+        "open",
+        "pour"
+      ],
+      [
+        "pour",
+        "put",
+        "close",
+        "lift",
+        "open",
+        "pour"
+      ],
+      [
+        "pour",
+        "put",
         "wash",
         "close",
-        "take"
+        "open",
+        "pour"
       ],
       [
-        "take",
-        "press",
-        "open",
-        "wash",
-        "put",
-        "take"
-      ],
-      [
-        "take",
-        "press",
-        "open",
-        "put",
-        "take"
-      ],
-      [
-        "take",
-        "press",
-        "open",
-        "put",
-        "close",
-        "take"
-      ],
-      [
-        "take",
-        "open",
-        "take"
-      ],
-      [
-        "take",
-        "open",
         "pour",
         "put",
-        "take"
+        "open",
+        "pour"
       ],
       [
-        "take",
-        "open",
         "pour",
         "put",
-        "close",
-        "take"
+        "press",
+        "lift",
+        "open",
+        "pour"
       ],
       [
-        "take",
+        "pour",
+        "put",
+        "press",
         "open",
+        "pour"
+      ],
+      [
+        "pour",
+        "put",
+        "turn",
+        "lift",
+        "open",
+        "pour"
+      ],
+      [
         "pour",
         "close",
-        "take"
-      ],
-      [
+        "press",
         "take",
         "open",
+        "pour"
+      ],
+      [
+        "pour",
+        "close",
+        "press",
+        "lift",
+        "open",
+        "pour"
+      ],
+      [
+        "pour",
+        "close",
+        "press",
+        "open",
+        "pour"
+      ],
+      [
+        "pour",
+        "close",
+        "open",
+        "pour"
+      ],
+      [
+        "pour",
+        "close",
+        "turn",
+        "put",
+        "open",
+        "pour"
+      ],
+      [
+        "pour",
+        "close",
+        "turn",
+        "lift",
+        "open",
+        "pour"
+      ],
+      [
         "pour",
         "close",
         "move",
-        "take"
-      ],
-      [
         "take",
         "open",
+        "pour"
+      ],
+      [
         "pour",
         "close",
+        "take",
         "lift",
-        "take"
+        "open",
+        "pour"
       ]
     ],
     "session_singleton_nodes": [

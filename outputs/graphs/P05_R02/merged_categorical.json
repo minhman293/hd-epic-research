@@ -15,21 +15,21 @@
     {
       "index": 0,
       "video_id": "P05-20240424-085204",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P05-20240424-085204.mp4",
+      "video_path": "raw-video/P05-20240424-085204.mp4",
       "action_count": 148,
       "duration_s": 438.79
     },
     {
       "index": 1,
       "video_id": "P05-20240425-082420",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P05-20240425-082420.mp4",
+      "video_path": "raw-video/P05-20240425-082420.mp4",
       "action_count": 180,
       "duration_s": 499.4
     },
     {
       "index": 2,
       "video_id": "P05-20240426-085333",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P05-20240426-085333.mp4",
+      "video_path": "raw-video/P05-20240426-085333.mp4",
       "action_count": 263,
       "duration_s": 644.53
     }
@@ -17598,152 +17598,153 @@
     ],
     "loops": [
       [
-        "retrieve",
-        "transition",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "transition",
-        "access",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "transition",
-        "access",
-        "manipulate",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "transition",
-        "access",
-        "manipulate",
         "block",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "transition",
-        "access",
-        "manipulate",
+        "sense",
         "leave",
-        "retrieve"
+        "block"
       ],
       [
-        "retrieve",
-        "transition",
+        "block",
+        "sense",
+        "leave",
+        "monitor",
         "access",
-        "manipulate",
+        "block"
+      ],
+      [
+        "block",
+        "sense",
+        "leave",
+        "access",
+        "block"
+      ],
+      [
+        "block",
+        "sense",
+        "leave",
+        "access",
         "clean",
-        "retrieve"
+        "block"
       ],
       [
-        "retrieve",
-        "transition",
+        "block",
+        "sense",
+        "leave",
+        "access",
+        "merge",
+        "block"
+      ],
+      [
+        "block",
+        "sense",
+        "leave",
         "access",
         "manipulate",
-        "split",
-        "retrieve"
+        "block"
       ],
       [
-        "retrieve",
-        "transition",
-        "access",
-        "merge",
-        "manipulate",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "transition",
-        "access",
-        "merge",
         "block",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "transition",
-        "access",
-        "merge",
+        "sense",
         "leave",
-        "retrieve"
+        "access",
+        "retrieve",
+        "block"
       ],
       [
-        "retrieve",
-        "transition",
-        "access",
         "block",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "transition",
-        "access",
-        "block",
-        "leave",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "transition",
-        "access",
-        "block",
-        "clean",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "transition",
-        "access",
-        "leave",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "transition",
-        "access",
+        "sense",
         "leave",
         "split",
-        "retrieve"
+        "retrieve",
+        "block"
       ],
       [
-        "retrieve",
+        "block",
+        "sense",
+        "leave",
         "transition",
         "access",
-        "clean",
-        "retrieve"
+        "block"
       ],
       [
-        "retrieve",
-        "transition",
-        "access",
-        "clean",
-        "leave",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "transition",
-        "leave",
-        "retrieve"
-      ],
-      [
-        "retrieve",
-        "transition",
-        "leave",
         "block",
-        "retrieve"
+        "sense",
+        "leave",
+        "transition",
+        "retrieve",
+        "block"
       ],
       [
-        "retrieve",
-        "transition",
-        "leave",
         "block",
+        "sense",
+        "leave",
+        "merge",
+        "block"
+      ],
+      [
+        "block",
+        "sense",
+        "leave",
+        "merge",
+        "manipulate",
+        "block"
+      ],
+      [
+        "block",
+        "sense",
+        "leave",
+        "retrieve",
+        "block"
+      ],
+      [
+        "block",
+        "sense",
+        "leave",
+        "retrieve",
+        "merge",
+        "block"
+      ],
+      [
+        "block",
+        "sense",
+        "leave",
+        "retrieve",
+        "manipulate",
+        "block"
+      ],
+      [
+        "block",
+        "sense",
+        "leave",
+        "retrieve",
         "clean",
-        "retrieve"
+        "block"
+      ],
+      [
+        "block",
+        "sense",
+        "leave",
+        "manipulate",
+        "block"
+      ],
+      [
+        "block",
+        "sense",
+        "leave",
+        "manipulate",
+        "clean",
+        "block"
+      ],
+      [
+        "block",
+        "merge",
+        "block"
+      ],
+      [
+        "block",
+        "merge",
+        "manipulate",
+        "block"
       ]
     ],
     "session_singleton_nodes": [

@@ -1,0 +1,317 @@
+[
+ {
+  "internal_consistency": 0.307,
+  "object_purity": 0.47,
+  "verb_purity": 0.363,
+  "head_is_modal": 0.31,
+  "anchor_pos_sd": 0.348,
+  "states": 10,
+  "episodes": 29,
+  "mean_size": 7.759,
+  "singletons": 0.069,
+  "repeated_labels": 9,
+  "coverage": 1.0,
+  "least_consistent": [
+   "turn(containers)",
+   "press(appliances)",
+   "manipulate(dairy and eggs)"
+  ],
+  "recipe": "P01_R01",
+  "condition": "baseline",
+  "why": "current pipeline"
+ },
+ {
+  "internal_consistency": 0.311,
+  "object_purity": 0.476,
+  "verb_purity": 0.363,
+  "head_is_modal": 0.31,
+  "anchor_pos_sd": 0.348,
+  "states": 10,
+  "episodes": 29,
+  "mean_size": 7.759,
+  "singletons": 0.069,
+  "repeated_labels": 9,
+  "coverage": 1.0,
+  "least_consistent": [
+   "turn(containers)",
+   "press(appliances)",
+   "manipulate(dairy and eggs)"
+  ],
+  "recipe": "P01_R01",
+  "condition": "A_object",
+  "why": "reach by object, not by 12 s"
+ },
+ {
+  "internal_consistency": 0.307,
+  "object_purity": 0.468,
+  "verb_purity": 0.364,
+  "head_is_modal": 0.321,
+  "anchor_pos_sd": 0.35,
+  "states": 9,
+  "episodes": 28,
+  "mean_size": 8.036,
+  "singletons": 0.071,
+  "repeated_labels": 9,
+  "coverage": 1.0,
+  "least_consistent": [
+   "press(appliances)",
+   "pour(dairy and eggs)",
+   "manipulate(dairy and eggs)"
+  ],
+  "recipe": "P01_R01",
+  "condition": "B_nocap",
+  "why": "8-member cap removed"
+ },
+ {
+  "internal_consistency": 0.269,
+  "object_purity": 0.465,
+  "verb_purity": 0.371,
+  "head_is_modal": 0.31,
+  "anchor_pos_sd": 0.373,
+  "states": 10,
+  "episodes": 29,
+  "mean_size": 7.759,
+  "singletons": 0.069,
+  "repeated_labels": 9,
+  "coverage": 1.0,
+  "least_consistent": [
+   "manipulate(drinks)",
+   "manipulate(dairy and eggs)",
+   "turn(containers)"
+  ],
+  "recipe": "P01_R01",
+  "condition": "C_nosynth",
+  "why": "synthetic anchors removed"
+ },
+ {
+  "internal_consistency": 0.412,
+  "object_purity": 0.558,
+  "verb_purity": 0.422,
+  "head_is_modal": 0.327,
+  "anchor_pos_sd": 0.379,
+  "states": 29,
+  "episodes": 55,
+  "mean_size": 4.091,
+  "singletons": 0.127,
+  "repeated_labels": 12,
+  "coverage": 1.0,
+  "least_consistent": [
+   "manipulate(prepared food)",
+   "turn(crockery)",
+   "turn(containers)"
+  ],
+  "recipe": "P01_R01",
+  "condition": "D_nofold",
+  "why": "one-off folding removed"
+ },
+ {
+  "internal_consistency": 0.34,
+  "object_purity": 0.488,
+  "verb_purity": 0.392,
+  "head_is_modal": 0.384,
+  "anchor_pos_sd": 0.361,
+  "states": 41,
+  "episodes": 159,
+  "mean_size": 5.245,
+  "singletons": 0.101,
+  "repeated_labels": 40,
+  "coverage": 1.0,
+  "least_consistent": [
+   "manipulate(crockery)",
+   "shake(containers)",
+   "merge(containers)"
+  ],
+  "recipe": "P03_R03",
+  "condition": "baseline",
+  "why": "current pipeline"
+ },
+ {
+  "internal_consistency": 0.35,
+  "object_purity": 0.551,
+  "verb_purity": 0.4,
+  "head_is_modal": 0.431,
+  "anchor_pos_sd": 0.365,
+  "states": 42,
+  "episodes": 160,
+  "mean_size": 5.213,
+  "singletons": 0.1,
+  "repeated_labels": 41,
+  "coverage": 1.0,
+  "least_consistent": [
+   "shake(containers)",
+   "manipulate(containers)",
+   "merge(containers)"
+  ],
+  "recipe": "P03_R03",
+  "condition": "A_object",
+  "why": "reach by object, not by 12 s"
+ },
+ {
+  "internal_consistency": 0.298,
+  "object_purity": 0.463,
+  "verb_purity": 0.347,
+  "head_is_modal": 0.309,
+  "anchor_pos_sd": 0.376,
+  "states": 30,
+  "episodes": 123,
+  "mean_size": 6.78,
+  "singletons": 0.098,
+  "repeated_labels": 29,
+  "coverage": 1.0,
+  "least_consistent": [
+   "slide(containers)",
+   "shake(containers)",
+   "merge(containers)"
+  ],
+  "recipe": "P03_R03",
+  "condition": "B_nocap",
+  "why": "8-member cap removed"
+ },
+ {
+  "internal_consistency": 0.325,
+  "object_purity": 0.463,
+  "verb_purity": 0.357,
+  "head_is_modal": 0.336,
+  "anchor_pos_sd": 0.373,
+  "states": 36,
+  "episodes": 137,
+  "mean_size": 6.088,
+  "singletons": 0.088,
+  "repeated_labels": 35,
+  "coverage": 1.0,
+  "least_consistent": [
+   "manipulate(crockery)",
+   "shake(containers)",
+   "merge(containers)"
+  ],
+  "recipe": "P03_R03",
+  "condition": "C_nosynth",
+  "why": "synthetic anchors removed"
+ },
+ {
+  "internal_consistency": 0.367,
+  "object_purity": 0.522,
+  "verb_purity": 0.43,
+  "head_is_modal": 0.413,
+  "anchor_pos_sd": 0.368,
+  "states": 66,
+  "episodes": 189,
+  "mean_size": 4.413,
+  "singletons": 0.132,
+  "repeated_labels": 41,
+  "coverage": 1.0,
+  "least_consistent": [
+   "manipulate(crockery)",
+   "shake(containers)",
+   "merge(containers)"
+  ],
+  "recipe": "P03_R03",
+  "condition": "D_nofold",
+  "why": "one-off folding removed"
+ },
+ {
+  "internal_consistency": 0.336,
+  "object_purity": 0.431,
+  "verb_purity": 0.317,
+  "head_is_modal": 0.261,
+  "anchor_pos_sd": 0.386,
+  "states": 25,
+  "episodes": 92,
+  "mean_size": 6.217,
+  "singletons": 0.043,
+  "repeated_labels": 23,
+  "coverage": 1.0,
+  "least_consistent": [
+   "pour(baked goods and grains)",
+   "shake(drinks)",
+   "put(containers)"
+  ],
+  "recipe": "P05_R02",
+  "condition": "baseline",
+  "why": "current pipeline"
+ },
+ {
+  "internal_consistency": 0.297,
+  "object_purity": 0.473,
+  "verb_purity": 0.341,
+  "head_is_modal": 0.315,
+  "anchor_pos_sd": 0.391,
+  "states": 25,
+  "episodes": 92,
+  "mean_size": 6.217,
+  "singletons": 0.065,
+  "repeated_labels": 23,
+  "coverage": 1.0,
+  "least_consistent": [
+   "set(appliances)",
+   "put(containers)",
+   "close(storage)"
+  ],
+  "recipe": "P05_R02",
+  "condition": "A_object",
+  "why": "reach by object, not by 12 s"
+ },
+ {
+  "internal_consistency": 0.342,
+  "object_purity": 0.34,
+  "verb_purity": 0.237,
+  "head_is_modal": 0.159,
+  "anchor_pos_sd": 0.397,
+  "states": 19,
+  "episodes": 69,
+  "mean_size": 8.29,
+  "singletons": 0.0,
+  "repeated_labels": 17,
+  "coverage": 1.0,
+  "least_consistent": [
+   "manipulate(appliances)",
+   "take(containers)",
+   "shake(drinks)"
+  ],
+  "recipe": "P05_R02",
+  "condition": "B_nocap",
+  "why": "8-member cap removed"
+ },
+ {
+  "internal_consistency": 0.302,
+  "object_purity": 0.388,
+  "verb_purity": 0.263,
+  "head_is_modal": 0.175,
+  "anchor_pos_sd": 0.382,
+  "states": 22,
+  "episodes": 80,
+  "mean_size": 7.15,
+  "singletons": 0.025,
+  "repeated_labels": 20,
+  "coverage": 1.0,
+  "least_consistent": [
+   "put(crockery)",
+   "manipulate(appliances)",
+   "take(containers)"
+  ],
+  "recipe": "P05_R02",
+  "condition": "C_nosynth",
+  "why": "synthetic anchors removed"
+ },
+ {
+  "internal_consistency": 0.36,
+  "object_purity": 0.508,
+  "verb_purity": 0.386,
+  "head_is_modal": 0.333,
+  "anchor_pos_sd": 0.392,
+  "states": 58,
+  "episodes": 135,
+  "mean_size": 4.237,
+  "singletons": 0.096,
+  "repeated_labels": 29,
+  "coverage": 1.0,
+  "least_consistent": [
+   "put(containers)",
+   "manipulate(containers)",
+   "manipulate(furniture)"
+  ],
+  "recipe": "P05_R02",
+  "condition": "D_nofold",
+  "why": "one-off folding removed"
+ }
+]

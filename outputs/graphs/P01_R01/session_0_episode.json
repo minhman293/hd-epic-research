@@ -4,7 +4,7 @@
   "name": "Nespresso",
   "session_index": 0,
   "video_id": "P01-20240202-110250",
-  "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P01-20240202-110250.mp4",
+  "video_path": "raw-video/P01-20240202-110250.mp4",
   "narration_count": 224,
   "n_videos": 1,
   "total_capture_duration_s": 396.266667
@@ -12,7 +12,7 @@
  "videos": [
   {
    "video_id": "P01-20240202-110250",
-   "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P01-20240202-110250.mp4",
+   "video_path": "raw-video/P01-20240202-110250.mp4",
    "offset_s": 0.0,
    "duration_s": 396.266667
   }
@@ -433,7 +433,7 @@
    "step_id": "P01_R01_S02",
    "video_id": "P01-20240202-110250",
    "n_actions": 22,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [
@@ -1061,7 +1061,7 @@
    "step_id": "P01_R01_S05",
    "video_id": "P01-20240202-110250",
    "n_actions": 8,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -5569,7 +5569,7 @@
     "is_primary": true,
     "median_rank": 0.375,
     "mean_onset": 0.3809,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 26,
     "verbs": {
      "take": 7,
@@ -5734,7 +5734,7 @@
     "is_primary": true,
     "median_rank": 0.75,
     "mean_onset": 0.9018,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 8,
     "verbs": {
      "take": 1,
@@ -5882,7 +5882,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.3333,
+    "probability": 0.25,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -5954,7 +5954,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.3333,
+    "probability": 0.25,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -6002,7 +6002,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.3333,
+    "probability": 0.25,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -6050,7 +6050,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 1.0,
+    "probability": 0.5,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -6085,6 +6085,54 @@
     "kept_reason": "anchor",
     "weak": true,
     "evidence": "weak"
+   },
+   {
+    "source": "press(appliances)",
+    "target": "press(appliances)",
+    "key": "press(appliances)|||press(appliances)",
+    "pairKey": "press(appliances)|||press(appliances)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.25,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "mix(drinks)",
+    "target": "mix(drinks)",
+    "key": "mix(drinks)|||mix(drinks)",
+    "pairKey": "mix(drinks)|||mix(drinks)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
    }
   ]
  },
@@ -6092,8 +6140,8 @@
   "layer": "episode",
   "sessions": 1,
   "nodes": 9,
-  "edges": 11,
-  "out_degree": 1.22,
+  "edges": 13,
+  "out_degree": 1.44,
   "edges_dropped": 0,
   "edges_restored": 0,
   "edges_kept_for_single_session": 0,
@@ -6351,8 +6399,8 @@
   "method": "beam_search_max_probability",
   "length": 5,
   "reached_end": true,
-  "joint_probability": 0.5,
-  "mean_step_probability": 0.8409,
+  "joint_probability": 0.25,
+  "mean_step_probability": 0.7071,
   "weakest_edge": 0.5,
   "candidates_considered": 2,
   "note": "Each step is a common next move from that state. The route as a whole is a model, not necessarily a run anyone performed.",
@@ -6367,7 +6415,7 @@
  "likely_path_edges": [
   1.0,
   0.5,
-  1.0,
+  0.5,
   1.0
  ],
  "expansions": {

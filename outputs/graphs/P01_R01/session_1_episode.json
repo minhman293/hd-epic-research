@@ -4,7 +4,7 @@
   "name": "Nespresso",
   "session_index": 1,
   "video_id": "P01-20240203-093333",
-  "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P01-20240203-093333.mp4",
+  "video_path": "raw-video/P01-20240203-093333.mp4",
   "narration_count": 68,
   "n_videos": 1,
   "total_capture_duration_s": 173.333333
@@ -12,7 +12,7 @@
  "videos": [
   {
    "video_id": "P01-20240203-093333",
-   "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P01-20240203-093333.mp4",
+   "video_path": "raw-video/P01-20240203-093333.mp4",
    "offset_s": 0.0,
    "duration_s": 173.333333
   }
@@ -637,7 +637,7 @@
    "step_id": null,
    "video_id": "P01-20240203-093333",
    "n_actions": 8,
-   "repeats": 1,
+   "repeats": 3,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -794,7 +794,7 @@
    "step_id": null,
    "video_id": "P01-20240203-093333",
    "n_actions": 11,
-   "repeats": 1,
+   "repeats": 3,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -2435,7 +2435,7 @@
     "is_primary": true,
     "median_rank": 0.5,
     "mean_onset": 0.319,
-    "self_loop": 0,
+    "self_loop": 2,
     "n_raw_actions": 10,
     "verbs": {
      "lift": 1,
@@ -2524,7 +2524,7 @@
     "is_primary": true,
     "median_rank": 0.75,
     "mean_onset": 0.8716,
-    "self_loop": 0,
+    "self_loop": 2,
     "n_raw_actions": 11,
     "verbs": {
      "open": 1,
@@ -2680,7 +2680,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.5,
+    "probability": 0.25,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -2776,7 +2776,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.5,
+    "probability": 0.25,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -2824,7 +2824,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 1.0,
+    "probability": 0.3333,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -2859,6 +2859,54 @@
     "kept_reason": "anchor",
     "weak": true,
     "evidence": "weak"
+   },
+   {
+    "source": "press(appliances)",
+    "target": "press(appliances)",
+    "key": "press(appliances)|||press(appliances)",
+    "pairKey": "press(appliances)|||press(appliances)",
+    "count": 2,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": false,
+    "evidence": "moderate"
+   },
+   {
+    "source": "wash(dairy and eggs)",
+    "target": "wash(dairy and eggs)",
+    "key": "wash(dairy and eggs)|||wash(dairy and eggs)",
+    "pairKey": "wash(dairy and eggs)|||wash(dairy and eggs)",
+    "count": 2,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.6667,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": false,
+    "evidence": "moderate"
    }
   ]
  },
@@ -2866,8 +2914,8 @@
   "layer": "episode",
   "sessions": 1,
   "nodes": 9,
-  "edges": 10,
-  "out_degree": 1.11,
+  "edges": 12,
+  "out_degree": 1.33,
   "edges_dropped": 0,
   "edges_restored": 0,
   "edges_kept_for_single_session": 0,
@@ -3129,9 +3177,9 @@
   "method": "beam_search_max_probability",
   "length": 9,
   "reached_end": true,
-  "joint_probability": 0.25,
-  "mean_step_probability": 0.8409,
-  "weakest_edge": 0.5,
+  "joint_probability": 0.0416625,
+  "mean_step_probability": 0.6722,
+  "weakest_edge": 0.25,
   "candidates_considered": 3,
   "note": "Each step is a common next move from that state. The route as a whole is a model, not necessarily a run anyone performed.",
   "observed_in_full": false,
@@ -3143,11 +3191,11 @@
  "likely_path_edges": [
   1.0,
   1.0,
-  0.5,
+  0.25,
   1.0,
   1.0,
   0.5,
-  1.0,
+  0.3333,
   1.0
  ],
  "expansions": {

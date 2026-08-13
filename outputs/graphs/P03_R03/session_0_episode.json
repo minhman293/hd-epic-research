@@ -4,7 +4,7 @@
   "name": "Drip Coffee",
   "session_index": 0,
   "video_id": "P03-20240216-084005",
-  "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240216-084005.mp4",
+  "video_path": "raw-video/P03-20240216-084005.mp4",
   "narration_count": 455,
   "n_videos": 1,
   "total_capture_duration_s": 1064.2
@@ -12,7 +12,7 @@
  "videos": [
   {
    "video_id": "P03-20240216-084005",
-   "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240216-084005.mp4",
+   "video_path": "raw-video/P03-20240216-084005.mp4",
    "offset_s": 0.0,
    "duration_s": 1064.2
   }
@@ -935,7 +935,7 @@
    "step_id": null,
    "video_id": "P03-20240216-084005",
    "n_actions": 19,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [
@@ -1838,7 +1838,7 @@
    "step_id": null,
    "video_id": "P03-20240216-084005",
    "n_actions": 11,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [
@@ -1962,7 +1962,7 @@
    "step_id": null,
    "video_id": "P03-20240216-084005",
    "n_actions": 9,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -2370,7 +2370,7 @@
    "step_id": null,
    "video_id": "P03-20240216-084005",
    "n_actions": 4,
-   "repeats": 1,
+   "repeats": 3,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -2473,7 +2473,7 @@
    "step_id": null,
    "video_id": "P03-20240216-084005",
    "n_actions": 4,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -3122,7 +3122,7 @@
    "step_id": null,
    "video_id": "P03-20240216-084005",
    "n_actions": 10,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": true,
    "variants": [
@@ -3724,7 +3724,7 @@
    "step_id": null,
    "video_id": "P03-20240216-084005",
    "n_actions": 5,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -4183,7 +4183,7 @@
    "step_id": "P03_R03_S05",
    "video_id": "P03-20240216-084005",
    "n_actions": 5,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -13177,7 +13177,7 @@
     "is_primary": true,
     "median_rank": 0.21212,
     "mean_onset": 0.3607,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 19,
     "verbs": {
      "take": 2,
@@ -13608,7 +13608,7 @@
     "is_primary": true,
     "median_rank": 0.54545,
     "mean_onset": 0.6325,
-    "self_loop": 0,
+    "self_loop": 3,
     "n_raw_actions": 32,
     "verbs": {
      "take": 12,
@@ -13661,7 +13661,7 @@
     "is_primary": true,
     "median_rank": 0.57576,
     "mean_onset": 0.5839,
-    "self_loop": 0,
+    "self_loop": 2,
     "n_raw_actions": 21,
     "verbs": {
      "take": 8,
@@ -13796,7 +13796,7 @@
     "is_primary": true,
     "median_rank": 0.66667,
     "mean_onset": 0.6831,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 21,
     "verbs": {
      "take": 3,
@@ -14036,7 +14036,7 @@
     "is_primary": true,
     "median_rank": 0.84848,
     "mean_onset": 0.8308,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 5,
     "verbs": {
      "reach": 1,
@@ -14078,7 +14078,7 @@
     "is_primary": true,
     "median_rank": 0.87879,
     "mean_onset": 0.8091,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 32,
     "verbs": {
      "lift": 1,
@@ -14475,7 +14475,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 1.0,
+    "probability": 0.5,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -14859,7 +14859,7 @@
     "per_session_counts": {
      "0": 2
     },
-    "probability": 0.4,
+    "probability": 0.25,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -14883,7 +14883,7 @@
     "per_session_counts": {
      "0": 2
     },
-    "probability": 0.5,
+    "probability": 0.3333,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -14907,7 +14907,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.2,
+    "probability": 0.125,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -14979,7 +14979,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.2,
+    "probability": 0.125,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -15027,7 +15027,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.25,
+    "probability": 0.1667,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -15099,7 +15099,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.25,
+    "probability": 0.1667,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -15123,7 +15123,7 @@
     "per_session_counts": {
      "0": 2
     },
-    "probability": 0.5,
+    "probability": 0.4,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -15171,7 +15171,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.25,
+    "probability": 0.2,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -15219,7 +15219,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.1667,
+    "probability": 0.1429,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -15243,7 +15243,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.25,
+    "probability": 0.2,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -15315,7 +15315,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.1667,
+    "probability": 0.1429,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -15363,7 +15363,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.1667,
+    "probability": 0.1429,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -15435,7 +15435,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 1.0,
+    "probability": 0.5,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -15459,7 +15459,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.1667,
+    "probability": 0.1429,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -15531,7 +15531,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.1667,
+    "probability": 0.1429,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -15579,7 +15579,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.2,
+    "probability": 0.125,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -15603,7 +15603,7 @@
     "per_session_counts": {
      "0": 1
     },
-    "probability": 0.1667,
+    "probability": 0.1429,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -15614,6 +15614,150 @@
     "kept_reason": "anchor",
     "weak": true,
     "evidence": "weak"
+   },
+   {
+    "source": "attach(utensils)",
+    "target": "attach(utensils)",
+    "key": "attach(utensils)|||attach(utensils)",
+    "pairKey": "attach(utensils)|||attach(utensils)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "pull(storage)",
+    "target": "pull(storage)",
+    "key": "pull(storage)|||pull(storage)",
+    "pairKey": "pull(storage)|||pull(storage)",
+    "count": 3,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.375,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": false,
+    "evidence": "moderate"
+   },
+   {
+    "source": "press(storage)",
+    "target": "press(storage)",
+    "key": "press(storage)|||press(storage)",
+    "pairKey": "press(storage)|||press(storage)",
+    "count": 2,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.3333,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": false,
+    "evidence": "moderate"
+   },
+   {
+    "source": "clean(crockery)",
+    "target": "clean(crockery)",
+    "key": "clean(crockery)|||clean(crockery)",
+    "pairKey": "clean(crockery)|||clean(crockery)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.2,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "press(appliances)",
+    "target": "press(appliances)",
+    "key": "press(appliances)|||press(appliances)",
+    "pairKey": "press(appliances)|||press(appliances)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "pour(drinks)",
+    "target": "pour(drinks)",
+    "key": "pour(drinks)|||pour(drinks)",
+    "pairKey": "pour(drinks)|||pour(drinks)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "0": 1
+    },
+    "probability": 0.1429,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
    }
   ]
  },
@@ -15621,8 +15765,8 @@
   "layer": "episode",
   "sessions": 1,
   "nodes": 34,
-  "edges": 56,
-  "out_degree": 1.65,
+  "edges": 62,
+  "out_degree": 1.82,
   "edges_dropped": 0,
   "edges_restored": 0,
   "edges_kept_for_single_session": 0,
@@ -16249,29 +16393,31 @@
   "clean(cutlery)",
   "scoop(drinks)",
   "shake(appliances)",
-  "open(storage)",
-  "attach(utensils)",
-  "press(containers)",
-  "pull(containers)",
-  "reach(containers)",
-  "press(appliances)",
+  "shake(containers)",
+  "merge(containers)",
+  "wash(cleaning equipment and material)",
+  "squeeze(cleaning equipment and material)",
+  "shake(cleaning equipment and material)",
+  "wash(furniture)",
+  "dry(hand)",
+  "leave(cleaning equipment and material)",
   "pour(drinks)",
   "END"
  ],
  "likely_path_report": {
   "method": "beam_search_max_probability",
-  "length": 15,
+  "length": 17,
   "reached_end": true,
-  "joint_probability": 0.0208375,
-  "mean_step_probability": 0.7584,
-  "weakest_edge": 0.1667,
+  "joint_probability": 0.00893125,
+  "mean_step_probability": 0.7446,
+  "weakest_edge": 0.1429,
   "candidates_considered": 41,
   "note": "Each step is a common next move from that state. The route as a whole is a model, not necessarily a run anyone performed.",
   "observed_in_full": false,
   "sessions": [],
-  "longest_run": 10,
-  "path_length": 13,
-  "headline": "Most likely route \u2014 13 steps. No session performed the whole route; the longest part anyone did in one go was 10 steps."
+  "longest_run": 6,
+  "path_length": 15,
+  "headline": "Most likely route \u2014 15 steps. No session performed the whole route; the longest part anyone did in one go was 6 steps."
  },
  "likely_path_edges": [
   1.0,
@@ -16283,11 +16429,13 @@
   0.5,
   1.0,
   1.0,
-  0.5,
+  1.0,
   0.5,
   1.0,
   1.0,
-  0.1667
+  0.5,
+  0.5,
+  0.1429
  ],
  "expansions": {
   "open(containers)": {

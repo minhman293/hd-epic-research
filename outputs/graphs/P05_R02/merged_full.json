@@ -15,21 +15,21 @@
     {
       "index": 0,
       "video_id": "P05-20240424-085204",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P05-20240424-085204.mp4",
+      "video_path": "raw-video/P05-20240424-085204.mp4",
       "action_count": 148,
       "duration_s": 438.79
     },
     {
       "index": 1,
       "video_id": "P05-20240425-082420",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P05-20240425-082420.mp4",
+      "video_path": "raw-video/P05-20240425-082420.mp4",
       "action_count": 180,
       "duration_s": 499.4
     },
     {
       "index": 2,
       "video_id": "P05-20240426-085333",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P05-20240426-085333.mp4",
+      "video_path": "raw-video/P05-20240426-085333.mp4",
       "action_count": 263,
       "duration_s": 644.53
     }
@@ -31629,24 +31629,51 @@
     "session_shared_suffix": [],
     "loops": [
       [
+        "put(scale)",
+        "close(drawer)",
+        "put(scale)"
+      ],
+      [
+        "put(scale)",
+        "take(bowl)",
+        "put(bowl)",
+        "open(drawer)",
+        "put(scale)"
+      ],
+      [
+        "put(scale)",
+        "take(bowl)",
+        "put(bowl)",
+        "take(scale)",
+        "open(drawer)",
+        "put(scale)"
+      ],
+      [
+        "put(scale)",
+        "take(bowl)",
+        "put(bowl)",
+        "take(scale)",
+        "close(drawer)",
+        "put(scale)"
+      ],
+      [
+        "put(scale)",
+        "take(bowl)",
+        "put(oatmeal)",
+        "take(spoon)",
+        "close(drawer)",
+        "put(scale)"
+      ],
+      [
         "open(drawer)",
         "take(scale)",
         "open(drawer)"
       ],
       [
-        "open(drawer)",
-        "put(scale)",
-        "take(bowl)",
-        "put(bowl)",
-        "open(drawer)"
-      ],
-      [
-        "open(drawer)",
-        "put(scale)",
-        "take(bowl)",
-        "put(bowl)",
-        "take(scale)",
-        "open(drawer)"
+        "put(spoon)",
+        "close(cupboard)",
+        "press(button)",
+        "put(spoon)"
       ],
       [
         "put(spoon)",
@@ -31657,24 +31684,10 @@
         "put(spoon)"
       ],
       [
-        "put(spoon)",
         "close(cupboard)",
-        "press(button)",
-        "put(spoon)"
-      ],
-      [
         "take(spoon)",
         "close(drawer)",
-        "close(cupboard)",
-        "take(spoon)"
-      ],
-      [
-        "take(spoon)",
-        "close(drawer)",
-        "put(scale)",
-        "take(bowl)",
-        "put(oatmeal)",
-        "take(spoon)"
+        "close(cupboard)"
       ],
       [
         "take(spoon)",
@@ -31683,19 +31696,6 @@
         "move(oatmeal)",
         "put(oatmeal)",
         "take(spoon)"
-      ],
-      [
-        "put(scale)",
-        "take(bowl)",
-        "put(bowl)",
-        "take(scale)",
-        "close(drawer)",
-        "put(scale)"
-      ],
-      [
-        "put(scale)",
-        "close(drawer)",
-        "put(scale)"
       ]
     ],
     "session_singleton_nodes": [

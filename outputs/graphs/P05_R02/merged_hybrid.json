@@ -15,21 +15,21 @@
     {
       "index": 0,
       "video_id": "P05-20240424-085204",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P05-20240424-085204.mp4",
+      "video_path": "raw-video/P05-20240424-085204.mp4",
       "action_count": 150,
       "duration_s": 438.79
     },
     {
       "index": 1,
       "video_id": "P05-20240425-082420",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P05-20240425-082420.mp4",
+      "video_path": "raw-video/P05-20240425-082420.mp4",
       "action_count": 182,
       "duration_s": 499.4
     },
     {
       "index": 2,
       "video_id": "P05-20240426-085333",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P05-20240426-085333.mp4",
+      "video_path": "raw-video/P05-20240426-085333.mp4",
       "action_count": 265,
       "duration_s": 644.53
     }
@@ -37993,151 +37993,152 @@
     "session_shared_suffix": [],
     "loops": [
       [
+        "turn-off(appliances)",
+        "pour(drinks)",
         "put(crockery)",
-        "retrieve",
-        "open(furniture)",
-        "put(cutlery)",
-        "take(crockery)",
-        "put(crockery)"
+        "turn-off(appliances)"
       ],
       [
-        "put(crockery)",
-        "retrieve",
-        "open(furniture)",
-        "leave",
-        "take(crockery)",
-        "put(crockery)"
-      ],
-      [
-        "put(crockery)",
-        "retrieve",
-        "manipulate",
-        "open(storage)",
-        "take(crockery)",
-        "put(crockery)"
-      ],
-      [
-        "put(crockery)",
-        "retrieve",
-        "manipulate",
-        "put(containers)",
-        "take(crockery)",
-        "put(crockery)"
-      ],
-      [
-        "put(crockery)",
-        "retrieve",
-        "close(furniture)",
-        "leave",
-        "take(crockery)",
-        "put(crockery)"
-      ],
-      [
-        "put(crockery)",
-        "open(furniture)",
-        "put(cutlery)",
-        "take(crockery)",
-        "put(crockery)"
-      ],
-      [
-        "put(crockery)",
-        "open(furniture)",
-        "put(cutlery)",
-        "take(crockery)",
-        "drink(drinks)",
-        "put(crockery)"
-      ],
-      [
-        "put(crockery)",
-        "open(furniture)",
-        "put(cutlery)",
-        "turn-on(appliances)",
-        "take(crockery)",
-        "put(crockery)"
-      ],
-      [
-        "put(crockery)",
-        "open(furniture)",
-        "leave",
-        "take(crockery)",
-        "put(crockery)"
-      ],
-      [
-        "put(crockery)",
-        "open(furniture)",
-        "leave",
-        "take(crockery)",
-        "drink(drinks)",
-        "put(crockery)"
-      ],
-      [
-        "put(crockery)",
-        "open(furniture)",
-        "take(cutlery)",
-        "put(cutlery)",
-        "take(crockery)",
-        "put(crockery)"
-      ],
-      [
-        "put(crockery)",
-        "take(crockery)",
-        "put(crockery)"
-      ],
-      [
-        "put(crockery)",
-        "take(crockery)",
-        "drink(drinks)",
-        "put(crockery)"
-      ],
-      [
+        "turn-off(appliances)",
+        "pour(drinks)",
         "put(crockery)",
         "take(crockery)",
         "turn-on(appliances)",
+        "turn-off(appliances)"
+      ],
+      [
         "turn-off(appliances)",
         "pour(drinks)",
-        "put(crockery)"
+        "put(crockery)",
+        "turn-on(appliances)",
+        "turn-off(appliances)"
       ],
       [
-        "put(crockery)",
-        "turn-off(appliances)",
-        "take(crockery)",
-        "put(crockery)"
-      ],
-      [
-        "put(crockery)",
-        "turn-off(appliances)",
-        "take(crockery)",
-        "drink(drinks)",
-        "put(crockery)"
-      ],
-      [
-        "put(crockery)",
-        "turn-off(appliances)",
-        "manipulate",
-        "open(storage)",
-        "take(crockery)",
-        "put(crockery)"
-      ],
-      [
-        "put(crockery)",
-        "turn-off(appliances)",
-        "manipulate",
-        "put(containers)",
-        "take(crockery)",
-        "put(crockery)"
-      ],
-      [
-        "put(crockery)",
         "turn-off(appliances)",
         "pour(drinks)",
-        "put(crockery)"
+        "put(crockery)",
+        "turn-on(appliances)",
+        "wash(hand)",
+        "turn-off(appliances)"
       ],
       [
+        "turn-off(appliances)",
+        "pour(drinks)",
+        "put(crockery)",
+        "take(fruits and nuts)",
+        "put(fruits and nuts)",
+        "turn-off(appliances)"
+      ],
+      [
+        "turn-off(appliances)",
+        "pour(drinks)",
         "put(crockery)",
         "take(containers)",
+        "put(fruits and nuts)",
+        "turn-off(appliances)"
+      ],
+      [
+        "turn-off(appliances)",
+        "take(crockery)",
+        "drink(drinks)",
+        "put(crockery)",
+        "turn-off(appliances)"
+      ],
+      [
+        "turn-off(appliances)",
+        "take(crockery)",
+        "drink(drinks)",
+        "put(crockery)",
+        "turn-on(appliances)",
+        "turn-off(appliances)"
+      ],
+      [
+        "turn-off(appliances)",
+        "take(crockery)",
+        "put(crockery)",
+        "turn-off(appliances)"
+      ],
+      [
+        "turn-off(appliances)",
+        "take(crockery)",
+        "put(crockery)",
+        "turn-on(appliances)",
+        "turn-off(appliances)"
+      ],
+      [
+        "turn-off(appliances)",
+        "take(crockery)",
+        "put(crockery)",
+        "turn-on(appliances)",
+        "wash(hand)",
+        "turn-off(appliances)"
+      ],
+      [
+        "turn-off(appliances)",
+        "take(crockery)",
+        "put(crockery)",
+        "take(fruits and nuts)",
+        "put(fruits and nuts)",
+        "turn-off(appliances)"
+      ],
+      [
+        "turn-off(appliances)",
+        "take(crockery)",
+        "put(crockery)",
+        "take(containers)",
+        "put(fruits and nuts)",
+        "turn-off(appliances)"
+      ],
+      [
+        "turn-off(appliances)",
+        "take(crockery)",
+        "turn-on(appliances)",
+        "turn-off(appliances)"
+      ],
+      [
+        "turn-off(appliances)",
+        "take(crockery)",
+        "turn-on(appliances)",
+        "wash(hand)",
+        "turn-off(appliances)"
+      ],
+      [
+        "turn-off(appliances)",
+        "take(crockery)",
+        "turn-on(appliances)",
+        "take(containers)",
+        "put(fruits and nuts)",
+        "turn-off(appliances)"
+      ],
+      [
+        "turn-off(appliances)",
+        "manipulate",
+        "put(fruits and nuts)",
+        "turn-off(appliances)"
+      ],
+      [
+        "turn-off(appliances)",
+        "manipulate",
+        "put(containers)",
+        "take(containers)",
+        "put(fruits and nuts)",
+        "turn-off(appliances)"
+      ],
+      [
+        "turn-off(appliances)",
+        "manipulate",
         "put(containers)",
         "take(crockery)",
-        "put(crockery)"
+        "put(crockery)",
+        "turn-off(appliances)"
+      ],
+      [
+        "turn-off(appliances)",
+        "manipulate",
+        "put(containers)",
+        "take(crockery)",
+        "turn-on(appliances)",
+        "turn-off(appliances)"
       ]
     ],
     "session_singleton_nodes": [

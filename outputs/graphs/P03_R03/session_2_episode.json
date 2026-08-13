@@ -4,7 +4,7 @@
   "name": "Drip Coffee",
   "session_index": 2,
   "video_id": "P03-20240218-094452",
-  "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240218-094452.mp4",
+  "video_path": "raw-video/P03-20240218-094452.mp4",
   "narration_count": 480,
   "n_videos": 1,
   "total_capture_duration_s": 1024.666667
@@ -12,7 +12,7 @@
  "videos": [
   {
    "video_id": "P03-20240218-094452",
-   "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240218-094452.mp4",
+   "video_path": "raw-video/P03-20240218-094452.mp4",
    "offset_s": 0.0,
    "duration_s": 1024.666667
   }
@@ -855,7 +855,7 @@
    "step_id": "P03_R03_S02",
    "video_id": "P03-20240218-094452",
    "n_actions": 4,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -917,7 +917,7 @@
    "step_id": null,
    "video_id": "P03-20240218-094452",
    "n_actions": 9,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -1314,7 +1314,7 @@
    "step_id": null,
    "video_id": "P03-20240218-094452",
    "n_actions": 13,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [
@@ -1708,7 +1708,7 @@
    "step_id": null,
    "video_id": "P03-20240218-094452",
    "n_actions": 14,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -2615,7 +2615,7 @@
    "step_id": "P03_R03_S05",
    "video_id": "P03-20240218-094452",
    "n_actions": 19,
-   "repeats": 1,
+   "repeats": 5,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -12158,7 +12158,7 @@
     "is_primary": true,
     "median_rank": 0.22222,
     "mean_onset": 0.5879,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 4,
     "verbs": {
      "take": 1,
@@ -12198,7 +12198,7 @@
     "is_primary": true,
     "median_rank": 0.25926,
     "mean_onset": 0.5973,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 9,
     "verbs": {
      "take": 3,
@@ -12400,7 +12400,7 @@
     "is_primary": true,
     "median_rank": 0.44444,
     "mean_onset": 0.6665,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 13,
     "verbs": {
      "put": 3,
@@ -12587,7 +12587,7 @@
     "is_primary": true,
     "median_rank": 0.62963,
     "mean_onset": 0.7132,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 14,
     "verbs": {
      "take": 6,
@@ -12872,7 +12872,7 @@
     "is_primary": true,
     "median_rank": 0.88889,
     "mean_onset": 0.7966,
-    "self_loop": 0,
+    "self_loop": 4,
     "n_raw_actions": 37,
     "verbs": {
      "take": 9,
@@ -13228,7 +13228,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 1.0,
+    "probability": 0.5,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -13252,7 +13252,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 1.0,
+    "probability": 0.5,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -13372,7 +13372,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 1.0,
+    "probability": 0.5,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -13420,7 +13420,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.25,
+    "probability": 0.125,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -13516,7 +13516,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 1.0,
+    "probability": 0.5,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -13612,7 +13612,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.25,
+    "probability": 0.125,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -13708,7 +13708,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.25,
+    "probability": 0.125,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -13780,7 +13780,7 @@
     "per_session_counts": {
      "2": 1
     },
-    "probability": 0.25,
+    "probability": 0.125,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -13791,6 +13791,126 @@
     "kept_reason": "anchor",
     "weak": true,
     "evidence": "weak"
+   },
+   {
+    "source": "press(appliances)",
+    "target": "press(appliances)",
+    "key": "press(appliances)|||press(appliances)",
+    "pairKey": "press(appliances)|||press(appliances)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "attach(utensils)",
+    "target": "attach(utensils)",
+    "key": "attach(utensils)|||attach(utensils)",
+    "pairKey": "attach(utensils)|||attach(utensils)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "put(crockery)",
+    "target": "put(crockery)",
+    "key": "put(crockery)|||put(crockery)",
+    "pairKey": "put(crockery)|||put(crockery)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "wash(furniture)",
+    "target": "wash(furniture)",
+    "key": "wash(furniture)|||wash(furniture)",
+    "pairKey": "wash(furniture)|||wash(furniture)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "pour(drinks)",
+    "target": "pour(drinks)",
+    "key": "pour(drinks)|||pour(drinks)",
+    "pairKey": "pour(drinks)|||pour(drinks)",
+    "count": 4,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "2": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": false,
+    "evidence": "strong"
    }
   ]
  },
@@ -13798,8 +13918,8 @@
   "layer": "episode",
   "sessions": 1,
   "nodes": 28,
-  "edges": 32,
-  "out_degree": 1.14,
+  "edges": 37,
+  "out_degree": 1.32,
   "edges_dropped": 0,
   "edges_restored": 0,
   "edges_kept_for_single_session": 0,
@@ -14442,9 +14562,9 @@
   "method": "beam_search_max_probability",
   "length": 18,
   "reached_end": true,
-  "joint_probability": 0.0625,
-  "mean_step_probability": 0.8495,
-  "weakest_edge": 0.25,
+  "joint_probability": 0.00390625,
+  "mean_step_probability": 0.7217,
+  "weakest_edge": 0.125,
   "candidates_considered": 3,
   "note": "Each step is a common next move from that state. The route as a whole is a model, not necessarily a run anyone performed.",
   "observed_in_full": true,
@@ -14464,15 +14584,15 @@
   1.0,
   1.0,
   0.5,
+  0.5,
+  0.5,
   1.0,
   1.0,
   1.0,
   1.0,
+  0.5,
   1.0,
-  1.0,
-  1.0,
-  1.0,
-  0.25
+  0.125
  ],
  "expansions": {
   "clean(utensils)": {

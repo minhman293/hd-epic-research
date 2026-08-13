@@ -4,7 +4,7 @@
   "name": "Drip Coffee",
   "session_index": 1,
   "video_id": "P03-20240217-091657",
-  "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240217-091657.mp4",
+  "video_path": "raw-video/P03-20240217-091657.mp4",
   "narration_count": 391,
   "n_videos": 1,
   "total_capture_duration_s": 944.966667
@@ -12,7 +12,7 @@
  "videos": [
   {
    "video_id": "P03-20240217-091657",
-   "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240217-091657.mp4",
+   "video_path": "raw-video/P03-20240217-091657.mp4",
    "offset_s": 0.0,
    "duration_s": 944.966667
   }
@@ -1114,7 +1114,7 @@
    "step_id": null,
    "video_id": "P03-20240217-091657",
    "n_actions": 11,
-   "repeats": 1,
+   "repeats": 3,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -1424,7 +1424,7 @@
    "step_id": null,
    "video_id": "P03-20240217-091657",
    "n_actions": 11,
-   "repeats": 1,
+   "repeats": 3,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -1634,7 +1634,7 @@
    "step_id": null,
    "video_id": "P03-20240217-091657",
    "n_actions": 10,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": true,
    "rolled_up": true,
    "variants": [],
@@ -2174,7 +2174,7 @@
    "step_id": null,
    "video_id": "P03-20240217-091657",
    "n_actions": 8,
-   "repeats": 1,
+   "repeats": 3,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -2592,7 +2592,7 @@
    "step_id": null,
    "video_id": "P03-20240217-091657",
    "n_actions": 5,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -2748,7 +2748,7 @@
    "step_id": null,
    "video_id": "P03-20240217-091657",
    "n_actions": 7,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": false,
    "rolled_up": false,
    "variants": [],
@@ -2835,7 +2835,7 @@
    "step_id": "P03_R03_S05",
    "video_id": "P03-20240217-091657",
    "n_actions": 13,
-   "repeats": 1,
+   "repeats": 2,
    "synthetic": true,
    "rolled_up": false,
    "variants": [],
@@ -10874,7 +10874,7 @@
     "is_primary": true,
     "median_rank": 0.52174,
     "mean_onset": 0.6105,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 10,
     "verbs": {
      "take": 3,
@@ -10918,7 +10918,7 @@
     "is_primary": true,
     "median_rank": 0.56522,
     "mean_onset": 0.6165,
-    "self_loop": 0,
+    "self_loop": 6,
     "n_raw_actions": 61,
     "verbs": {
      "pull": 17,
@@ -11021,7 +11021,7 @@
     "is_primary": true,
     "median_rank": 0.65217,
     "mean_onset": 0.7808,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 22,
     "verbs": {
      "take": 8,
@@ -11264,7 +11264,7 @@
     "is_primary": true,
     "median_rank": 0.91304,
     "mean_onset": 0.8393,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 5,
     "verbs": {
      "reach": 2,
@@ -11300,7 +11300,7 @@
     "is_primary": true,
     "median_rank": 0.95652,
     "mean_onset": 0.9023,
-    "self_loop": 0,
+    "self_loop": 1,
     "n_raw_actions": 7,
     "verbs": {
      "lift": 1,
@@ -11508,7 +11508,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.1,
+    "probability": 0.0625,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -11604,7 +11604,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.1,
+    "probability": 0.0625,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -11652,7 +11652,7 @@
     "per_session_counts": {
      "1": 2
     },
-    "probability": 0.2,
+    "probability": 0.125,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -11700,7 +11700,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.1,
+    "probability": 0.0625,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -11796,7 +11796,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.1,
+    "probability": 0.0625,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -11844,7 +11844,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 1.0,
+    "probability": 0.5,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -11868,7 +11868,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.1,
+    "probability": 0.0625,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -11916,7 +11916,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.3333,
+    "probability": 0.25,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -11940,7 +11940,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.1,
+    "probability": 0.0625,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -11964,7 +11964,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.3333,
+    "probability": 0.25,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -12108,7 +12108,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.1,
+    "probability": 0.0625,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -12156,7 +12156,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 1.0,
+    "probability": 0.5,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -12180,7 +12180,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.1,
+    "probability": 0.0625,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -12204,7 +12204,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 1.0,
+    "probability": 0.5,
     "is_self_loop": false,
     "is_return": true,
     "is_bridged": false,
@@ -12228,7 +12228,7 @@
     "per_session_counts": {
      "1": 1
     },
-    "probability": 0.3333,
+    "probability": 0.25,
     "is_self_loop": false,
     "is_return": false,
     "is_bridged": false,
@@ -12239,6 +12239,126 @@
     "kept_reason": "anchor",
     "weak": true,
     "evidence": "weak"
+   },
+   {
+    "source": "pull(storage)",
+    "target": "pull(storage)",
+    "key": "pull(storage)|||pull(storage)",
+    "pairKey": "pull(storage)|||pull(storage)",
+    "count": 6,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.375,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": false,
+    "evidence": "strong"
+   },
+   {
+    "source": "access(materials)",
+    "target": "access(materials)",
+    "key": "access(materials)|||access(materials)",
+    "pairKey": "access(materials)|||access(materials)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "reach(containers)",
+    "target": "reach(containers)",
+    "key": "reach(containers)|||reach(containers)",
+    "pairKey": "reach(containers)|||reach(containers)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "pull(containers)",
+    "target": "pull(containers)",
+    "key": "pull(containers)|||pull(containers)",
+    "pairKey": "pull(containers)|||pull(containers)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.5,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
+   },
+   {
+    "source": "lift(appliances)",
+    "target": "lift(appliances)",
+    "key": "lift(appliances)|||lift(appliances)",
+    "pairKey": "lift(appliances)|||lift(appliances)",
+    "count": 1,
+    "support": 1,
+    "support_fraction": 1.0,
+    "n_sessions": 1,
+    "per_session_counts": {
+     "1": 1
+    },
+    "probability": 0.25,
+    "is_self_loop": true,
+    "is_return": false,
+    "is_bridged": false,
+    "is_bridge_edge": false,
+    "is_introduced": false,
+    "restored": false,
+    "session_only": false,
+    "kept_reason": "reproducible",
+    "weak": true,
+    "evidence": "weak"
    }
   ]
  },
@@ -12246,8 +12366,8 @@
   "layer": "episode",
   "sessions": 1,
   "nodes": 24,
-  "edges": 37,
-  "out_degree": 1.54,
+  "edges": 42,
+  "out_degree": 1.75,
   "edges_dropped": 0,
   "edges_restored": 0,
   "edges_kept_for_single_session": 0,
@@ -12882,9 +13002,9 @@
   "method": "beam_search_max_probability",
   "length": 10,
   "reached_end": true,
-  "joint_probability": 0.03333,
-  "mean_step_probability": 0.6853,
-  "weakest_edge": 0.1,
+  "joint_probability": 0.015625,
+  "mean_step_probability": 0.63,
+  "weakest_edge": 0.0625,
   "candidates_considered": 3,
   "note": "Each step is a common next move from that state. The route as a whole is a model, not necessarily a run anyone performed.",
   "observed_in_full": false,
@@ -12900,9 +13020,9 @@
   1.0,
   1.0,
   1.0,
-  0.1,
+  0.0625,
   1.0,
-  0.3333
+  0.25
  ],
  "expansions": {
   "merge(containers)": {

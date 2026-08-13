@@ -1,0 +1,16 @@
+recipe,condition,why,internal_consistency,object_purity,verb_purity,head_is_modal,anchor_pos_sd,states,episodes,mean_size,singletons,repeated_labels,coverage
+P01_R01,baseline,current pipeline,0.307,0.47,0.363,0.31,0.348,10,29,7.759,0.069,9,1.0
+P01_R01,A_object,"reach by object, not by 12 s",0.311,0.476,0.363,0.31,0.348,10,29,7.759,0.069,9,1.0
+P01_R01,B_nocap,8-member cap removed,0.307,0.468,0.364,0.321,0.35,9,28,8.036,0.071,9,1.0
+P01_R01,C_nosynth,synthetic anchors removed,0.269,0.465,0.371,0.31,0.373,10,29,7.759,0.069,9,1.0
+P01_R01,D_nofold,one-off folding removed,0.412,0.558,0.422,0.327,0.379,29,55,4.091,0.127,12,1.0
+P03_R03,baseline,current pipeline,0.34,0.488,0.392,0.384,0.361,41,159,5.245,0.101,40,1.0
+P03_R03,A_object,"reach by object, not by 12 s",0.35,0.551,0.4,0.431,0.365,42,160,5.213,0.1,41,1.0
+P03_R03,B_nocap,8-member cap removed,0.298,0.463,0.347,0.309,0.376,30,123,6.78,0.098,29,1.0
+P03_R03,C_nosynth,synthetic anchors removed,0.325,0.463,0.357,0.336,0.373,36,137,6.088,0.088,35,1.0
+P03_R03,D_nofold,one-off folding removed,0.367,0.522,0.43,0.413,0.368,66,189,4.413,0.132,41,1.0
+P05_R02,baseline,current pipeline,0.336,0.431,0.317,0.261,0.386,25,92,6.217,0.043,23,1.0
+P05_R02,A_object,"reach by object, not by 12 s",0.297,0.473,0.341,0.315,0.391,25,92,6.217,0.065,23,1.0
+P05_R02,B_nocap,8-member cap removed,0.342,0.34,0.237,0.159,0.397,19,69,8.29,0.0,17,1.0
+P05_R02,C_nosynth,synthetic anchors removed,0.302,0.388,0.263,0.175,0.382,22,80,7.15,0.025,20,1.0
+P05_R02,D_nofold,one-off folding removed,0.36,0.508,0.386,0.333,0.392,58,135,4.237,0.096,29,1.0

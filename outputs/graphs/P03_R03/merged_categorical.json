@@ -16,28 +16,28 @@
     {
       "index": 0,
       "video_id": "P03-20240216-084005",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240216-084005.mp4",
+      "video_path": "raw-video/P03-20240216-084005.mp4",
       "action_count": 455,
       "duration_s": 1058.0
     },
     {
       "index": 1,
       "video_id": "P03-20240217-091657",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240217-091657.mp4",
+      "video_path": "raw-video/P03-20240217-091657.mp4",
       "action_count": 391,
       "duration_s": 943.02
     },
     {
       "index": 2,
       "video_id": "P03-20240218-094452",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240218-094452.mp4",
+      "video_path": "raw-video/P03-20240218-094452.mp4",
       "action_count": 480,
       "duration_s": 1021.8
     },
     {
       "index": 3,
       "video_id": "P03-20240218-144430",
-      "video_path": "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos/P03-20240218-144430.mp4",
+      "video_path": "raw-video/P03-20240218-144430.mp4",
       "action_count": 417,
       "duration_s": 874.84
     }
@@ -29824,8 +29824,8 @@
       "start": 45.81,
       "end": 46.53,
       "duration": 0.7199999999999989,
-      "next_action": "open(dishwasher)",
-      "edge_key": "sort(bowl)|||open(dishwasher)",
+      "next_action": "put(bowl)",
+      "edge_key": "sort(bowl)|||put(bowl)",
       "step_id": null,
       "is_primary": false,
       "in_window_scope": false,
@@ -29842,34 +29842,12 @@
     },
     {
       "index": 24,
-      "action": "access",
-      "start": 49.2,
-      "end": 50.81,
-      "duration": 1.6099999999999994,
-      "next_action": "put(bowl)",
-      "edge_key": "open(dishwasher)|||put(bowl)",
-      "step_id": null,
-      "is_primary": false,
-      "in_window_scope": false,
-      "in_span_scope": false,
-      "phase": null,
-      "verb_class": 3,
-      "noun_class": 70,
-      "video_id": "P03-20240218-144430",
-      "video_start": 49.2,
-      "video_end": 50.81,
-      "raw_action": "open(dishwasher)",
-      "session_index": 3,
-      "normalized_rank": 0.05769
-    },
-    {
-      "index": 25,
       "action": "leave",
       "start": 49.2,
       "end": 49.62,
       "duration": 0.4199999999999946,
-      "next_action": "pull(rack:drying)",
-      "edge_key": "put(bowl)|||pull(rack:drying)",
+      "next_action": "open(dishwasher)",
+      "edge_key": "put(bowl)|||open(dishwasher)",
       "step_id": null,
       "is_primary": false,
       "in_window_scope": false,
@@ -29881,6 +29859,28 @@
       "video_start": 49.2,
       "video_end": 49.62,
       "raw_action": "put(bowl)",
+      "session_index": 3,
+      "normalized_rank": 0.05769
+    },
+    {
+      "index": 25,
+      "action": "access",
+      "start": 49.2,
+      "end": 50.81,
+      "duration": 1.6099999999999994,
+      "next_action": "pull(rack:drying)",
+      "edge_key": "open(dishwasher)|||pull(rack:drying)",
+      "step_id": null,
+      "is_primary": false,
+      "in_window_scope": false,
+      "in_span_scope": false,
+      "phase": null,
+      "verb_class": 3,
+      "noun_class": 70,
+      "video_id": "P03-20240218-144430",
+      "video_start": 49.2,
+      "video_end": 50.81,
+      "raw_action": "open(dishwasher)",
       "session_index": 3,
       "normalized_rank": 0.0601
     },
@@ -41139,13 +41139,13 @@
       {
         "source": "leave",
         "target": "manipulate",
-        "count": 55,
-        "total_count": 55,
+        "count": 54,
+        "total_count": 54,
         "per_session_counts": [
           13,
           17,
           12,
-          13
+          12
         ],
         "support": 4,
         "support_fraction": 1.0,
@@ -41201,7 +41201,6 @@
             411
           ],
           "3": [
-            25,
             37,
             54,
             56,
@@ -41216,7 +41215,7 @@
             399
           ]
         },
-        "probability": 0.1222,
+        "probability": 0.12,
         "is_self_loop": false,
         "is_return": false,
         "rank_delta": 0.0,
@@ -41410,13 +41409,13 @@
       {
         "source": "leave",
         "target": "access",
-        "count": 47,
-        "total_count": 47,
+        "count": 48,
+        "total_count": 48,
         "per_session_counts": [
           11,
           12,
           14,
-          10
+          11
         ],
         "support": 4,
         "support_fraction": 1.0,
@@ -41467,6 +41466,7 @@
             474
           ],
           "3": [
+            24,
             100,
             123,
             247,
@@ -41479,7 +41479,7 @@
             396
           ]
         },
-        "probability": 0.1044,
+        "probability": 0.1067,
         "is_self_loop": false,
         "is_return": false,
         "rank_delta": 0.0,
@@ -41657,86 +41657,6 @@
         ]
       },
       {
-        "source": "access",
-        "target": "leave",
-        "count": 43,
-        "total_count": 43,
-        "per_session_counts": [
-          10,
-          7,
-          11,
-          15
-        ],
-        "support": 4,
-        "support_fraction": 1.0,
-        "n_sessions": 4,
-        "key": "access|||leave",
-        "per_session_occurrences": {
-          "0": [
-            10,
-            44,
-            56,
-            63,
-            115,
-            162,
-            214,
-            360,
-            417,
-            444
-          ],
-          "1": [
-            4,
-            53,
-            84,
-            203,
-            245,
-            249,
-            258
-          ],
-          "2": [
-            1,
-            51,
-            95,
-            185,
-            218,
-            255,
-            307,
-            333,
-            338,
-            396,
-            410
-          ],
-          "3": [
-            3,
-            9,
-            15,
-            24,
-            92,
-            96,
-            152,
-            188,
-            191,
-            219,
-            275,
-            300,
-            316,
-            369,
-            382
-          ]
-        },
-        "probability": 0.2687,
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.0,
-        "is_introduced": false,
-        "per_session_is_return": [
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      {
         "source": "retrieve",
         "target": "access",
         "count": 43,
@@ -41805,6 +41725,85 @@
           ]
         },
         "probability": 0.0771,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "is_introduced": false,
+        "per_session_is_return": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "source": "access",
+        "target": "leave",
+        "count": 42,
+        "total_count": 42,
+        "per_session_counts": [
+          10,
+          7,
+          11,
+          14
+        ],
+        "support": 4,
+        "support_fraction": 1.0,
+        "n_sessions": 4,
+        "key": "access|||leave",
+        "per_session_occurrences": {
+          "0": [
+            10,
+            44,
+            56,
+            63,
+            115,
+            162,
+            214,
+            360,
+            417,
+            444
+          ],
+          "1": [
+            4,
+            53,
+            84,
+            203,
+            245,
+            249,
+            258
+          ],
+          "2": [
+            1,
+            51,
+            95,
+            185,
+            218,
+            255,
+            307,
+            333,
+            338,
+            396,
+            410
+          ],
+          "3": [
+            3,
+            9,
+            15,
+            92,
+            96,
+            152,
+            188,
+            191,
+            219,
+            275,
+            300,
+            316,
+            369,
+            382
+          ]
+        },
+        "probability": 0.2625,
         "is_self_loop": false,
         "is_return": false,
         "rank_delta": 0.0,
@@ -42607,6 +42606,57 @@
       },
       {
         "source": "access",
+        "target": "manipulate",
+        "count": 14,
+        "total_count": 14,
+        "per_session_counts": [
+          4,
+          3,
+          5,
+          2
+        ],
+        "support": 4,
+        "support_fraction": 1.0,
+        "n_sessions": 4,
+        "key": "access|||manipulate",
+        "per_session_occurrences": {
+          "0": [
+            182,
+            274,
+            345,
+            353
+          ],
+          "1": [
+            73,
+            254,
+            364
+          ],
+          "2": [
+            10,
+            21,
+            44,
+            391,
+            452
+          ],
+          "3": [
+            25,
+            285
+          ]
+        },
+        "probability": 0.0875,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "is_introduced": false,
+        "per_session_is_return": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "source": "access",
         "target": "access",
         "count": 13,
         "total_count": 13,
@@ -42645,56 +42695,6 @@
         },
         "probability": 0.0813,
         "is_self_loop": true,
-        "is_return": false,
-        "rank_delta": 0.0,
-        "is_introduced": false,
-        "per_session_is_return": [
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      {
-        "source": "access",
-        "target": "manipulate",
-        "count": 13,
-        "total_count": 13,
-        "per_session_counts": [
-          4,
-          3,
-          5,
-          1
-        ],
-        "support": 4,
-        "support_fraction": 1.0,
-        "n_sessions": 4,
-        "key": "access|||manipulate",
-        "per_session_occurrences": {
-          "0": [
-            182,
-            274,
-            345,
-            353
-          ],
-          "1": [
-            73,
-            254,
-            364
-          ],
-          "2": [
-            10,
-            21,
-            44,
-            391,
-            452
-          ],
-          "3": [
-            285
-          ]
-        },
-        "probability": 0.0813,
-        "is_self_loop": false,
         "is_return": false,
         "rank_delta": 0.0,
         "is_introduced": false,
@@ -43215,6 +43215,48 @@
         ]
       },
       {
+        "source": "order",
+        "target": "leave",
+        "count": 6,
+        "total_count": 6,
+        "per_session_counts": [
+          0,
+          1,
+          4,
+          1
+        ],
+        "support": 3,
+        "support_fraction": 0.75,
+        "n_sessions": 4,
+        "key": "order|||leave",
+        "per_session_occurrences": {
+          "0": [],
+          "1": [
+            376
+          ],
+          "2": [
+            85,
+            102,
+            149,
+            215
+          ],
+          "3": [
+            23
+          ]
+        },
+        "probability": 0.3158,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "is_introduced": false,
+        "per_session_is_return": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
         "source": "transition",
         "target": "leave",
         "count": 6,
@@ -43405,46 +43447,6 @@
           ]
         },
         "probability": 0.0242,
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.0,
-        "is_introduced": false,
-        "per_session_is_return": [
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      {
-        "source": "order",
-        "target": "leave",
-        "count": 5,
-        "total_count": 5,
-        "per_session_counts": [
-          0,
-          1,
-          4,
-          0
-        ],
-        "support": 2,
-        "support_fraction": 0.5,
-        "n_sessions": 4,
-        "key": "order|||leave",
-        "per_session_occurrences": {
-          "0": [],
-          "1": [
-            376
-          ],
-          "2": [
-            85,
-            102,
-            149,
-            215
-          ],
-          "3": []
-        },
-        "probability": 0.2632,
         "is_self_loop": false,
         "is_return": false,
         "rank_delta": 0.0,
@@ -44157,44 +44159,6 @@
         ]
       },
       {
-        "source": "order",
-        "target": "access",
-        "count": 3,
-        "total_count": 3,
-        "per_session_counts": [
-          0,
-          0,
-          2,
-          1
-        ],
-        "support": 2,
-        "support_fraction": 0.5,
-        "n_sessions": 4,
-        "key": "order|||access",
-        "per_session_occurrences": {
-          "0": [],
-          "1": [],
-          "2": [
-            94,
-            387
-          ],
-          "3": [
-            23
-          ]
-        },
-        "probability": 0.1579,
-        "is_self_loop": false,
-        "is_return": false,
-        "rank_delta": 0.0,
-        "is_introduced": false,
-        "per_session_is_return": [
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      {
         "source": "sense",
         "target": "block",
         "count": 3,
@@ -44481,6 +44445,42 @@
           ]
         },
         "probability": 0.1818,
+        "is_self_loop": false,
+        "is_return": false,
+        "rank_delta": 0.0,
+        "is_introduced": false,
+        "per_session_is_return": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "source": "order",
+        "target": "access",
+        "count": 2,
+        "total_count": 2,
+        "per_session_counts": [
+          0,
+          0,
+          2,
+          0
+        ],
+        "support": 1,
+        "support_fraction": 0.25,
+        "n_sessions": 4,
+        "key": "order|||access",
+        "per_session_occurrences": {
+          "0": [],
+          "1": [],
+          "2": [
+            94,
+            387
+          ],
+          "3": []
+        },
+        "probability": 0.1053,
         "is_self_loop": false,
         "is_return": false,
         "rank_delta": 0.0,
@@ -45484,154 +45484,152 @@
     ],
     "loops": [
       [
-        "manipulate",
-        "merge",
-        "manipulate"
-      ],
-      [
-        "manipulate",
-        "merge",
-        "retrieve",
-        "manipulate"
-      ],
-      [
-        "manipulate",
-        "merge",
-        "retrieve",
-        "leave",
-        "manipulate"
-      ],
-      [
-        "manipulate",
-        "merge",
-        "retrieve",
-        "leave",
         "block",
-        "manipulate"
+        "access",
+        "block"
       ],
       [
-        "manipulate",
+        "block",
+        "access",
         "merge",
+        "block"
+      ],
+      [
+        "block",
+        "access",
+        "merge",
+        "manipulate",
+        "block"
+      ],
+      [
+        "block",
+        "access",
+        "merge",
+        "manipulate",
         "retrieve",
+        "block"
+      ],
+      [
+        "block",
+        "access",
+        "merge",
+        "manipulate",
+        "clean",
+        "block"
+      ],
+      [
+        "block",
+        "access",
+        "merge",
+        "manipulate",
         "leave",
-        "monitor",
-        "manipulate"
+        "block"
       ],
       [
-        "manipulate",
+        "block",
+        "access",
         "merge",
-        "retrieve",
+        "leave",
+        "block"
+      ],
+      [
+        "block",
+        "access",
+        "merge",
         "leave",
         "clean",
-        "manipulate"
+        "block"
       ],
       [
-        "manipulate",
-        "merge",
-        "retrieve",
-        "leave",
-        "transition",
-        "manipulate"
-      ],
-      [
-        "manipulate",
-        "merge",
-        "retrieve",
-        "leave",
-        "access",
-        "manipulate"
-      ],
-      [
-        "manipulate",
-        "merge",
-        "retrieve",
-        "order",
-        "access",
-        "manipulate"
-      ],
-      [
-        "manipulate",
-        "merge",
-        "retrieve",
-        "order",
-        "leave",
-        "manipulate"
-      ],
-      [
-        "manipulate",
-        "merge",
-        "retrieve",
-        "block",
-        "manipulate"
-      ],
-      [
-        "manipulate",
-        "merge",
-        "retrieve",
-        "block",
-        "transition",
-        "manipulate"
-      ],
-      [
-        "manipulate",
-        "merge",
-        "retrieve",
         "block",
         "access",
-        "manipulate"
+        "merge",
+        "leave",
+        "sense",
+        "block"
       ],
       [
-        "manipulate",
-        "merge",
-        "retrieve",
-        "monitor",
-        "manipulate"
-      ],
-      [
-        "manipulate",
-        "merge",
-        "retrieve",
-        "monitor",
+        "block",
         "access",
-        "manipulate"
+        "merge",
+        "leave",
+        "retrieve",
+        "block"
       ],
       [
-        "manipulate",
+        "block",
+        "access",
+        "merge",
+        "retrieve",
+        "block"
+      ],
+      [
+        "block",
+        "access",
+        "merge",
+        "retrieve",
+        "sense",
+        "block"
+      ],
+      [
+        "block",
+        "access",
         "merge",
         "retrieve",
         "clean",
-        "manipulate"
+        "block"
       ],
       [
-        "manipulate",
-        "merge",
-        "retrieve",
-        "clean",
-        "access",
-        "manipulate"
-      ],
-      [
-        "manipulate",
-        "merge",
-        "retrieve",
-        "clean",
         "block",
-        "manipulate"
+        "access",
+        "manipulate",
+        "block"
       ],
       [
+        "block",
+        "access",
         "manipulate",
-        "merge",
+        "retrieve",
+        "block"
+      ],
+      [
+        "block",
+        "access",
+        "manipulate",
+        "retrieve",
+        "sense",
+        "block"
+      ],
+      [
+        "block",
+        "access",
+        "manipulate",
         "retrieve",
         "clean",
-        "transition",
-        "manipulate"
+        "block"
       ],
       [
+        "block",
+        "access",
         "manipulate",
-        "merge",
         "retrieve",
-        "transition",
-        "manipulate"
+        "leave",
+        "block"
+      ],
+      [
+        "block",
+        "access",
+        "manipulate",
+        "split",
+        "leave",
+        "block"
+      ],
+      [
+        "block",
+        "access",
+        "manipulate",
+        "clean",
+        "block"
       ]
     ],
     "session_singleton_nodes": []
