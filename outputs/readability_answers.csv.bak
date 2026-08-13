@@ -12,7 +12,7 @@ I010,NOT_COHERENT,no,make tea,GOAL: make tea | COMMAND: make tea | COHERENT: no
 I011,MATCH_HEAD,no,mix oatmeal with a spoon,GOAL: mix oatmeal with a spoon | COMMAND: mix oatmeal | COHERENT: no
 I012,MATCH_HEAD,yes,wash dishes in the dishwasher,GOAL: wash dishes in the dishwasher | COMMAND: run dishwasher | COHERENT: yes
 I013,MATCH_HEAD,no,get a vegetable and roll,GOAL: get a vegetable and roll | COMMAND: retrieve roll and vegetable | COHERENT: no
-I014,NOT_COHERENT,no,clean up kitchen and wash dishes,GOAL: clean up kitchen and wash dishes | COMMAND: clean the kitchen and wash dishes | COHERENT: no
+I014,OTHER_MEMBER,no,clean up kitchen and wash dishes,GOAL: clean up kitchen and wash dishes | COMMAND: clean the kitchen and wash dishes | COHERENT: no
 I015,NOT_COHERENT,no,make coffee,GOAL: make coffee | COMMAND: make coffee | COHERENT: no
 I016,NOT_COHERENT,no,clean kitchen and prepare coffee,GOAL: clean kitchen and prepare coffee | COMMAND: clean surfaces and make coffee | COHERENT: no
 I017,MATCH_HEAD,yes,shake spoon,GOAL: shake spoon | COMMAND: shake the spoon | COHERENT: yes
@@ -41,7 +41,7 @@ I039,NOT_COHERENT,no,prepare oatmeal with milk and water,GOAL: prepare oatmeal w
 I040,MATCH_HEAD,yes,wash a cup,GOAL: wash a cup | COMMAND: wash(cup) | COHERENT: yes
 I041,MATCH_HEAD,yes,open and use containers,GOAL: open and use containers | COMMAND: open and press containers | COHERENT: yes
 I042,MATCH_HEAD,yes,make coffee,GOAL: make coffee | COMMAND: make coffee | COHERENT: yes
-I043,MATCH_HEAD,yes,Stir coffee,GOAL: Stir coffee | COMMAND: stir coffee with a spoon | COHERENT: yes
+I043,UNSURE,yes,Stir coffee,GOAL: Stir coffee | COMMAND: stir coffee with a spoon | COHERENT: yes
 I044,MATCH_HEAD,yes,wash a jug,GOAL: wash a jug | COMMAND: wash jug | COHERENT: yes
 I045,NOT_COHERENT,no,clear out the cluttered drawer,GOAL: clear out the cluttered drawer | COMMAND: tidy up the kitchen drawer | COHERENT: no
 I046,NOT_COHERENT,no,clean up kitchen trash and utensils,GOAL: clean up kitchen trash and utensils | COMMAND: NOT_COHERENT | COHERENT: no
@@ -107,7 +107,7 @@ I105,NOT_COHERENT,no,prepare oatmeal and set timers,GOAL: prepare oatmeal and se
 I106,NOT_COHERENT,no,prepare a snack and clean up,GOAL: prepare a snack and clean up | COMMAND: none | COHERENT: no
 I107,MATCH_HEAD,no,Clean up and store kitchen items,GOAL: Clean up and store kitchen items | COMMAND: clear table and put away dishes | COHERENT: no
 I108,OTHER_MEMBER,no,prepare and eat oatmeal,GOAL: prepare and eat oatmeal | COMMAND: prepare_and_eat_oatmeal | COHERENT: no
-I109,MATCH_HEAD,yes,make coffee,GOAL: make coffee | COMMAND: make coffee | COHERENT: yes
+I109,UNSURE,yes,make coffee,GOAL: make coffee | COMMAND: make coffee | COHERENT: yes
 I110,NOT_COHERENT,no,prepare food,GOAL: prepare food | COMMAND: NOT_COHERENT | COHERENT: no
 I111,NOT_COHERENT,no,make coffee,GOAL: make coffee | COMMAND: make_coffee() | COHERENT: no
 I112,NOT_COHERENT,no,clean up kitchen items,GOAL: clean up kitchen items | COMMAND: clear the kitchen counter | COHERENT: no

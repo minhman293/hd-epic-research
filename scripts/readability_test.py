@@ -112,19 +112,53 @@ def items_from_expansions(payload, recipe, level, rng, n):
     return pool[:n]
 
 
-def items_from_raw(rdir, recipe, rng, n, window=6):
-    """Level 1 floor: a window of consecutive actions, no grouping applied."""
+def _task_span(actions, payload):
+    marks = [(a["start"], a["end"]) for a in actions if a.get("step_id")]
+    marks += [(w["start"], w["end"]) for w in (payload.get("step_windows") or [])]
+    if not marks:
+        return actions
+    lo, hi = min(m[0] for m in marks), max(m[1] for m in marks)
+    return [a for a in actions if a["end"] >= lo and a["start"] <= hi]
+
+
+def items_from_raw(rdir, recipe, rng, n, window=6, mode="full"):
+    """A window of consecutive actions with no grouping applied.
+
+    Used for BOTH Level 1 (`mode="full"`, raw verb+object) and Level 2
+    (`mode="hybrid"`, verb + object category). Levels 1 and 2 have no episode
+    structure - a node there is a single action - so the blind NAMING test does
+    not apply to them. What does apply is the same question asked of episodes:
+    given this run of actions, can a reader state the goal and issue one
+    command? Windowing both layers the same way makes all four levels
+    comparable on one scale.
+
+    Level 2 matters more than it looks. It is better estimated than Level 3
+    (9-21 observations per state against 3-4), so if an agent can already act
+    on Level 2 labels, the episode layer's contribution is plan length and goal
+    structure, not readability. That is a finding either way, and it is the one
+    gap the study has not closed.
+
+    BUGFIX. This used to draw from the whole recording. Episode and step items
+    come from `expansions`, which the pipeline builds INSIDE the task span, so
+    Level 1 was being sampled from a wider pool that includes activity before
+    and after the recipe - washing up, eating a banana, tidying. Those windows
+    genuinely have no shared goal, so the floor was pushed down by the sampling
+    rather than by the absence of grouping, and every level above it looked
+    better than it is. All three levels must be drawn from the same span.
+    """
     out = []
-    for f in sorted(rdir.glob("session_*_full.json")):
+    for f in sorted(rdir.glob(f"session_*_{mode}.json")):
         d = _load(f)
         if not d:
             continue
         acts = [a for a in d.get("sequence", [])
-                if a.get("kind", "action") == "action" and a.get("action")]
+                if a.get("kind", "action") == "action" and a.get("action")
+                and a.get("start") is not None]
+        acts = _task_span(acts, d)
         for i in range(0, max(0, len(acts) - window), window):
             chunk = acts[i:i + window]
             out.append({
-                "recipe": recipe, "level": "full", "label": None,
+                "recipe": recipe, "level": mode, "label": None,
                 "head_action": None, "synthetic": False,
                 "actions": [a["action"] for a in chunk],
                 "n_actions": len(chunk),
@@ -144,7 +178,8 @@ def make(a):
                                        rid, "episode", rng, a.n)
         items += items_from_expansions(_load(rdir / "merged_step.json"),
                                        rid, "step", rng, max(3, a.n // 3))
-        items += items_from_raw(rdir, rid, rng, max(3, a.n // 3))
+        items += items_from_raw(rdir, rid, rng, max(3, a.n // 3), mode="full")
+        items += items_from_raw(rdir, rid, rng, max(3, a.n // 3), mode="hybrid")
 
     rng.shuffle(items)
     for i, it in enumerate(items, 1):
@@ -218,13 +253,21 @@ def score(a):
 
     by_level = defaultdict(Counter)
     by_synth = defaultdict(Counter)
+    by_size = defaultdict(Counter)
+    one_task = defaultdict(Counter)
+    SIZES = [(1, 4, "1-4 actions"), (5, 8, "5-8 actions"), (9, 999, "9+ actions")]
     for r in rows:
         it = items.get(r["item_id"])
         if not it:
             continue
         by_level[it["level"]][r["outcome"]] += 1
+        if r.get("one_task"):
+            one_task[it["level"]][r["one_task"]] += 1
         if it["level"] == "episode":
             by_synth["synthetic" if it["synthetic"] else "real anchor"][r["outcome"]] += 1
+            for lo, hi, lab in SIZES:
+                if lo <= it["n_actions"] <= hi:
+                    by_size[lab][r["outcome"]] += 1
 
     def table(d, title, first_col):
         L = [f"\n## {title}\n",
@@ -246,10 +289,85 @@ def score(a):
           "itself failed.\n"]
     md += table(by_level, "By level", "level")
     md += table(by_synth, "Episodes: synthetic vs real anchors", "anchor type")
+    md += table(by_size, "Episodes by size", "size")
+
+    # The second dimension: did the reader think it was ONE task at all?
+    # Kept separate from the naming code on purpose - an episode can be named
+    # correctly and still visibly contain two tasks, which is what interleaving
+    # looks like from inside a single action stream.
+    if one_task:
+        md.append("\n## Judged to be a single task\n")
+        md.append("| level | n | one task | two or more |")
+        md.append("|---|---|---|---|")
+        for lvl, c in one_task.items():
+            n = sum(c.values())
+            md.append(f"| {lvl} | {n} | {c.get('yes',0)/n:.0%} | "
+                      f"{(n-c.get('yes',0))/n:.0%} |")
+        md.append("\nA low share here is not necessarily a segmentation "
+                  "failure: HD-EPIC annotates side tasks performed during the "
+                  "recipe, so an episode can correctly contain more than one "
+                  "activity.")
+
+    # How often does one answer serve many different nodes? An answer repeated
+    # across several distinct labels is naming the RECIPE, not the state. A
+    # planner handed the same phrase for seven states cannot choose between
+    # them, so this is a readability failure even when every answer is "right".
+    goals = defaultdict(set)
+    for r in rows:
+        it = items.get(r["item_id"])
+        if it and it["level"] == "episode" and r.get("goal"):
+            goals[r["goal"].strip().lower()].add(it.get("label"))
+    shared = {g: labs for g, labs in goals.items() if len(labs) > 1}
+    if shared:
+        n_ep = sum(1 for r in rows
+                   if items.get(r["item_id"], {}).get("level") == "episode")
+        covered = sum(1 for r in rows
+                      if items.get(r["item_id"], {}).get("level") == "episode"
+                      and r.get("goal", "").strip().lower() in shared)
+        md.append("\n## Answers that do not distinguish one node from another\n")
+        md.append(f"{covered} of {n_ep} episode answers ({covered/n_ep:.0%}) "
+                  f"used a phrase that also described a different node.\n")
+        md.append("| answer | distinct labels it was given for |")
+        md.append("|---|---|")
+        for g, labs in sorted(shared.items(), key=lambda kv: -len(kv[1]))[:6]:
+            md.append(f"| \"{g}\" | {len(labs)} — {', '.join(sorted(labs)[:5])} |")
+        md.append("\nAn executing agent cannot act on a name shared by several "
+                  "states. This is the concrete form of Part 7's first blocker.")
+
+    # SIZE-MATCHED COMPARISON.
+    #
+    # The level tables above are confounded. Level 1 and Level 2 items are
+    # windows of a FIXED 6 actions; episodes run 1-46 and steps 3-116. Within
+    # episodes alone, coherence falls from 76% at 1-4 actions to 18% at 9+, so
+    # size is a stronger predictor than level. Comparing a 6-action window to a
+    # 25-action episode measures chunk size, not representation.
+    #
+    # Restricting every level to items of 5-8 actions removes that confound.
+    # The band is chosen to bracket the fixed window of 6 without being so
+    # narrow that nothing survives; small n is reported so the reader can judge.
+    LO, HI = 5, 8
+    matched = defaultdict(Counter)
+    for r in rows:
+        it = items.get(r["item_id"])
+        if it and LO <= it["n_actions"] <= HI and r.get("one_task"):
+            matched[it["level"]][r["one_task"]] += 1
+    if len(matched) > 1:
+        md.append(f"\n## Single task, size-matched ({LO}-{HI} actions only)\n")
+        md.append("| level | n | one task |")
+        md.append("|---|---|---|")
+        for lvl, c in sorted(matched.items(), key=lambda kv: -sum(kv[1].values())):
+            n = sum(c.values())
+            md.append(f"| {lvl} | {n} | {c.get('yes', 0)/n:.0%} |")
+        md.append("\nThis is the only fair comparison across levels in this "
+                  "report. Every other level table mixes items of very "
+                  "different sizes, and size predicts coherence more strongly "
+                  "than level does. Where n is small, say so rather than "
+                  "quoting the percentage alone.")
 
     ep = by_level.get("episode", Counter())
     st = by_level.get("step", Counter())
     fu = by_level.get("full", Counter())
+    hy = by_level.get("hybrid", Counter())
 
     def rate(c, k="MATCH_HEAD"):
         n = sum(c.values())
@@ -259,9 +377,11 @@ def score(a):
     md.append("\n## Reading it\n")
     if e is not None and s is not None and r is not None:
         if e >= s:
-            md.append(f"- Episodes ({e:.0%}) read as well as human-written recipe "
-                      f"steps ({s:.0%}). Level 4 is the upper bound, so this is "
-                      f"the strongest available result for the layer.")
+            md.append(f"- Episodes scored {e:.0%} and steps {s:.0%}. Do NOT "
+                      f"report this as episodes beating human labels. Step "
+                      f"labels are prose, which the automatic coder cannot "
+                      f"match, and step items are far larger. Hand-code the "
+                      f"step rows (`handcode.py`) before using this row at all.")
         elif e > r:
             md.append(f"- Episodes ({e:.0%}) sit between raw actions ({r:.0%}) and "
                       f"human steps ({s:.0%}). The grouping adds readability but "
@@ -270,6 +390,19 @@ def score(a):
             md.append(f"- Episodes ({e:.0%}) are no more readable than ungrouped "
                       f"raw actions ({r:.0%}). The grouping is not buying "
                       f"comprehension, whatever it does to the state count.")
+    if sum(hy.values()) and sum(fu.values()):
+        h, f_ = rate(hy), rate(fu)
+        md.append(f"- Level 2 windows were nameable {h:.0%} of the time against "
+                  f"{f_:.0%} for raw Level 1 windows. These two are directly "
+                  f"comparable; both are easier questions than the labelled "
+                  f"levels, so do not read them against episodes or steps "
+                  f"except through the single-task table.")
+        if e is not None and h is not None and h >= e:
+            md.append("- Level 2 is at least as readable as Level 3 here. If "
+                      "that holds up, the episode layer's contribution is plan "
+                      "length and goal structure rather than readability, and "
+                      "the write-up should say so plainly.")
+
     n_ep = sum(ep.values())
     if n_ep:
         wrong_name = ep["OTHER_MEMBER"] / n_ep
