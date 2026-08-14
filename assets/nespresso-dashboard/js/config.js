@@ -43,7 +43,9 @@ export function getDataUrl(mode = "hybrid", recipeId = null, sessionIndex = 0) {
 // Modes whose x-position carries no meaning, so no time ruler may be drawn.
 // Prof. Lin, 22 May: an axis with no encoded variable makes readers believe
 // nodes in one column happened at the same moment.
-export const RANK_LAYOUT_MODES = ["full", "hybrid", "episode", "step"];
+// "episode" is gone with Level 3; leaving it here would keep a retired mode
+// alive in the one place a future reader would not think to look.
+export const RANK_LAYOUT_MODES = ["full", "hybrid", "step"];
 
 // Modes built by 9_build_episode_graphs.py. Their edges are already thinned by
 // evidence in the pipeline, so render-time edge pruning has nothing left to do.
@@ -53,7 +55,25 @@ export const RANK_LAYOUT_MODES = ["full", "hybrid", "episode", "step"];
 // filtered when every observed transition is now drawn.
 export const PRETHINNED_MODES = [];
 
-export const DEFAULT_DATA_MODE = "episode";
+// ─────────────────────────────────────────────────────────────────────────────
+// DETAIL-LEVEL LADDER
+//
+// Ordered coarsest-last, because that is the direction the slider moves.
+// Level 3 ("episode") is deliberately absent: it is neither displayed nor
+// reported. Nothing else in the UI may hard-code a mode string — read this.
+// ─────────────────────────────────────────────────────────────────────────────
+export const LEVELS = [
+  { mode: "full",   n: 1, short: "L1 · every action",   label: "Level 1 — Every distinct action" },
+  { mode: "hybrid", n: 2, short: "L2 · verb + object",  label: "Level 2 — Verb + object category" },
+  { mode: "step",   n: 4, short: "L4 · recipe steps",   label: "Level 3 — Recipe steps" },
+];
+
+export function levelIndexOf(mode) {
+  const i = LEVELS.findIndex((l) => l.mode === mode);
+  return i === -1 ? 1 : i;
+}
+
+export const DEFAULT_DATA_MODE = "hybrid";
 export const DEFAULT_COLOR_ENCODE_MODE = "category";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -529,7 +549,7 @@ export function getLegendItems(
     edge: [
       { type: "line",  dashed: false, label: "Edge width: probability of this next step" },
       { type: "line",  dashed: false, label: "Edge opacity: how many sessions did it" },
-      { type: "line",  dashed: true,  label: "Dashed: weak evidence" },
+      { type: "line",  dashed: false, label: "Palest edges: rare transitions (P < 0.08)" },
     ],
   };
 }

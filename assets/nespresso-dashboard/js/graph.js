@@ -250,11 +250,18 @@ function computeRankLayout(nodes, sequence,
   // Scale-free constants. Every distance is in units of node radius, so the
   // layout behaves the same whether a node is 18px or 60px, and whether the
   // graph has 7 nodes or 120.
+  // A node is no longer just a circle. Since every level writes its label
+  // BELOW the circle, the thing that must not overlap is roughly
+  //   circle radius + two lines of 11px text + an italic subtitle.
+  // Colliding on the bare radius is why circles kept landing on their
+  // neighbour's caption. ~30px covers the tallest label block we draw.
+  const LABEL_BLOCK = 30;
+
   const TARGET_ROWS = Math.max(2, Math.round(Math.sqrt(nN * 0.75)));
-  const SPREAD_Y = TARGET_ROWS * (meanR * 2.4) * roomy;
+  const SPREAD_Y = TARGET_ROWS * (meanR * 2.4 + LABEL_BLOCK) * roomy;
   const SPREAD_X = Math.max(560, SPREAD_Y * 1.4);
-  const LINK_DIST = meanR * (2.2 + Math.min(density, 4) * 0.35);
-  const COLLIDE = (d) => d.r + meanR * 0.55;
+  const LINK_DIST = meanR * (2.2 + Math.min(density, 4) * 0.35) + LABEL_BLOCK;
+  const COLLIDE = (d) => d.r + meanR * 0.55 + LABEL_BLOCK * 0.55;
 
   if (nN <= 2) {
     const layout = {}
@@ -315,6 +322,23 @@ function computeRankLayout(nodes, sequence,
 
   const ticks = Math.max(1, Math.ceil(Math.log(sim.alphaMin()) / Math.log(1 - sim.alphaDecay())));
   for (let i = 0; i < ticks; i += 1) sim.tick();
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // SEPARATION PASS
+  //
+  // The main simulation balances three competing forces, so it settles at a
+  // compromise in which a few pairs are still touching. This second pass
+  // optimises ONE thing — no two footprints intersecting — with the springs
+  // switched off, so it can finish the job the compromise left undone. It is
+  // seeded from the result above, so it moves nodes by a few pixels and does
+  // not undo the structure the first pass found.
+  // ───────────────────────────────────────────────────────────────────────────
+  const sep = d3.forceSimulation(simNodes)
+    .alpha(0.6).alphaDecay(0.06).velocityDecay(0.45)
+    .force("collide", d3.forceCollide(COLLIDE).strength(1).iterations(4))
+    .force("x", d3.forceX((d) => d.targetX).strength((d) => d.isSpecial ? 0.6 : 0.02))
+    .stop();
+  for (let i = 0; i < 90; i += 1) sep.tick();
 
   // START and END are pinned to the extremes afterwards: they are the only two
   // nodes whose position carries a fixed meaning, and anchoring them gives the
@@ -565,7 +589,7 @@ function getArcPath(link, layout, radiusMap) {
 // Return transitions are routed as an arc BELOW the main band so they read as a
 // separate channel without occluding the dominant left-to-right flow. They are
 // drawn, not hidden — the arc is the visible proof that the node is connected.
-function getReturnArcPath(link, layout, radiusMap) {
+function getReturnArcPath(link, layout, radiusMap, curvature = null) {
   const s = layout[link.source] || { x: 0, y: 0 };
   const t = layout[link.target] || { x: 0, y: 0 };
   const dx = t.x - s.x;
@@ -583,7 +607,11 @@ function getReturnArcPath(link, layout, radiusMap) {
   // The previous version always bulged straight down by at least 90px, which
   // reads fine in a single horizontal band but sweeps across everything once
   // nodes are distributed in two dimensions.
-  const bow = Math.min(70, Math.max(18, dist * 0.22));
+  // A return edge always bows to ONE side so it reads as its own channel, but
+  // its size now follows the edge's lane, so two returns between the same pair
+  // no longer trace the same arc.
+  const lane = (curvature === null) ? 0.22 : (0.16 + Math.abs(curvature) * 1.6);
+  const bow = Math.min(90, Math.max(18, dist * lane));
   const mx = (x1 + x2) / 2 - ny * bow;
   const my = (y1 + y2) / 2 + nx * bow;
   return `M${x1},${y1} Q${mx},${my} ${x2},${y2}`;
@@ -602,6 +630,84 @@ function getCurvedPath(link, layout, radiusMap, curvature = 0.18) {
   return `M ${sx} ${sy} Q ${mx} ${my} ${tx} ${ty}`;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// EDGE-LABEL DE-COLLISION
+//
+// Placing text so that no two pieces overlap is the classic map-labelling
+// problem, and it is NP-hard in general (Formann & Wagner 1991). Nobody solves
+// it exactly; the standard practical method is candidate-and-conflict:
+//
+//   1. give every label a small set of candidate positions,
+//   2. walk the labels in order of importance,
+//   3. take the first candidate that hits nothing already placed,
+//   4. if every candidate collides, keep the least-bad one.
+//
+// Here a label rides a <textPath>, so its candidates come for free: sliding
+// `startOffset` moves the text along its own edge without ever detaching it
+// from that edge — which matters, because a probability that has drifted next
+// to the wrong line is worse than no probability at all.
+//
+// Important labels go first, so when the canvas runs out of room it is the
+// rare transitions that get pushed aside, not the common ones.
+// ─────────────────────────────────────────────────────────────────────────────
+const LABEL_OFFSETS = ["50%", "40%", "60%", "32%", "68%", "25%", "75%"];
+
+function declutterEdgeLabels(root, { maxLabels = 120 } = {}) {
+  const texts = root.selectAll("text.edge-prob-text").nodes();
+  if (texts.length === 0 || texts.length > maxLabels) return;
+
+  // White halo first: a label that must sit on a line is still readable.
+  root.selectAll("text.edge-prob-text")
+    .attr("stroke", "#ffffff")
+    .attr("stroke-width", 3.5)
+    .attr("paint-order", "stroke")
+    .attr("stroke-linejoin", "round");
+
+  const importance = (el) => {
+    const d = d3.select(el).datum() || {};
+    return (typeof d.probability === "number" ? d.probability : 0)
+         + (d.support || 0) * 0.001;
+  };
+  const ordered = [...texts].sort((a, b) => importance(b) - importance(a));
+
+  const pad = 2;
+  const box = (el) => {
+    let b;
+    try { b = el.getBBox(); } catch (e) { return null; }
+    if (!b || !b.width) return null;
+    return { x: b.x - pad, y: b.y - pad, w: b.width + pad * 2, h: b.height + pad * 2 };
+  };
+  const hits = (a, b) =>
+    !(a.x + a.w < b.x || b.x + b.w < a.x || a.y + a.h < b.y || b.y + b.h < a.y);
+
+  const placed = [];
+  ordered.forEach((el) => {
+    const tp = el.querySelector("textPath");
+    if (!tp) return;
+
+    let bestOffset = null, bestBox = null, bestConflicts = Infinity;
+    for (const off of LABEL_OFFSETS) {
+      tp.setAttribute("startOffset", off);
+      const b = box(el);
+      if (!b) break;
+      const conflicts = placed.reduce((n, p) => n + (hits(p, b) ? 1 : 0), 0);
+      if (conflicts < bestConflicts) {
+        bestConflicts = conflicts; bestOffset = off; bestBox = b;
+      }
+      if (conflicts === 0) break;
+    }
+
+    if (bestOffset) tp.setAttribute("startOffset", bestOffset);
+    if (bestBox) placed.push(bestBox);
+
+    // Still buried after trying every candidate: fade it rather than stack it.
+    // The number is not lost — the edge tooltip still reports it in full.
+    if (bestConflicts > 1) {
+      d3.select(el).attr("opacity", 0.35);
+    }
+  });
+}
+
 function getNodeLabel(node, mode) {
   if (node.isSpecial) return specialLabel(node.id);
   // Expanded bridge nodes carry a synthetic id so they stay unique per edge;
@@ -613,21 +719,41 @@ function getNodeLabel(node, mode) {
   return verb.length > 7 ? verb.slice(0, 6) + "..." : verb;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// SUBTITLE
+//
+// Every level now draws the label below the node as verb-on-top, noun-beneath.
+// The subtitle used to re-print that same noun for the `full` mode, at
+// dy = r + 14 while the label sits at y = r + 12 — the two strings were
+// landing on top of each other. So the noun is never a subtitle any more.
+//
+// The subtitle is reserved for one thing the label cannot say: that a node's
+// name describes only part of what is inside it.
+//
+//   * a step node stands for many raw actions        -> "N actions"
+//   * a Level-2 node whose object category was
+//     dropped by the roll-up rule                    -> "any object"
+//
+// The second case is NOT a rendering fault, but the reason is narrower than
+// "seen once". build_rollup_taxonomy() in 6_prepare_dashboard_data.py keeps a
+// state's specific label only if it clears min_support, and min_support
+// defaults to len(sessions) — EVERY session. So `clean` means: some sessions
+// washed the milk and some did not, therefore wash(dairy and eggs) lost its
+// object and merged with the other clean-category actions.
+//
+// That is why a generalised node can still read "seen in 2 of 3 sessions":
+// the threshold is applied to each verb+object PAIR before merging, while the
+// support shown in the tooltip is counted on the MERGED node afterwards. Two
+// different populations, and the node is the larger of them.
+//
+// "mixed objects" is therefore the honest caption — not "one object we hid".
+// ─────────────────────────────────────────────────────────────────────────────
 function getNodeSubtitle(node, mode) {
-  // In episode and step modes the label is already drawn as two lines —
-  // verb on top, noun beneath. Adding the noun again would print it twice.
-  //
-  // What IS worth adding on the episode layer is the episode's SIZE. A node
-  // called press(appliances) may hold eight actions, of which only one is a
-  // press; without the count it reads as a single action. Measured verb
-  // purity is 0.32-0.39, so the name describes a minority of its contents.
-  if (node.isSpecial || mode === "abstracted" || mode.startsWith("hybrid")) return "";
-  if (mode === "episode" && node.mean_members > 1) {
-    return `${node.mean_members} actions`;
-  }
-  if (PRETHINNED_MODES.includes(mode)) return "";
-  const match = node.id.match(/\((.+)\)/);
-  return match ? match[1] : "";
+  if (node.isSpecial) return "";
+  if (node.mean_members > 1) return `${node.mean_members} actions`;
+  if (mode === "step" && node.n_raw_actions > 1) return `${node.n_raw_actions} actions`;
+  if (mode.startsWith("hybrid") && !String(node.id).includes("(")) return "mixed objects";
+  return "";
 }
 
 function makeNodeSizeMap(filteredNodes, nodeDurationStats, sizeMode, nodeRadiusByCount, graphMode) {
@@ -920,7 +1046,38 @@ export function createGraphController({
     const width = graphWrapEl.clientWidth || 700;
     const height = graphWrapEl.clientHeight || 540;
     svg.attr("width", width).attr("height", height);
-    svg.selectAll("*").remove();
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // CROSS-FADE
+    //
+    // `svg.selectAll("*").remove()` is why changing level looked like a page
+    // reload: the canvas went blank, then a new picture appeared, and the
+    // reader had no way to see WHAT changed between the two.
+    //
+    // With extras.animate the previous drawing is kept in place, stripped of
+    // its id and its pointer events, and faded out underneath the new one.
+    // Nodes common to both levels sit in roughly the same place — rank drives
+    // x in every level — so the eye follows them across.
+    //
+    // This is a cross-fade, not a morph. A true morph would have to know that
+    // take(cup) at Level 1 becomes retrieve(crockery) at Level 2, and that
+    // mapping is a pipeline fact, not something the renderer may guess.
+    // ─────────────────────────────────────────────────────────────────────────
+    const animate = !!extras.animate;
+    let fadingOut = null;
+    if (animate) {
+      const prev = svg.select("#zoomGroup");
+      if (!prev.empty()) {
+        prev.attr("id", null)
+            .attr("class", "zoomGroup-outgoing")
+            .style("pointer-events", "none");
+        fadingOut = prev;
+      }
+    }
+    const keepNode = fadingOut ? fadingOut.node() : null;
+    Array.from(svg.node().childNodes).forEach((child) => {
+      if (child !== keepNode) svg.node().removeChild(child);
+    });
     svg.selectAll(".cycle-badge-group").remove();
 
     let enrichedNodes = [...graph.nodes];
@@ -1005,23 +1162,55 @@ export function createGraphController({
       }
     });
  
-    if (sequence.length > 0 && !currentShowSupportBadges && !dataHasStart && !dataHasEnd) {
-      const firstAction = sequence[0].action;
-      const lastAction  = sequence[sequence.length - 1].action;
-      enrichedNodes.unshift({
-        id: "START", count: 1, isSpecial: true, kind: "start", is_primary: true
-      });
-      enrichedNodes.push({
-        id: "END",   count: 1, isSpecial: true, kind: "end",   is_primary: true
-      });
-      enrichedLinks.unshift({
-        source: "START", target: firstAction, count: 1, probability: 1.0,
-        key: "START-" + firstAction,
-      });
-      enrichedLinks.push({
-        source: lastAction, target: "END", count: 1, probability: 1.0,
-        key: lastAction + "-END",
-      });
+    // ─────────────────────────────────────────────────────────────────────────
+    // START and END are structural, so every level must have them.
+    //
+    // The old guard included `!currentShowSupportBadges`, i.e. "only when this
+    // is NOT the merged view". The hybrid and step payloads ship START/END of
+    // their own, so the bug was invisible there — but the full (Level 1)
+    // payload does not, and the merged view is the default, so Level 1 lost
+    // its entry and exit entirely.
+    //
+    // Anchors are chosen by median rank rather than by sequence[0], because in
+    // the merged view `sequence` is only ONE session's list; its first row is
+    // not necessarily the state every session starts in. Rank is the same
+    // population the layout and is_return already use, so all three agree.
+    // ─────────────────────────────────────────────────────────────────────────
+    if (sequence.length > 0 && !dataHasStart && !dataHasEnd) {
+      const realNodes = enrichedNodes.filter((n) => !n.isSpecial);
+      const rankOf = (n) => (typeof n.median_rank === "number"
+        ? n.median_rank
+        : (typeof n.mean_normalized_onset === "number" ? n.mean_normalized_onset : null));
+      const ranked = realNodes.filter((n) => rankOf(n) !== null);
+
+      let firstAction, lastAction;
+      if (ranked.length >= 2) {
+        firstAction = ranked.reduce((a, b) => (rankOf(a) <= rankOf(b) ? a : b)).id;
+        lastAction  = ranked.reduce((a, b) => (rankOf(a) >= rankOf(b) ? a : b)).id;
+      } else {
+        firstAction = sequence[0].action;
+        lastAction  = sequence[sequence.length - 1].action;
+      }
+
+      const idsPresent = new Set(realNodes.map((n) => n.id));
+      if (idsPresent.has(firstAction) && idsPresent.has(lastAction)) {
+        enrichedNodes.unshift({
+          id: "START", count: 1, isSpecial: true, kind: "start", is_primary: true,
+          support: nSessionsHint || 1, n_sessions: nSessionsHint || 1,
+        });
+        enrichedNodes.push({
+          id: "END", count: 1, isSpecial: true, kind: "end", is_primary: true,
+          support: nSessionsHint || 1, n_sessions: nSessionsHint || 1,
+        });
+        enrichedLinks.unshift({
+          source: "START", target: firstAction, count: 1, probability: 1.0,
+          key: "START-" + firstAction,
+        });
+        enrichedLinks.push({
+          source: lastAction, target: "END", count: 1, probability: 1.0,
+          key: lastAction + "-END",
+        });
+      }
     }
 
     const enrichedLinksFull = enrichedLinks.slice();   
@@ -1063,9 +1252,15 @@ export function createGraphController({
     nodeDurationStatsCache = computeNodeDurationStats(filteredNodes, sequence);
 
     const maxCount = d3.max(filteredNodes, (d) => d.count) || 1;
+    // One radius range for every level. The old hybrid-only [26, 46] existed
+    // to fit text INSIDE the circle; nothing is drawn inside any more, so the
+    // extra 10px was pure overlap. Sparse graphs get a mild boost so seven
+    // nodes do not look lost on a wide canvas — that is a canvas-fill decision,
+    // not a change to what size encodes.
+    const sparseBoost = filteredNodes.length <= 10 ? 1.35 : 1;
     const nodeRadiusByCount = d3.scaleSqrt()
       .domain([1, Math.max(maxCount, 2)])
-      .range(mode === "hybrid" ? [26, 46] : [18, 36]);
+      .range([18 * sparseBoost, 38 * sparseBoost]);
 
     enrichedLinksCache = enrichedLinks;          
     enrichedLinksFullCache = enrichedLinksFull;  
@@ -1250,9 +1445,18 @@ export function createGraphController({
     if (layoutMode === "category" && clusters) {
       drawClusterHulls(zoomGroup, clusters, layout, radiusMap, mode);
     }
-    if (layoutMode === "temporal" && mode !== "hybrid") {
-      drawLanes(zoomGroup, filteredNodes, layout, radiusMap);
-    }
+    // LANES REMOVED.
+    //
+    // drawLanes() boxed the canvas into "Recipe actions" and "Secondary
+    // actions". It was skipped for hybrid, so Level 1 was the only level with
+    // a split canvas — same dashboard, two different pictures. The lane is a
+    // property of one node field (is_primary); it does not need its own
+    // geometry, and forcing every secondary node into a strip below the
+    // primaries is what produced the unreadable Level 1 layout.
+    //
+    // is_primary is still in the payload and still shown in the tooltip, so
+    // no information is lost. The function is kept for reference only.
+    //   if (layoutMode === "temporal") drawLanes(...)   // intentionally off
 
     edgeMetricFn = (d) => (typeof d.probability === "number" ? d.probability : 0);
     edgeWidthScale = d3.scaleSqrt().domain([0, 1]).range([1.5, 5.5]);
@@ -1347,16 +1551,69 @@ export function createGraphController({
     };
     labelPathForCache = labelPathFor;
 
+    // ─────────────────────────────────────────────────────────────────────────
+    // EDGE LANES — the cheap half of "stop the edges overlapping"
+    //
+    // Two edges overlap for two different reasons, and they need two different
+    // remedies:
+    //
+    //   1. They join the SAME pair of nodes (A→B and B→A, or a repeat).
+    //      A straight line cannot separate them: both lie on the segment AB.
+    //      Remedy: give each edge of a pair its own lane — a quadratic Bezier
+    //      bowed sideways by an amount that depends on its index in the pair.
+    //      This is the standard multi-edge treatment in graph drawing.
+    //
+    //   2. They join DIFFERENT nodes but happen to be collinear.
+    //      Remedy: bow every edge slightly, so two edges crossing the same
+    //      strip of canvas separate instead of merging into one grey line.
+    //
+    // Neither remedy removes a crossing. Crossings are a property of the node
+    // positions, and the only real cure is a layered (Sugiyama) layout — see
+    // the note above computeRankLayout.
+    // ─────────────────────────────────────────────────────────────────────────
+    const pairSlots = new Map();
+    enrichedLinks.forEach((l) => {
+      const a = endId(l.source), b = endId(l.target);
+      if (a === b) return;
+      const k = a < b ? `${a}\u0000${b}` : `${b}\u0000${a}`;
+      if (!pairSlots.has(k)) pairSlots.set(k, []);
+      pairSlots.get(k).push(l);
+    });
+    pairSlots.forEach((group) => {
+      const n = group.length;
+      group.forEach((l, i) => {
+        l.__slot  = i - (n - 1) / 2;     // symmetric around zero
+        l.__slotN = n;
+      });
+    });
+
+    // Dense graphs need a flatter bow, or the curves themselves become the
+    // clutter. Scale-free: the constant is a fraction of edge length, not px.
+    const BASE_CURVE = enrichedLinks.length > 120 ? 0.07
+                     : enrichedLinks.length > 40  ? 0.12
+                     : 0.18;
+    const curvatureFor = (link) => {
+      const n = link.__slotN || 1;
+      if (n <= 1) return BASE_CURVE * 0.85;
+      const side = link.__slot >= 0 ? 1 : -1;
+      return BASE_CURVE * side * (0.7 + Math.abs(link.__slot) * 0.9);
+    };
+
     const pathFor = (link) => {
-      if (link.__isReturn) return getReturnArcPath(link, layout, radiusMap);
-      return currentMode.startsWith("hybrid")
-        ? getCurvedPath(link, layout, radiusMap)
-        : getStraightPath(link, layout, radiusMap);
+      if (link.__isReturn) {
+        return getReturnArcPath(link, layout, radiusMap, curvatureFor(link));
+      }
+      return getCurvedPath(link, layout, radiusMap, curvatureFor(link));
     };
     pathForCache = pathFor;
 
-    // Weak edges are FADED, not removed. A node whose only transitions are
-    // low-support still shows those transitions, so it cannot float.
+    // Weak edges are FADED, not dashed and not removed.
+    //
+    // Dashes were a second channel saying the same thing as opacity, and at
+    // 147 edges the broken outlines read as texture rather than as meaning.
+    // One channel, one claim: a paler edge is a weaker one. The ledger still
+    // counts them, and the tooltip still reports the exact probability.
+    const weakDash = () => null;
     const baseEdgeOpacity = (d) => {
       if (d.__bg) return 0.12;
       // Opacity = evidence (how many sessions), not probability.
@@ -1387,9 +1644,18 @@ export function createGraphController({
     // have. Deciding it by node count put P01's 12 labels inside the circles
     // and P03's 43 below them — same dashboard, two different conventions.
     // Episode and step labels are always verb(noun), so they always go below.
-    const denseLabels = mode.startsWith("hybrid")
-      || PRETHINNED_MODES.includes(mode)
-      || filteredNodes.length > 24;
+    // Labels ALWAYS sit below and outside the circle.
+    //
+    // This used to depend on node count (`filteredNodes.length > 24`), so
+    // Level 4 with its 7 nodes was the one level that crammed white text
+    // inside the circles while every other level wrote it underneath. Label
+    // placement is a convention of the dashboard, not a function of how many
+    // nodes a recipe happens to have; a reader should not have to relearn
+    // where to look each time they move the slider.
+    //
+    // Text inside a circle also has to shrink to fit, which caps how much a
+    // label may say — "pour foam in coffee" was already unreadable at Level 4.
+    const denseLabels = true;
     // Probability labels are always shown — they are the point of a Markov
     // graph — but shrink and fade on dense graphs instead of disappearing.
     const denseEdges = enrichedLinks.length > 34;
@@ -1441,7 +1707,7 @@ export function createGraphController({
       .attr("data-key", (d) => d.key)
       .attr("fill", "none")
       .attr("stroke-width", (d) => edgeWidthScale(edgeMetricFn(d)))
-      .attr("stroke-dasharray", (d) => d.__weak ? "3 3" : null)
+      .attr("stroke-dasharray", weakDash)
       .attr("opacity", (d) => baseEdgeOpacity(d)) // <-- CHANGED from hardcoded ternary to baseEdgeOpacity(d)
       .attr("marker-end", markerUrl("arrow"))
       .attr("d", (d) => pathFor(d))
@@ -1535,7 +1801,7 @@ export function createGraphController({
       .attr("data-key", (d) => d.key)
       .attr("stroke-width", (d) => edgeWidthScale(edgeMetricFn(d)))
       .attr("opacity", (d) => baseEdgeOpacity(d))
-      .attr("stroke-dasharray", (d) => d.__weak ? "3 3" : null)
+      .attr("stroke-dasharray", weakDash)
       .attr("marker-end", markerUrl("arrow"))
       .attr("d", (d) => pathFor(d))
       .on("mouseover", function(event, d) { showEdgeTooltip(event, d); })
@@ -1643,8 +1909,23 @@ export function createGraphController({
     // render time. Kept as a native <title> so it cannot be clipped by the
     // zoom layer or fall out of sync with the node it belongs to.
     // ─────────────────────────────────────────────────────────────────────
+    // ONE TOOLTIP, NOT TWO.
+    //
+    // This block used to append a native SVG <title>. The browser renders that
+    // as its own OS tooltip, which appeared ON TOP of the styled #nodeTooltip
+    // div and covered it — two boxes, overlapping, saying the same thing in
+    // two formats. A native <title> also cannot be positioned, styled or
+    // dismissed, so it is the one that has to go.
+    //
+    // Its wording was the newer and better of the two, so it is not thrown
+    // away: buildNodeSummary() below produces exactly those lines, and
+    // showNodeTooltip() renders them inside the single styled div.
     nodeGroups.each(function (d) {
       if (d.isSpecial) return;
+      d.__summary = buildNodeSummary(d);
+    });
+
+    function buildNodeSummary(d) {
       const top = (obj, n) => Object.entries(obj || {})
         .sort((a, b) => b[1] - a[1]).slice(0, n)
         .map(([k, v]) => `${k} x${v}`).join(", ");
@@ -1674,12 +1955,20 @@ export function createGraphController({
       const outs = (enrichedLinksFullCache || [])
         .filter((l) => endId(l.source) === d.id && endId(l.target) !== d.id);
       if (d.rolled_up) {
-        lines.push("label was generalised - this exact verb+object was seen in");
-        lines.push("only one session, so the label uses the broader category");
+        // The threshold is ROLLUP_MIN_SUPPORT in 6_prepare_dashboard_data.py,
+        // which defaults to None, meaning EVERY session. So a label is
+        // generalised when the exact verb+object was missing from at least one
+        // session — not, as this text used to claim, when it was seen in only
+        // one. A node seen in 2 of 3 sessions is generalised and says so.
+        const need = (typeof d.n_sessions === "number") ? d.n_sessions : null;
+        lines.push(need
+          ? `label generalised: this exact verb+object was not in all ${need} sessions,`
+          : "label generalised: this exact verb+object was not in every session,");
+        lines.push("so the node is named after the broader category");
       }
       if (d.n_raw_actions > 1) lines.push("double-click to open the actions inside");
-      d3.select(this).append("title").text(lines.join("\n"));
-    });
+      return lines;
+    }
 
     const colorFn = currentExternalColorFn
       ? (d) => d.isSpecial ? "#d1d5db" : currentExternalColorFn(d.id)
@@ -1691,14 +1980,20 @@ export function createGraphController({
       .attr("opacity", 0).attr("pointer-events", "none");
 
     nodeGroups.append("circle")
+      .attr("class", "node-body")
       .attr("r", (d) => radiusMap[d.id] || 18)
       .style("fill", colorFn)
       .style("stroke", (d) => (d.salient ? "#1e293b" : "none"))
       .style("stroke-width", (d) => (d.salient ? 2.5 : 0))
       // NOTE: this is .style(), which overrides the presentation attribute set
       // on the group. Background emphasis has to be applied here or it is lost.
-      .style("opacity", (d) => d.__bg ? BG_NODE_OPACITY
-                                      : (isSecondaryNode(d) ? 0.55 : 1.0));
+      //
+      // Secondary nodes are no longer half-faded. Opacity was carrying two
+      // unrelated meanings at once — "outside a recipe step" and "below the
+      // support threshold" — so a reader could not tell which claim a pale
+      // circle was making. Opacity now means support only; is_primary lives in
+      // the tooltip, where it can be stated in words.
+      .style("opacity", (d) => d.__bg ? BG_NODE_OPACITY : 1.0);
 
     const nSessions = (extras && extras.nSessions) || 1;
  
@@ -1853,11 +2148,26 @@ export function createGraphController({
         }
       });
 
+    // The label block below a node is one or two lines tall (verb, then noun
+    // when there is one). The subtitle has to clear whichever it is, or it
+    // prints on top of the label — which is what it was doing.
+    const LABEL_LINE_H = 12;
     nodeGroups.append("text")
+      .attr("class", "node-subtitle")
       .attr("text-anchor", "middle")
-      .attr("dy", (d) => (radiusMap[d.id] || 18) + 14)
-      .attr("font-size", (d) => (currentMode === "abstracted" ? "0px" : "7px"))
-      .attr("fill", "#475569")
+      .attr("dy", (d) => {
+        const r = radiusMap[d.id] || 18;
+        const label = nodeLabels.get(d.id) || d.id;
+        const hasNoun = /^[^(]+\(.*\)$/.test(label);
+        return r + 12 + (hasNoun ? 2 : 1) * LABEL_LINE_H;
+      })
+      .attr("font-size", "9px")
+      .attr("font-style", "italic")
+      .attr("fill", "#94a3b8")
+      .attr("stroke", "#ffffff")
+      .attr("stroke-width", 2.5)
+      .attr("paint-order", "stroke")
+      .attr("opacity", (d) => d.__bg ? 0 : 1)
       .attr("pointer-events", "none")
       .text((d) => getNodeSubtitle(d, currentMode));
 
@@ -1921,32 +2231,78 @@ export function createGraphController({
       });
     nodeGroups.call(dragBehavior);
 
-    if (currentMode.startsWith("hybrid") || PRETHINNED_MODES.includes(currentMode)) {
+    // Self-loops are drawn the same way at every level: a small arc on top of
+    // the node with its probability beside it. This used to be gated on the
+    // mode, so Level 2 showed an arc with a number while Level 1 showed a bare
+    // "⟳" glyph with no probability at all — the same fact, told two ways, in
+    // one dashboard.
+    if (true) {
+      // The arc is a CHILD of the node group, so its mouse events bubbled up
+      // to the node's handler and the node tooltip won every time. The arc
+      // therefore needs its own handler AND stopPropagation, or the two fire
+      // together and the last one to write wins.
       const loopInfo = {};
+      const loopDatum = {};
       selfLoopSummary.forEach((d) => {
         if (isSpecialId(d.source)) return;
         loopInfo[d.source] = (typeof d.probability === "number") ? d.probability : null;
+        loopDatum[d.source] = d;
       });
 
       const loopNodes = nodeGroups.filter((d) => d.id in loopInfo);
-      loopNodes.append("path")
+      const loopArc = loopNodes.append("path")
         .attr("class", "self-loop-arc")
         .attr("d", (d) => {
           const r = radiusMap[d.id] || 18;
           return `M ${-r * 0.5} ${-r * 0.85} A ${r * 0.55} ${r * 0.55} 0 1 1 ${r * 0.5} ${-r * 0.85}`;
         })
         .attr("fill", "none")
-        .attr("stroke", "#993C1D")
-        .attr("stroke-width", 1.2)
-        .attr("marker-end", markerUrl("arrow"));
+        // Same grey as every other edge. Red was reading as a warning: a node
+        // that repeats itself is a normal observation, not an error.
+        .attr("stroke", "#94a3b8")
+        .attr("stroke-width", 2)
+        .attr("marker-end", markerUrl("arrow"))
+        // A 2px line is hard to hit, so widen the target without widening
+        // the ink.
+        .style("pointer-events", "stroke")
+        .style("stroke-linecap", "round");
+
+      loopNodes.insert("path", ".self-loop-arc")
+        .attr("class", "self-loop-hit")
+        .attr("d", (d) => {
+          const r = radiusMap[d.id] || 18;
+          return `M ${-r * 0.5} ${-r * 0.85} A ${r * 0.55} ${r * 0.55} 0 1 1 ${r * 0.5} ${-r * 0.85}`;
+        })
+        .attr("fill", "none")
+        .attr("stroke", "transparent")
+        .attr("stroke-width", 14)
+        .style("pointer-events", "stroke");
+
+      loopNodes.selectAll(".self-loop-arc, .self-loop-hit")
+        .on("mouseover", function (event) {
+          event.stopPropagation();
+          hideNodeTooltip();
+          const parent = d3.select(this.parentNode).datum();
+          const sl = loopDatum[parent.id];
+          if (sl) showEdgeTooltip(event, sl);
+        })
+        .on("mousemove", function (event) { event.stopPropagation(); })
+        .on("mouseout", function (event) {
+          event.stopPropagation();
+          hideEdgeTooltip();
+        });
 
       loopNodes.append("text")
         .attr("class", "self-loop-prob")
-        .attr("y", (d) => -(radiusMap[d.id] || 18) - 10) // Push it slightly higher
+        .attr("y", (d) => -(radiusMap[d.id] || 18) - 10)
         .attr("text-anchor", "middle")
-        .attr("font-size", "14px")
+        .attr("font-size", "12px")
         .attr("font-weight", "bold")
-        .attr("fill", "#993C1D")
+        .attr("fill", "#64748b")
+        .attr("stroke", "#ffffff")
+        .attr("stroke-width", 3)
+        .attr("paint-order", "stroke")
+        .attr("pointer-events", "none")
         .text((d) => (loopInfo[d.id] !== null ? loopInfo[d.id].toFixed(2) : ""));
     } else {
       const selfLoopIndicators = zoomGroup
@@ -2006,6 +2362,31 @@ export function createGraphController({
     // stays put while panning. `weakEdges` was previously counted and silently
     // discarded; nothing told the viewer that edges had been removed at all.
     // ─────────────────────────────────────────────────────────────────────────
+    // Labels are measured only after every edge and node exists, because a
+    // label's candidate positions are read off the geometry that is actually
+    // on the canvas. Level 1 is skipped by the maxLabels guard: at 311 edges
+    // the pass costs more than it buys, and Prof. Lin has excluded that level.
+    declutterEdgeLabels(gLinks, { maxLabels: 120 });
+
+    if (animate) {
+      zoomGroup.attr("opacity", 0)
+        .transition().duration(420).ease(d3.easeCubicOut)
+        .attr("opacity", 1);
+
+      // Circles grow into place, so the arrival of a level reads as a change
+      // rather than as a flash.
+      zoomGroup.selectAll("circle.node-body")
+        .attr("r", (d) => (radiusMap[d.id] || 18) * 0.55)
+        .transition().duration(420).ease(d3.easeCubicOut)
+        .attr("r", (d) => radiusMap[d.id] || 18);
+
+      if (fadingOut) {
+        fadingOut.transition().duration(300).ease(d3.easeCubicIn)
+          .attr("opacity", 0)
+          .on("end", function () { d3.select(this).remove(); });
+      }
+    }
+
     svg.selectAll(".render-ledger").remove();
     const isolated = filteredNodes.filter((n) =>
       !enrichedLinks.some((l) => l.source === n.id || l.target === n.id)
@@ -2139,6 +2520,30 @@ export function createGraphController({
   }
 
   function showEdgeTooltip(event, d) {
+    // A self-loop is a repeat, not a transition to somewhere else, so the
+    // generic "A → B" wording reads as nonsense on it. It gets its own short
+    // tooltip and returns before the transition logic runs.
+    if (d && (d.source === d.target || d.is_self_loop)) {
+      const t = document.getElementById("edgeTooltip");
+      const p = (typeof d.probability === "number")
+        ? d.probability.toFixed(2) : null;
+      const rows = [
+        `${d.source} → itself`,
+        `Repeated ${d.count || 1} time${(d.count || 1) === 1 ? "" : "s"}`,
+      ];
+      if (p !== null) {
+        rows.push(`P(do it again next) = ${p}`);
+      }
+      rows.push("The next action was the same action.");
+      t.innerHTML = rows
+        .map((line) => String(line).replace(/&/g, "&amp;").replace(/</g, "&lt;"))
+        .join("<br>");
+      t.style.display = "block";
+      t.style.left = (event.clientX + 12) + "px";
+      t.style.top = (event.clientY - 10) + "px";
+      return;
+    }
+
     const totalOutgoing = enrichedLinksFullCache
       .filter(l => l.source === d.source)
       .reduce((sum, l) => sum + (l.count || 1), 0);
@@ -2251,12 +2656,24 @@ export function createGraphController({
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/\"/g, "&quot;");
-    const lines = [`${d.id}`, `Count: ${d.count}`];
+    // The lines the old native <title> used to show. They are the newer, more
+    // readable set, so they lead. Anything below adds to them; nothing repeats
+    // them, which is what made the two overlapping boxes so confusing.
+    const lines = (d.__summary && d.__summary.length)
+      ? [...d.__summary]
+      : [`${d.id}`, `Count: ${d.count}`];
 
-    if (d.support !== undefined && d.n_sessions !== undefined) {
+    if (!d.__summary && d.support !== undefined && d.n_sessions !== undefined) {
       lines.push(`Support: ${d.support}/${d.n_sessions} sessions`);
-      if (d.per_session_counts) {
-        lines.push(`Per session: [${d.per_session_counts.join(", ")}]`);
+      // per_session_counts is an array in session payloads and an object in
+      // merged ones. Calling .join() on the object threw and killed the whole
+      // tooltip, silently, for exactly the view people look at most.
+      const psc = d.per_session_counts;
+      if (Array.isArray(psc)) {
+        lines.push(`Per session: [${psc.join(", ")}]`);
+      } else if (psc && typeof psc === "object") {
+        lines.push("Per session: " + Object.entries(psc)
+          .map(([s, n]) => `S${Number(s) + 1}:${n}`).join("  "));
       }
     }
     if (d.is_bridge_node) {
@@ -2290,8 +2707,7 @@ export function createGraphController({
     }
     if (d.is_primary === false) lines.push(`Lane: secondary (outside recipe steps)`);
     else if (d.is_primary === true) lines.push(`Lane: primary (recipe action)`);
-    if (d.salient === true) lines.push(`Tier: recipe-salient`);
-    else if (d.salient === false) lines.push(`Tier: background activity`);
+
 
     if (stats) {
       if (graphMode === "abstracted") {
@@ -2312,16 +2728,20 @@ export function createGraphController({
       }
     }
 
-    if (d.verbs && Object.keys(d.verbs).length > 0) {
-      const sortedVerbs = Object.entries(d.verbs).sort((a, b) => b[1] - a[1]).slice(0, 8);
-      const verbList = sortedVerbs.map(([v, c]) => `  ${v}: ${c}`).join("\n");
-      lines.push(`Verbs:\n${verbList}`);
-    }
-
-    if (d.objects && Object.keys(d.objects).length > 0) {
-      const sortedObjects = Object.entries(d.objects).sort((a, b) => b[1] - a[1]).slice(0, 10);
-      const objectList = sortedObjects.map(([o, c]) => `  ${o}: ${c}`).join("\n");
-      lines.push(`Objects:\n${objectList}`);
+    // The summary already lists the top verbs and objects. Printing them again
+    // in a second format is what made the tooltip look like two stacked boxes
+    // even after the native one was removed.
+    if (!d.__summary) {
+      if (d.verbs && Object.keys(d.verbs).length > 0) {
+        const sortedVerbs = Object.entries(d.verbs).sort((a, b) => b[1] - a[1]).slice(0, 8);
+        const verbList = sortedVerbs.map(([v, c]) => `  ${v}: ${c}`).join("\n");
+        lines.push(`Verbs:\n${verbList}`);
+      }
+      if (d.objects && Object.keys(d.objects).length > 0) {
+        const sortedObjects = Object.entries(d.objects).sort((a, b) => b[1] - a[1]).slice(0, 10);
+        const objectList = sortedObjects.map(([o, c]) => `  ${o}: ${c}`).join("\n");
+        lines.push(`Objects:\n${objectList}`);
+      }
     }
     if (d.step_label) lines.push(`Step: ${d.step_label}`);
     if (d.step_text) lines.push(`Step text: ${d.step_text}`);

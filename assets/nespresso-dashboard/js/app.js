@@ -10,6 +10,8 @@ import {
   buildStepLabelLookup,
   getMacroLegendItems,
   PRETHINNED_MODES,
+  LEVELS,
+  levelIndexOf,
 } from "./config.js";
 
 import { createGraphController } from "./graph.js";
@@ -59,6 +61,9 @@ const sessionPickerRow = document.getElementById("sessionPickerRow");
 const sessionPickerTabs = document.getElementById("sessionPickerTabs");
 
 const graphModeSelect = document.getElementById("graphModeSelect");
+const levelSlider = document.getElementById("levelSlider");
+const levelSliderValue = document.getElementById("levelSliderValue");
+const levelSliderTicks = document.querySelectorAll(".level-slider-ticks span");
 const colorEncodeSelect = document.getElementById("colorEncodeSelect");
 const sizeEncodeSelect = document.getElementById("sizeEncodeSelect");
 const layoutModeSelect = document.getElementById("layoutModeSelect");
@@ -102,6 +107,24 @@ let currentGraphSource = "merged";
 
 let mergedGraphPayload = null;
 let sessionPayloadsMap = {};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// LEVEL CACHE
+//
+// Every level is a separate JSON file. Re-fetching on each slider move is what
+// made a level change feel like a page load, and it also made the change
+// un-animatable: you cannot cross-fade into a picture that does not exist yet.
+//
+// So all three levels for the current recipe are fetched once, in parallel,
+// when the recipe is chosen. After that the slider is pure rendering — no
+// network, no await — and the transition can be shown.
+//
+// Keyed by recipe AND level, so switching recipe and switching level cannot
+// serve each other's data.
+// ─────────────────────────────────────────────────────────────────────────────
+const payloadCache = new Map();          // "P01_R01|hybrid" -> { merged, sessions }
+const cacheKey = (recipeId, mode) => `${recipeId}|${mode}`;
+let levelSwitchInFlight = false;
 
 let activeVideoSession = 0; 
 let timelineRows = [];
@@ -381,7 +404,7 @@ function resetExpansion() {
   if (typeof updateExpandChrome === "function") updateExpandChrome();
 }
 
-function reapplyGraphSettings(resetPositions = false) {
+function reapplyGraphSettings(resetPositions = false, { animate = false } = {}) {
   if (!mergedGraphPayload) return;
   queueMicrotask(() => {
     if (typeof applyPattern === "function") applyPattern();
@@ -442,6 +465,10 @@ function reapplyGraphSettings(resetPositions = false) {
       spineHighlightActive: spineHighlightOn,
       isMacro: !!view.isMacro,
       expandedEdges,
+      // Only a level change cross-fades. Re-colouring or re-sizing keeps the
+      // same nodes on screen, so fading the canvas there would be motion that
+      // tells the reader nothing.
+      animate,
     }
   );
 
@@ -780,12 +807,54 @@ function getCurrentRecipe() {
   return manifest.recipes.find((r) => r.id === currentRecipeId);
 }
 
-async function loadRecipeData() {
+// Fetch one level for one recipe, or return the copy already in the cache.
+// The whole body below is the original loading logic, unchanged except that it
+// now returns its result instead of assigning to module state.
+async function fetchLevelPayloads(recipeId, recipe, mode) {
+  const key = cacheKey(recipeId, mode);
+  if (payloadCache.has(key)) return payloadCache.get(key);
+
+  const built = await buildLevelPayloads(recipeId, recipe, mode);
+  payloadCache.set(key, built);
+  return built;
+}
+
+// Warm the other levels in the background. Failures are ignored on purpose:
+// a level that cannot be prefetched will simply be fetched on demand, and a
+// missing file for one level must never break the level the user is looking at.
+function prefetchOtherLevels(recipeId, recipe, activeMode) {
+  LEVELS.filter((l) => l.mode !== activeMode).forEach((l) => {
+    fetchLevelPayloads(recipeId, recipe, l.mode).catch(() => {});
+  });
+}
+
+async function loadRecipeData({ animate = false } = {}) {
   if (!currentRecipeId) return;
   const recipe = getCurrentRecipe();
   const mode = graphModeSelect.value;
-  
+
   try {
+    const { merged, sessions } = await fetchLevelPayloads(currentRecipeId, recipe, mode);
+    mergedGraphPayload = merged;
+    sessionPayloadsMap = sessions;
+
+    expandedEdges.clear();
+    populateSessionTabs(recipe);
+    updateChainLevelAvailability();
+    reapplyGraphSettings(true, { animate });
+    selectSession(recipe.has_merged ? 'all' : 0);
+
+    prefetchOtherLevels(currentRecipeId, recipe, mode);
+  } catch (error) {
+    console.error(error);
+    renderDataError(summaryPill, header, "Failed to load recipe data.");
+  }
+}
+
+async function buildLevelPayloads(currentRecipeId, recipe, mode) {
+  let mergedGraphPayload = null;
+  let sessionPayloadsMap = {};
+  {
     // 1. Fetch Merged Graph (or synthesize from Session 0)
     if (recipe.has_merged) {
       const res = await fetch(getMergedDataUrl(currentRecipeId, mode));
@@ -838,24 +907,15 @@ async function loadRecipeData() {
 
     // 2. Fetch individual session payloads
     sessionPayloadsMap = {};
-    const fetches = recipe.sessions.map(s => 
+    const fetches = recipe.sessions.map(s =>
       fetch(getSessionDataUrl(currentRecipeId, s.index, mode))
         .then(r => r.json())
         .then(d => { sessionPayloadsMap[s.index] = d; })
     );
     await Promise.all(fetches);
-    
-    // 3. Update UI & Build Base Graph
-    expandedEdges.clear();
-    populateSessionTabs(recipe);
-    updateChainLevelAvailability();
-    reapplyGraphSettings(true);
-    selectSession(recipe.has_merged ? 'all' : 0);
-
-  } catch (error) {
-    console.error(error);
-    renderDataError(summaryPill, header, "Failed to load recipe data.");
   }
+
+  return { merged: mergedGraphPayload, sessions: sessionPayloadsMap };
 }
 
 function selectSession(idx) {
@@ -1063,10 +1123,64 @@ function updateColorEncodeAvailability() {
   }
 }
 
-graphModeSelect.addEventListener("change", (e) => { resetExpansion(); });
-graphModeSelect.addEventListener("change", () => {
+// ═════════════════════════════════════════════════════════════════════════
+// DETAIL-LEVEL SLIDER
+//
+// The slider is the control; the <select> is now a hidden field that holds
+// the value. Everything downstream still reads graphModeSelect.value, so no
+// other listener had to change.
+//
+// Switching level does not refetch. All levels for the recipe are already in
+// payloadCache (see prefetchOtherLevels), so the change is pure rendering and
+// the graph can cross-fade instead of blanking.
+//
+// The guard matters: a slider fires `input` on every pixel of a drag. Without
+// it a fast drag starts three builds against one SVG and they interleave.
+// ═════════════════════════════════════════════════════════════════════════
+
+function syncLevelUI(mode) {
+  const idx = levelIndexOf(mode);
+  if (levelSlider) levelSlider.value = String(idx);
+  if (levelSliderValue) levelSliderValue.textContent = LEVELS[idx].label;
+  levelSliderTicks.forEach((el, i) => el.classList.toggle("active", i === idx));
+}
+
+async function setLevel(mode, { animate = true } = {}) {
+  if (!mode || mode === graphModeSelect.value) { syncLevelUI(mode); return; }
+  if (levelSwitchInFlight) return;
+
+  levelSwitchInFlight = true;
+  appRoot.classList.add("level-switching");
+  graphModeSelect.value = mode;
+  syncLevelUI(mode);
+
+  // A node opened at one level names actions that do not exist at another,
+  // so an open expansion cannot survive the change.
+  resetExpansion();
   updateColorEncodeAvailability();
-  loadRecipeData();
+
+  try {
+    await loadRecipeData({ animate });
+  } finally {
+    levelSwitchInFlight = false;
+    appRoot.classList.remove("level-switching");
+  }
+}
+
+if (levelSlider) {
+  levelSlider.addEventListener("input", () => {
+    const level = LEVELS[Number(levelSlider.value)];
+    if (level) setLevel(level.mode, { animate: true });
+  });
+}
+
+// Kept so anything that still writes to the select — including a future
+// keyboard shortcut or a test — keeps working and updates the slider with it.
+graphModeSelect.addEventListener("change", () => {
+  syncLevelUI(graphModeSelect.value);
+  resetExpansion();
+  updateColorEncodeAvailability();
+  loadRecipeData({ animate: true });
 });
 
 if (edgeDetailSelect) {
@@ -1124,15 +1238,16 @@ async function init() {
   await loadVerbCategories('narrations-and-action-segments/HD_EPIC_verb_classes.csv');
 
   graphModeSelect.value = DEFAULT_DATA_MODE;
+  syncLevelUI(DEFAULT_DATA_MODE);
   colorEncodeSelect.value = DEFAULT_COLOR_ENCODE_MODE;
   sizeEncodeSelect.value = "support";
-  // Macro view is the default: it is the readable one, and its probabilities
-  // are the only ones in this dataset that survive pooling without collapsing
-  // to a wall of P = 1.00.
-  if (chainLevelSelect) chainLevelSelect.value = "macro";
-  currentChainLevel = "macro";
-  // Top-k pruning stays on for the every-action view, where it is still needed.
-  if (edgeDetailSelect) edgeDetailSelect.value = "top1";
+  // The macro (main-steps) chain is a separate model from the detail ladder.
+  // It stays on "micro" now that the ladder itself carries the abstraction.
+  if (chainLevelSelect) chainLevelSelect.value = "micro";
+  currentChainLevel = "micro";
+  // Top-k edge pruning is off: the pruning control was retired, and setting a
+  // value the hidden <select> does not contain silently blanked it anyway.
+  if (edgeDetailSelect) edgeDetailSelect.value = "all";
   if (layoutModeSelect) layoutModeSelect.value = "temporal";
 
   updateColorEncodeAvailability();
@@ -1320,6 +1435,105 @@ if (expandBackBtn) expandBackBtn.addEventListener("click", collapseOne);
 // A likely route can be a route nobody performed end to end; the note says so.
 // ═════════════════════════════════════════════════════════════════════════
 
+// ═════════════════════════════════════════════════════════════════════════
+// MOST LIKELY ROUTE
+//
+// applyPattern() used to read `src.likely_path` and `src.likely_path_report`.
+// Neither field is written by 6_prepare_dashboard_data.py or by
+// 8_aggregate_sessions.py, and neither appears in any payload — so `ids` was
+// always [] and `ok` was always false. The option looked functional and did
+// nothing, silently. That is the worst kind of broken control.
+//
+// It is computed here instead, from the graph already on screen.
+//
+// "Most likely route" means the path START → END whose product of transition
+// probabilities is largest. Maximising a product of probabilities is the same
+// as minimising the sum of −log(p), and −log(p) ≥ 0 for p ≤ 1, so this is an
+// ordinary shortest-path problem and Dijkstra solves it exactly.
+//
+// A greedy "always take the biggest arrow" walk is NOT the same thing and can
+// miss the real answer: one strong first step can lead into a dead region.
+//
+// Two honest limits, both reported in the note:
+//   - the result is the most likely route through the model, which is not the
+//     same as a route anybody actually performed end to end;
+//   - it needs a START and an END to exist in the drawn graph.
+// ═════════════════════════════════════════════════════════════════════════
+
+function computeLikelyPath(graph) {
+  if (!graph || !graph.nodes || !graph.links) return { ids: [], report: {} };
+
+  const idOf = (v) => (v && typeof v === "object") ? v.id : v;
+  const isStart = (id) => id === "START" || String(id).startsWith("Start:");
+  const isEnd   = (id) => id === "END"   || String(id).startsWith("End:");
+
+  const startNode = graph.nodes.find((n) => isStart(n.id));
+  const endNode   = graph.nodes.find((n) => isEnd(n.id));
+  if (!startNode || !endNode) {
+    return { ids: [], report: { reached_end: false,
+      headline: "No START/END in this view, so there is no route to trace." } };
+  }
+
+  // Adjacency, self-loops dropped: repeating an action does not advance a
+  // route, and a zero-cost loop would sit in the queue forever.
+  const out = new Map();
+  graph.links.forEach((l) => {
+    const s = idOf(l.source), t = idOf(l.target);
+    if (s === t) return;
+    const p = (typeof l.probability === "number" && l.probability > 0)
+      ? l.probability : null;
+    if (p === null) return;
+    if (!out.has(s)) out.set(s, []);
+    out.get(s).push({ t, cost: -Math.log(p), p });
+  });
+
+  // Dijkstra. The graph is small enough (≤ ~330 edges) that a linear scan for
+  // the minimum is cheaper than maintaining a heap.
+  const dist = new Map([[startNode.id, 0]]);
+  const prev = new Map();
+  const done = new Set();
+
+  for (;;) {
+    let u = null, best = Infinity;
+    dist.forEach((dv, k) => { if (!done.has(k) && dv < best) { best = dv; u = k; } });
+    if (u === null || u === endNode.id) break;
+    done.add(u);
+    (out.get(u) || []).forEach(({ t, cost }) => {
+      const alt = best + cost;
+      if (alt < (dist.has(t) ? dist.get(t) : Infinity)) {
+        dist.set(t, alt);
+        prev.set(t, u);
+      }
+    });
+  }
+
+  if (!dist.has(endNode.id)) {
+    return { ids: [], report: { reached_end: false,
+      headline: "No route of observed transitions reaches END from START." } };
+  }
+
+  const ids = [];
+  for (let cur = endNode.id; cur !== undefined; cur = prev.get(cur)) {
+    ids.unshift(cur);
+    if (cur === startNode.id) break;
+  }
+
+  const probability = Math.exp(-dist.get(endNode.id));
+  const steps = Math.max(ids.length - 1, 0);
+  return {
+    ids,
+    report: {
+      reached_end: true,
+      probability,
+      headline:
+        `Most likely route: ${steps} steps, combined probability ` +
+        `${probability < 0.001 ? probability.toExponential(1) : probability.toFixed(3)}. ` +
+        `This is the highest-probability path through the model — it is not ` +
+        `necessarily a route any single session performed from start to finish.`,
+    },
+  };
+}
+
 function patternSource() {
   const view = getActiveGraphView();
   return view?.isMerged
@@ -1357,10 +1571,16 @@ function applyPattern() {
     note = rep.headline || "";
     ok = rep.verdict !== "no_shared_pattern" && rep.verdict !== "single_session";
   } else {
-    const rep = src.likely_path_report || {};
-    ids = src.likely_path || [];
-    note = rep.headline || "";
-    ok = !!rep.reached_end;
+    // Computed from the graph on screen, because no payload carries one.
+    // Deliberately recomputed on every call rather than cached: the drawn
+    // graph changes with level, session tab and any opened node, and a
+    // highlighted path that belongs to a graph you are no longer looking at
+    // is worse than no highlight.
+    const view = getActiveGraphView();
+    const { ids: pathIds, report } = computeLikelyPath(view?.graph);
+    ids = pathIds;
+    note = report.headline || "";
+    ok = !!report.reached_end;
   }
 
   setNote(note);
