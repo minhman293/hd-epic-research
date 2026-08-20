@@ -1,0 +1,52 @@
+{
+  "n_actions_in_pkl": 373,
+  "n_actions_in_recipe": 160,
+  "n_actions_other_task": 213,
+  "n_interruptions": 79,
+  "n_segments": 16,
+  "n_states": 4,
+  "n_edges": 5,
+  "density_edges_per_node": 1.25,
+  "mean_out_degree": 1.25,
+  "repeat_edge_share": 0.8,
+  "cross_session_jaccard": 0.75,
+  "coverage": 0.919,
+  "low_confidence_types": 0,
+  "n_pair_types": 115,
+  "visits_per_session": {
+    "froth milk": 2.0,
+    "mix coffee": 1.7,
+    "load coffee capsule": 1.0,
+    "brew coffee": 1.0
+  },
+  "fragmented_states": [],
+  "targets": {
+    "min_states": 4,
+    "max_states": 9,
+    "max_density": 1.5,
+    "n_sessions": 3
+  },
+  "gates": {
+    "states<=9": true,
+    "density<=1.5": true,
+    "jaccard>=0.70": true,
+    "repeat_edges>=0.60": true,
+    "coverage>=0.90": true,
+    "no_fragmented_states": true
+  },
+  "passed": true,
+  "blocking_gates": {
+    "no_fragmented_states": true,
+    "coverage>=0.90": true,
+    "states<=9": true,
+    "density<=3.0": true
+  },
+  "render_ready": true,
+  "advisory": {
+    "cross_session_jaccard": 0.75,
+    "repeat_edge_share": 0.8,
+    "n_sessions": 3,
+    "density_target": 1.5
+  },
+  "note": "3 session(s): the evidence budget caps density at 1.5. With fewer than 4 recordings, no abstraction can make most edges repeat. Report this rather than tuning it away."
+}

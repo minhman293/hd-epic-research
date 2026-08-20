@@ -1,0 +1,617 @@
+{
+  "level": "functional",
+  "nodes": [
+    {
+      "id": "START",
+      "label": "START",
+      "phase": "other",
+      "count": 1,
+      "support": 1,
+      "sessions": [
+        "P08-20240613-122900"
+      ],
+      "mean_duration": 0.0,
+      "median_rank": 0.0,
+      "members": []
+    },
+    {
+      "id": "grind coffee beans",
+      "label": "grind coffee beans",
+      "phase": "preparation",
+      "count": 2,
+      "support": 1,
+      "sessions": [
+        "P08-20240613-122900"
+      ],
+      "mean_duration": 49.71,
+      "median_rank": 0.333,
+      "members": [
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 3.31,
+          "end": 4.67,
+          "verb": "slide",
+          "noun": "phone",
+          "narration": "Use index finger of right hand to swipe open phone."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 4.5,
+          "end": 7.92,
+          "verb": "open",
+          "noun": "phone",
+          "narration": "Open MyFitnessPal app to record ingredients."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 8.79,
+          "end": 11.04,
+          "verb": "move",
+          "noun": "scale",
+          "narration": "using both hands move scale into center of kitchen counter"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 15.5,
+          "end": 17.34,
+          "verb": "take",
+          "noun": "cup",
+          "narration": "grab small espresso cup from coffee rack using left hand"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 17.78,
+          "end": 19.23,
+          "verb": "turn-on",
+          "noun": "scale",
+          "narration": "turn scale on using right hand to measure coffee"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 18.85,
+          "end": 26.83,
+          "verb": "adjust",
+          "noun": "scale",
+          "narration": "Adjust scale to appropriate measurements using right hand."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 27.4,
+          "end": 28.74,
+          "verb": "put",
+          "noun": "cup",
+          "narration": "Place small espresso cup on scale to measure for coffee."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 33.85,
+          "end": 35.16,
+          "verb": "take",
+          "noun": "can",
+          "narration": "Grab can of coffee beans off toaster using right hand."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 35.71,
+          "end": 36.87,
+          "verb": "open",
+          "noun": "can",
+          "narration": "Open can of coffee beans using left hand by twisting the top to the left."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 36.64,
+          "end": 41.37,
+          "verb": "pour",
+          "noun": "coffee",
+          "narration": "use right hand to pour coffee beans out of coffee can into the espresso cup that is on the scale"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 41.26,
+          "end": 44.71,
+          "verb": "close",
+          "noun": "can",
+          "narration": "Close can of coffee beans with left hand by screwing top to the right."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 45.26,
+          "end": 46.7,
+          "verb": "put",
+          "noun": "can",
+          "narration": "With left hand, place can of coffee beans on kitchen counter to the left of the scale."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 46.28,
+          "end": 47.26,
+          "verb": "carry",
+          "noun": "phone",
+          "narration": "bring phone into view with right hand"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 48.26,
+          "end": 67.23,
+          "verb": "write",
+          "noun": "coffee",
+          "narration": "with right hand record ingredients of coffee on phone"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 67.39,
+          "end": 68.61,
+          "verb": "move",
+          "noun": "phone",
+          "narration": "Move phone to the right with right hand."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 69.72,
+          "end": 70.74,
+          "verb": "move",
+          "noun": "scale",
+          "narration": "both hands move scale to the left to make space for coffee grinder"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 72.85,
+          "end": 73.35,
+          "verb": "take",
+          "noun": "maker:coffee",
+          "narration": "grab coffee grinder from back of kitchen counter with right hands and pull forward"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 73.44,
+          "end": 74.18,
+          "verb": "open",
+          "noun": "cap",
+          "narration": "open cap of coffee grinder with left hand to grind coffee beans"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 75.72,
+          "end": 76.96000000000001,
+          "verb": "pour",
+          "noun": "coffee",
+          "narration": "with right hand pour coffee beans into coffee grinder to grind"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 77.41,
+          "end": 80.11,
+          "verb": "put",
+          "noun": "cup",
+          "narration": "Put espresso cup down with right hand and close coffee grinder using left hand."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 79.89,
+          "end": 96.38,
+          "verb": "crush",
+          "noun": "coffee",
+          "narration": "grind coffee beans with left hand and hold down coffee grinder cap with right hand"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 97.41,
+          "end": 98.76,
+          "verb": "turn-on",
+          "noun": "machine:washing",
+          "narration": "Turn on Espresso Machine with left hand by pressing bottom most button of machine."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 100.92,
+          "end": 101.6,
+          "verb": "take",
+          "noun": "cup",
+          "narration": "Pick up small espresso cup and place back down."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 103.17,
+          "end": 106.93,
+          "verb": "search",
+          "noun": "rack:drying",
+          "narration": "Search through kitchen drying rack for correct espresso cup using both hands."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 107.37,
+          "end": 107.81,
+          "verb": "take",
+          "noun": "cup",
+          "narration": "Pick up espresso cup with right hands to look for correct espresso cup."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 109.05,
+          "end": 110.35,
+          "verb": "take",
+          "noun": "cup",
+          "narration": "Pick up correct espresso cup from back of counter and bring forward to pour coffee into."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 111.19,
+          "end": 114.51,
+          "verb": "screw",
+          "noun": "cup",
+          "narration": "with right hand twist espresso cup out of espresso handle"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 114.38,
+          "end": 114.99,
+          "verb": "put",
+          "noun": "cup",
+          "narration": "Place incorrect espresso cup back on espresso machine with right hand."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 115.55,
+          "end": 117.26,
+          "verb": "put",
+          "noun": "cup",
+          "narration": "put correct espresso cup into espresso handle with right hand"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 117.69,
+          "end": 118.96,
+          "verb": "move",
+          "noun": "scale",
+          "narration": "With both hands, move scale out of way."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 120.35,
+          "end": 121.44,
+          "verb": "pat",
+          "noun": "maker:coffee",
+          "narration": "with both hands tap coffee grinder machine to move coffee beans to the bottom of the machine"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 130.13,
+          "end": 131.6,
+          "verb": "put",
+          "noun": "coffee",
+          "narration": "Place grinded beans into espresso cup."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 131.4,
+          "end": 133.15,
+          "verb": "pat",
+          "noun": "maker:coffee",
+          "narration": "tap coffee grinder again with right hand to loosen up beans"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 132.95,
+          "end": 135.95,
+          "verb": "crush",
+          "noun": "coffee",
+          "narration": "Scoop grinded coffee into espresso cup."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 135.55,
+          "end": 137.62,
+          "verb": "pat",
+          "noun": "maker:coffee",
+          "narration": "tap grinder again to loosen up coffee beans"
+        }
+      ]
+    },
+    {
+      "id": "tamp coffee grounds",
+      "label": "tamp coffee grounds",
+      "phase": "tamping",
+      "count": 2,
+      "support": 1,
+      "sessions": [
+        "P08-20240613-122900"
+      ],
+      "mean_duration": 16.02,
+      "median_rank": 0.5,
+      "members": [
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 121.42,
+          "end": 122.39,
+          "verb": "take",
+          "noun": "spoon",
+          "narration": "With right hand, grab small espresso scoop off espresso machine."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 122.47,
+          "end": 125.8,
+          "verb": "mix",
+          "noun": "coffee",
+          "narration": "With right hand use bottom of espresso scoop to mix coffee grinded beans in coffee machine."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 125.55,
+          "end": 128.0,
+          "verb": "pat",
+          "noun": "maker:coffee",
+          "narration": "With right hand tap coffee grinder to loosen up grinded coffee beans."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 127.75,
+          "end": 130.2,
+          "verb": "scoop",
+          "noun": "coffee",
+          "narration": "With right hand, using Espresso scoop, scoop grinded coffee beans out of grinder into espresso cup."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 139.5,
+          "end": 140.73,
+          "verb": "put",
+          "noun": "spoon",
+          "narration": "Place espresso scoop back on top of espresso machine with right hand."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 140.77,
+          "end": 142.18,
+          "verb": "pat",
+          "noun": "cup",
+          "narration": "with right hand tap espresso cup to loosen up beans within espresso cup"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 142.25,
+          "end": 151.13,
+          "verb": "press",
+          "noun": "coffee",
+          "narration": "using press, press down on coffee beans in espresso cup"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 150.79,
+          "end": 152.04,
+          "verb": "put",
+          "noun": "presser",
+          "narration": "With right hand, place espresso press back on top of espresso machine out of way."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 152.09,
+          "end": 153.82,
+          "verb": "put",
+          "noun": "cup",
+          "narration": "using both hands place espresso cup within espresso machine"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 153.87,
+          "end": 154.9,
+          "verb": "screw",
+          "noun": "cup",
+          "narration": "using left hand tighten espresso cup within espresso machine to begin making coffee"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 154.89,
+          "end": 156.27,
+          "verb": "put",
+          "noun": "machine:washing",
+          "narration": "use right hand to steady machine to clip in espresso cup"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 156.37,
+          "end": 160.13,
+          "verb": "move",
+          "noun": "phone",
+          "narration": "with right hands move phone out of way"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 160.23,
+          "end": 161.28,
+          "verb": "carry",
+          "noun": "cup",
+          "narration": "With left hand, bring espresso cup over to espresso machine to make coffee."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 161.38,
+          "end": 162.5,
+          "verb": "put",
+          "noun": "cup",
+          "narration": "With right hands, place espresso cup under drip to make coffee."
+        }
+      ]
+    },
+    {
+      "id": "brew espresso shot",
+      "label": "brew espresso shot",
+      "phase": "extraction",
+      "count": 1,
+      "support": 1,
+      "sessions": [
+        "P08-20240613-122900"
+      ],
+      "mean_duration": 11.95,
+      "median_rank": 0.667,
+      "members": [
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 163.4,
+          "end": 165.95,
+          "verb": "turn-on",
+          "noun": "machine:washing",
+          "narration": "with left hand turn coffee machine on to begin making coffee"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 166.32,
+          "end": 174.87,
+          "verb": "check",
+          "noun": "coffee",
+          "narration": "Watch as coffee drips from espresso machine to espresso cup to make sure it does not overflow."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 174.97,
+          "end": 175.82,
+          "verb": "open",
+          "noun": "drawer",
+          "narration": "With right hand, open kitchen drawer."
+        }
+      ]
+    },
+    {
+      "id": "serve espresso shot",
+      "label": "serve espresso shot",
+      "phase": "serving",
+      "count": 1,
+      "support": 1,
+      "sessions": [
+        "P08-20240613-122900"
+      ],
+      "mean_duration": 13.81,
+      "median_rank": 0.833,
+      "members": [
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 175.89,
+          "end": 176.32,
+          "verb": "take",
+          "noun": "plate",
+          "narration": "With left hand, grab small plates for espresso cup to sit on."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 178.69,
+          "end": 180.39,
+          "verb": "finish",
+          "noun": "machine:washing",
+          "narration": "With left hand, stop espresso machine to stop making coffee."
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 180.55,
+          "end": 185.2,
+          "verb": "wait",
+          "noun": "machine:washing",
+          "narration": "wait for machine to finish dripping coffee"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 185.21,
+          "end": 191.15,
+          "verb": "squeeze",
+          "noun": "cup",
+          "narration": "with right hand pinch side of espresso cup and pull it out of machine and place onto plate"
+        },
+        {
+          "video_id": "P08-20240613-122900",
+          "start": 192.17,
+          "end": 193.26,
+          "verb": "turn-off",
+          "noun": "machine:washing",
+          "narration": "With right hand, turn off espresso machine."
+        }
+      ]
+    },
+    {
+      "id": "END",
+      "label": "END",
+      "phase": "other",
+      "count": 1,
+      "support": 1,
+      "sessions": [
+        "P08-20240613-122900"
+      ],
+      "mean_duration": 0.0,
+      "median_rank": 1.0,
+      "members": []
+    }
+  ],
+  "edges": [
+    {
+      "source": "START",
+      "target": "grind coffee beans",
+      "n": 1,
+      "p": 1.0,
+      "sessions": [
+        "P08-20240613-122900"
+      ],
+      "support": 1,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "brew espresso shot",
+      "target": "serve espresso shot",
+      "n": 1,
+      "p": 1.0,
+      "sessions": [
+        "P08-20240613-122900"
+      ],
+      "support": 1,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "grind coffee beans",
+      "target": "tamp coffee grounds",
+      "n": 2,
+      "p": 1.0,
+      "sessions": [
+        "P08-20240613-122900"
+      ],
+      "support": 1,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "serve espresso shot",
+      "target": "END",
+      "n": 1,
+      "p": 1.0,
+      "sessions": [
+        "P08-20240613-122900"
+      ],
+      "support": 1,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "tamp coffee grounds",
+      "target": "brew espresso shot",
+      "n": 1,
+      "p": 0.5,
+      "sessions": [
+        "P08-20240613-122900"
+      ],
+      "support": 1,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "tamp coffee grounds",
+      "target": "grind coffee beans",
+      "n": 1,
+      "p": 0.5,
+      "sessions": [
+        "P08-20240613-122900"
+      ],
+      "support": 1,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    }
+  ]
+}

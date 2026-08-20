@@ -1,0 +1,3946 @@
+{
+  "level": "functional",
+  "nodes": [
+    {
+      "id": "START",
+      "label": "START",
+      "phase": "other",
+      "count": 7,
+      "support": 7,
+      "sessions": [
+        "P05-20240424-085204",
+        "P05-20240424-090812",
+        "P05-20240425-082420",
+        "P05-20240425-083515",
+        "P05-20240426-085333",
+        "P05-20240426-091011",
+        "P05-20240426-092000"
+      ],
+      "mean_duration": 0.0,
+      "median_rank": 0.0,
+      "members": []
+    },
+    {
+      "id": "measure dry ingredients",
+      "label": "measure dry ingredients",
+      "phase": "preparation",
+      "count": 8,
+      "support": 5,
+      "sessions": [
+        "P05-20240424-085204",
+        "P05-20240425-082420",
+        "P05-20240425-083515",
+        "P05-20240426-085333",
+        "P05-20240426-092000"
+      ],
+      "mean_duration": 28.2,
+      "median_rank": 0.333,
+      "members": [
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 12.14,
+          "end": 13.6,
+          "verb": "open",
+          "noun": "drawer",
+          "narration": "Open drawer."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 14.11,
+          "end": 14.56,
+          "verb": "take",
+          "noun": "scale",
+          "narration": "pick up scales."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 14.66,
+          "end": 15.15,
+          "verb": "close",
+          "noun": "drawer",
+          "narration": "Close drawer."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 17.04,
+          "end": 19.04,
+          "verb": "put",
+          "noun": "scale",
+          "narration": "Put down scales on worktop."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 20.47,
+          "end": 22.0,
+          "verb": "take",
+          "noun": "bowl",
+          "narration": "pick up bowl from draining board."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 21.78,
+          "end": 22.41,
+          "verb": "flip",
+          "noun": "bowl",
+          "narration": "Turn over bowl in hand."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 23.04,
+          "end": 24.36,
+          "verb": "put",
+          "noun": "bowl",
+          "narration": "Put bowl on scales"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 24.36,
+          "end": 25.48,
+          "verb": "turn-on",
+          "noun": "scale",
+          "narration": "turn on scales"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 28.2,
+          "end": 30.03,
+          "verb": "take",
+          "noun": "oatmeal",
+          "narration": "Pick up porridge from top of fridge."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 30.31,
+          "end": 32.65,
+          "verb": "open",
+          "noun": "top",
+          "narration": "open one side of porridge so it's suitable for pouring out of"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 30.55,
+          "end": 33.42,
+          "verb": "check",
+          "noun": "oatmeal",
+          "narration": "Look in porridge to make sure it's not going to spill."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 33.2,
+          "end": 37.71,
+          "verb": "pour",
+          "noun": "oatmeal",
+          "narration": "pour porridge into bowl"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 37.65,
+          "end": 52.88,
+          "verb": "shake",
+          "noun": "oatmeal",
+          "narration": "shaking porridge gently so that i don't go over the required weight"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 53.44,
+          "end": 54.05,
+          "verb": "put",
+          "noun": "oatmeal",
+          "narration": "Tip porridge back into bag because I poured out enough."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 54.45,
+          "end": 55.75,
+          "verb": "put",
+          "noun": "oatmeal",
+          "narration": "put porridge back on top of fridge"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 56.19,
+          "end": 57.13,
+          "verb": "open",
+          "noun": "fridge",
+          "narration": "Open fridge with right hand."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 57.68,
+          "end": 59.23,
+          "verb": "take",
+          "noun": "milk",
+          "narration": "Pick up milk with left hand."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 59.74,
+          "end": 60.22,
+          "verb": "close",
+          "noun": "fridge",
+          "narration": "Close fridge with right hand."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 60.72,
+          "end": 61.59,
+          "verb": "turn-on",
+          "noun": "lid",
+          "narration": "Start unscrewing lid of milk with right hand."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 61.81,
+          "end": 68.85,
+          "verb": "pour",
+          "noun": "milk",
+          "narration": "Pour milk into porridge using left hand."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 69.98,
+          "end": 71.46000000000001,
+          "verb": "screw",
+          "noun": "milk",
+          "narration": "Screw milk back onto bottle with right hand"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 71.46000000000001,
+          "end": 72.74,
+          "verb": "open",
+          "noun": "fridge",
+          "narration": "open fridge with right hand"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 72.61,
+          "end": 73.72,
+          "verb": "put",
+          "noun": "bottle",
+          "narration": "Put milk bottle back into fridge door."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 74.87,
+          "end": 76.65,
+          "verb": "take",
+          "noun": "glass",
+          "narration": "Pick up pint glass with right hand."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 76.75,
+          "end": 78.61,
+          "verb": "turn-on",
+          "noun": "tap",
+          "narration": "turn on tap with left hand whilst holding pint glass under tap with right hand."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 78.63,
+          "end": 80.95,
+          "verb": "turn-off",
+          "noun": "tap",
+          "narration": "turn off tap"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 81.03,
+          "end": 88.8,
+          "verb": "pour",
+          "noun": "water",
+          "narration": "Pour water from pint glass into porridge on the scales."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 87.97,
+          "end": 91.02,
+          "verb": "reach",
+          "noun": "scale",
+          "narration": "Stop pouring when I reach the correct weight."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 91.03,
+          "end": 92.18,
+          "verb": "put",
+          "noun": "glass",
+          "narration": "Put pint glass on counter."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 92.09,
+          "end": 94.02,
+          "verb": "take",
+          "noun": "oatmeal",
+          "narration": "Pick up porridge with right hand and transfer to both hands whilst carrying across the kitchen."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 9.04,
+          "end": 11.61,
+          "verb": "take",
+          "noun": "bowl",
+          "narration": "Pick a bowl from the pile of bowls on the shelf under the sink."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 12.42,
+          "end": 13.04,
+          "verb": "put",
+          "noun": "bowl",
+          "narration": "Put bowl on countertop with left hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 15.85,
+          "end": 16.93,
+          "verb": "open",
+          "noun": "drawer",
+          "narration": "Open drawer with right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 17.48,
+          "end": 18.14,
+          "verb": "take",
+          "noun": "scale",
+          "narration": "pick up scales with right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 18.24,
+          "end": 18.64,
+          "verb": "close",
+          "noun": "drawer",
+          "narration": "Close drawer with left hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 20.56,
+          "end": 21.62,
+          "verb": "put",
+          "noun": "scale",
+          "narration": "Put scales down on counter with right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 21.63,
+          "end": 22.12,
+          "verb": "take",
+          "noun": "bowl",
+          "narration": "Pick up bowl with left hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 22.06,
+          "end": 22.67,
+          "verb": "put",
+          "noun": "bowl",
+          "narration": "Put bowl down on scales with left hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 23.08,
+          "end": 25.56,
+          "verb": "turn-on",
+          "noun": "scale",
+          "narration": "turn on scales with right index finger"
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 29.22,
+          "end": 31.69,
+          "verb": "take",
+          "noun": "package",
+          "narration": "Pick up a packet of porridge from on top of the fridge with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 31.78,
+          "end": 37.12,
+          "verb": "pull",
+          "noun": "oatmeal",
+          "narration": "Use both hands to pull porridge into the bowl which is on the scales."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 35.05,
+          "end": 43.75,
+          "verb": "shake",
+          "noun": "bag",
+          "narration": "Shake bag of porridge so that more oats come out."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 43.69,
+          "end": 45.98,
+          "verb": "put",
+          "noun": "package",
+          "narration": "Tip packet of porridge upright so the oats fall down to the bottom."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 45.99,
+          "end": 48.25,
+          "verb": "put",
+          "noun": "oatmeal",
+          "narration": "Place porridge oats back on top of the fridge with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 65.5,
+          "end": 67.32,
+          "verb": "take",
+          "noun": "glass",
+          "narration": "pick up pint glass with my left hand from the cupboard."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 68.11,
+          "end": 69.44,
+          "verb": "turn-on",
+          "noun": "tap",
+          "narration": "turn on tap with my left hand and then rinse glass under the running water with both hands"
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 69.41,
+          "end": 70.7,
+          "verb": "fill",
+          "noun": "glass",
+          "narration": "Fill up pint glass of water."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 71.2,
+          "end": 74.15,
+          "verb": "turn-off",
+          "noun": "tap",
+          "narration": "turn off the tap with my left hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 75.59,
+          "end": 77.7,
+          "verb": "pour",
+          "noun": "water",
+          "narration": "Pour water from the pint glass into the porridge with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 79.47,
+          "end": 83.78999999999999,
+          "verb": "put",
+          "noun": "glass",
+          "narration": "Put down pint glass on counter with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 84.46000000000001,
+          "end": 85.26,
+          "verb": "take",
+          "noun": "oatmeal",
+          "narration": "pick up porridge from the scales with my left hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 93.88,
+          "end": 95.38,
+          "verb": "turn-off",
+          "noun": "scale",
+          "narration": "Turn off the scales on the counter with my right index finger."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 97.42,
+          "end": 98.42,
+          "verb": "take",
+          "noun": "glass",
+          "narration": "Pick up pint glass with right hand from the counter."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 98.52,
+          "end": 104.02,
+          "verb": "drink",
+          "noun": "water",
+          "narration": "Drink the water from the pint glass."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 104.12,
+          "end": 106.06,
+          "verb": "put",
+          "noun": "glass",
+          "narration": "Put empty pint glass down on the counter with my right hand"
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 110.02,
+          "end": 113.66,
+          "verb": "take",
+          "noun": "package",
+          "narration": "Pick up packet of raisins and packet of pecans from the top of the fridge with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 113.66,
+          "end": 115.92,
+          "verb": "move",
+          "noun": "package",
+          "narration": "Transfer one packet to each hand and then place on the counter."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 187.35,
+          "end": 188.65,
+          "verb": "turn-on",
+          "noun": "tap",
+          "narration": "turn on cold tap with right hand"
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 188.72,
+          "end": 190.63,
+          "verb": "wash",
+          "noun": "hand",
+          "narration": "wash hands under running water"
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 190.66,
+          "end": 191.86,
+          "verb": "turn-off",
+          "noun": "tap",
+          "narration": "turn off cold tap with right hand"
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 177.15,
+          "end": 177.98,
+          "verb": "take",
+          "noun": "scale",
+          "narration": "pick up scales from the counter."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 179.7,
+          "end": 181.0,
+          "verb": "open",
+          "noun": "drawer",
+          "narration": "Open drawer with my right hand whilst holding the scales at my left hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 181.1,
+          "end": 182.34,
+          "verb": "put",
+          "noun": "scale",
+          "narration": "place scales in the drawer with my left hand"
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 1.98,
+          "end": 4.4,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "Close door behind me with left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 3.75,
+          "end": 5.27,
+          "verb": "take",
+          "noun": "chair",
+          "narration": "pick up chair with both hands"
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 5.37,
+          "end": 6.48,
+          "verb": "put",
+          "noun": "chair",
+          "narration": "Put down chair with both hands."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 6.53,
+          "end": 7.54,
+          "verb": "screw",
+          "noun": "chair",
+          "narration": "Shift chair with right hand so it's closer to the table, which makes more space."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 7.55,
+          "end": 8.69,
+          "verb": "crush",
+          "noun": "dough",
+          "narration": "Kick dog toy under table with right foot so I don't trip over it."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 11.38,
+          "end": 12.85,
+          "verb": "take",
+          "noun": "bowl",
+          "narration": "pick up bowl from shelf under the sink"
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 12.8,
+          "end": 14.32,
+          "verb": "put",
+          "noun": "bowl",
+          "narration": "Place bowl on table with left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 16.03,
+          "end": 17.71,
+          "verb": "open",
+          "noun": "drawer",
+          "narration": "open drawer with right hand"
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 17.17,
+          "end": 20.01,
+          "verb": "take",
+          "noun": "scale",
+          "narration": "take out scales from under the rest of the clutter with both hands."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 19.77,
+          "end": 21.36,
+          "verb": "close",
+          "noun": "drawer",
+          "narration": "Close drawer with right hand whilst holding the scales in my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 24.13,
+          "end": 24.85,
+          "verb": "turn-on",
+          "noun": "scale",
+          "narration": "Turn on scales with left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 24.95,
+          "end": 25.53,
+          "verb": "take",
+          "noun": "bowl",
+          "narration": "Pick up bowl with right hand whilst holding scales in left hand so I can make room to put the scales on the counter."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 25.46,
+          "end": 26.58,
+          "verb": "put",
+          "noun": "scale",
+          "narration": "Put the scales on counter with left hand whilst holding bowl in right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 26.63,
+          "end": 29.35,
+          "verb": "put",
+          "noun": "bowl",
+          "narration": "Put bowl down on scales with right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 28.36,
+          "end": 30.94,
+          "verb": "turn-off",
+          "noun": "scale",
+          "narration": "Turn off scales with right hand index finger."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 30.9,
+          "end": 32.16,
+          "verb": "turn-on",
+          "noun": "scale",
+          "narration": "turn on scales with right hand, because I meant to set it to zero rather than turn it off."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 32.22,
+          "end": 35.05,
+          "verb": "take",
+          "noun": "oatmeal",
+          "narration": "Pick up porridge from on top of the fridge with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 35.05,
+          "end": 36.03,
+          "verb": "move",
+          "noun": "oatmeal",
+          "narration": "Transfer porridge to left hand so my right hand is free to pick up more things."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 36.03,
+          "end": 37.12,
+          "verb": "take",
+          "noun": "package",
+          "narration": "pick up packet of raisins from on top of the fridge with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 37.19,
+          "end": 37.84,
+          "verb": "put",
+          "noun": "raisin",
+          "narration": "put down raisins on top of the fridge with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 41.46,
+          "end": 51.43,
+          "verb": "pour",
+          "noun": "oatmeal",
+          "narration": "Pour porridge into bowl on scales with both hands."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 53.43,
+          "end": 54.82,
+          "verb": "put",
+          "noun": "oatmeal",
+          "narration": "Place porridge back on top of fridge with right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 55.32,
+          "end": 56.05,
+          "verb": "open",
+          "noun": "cupboard",
+          "narration": "open the fridge door with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 56.37,
+          "end": 58.04,
+          "verb": "take",
+          "noun": "milk",
+          "narration": "Take milk from the second shelf up in the fridge door with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 58.68,
+          "end": 59.35,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "Close fridge door with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 59.42,
+          "end": 60.8,
+          "verb": "unscrew",
+          "noun": "top",
+          "narration": "Unscrew top of milk with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 60.99,
+          "end": 69.84,
+          "verb": "pour",
+          "noun": "milk",
+          "narration": "pour milk into porridge, which is on top of scales, with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 70.23,
+          "end": 71.71000000000001,
+          "verb": "screw",
+          "noun": "lid",
+          "narration": "Screw milk lid back on top of bottle with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 71.76,
+          "end": 72.53999999999999,
+          "verb": "open",
+          "noun": "cupboard",
+          "narration": "open the fridge door with my right hand whilst holding the milk in my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 72.55,
+          "end": 73.55,
+          "verb": "put",
+          "noun": "milk",
+          "narration": "Place milk in the second shelf up at the fridge door with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 73.49,
+          "end": 74.21000000000001,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "Close the fridge door with my right hand"
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 74.31,
+          "end": 76.05,
+          "verb": "take",
+          "noun": "glass",
+          "narration": "pick up pint glass from the back of the draining board in my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 76.15,
+          "end": 76.51,
+          "verb": "move",
+          "noun": "glass",
+          "narration": "Transfer glass to right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 76.58,
+          "end": 78.24,
+          "verb": "turn-on",
+          "noun": "tap",
+          "narration": "Turn on cold tap with my left hand whilst holding the glass under the running water with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 78.34,
+          "end": 79.8,
+          "verb": "turn-off",
+          "noun": "tap",
+          "narration": "turn off the tap with my left hand because the glass is full."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 81.05,
+          "end": 84.69,
+          "verb": "pour",
+          "noun": "water",
+          "narration": "pour water into bowl of porridge on the scales on the counter with my right hand"
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 84.72,
+          "end": 85.91,
+          "verb": "put",
+          "noun": "glass",
+          "narration": "Put a glass of water down on the counter with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 85.97,
+          "end": 87.16,
+          "verb": "take",
+          "noun": "bowl",
+          "narration": "pick up bowl of porridge with my right hand from the scales."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 87.26,
+          "end": 88.82,
+          "verb": "move",
+          "noun": "oatmeal",
+          "narration": "Transfer porridge, so I'm holding it in both hands so I don't spill it."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 88.92,
+          "end": 90.28,
+          "verb": "move",
+          "noun": "glass",
+          "narration": "Move glass out of the way of the microwave door with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 90.48,
+          "end": 91.24,
+          "verb": "open",
+          "noun": "cupboard",
+          "narration": "Open microwave door with my right hand by pressing the release button at the bottom right of the microwave."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 91.21,
+          "end": 92.03,
+          "verb": "move",
+          "noun": "oatmeal",
+          "narration": "Transfer porridge to right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 92.1,
+          "end": 92.96,
+          "verb": "open",
+          "noun": "cupboard",
+          "narration": "Open the microwave door more with my left hand whilst holding the porridge in my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 93.06,
+          "end": 94.57,
+          "verb": "put",
+          "noun": "oatmeal",
+          "narration": "Place porridge in the microwave with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 94.67,
+          "end": 95.46,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "Close microwave door with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 95.56,
+          "end": 97.78,
+          "verb": "press",
+          "noun": "button",
+          "narration": "press the start button five times on the microwave to add two minutes thirty to the timer with my right hand"
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 86.85,
+          "end": 87.73,
+          "verb": "put",
+          "noun": "bowl",
+          "narration": "Place bowl of porridge on the plate and spoon in the bowl."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 87.83,
+          "end": 88.95,
+          "verb": "take",
+          "noun": "scale",
+          "narration": "Pick up scales with both hands on the counter."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 90.38,
+          "end": 91.5,
+          "verb": "open",
+          "noun": "drawer",
+          "narration": "Open drawer with my right hand whilst holding the scales in my left hand."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 91.6,
+          "end": 91.94,
+          "verb": "put",
+          "noun": "scale",
+          "narration": "Place the scales in the drawer with my left hand."
+        }
+      ]
+    },
+    {
+      "id": "cook and stir porridge",
+      "label": "cook and stir porridge",
+      "phase": "cooking",
+      "count": 14,
+      "support": 6,
+      "sessions": [
+        "P05-20240424-085204",
+        "P05-20240424-090812",
+        "P05-20240425-082420",
+        "P05-20240425-083515",
+        "P05-20240426-085333",
+        "P05-20240426-091011"
+      ],
+      "mean_duration": 17.74,
+      "median_rank": 0.375,
+      "members": [
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 93.91,
+          "end": 95.17,
+          "verb": "move",
+          "noun": "cup",
+          "narration": "Move cup with right hand because it's in the way of the microwave."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 95.13,
+          "end": 97.26,
+          "verb": "move",
+          "noun": "teapot",
+          "narration": "Move teapot with right hand because it's in the way of the microwave."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 97.61,
+          "end": 98.32,
+          "verb": "open",
+          "noun": "microwave",
+          "narration": "Open microwave by pressing the button on the bottom right hand corner."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 98.56,
+          "end": 99.37,
+          "verb": "move",
+          "noun": "oatmeal",
+          "narration": "transfer porridge to right hand"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 99.11,
+          "end": 101.71,
+          "verb": "put",
+          "noun": "oatmeal",
+          "narration": "put down porridge on plate in the microwave with right hand, and close microwave door with left hand."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 101.84,
+          "end": 102.57,
+          "verb": "press",
+          "noun": "watch",
+          "narration": "press cancel to clear the current microwave timer"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 102.71,
+          "end": 104.97,
+          "verb": "press",
+          "noun": "alarm",
+          "narration": "Press start five times, each one adds 30 seconds."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 260.3,
+          "end": 260.98,
+          "verb": "open",
+          "noun": "microwave",
+          "narration": "Open the microwave by pressing the button at the bottom right with my right hand whilst holding a spoon."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 262.02,
+          "end": 263.71,
+          "verb": "take",
+          "noun": "bowl",
+          "narration": "Pick up hot porridge bowl with both hands."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 264.07,
+          "end": 264.94,
+          "verb": "put",
+          "noun": "bowl",
+          "narration": "Put down porridge bowl on counter."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 265.19,
+          "end": 269.81,
+          "verb": "mix",
+          "noun": "oatmeal",
+          "narration": "Mix porridge using spoon with right hand."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 269.8,
+          "end": 273.83,
+          "verb": "shake",
+          "noun": "oatmeal",
+          "narration": "shake excess porridge off spoon back into bowl."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 275.43,
+          "end": 276.64,
+          "verb": "put",
+          "noun": "spoon",
+          "narration": "Put spoon down on plate next to knife and banana."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 2.77,
+          "end": 3.35,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "Close door"
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 7.18,
+          "end": 8.06,
+          "verb": "take",
+          "noun": "spoon",
+          "narration": "Pick up tablespoon from plate using my right hand."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 9.46,
+          "end": 15.2,
+          "verb": "mix",
+          "noun": "oatmeal",
+          "narration": "stir porridge that's warm using the tablespoon with my right hand."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 15.04,
+          "end": 16.98,
+          "verb": "pat",
+          "noun": "spoon",
+          "narration": "Tap spoon on bowl to get rid of excess porridge."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 17.05,
+          "end": 18.73,
+          "verb": "put",
+          "noun": "oatmeal",
+          "narration": "Put porridge back in microwave with both hands while still holding the tablespoon in my right hand."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 19.36,
+          "end": 20.67,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "Close microwave door with left hand whilst licking spoon clean with my right hand."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 20.77,
+          "end": 21.94,
+          "verb": "press",
+          "noun": "button",
+          "narration": "Press the start button on the microwave twice with my left thumb. This adds one minute total time to the porridge."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 76.53,
+          "end": 79.07,
+          "verb": "look",
+          "noun": "microwave",
+          "narration": "Look at microwave timer to see how much time is left because I'm getting impatient."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 79.17,
+          "end": 82.55,
+          "verb": "open",
+          "noun": "cupboard",
+          "narration": "Just as microwave beeps, open the microwave door by pressing the button with my right hand."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 82.47,
+          "end": 85.56,
+          "verb": "take",
+          "noun": "bowl",
+          "narration": "Take up bowl of porridge using both hands, just gripping by the rim because it's hot."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 85.66,
+          "end": 87.41,
+          "verb": "put",
+          "noun": "oatmeal",
+          "narration": "Place porridge onto scales."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 87.51,
+          "end": 92.39,
+          "verb": "take",
+          "noun": "spoon",
+          "narration": "Pick up a tablespoon from plate using my right hand and stir the porridge."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 92.22,
+          "end": 95.71,
+          "verb": "shake",
+          "noun": "oatmeal",
+          "narration": "Shake excess porridge off spoon."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 95.81,
+          "end": 96.72,
+          "verb": "eat",
+          "noun": "spoon",
+          "narration": "lick spoon clean"
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 96.95,
+          "end": 97.73,
+          "verb": "put",
+          "noun": "spoon",
+          "narration": "place spoon down on plate"
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 98.45,
+          "end": 99.8,
+          "verb": "turn-on",
+          "noun": "scale",
+          "narration": "turn on scales with right index finger"
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 47.76,
+          "end": 49.62,
+          "verb": "open",
+          "noun": "fridge",
+          "narration": "open fridge with right hand"
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 49.61,
+          "end": 52.06,
+          "verb": "take",
+          "noun": "milk",
+          "narration": "Pick up milk from the drawer in the fridge door with my left hand whilst holding the fridge door handle with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 51.72,
+          "end": 53.47,
+          "verb": "unscrew",
+          "noun": "top",
+          "narration": "Whilst holding the bottle of milk in my left hand, unscrew the top with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 53.45,
+          "end": 60.27,
+          "verb": "pour",
+          "noun": "milk",
+          "narration": "Pour milk into porridge."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 60.37,
+          "end": 61.55,
+          "verb": "screw",
+          "noun": "lid",
+          "narration": "screw lid back on top of milk bottle with right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 61.43,
+          "end": 62.79,
+          "verb": "open",
+          "noun": "cupboard",
+          "narration": "Open fridge door with right hand whilst holding the milk bottle in my left hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 62.74,
+          "end": 63.97,
+          "verb": "put",
+          "noun": "bottle",
+          "narration": "place milk bottle in the drawer in the fridge door with my left hand and then close the fridge door with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 64.66,
+          "end": 65.47,
+          "verb": "open",
+          "noun": "cupboard",
+          "narration": "Fully open cupboard door with my left hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 85.78,
+          "end": 87.07,
+          "verb": "open",
+          "noun": "microwave",
+          "narration": "Open the microwave with my left hand by pressing the release button."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 85.81,
+          "end": 86.94,
+          "verb": "move",
+          "noun": "oatmeal",
+          "narration": "Transfer the porridge to my right hand so I can use my left hand to open the microwave."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 87.17,
+          "end": 89.78999999999999,
+          "verb": "put",
+          "noun": "oatmeal",
+          "narration": "Put porridge in microwave with right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 89.83,
+          "end": 90.64,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "Close microwave door with left hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 90.65,
+          "end": 93.3,
+          "verb": "press",
+          "noun": "button",
+          "narration": "Press the start button on the microwave five times to add 2 minutes 30 to the timer with my right index finger."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 191.85,
+          "end": 192.72,
+          "verb": "shake",
+          "noun": "water",
+          "narration": "Shake water off hands into sink."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 192.75,
+          "end": 195.34,
+          "verb": "dry",
+          "noun": "hand",
+          "narration": "dry hands on towel hanging from the wall"
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 246.4,
+          "end": 247.25,
+          "verb": "pull",
+          "noun": "drawer",
+          "narration": "pull out cutlery drawer further with left hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 247.18,
+          "end": 249.12,
+          "verb": "take",
+          "noun": "spoon",
+          "narration": "pick spoon out of cutlery drawer with right hand"
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 249.22,
+          "end": 250.59,
+          "verb": "close",
+          "noun": "drawer",
+          "narration": "close cutlery drawer with left hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 250.96,
+          "end": 252.46,
+          "verb": "move",
+          "noun": "teapot",
+          "narration": "Move teapot with left hand because it's in the way of where the microwave door will open."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 252.06,
+          "end": 253.04,
+          "verb": "open",
+          "noun": "cupboard",
+          "narration": "open microwave door with right hand by pushing the release button"
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 253.93,
+          "end": 255.23,
+          "verb": "take",
+          "noun": "oatmeal",
+          "narration": "Take the porridge out of the microwave with both hands."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 255.33,
+          "end": 256.02,
+          "verb": "put",
+          "noun": "oatmeal",
+          "narration": "Place porridge on counter."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 256.12,
+          "end": 258.86,
+          "verb": "mix",
+          "noun": "oatmeal",
+          "narration": "Stir porridge using spoon with right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 258.85,
+          "end": 259.98,
+          "verb": "shake",
+          "noun": "liquid",
+          "narration": "Shake excess liquid off the spoon into the porridge with right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 260.08,
+          "end": 260.73,
+          "verb": "take",
+          "noun": "oatmeal",
+          "narration": "pick up porridge from counter"
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 260.83,
+          "end": 261.63,
+          "verb": "put",
+          "noun": "oatmeal",
+          "narration": "Place porridge inside microwave."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 262.28,
+          "end": 263.43,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "Close microwave door with left hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 263.39,
+          "end": 264.63,
+          "verb": "press",
+          "noun": "button",
+          "narration": "Press the start button twice with my left thumb to add one minute to the microwave timer."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 264.5,
+          "end": 267.03,
+          "verb": "put",
+          "noun": "spoon",
+          "narration": "place spoon on plate with right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 294.6,
+          "end": 295.84000000000003,
+          "verb": "open",
+          "noun": "cupboard",
+          "narration": "Open the microwave door with right hand by pressing the release button."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 295.83,
+          "end": 298.54,
+          "verb": "take",
+          "noun": "oatmeal",
+          "narration": "Take porridge out of microwave with both hands."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 299.0,
+          "end": 300.75,
+          "verb": "put",
+          "noun": "oatmeal",
+          "narration": "Place porridge on counter with both hands."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 301.0,
+          "end": 302.41,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "Close microwave door with left hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 20.5,
+          "end": 21.5,
+          "verb": "open",
+          "noun": "cupboard",
+          "narration": "Open microwave door by pressing the door release with my left hand whilst holding the porridge in my right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 21.6,
+          "end": 23.36,
+          "verb": "put",
+          "noun": "oatmeal",
+          "narration": "Place porridge in the microwave with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 23.36,
+          "end": 23.97,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "Close the microwave door with my left hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 24.04,
+          "end": 24.76,
+          "verb": "press",
+          "noun": "button",
+          "narration": "press the start button on the microwave twice to add one minute to the timer"
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 34.84,
+          "end": 41.86,
+          "verb": "drink",
+          "noun": "glass",
+          "narration": "drink from pint glass of water held in my right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 42.38,
+          "end": 42.94,
+          "verb": "move",
+          "noun": "glass",
+          "narration": "Transfer pint glass to left hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 42.86,
+          "end": 43.45,
+          "verb": "put",
+          "noun": "water",
+          "narration": "Tip away excess water in the sink from the pint glass with my left hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 43.55,
+          "end": 44.23,
+          "verb": "move",
+          "noun": "glass",
+          "narration": "Transfer pint glass to right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 46.79,
+          "end": 47.45,
+          "verb": "put",
+          "noun": "glass",
+          "narration": "Place pint glass down on back of the draining board with left hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 53.15,
+          "end": 77.59,
+          "verb": "check",
+          "noun": "microwave",
+          "narration": "Check in Microwave that the porridge isn't overflowing."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 77.12,
+          "end": 78.68,
+          "verb": "open",
+          "noun": "cupboard",
+          "narration": "Open microwave door with right hand by pressing the door catch."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 78.61,
+          "end": 79.3,
+          "verb": "finish",
+          "noun": "cupboard",
+          "narration": "Stop microwave door opening with left hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 79.23,
+          "end": 82.92,
+          "verb": "take",
+          "noun": "oatmeal",
+          "narration": "Take porridge out of the microwave with both hands, holding the bowl by the rim because this will be very hot."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 82.5,
+          "end": 87.24,
+          "verb": "put",
+          "noun": "oatmeal",
+          "narration": "Place porridge down on the scales of both hands."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 87.2,
+          "end": 88.08,
+          "verb": "take",
+          "noun": "spoon",
+          "narration": "pick up spoon from the plate with banana on it with my right hand"
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 88.11,
+          "end": 94.93,
+          "verb": "mix",
+          "noun": "oatmeal",
+          "narration": "Stir porridge using spoon with right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 181.94,
+          "end": 182.63,
+          "verb": "close",
+          "noun": "drawer",
+          "narration": "Close drawer with right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 185.6,
+          "end": 186.85,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "Close the microwave door with my left hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 187.21,
+          "end": 188.09,
+          "verb": "finish",
+          "noun": "alarm",
+          "narration": "Cancel remaining timer on microwave with left hand by pressing the cancel button twice."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 256.68,
+          "end": 257.55,
+          "verb": "open",
+          "noun": "cupboard",
+          "narration": "fully open the microwave door with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 257.86,
+          "end": 260.14,
+          "verb": "mix",
+          "noun": "oatmeal",
+          "narration": "Stir the porridge in the microwave with the spoon in my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 259.76,
+          "end": 261.99,
+          "verb": "shake",
+          "noun": "oatmeal",
+          "narration": "Shake excess porridge off the spoon with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 261.98,
+          "end": 262.63,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "Close the microwave door with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 262.59,
+          "end": 263.55,
+          "verb": "eat",
+          "noun": "spoon",
+          "narration": "lick the spoon clean which is held in my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 263.52,
+          "end": 264.91,
+          "verb": "add",
+          "noun": "alarm",
+          "narration": "add a minute to the microwave timer by pressing the start button with my thumb twice in my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 326.44,
+          "end": 327.35,
+          "verb": "open",
+          "noun": "microwave",
+          "narration": "Open the microwave by pressing the door release from the bottom right hand with my right hand, which is also holding a spoon."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 327.38,
+          "end": 329.9,
+          "verb": "mix",
+          "noun": "oatmeal",
+          "narration": "Stir the porridge in the microwave with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 330.0,
+          "end": 332.17,
+          "verb": "shake",
+          "noun": "oatmeal",
+          "narration": "Shake excess porridge off the spoon, which is held in my right hand into the porridge."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 332.27,
+          "end": 333.21,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "close the microwave door with my left hand"
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 333.28,
+          "end": 334.59000000000003,
+          "verb": "add",
+          "noun": "alarm",
+          "narration": "add one minute to the microwave timer by pressing the start button twice with my left hand"
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 334.69,
+          "end": 335.79,
+          "verb": "eat",
+          "noun": "spoon",
+          "narration": "lick the spoon clean"
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 2.95,
+          "end": 3.91,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "Close door behind me."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 6.05,
+          "end": 6.85,
+          "verb": "take",
+          "noun": "spoon",
+          "narration": "pick up spoon from plate with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 6.95,
+          "end": 15.46,
+          "verb": "mix",
+          "noun": "oatmeal",
+          "narration": "Stir the porridge using the spoon in my right hand whilst setting the bowl with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 15.56,
+          "end": 16.72,
+          "verb": "shake",
+          "noun": "oatmeal",
+          "narration": "shake excess porridge off spoon back into bowl"
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 16.82,
+          "end": 17.79,
+          "verb": "eat",
+          "noun": "oatmeal",
+          "narration": "Lick porridge off spoon"
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 17.89,
+          "end": 18.41,
+          "verb": "put",
+          "noun": "spoon",
+          "narration": "put spoon down on plate with right hand"
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 18.48,
+          "end": 19.41,
+          "verb": "take",
+          "noun": "bowl",
+          "narration": "Pick up a bowl of porridge with both hands."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 20.53,
+          "end": 21.7,
+          "verb": "put",
+          "noun": "oatmeal",
+          "narration": "Put porridge in microwave with right hand."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 21.8,
+          "end": 22.2,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "Close microwave door with left hand."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 22.3,
+          "end": 24.21,
+          "verb": "remove",
+          "noun": "alarm",
+          "narration": "Clear the timer with my right index finger by pressing cancel twice."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 22.52,
+          "end": 24.66,
+          "verb": "turn-on",
+          "noun": "microwave",
+          "narration": "Turn on the microwave by pressing the start button with my right index finger."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 24.76,
+          "end": 28.16,
+          "verb": "add",
+          "noun": "alarm",
+          "narration": "add another thirty seconds to the timer with my right index finger on the microwave"
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 73.49,
+          "end": 91.57,
+          "verb": "take",
+          "noun": "spoon",
+          "narration": "Pick up spoon from the plate with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 95.64,
+          "end": 98.09,
+          "verb": "open",
+          "noun": "cupboard",
+          "narration": "Open the microwave door by pressing the release catch with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 97.6,
+          "end": 100.36,
+          "verb": "take",
+          "noun": "bowl",
+          "narration": "Pick up bowl of porridge with both hands, only using the rim because it will be very hot."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 100.44,
+          "end": 102.52,
+          "verb": "put",
+          "noun": "bowl",
+          "narration": "place porridge bowl on the counter with both hands"
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 102.54,
+          "end": 106.72,
+          "verb": "mix",
+          "noun": "oatmeal",
+          "narration": "Stir the porridge with the spoon in my right hand."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 106.74,
+          "end": 109.06,
+          "verb": "shake",
+          "noun": "oatmeal",
+          "narration": "Shake excess porridge off the spoon with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 109.09,
+          "end": 110.59,
+          "verb": "eat",
+          "noun": "spoon",
+          "narration": "Lick the spoon clean"
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 110.55,
+          "end": 111.69,
+          "verb": "put",
+          "noun": "spoon",
+          "narration": "Place spoon down on the plate with my right hand next to the banana."
+        }
+      ]
+    },
+    {
+      "id": "slice banana and fruit",
+      "label": "slice banana and fruit",
+      "phase": "topping",
+      "count": 7,
+      "support": 5,
+      "sessions": [
+        "P05-20240424-085204",
+        "P05-20240424-090812",
+        "P05-20240425-082420",
+        "P05-20240426-085333",
+        "P05-20240426-091011"
+      ],
+      "mean_duration": 31.8,
+      "median_rank": 0.5,
+      "members": [
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 190.09,
+          "end": 192.1,
+          "verb": "move",
+          "noun": "glass",
+          "narration": "pass glass to right hand and lift up"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 190.13,
+          "end": 190.89,
+          "verb": "take",
+          "noun": "glass",
+          "narration": "pick up pint glass of water with left hand"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 192.05,
+          "end": 198.0,
+          "verb": "drink",
+          "noun": "water",
+          "narration": "drink water"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 198.31,
+          "end": 202.13,
+          "verb": "put",
+          "noun": "glass",
+          "narration": "put glass on counter"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 205.24,
+          "end": 206.94,
+          "verb": "take",
+          "noun": "plate",
+          "narration": "Pick up plate from under counter with right hand"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 208.32,
+          "end": 209.59,
+          "verb": "put",
+          "noun": "plate",
+          "narration": "put plate on counter"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 210.01,
+          "end": 210.76,
+          "verb": "turn-on",
+          "noun": "scale",
+          "narration": "Turn on scales with right index finger."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 212.5,
+          "end": 213.34,
+          "verb": "take",
+          "noun": "banana",
+          "narration": "pick up half a banana that's left over from the fruit bowl with right hand."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 214.74,
+          "end": 215.68,
+          "verb": "put",
+          "noun": "banana",
+          "narration": "put banana down on weighing scales"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 217.6,
+          "end": 218.79,
+          "verb": "turn-off",
+          "noun": "scale",
+          "narration": "Turn off scales."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 218.89,
+          "end": 219.74,
+          "verb": "take",
+          "noun": "banana",
+          "narration": "Pick up banana with right hand."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 220.3,
+          "end": 221.55,
+          "verb": "open",
+          "noun": "drawer",
+          "narration": "open cutlery drawer with left hand"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 221.65,
+          "end": 222.61,
+          "verb": "take",
+          "noun": "knife",
+          "narration": "pick up knife with left hand."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 222.71,
+          "end": 223.01,
+          "verb": "press",
+          "noun": "drawer",
+          "narration": "Push closed cutlery drawer with right hand."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 223.95,
+          "end": 224.74,
+          "verb": "take",
+          "noun": "banana",
+          "narration": "pick up banana with left hand"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 225.27,
+          "end": 225.52,
+          "verb": "pat",
+          "noun": "banana",
+          "narration": "Hit banana with knife to make an incision in the skin."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 225.73,
+          "end": 231.46,
+          "verb": "peel",
+          "noun": "skin",
+          "narration": "Peel banana skin."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 231.9,
+          "end": 232.71,
+          "verb": "take",
+          "noun": "lid",
+          "narration": "Take lid off recycling with left hand whilst holding the banana."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 232.65,
+          "end": 233.43,
+          "verb": "put",
+          "noun": "skin",
+          "narration": "Put banana skin in recycling with right hand whilst holding the knife."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 233.46,
+          "end": 233.86,
+          "verb": "close",
+          "noun": "lid",
+          "narration": "Close the lid of the recycling container with left hand."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 237.09,
+          "end": 237.39,
+          "verb": "put",
+          "noun": "banana",
+          "narration": "put banana on plate with left hand"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 237.46,
+          "end": 244.44,
+          "verb": "cut",
+          "noun": "banana",
+          "narration": "Cut banana with right hand."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 246.57,
+          "end": 247.3,
+          "verb": "put",
+          "noun": "knife",
+          "narration": "put down knife on plate"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 248.94,
+          "end": 249.89,
+          "verb": "turn-on",
+          "noun": "tap",
+          "narration": "turn on tap with right hand because left hand is covered in banana"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 249.71,
+          "end": 250.92,
+          "verb": "wash",
+          "noun": "hand",
+          "narration": "Rinse both hands under the tap."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 250.94,
+          "end": 251.69,
+          "verb": "turn-off",
+          "noun": "tap",
+          "narration": "turn off tap with right hand"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 252.27,
+          "end": 253.19,
+          "verb": "dry",
+          "noun": "hand",
+          "narration": "Dry both hands on towel."
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 253.85,
+          "end": 255.26,
+          "verb": "open",
+          "noun": "drawer",
+          "narration": "open cutlery drawer with right hand"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 258.94,
+          "end": 259.31,
+          "verb": "take",
+          "noun": "spoon",
+          "narration": "pick up spoon with right hand"
+        },
+        {
+          "video_id": "P05-20240424-085204",
+          "start": 259.17,
+          "end": 260.24,
+          "verb": "close",
+          "noun": "drawer",
+          "narration": "close cutlery drawer with left hand"
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 145.94,
+          "end": 146.63,
+          "verb": "move",
+          "noun": "spoon",
+          "narration": "Transfer spoon from right hand to left hand whilst still holding the knife in my right hand."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 148.01,
+          "end": 148.47,
+          "verb": "put",
+          "noun": "knife",
+          "narration": "put knife in dirty washing up bowl with right hand"
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 148.61,
+          "end": 149.73,
+          "verb": "move",
+          "noun": "spoon",
+          "narration": "Transfer spoon to right hand, then put it on the plate that the porridge is on with my right hand, and then pick up the scales with my left hand."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 153.37,
+          "end": 154.28,
+          "verb": "open",
+          "noun": "drawer",
+          "narration": "Open drawer with right hand whilst holding scales in left hand."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 154.17000000000002,
+          "end": 155.69,
+          "verb": "add",
+          "noun": "scale",
+          "narration": "Add scales to drawer with left hand."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 155.56,
+          "end": 156.18,
+          "verb": "close",
+          "noun": "drawer",
+          "narration": "close drawer with right hand"
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 158.47,
+          "end": 159.69,
+          "verb": "take",
+          "noun": "oatmeal",
+          "narration": "pick up porridge using both hands."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 118.25,
+          "end": 121.95,
+          "verb": "take",
+          "noun": "plate",
+          "narration": "Pick up plate from the counter under the microwave."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 122.04,
+          "end": 123.8,
+          "verb": "take",
+          "noun": "plate",
+          "narration": "Pick up second plate from the counter under the microwave."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 123.22,
+          "end": 124.19,
+          "verb": "put",
+          "noun": "plate",
+          "narration": "put the larger plate on the correct pile because it was on the wrong pile with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 124.12,
+          "end": 125.56,
+          "verb": "put",
+          "noun": "plate",
+          "narration": "Place plate on counter with my left hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 125.39,
+          "end": 128.65,
+          "verb": "take",
+          "noun": "banana",
+          "narration": "pick up banana from the fruit bowl with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 128.69,
+          "end": 130.44,
+          "verb": "put",
+          "noun": "banana",
+          "narration": "put banana down on plate with my right hand"
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 131.29,
+          "end": 132.64,
+          "verb": "open",
+          "noun": "drawer",
+          "narration": "Open cutlery drawer with right hand"
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 132.51,
+          "end": 133.78,
+          "verb": "take",
+          "noun": "knife",
+          "narration": "take knife out of drawer with left hand"
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 133.84,
+          "end": 134.59,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "close door with right hand"
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 134.69,
+          "end": 138.94,
+          "verb": "screw",
+          "noun": "banana",
+          "narration": "Shift banana on plate with left hand so it's in the right place to cut."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 135.62,
+          "end": 137.95,
+          "verb": "cut",
+          "noun": "rest",
+          "narration": "Cut end off banana using knife with right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 137.85,
+          "end": 144.52,
+          "verb": "flip",
+          "noun": "banana",
+          "narration": "Turn over banana and chop other end of skin off."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 144.36,
+          "end": 145.55,
+          "verb": "pull",
+          "noun": "banana",
+          "narration": "Pull the centre of banana out of the skin with my left hand whilst holding down the skin with the knife on the plate."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 146.2,
+          "end": 147.91,
+          "verb": "peel",
+          "noun": "skin",
+          "narration": "Peel away last bit of skin of banana."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 148.1,
+          "end": 148.7,
+          "verb": "put",
+          "noun": "banana",
+          "narration": "Put center banana down on plate with left hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 148.8,
+          "end": 150.0,
+          "verb": "take",
+          "noun": "skin",
+          "narration": "pick up banana peel"
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 151.51,
+          "end": 152.42000000000002,
+          "verb": "take",
+          "noun": "skin",
+          "narration": "pick Banana peel off the floor with my right hand because I dropped it."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 152.85,
+          "end": 156.81,
+          "verb": "move",
+          "noun": "skin",
+          "narration": "Transfer banana peel into left hand, and then pick up lid of recycling container with right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 156.7,
+          "end": 157.1,
+          "verb": "put",
+          "noun": "banana",
+          "narration": "Put banana in recycling container with left hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 157.12,
+          "end": 157.7,
+          "verb": "put",
+          "noun": "lid",
+          "narration": "put lid back on recycling container with right hand"
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 161.14,
+          "end": 162.25,
+          "verb": "take",
+          "noun": "banana",
+          "narration": "Pick up banana with left hand and knife with right hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 162.18,
+          "end": 163.39,
+          "verb": "take",
+          "noun": "banana",
+          "narration": "Take end of banana off knife blade with left hand."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 163.09,
+          "end": 164.3,
+          "verb": "open",
+          "noun": "bin",
+          "narration": "Open bin with foot."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 164.31,
+          "end": 164.73,
+          "verb": "throw",
+          "noun": "banana",
+          "narration": "Throw end of banana into bin with left hand"
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 164.82999999999998,
+          "end": 176.11,
+          "verb": "cut",
+          "noun": "banana",
+          "narration": "Chop banana into slices using the knife in my right hand whilst using the left hand as a guide."
+        },
+        {
+          "video_id": "P05-20240425-082420",
+          "start": 176.06,
+          "end": 179.56,
+          "verb": "put",
+          "noun": "knife",
+          "narration": "put knife down on plate with right hand"
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 251.0,
+          "end": 252.01,
+          "verb": "open",
+          "noun": "drawer",
+          "narration": "Open the cutlery drawer with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 252.37,
+          "end": 253.87,
+          "verb": "take",
+          "noun": "spoon",
+          "narration": "pick up spoon from the cutlery drawer"
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 254.12,
+          "end": 255.02,
+          "verb": "close",
+          "noun": "drawer",
+          "narration": "Close the cutlery drawer with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 255.33,
+          "end": 255.9,
+          "verb": "open",
+          "noun": "microwave",
+          "narration": "Open the microwave by pressing the release button with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 256.05,
+          "end": 256.59,
+          "verb": "move",
+          "noun": "spoon",
+          "narration": "Transfer spoon to my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 264.96,
+          "end": 267.24,
+          "verb": "take",
+          "noun": "plate",
+          "narration": "pick up plate from the shelf under the cutlery drawer with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 266.89,
+          "end": 269.01,
+          "verb": "put",
+          "noun": "plate",
+          "narration": "place plate with spoon on it on the counter of my left hand"
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 268.95,
+          "end": 270.17,
+          "verb": "take",
+          "noun": "glass",
+          "narration": "pick up a glass of water from the counter with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 270.21,
+          "end": 276.8,
+          "verb": "drink",
+          "noun": "water",
+          "narration": "Drink water from glass held in my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 276.67,
+          "end": 279.09000000000003,
+          "verb": "put",
+          "noun": "glass",
+          "narration": "Place glass at the back of the draining board with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 281.1,
+          "end": 283.36,
+          "verb": "take",
+          "noun": "banana",
+          "narration": "pick up bananas from the table with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 287.24,
+          "end": 288.86,
+          "verb": "break",
+          "noun": "banana",
+          "narration": "Break one banana off the bunch, my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 288.92,
+          "end": 290.5,
+          "verb": "put",
+          "noun": "banana",
+          "narration": "Place a bunch of bananas back on the table with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 290.5,
+          "end": 291.26,
+          "verb": "move",
+          "noun": "leaf",
+          "narration": "transfer bananna to my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 292.37,
+          "end": 294.4,
+          "verb": "move",
+          "noun": "spoon",
+          "narration": "Move spoon out of the way of the plate whilst placing the banana down on the plate with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 295.24,
+          "end": 297.22,
+          "verb": "open",
+          "noun": "cupboard",
+          "narration": "open the cupboard drawer with my right hand"
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 297.32,
+          "end": 299.11,
+          "verb": "take",
+          "noun": "knife",
+          "narration": "Take knife with my left hand from the cutlery drawer."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 299.21,
+          "end": 300.33,
+          "verb": "close",
+          "noun": "drawer",
+          "narration": "Close the cutlery drawer with my right hand whilst holding the knife in my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 299.88,
+          "end": 300.59,
+          "verb": "move",
+          "noun": "knife",
+          "narration": "transferring knife to my right hand because I'm right handed."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 301.1,
+          "end": 302.58,
+          "verb": "take",
+          "noun": "banana",
+          "narration": "Pick up banana with my left hand and hold on the plate ready to be chopped."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 302.6,
+          "end": 305.77,
+          "verb": "cut",
+          "noun": "rest",
+          "narration": "cut end off the banana with the knife held in my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 304.98,
+          "end": 307.31,
+          "verb": "peel",
+          "noun": "skin",
+          "narration": "Peel back skin of the banana."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 307.04,
+          "end": 310.83,
+          "verb": "cut",
+          "noun": "rest",
+          "narration": "Chop the end off the other end of the banana using the knife in my right hand, leaving the skin attached."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 309.95,
+          "end": 313.39,
+          "verb": "peel",
+          "noun": "skin",
+          "narration": "Peel the rest of the skin off the banana."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 313.33,
+          "end": 314.09,
+          "verb": "put",
+          "noun": "banana",
+          "narration": "Place the banana back down on the plate with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 314.19,
+          "end": 315.25,
+          "verb": "take",
+          "noun": "skin",
+          "narration": "pick up the remaining skin of the banana from the plate with my left hand"
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 315.35,
+          "end": 315.79,
+          "verb": "move",
+          "noun": "skin",
+          "narration": "Transfer all banana skin to my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 315.89,
+          "end": 316.27,
+          "verb": "put",
+          "noun": "knife",
+          "narration": "Place the knife down on the plate with the banana and spoon in my right hand whilst holding the banana skin in my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 319.84,
+          "end": 320.23,
+          "verb": "open",
+          "noun": "lid",
+          "narration": "Open the lid of the food recycling container with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 320.54,
+          "end": 320.82,
+          "verb": "throw",
+          "noun": "skin",
+          "narration": "throw the banana skin in the food recycling with my left hand"
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 320.92,
+          "end": 321.39,
+          "verb": "close",
+          "noun": "lid",
+          "narration": "Close the lid of the food recycling container with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 325.0,
+          "end": 326.34,
+          "verb": "take",
+          "noun": "spoon",
+          "narration": "Pick up spoon from the plate with banana with my right hand whilst walking past."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 335.84000000000003,
+          "end": 337.88,
+          "verb": "put",
+          "noun": "spoon",
+          "narration": "Place the spoon down on the plate with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 337.87,
+          "end": 338.18,
+          "verb": "take",
+          "noun": "banana",
+          "narration": "Pick up the banana with my left hand and the knife with my right hand so I can chop it."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 338.28,
+          "end": 340.25,
+          "verb": "cut",
+          "noun": "banana",
+          "narration": "Chop banana using the knife in my right hand into slices using my left hand as a guide."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 351.32,
+          "end": 354.53,
+          "verb": "put",
+          "noun": "knife",
+          "narration": "Place knife down on plate with my right hand, because I'm finished chopping the banana."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 355.09000000000003,
+          "end": 356.25,
+          "verb": "turn-on",
+          "noun": "tap",
+          "narration": "Turn on cold tap with right hand because my left hand is a bit bananary."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 356.35,
+          "end": 357.38,
+          "verb": "wash",
+          "noun": "hand",
+          "narration": "Rinse hands under cold running water."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 357.48,
+          "end": 358.43,
+          "verb": "turn-off",
+          "noun": "tap",
+          "narration": "Turn off the cold tap with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 358.53,
+          "end": 359.42,
+          "verb": "shake",
+          "noun": "hand",
+          "narration": "shake hands above sink to get rid of excess water."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 359.46,
+          "end": 361.4,
+          "verb": "dry",
+          "noun": "hand",
+          "narration": "dry hands on a towel that's hanging on the wall"
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 371.38,
+          "end": 372.28,
+          "verb": "take",
+          "noun": "knife",
+          "narration": "pick up knife with my right hand from the plate."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 372.38,
+          "end": 375.44,
+          "verb": "open",
+          "noun": "cupboard",
+          "narration": "Open the dishwasher door with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 375.42,
+          "end": 376.52,
+          "verb": "pull",
+          "noun": "drawer",
+          "narration": "pull out the cutlery drawer of the dishwasher with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 376.62,
+          "end": 377.51,
+          "verb": "put",
+          "noun": "knife",
+          "narration": "Place the knife in the cutlery drawer of the dishwasher with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 376.8,
+          "end": 377.49,
+          "verb": "close",
+          "noun": "drawer",
+          "narration": "Close the cutlery drawer with the dishwasher with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 377.59,
+          "end": 378.93,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "Close the dishwasher door with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 380.97,
+          "end": 381.85,
+          "verb": "add",
+          "noun": "alarm",
+          "narration": "Add another thirty seconds to the microwave by pressing the start button again with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 408.83,
+          "end": 410.02,
+          "verb": "take",
+          "noun": "spoon",
+          "narration": "Pick up spoon from the plate with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 410.12,
+          "end": 410.61,
+          "verb": "move",
+          "noun": "spoon",
+          "narration": "Transfer spoon to left hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 411.18,
+          "end": 411.95,
+          "verb": "open",
+          "noun": "cupboard",
+          "narration": "Open the microwave door by pressing the release in the bottom right hand corner with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 413.86,
+          "end": 415.67,
+          "verb": "take",
+          "noun": "oatmeal",
+          "narration": "pick up porridge with both hands only by the rim of the bowl because it's very hot."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 415.77,
+          "end": 416.47,
+          "verb": "put",
+          "noun": "oatmeal",
+          "narration": "place porridge down on counter with both hands"
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 416.77,
+          "end": 423.94,
+          "verb": "mix",
+          "noun": "oatmeal",
+          "narration": "stir porridge using spoon in my right hand"
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 424.0,
+          "end": 424.95,
+          "verb": "shake",
+          "noun": "oatmeal",
+          "narration": "shake excess porridge off the spoon using my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 424.63,
+          "end": 426.09,
+          "verb": "take",
+          "noun": "bowl",
+          "narration": "Pick up bowl by the edge with both hands because it's hot."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 426.19,
+          "end": 428.53,
+          "verb": "put",
+          "noun": "bowl",
+          "narration": "Place porridge bowl on counter with both hands."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 428.63,
+          "end": 429.72,
+          "verb": "shake",
+          "noun": "oatmeal",
+          "narration": "Shake excess porridge off the spoon with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 429.72,
+          "end": 430.84,
+          "verb": "eat",
+          "noun": "spoon",
+          "narration": "lick spoon clean"
+        },
+        {
+          "video_id": "P05-20240426-085333",
+          "start": 430.74,
+          "end": 431.96,
+          "verb": "put",
+          "noun": "spoon",
+          "narration": "Place spoon down on plate with banana on it with my right hand"
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 40.28,
+          "end": 42.6,
+          "verb": "take",
+          "noun": "package",
+          "narration": "pick up package of pecans from the top of the fridge with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 42.6,
+          "end": 44.25,
+          "verb": "put",
+          "noun": "package",
+          "narration": "Place package of pecans on the counter with my right hand leaning up against the wall."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 44.35,
+          "end": 46.3,
+          "verb": "take",
+          "noun": "package",
+          "narration": "pick up package of raisins from the top of the fridge with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 46.26,
+          "end": 48.44,
+          "verb": "put",
+          "noun": "package",
+          "narration": "Place package of raisins on the counter with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 48.53,
+          "end": 51.89,
+          "verb": "take",
+          "noun": "package",
+          "narration": "Pick up second package of raisins in the top of the fridge with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 51.99,
+          "end": 53.54,
+          "verb": "flip",
+          "noun": "package",
+          "narration": "Turn over package of raisins in my right hand."
+        },
+        {
+          "video_id": "P05-20240426-091011",
+          "start": 53.64,
+          "end": 56.86,
+          "verb": "put",
+          "noun": "package",
+          "narration": "Place package of raisins on the counter with my right hand."
+        }
+      ]
+    },
+    {
+      "id": "add fruit and nuts",
+      "label": "add fruit and nuts",
+      "phase": "finishing",
+      "count": 8,
+      "support": 3,
+      "sessions": [
+        "P05-20240424-090812",
+        "P05-20240425-083515",
+        "P05-20240426-092000"
+      ],
+      "mean_duration": 24.79,
+      "median_rank": 0.5,
+      "members": [
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 22.89,
+          "end": 23.91,
+          "verb": "put",
+          "noun": "spoon",
+          "narration": "Put tablespoon down on plate with my right hand."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 29.92,
+          "end": 31.18,
+          "verb": "move",
+          "noun": "oatmeal",
+          "narration": "move porridge and other bag out of way so I can look for nuts and raisins tied to the porridge."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 32.56,
+          "end": 33.47,
+          "verb": "take",
+          "noun": "package",
+          "narration": "Take a big packet of pecan nuts with my right hand from the back of the top of the fridge."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 34.2,
+          "end": 35.54,
+          "verb": "put",
+          "noun": "nut",
+          "narration": "Place pecan nuts on counter with right hand."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 35.64,
+          "end": 38.28,
+          "verb": "take",
+          "noun": "package",
+          "narration": "pick up packet of raisins from the top of the fridge with right hand."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 38.38,
+          "end": 40.68,
+          "verb": "put",
+          "noun": "package",
+          "narration": "Place packet of raisins on counter."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 103.1,
+          "end": 103.59,
+          "verb": "take",
+          "noun": "bag",
+          "narration": "pick up bag of raisin salt counter with left hand."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 104.34,
+          "end": 109.35,
+          "verb": "pour",
+          "noun": "raisin",
+          "narration": "use both hands to pour raisins into the porridge"
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 111.72,
+          "end": 112.5,
+          "verb": "put",
+          "noun": "bag",
+          "narration": "Place bag of raisins back on top of the fridge."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 113.34,
+          "end": 113.99,
+          "verb": "take",
+          "noun": "bag",
+          "narration": "Pick up bag of pecans by the top using my right hand."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 114.49,
+          "end": 115.25,
+          "verb": "move",
+          "noun": "bag",
+          "narration": "transfer bag of pecans to left hand."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 117.13,
+          "end": 117.91,
+          "verb": "set",
+          "noun": "scale",
+          "narration": "set scales to zero using right index finger"
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 117.96,
+          "end": 128.12,
+          "verb": "put",
+          "noun": "nut",
+          "narration": "Hold bag of porridge in both hands and tip pecan nuts into the porridge."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 129.89,
+          "end": 130.41,
+          "verb": "put",
+          "noun": "bag",
+          "narration": "Put bag of pecan nuts back on top of the fridge using my right hand."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 132.76,
+          "end": 134.09,
+          "verb": "set",
+          "noun": "scale",
+          "narration": "Set the scale to zero using my right index finger."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 135.15,
+          "end": 136.52,
+          "verb": "take",
+          "noun": "knife",
+          "narration": "Pick up knife and spoon in my right hand and pick up the plate with the banana on in my left hand."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 137.04,
+          "end": 139.69,
+          "verb": "add",
+          "noun": "banana",
+          "narration": "use a spoon to add banana to the porridge"
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 140.0,
+          "end": 141.61,
+          "verb": "put",
+          "noun": "plate",
+          "narration": "put plate back down on counter with left hand"
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 142.45,
+          "end": 143.9,
+          "verb": "turn-off",
+          "noun": "scale",
+          "narration": "Turn off scales with left index finger."
+        },
+        {
+          "video_id": "P05-20240424-090812",
+          "start": 144.26,
+          "end": 145.84,
+          "verb": "move",
+          "noun": "bowl",
+          "narration": "Transfer bowl from scales to plate using both hands and put it on a plate because it's hot and easier to carry."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 4.58,
+          "end": 5.48,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "close door with my left hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 6.8,
+          "end": 7.56,
+          "verb": "take",
+          "noun": "spoon",
+          "narration": "Pick up spoon from the plate with banana on it with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 7.66,
+          "end": 14.33,
+          "verb": "mix",
+          "noun": "oatmeal",
+          "narration": "Stir porridge with my right hand using the wooden spoon whilst using the left hand to steady the bowl."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 14.4,
+          "end": 16.22,
+          "verb": "shake",
+          "noun": "oatmeal",
+          "narration": "shake excess porridge off spoon with right hand back into bowl"
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 16.32,
+          "end": 17.61,
+          "verb": "eat",
+          "noun": "spoon",
+          "narration": "Lick spoon clean, which is held in my right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 17.59,
+          "end": 18.5,
+          "verb": "put",
+          "noun": "spoon",
+          "narration": "Put the spoon down on a plate with banana with right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 18.59,
+          "end": 19.66,
+          "verb": "take",
+          "noun": "bowl",
+          "narration": "Pick up bowl of porridge with both hands on the counter."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 28.53,
+          "end": 28.73,
+          "verb": "take",
+          "noun": "glass",
+          "narration": "pick up glass from the counter with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 30.77,
+          "end": 33.0,
+          "verb": "turn-on",
+          "noun": "tap",
+          "narration": "Turn on the cold tap with left hand whilst holding the glass under the tap with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 32.81,
+          "end": 34.3,
+          "verb": "turn-off",
+          "noun": "tap",
+          "narration": "turn off cold tap with left hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 94.97,
+          "end": 98.68,
+          "verb": "shake",
+          "noun": "oatmeal",
+          "narration": "Shake excess porridge off spoon with right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 98.67,
+          "end": 100.49,
+          "verb": "eat",
+          "noun": "spoon",
+          "narration": "lick spoon which is held in right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 100.55,
+          "end": 102.29,
+          "verb": "put",
+          "noun": "spoon",
+          "narration": "place spoon down on plate with right hand"
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 123.54,
+          "end": 125.39,
+          "verb": "turn-on",
+          "noun": "scale",
+          "narration": "Turn on scales with middle finger on right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 124.62,
+          "end": 126.59,
+          "verb": "take",
+          "noun": "plate",
+          "narration": "Pick up plate with banana and knife and spoon on it with left hand whilst picking up the knife from the plate with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 127.21,
+          "end": 127.91,
+          "verb": "take",
+          "noun": "spoon",
+          "narration": "pick up spoon from the plate with my right hand, whilst also holding a knife."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 127.79,
+          "end": 133.46,
+          "verb": "scrape",
+          "noun": "banana",
+          "narration": "Scrape banana from plate into the porridge using the spoon in my right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 133.56,
+          "end": 135.35,
+          "verb": "put",
+          "noun": "plate",
+          "narration": "Place the plate down on counter with the left hand whilst also placing the spoon on the plate with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 135.45,
+          "end": 136.49,
+          "verb": "turn-off",
+          "noun": "scale",
+          "narration": "turn off scales with middle finger on right hand whilst also holding a knife."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 136.52,
+          "end": 137.03,
+          "verb": "move",
+          "noun": "knife",
+          "narration": "Transfer knife to left hand and place down on the plate with my left hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 137.69,
+          "end": 138.31,
+          "verb": "take",
+          "noun": "package",
+          "narration": "pick up packet of raisins from the counter with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 139.17000000000002,
+          "end": 140.11,
+          "verb": "turn-on",
+          "noun": "scale",
+          "narration": "Turn on scales with the middle finger on my left hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 140.14,
+          "end": 147.57,
+          "verb": "pour",
+          "noun": "raisin",
+          "narration": "pour raisins into the porridge"
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 148.61,
+          "end": 153.13,
+          "verb": "put",
+          "noun": "raisin",
+          "narration": "Put raisins back on top of fridge with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 153.63,
+          "end": 155.16,
+          "verb": "take",
+          "noun": "nut",
+          "narration": "pick up pecan Nuts from the counter with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 155.26,
+          "end": 156.9,
+          "verb": "set",
+          "noun": "scale",
+          "narration": "zero scales with my index finger on my right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 157.0,
+          "end": 167.64,
+          "verb": "pour",
+          "noun": "nut",
+          "narration": "pour pecan nuts from the bag into the porridge"
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 169.28,
+          "end": 172.15,
+          "verb": "put",
+          "noun": "nut",
+          "narration": "Place pecan nuts on top of fridge with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 173.71,
+          "end": 175.1,
+          "verb": "turn-off",
+          "noun": "scale",
+          "narration": "turn off scales with my right index finger."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 175.2,
+          "end": 176.28,
+          "verb": "take",
+          "noun": "bowl",
+          "narration": "Pick up bowl from scales with both hands by the rim because it's hot."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 176.38,
+          "end": 177.05,
+          "verb": "put",
+          "noun": "bowl",
+          "narration": "place bowl on counter with both hands"
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 189.11,
+          "end": 189.54,
+          "verb": "take",
+          "noun": "knife",
+          "narration": "pick up knife from the plate on the counter with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 190.4,
+          "end": 190.91,
+          "verb": "put",
+          "noun": "knife",
+          "narration": "place dirty knife on chopping board on counter with my left hand"
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 191.59,
+          "end": 192.56,
+          "verb": "take",
+          "noun": "spoon",
+          "narration": "pick up spoon from the plate with my right hand."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 192.57,
+          "end": 193.61,
+          "verb": "take",
+          "noun": "bowl",
+          "narration": "pick up bowl of porridge by the rim because it's hot with both hands."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 193.59,
+          "end": 194.15,
+          "verb": "put",
+          "noun": "bowl",
+          "narration": "Place bowl of porridge on the plate with both hands."
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 194.22,
+          "end": 195.05,
+          "verb": "put",
+          "noun": "spoon",
+          "narration": "place spoon on plate with right hand"
+        },
+        {
+          "video_id": "P05-20240425-083515",
+          "start": 194.95,
+          "end": 195.9,
+          "verb": "take",
+          "noun": "plate",
+          "narration": "pick up plate with the porridge on it from the counter with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 2.08,
+          "end": 3.15,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "close door behind me with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 4.32,
+          "end": 5.68,
+          "verb": "take",
+          "noun": "spoon",
+          "narration": "Pick up spoon from the plate with the banana in my right hand."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 5.78,
+          "end": 9.4,
+          "verb": "mix",
+          "noun": "oatmeal",
+          "narration": "Stir the porridge with the spoon in my right hand whilst steadying the bowl with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 9.33,
+          "end": 9.79,
+          "verb": "take",
+          "noun": "bowl",
+          "narration": "pick up bowl from the counter with both hands."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 9.87,
+          "end": 10.55,
+          "verb": "put",
+          "noun": "bowl",
+          "narration": "Put porridge bowl on the weighing scales with both hands."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 10.65,
+          "end": 11.88,
+          "verb": "turn-on",
+          "noun": "scale",
+          "narration": "try to turn on the scales with my right index finger but it doesn't work"
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 11.98,
+          "end": 12.47,
+          "verb": "lift",
+          "noun": "plate",
+          "narration": "lift up plate with banana on it with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 12.57,
+          "end": 14.75,
+          "verb": "take",
+          "noun": "spoon",
+          "narration": "pick up spoon from the porridge and shake excess porridge off it with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 14.85,
+          "end": 16.37,
+          "verb": "eat",
+          "noun": "spoon",
+          "narration": "lick spoon clean with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 16.47,
+          "end": 17.83,
+          "verb": "turn-on",
+          "noun": "scale",
+          "narration": "turn on the scales with the middle finger on my right hand while holding this spoon"
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 20.41,
+          "end": 24.71,
+          "verb": "scrape",
+          "noun": "banana",
+          "narration": "Scrape banana from the plate into the porridge using the spoon with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 24.47,
+          "end": 26.86,
+          "verb": "put",
+          "noun": "spoon",
+          "narration": "put spoon on plate and plate on counter"
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 26.66,
+          "end": 28.75,
+          "verb": "take",
+          "noun": "package",
+          "narration": "pick up packet of raisins with my left hand. I've chosen this one first because I'm going to finish it."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 28.65,
+          "end": 31.13,
+          "verb": "pour",
+          "noun": "raisin",
+          "narration": "pour raisins into porridge."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 30.8,
+          "end": 32.96,
+          "verb": "shake",
+          "noun": "bag",
+          "narration": "Shake bag so that all of the raisins come out."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 32.43,
+          "end": 34.9,
+          "verb": "fold",
+          "noun": "bag",
+          "narration": "Fold up bag with both hands."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 34.69,
+          "end": 35.98,
+          "verb": "put",
+          "noun": "bag",
+          "narration": "place plastic bag in the recycling bag"
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 36.06,
+          "end": 36.96,
+          "verb": "take",
+          "noun": "package",
+          "narration": "pick up second package of raisins from the counter."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 36.96,
+          "end": 39.72,
+          "verb": "remove",
+          "noun": "rubber",
+          "narration": "Remove elastic band from packet of raisins."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 39.77,
+          "end": 42.85,
+          "verb": "open",
+          "noun": "package",
+          "narration": "open out packet of raisins"
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 44.47,
+          "end": 46.51,
+          "verb": "cut",
+          "noun": "hand",
+          "narration": "Stick my finger into the packet of raisins so I can make a good opening."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 46.61,
+          "end": 51.92,
+          "verb": "pour",
+          "noun": "raisin",
+          "narration": "pour raisins into the porridge with both hands"
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 52.02,
+          "end": 59.58,
+          "verb": "wrap",
+          "noun": "rubber",
+          "narration": "re-wrap Elastic Band around Raisins so they don't go stale."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 59.68,
+          "end": 64.31,
+          "verb": "put",
+          "noun": "rest",
+          "narration": "Put another twist in the elastic band because it wasn't tight enough."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 64.41,
+          "end": 65.44,
+          "verb": "put",
+          "noun": "raisin",
+          "narration": "Place raisins on top of fridge with right hand."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 65.54,
+          "end": 66.98,
+          "verb": "take",
+          "noun": "nut",
+          "narration": "pick up pecan nuts from the counter with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 67.08,
+          "end": 68.78,
+          "verb": "press",
+          "noun": "scale",
+          "narration": "Reset scales with right index finger."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 68.88,
+          "end": 72.74,
+          "verb": "pour",
+          "noun": "corn",
+          "narration": "pour pecans from the packet into the porridge."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 72.49,
+          "end": 79.3,
+          "verb": "squeeze",
+          "noun": "package",
+          "narration": "squeeze end of packet so that I get a few more pecans out of it."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 78.3,
+          "end": 79.55,
+          "verb": "pull",
+          "noun": "food",
+          "narration": "Pull the last pecan out with my thumb and forefinger of my right hand."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 79.84,
+          "end": 80.92,
+          "verb": "shake",
+          "noun": "corn",
+          "narration": "shake pecans back down into the packet."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 81.02,
+          "end": 82.58,
+          "verb": "put",
+          "noun": "nut",
+          "narration": "place pecan nuts on top of fridge with right hand."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 83.41,
+          "end": 85.41,
+          "verb": "turn-off",
+          "noun": "scale",
+          "narration": "Turn off scales with my right index finger."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 85.51,
+          "end": 86.78999999999999,
+          "verb": "take",
+          "noun": "spoon",
+          "narration": "pick up a spoon with my left hand and a bowl of porridge with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 91.95,
+          "end": 92.64,
+          "verb": "close",
+          "noun": "drawer",
+          "narration": "Close the drawer behind me with my right hand."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 94.81,
+          "end": 96.19,
+          "verb": "close",
+          "noun": "cupboard",
+          "narration": "Close microwave door with my left hand."
+        },
+        {
+          "video_id": "P05-20240426-092000",
+          "start": 96.4,
+          "end": 97.83,
+          "verb": "take",
+          "noun": "plate",
+          "narration": "Pick up plate with bowl of porridge on it with my left hand."
+        }
+      ]
+    },
+    {
+      "id": "END",
+      "label": "END",
+      "phase": "other",
+      "count": 7,
+      "support": 7,
+      "sessions": [
+        "P05-20240424-085204",
+        "P05-20240424-090812",
+        "P05-20240425-082420",
+        "P05-20240425-083515",
+        "P05-20240426-085333",
+        "P05-20240426-091011",
+        "P05-20240426-092000"
+      ],
+      "mean_duration": 0.0,
+      "median_rank": 1.0,
+      "members": []
+    }
+  ],
+  "edges": [
+    {
+      "source": "START",
+      "target": "add fruit and nuts",
+      "n": 2,
+      "p": 0.286,
+      "sessions": [
+        "P05-20240425-083515",
+        "P05-20240426-092000"
+      ],
+      "support": 2,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "START",
+      "target": "cook and stir porridge",
+      "n": 2,
+      "p": 0.286,
+      "sessions": [
+        "P05-20240424-090812",
+        "P05-20240426-091011"
+      ],
+      "support": 2,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "START",
+      "target": "measure dry ingredients",
+      "n": 3,
+      "p": 0.429,
+      "sessions": [
+        "P05-20240424-085204",
+        "P05-20240425-082420",
+        "P05-20240426-085333"
+      ],
+      "support": 3,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "add fruit and nuts",
+      "target": "END",
+      "n": 2,
+      "p": 0.25,
+      "sessions": [
+        "P05-20240425-083515",
+        "P05-20240426-092000"
+      ],
+      "support": 2,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "add fruit and nuts",
+      "target": "cook and stir porridge",
+      "n": 3,
+      "p": 0.375,
+      "sessions": [
+        "P05-20240424-090812",
+        "P05-20240425-083515"
+      ],
+      "support": 2,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "add fruit and nuts",
+      "target": "measure dry ingredients",
+      "n": 2,
+      "p": 0.25,
+      "sessions": [
+        "P05-20240425-083515",
+        "P05-20240426-092000"
+      ],
+      "support": 2,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "add fruit and nuts",
+      "target": "slice banana and fruit",
+      "n": 1,
+      "p": 0.125,
+      "sessions": [
+        "P05-20240424-090812"
+      ],
+      "support": 1,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "cook and stir porridge",
+      "target": "END",
+      "n": 3,
+      "p": 0.214,
+      "sessions": [
+        "P05-20240424-085204",
+        "P05-20240425-082420",
+        "P05-20240426-091011"
+      ],
+      "support": 3,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "cook and stir porridge",
+      "target": "add fruit and nuts",
+      "n": 5,
+      "p": 0.357,
+      "sessions": [
+        "P05-20240424-090812",
+        "P05-20240425-083515"
+      ],
+      "support": 2,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "cook and stir porridge",
+      "target": "measure dry ingredients",
+      "n": 2,
+      "p": 0.143,
+      "sessions": [
+        "P05-20240425-082420"
+      ],
+      "support": 1,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "cook and stir porridge",
+      "target": "slice banana and fruit",
+      "n": 4,
+      "p": 0.286,
+      "sessions": [
+        "P05-20240424-085204",
+        "P05-20240426-085333",
+        "P05-20240426-091011"
+      ],
+      "support": 3,
+      "interruption_actions": 32,
+      "interruption_seconds": 46.7
+    },
+    {
+      "source": "measure dry ingredients",
+      "target": "add fruit and nuts",
+      "n": 1,
+      "p": 0.125,
+      "sessions": [
+        "P05-20240426-092000"
+      ],
+      "support": 1,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "measure dry ingredients",
+      "target": "cook and stir porridge",
+      "n": 5,
+      "p": 0.625,
+      "sessions": [
+        "P05-20240424-085204",
+        "P05-20240425-082420",
+        "P05-20240425-083515"
+      ],
+      "support": 3,
+      "interruption_actions": 31,
+      "interruption_seconds": 47.7
+    },
+    {
+      "source": "measure dry ingredients",
+      "target": "slice banana and fruit",
+      "n": 2,
+      "p": 0.25,
+      "sessions": [
+        "P05-20240425-082420",
+        "P05-20240426-085333"
+      ],
+      "support": 2,
+      "interruption_actions": 77,
+      "interruption_seconds": 124.1
+    },
+    {
+      "source": "slice banana and fruit",
+      "target": "END",
+      "n": 2,
+      "p": 0.286,
+      "sessions": [
+        "P05-20240424-090812",
+        "P05-20240426-085333"
+      ],
+      "support": 2,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "slice banana and fruit",
+      "target": "cook and stir porridge",
+      "n": 4,
+      "p": 0.571,
+      "sessions": [
+        "P05-20240424-085204",
+        "P05-20240426-085333",
+        "P05-20240426-091011"
+      ],
+      "support": 3,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "slice banana and fruit",
+      "target": "measure dry ingredients",
+      "n": 1,
+      "p": 0.143,
+      "sessions": [
+        "P05-20240425-082420"
+      ],
+      "support": 1,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "states": [
+    {
+      "id": "s1",
+      "name": "grind coffee beans",
+      "definition": "Fetching, opening, and grinding coffee beans into the espresso cup including logging ingredients on phone.",
+      "phase": "preparation",
+      "typical_verbs": [
+        "take",
+        "open",
+        "crush",
+        "write",
+        "pour"
+      ],
+      "typical_objects": [
+        "can",
+        "coffee",
+        "phone",
+        "maker:coffee"
+      ]
+    },
+    {
+      "id": "s2",
+      "name": "tamp coffee grounds",
+      "definition": "Distributing, pressing, and prepping the ground coffee in the portafilter or cup.",
+      "phase": "tamping",
+      "typical_verbs": [
+        "mix",
+        "scoop",
+        "pat",
+        "press",
+        "put"
+      ],
+      "typical_objects": [
+        "spoon",
+        "presser",
+        "cup",
+        "coffee"
+      ]
+    },
+    {
+      "id": "s3",
+      "name": "brew espresso shot",
+      "definition": "Locking in the cup, turning on the machine, and waiting for the espresso to extract.",
+      "phase": "extraction",
+      "typical_verbs": [
+        "turn-on",
+        "carry",
+        "check",
+        "finish",
+        "wait"
+      ],
+      "typical_objects": [
+        "machine:washing",
+        "cup",
+        "coffee"
+      ]
+    },
+    {
+      "id": "s4",
+      "name": "serve espresso shot",
+      "definition": "Removing the finished espresso cup, retrieving a plate, and turning off the machine.",
+      "phase": "serving",
+      "typical_verbs": [
+        "open",
+        "take",
+        "squeeze",
+        "turn-off"
+      ],
+      "typical_objects": [
+        "drawer",
+        "plate",
+        "cup",
+        "machine:washing"
+      ]
+    }
+  ],
+  "phases": [
+    "preparation",
+    "tamping",
+    "extraction",
+    "serving"
+  ]
+}

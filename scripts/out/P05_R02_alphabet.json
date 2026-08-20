@@ -1,0 +1,74 @@
+{
+  "states": [
+    {
+      "id": "s1",
+      "name": "measure dry ingredients",
+      "definition": "weighing out oats and gathering base ingredients before mixing.",
+      "phase": "preparation",
+      "typical_verbs": [
+        "put",
+        "shake",
+        "turn-on"
+      ],
+      "typical_objects": [
+        "oatmeal",
+        "scale",
+        "bowl"
+      ]
+    },
+    {
+      "id": "s2",
+      "name": "cook and stir porridge",
+      "definition": "adding liquids and heating the porridge in the microwave with intermittent stirring.",
+      "phase": "cooking",
+      "typical_verbs": [
+        "pour",
+        "mix",
+        "press"
+      ],
+      "typical_objects": [
+        "milk",
+        "water",
+        "microwave"
+      ]
+    },
+    {
+      "id": "s3",
+      "name": "slice banana and fruit",
+      "definition": "peeling and chopping bananas and gathering raisins and nuts.",
+      "phase": "topping",
+      "typical_verbs": [
+        "take",
+        "peel",
+        "cut"
+      ],
+      "typical_objects": [
+        "banana",
+        "knife",
+        "package"
+      ]
+    },
+    {
+      "id": "s4",
+      "name": "add fruit and nuts",
+      "definition": "incorporating sliced banana, raisins, and pecan nuts into the cooked porridge.",
+      "phase": "finishing",
+      "typical_verbs": [
+        "pour",
+        "add",
+        "scrape"
+      ],
+      "typical_objects": [
+        "nut",
+        "raisin",
+        "banana"
+      ]
+    }
+  ],
+  "phases": [
+    "preparation",
+    "cooking",
+    "topping",
+    "finishing"
+  ]
+}

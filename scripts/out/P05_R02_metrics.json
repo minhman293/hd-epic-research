@@ -1,0 +1,51 @@
+{
+  "n_actions_in_pkl": 591,
+  "n_actions_in_recipe": 451,
+  "n_actions_other_task": 140,
+  "n_interruptions": 140,
+  "n_segments": 37,
+  "n_states": 4,
+  "n_edges": 11,
+  "density_edges_per_node": 2.75,
+  "mean_out_degree": 2.75,
+  "repeat_edge_share": 0.727,
+  "cross_session_jaccard": 0.0,
+  "coverage": 0.942,
+  "low_confidence_types": 14,
+  "n_pair_types": 335,
+  "visits_per_session": {
+    "add fruit and nuts": 2.7,
+    "cook and stir porridge": 2.3,
+    "measure dry ingredients": 1.6,
+    "slice banana and fruit": 1.4
+  },
+  "fragmented_states": [],
+  "targets": {
+    "min_states": 3,
+    "max_states": 7,
+    "max_density": 3.5,
+    "n_sessions": 7
+  },
+  "gates": {
+    "states<=7": true,
+    "density<=3.5": true,
+    "jaccard>=0.70": false,
+    "repeat_edges>=0.60": true,
+    "coverage>=0.90": true,
+    "no_fragmented_states": true
+  },
+  "passed": false,
+  "blocking_gates": {
+    "no_fragmented_states": true,
+    "coverage>=0.90": true,
+    "states<=7": true,
+    "density<=3.0": true
+  },
+  "render_ready": true,
+  "advisory": {
+    "cross_session_jaccard": 0.0,
+    "repeat_edge_share": 0.727,
+    "n_sessions": 7,
+    "density_target": 3.5
+  }
+}

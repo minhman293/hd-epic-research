@@ -1,0 +1,82 @@
+{
+  "states": [
+    {
+      "id": "s1",
+      "name": "load coffee capsule",
+      "definition": "Retrieving and inserting the coffee capsule into the machine and operating the water tank and machine mechanisms.",
+      "phase": "brew",
+      "typical_verbs": [
+        "take",
+        "open",
+        "slide",
+        "put",
+        "pour",
+        "lock"
+      ],
+      "typical_objects": [
+        "capsule",
+        "coffee",
+        "water",
+        "cup"
+      ]
+    },
+    {
+      "id": "s2",
+      "name": "brew coffee",
+      "definition": "Pressing the button on the coffee machine to start the brewing process.",
+      "phase": "brew",
+      "typical_verbs": [
+        "press",
+        "turn-on"
+      ],
+      "typical_objects": [
+        "button",
+        "machine:washing"
+      ]
+    },
+    {
+      "id": "s3",
+      "name": "froth milk",
+      "definition": "Opening the fridge, retrieving the milk bottle, pouring milk into the frother, and operating the milk frother.",
+      "phase": "froth",
+      "typical_verbs": [
+        "open",
+        "take",
+        "pour",
+        "turn-on",
+        "attach",
+        "lift"
+      ],
+      "typical_objects": [
+        "bottle",
+        "milk",
+        "fridge"
+      ]
+    },
+    {
+      "id": "s4",
+      "name": "mix coffee",
+      "definition": "Adding the frothed milk to the coffee, stirring with a wooden stirrer, washing equipment, and discarding waste.",
+      "phase": "finish",
+      "typical_verbs": [
+        "lift",
+        "mix",
+        "throw",
+        "wash",
+        "open"
+      ],
+      "typical_objects": [
+        "milk",
+        "coffee",
+        "spoon",
+        "bin",
+        "tap"
+      ]
+    }
+  ],
+  "phases": [
+    "brew",
+    "froth",
+    "finish"
+  ]
+}
