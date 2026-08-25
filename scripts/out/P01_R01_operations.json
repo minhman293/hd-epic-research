@@ -1,0 +1,90 @@
+{
+  "load coffee capsule": [
+    {
+      "id": "o1",
+      "name": "retrieve mug and capsule",
+      "definition": "Take the mug and coffee capsule from storage and place them on the counter."
+    },
+    {
+      "id": "o2",
+      "name": "fill water tank",
+      "definition": "Fill the water tank using the jug and attach it to the coffee machine."
+    },
+    {
+      "id": "o3",
+      "name": "prepare machine",
+      "definition": "Turn on the coffee machine and open its capsule compartment handle."
+    },
+    {
+      "id": "o4",
+      "name": "insert capsule",
+      "definition": "Place the coffee capsule into the machine and lock the handle."
+    },
+    {
+      "id": "o5",
+      "name": "position mug",
+      "definition": "Place the mug under the nozzle of the coffee machine."
+    }
+  ],
+  "prepare milk": [
+    {
+      "id": "o1",
+      "name": "retrieve milk",
+      "definition": "Open the fridge, take out the milk bottle, and close the fridge."
+    },
+    {
+      "id": "o2",
+      "name": "pour milk",
+      "definition": "Open the milk bottle, pour milk into the milk frother, and close the bottle."
+    },
+    {
+      "id": "o3",
+      "name": "setup frother",
+      "definition": "Place the center piece into the milk frother and put it on its base."
+    },
+    {
+      "id": "o4",
+      "name": "power frother",
+      "definition": "Plug in the milk frother and turn on the socket power."
+    }
+  ],
+  "add frothed milk": [
+    {
+      "id": "o1",
+      "name": "pick up frother",
+      "definition": "Take the milk frother from its base on the countertop."
+    },
+    {
+      "id": "o2",
+      "name": "settle milk",
+      "definition": "Tap the milk frother on the countertop to set the frothed milk."
+    },
+    {
+      "id": "o3",
+      "name": "pour frothed milk",
+      "definition": "Tilt the milk frother to pour frothed milk into the mug."
+    }
+  ],
+  "stir and clean": [
+    {
+      "id": "o1",
+      "name": "stir coffee",
+      "definition": "Take a wooden stirrer and mix the coffee and frothed milk in the mug."
+    },
+    {
+      "id": "o2",
+      "name": "discard stirrer",
+      "definition": "Throw the used wooden stirrer into the trash bin and close the bin."
+    },
+    {
+      "id": "o3",
+      "name": "rinse frother",
+      "definition": "Turn the milk frother upside down under the open tap to wash it."
+    },
+    {
+      "id": "o4",
+      "name": "wipe and dry",
+      "definition": "Use the sponge to clean surfaces and dry hands with the towel."
+    }
+  ]
+}

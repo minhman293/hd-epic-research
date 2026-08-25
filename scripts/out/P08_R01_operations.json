@@ -1,0 +1,63 @@
+{
+  "grind coffee beans": [
+    {
+      "id": "o1",
+      "name": "retrieve cup and scale",
+      "definition": "Grab espresso cup from rack, place it on scale, and position scale on the counter."
+    },
+    {
+      "id": "o2",
+      "name": "record ingredients on phone",
+      "definition": "Open phone, check app, and write down coffee ingredients."
+    },
+    {
+      "id": "o3",
+      "name": "prepare coffee beans",
+      "definition": "Take coffee can, open it, pour beans into the cup, and close the can."
+    },
+    {
+      "id": "o4",
+      "name": "grind coffee beans",
+      "definition": "Bring grinder forward, open cap, pour in beans, tap machine, and grind the coffee."
+    },
+    {
+      "id": "o5",
+      "name": "transfer grounds",
+      "definition": "Scoop and mix the ground coffee from the grinder into the espresso cup."
+    }
+  ],
+  "tamp coffee grounds": [
+    {
+      "id": "o1",
+      "name": "settle coffee grounds",
+      "definition": "Tap the espresso cup to loosen the beans and place the scoop back on the machine."
+    },
+    {
+      "id": "o2",
+      "name": "press coffee grounds",
+      "definition": "Use the press to pack down the coffee beans in the espresso cup."
+    },
+    {
+      "id": "o3",
+      "name": "position cup in machine",
+      "definition": "Put the presser away and place the espresso cup within the machine."
+    }
+  ],
+  "pull espresso shot": [
+    {
+      "id": "o1",
+      "name": "secure espresso cup",
+      "definition": "Tighten and clip the espresso cup into the espresso machine while steadying the unit."
+    },
+    {
+      "id": "o2",
+      "name": "start extraction",
+      "definition": "Move phone out of the way, turn on the coffee machine, and wait while the coffee drips."
+    },
+    {
+      "id": "o3",
+      "name": "serve espresso",
+      "definition": "Stop and turn off the machine, retrieve a small plate from the drawer, and remove the cup."
+    }
+  ]
+}

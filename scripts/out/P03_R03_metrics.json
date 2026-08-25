@@ -3,21 +3,23 @@
   "n_actions_in_recipe": 387,
   "n_actions_other_task": 1356,
   "n_interruptions": 1201,
-  "n_segments": 26,
+  "n_segments": 28,
   "n_states": 5,
   "n_edges": 11,
   "density_edges_per_node": 2.2,
   "mean_out_degree": 2.2,
-  "repeat_edge_share": 0.818,
-  "cross_session_jaccard": 0.6,
-  "coverage": 0.922,
-  "low_confidence_types": 1,
+  "repeat_edge_share": 0.727,
+  "cross_session_jaccard": 0.8,
+  "mean_pairwise_jaccard": 0.867,
+  "mean_state_support": 0.9,
+  "coverage": 0.93,
+  "low_confidence_types": 7,
   "n_pair_types": 231,
   "visits_per_session": {
-    "grind coffee beans": 2.3,
-    "wash coffee utensils": 2.0,
-    "assemble coffee filter": 1.8,
-    "pour hot water": 1.0,
+    "wash coffee cups": 2.0,
+    "grind coffee beans": 2.0,
+    "assemble coffee filter": 2.0,
+    "brew drip coffee": 1.0,
     "boil water kettle": 1.0
   },
   "fragmented_states": [],
@@ -30,7 +32,7 @@
   "gates": {
     "states<=10": true,
     "density<=2.0": false,
-    "jaccard>=0.70": false,
+    "jaccard>=0.70": true,
     "repeat_edges>=0.60": true,
     "coverage>=0.90": true,
     "no_fragmented_states": true
@@ -44,8 +46,8 @@
   },
   "render_ready": true,
   "advisory": {
-    "cross_session_jaccard": 0.6,
-    "repeat_edge_share": 0.818,
+    "cross_session_jaccard": 0.8,
+    "repeat_edge_share": 0.727,
     "n_sessions": 4,
     "density_target": 2.0
   }

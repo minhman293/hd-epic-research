@@ -14,6 +14,16 @@ import {
   levelIndexOf,
 } from "./config.js";
 
+// NEW DATA PIPELINE ─────────────────────────────────────────────────────────
+// The recipe files are now [recipe]_graph.json + [recipe]_alphabet.json.
+// dataAdapter.js reads them and hands back payloads in the SAME shape the
+// renderer has always used, so nothing below this import had to change.
+import {
+  loadRecipeManifest,
+  buildLevelPayloads as buildPayloadsFromNewData,
+  MIN_RUN,
+} from "./dataAdapter.js";
+
 import { createGraphController } from "./graph.js";
 import { buildLegend } from "./legend.js";
 import { buildAnnotationTimeline, updateAnnotationPlayhead } from "./annotationTimeline.js";
@@ -523,22 +533,39 @@ function refresh() {
   if (!mergedGraphPayload) return;
   const t = captureCtrl ? captureCtrl.getUnifiedTime() : 0;
   
-  const seqToSearch = currentSessionIndex === 'all' 
-    ? sessionPayloadsMap[activeVideoSession]?.sequence || []
-    : sessionPayloadsMap[currentSessionIndex]?.sequence || [];
-    
-  const item = currentSequenceItem(seqToSearch, t);
+  // TWO lookups, not one.
+  //
+  // The graph is drawn from `sequence` (states at L3) and the footer table from
+  // `raw_sequence` (every annotated action). Their row indices are different
+  // arrays — at L3, 4 states against 50 actions — so feeding the graph's item
+  // to updateTimelineActive() highlighted an unrelated row. Each view gets the
+  // item from the timeline it was actually built from.
+  const activePayload = currentSessionIndex === 'all'
+    ? sessionPayloadsMap[activeVideoSession]
+    : sessionPayloadsMap[currentSessionIndex];
+
+  const graphItem = currentSequenceItem(activePayload?.sequence || [], t);
+  const rawItem = currentSequenceItem(rawSequence(activePayload), t);
+
   timeLabel.textContent = formatSeconds(t);
-  actionLabel.textContent = item ? item.action : "-";
-  
+  // The raw action is what the hands are doing right now; the state it belongs
+  // to is the context. Showing only the state at L3 would make the label sit
+  // still for a minute at a time.
+  actionLabel.textContent = rawItem
+    ? (graphItem && graphItem.action !== rawItem.action
+        ? `${rawItem.action}  ·  ${graphItem.action}`
+        : rawItem.action)
+    : (graphItem ? graphItem.action : "-");
+
+  const item = graphItem;
   if (lastClickedNodeId && item && item.action !== lastClickedNodeId) {
     lastClickedNodeId = null;
     occurrenceCycleIndex = 0;
     d3.selectAll(".node").classed("selected", false);
   }
-  
+
   graphController.updateActive(item);
-  updateTimelineActive(timelineRows, footerPanel, item);
+  updateTimelineActive(timelineRows, footerPanel, rawItem);
   
   if (currentSessionIndex !== 'all') {
     if (annotationPlayheadEl) {
@@ -724,32 +751,22 @@ function updateMetaLabels(idx) {
 // Data Fetch & Core Logic
 // ─────────────────────────────────────────────────────────────────────────────
 
+// There is no manifest.json in the new pipeline. The adapter builds one by
+// opening each recipe's graph file and reading the session list off the nodes,
+// so the recipe list lives in one place (RECIPES in dataAdapter.js).
 async function loadManifest() {
   try {
-    const response = await fetch(getManifestUrl());
-    if (!response.ok) throw new Error("HTTP " + response.status);
-    let fullManifest = await response.json();
-
-    // ─────────────────────────────────────────────────────────────────
-    // TEMPORARY FILTER: Only keep the recipes you want to visualize now
-    // ─────────────────────────────────────────────────────────────────
-    const targetRecipes = ["P01_R01", "P03_R03", "P08_R01", "P05_R02"];
-    
-    fullManifest.recipes = fullManifest.recipes.filter(r => 
-      targetRecipes.includes(r.id)
-    );
-
-    manifest = fullManifest;
+    manifest = await loadRecipeManifest();
   } catch (error) {
-    renderDataError(summaryPill, header, `Failed to load manifest.json. (${error.message})`);
+    renderDataError(summaryPill, header, `Failed to load recipe data. (${error.message})`);
     return false;
   }
-  
+
   if (!manifest.recipes || manifest.recipes.length === 0) {
-    renderDataError(summaryPill, header, "No target recipes found in the manifest.");
+    renderDataError(summaryPill, header, "No recipe data files could be read.");
     return false;
   }
-  
+
   return true;
 }
 
@@ -851,71 +868,21 @@ async function loadRecipeData({ animate = false } = {}) {
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// buildLevelPayloads
+//
+// Was: fetch merged_<mode>.json + session_<i>_<mode>.json for the recipe.
+// Now: one call into dataAdapter.js, which reads [recipe]_graph.json and
+// [recipe]_alphabet.json once and derives all three levels from them.
+//
+//   L1 "full"    take(cup)          derived from node.members
+//   L2 "hybrid"  take(crockery)     derived from node.members
+//   L3 "step"    froth milk         the shipped functional-state graph
+//
+// The return shape is unchanged: { merged, sessions }.
+// ─────────────────────────────────────────────────────────────────────────────
 async function buildLevelPayloads(currentRecipeId, recipe, mode) {
-  let mergedGraphPayload = null;
-  let sessionPayloadsMap = {};
-  {
-    // 1. Fetch Merged Graph (or synthesize from Session 0)
-    if (recipe.has_merged) {
-      const res = await fetch(getMergedDataUrl(currentRecipeId, mode));
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      mergedGraphPayload = await res.json();
-    } else {
-      const res = await fetch(getSessionDataUrl(currentRecipeId, 0, mode));
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      const data = await res.json();
-      
-      // Inject fields to make single-session data behave like merged data
-      data.graph.nodes.forEach(n => {
-          n.per_session_counts = [n.count];
-          n.support = 1;
-      });
-      data.graph.links.forEach(l => {
-          l.per_session_counts = [l.count];
-          l.support = 1;
-      });
-      
-      // Synthesize a canonical spine (the exact sequence)
-      const spine = [];
-      data.sequence.forEach(item => {
-         if (spine.length === 0 || spine[spine.length-1] !== item.action) {
-             spine.push(item.action);
-         }
-      });
-
-      // Recipes with a single session get no merged_*.json, so the session
-      // file stands in for it. The macro graph must ride along, otherwise the
-      // Detail control would silently do nothing on those recipes.
-      mergedGraphPayload = {
-        recipe: { ...data.recipe, n_sessions: 1, session_indices: [0] },
-        graph: data.graph,
-        graph_macro: data.graph_macro || null,
-        macro_sequence: data.macro_sequence || [],
-        // evidence_basis is already "single_session" from the pipeline; the
-        // legend and the ledger both read it, so a single-session recipe says
-        // so on screen instead of showing confident-looking probabilities.
-        macro_report: data.macro_report || null,
-        filter_report: data.filter_report || null,
-        sequence: data.sequence.map(s => ({...s, session_index: 0})),
-        analysis: {
-           ...data.analysis,
-           canonical_spine: spine
-        },
-        steps: data.steps
-      };
-    }
-
-    // 2. Fetch individual session payloads
-    sessionPayloadsMap = {};
-    const fetches = recipe.sessions.map(s =>
-      fetch(getSessionDataUrl(currentRecipeId, s.index, mode))
-        .then(r => r.json())
-        .then(d => { sessionPayloadsMap[s.index] = d; })
-    );
-    await Promise.all(fetches);
-  }
-
-  return { merged: mergedGraphPayload, sessions: sessionPayloadsMap };
+  return buildPayloadsFromNewData(currentRecipeId, recipe, mode);
 }
 
 function selectSession(idx) {
@@ -999,7 +966,13 @@ function selectSession(idx) {
       // meaning in the merged view — there is no single timeline to list.
       footerPanel.style.display = 'none';
       const mandatoryCount = (mergedGraphPayload.analysis?.mandatory_nodes || []).length;
-      summaryPill.textContent = `${recipe.sessions.length} sessions merged · ${mergedGraphPayload.graph.nodes.length} nodes · ${mandatoryCount} mandatory`;
+      // `--min-run 3` is a declared limit of the preprocessing: a run of fewer
+      // than 3 consecutive actions was not promoted to its own state. Saying so
+      // here means the reader is never left to infer the resolution.
+      summaryPill.textContent =
+        `${recipe.sessions.length} sessions merged · ` +
+        `${mergedGraphPayload.graph.nodes.length} nodes · ` +
+        `${mandatoryCount} in every session · resolution: runs of ≥${MIN_RUN} actions`;
 
   } else {
       barcodeStackWrap.style.display = 'none';

@@ -1,0 +1,698 @@
+{
+  "prepare and add fruit\tadd\talarm": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tadd\tbanana": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tbreak\tbanana": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tclose\tcupboard": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tclose\tdrawer": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tclose\tlid": {
+    "operation": "o5",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tcut\tbanana": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tcut\thand": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tcut\trest": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tdrink\twater": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tdry\thand": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "prepare and add fruit\teat\tspoon": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tfinish\talarm": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tflip\tbanana": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tflip\tpackage": {
+    "operation": "o4",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tfold\tbag": {
+    "operation": "o5",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tlift\tplate": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tmix\toatmeal": {
+    "operation": "unmapped",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tmove\tbag": {
+    "operation": "o4",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tmove\tbowl": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tmove\tglass": {
+    "operation": "o1",
+    "confidence": "low"
+  },
+  "prepare and add fruit\tmove\tknife": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tmove\tleaf": {
+    "operation": "o3",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tmove\toatmeal": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tmove\tskin": {
+    "operation": "o3",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tmove\tspoon": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\topen\tbin": {
+    "operation": "o3",
+    "confidence": "low"
+  },
+  "prepare and add fruit\topen\tcupboard": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\topen\tdrawer": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\topen\tlid": {
+    "operation": "o3",
+    "confidence": "low"
+  },
+  "prepare and add fruit\topen\tmicrowave": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare and add fruit\topen\tpackage": {
+    "operation": "o4",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tpat\tbanana": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tpat\tspoon": {
+    "operation": "unmapped",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tpeel\tskin": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tpour\tcorn": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tpour\tnut": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tpour\traisin": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tpress\tdrawer": {
+    "operation": "o5",
+    "confidence": "low"
+  },
+  "prepare and add fruit\tpress\tscale": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tpull\tbanana": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tpull\tdrawer": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tpull\tfood": {
+    "operation": "o4",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tput\tbag": {
+    "operation": "o5",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tput\tbanana": {
+    "operation": "o2",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tput\tbowl": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tput\tglass": {
+    "operation": "o5",
+    "confidence": "low"
+  },
+  "prepare and add fruit\tput\tknife": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tput\tlid": {
+    "operation": "o5",
+    "confidence": "low"
+  },
+  "prepare and add fruit\tput\tnut": {
+    "operation": "o4",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tput\toatmeal": {
+    "operation": "o5",
+    "confidence": "low"
+  },
+  "prepare and add fruit\tput\tpackage": {
+    "operation": "o5",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tput\tplate": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tput\traisin": {
+    "operation": "o5",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tput\trest": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tput\tscale": {
+    "operation": "o5",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tput\tskin": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tput\tspoon": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tremove\trubber": {
+    "operation": "o4",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tscrape\tbanana": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tscrew\tbanana": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tset\tscale": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tshake\tbag": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tshake\tcorn": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tshake\thand": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tshake\toatmeal": {
+    "operation": "o5",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tsqueeze\tpackage": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "prepare and add fruit\ttake\tbag": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "prepare and add fruit\ttake\tbanana": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "prepare and add fruit\ttake\tbowl": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "prepare and add fruit\ttake\tglass": {
+    "operation": "unmapped",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\ttake\tknife": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "prepare and add fruit\ttake\tlid": {
+    "operation": "o5",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\ttake\tnut": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "prepare and add fruit\ttake\toatmeal": {
+    "operation": "unmapped",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\ttake\tpackage": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "prepare and add fruit\ttake\tplate": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "prepare and add fruit\ttake\tscale": {
+    "operation": "o2",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\ttake\tskin": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "prepare and add fruit\ttake\tspoon": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tthrow\tbanana": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tthrow\tskin": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tturn-off\tscale": {
+    "operation": "o2",
+    "confidence": "medium"
+  },
+  "prepare and add fruit\tturn-off\ttap": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tturn-on\tscale": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "prepare and add fruit\tturn-on\ttap": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "prepare and add fruit\twash\thand": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "prepare and add fruit\twrap\trubber": {
+    "operation": "o5",
+    "confidence": "medium"
+  },
+  "microwave porridge\tadd\talarm": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "microwave porridge\tcheck\tmicrowave": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "microwave porridge\tclose\tcupboard": {
+    "operation": "o2",
+    "confidence": "medium"
+  },
+  "microwave porridge\tclose\tdrawer": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "microwave porridge\tdrink\tglass": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "microwave porridge\tdry\thand": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "microwave porridge\teat\toatmeal": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "microwave porridge\teat\tspoon": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "microwave porridge\tfinish\tcupboard": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "microwave porridge\tlook\tmicrowave": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "microwave porridge\tmix\toatmeal": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "microwave porridge\tmove\tcup": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "microwave porridge\tmove\tglass": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "microwave porridge\tmove\toatmeal": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "microwave porridge\tmove\tteapot": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "microwave porridge\topen\tcupboard": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "microwave porridge\topen\tmicrowave": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "microwave porridge\tpress\talarm": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "microwave porridge\tpress\tbutton": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "microwave porridge\tpress\twatch": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "microwave porridge\tpull\tdrawer": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "microwave porridge\tput\tbowl": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "microwave porridge\tput\tglass": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "microwave porridge\tput\toatmeal": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "microwave porridge\tput\tspoon": {
+    "operation": "unmapped",
+    "confidence": "medium"
+  },
+  "microwave porridge\tput\twater": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "microwave porridge\tremove\talarm": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "microwave porridge\tshake\tliquid": {
+    "operation": "o5",
+    "confidence": "medium"
+  },
+  "microwave porridge\tshake\toatmeal": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "microwave porridge\tshake\twater": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "microwave porridge\ttake\tbowl": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "microwave porridge\ttake\toatmeal": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "microwave porridge\ttake\tspoon": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "microwave porridge\tturn-on\tmicrowave": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "measure and mix oats\tadd\tscale": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "measure and mix oats\tcheck\toatmeal": {
+    "operation": "o2",
+    "confidence": "medium"
+  },
+  "measure and mix oats\tclose\tcupboard": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "measure and mix oats\tclose\tdrawer": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "measure and mix oats\tclose\tfridge": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "measure and mix oats\tcrush\tdough": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "measure and mix oats\tdrink\twater": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "measure and mix oats\tfill\tglass": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "measure and mix oats\tflip\tbowl": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "measure and mix oats\tmix\toatmeal": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "measure and mix oats\tmove\tglass": {
+    "operation": "o3",
+    "confidence": "medium"
+  },
+  "measure and mix oats\tmove\toatmeal": {
+    "operation": "o2",
+    "confidence": "medium"
+  },
+  "measure and mix oats\tmove\tpackage": {
+    "operation": "o2",
+    "confidence": "medium"
+  },
+  "measure and mix oats\topen\tcupboard": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "measure and mix oats\topen\tdrawer": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "measure and mix oats\topen\tfridge": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "measure and mix oats\topen\ttop": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "measure and mix oats\tpour\tmilk": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "measure and mix oats\tpour\toatmeal": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "measure and mix oats\tpour\twater": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "measure and mix oats\tpress\tbutton": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "measure and mix oats\tpull\toatmeal": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "measure and mix oats\tput\tbottle": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "measure and mix oats\tput\tbowl": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "measure and mix oats\tput\tchair": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "measure and mix oats\tput\tglass": {
+    "operation": "o3",
+    "confidence": "medium"
+  },
+  "measure and mix oats\tput\tmilk": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "measure and mix oats\tput\toatmeal": {
+    "operation": "o2",
+    "confidence": "medium"
+  },
+  "measure and mix oats\tput\tpackage": {
+    "operation": "o2",
+    "confidence": "medium"
+  },
+  "measure and mix oats\tput\traisin": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "measure and mix oats\tput\tscale": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "measure and mix oats\tput\tspoon": {
+    "operation": "o4",
+    "confidence": "medium"
+  },
+  "measure and mix oats\treach\tscale": {
+    "operation": "o2",
+    "confidence": "medium"
+  },
+  "measure and mix oats\tscrew\tchair": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "measure and mix oats\tscrew\tlid": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "measure and mix oats\tscrew\tmilk": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "measure and mix oats\tshake\tbag": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "measure and mix oats\tshake\toatmeal": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "measure and mix oats\ttake\tbowl": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "measure and mix oats\ttake\tchair": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "measure and mix oats\ttake\tglass": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "measure and mix oats\ttake\tmilk": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "measure and mix oats\ttake\toatmeal": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "measure and mix oats\ttake\tpackage": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "measure and mix oats\ttake\tscale": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "measure and mix oats\tturn-off\tscale": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "measure and mix oats\tturn-off\ttap": {
+    "operation": "o3",
+    "confidence": "medium"
+  },
+  "measure and mix oats\tturn-on\tlid": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "measure and mix oats\tturn-on\tscale": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "measure and mix oats\tturn-on\ttap": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "measure and mix oats\tunscrew\ttop": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "measure and mix oats\twash\thand": {
+    "operation": "unmapped",
+    "confidence": "high"
+  }
+}

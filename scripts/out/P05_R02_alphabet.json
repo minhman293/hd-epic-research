@@ -2,73 +2,56 @@
   "states": [
     {
       "id": "s1",
-      "name": "measure dry ingredients",
-      "definition": "weighing out oats and gathering base ingredients before mixing.",
+      "name": "measure and mix oats",
+      "definition": "Weighing oats and milk into the bowl and mixing them together before cooking.",
       "phase": "preparation",
       "typical_verbs": [
         "put",
         "shake",
-        "turn-on"
+        "mix"
       ],
       "typical_objects": [
         "oatmeal",
-        "scale",
-        "bowl"
+        "bowl",
+        "milk"
       ]
     },
     {
       "id": "s2",
-      "name": "cook and stir porridge",
-      "definition": "adding liquids and heating the porridge in the microwave with intermittent stirring.",
+      "name": "microwave porridge",
+      "definition": "Heating the porridge mixture in the microwave and stirring between heating intervals.",
       "phase": "cooking",
       "typical_verbs": [
-        "pour",
-        "mix",
-        "press"
+        "open",
+        "press",
+        "mix"
       ],
       "typical_objects": [
-        "milk",
-        "water",
-        "microwave"
+        "microwave",
+        "oatmeal",
+        "spoon"
       ]
     },
     {
       "id": "s3",
-      "name": "slice banana and fruit",
-      "definition": "peeling and chopping bananas and gathering raisins and nuts.",
+      "name": "prepare and add fruit",
+      "definition": "Peeling, chopping, and adding banana, raisins, and nuts to the cooked porridge.",
       "phase": "topping",
       "typical_verbs": [
-        "take",
+        "cut",
         "peel",
-        "cut"
+        "pour"
       ],
       "typical_objects": [
         "banana",
-        "knife",
-        "package"
-      ]
-    },
-    {
-      "id": "s4",
-      "name": "add fruit and nuts",
-      "definition": "incorporating sliced banana, raisins, and pecan nuts into the cooked porridge.",
-      "phase": "finishing",
-      "typical_verbs": [
-        "pour",
-        "add",
-        "scrape"
-      ],
-      "typical_objects": [
-        "nut",
         "raisin",
-        "banana"
+        "nut"
       ]
     }
   ],
   "phases": [
     "preparation",
     "cooking",
-    "topping",
-    "finishing"
+    "topping"
   ]
 }

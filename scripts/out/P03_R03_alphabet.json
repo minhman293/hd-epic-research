@@ -3,12 +3,12 @@
     {
       "id": "s1",
       "name": "boil water kettle",
-      "definition": "Filling the kettle with water, placing it on the base, and turning it on to heat the water.",
+      "definition": "Filling the kettle with water and turning it on to boil.",
       "phase": "boil",
       "typical_verbs": [
         "fill",
-        "put",
-        "turn-on"
+        "turn-on",
+        "boil"
       ],
       "typical_objects": [
         "kettle",
@@ -18,27 +18,28 @@
     {
       "id": "s2",
       "name": "grind coffee beans",
-      "definition": "Opening the coffee bag, scooping or pouring beans into the grinder, and operating the grinder.",
+      "definition": "Opening the coffee bag, scooping beans into the electric grinder, and grinding them into powder.",
       "phase": "grind",
       "typical_verbs": [
-        "open",
-        "pour",
-        "turn-on"
+        "scoop",
+        "turn-on",
+        "grind"
       ],
       "typical_objects": [
+        "maker:coffee",
         "bag",
-        "maker:coffee"
+        "spoon"
       ]
     },
     {
       "id": "s3",
       "name": "assemble coffee filter",
-      "definition": "Rinsing, positioning, and stacking the V60 metal filter on top of the coffee jug and transferring ground coffee into it.",
+      "definition": "Placing the V60 filter on top of the coffee jug and pouring the ground coffee into the filter.",
       "phase": "assemble",
       "typical_verbs": [
         "put",
-        "lift",
-        "drop"
+        "pour",
+        "stack"
       ],
       "typical_objects": [
         "filter",
@@ -48,23 +49,25 @@
     },
     {
       "id": "s4",
-      "name": "pour hot water",
-      "definition": "Pouring hot water from the kettle into the V60 filter in circles to soak and brew the coffee grounds.",
+      "name": "brew drip coffee",
+      "definition": "Pouring hot water from the kettle into the V60 filter over the coffee grounds and letting it drain.",
       "phase": "brew",
       "typical_verbs": [
+        "pour",
         "lift",
-        "pour"
+        "wait"
       ],
       "typical_objects": [
-        "kettle",
-        "water"
+        "water",
+        "filter",
+        "kettle"
       ]
     },
     {
       "id": "s5",
-      "name": "wash coffee utensils",
-      "definition": "Washing and rinsing coffee cups, jug, spoon, and filter by hand in the sink.",
-      "phase": "finish",
+      "name": "wash coffee cups",
+      "definition": "Washing coffee cups and utensils in the sink using running water and a sponge.",
+      "phase": "cleanup",
       "typical_verbs": [
         "wash",
         "rinse",
@@ -72,8 +75,8 @@
       ],
       "typical_objects": [
         "cup",
-        "jug",
-        "spoon"
+        "sponge",
+        "jug"
       ]
     }
   ],
@@ -82,6 +85,6 @@
     "grind",
     "assemble",
     "brew",
-    "finish"
+    "cleanup"
   ]
 }

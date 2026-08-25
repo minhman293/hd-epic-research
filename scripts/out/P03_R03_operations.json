@@ -1,0 +1,97 @@
+{
+  "grind coffee beans": [
+    {
+      "id": "o1",
+      "name": "retrieve coffee bag",
+      "definition": "Open cupboard, take out the coffee beans bag, and place it on the kitchen top."
+    },
+    {
+      "id": "o2",
+      "name": "measure coffee beans",
+      "definition": "Take the spoon and scoop coffee beans from the bag into the grinder."
+    },
+    {
+      "id": "o3",
+      "name": "operate coffee grinder",
+      "definition": "Put on the lid and turn on the coffee grinder to grind the beans."
+    },
+    {
+      "id": "o4",
+      "name": "manage bean packaging",
+      "definition": "Close and seal the coffee beans bag with a clip and store it back."
+    },
+    {
+      "id": "o5",
+      "name": "empty ground coffee",
+      "definition": "Tilt and shake the grinder or box to pour out the ground coffee."
+    }
+  ],
+  "boil water kettle": [
+    {
+      "id": "o1",
+      "name": "take kettle",
+      "definition": "Pick up the kettle from its base on the kitchen top."
+    },
+    {
+      "id": "o2",
+      "name": "fill kettle with water",
+      "definition": "Open the kettle lid, turn on the tap, fill with water, and close the lid."
+    },
+    {
+      "id": "o3",
+      "name": "turn on kettle",
+      "definition": "Place the kettle back on its base and turn on the heating switch."
+    }
+  ],
+  "assemble coffee filter": [
+    {
+      "id": "o1",
+      "name": "position filter and jug",
+      "definition": "Take the coffee jug and place the V60 filter on top of it."
+    },
+    {
+      "id": "o2",
+      "name": "add ground coffee",
+      "definition": "Scoop and drop ground coffee from the bag or container into the filter."
+    },
+    {
+      "id": "o3",
+      "name": "distribute coffee grounds",
+      "definition": "Shake the filter gently to spread the coffee grounds evenly."
+    }
+  ],
+  "wash coffee cups": [
+    {
+      "id": "o1",
+      "name": "retrieve cups and jug",
+      "definition": "Open the dishwasher, pull out the rack, and take out the coffee cups and jug."
+    },
+    {
+      "id": "o2",
+      "name": "wash dishes",
+      "definition": "Use sponge, running tap water, and soap to wash cups, jug, and spoon."
+    },
+    {
+      "id": "o3",
+      "name": "rinse and dry dishes",
+      "definition": "Rinse off soap with water and dry the items using a cloth."
+    }
+  ],
+  "brew drip coffee": [
+    {
+      "id": "o1",
+      "name": "lift hot kettle",
+      "definition": "Pick up the boiled kettle from the kitchen top."
+    },
+    {
+      "id": "o2",
+      "name": "pour hot water",
+      "definition": "Slowly pour water in a rotating motion over the coffee grounds in the filter."
+    },
+    {
+      "id": "o3",
+      "name": "set aside kettle",
+      "definition": "Put down the kettle on the kitchen top while waiting for the coffee to brew."
+    }
+  ]
+}

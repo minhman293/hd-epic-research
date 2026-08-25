@@ -1145,6 +1145,326 @@ def build_graph(sessions_segs, alphabet, level="functional"):
     node_list.sort(key=lambda x: (order.get(x["id"], 0), x["median_rank"]))
     return {"level": level, "nodes": node_list, "edges": edges}
 
+# ============================================================================
+# 4b. Stage D - L2.5 OPERATIONS, discovered by the LLM
+#     Paste into build_functional_graph.py after build_graph() ends and
+#     before the "# 5. Metrics" header.
+#
+# WHY THIS STAGE EXISTS
+# ---------------------
+# Stage C gives each functional state a FLAT bag of raw actions in
+# node["members"] - "grind coffee beans" holds 134 of them. Flat is unusable:
+# the reader gets either the goal ("grind coffee beans") or 134 hand
+# movements, with nothing in between.
+#
+# This stage cuts each state into OPERATIONS - the unit a robot executes,
+# e.g. "load beans" = take(bag) -> scoop(coffee) -> pour(grinder). Nothing is
+# deleted: every raw action lands inside exactly one operation, so the
+# drill-down chain is  state -> operation -> raw action -> video.
+#
+# SAME SHAPE AS STAGES A AND B, one level down
+# --------------------------------------------
+#   D1  propose_operations()   1 LLM call  -> a CLOSED operation alphabet,
+#                              3-8 operations per functional state.
+#   D2  map_action_operations() ~n LLM calls -> maps each distinct
+#                              (state, verb, noun) TYPE to an operation.
+#                              Types, not instances: cheap, cached, auditable.
+#   D3  add_operations()       pure Python. Collapse consecutive runs into
+#                              operation segments, merge repeats, build the
+#                              inner Markov chain.
+#
+# Because the alphabet is fixed before anything is classified, two runs of the
+# same operation MUST merge into one node - the same guarantee Stage A buys at
+# the state level. That is what turns 33 one-off segments into "pour water,
+# seen 19 times across 3 sessions".
+# ============================================================================
+
+OP_SYSTEM = (
+    "You decompose cooking activities into the operations a robot would "
+    "execute. You reply with JSON only: no prose, no markdown, no code fences."
+)
+
+OP_ALPHABET_PROMPT = """Recipe: {name}
+
+A pipeline has already grouped this recipe's annotated hand actions into
+functional states (the high-level goals). Your job is the level BELOW that:
+inside each state, name the OPERATIONS a robot would carry out.
+
+An operation is a short, self-contained piece of physical work with its own
+purpose - "load beans", "position the grinder", "remove the grounds". It is
+bigger than one hand movement and smaller than the whole state.
+
+Rules:
+  - 3 to 8 operations per state. Fewer if the state is genuinely simple.
+  - Name them the way a person would say them: 2-4 plain words, a verb first
+    ("load beans", "rinse filter"). No indices, no underscores.
+  - They must be DISJOINT and together cover everything in the state.
+  - Order them the way they are usually performed.
+  - Base them on the actions actually listed below, not on how you imagine
+    the recipe is done.
+
+Here is each state with the (verb, object) action types recorded inside it,
+with occurrence counts and one example narration. NOTE: the (verb, object)
+labels are auto-assigned and sometimes wrong - trust the narration text when
+they disagree.
+
+{states}
+
+Reply with JSON only:
+{{"states": [
+   {{"state": "<exact state name as given above>",
+     "operations": [
+       {{"id": "o1",
+         "name": "load beans",
+         "definition": "<one line: what physical work this covers>"}}
+     ]}}
+]}}"""
+
+OP_MAP_PROMPT = """Recipe: {name}
+
+Inside the functional state "{state}", these are the operations available:
+
+{operations}
+
+Assign every action type below to exactly one operation id. If an action
+genuinely belongs to none of them, use "unmapped" - do not invent an id.
+
+{pairs}
+
+Reply with JSON only:
+{{"assignments": [
+   {{"id": <the integer id shown>, "operation": "o1",
+     "confidence": "high|medium|low"}}
+]}}"""
+
+
+# ---------------------------------------------------------------------------
+# D1 - propose the closed operation alphabet
+# ---------------------------------------------------------------------------
+
+def propose_operations(recipe, graph, cache_path):
+    """One LLM call -> {state name: [{id, name, definition}, ...]}."""
+    if os.path.exists(cache_path):
+        return json.load(open(cache_path))
+
+    blocks = []
+    for node in graph["nodes"]:
+        if node["id"] in ("START", "END"):
+            continue
+        count = collections.Counter()
+        example = {}
+        for m in node.get("members", []):
+            k = (m["verb"], m["noun"])
+            count[k] += 1
+            example.setdefault(k, m.get("narration", ""))
+        lines = [f'    ({v}, {n})  n={c}  e.g. "{example[(v, n)][:90]}"'
+                 for (v, n), c in count.most_common(60)]
+        blocks.append(f'  STATE "{node["id"]}"  ({len(node.get("members", []))} '
+                      f'actions)\n' + "\n".join(lines))
+
+    data = llm(OP_ALPHABET_PROMPT.format(name=recipe.get("name", ""),
+                                         states="\n\n".join(blocks)),
+               OP_SYSTEM)
+
+    out = {}
+    for rec in as_list(data, "states"):
+        if not isinstance(rec, dict):
+            continue
+        ops = [o for o in as_list(rec, "operations") if isinstance(o, dict)]
+        if rec.get("state") and ops:
+            out[rec["state"]] = ops
+
+    # Any state the model skipped keeps one catch-all operation, so no state
+    # is left without a decomposition and nothing is silently dropped.
+    for node in graph["nodes"]:
+        if node["id"] in ("START", "END") or node["id"] in out:
+            continue
+        out[node["id"]] = [{"id": "o1", "name": node["id"],
+                            "definition": "not decomposed by the model"}]
+        print(f"  warning: no operations returned for '{node['id']}'",
+              file=sys.stderr)
+
+    json.dump(out, open(cache_path, "w"), indent=2)
+    return out
+
+
+# ---------------------------------------------------------------------------
+# D2 - map every distinct (state, verb, noun) TYPE to an operation
+# ---------------------------------------------------------------------------
+
+def map_action_operations(recipe, graph, op_alphabet, cache_path, batch=60):
+    """{(state, verb, noun): {"operation": id, "confidence": ...}}"""
+    if os.path.exists(cache_path):
+        return {tuple(k.split("\t")): v
+                for k, v in json.load(open(cache_path)).items()}
+
+    mapping = {}
+    for node in graph["nodes"]:
+        if node["id"] in ("START", "END"):
+            continue
+        state = node["id"]
+        ops = op_alphabet.get(state, [])
+        valid = {o["id"] for o in ops}
+
+        example = {}
+        for m in node.get("members", []):
+            example.setdefault((m["verb"], m["noun"]), m.get("narration", ""))
+        pairs = sorted(example)
+        if not pairs:
+            continue
+
+        # A single-operation state needs no call: everything goes there.
+        if len(ops) <= 1:
+            only = ops[0]["id"] if ops else "unmapped"
+            for v, n in pairs:
+                mapping[(state, v, n)] = {"operation": only,
+                                          "confidence": "high"}
+            continue
+
+        op_txt = "\n".join(f'  {o["id"]}: {o["name"]} - '
+                           f'{o.get("definition", "")}' for o in ops)
+
+        for i in range(0, len(pairs), batch):
+            chunk = pairs[i:i + batch]
+            data = llm(OP_MAP_PROMPT.format(
+                name=recipe.get("name", ""), state=state, operations=op_txt,
+                pairs="\n".join(
+                    f'  id={k}  action=({v}, {n})  '
+                    f'e.g. "{example[(v, n)][:90]}"'
+                    for k, (v, n) in enumerate(chunk))),
+                OP_SYSTEM, max_tokens=8000)
+
+            bad = 0
+            for a in as_list(data, "assignments"):
+                if not isinstance(a, dict):
+                    bad += 1
+                    continue
+                try:
+                    v, n = chunk[int(a["id"])]
+                except (KeyError, ValueError, TypeError, IndexError):
+                    bad += 1
+                    continue
+                op = a.get("operation")
+                if op not in valid:
+                    op = "unmapped"
+                    bad += 1
+                mapping[(state, v, n)] = {
+                    "operation": op,
+                    "confidence": a.get("confidence", "medium")}
+
+            note = f"  ({bad} rejected)" if bad else ""
+            print(f"  '{state}': mapped {min(i + batch, len(pairs))}"
+                  f"/{len(pairs)} types{note}", file=sys.stderr)
+
+        # Nothing may be silently dropped.
+        for v, n in pairs:
+            mapping.setdefault((state, v, n), {"operation": "unmapped",
+                                               "confidence": "low"})
+
+    json.dump({"\t".join(k): v for k, v in mapping.items()},
+              open(cache_path, "w"), indent=2)
+    return mapping
+
+
+# ---------------------------------------------------------------------------
+# D3 - collapse into operation segments and build the inner chain (no LLM)
+# ---------------------------------------------------------------------------
+
+def add_operations(graph, op_alphabet, op_mapping):
+    """Add node['operations'] and node['operation_edges'] in place."""
+    for node in graph["nodes"]:
+        if node["id"] in ("START", "END"):
+            node["operations"] = []
+            node["operation_edges"] = []
+            continue
+
+        state = node["id"]
+        ops_def = {o["id"]: o for o in op_alphabet.get(state, [])}
+        members = sorted(node.get("members", []),
+                         key=lambda m: (m["video_id"], m["start"]))
+
+        # label every raw action with its operation
+        labelled = []
+        for m in members:
+            rec = op_mapping.get((state, m["verb"], m["noun"]))
+            oid = rec["operation"] if rec else "unmapped"
+            if oid == "unmapped":
+                # Kept visible under its own name rather than hidden.
+                name = f'{m["verb"]}({m["noun"]})'
+                conf = "low"
+            else:
+                name = ops_def.get(oid, {}).get("name", oid)
+                conf = rec.get("confidence", "medium")
+            labelled.append((name, oid, conf, m))
+
+        # collapse consecutive runs of the same operation, never across videos
+        runs = []
+        for name, oid, conf, m in labelled:
+            if runs and runs[-1]["name"] == name and \
+                    runs[-1]["members"][-1]["video_id"] == m["video_id"]:
+                runs[-1]["members"].append(m)
+            else:
+                runs.append({"name": name, "op_id": oid, "conf": conf,
+                             "members": [m]})
+
+        # runs with the same name merge into ONE operation node
+        by_name = collections.OrderedDict()
+        for r in runs:
+            op = by_name.setdefault(r["name"], {
+                "id": r["name"], "op_id": r["op_id"], "count": 0,
+                "sessions": set(), "duration": 0.0, "members": [],
+                "confidences": [], "verbs": collections.Counter()})
+            op["count"] += 1
+            op["sessions"].add(r["members"][0]["video_id"])
+            op["duration"] += sum(x["end"] - x["start"] for x in r["members"])
+            op["members"].extend(r["members"])
+            op["confidences"].append(r["conf"])
+            for x in r["members"]:
+                op["verbs"][x["verb"]] += 1
+
+        # transitions between consecutive operations, within one session
+        edge_n = collections.Counter()
+        edge_sessions = collections.defaultdict(set)
+        for a, b in zip(runs, runs[1:]):
+            if a["members"][0]["video_id"] != b["members"][0]["video_id"]:
+                continue
+            edge_n[(a["name"], b["name"])] += 1
+            edge_sessions[(a["name"], b["name"])].add(b["members"][0]["video_id"])
+
+        out_total = collections.Counter()
+        for (a, _b), c in edge_n.items():
+            out_total[a] += c
+
+        node["operations"] = [{
+            "id": op["id"],
+            "label": op["id"],
+            "state": state,
+            "phase": node.get("phase", "other"),
+            "count": op["count"],
+            "support": len(op["sessions"]),
+            "sessions": sorted(op["sessions"]),
+            "mean_duration": round(op["duration"] / max(op["count"], 1), 2),
+            "n_raw_actions": len(op["members"]),
+            # dominant verb key -> the dashboard colours the node with it
+            "verb": op["verbs"].most_common(1)[0][0] if op["verbs"] else None,
+            "provenance": {
+                "source": "llm_operation_alphabet",
+                "operation_id": op["op_id"],
+                "definition": ops_def.get(op["op_id"], {}).get("definition"),
+                "confidence": collections.Counter(op["confidences"])
+                              .most_common(1)[0][0],
+            },
+            "members": op["members"],
+        } for op in by_name.values()]
+
+        node["operation_edges"] = [{
+            "source": a, "target": b, "n": c,
+            "p": round(c / out_total[a], 3),
+            "support": len(edge_sessions[(a, b)]),
+            "sessions": sorted(edge_sessions[(a, b)]),
+        } for (a, b), c in sorted(edge_n.items())]
+
+    return graph
 
 # ============================================================================
 # 5. Metrics - the numbers to put on a slide
@@ -1343,8 +1663,10 @@ def main():
     os.makedirs(args.out, exist_ok=True)
     alpha_path = os.path.join(args.out, f"{args.recipe}_alphabet.json")
     map_path = os.path.join(args.out, f"{args.recipe}_mapping.json")
+    op_alpha_path = os.path.join(args.out, f"{args.recipe}_operations.json")
+    op_map_path = os.path.join(args.out, f"{args.recipe}_op_mapping.json")
     if args.rebuild:
-        for p in (alpha_path, map_path):
+        for p in (alpha_path, map_path, op_alpha_path, op_map_path):
             if os.path.exists(p):
                 os.remove(p)
 
@@ -1470,6 +1792,12 @@ def main():
         feedback = build_feedback(m, graph, mapping)
 
     _, alphabet, mapping, graph, m = best
+    print("Stage D: proposing operations ...", file=sys.stderr)
+    op_alphabet = propose_operations(recipe, graph, op_alpha_path)
+    print("Stage D2: mapping actions to operations ...", file=sys.stderr)
+    op_mapping = map_action_operations(recipe, graph, op_alphabet,
+                                       op_map_path, batch=args.batch)
+    add_operations(graph, op_alphabet, op_mapping)
     json.dump(alphabet, open(alpha_path, "w"), indent=2)
     json.dump({"\t".join(k): v for k, v in mapping.items()},
               open(map_path, "w"), indent=2)

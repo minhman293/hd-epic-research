@@ -3,27 +3,25 @@
     {
       "id": "s1",
       "name": "load coffee capsule",
-      "definition": "Retrieving and inserting the coffee capsule into the machine and operating the water tank and machine mechanisms.",
-      "phase": "brew",
+      "definition": "Gathering mug, capsule, and water, opening the machine compartment, inserting the capsule, and filling the water tank.",
+      "phase": "setup",
       "typical_verbs": [
         "take",
-        "open",
-        "slide",
         "put",
-        "pour",
-        "lock"
+        "open",
+        "pour"
       ],
       "typical_objects": [
-        "capsule",
+        "cup",
         "coffee",
         "water",
-        "cup"
+        "box"
       ]
     },
     {
       "id": "s2",
       "name": "brew coffee",
-      "definition": "Pressing the button on the coffee machine to start the brewing process.",
+      "definition": "Pressing the button on the coffee machine to brew the coffee into the mug.",
       "phase": "brew",
       "typical_verbs": [
         "press",
@@ -36,47 +34,59 @@
     },
     {
       "id": "s3",
-      "name": "froth milk",
-      "definition": "Opening the fridge, retrieving the milk bottle, pouring milk into the frother, and operating the milk frother.",
+      "name": "prepare milk",
+      "definition": "Retrieving the milk bottle and frother, pouring milk into the frother, and activating the frother.",
       "phase": "froth",
       "typical_verbs": [
         "open",
         "take",
         "pour",
-        "turn-on",
-        "attach",
-        "lift"
+        "turn-on"
       ],
       "typical_objects": [
+        "fridge",
         "bottle",
-        "milk",
-        "fridge"
+        "milk"
       ]
     },
     {
       "id": "s4",
-      "name": "mix coffee",
-      "definition": "Adding the frothed milk to the coffee, stirring with a wooden stirrer, washing equipment, and discarding waste.",
-      "phase": "finish",
+      "name": "add frothed milk",
+      "definition": "Pouring the frothed milk from the frother into the brewed coffee mug.",
+      "phase": "combine",
       "typical_verbs": [
         "lift",
-        "mix",
-        "throw",
-        "wash",
-        "open"
+        "pour"
       ],
       "typical_objects": [
         "milk",
+        "cup"
+      ]
+    },
+    {
+      "id": "s5",
+      "name": "stir and clean",
+      "definition": "Stirring the coffee with a wooden stirrer, discarding it, rinsing the milk frother, and washing up.",
+      "phase": "finish",
+      "typical_verbs": [
+        "mix",
+        "throw",
+        "wash",
+        "close"
+      ],
+      "typical_objects": [
         "coffee",
         "spoon",
-        "bin",
+        "milk",
         "tap"
       ]
     }
   ],
   "phases": [
+    "setup",
     "brew",
     "froth",
+    "combine",
     "finish"
   ]
 }

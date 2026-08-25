@@ -1,0 +1,686 @@
+{
+  "grind coffee beans\tattach\tclip": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "grind coffee beans\tclose\tbag": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "grind coffee beans\tclose\tbin": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\tclose\tcupboard": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "grind coffee beans\tclose\tdishwasher": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\tdrop\tbag": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\tdrop\tbean": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "grind coffee beans\tdrop\tcoffee": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "grind coffee beans\tdrop\tpackage": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\tlift\tbag": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "grind coffee beans\tlift\tbox": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "grind coffee beans\tlift\tcoffee": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\tlift\tlid": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "grind coffee beans\tlift\tmaker:coffee": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "grind coffee beans\tlift\tspoon": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "grind coffee beans\tmove\tmaker:coffee": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\topen\tbag": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "grind coffee beans\topen\tcupboard": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "grind coffee beans\topen\tdishwasher": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\topen\tdrawer": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\topen\tlid": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\topen\tpackage": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\tpat\tbox": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "grind coffee beans\tpat\tclip": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\tpat\ttop": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "grind coffee beans\tpour\tbag": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "grind coffee beans\tpress\tbag": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "grind coffee beans\tpress\tbutton": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "grind coffee beans\tpress\tdrawer": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\tpress\tmaker:coffee": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\tpress\tpackage": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\tpull\tdrawer": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\tpull\tlid": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\tpull\tmaker:coffee": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\tput\tbag": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "grind coffee beans\tput\tbox": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "grind coffee beans\tput\tclip": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "grind coffee beans\tput\tcover": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\tput\tlid": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "grind coffee beans\tput\tmaker:coffee": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\tput\tpackage": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\tput\tscissors": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\tput\tspoon": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "grind coffee beans\treach\thand": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "grind coffee beans\tremove\tclip": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "grind coffee beans\tremove\tcover": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\troll\ttop": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "grind coffee beans\tscoop\tcoffee": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "grind coffee beans\tsearch\tspoon": {
+    "operation": "o2",
+    "confidence": "medium"
+  },
+  "grind coffee beans\tshake\tmaker:coffee": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "grind coffee beans\tslide\tcover": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\tsqueeze\tbag": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "grind coffee beans\ttake\tbag": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "grind coffee beans\ttake\tclip": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "grind coffee beans\ttake\tcover": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\ttake\tlid": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "grind coffee beans\ttake\tmaker:coffee": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "grind coffee beans\ttake\tpackage": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\ttake\tscissors": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\ttake\tspoon": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "grind coffee beans\tturn-off\tmaker:coffee": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "grind coffee beans\tturn-on\tmaker:coffee": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "grind coffee beans\tturn-on\ttap": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\twash\ttop": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "grind coffee beans\twrap\tbag": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "boil water kettle\tcheck\twater": {
+    "operation": "o2",
+    "confidence": "medium"
+  },
+  "boil water kettle\tclose\tkettle": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "boil water kettle\tclose\tlid": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "boil water kettle\tfill\tkettle": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "boil water kettle\tlift\tkettle": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "boil water kettle\topen\tkettle": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "boil water kettle\tpress\tlid": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "boil water kettle\tput\tkettle": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "boil water kettle\tsqueeze\tcloth": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "boil water kettle\ttake\tkettle": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "boil water kettle\tturn-off\ttap": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "boil water kettle\tturn-on\tkettle": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "boil water kettle\tturn-on\ttap": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tattach\tlid": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tclose\tcupboard": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tdrop\tcoffee": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tlift\tfilter": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tlift\tspoon": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tlower\tmaker:coffee": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tmove\tjug": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "assemble coffee filter\topen\tbag": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\topen\tcupboard": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tpat\tbox": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tpat\tspoon": {
+    "operation": "o2",
+    "confidence": "medium"
+  },
+  "assemble coffee filter\tpour\tcoffee": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tpour\twater": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tpress\tjug": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tpull\tdrawer": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tpull\tmaker:coffee": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tput\tbox": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tput\tcontainer": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tput\tfilter": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tput\tjug": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tput\tkettle": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tput\tlid": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tput\tmaker:coffee": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tput\tspoon": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tremove\tlid": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tscoop\tcoffee": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tscoop\tspoon": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tshake\tbox": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tshake\tmaker:coffee": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tslide\tjug": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tsort\tmaker:coffee": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tstretch\thand": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\ttake\tbag": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\ttake\tbox": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\ttake\tcloth": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\ttake\tfilter": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "assemble coffee filter\ttake\thand": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "assemble coffee filter\ttake\tjug": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "assemble coffee filter\ttake\tkettle": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\ttake\tmaker:coffee": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "assemble coffee filter\ttake\tspoon": {
+    "operation": "o2",
+    "confidence": "medium"
+  },
+  "assemble coffee filter\tturn-off\tkettle": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tturn-off\tmaker:coffee": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\tturn-on\ttap": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "assemble coffee filter\twash\tfilter": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "wash coffee cups\tclose\tdishwasher": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "wash coffee cups\tdrop\tcloth": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "wash coffee cups\tdrop\tcup": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "wash coffee cups\tdrop\tsponge": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "wash coffee cups\tdry\thand": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "wash coffee cups\tdry\tjug": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "wash coffee cups\tdry\tspoon": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "wash coffee cups\tflip\tcup": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "wash coffee cups\thold\tjug": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "wash coffee cups\tlift\tjug": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "wash coffee cups\tlift\tkettle": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "wash coffee cups\tmove\tsponge": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "wash coffee cups\topen\tdishwasher": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "wash coffee cups\tpour\twater": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "wash coffee cups\tpress\track:drying": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "wash coffee cups\tpull\track:drying": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "wash coffee cups\tput\tcup": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "wash coffee cups\tput\tjug": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "wash coffee cups\tput\tkettle": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "wash coffee cups\tput\tmaker:coffee": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "wash coffee cups\trub\tsponge": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "wash coffee cups\tshake\tcoffee": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "wash coffee cups\tshake\tfilter": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "wash coffee cups\tshake\thand": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "wash coffee cups\tsqueeze\tsponge": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "wash coffee cups\ttake\tcloth": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "wash coffee cups\ttake\tcup": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "wash coffee cups\ttake\tjug": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "wash coffee cups\ttake\tkettle": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "wash coffee cups\ttake\tsponge": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "wash coffee cups\tturn-off\ttap": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "wash coffee cups\tturn-on\ttap": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "wash coffee cups\twash\tcup": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "wash coffee cups\twash\tjug": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "wash coffee cups\twash\tspoon": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "brew drip coffee\tclose\tcupboard": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "brew drip coffee\thang\tcloth": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "brew drip coffee\tinsert\twrap": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "brew drip coffee\tlift\tkettle": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "brew drip coffee\topen\tcupboard": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "brew drip coffee\tpour\twater": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "brew drip coffee\tput\tjar": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "brew drip coffee\tput\tkettle": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "brew drip coffee\ttake\tjar": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "brew drip coffee\ttake\tkettle": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "brew drip coffee\ttake\tsauce": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "brew drip coffee\ttake\ttoaster": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "brew drip coffee\twrap\tclothes": {
+    "operation": "unmapped",
+    "confidence": "high"
+  }
+}

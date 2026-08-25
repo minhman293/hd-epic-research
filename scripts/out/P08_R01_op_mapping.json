@@ -1,0 +1,178 @@
+{
+  "grind coffee beans\tadjust\tscale": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "grind coffee beans\tcarry\tphone": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "grind coffee beans\tclose\tcan": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "grind coffee beans\tcrush\tcoffee": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "grind coffee beans\tmix\tcoffee": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "grind coffee beans\tmove\tphone": {
+    "operation": "o2",
+    "confidence": "medium"
+  },
+  "grind coffee beans\tmove\tscale": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "grind coffee beans\topen\tcan": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "grind coffee beans\topen\tcap": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "grind coffee beans\topen\tphone": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "grind coffee beans\tpat\tmaker:coffee": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "grind coffee beans\tpour\tcoffee": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "grind coffee beans\tput\tcan": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "grind coffee beans\tput\tcoffee": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "grind coffee beans\tput\tcup": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "grind coffee beans\tscoop\tcoffee": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "grind coffee beans\tscrew\tcup": {
+    "operation": "unmapped",
+    "confidence": "low"
+  },
+  "grind coffee beans\tsearch\track:drying": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "grind coffee beans\tslide\tphone": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "grind coffee beans\ttake\tcan": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "grind coffee beans\ttake\tcup": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "grind coffee beans\ttake\tmaker:coffee": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "grind coffee beans\ttake\tspoon": {
+    "operation": "o5",
+    "confidence": "medium"
+  },
+  "grind coffee beans\tturn-on\tmachine:washing": {
+    "operation": "unmapped",
+    "confidence": "low"
+  },
+  "grind coffee beans\tturn-on\tscale": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "grind coffee beans\twrite\tcoffee": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "tamp coffee grounds\tpat\tcup": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "tamp coffee grounds\tpress\tcoffee": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "tamp coffee grounds\tput\tcup": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "tamp coffee grounds\tput\tpresser": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "tamp coffee grounds\tput\tspoon": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "pull espresso shot\tcarry\tcup": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "pull espresso shot\tcheck\tcoffee": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "pull espresso shot\tfinish\tmachine:washing": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "pull espresso shot\tmove\tphone": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "pull espresso shot\topen\tdrawer": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "pull espresso shot\tput\tcup": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "pull espresso shot\tput\tmachine:washing": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "pull espresso shot\tscrew\tcup": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "pull espresso shot\tsqueeze\tcup": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "pull espresso shot\ttake\tplate": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "pull espresso shot\tturn-off\tmachine:washing": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "pull espresso shot\tturn-on\tmachine:washing": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "pull espresso shot\twait\tmachine:washing": {
+    "operation": "o2",
+    "confidence": "high"
+  }
+}

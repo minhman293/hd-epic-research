@@ -1,0 +1,386 @@
+{
+  "load coffee capsule\tclose\tbin": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "load coffee capsule\tclose\tbox": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "load coffee capsule\tclose\tcupboard": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "load coffee capsule\tclose\tlid": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "load coffee capsule\tclose\tmachine:washing": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "load coffee capsule\tfeel\tcupboard": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "load coffee capsule\tflip\tmaker:coffee": {
+    "operation": "o5",
+    "confidence": "medium"
+  },
+  "load coffee capsule\thold\twater": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "load coffee capsule\tlift\thandle": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "load coffee capsule\tlift\tlid": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "load coffee capsule\tlift\tmaker:coffee": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "load coffee capsule\tlift\tpot": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "load coffee capsule\tlift\tshelf": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "load coffee capsule\tlock\tcoffee": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "load coffee capsule\tmove\tmilk": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "load coffee capsule\topen\tbin": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "load coffee capsule\topen\tbox": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "load coffee capsule\topen\tcupboard": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "load coffee capsule\topen\tdrawer": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "load coffee capsule\tpour\twater": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "load coffee capsule\tpress\tbutton": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "load coffee capsule\tpull\thandle": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "load coffee capsule\tput\tbox": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "load coffee capsule\tput\tcoffee": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "load coffee capsule\tput\tcup": {
+    "operation": "o5",
+    "confidence": "high"
+  },
+  "load coffee capsule\tput\tjug": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "load coffee capsule\tput\tlid": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "load coffee capsule\tput\tplate": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "load coffee capsule\tput\tpot": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "load coffee capsule\tput\twater": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "load coffee capsule\tslide\tcoffee": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "load coffee capsule\tstretch\thand": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "load coffee capsule\ttake\tbox": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "load coffee capsule\ttake\tcoffee": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "load coffee capsule\ttake\tcup": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "load coffee capsule\ttake\tjug": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "load coffee capsule\tthrow\tcan": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "load coffee capsule\tturn\tcup": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "load coffee capsule\tturn-on\tmachine:washing": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "prepare milk\tattach\tmilk": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "prepare milk\tclose\tbottle": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "prepare milk\tclose\tbox": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare milk\tclose\tfridge": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "prepare milk\tlift\tbottle": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "prepare milk\tlook\talarm": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare milk\tlook\tcan": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare milk\topen\tbottle": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "prepare milk\topen\tbox": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare milk\topen\tcupboard": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare milk\topen\tfridge": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "prepare milk\tpour\tmilk": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "prepare milk\tpress\tbutton": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare milk\tput\tbottle": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "prepare milk\tput\tmilk": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "prepare milk\tput\ttop": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "prepare milk\tslide\tmilk": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare milk\ttake\tbottle": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "prepare milk\ttake\tcan": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare milk\ttake\tcup": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare milk\ttake\tmilk": {
+    "operation": "unmapped",
+    "confidence": "medium"
+  },
+  "prepare milk\ttake\tspoon": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare milk\ttake\ttop": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "prepare milk\tturn\tcan": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare milk\tturn\tcup": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "prepare milk\tturn-on\tmilk": {
+    "operation": "o4",
+    "confidence": "medium"
+  },
+  "prepare milk\tturn-on\tplug": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "add frothed milk\tlift\tmilk": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "add frothed milk\tmove\tcup": {
+    "operation": "unmapped",
+    "confidence": "high"
+  },
+  "add frothed milk\tpat\tmilk": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "add frothed milk\tpour\tmilk": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "add frothed milk\ttake\tmilk": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "stir and clean\tclose\tbin": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "stir and clean\tclose\ttap": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "stir and clean\tdry\thand": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "stir and clean\thold\tcup": {
+    "operation": "unmapped",
+    "confidence": "medium"
+  },
+  "stir and clean\thold\tspoon": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "stir and clean\tlift\tcolander": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "stir and clean\tlift\tlid": {
+    "operation": "unmapped",
+    "confidence": "medium"
+  },
+  "stir and clean\tmix\tcoffee": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "stir and clean\tmove\tspoon": {
+    "operation": "o1",
+    "confidence": "medium"
+  },
+  "stir and clean\topen\tbin": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "stir and clean\topen\tlid": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "stir and clean\topen\ttap": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "stir and clean\tput\tcup": {
+    "operation": "unmapped",
+    "confidence": "medium"
+  },
+  "stir and clean\tput\tmilk": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "stir and clean\tput\tplate": {
+    "operation": "unmapped",
+    "confidence": "medium"
+  },
+  "stir and clean\tput\tsponge": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "stir and clean\tput\tspoon": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "stir and clean\tremove\ttop": {
+    "operation": "unmapped",
+    "confidence": "medium"
+  },
+  "stir and clean\tshake\tspoon": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "stir and clean\ttake\tcup": {
+    "operation": "unmapped",
+    "confidence": "medium"
+  },
+  "stir and clean\ttake\trest": {
+    "operation": "o1",
+    "confidence": "high"
+  },
+  "stir and clean\ttake\tsponge": {
+    "operation": "o4",
+    "confidence": "high"
+  },
+  "stir and clean\tthrow\tspoon": {
+    "operation": "o2",
+    "confidence": "high"
+  },
+  "stir and clean\tturn\tmilk": {
+    "operation": "o3",
+    "confidence": "high"
+  },
+  "stir and clean\twash\tmilk": {
+    "operation": "o3",
+    "confidence": "high"
+  }
+}

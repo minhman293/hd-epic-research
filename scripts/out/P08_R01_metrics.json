@@ -3,21 +3,22 @@
   "n_actions_in_recipe": 57,
   "n_actions_other_task": 0,
   "n_interruptions": 0,
-  "n_segments": 6,
-  "n_states": 4,
-  "n_edges": 4,
-  "density_edges_per_node": 1.0,
-  "mean_out_degree": 1.0,
-  "repeat_edge_share": 0.25,
+  "n_segments": 3,
+  "n_states": 3,
+  "n_edges": 2,
+  "density_edges_per_node": 0.67,
+  "mean_out_degree": 0.67,
+  "repeat_edge_share": 0.0,
   "cross_session_jaccard": null,
+  "mean_pairwise_jaccard": null,
+  "mean_state_support": null,
   "coverage": 1.0,
   "low_confidence_types": 0,
   "n_pair_types": 39,
   "visits_per_session": {
-    "tamp coffee grounds": 2.0,
-    "grind coffee beans": 2.0,
-    "serve espresso shot": 1.0,
-    "brew espresso shot": 1.0
+    "tamp coffee grounds": 1.0,
+    "pull espresso shot": 1.0,
+    "grind coffee beans": 1.0
   },
   "fragmented_states": [],
   "targets": {
@@ -44,7 +45,7 @@
   "render_ready": true,
   "advisory": {
     "cross_session_jaccard": null,
-    "repeat_edge_share": 0.25,
+    "repeat_edge_share": 0.0,
     "n_sessions": 1,
     "density_target": 0.5
   },

@@ -63,9 +63,9 @@ export const PRETHINNED_MODES = [];
 // reported. Nothing else in the UI may hard-code a mode string — read this.
 // ─────────────────────────────────────────────────────────────────────────────
 export const LEVELS = [
-  { mode: "full",   n: 1, short: "L1 · every action",   label: "Level 1 — Every distinct action" },
-  { mode: "hybrid", n: 2, short: "L2 · verb + object",  label: "Level 2 — Verb + object category" },
-  { mode: "step",   n: 4, short: "L4 · recipe steps",   label: "Level 3 — Recipe steps" },
+  { mode: "full",   n: 1, short: "L1 · every action",     label: "Level 1 — Every distinct action" },
+  { mode: "hybrid", n: 2, short: "L2 · verb + object",    label: "Level 2 — Verb + object category" },
+  { mode: "step",   n: 3, short: "L3 · functional state", label: "Level 3 — Functional state" },
 ];
 
 export function levelIndexOf(mode) {
@@ -289,11 +289,61 @@ export const STEP_PHASE_PALETTE = [
 
 export const UNASSIGNED_PHASE_COLOR = "#94A3B8";
 
+// ─────────────────────────────────────────────────────────────────────────────
+// ALPHABET REGISTRY  (new LLM pipeline)
+//
+// The old data named recipe steps "S01", "S02", and the colour was the number.
+// The new [recipe]_alphabet.json names them ("froth milk") and groups them into
+// PHASES ("brew", "froth", "finish"). Colour is now per PHASE, so two states in
+// the same phase read as the same part of the recipe — which is the claim the
+// alphabet actually makes.
+//
+// dataAdapter.js calls registerAlphabet() every time a recipe is loaded.
+// ─────────────────────────────────────────────────────────────────────────────
+
+let CURRENT_PHASES = [];
+let STATE_TO_PHASE = {};
+
+export function registerAlphabet(recipeId, alphabet) {
+  CURRENT_PHASES = (alphabet && Array.isArray(alphabet.phases)) ? [...alphabet.phases] : [];
+  STATE_TO_PHASE = {};
+  ((alphabet && alphabet.states) || []).forEach((s, i) => {
+    if (!s) return;
+    const local = `S${String(i + 1).padStart(2, "0")}`;
+    // Every name the same state can arrive under, so a colour lookup never
+    // depends on which module is asking:
+    //   "froth milk"       graph node id / step label
+    //   "s3"               the alphabet's own id
+    //   "S03"              swimlane localStepId(), timeline shortStepLabel()
+    //   "P01_R01_S03"      the full step id on every sequence row
+    STATE_TO_PHASE[s.name] = s.phase;
+    STATE_TO_PHASE[s.id] = s.phase;
+    STATE_TO_PHASE[local] = s.phase;
+    STATE_TO_PHASE[`${recipeId}_${local}`] = s.phase;
+    if (s.phase && !CURRENT_PHASES.includes(s.phase)) CURRENT_PHASES.push(s.phase);
+  });
+}
+
+export function getPhaseList() { return CURRENT_PHASES; }
+export function phaseOfState(stateName) { return STATE_TO_PHASE[stateName] || null; }
+
+// Accepts a phase name ("brew"), a state name ("froth milk"), or a legacy step
+// id ("S01"). Anything unknown stays grey rather than borrowing a colour that
+// would imply a grouping the data does not make.
 export function getStepPhaseColor(stepLabel) {
-  if (!stepLabel || stepLabel === "unassigned") return UNASSIGNED_PHASE_COLOR;
-  const match = stepLabel.match(/^S(\d+)$/);
-  if (match) {
-    const stepNum = parseInt(match[1], 10);
+  if (!stepLabel || stepLabel === "unassigned" || stepLabel === "other") {
+    return UNASSIGNED_PHASE_COLOR;
+  }
+  // Registry FIRST. "S03" is a valid key in both systems, and the registry is
+  // the one that knows two states in the same phase must share a colour —
+  // the legacy branch would give them two different ones.
+  const phase = STATE_TO_PHASE[stepLabel] || stepLabel;
+  const i = CURRENT_PHASES.indexOf(phase);
+  if (i >= 0) return STEP_PHASE_PALETTE[i % STEP_PHASE_PALETTE.length];
+
+  const legacy = String(stepLabel).match(/^S(\d+)$/);
+  if (legacy) {
+    const stepNum = parseInt(legacy[1], 10);
     return STEP_PHASE_PALETTE[(stepNum - 1) % STEP_PHASE_PALETTE.length];
   }
   return UNASSIGNED_PHASE_COLOR;
@@ -471,6 +521,31 @@ export function getLegendItems(
     // hardcoding S01..S06. Prefer the label lookup (built from payload.steps);
     // fall back to scanning the sequence's step_ids; finally fall back to a
     // small default range so the legend is never empty.
+    // NEW DATA: colour by the alphabet's phases whenever one is registered.
+    const phases = getPhaseList();
+    if (phases.length > 0) {
+      phases.forEach((ph) => {
+        items.push({ type: "dot", color: getStepPhaseColor(ph), label: ph });
+      });
+      items.push({ type: "dot", color: UNASSIGNED_PHASE_COLOR, label: "outside the recipe" });
+      return {
+        node: [
+          ...items,
+          { type: "badge", dashed: false, label: sizeMode === "support"
+              ? "Node size: session support (merged view)"
+              : sizeMode === "duration" ? "Node size: mean duration"
+              : "Node size: action frequency" },
+          { type: "label", label: "Inside label: state" },
+        ],
+        edge: [
+          { type: "line", dashed: false, label: "Edge width: probability of this next state" },
+          { type: "line", dashed: false, label: "Edge opacity: how many sessions did it" },
+          { type: "line", dashed: true,  label: "Dashed: one session only — not reproducible" },
+        ],
+      };
+    }
+
+    // Legacy fallback (old S01/S02 step ids).
     const stepLocals = collectStepLocals(stepLabelLookup, sequence);
 
     stepLocals.forEach((local) => {

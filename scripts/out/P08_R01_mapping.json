@@ -18,7 +18,7 @@
     "context": "Make and serve coffee",
     "verb": "carry",
     "noun": "phone",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Make and serve coffee\tcheck\tcoffee": {
     "state": "s3",
@@ -42,7 +42,7 @@
     "confidence": "high"
   },
   "Make and serve coffee\tfinish\tmachine:washing": {
-    "state": "s4",
+    "state": "s3",
     "context": "Make and serve coffee",
     "verb": "finish",
     "noun": "machine:washing",
@@ -60,7 +60,7 @@
     "context": "Make and serve coffee",
     "verb": "move",
     "noun": "phone",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Make and serve coffee\tmove\tscale": {
     "state": "s1",
@@ -168,14 +168,14 @@
     "confidence": "high"
   },
   "Make and serve coffee\tscoop\tcoffee": {
-    "state": "s2",
+    "state": "s1",
     "context": "Make and serve coffee",
     "verb": "scoop",
     "noun": "coffee",
     "confidence": "high"
   },
   "Make and serve coffee\tscrew\tcup": {
-    "state": "s4",
+    "state": "s3",
     "context": "Make and serve coffee",
     "verb": "screw",
     "noun": "cup",
@@ -193,10 +193,10 @@
     "context": "Make and serve coffee",
     "verb": "slide",
     "noun": "phone",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Make and serve coffee\tsqueeze\tcup": {
-    "state": "s4",
+    "state": "s3",
     "context": "Make and serve coffee",
     "verb": "squeeze",
     "noun": "cup",
@@ -224,11 +224,11 @@
     "confidence": "high"
   },
   "Make and serve coffee\ttake\tplate": {
-    "state": "s4",
+    "state": "s1",
     "context": "Make and serve coffee",
     "verb": "take",
     "noun": "plate",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Make and serve coffee\ttake\tspoon": {
     "state": "s2",
@@ -238,7 +238,7 @@
     "confidence": "high"
   },
   "Make and serve coffee\tturn-off\tmachine:washing": {
-    "state": "s4",
+    "state": "s3",
     "context": "Make and serve coffee",
     "verb": "turn-off",
     "noun": "machine:washing",
@@ -270,6 +270,6 @@
     "context": "Make and serve coffee",
     "verb": "write",
     "noun": "coffee",
-    "confidence": "high"
+    "confidence": "medium"
   }
 }

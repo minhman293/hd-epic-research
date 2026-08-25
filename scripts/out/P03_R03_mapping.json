@@ -7,7 +7,7 @@
     "confidence": "high"
   },
   "Continue pouring water into V60 coffee filter to brew coffee\thang\tcloth": {
-    "state": "s5",
+    "state": "s4",
     "context": "Continue pouring water into V60 coffee filter to brew coffee",
     "verb": "hang",
     "noun": "cloth",
@@ -18,7 +18,7 @@
     "context": "Continue pouring water into V60 coffee filter to brew coffee",
     "verb": "insert",
     "noun": "wrap",
-    "confidence": "high"
+    "confidence": "low"
   },
   "Continue pouring water into V60 coffee filter to brew coffee\tlift\tkettle": {
     "state": "s4",
@@ -32,7 +32,7 @@
     "context": "Continue pouring water into V60 coffee filter to brew coffee",
     "verb": "open",
     "noun": "cupboard",
-    "confidence": "medium"
+    "confidence": "high"
   },
   "Continue pouring water into V60 coffee filter to brew coffee\tpour\twater": {
     "state": "s4",
@@ -42,11 +42,11 @@
     "confidence": "high"
   },
   "Continue pouring water into V60 coffee filter to brew coffee\tput\tjar": {
-    "state": "unmapped",
+    "state": "s4",
     "context": "Continue pouring water into V60 coffee filter to brew coffee",
     "verb": "put",
     "noun": "jar",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Continue pouring water into V60 coffee filter to brew coffee\tput\tkettle": {
     "state": "s4",
@@ -56,11 +56,11 @@
     "confidence": "high"
   },
   "Continue pouring water into V60 coffee filter to brew coffee\ttake\tjar": {
-    "state": "unmapped",
+    "state": "s4",
     "context": "Continue pouring water into V60 coffee filter to brew coffee",
     "verb": "take",
     "noun": "jar",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Continue pouring water into V60 coffee filter to brew coffee\ttake\tkettle": {
     "state": "s4",
@@ -74,21 +74,21 @@
     "context": "Continue pouring water into V60 coffee filter to brew coffee",
     "verb": "take",
     "noun": "sauce",
-    "confidence": "high"
+    "confidence": "low"
   },
   "Continue pouring water into V60 coffee filter to brew coffee\ttake\ttoaster": {
-    "state": "unmapped",
+    "state": "s4",
     "context": "Continue pouring water into V60 coffee filter to brew coffee",
     "verb": "take",
     "noun": "toaster",
-    "confidence": "high"
+    "confidence": "low"
   },
   "Continue pouring water into V60 coffee filter to brew coffee\twrap\tclothes": {
-    "state": "unmapped",
+    "state": "s4",
     "context": "Continue pouring water into V60 coffee filter to brew coffee",
     "verb": "wrap",
     "noun": "clothes",
-    "confidence": "high"
+    "confidence": "low"
   },
   "Continue preparing coffee\tlift\tfilter": {
     "state": "s3",
@@ -109,7 +109,7 @@
     "context": "Continue preparing coffee",
     "verb": "move",
     "noun": "jug",
-    "confidence": "medium"
+    "confidence": "high"
   },
   "Continue preparing coffee\tput\tkettle": {
     "state": "s1",
@@ -126,25 +126,25 @@
     "confidence": "high"
   },
   "Continue preparing coffee\tput\tspoon": {
-    "state": "s5",
+    "state": "s2",
     "context": "Continue preparing coffee",
     "verb": "put",
     "noun": "spoon",
     "confidence": "medium"
   },
   "Continue preparing coffee\tshake\tmaker:coffee": {
-    "state": "s5",
+    "state": "s3",
     "context": "Continue preparing coffee",
     "verb": "shake",
     "noun": "maker:coffee",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Continue preparing coffee\ttake\tcloth": {
     "state": "s5",
     "context": "Continue preparing coffee",
     "verb": "take",
     "noun": "cloth",
-    "confidence": "medium"
+    "confidence": "low"
   },
   "Continue preparing coffee\ttake\tmaker:coffee": {
     "state": "s3",
@@ -207,7 +207,7 @@
     "context": "Fill kettle and boil water for coffee",
     "verb": "squeeze",
     "noun": "cloth",
-    "confidence": "medium"
+    "confidence": "low"
   },
   "Fill kettle and boil water for coffee\ttake\tkettle": {
     "state": "s1",
@@ -242,7 +242,7 @@
     "context": "Fill kettle and boil water for coffee",
     "verb": "wash",
     "noun": "top",
-    "confidence": "medium"
+    "confidence": "low"
   },
   "Pour beans in coffee grinder and start grinder\tclose\tbag": {
     "state": "s2",
@@ -462,7 +462,7 @@
     "confidence": "medium"
   },
   "Prepare Coffee\tclose\tdishwasher": {
-    "state": "s5",
+    "state": "unmapped",
     "context": "Prepare Coffee",
     "verb": "close",
     "noun": "dishwasher",
@@ -494,7 +494,7 @@
     "context": "Prepare Coffee",
     "verb": "dry",
     "noun": "spoon",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare Coffee\tlift\tbag": {
     "state": "s2",
@@ -620,7 +620,7 @@
     "context": "Prepare Coffee",
     "verb": "pull",
     "noun": "drawer",
-    "confidence": "medium"
+    "confidence": "high"
   },
   "Prepare Coffee\tpull\tlid": {
     "state": "unmapped",
@@ -644,7 +644,7 @@
     "confidence": "high"
   },
   "Prepare Coffee\tput\tbox": {
-    "state": "s2",
+    "state": "s3",
     "context": "Prepare Coffee",
     "verb": "put",
     "noun": "box",
@@ -725,7 +725,7 @@
     "context": "Prepare Coffee",
     "verb": "search",
     "noun": "spoon",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare Coffee\tshake\tbox": {
     "state": "s3",
@@ -739,7 +739,7 @@
     "context": "Prepare Coffee",
     "verb": "shake",
     "noun": "coffee",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare Coffee\tshake\tmaker:coffee": {
     "state": "s2",
@@ -774,7 +774,7 @@
     "context": "Prepare Coffee",
     "verb": "take",
     "noun": "cloth",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare Coffee\ttake\tcover": {
     "state": "unmapped",
@@ -823,7 +823,7 @@
     "context": "Prepare Coffee",
     "verb": "take",
     "noun": "spoon",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare Coffee\tturn-off\tmaker:coffee": {
     "state": "s2",
@@ -837,7 +837,7 @@
     "context": "Prepare Coffee",
     "verb": "turn-off",
     "noun": "tap",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare Coffee\tturn-on\tkettle": {
     "state": "s1",
@@ -854,18 +854,18 @@
     "confidence": "high"
   },
   "Prepare Coffee\tturn-on\ttap": {
-    "state": "s5",
+    "state": "s1",
     "context": "Prepare Coffee",
     "verb": "turn-on",
     "noun": "tap",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare Coffee\twash\tspoon": {
     "state": "s5",
     "context": "Prepare Coffee",
     "verb": "wash",
     "noun": "spoon",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare Coffee\twrap\tbag": {
     "state": "s2",
@@ -970,14 +970,14 @@
     "context": "Prepare coffee",
     "verb": "move",
     "noun": "jug",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tmove\tmaker:coffee": {
     "state": "s2",
     "context": "Prepare coffee",
     "verb": "move",
     "noun": "maker:coffee",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\topen\tbag": {
     "state": "s3",
@@ -1040,7 +1040,7 @@
     "context": "Prepare coffee",
     "verb": "press",
     "noun": "bag",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tpress\tbutton": {
     "state": "s2",
@@ -1054,7 +1054,7 @@
     "context": "Prepare coffee",
     "verb": "press",
     "noun": "maker:coffee",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tpull\tlid": {
     "state": "s2",
@@ -1068,21 +1068,21 @@
     "context": "Prepare coffee",
     "verb": "pull",
     "noun": "maker:coffee",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tput\tbox": {
     "state": "s2",
     "context": "Prepare coffee",
     "verb": "put",
     "noun": "box",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tput\tclip": {
     "state": "s2",
     "context": "Prepare coffee",
     "verb": "put",
     "noun": "clip",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tput\tfilter": {
     "state": "s3",
@@ -1110,28 +1110,28 @@
     "context": "Prepare coffee",
     "verb": "put",
     "noun": "lid",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tput\tmaker:coffee": {
     "state": "s3",
     "context": "Prepare coffee",
     "verb": "put",
     "noun": "maker:coffee",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tput\tspoon": {
     "state": "s3",
     "context": "Prepare coffee",
     "verb": "put",
     "noun": "spoon",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\treach\thand": {
-    "state": "s3",
+    "state": "s2",
     "context": "Prepare coffee",
     "verb": "reach",
     "noun": "hand",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tremove\tclip": {
     "state": "s2",
@@ -1141,11 +1141,11 @@
     "confidence": "high"
   },
   "Prepare coffee\tremove\tlid": {
-    "state": "s3",
+    "state": "s2",
     "context": "Prepare coffee",
     "verb": "remove",
     "noun": "lid",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tscoop\tcoffee": {
     "state": "s3",
@@ -1173,14 +1173,14 @@
     "context": "Prepare coffee",
     "verb": "shake",
     "noun": "filter",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tshake\thand": {
     "state": "s5",
     "context": "Prepare coffee",
     "verb": "shake",
     "noun": "hand",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tshake\tmaker:coffee": {
     "state": "s3",
@@ -1194,7 +1194,7 @@
     "context": "Prepare coffee",
     "verb": "slide",
     "noun": "jug",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tstretch\thand": {
     "state": "s2",
@@ -1236,14 +1236,14 @@
     "context": "Prepare coffee",
     "verb": "take",
     "noun": "hand",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\ttake\tjug": {
     "state": "s3",
     "context": "Prepare coffee",
     "verb": "take",
     "noun": "jug",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\ttake\tkettle": {
     "state": "s1",
@@ -1257,7 +1257,7 @@
     "context": "Prepare coffee",
     "verb": "take",
     "noun": "lid",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\ttake\tmaker:coffee": {
     "state": "s3",
@@ -1274,7 +1274,7 @@
     "confidence": "medium"
   },
   "Prepare coffee\tturn-off\ttap": {
-    "state": "s1",
+    "state": "s5",
     "context": "Prepare coffee",
     "verb": "turn-off",
     "noun": "tap",
@@ -1288,7 +1288,7 @@
     "confidence": "high"
   },
   "Prepare coffee\tturn-on\ttap": {
-    "state": "s1",
+    "state": "s5",
     "context": "Prepare coffee",
     "verb": "turn-on",
     "noun": "tap",
@@ -1309,18 +1309,18 @@
     "confidence": "high"
   },
   "Rinse coffee jug and place coffee filter on top of the jug\tdrop\tcloth": {
-    "state": "s3",
+    "state": "s5",
     "context": "Rinse coffee jug and place coffee filter on top of the jug",
     "verb": "drop",
     "noun": "cloth",
-    "confidence": "medium"
+    "confidence": "high"
   },
   "Rinse coffee jug and place coffee filter on top of the jug\tdry\tjug": {
     "state": "s5",
     "context": "Rinse coffee jug and place coffee filter on top of the jug",
     "verb": "dry",
     "noun": "jug",
-    "confidence": "medium"
+    "confidence": "high"
   },
   "Rinse coffee jug and place coffee filter on top of the jug\thold\tjug": {
     "state": "s5",
@@ -1355,14 +1355,14 @@
     "context": "Rinse coffee jug and place coffee filter on top of the jug",
     "verb": "press",
     "noun": "rack:drying",
-    "confidence": "medium"
+    "confidence": "high"
   },
   "Rinse coffee jug and place coffee filter on top of the jug\tpull\track:drying": {
     "state": "s5",
     "context": "Rinse coffee jug and place coffee filter on top of the jug",
     "verb": "pull",
     "noun": "rack:drying",
-    "confidence": "medium"
+    "confidence": "high"
   },
   "Rinse coffee jug and place coffee filter on top of the jug\tput\tcup": {
     "state": "s5",
@@ -1372,11 +1372,11 @@
     "confidence": "high"
   },
   "Rinse coffee jug and place coffee filter on top of the jug\tput\tjug": {
-    "state": "s5",
+    "state": "s3",
     "context": "Rinse coffee jug and place coffee filter on top of the jug",
     "verb": "put",
     "noun": "jug",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Rinse coffee jug and place coffee filter on top of the jug\tput\tmaker:coffee": {
     "state": "s3",
@@ -1390,7 +1390,7 @@
     "context": "Rinse coffee jug and place coffee filter on top of the jug",
     "verb": "take",
     "noun": "cloth",
-    "confidence": "medium"
+    "confidence": "high"
   },
   "Rinse coffee jug and place coffee filter on top of the jug\ttake\tcup": {
     "state": "s5",
@@ -1453,14 +1453,14 @@
     "context": "Stack V60 coffee filter on coffee jug",
     "verb": "take",
     "noun": "jug",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Turn off kettle and stack V60 filter on jug\tput\tkettle": {
-    "state": "s4",
+    "state": "s1",
     "context": "Turn off kettle and stack V60 filter on jug",
     "verb": "put",
     "noun": "kettle",
-    "confidence": "medium"
+    "confidence": "high"
   },
   "Turn off kettle and stack V60 filter on jug\tsort\tmaker:coffee": {
     "state": "s3",
@@ -1474,7 +1474,7 @@
     "context": "Turn off kettle and stack V60 filter on jug",
     "verb": "take",
     "noun": "jug",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Turn off kettle and stack V60 filter on jug\ttake\tkettle": {
     "state": "s4",
@@ -1516,7 +1516,7 @@
     "context": "Wash coffee cups by hand",
     "verb": "dry",
     "noun": "hand",
-    "confidence": "medium"
+    "confidence": "high"
   },
   "Wash coffee cups by hand\tflip\tcup": {
     "state": "s5",
@@ -1558,7 +1558,7 @@
     "context": "Wash coffee cups by hand",
     "verb": "shake",
     "noun": "hand",
-    "confidence": "medium"
+    "confidence": "high"
   },
   "Wash coffee cups by hand\tsqueeze\tsponge": {
     "state": "s5",
@@ -1572,7 +1572,7 @@
     "context": "Wash coffee cups by hand",
     "verb": "take",
     "noun": "cloth",
-    "confidence": "medium"
+    "confidence": "high"
   },
   "Wash coffee cups by hand\ttake\tcup": {
     "state": "s5",
@@ -1586,7 +1586,7 @@
     "context": "Wash coffee cups by hand",
     "verb": "take",
     "noun": "kettle",
-    "confidence": "low"
+    "confidence": "medium"
   },
   "Wash coffee cups by hand\ttake\tsponge": {
     "state": "s5",

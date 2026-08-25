@@ -2585,16 +2585,36 @@ export function createGraphController({
         lines.push(`Part of an opened run. Click to close it.`);
       } else {
         lines.push(`${d.source} → ${d.target}`);
-        lines.push(`Chance the next main step is ${d.target}:`);
+        lines.push(currentMode === "step"
+          ? `Chance the next state is ${d.target}:`
+          : `Chance the next action is ${d.target}:`);
         lines.push(`  ${formatProbability(d)}`);
+        // Two different reasons an edge is weak, and they are not the same
+        // claim. "Seen once" is about the count; "one session only" is about
+        // reproducibility. Saying the wrong one is worse than saying neither.
         if (d.evidence === "weak") {
-          lines.push(`  Seen once — this number is not reliable yet.`);
+          lines.push(d.support === 1 && d.n_sessions > 1
+            ? `  Only 1 of ${d.n_sessions} sessions did this — not reproducible.`
+            : `  Seen once — this number is not reliable yet.`);
         }
         if (typeof d.p_laplace === "number") {
           lines.push(`  Smoothed estimate: ${d.p_laplace.toFixed(2)}`);
         }
         lines.push(``);
-        lines.push(`In between: ${formatBridge(d)}`);
+        // NEW DATA: the pipeline counts the other-task actions the person did
+        // while crossing this edge. They are not part of the recipe, so they
+        // are not states — but they happened, and hiding them would make the
+        // recipe look tidier than the recording.
+        if (d.interruption_actions > 0) {
+          const secs = d.interruption_seconds
+            ? `, about ${Math.round(d.interruption_seconds)}s`
+            : "";
+          lines.push(`In between: ${d.interruption_actions} actions from other tasks${secs}`);
+        } else if (d.is_bridged) {
+          lines.push(`In between: ${formatBridge(d)}`);
+        } else {
+          lines.push(`In between: nothing from another task`);
+        }
         if (d.is_bridged) {
           const hidden = d.bridge_raw_actions || d.bridge_actions || {};
           const top = Object.entries(hidden)
@@ -2676,6 +2696,25 @@ export function createGraphController({
           .map(([s, n]) => `S${Number(s) + 1}:${n}`).join("  "));
       }
     }
+    // NEW DATA: the alphabet says what each state MEANS, and `members` holds
+    // every raw action inside it with its timestamps. Both belong in the
+    // tooltip: the definition is the claim, the member count is the evidence.
+    if (d.definition) {
+      lines.push("");
+      lines.push(d.definition);
+    }
+    if (Array.isArray(d.members) && d.members.length > 0) {
+      lines.push(`Contains ${d.members.length} annotated actions — double-click to open`);
+      const first = d.members[0];
+      if (first && first.narration) {
+        const n = String(first.narration).trim();
+        lines.push(`e.g. "${n.length > 90 ? n.slice(0, 90) + "…" : n}"`);
+      }
+    }
+    if (d.merged_from) {
+      lines.push(`Merged from: ${[].concat(d.merged_from).join(", ")}`);
+    }
+
     if (d.is_bridge_node) {
       lines.length = 0;
       lines.push(`${d.label || d.id}`);
