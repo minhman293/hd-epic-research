@@ -54,7 +54,7 @@ import { registerAlphabet } from "./config.js";
 // WHERE THE FILES LIVE — edit these three lines to match your folder layout
 // ─────────────────────────────────────────────────────────────────────────────
 const DATA_BASE = "scripts/out";
-const VIDEO_BASE = "https://controversial-sophisticated-dozen-quit.trycloudflare.com/hd_epic_videos";
+const VIDEO_BASE = "https://object-aware-fair-string.trycloudflare.com/hd_epic_videos";
 const NOUN_CSV_URL = "narrations-and-action-segments/HD_EPIC_noun_classes.csv";
 
 export const MIN_RUN = 3;
