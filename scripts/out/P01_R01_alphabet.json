@@ -1,83 +1,99 @@
 {
+  "n_states_rationale": "The actions and observed windows reveal 6 distinct recurring goals: preparing the coffee machine/water, loading and brewing the coffee capsule, preparing and frothing the milk, adding milk to the coffee and stirring, cleaning up equipment, and discarding waste. Using 6 states avoids generic grouping while completely capturing all procedural steps.",
   "states": [
     {
       "id": "s1",
-      "name": "load coffee capsule",
-      "definition": "Gathering mug, capsule, and water, opening the machine compartment, inserting the capsule, and filling the water tank.",
+      "name": "prepare water tank",
+      "definition": "Filling and attaching the water tank to the coffee machine.",
       "phase": "setup",
       "typical_verbs": [
         "take",
-        "put",
-        "open",
-        "pour"
+        "pour",
+        "put"
       ],
       "typical_objects": [
-        "cup",
-        "coffee",
+        "jug",
         "water",
-        "box"
+        "tank"
       ]
     },
     {
       "id": "s2",
-      "name": "brew coffee",
-      "definition": "Pressing the button on the coffee machine to brew the coffee into the mug.",
+      "name": "load coffee capsule",
+      "definition": "Opening the machine compartment, inserting the coffee capsule, and locking it in place.",
       "phase": "brew",
       "typical_verbs": [
-        "press",
-        "turn-on"
+        "open",
+        "slide",
+        "pull"
       ],
       "typical_objects": [
-        "button",
-        "machine:washing"
+        "drawer",
+        "coffee",
+        "handle"
       ]
     },
     {
       "id": "s3",
-      "name": "prepare milk",
-      "definition": "Retrieving the milk bottle and frother, pouring milk into the frother, and activating the frother.",
-      "phase": "froth",
+      "name": "brew coffee",
+      "definition": "Placing the cup and pressing the button to brew the coffee.",
+      "phase": "brew",
       "typical_verbs": [
-        "open",
         "take",
-        "pour",
-        "turn-on"
+        "put",
+        "press"
       ],
       "typical_objects": [
-        "fridge",
-        "bottle",
-        "milk"
+        "cup",
+        "button",
+        "machine"
       ]
     },
     {
       "id": "s4",
-      "name": "add frothed milk",
-      "definition": "Pouring the frothed milk from the frother into the brewed coffee mug.",
-      "phase": "combine",
+      "name": "froth milk",
+      "definition": "Pouring milk into the frother, operating the frother, and preparing it for pouring.",
+      "phase": "brew",
       "typical_verbs": [
-        "lift",
-        "pour"
+        "open",
+        "pour",
+        "turn-on"
       ],
       "typical_objects": [
+        "bottle",
         "milk",
-        "cup"
+        "plug"
       ]
     },
     {
       "id": "s5",
-      "name": "stir and clean",
-      "definition": "Stirring the coffee with a wooden stirrer, discarding it, rinsing the milk frother, and washing up.",
+      "name": "mix milk and coffee",
+      "definition": "Pouring the frothed milk into the mug and stirring it together with a wooden stirrer.",
       "phase": "finish",
       "typical_verbs": [
+        "lift",
         "mix",
-        "throw",
+        "put"
+      ],
+      "typical_objects": [
+        "milk",
+        "coffee",
+        "spoon"
+      ]
+    },
+    {
+      "id": "s6",
+      "name": "clean and tidy",
+      "definition": "Rinsing and washing equipment, disposing of waste in the bin, and putting away items.",
+      "phase": "finish",
+      "typical_verbs": [
         "wash",
+        "throw",
         "close"
       ],
       "typical_objects": [
-        "coffee",
-        "spoon",
         "milk",
+        "bin",
         "tap"
       ]
     }
@@ -85,8 +101,12 @@
   "phases": [
     "setup",
     "brew",
-    "froth",
-    "combine",
     "finish"
-  ]
+  ],
+  "_leak_check": {
+    "recipe_step_count": 5,
+    "state_count": 6,
+    "equal": false,
+    "note": "recipe steps were NOT provided to the LLM; this compares the independently-derived state count against the card after the fact."
+  }
 }

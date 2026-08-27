@@ -15,13 +15,18 @@ Old pipeline: node name = verb + noun-category, computed PER ACTION.
                  so the graph is dense.
 
 New pipeline: the alphabet is FIXED FIRST, once per recipe, by an LLM that
-              reads the recipe steps + the pooled action vocabulary. Every
-              action in every session is then classified INTO that fixed
-              alphabet. Merging is guaranteed by construction.
+              reads the pooled action vocabulary + the observed activity windows
+              (NEVER the recipe steps — feeding those in reproduced the recipe
+              card, the circularity this pipeline avoids). Every action in every
+              session is then classified INTO that fixed alphabet. Merging is
+              guaranteed by construction.
 
 Three stages
 ------------
-  A. propose_alphabet()   1 LLM call per recipe  -> 6-12 functional states
+  A. propose_alphabet()   1 LLM call per recipe  -> the functional states the
+                          model infers from the data. The COUNT is the model's
+                          call (bounded only by a readability ceiling), not a
+                          fixed range and not the recipe's step count.
   B. map_pair_types()     ~5 LLM calls per recipe -> maps each DISTINCT
                           (verb_key, noun_key) TYPE to a state. Types, not
                           instances: cheap, cached, deterministic, auditable.
@@ -168,8 +173,13 @@ MIN_CALL_INTERVAL = 4.5          # seconds; stays under 15 RPM
 # Quality gates.
 #
 # These are DERIVED, not guessed. See derive_targets() for the reasoning:
-#   - state count comes from the annotator's own step count for this recipe
-#     (across all 69 HD-EPIC recipes: median 6 steps, 90th pct 11, 93% <= 12)
+#   - state count is DECOUPLED from the recipe card AND chosen by the LLM. It
+#     used to be anchored on the annotator's own step count, which fed the
+#     recipe's granularity back into the "discovered" states: the LLM
+#     reproduced the step list, and the count matched it almost exactly
+#     (Nespresso: 5 steps -> 4 states = the card). The count is now the model's
+#     own call from the OBSERVED action stream, bounded only by a floor and a
+#     readability ceiling (STATE_FLOOR..STATE_CEILING), overridable per run.
 #   - density ceiling comes from the evidence budget: with S sessions you
 #     observe ~S*(V+1) transitions, so for every edge to be seen twice you
 #     need E <= S*(V+1)/2, i.e. density <= S/2.
@@ -182,25 +192,38 @@ GATES = {
     "max_render_density": 3.0,       # above this a layout cannot be untangled
 }
 
+# The number of states is NOT fixed here. The LLM decides it from the observed
+# action stream (that is the whole point of pattern discovery). Two guards
+# remain, and both are about READABILITY for the non-expert target user named
+# in the project brief — not about matching the recipe:
+#
+#   STATE_FLOOR    below this the graph is trivially uninformative.
+#   STATE_CEILING  above this a node-link graph is an unreadable tangle for a
+#                  general-public reader. This is a SAFETY CAP, not a target:
+#                  the model is told to fold connective actions together rather
+#                  than aim for it. Raise it with --max-states for a recipe that
+#                  genuinely has more distinct recurring goals (e.g. §5 measured
+#                  ~22 recurring episodes for drip coffee).
+STATE_FLOOR = 3
+STATE_CEILING = GATES["hard_max_states"]   # 15 by default; override per run
 
-def derive_targets(n_steps, n_sessions):
-    """Per-recipe targets instead of one hardcoded range.
 
-    n_steps    : how many steps the annotator wrote for this recipe
-    n_sessions : how many recordings exist
+def derive_targets(n_sessions, min_states=None, max_states=None):
+    """Readability guards only — NOT a target band.
 
-    The state alphabet should sit near the human-authored granularity: a bit
-    below it (some steps merge) to a bit above it (side activity, cleanup and
-    waiting need their own states, and the annotator did not write those down).
+    The state COUNT is chosen by the LLM from the observed actions. This returns
+    a floor and a safety ceiling so downstream gates have bounds, but the model
+    is not steered toward any particular number.
     """
-    lo = max(3, n_steps - 1)
-    hi = min(n_steps + 4, GATES["hard_max_states"])
+    lo = STATE_FLOOR if min_states is None else max(2, int(min_states))
+    hi = STATE_CEILING if max_states is None else int(max_states)
     hi = max(hi, lo + 2)
     # Evidence budget. With 1 session this is 0.5 and NO graph can pass;
     # that is a true statement about the data, not a bug.
     max_density = n_sessions / 2.0
     return {"min_states": lo, "max_states": hi,
-            "max_density": round(max_density, 2), "n_sessions": n_sessions}
+            "max_density": round(max_density, 2), "n_sessions": n_sessions,
+            "count_is_llm_decided": True}
 
 
 # ============================================================================
@@ -578,15 +601,17 @@ SYSTEM = (
 # ============================================================================
 
 ALPHABET_PROMPT = """Recipe: {name}
-Recipe steps written by the annotator:
-{steps}
 
 Number of recorded sessions of this recipe: {n_sessions}
-Number of steps the annotator wrote: {n_steps}
 
-The annotator also cut each video into contiguous activity windows and gave
-each a free-text description. These are the real boundaries in the data, so
-your states should line up with them:
+You are NOT given the recipe's written steps or step count. Derive the states
+from the observed action stream below, not from a recipe card. Group actions
+that serve the same goal; do not try to reconstruct an imagined instruction
+list.
+
+The annotator cut each video into contiguous activity windows and gave each a
+free-text description. These are OBSERVED boundaries in the video (what the
+person was doing during each span), so your states should line up with them:
 {contexts}
 
 Below is the pooled vocabulary of annotated hand actions across all sessions,
@@ -603,10 +628,15 @@ state is a goal a person is pursuing, not a hand movement. "open cupboard",
 "take cup", "put cup down" are all one state if they serve the same goal.
 
 HARD CONSTRAINTS
-1. Between {min_states} and {max_states} states. Fewer is better.
-   This range is anchored on the {n_steps} steps the annotator wrote: a few
-   steps may merge, and you may need a few extra states for activity the
-   annotator did not write down (cleanup, waiting, side tasks).
+1. YOU decide how many states — there is no target count. Work it out from the
+   observed actions: how many distinct goals recur across the sessions? Use
+   exactly that many. Do NOT lump two different recurring goals into one state
+   (that hides real structure), and do NOT split one goal across several states
+   (that creates a hairball). Give your reasoning in "n_states_rationale".
+   Upper limit: no more than {max_states} states, because above that a
+   non-expert cannot read the graph. If you feel you need more, you are almost
+   certainly giving fetching / opening / carrying their own states — fold those
+   into the goal they serve instead (see 3b), don't exceed the limit.
 2. The alphabet is the SAME for every session. Do not create a state that only
    one session could reach.
 3. Each state name is an imperative verb + concrete object, 2-4 words, lowercase.
@@ -626,12 +656,17 @@ HARD CONSTRAINTS
    part of "grind coffee beans", not a separate preparation state. Washing the
    grinder right after grinding is part of grinding; washing up at the very
    end is its own state only if the recipe genuinely ends that way.
-4. Every state must be something a robot arm could be commanded to do, and
-   something a human reading it alone would understand.
-5. Prefer FEWER states that are each entered once or twice per session, over
-   more states that are each entered many times. If you expect a state to be
-   visited more than about three times in one session, it is connective tissue
-   and should be folded into the states around it.
+4. Each state must be a goal a general-public annotator can recognise on sight
+   and rate on its own: a person watching the video would name it this way.
+   This is what the states are FOR — an annotator watches an action and decides
+   whether a robot should step in. Do NOT shape states around what is easy for
+   a robot to execute; shape them around the goal a person is pursuing.
+5. A good state is entered once or twice per session, not constantly. This is
+   about each state's visit frequency, NOT about minimizing the total count: if
+   a candidate state would be visited more than about three times in one
+   session, it is connective tissue (fetching, carrying, tidying) — fold it into
+   the states around it. States that each fire once or twice are fine even if
+   that yields many of them.
 6. Your alphabet must cover EVERY activity window listed above. If a window
    describes something none of your states would capture, add a state for it
    or widen a definition. Do not leave a gap.
@@ -641,6 +676,7 @@ HARD CONSTRAINTS
 
 Reply with exactly this JSON:
 {{
+  "n_states_rationale": "one or two sentences: how many distinct recurring goals the actions support, and why that many",
   "states": [
     {{"id": "s1",
       "name": "load coffee capsule",
@@ -671,7 +707,11 @@ Diagnosis you should act on:
   many actions had no state, widen a definition or add ONE specific state that
   covers them - but only if that state would be entered once or twice per
   session, not constantly.
-- These two pull against each other. Prefer fewer, larger states.
+- These two pull against each other: fixing fragmentation removes a state,
+  fixing coverage might add one. Resolve it by FOLDING connective tissue into
+  the goal it serves and by WIDENING an existing state's definition before you
+  add a new one — NOT by minimising the state count. The number of states is
+  yours to decide from the data; there is no preference for fewer.
 
 Examples of actions that had no state:
 {gaps}
@@ -710,15 +750,16 @@ def propose_alphabet(recipe, recipe_id, sessions_actions, cache_path, targets,
                               if a.get("in_recipe", True) and a.get("context"))
     ctx_txt = "\n".join(f"  [{c}x] {lab}" for lab, c in ctx.most_common(40)) \
         or "  (none available)"
-    steps = "\n".join(f"  {i+1}. {t}" for i, t in enumerate(recipe["steps"].values()))
+    # NOTE: recipe["steps"] is intentionally NOT sent to the LLM. Feeding the
+    # step list or step count is the circularity the pattern-discovery
+    # contribution has to avoid; the alphabet must come from the observed
+    # actions + observed activity windows only. The step list is used AFTER
+    # generation for the leak check below, never before.
 
     prompt = ALPHABET_PROMPT.format(
             name=recipe.get("name", recipe_id),
-            steps=steps,
             n_sessions=len(sessions_actions),
-            n_steps=len(recipe["steps"]),
             contexts=ctx_txt,
-            min_states=targets["min_states"],
             max_states=targets["max_states"],
             pairs="\n".join(lines),
         )
@@ -728,9 +769,37 @@ def propose_alphabet(recipe, recipe_id, sessions_actions, cache_path, targets,
 
     data["states"] = as_list(data, "states")
     got = len(data["states"])
-    if not (targets["min_states"] <= got <= targets["max_states"]):
-        print(f"  warning: LLM returned {got} states, asked for "
-              f"{targets['min_states']}-{targets['max_states']}", file=sys.stderr)
+    if got > targets["max_states"]:
+        print(f"  warning: LLM returned {got} states, over the readability "
+              f"ceiling of {targets['max_states']} (raise with --max-states if "
+              f"this recipe genuinely needs more)", file=sys.stderr)
+    elif got < 2:
+        print(f"  warning: LLM returned only {got} state(s) — too few to be a "
+              f"graph", file=sys.stderr)
+
+    # ── Leak check (§6) ──────────────────────────────────────────────────────
+    # The recipe card was never shown to the LLM. If the state count still
+    # equals the recipe's step count, that is a signal the alphabet may be
+    # tracking the card anyway (e.g. via the activity-window labels), which is
+    # worth inspecting. It is a WARNING, not a failure: an honest alphabet can
+    # coincidentally match the step count.
+    n_steps = len(recipe.get("steps", {}) or {})
+    data["_leak_check"] = {
+        "recipe_step_count": n_steps,
+        "state_count": got,
+        "equal": (n_steps > 0 and got == n_steps),
+        "note": ("recipe steps were NOT provided to the LLM; this compares the "
+                 "independently-derived state count against the card after the "
+                 "fact."),
+    }
+    if n_steps > 0 and got == n_steps:
+        print(f"  ⚠ leak check: {got} states == {n_steps} recipe steps. The "
+              f"card was not fed in, but verify the states are not just the "
+              f"step list (inspect {os.path.basename(cache_path)}).",
+              file=sys.stderr)
+    else:
+        print(f"  ✓ leak check: {got} states vs {n_steps} recipe steps "
+              f"(independent).", file=sys.stderr)
     json.dump(data, open(cache_path, "w"), indent=2)
     return data
 
@@ -980,13 +1049,13 @@ bursts of a few seconds. They must be merged into a single state.
 Give the merged state one name, 2-4 words, imperative verb + concrete object,
 lowercase, and one sentence of definition covering both.
 
-CRITICAL - the merged name must still be a SINGLE command a robot arm could
-execute. "grind and load coffee" is acceptable: it is one continuous transfer
-with one goal. "prepare hot water and coffee" is NOT acceptable: it is two
-different goals glued together with "and", and a robot cannot execute it.
+CRITICAL - the merged name must still be ONE recognisable goal a person
+pursues, nameable WITHOUT "and". "grind and load coffee" is acceptable: it is
+one continuous transfer with a single goal. "prepare hot water and coffee" is
+NOT acceptable: it is two different goals glued together with "and".
 
-If the two states have genuinely different goals and no single executable name
-covers them, REFUSE the merge by replying {{"refuse": true, "why": "..."}}.
+If the two states have genuinely different goals and no single goal-name covers
+them, REFUSE the merge by replying {{"refuse": true, "why": "..."}}.
 Refusing is the right answer whenever the merged name would need "and" to join
 two unrelated outcomes.
 
@@ -1009,7 +1078,7 @@ def find_oscillating_pair(graph, sessions_segs, min_flips=8, max_burst_secs=15.0
       - TWO ACTIVITIES, running in parallel. The kettle boils while you grind
         beans, so you switch back and forth over minutes. Measured here: 3
         flips, median 54.0s per pair. DO NOT MERGE - these are separate goals
-        and a robot needs them as separate commands.
+        the annotator will watch and rate separately.
 
     The timescale separates them cleanly, so we require both a high flip count
     and a short median burst.
@@ -1048,7 +1117,7 @@ def merge_states(alphabet, mapping, a_name, b_name, n_flips):
     except SystemExit:
         return None
     if got.get("refuse") or not got.get("name"):
-        print(f"    merge refused: {got.get('why', 'no single command covers both')}",
+        print(f"    merge refused: {got.get('why', 'no single goal covers both')}",
               file=sys.stderr)
         return None
     name, defin = got["name"], got["definition"]
@@ -1157,8 +1226,8 @@ def build_graph(sessions_segs, alphabet, level="functional"):
 # the reader gets either the goal ("grind coffee beans") or 134 hand
 # movements, with nothing in between.
 #
-# This stage cuts each state into OPERATIONS - the unit a robot executes,
-# e.g. "load beans" = take(bag) -> scoop(coffee) -> pour(grinder). Nothing is
+# This stage cuts each state into OPERATIONS - a finer, recognisable sub-step
+# for drill-down, e.g. "load beans" = take(bag) -> scoop(coffee) -> pour(grinder). Nothing is
 # deleted: every raw action lands inside exactly one operation, so the
 # drill-down chain is  state -> operation -> raw action -> video.
 #
@@ -1180,15 +1249,17 @@ def build_graph(sessions_segs, alphabet, level="functional"):
 # ============================================================================
 
 OP_SYSTEM = (
-    "You decompose cooking activities into the operations a robot would "
-    "execute. You reply with JSON only: no prose, no markdown, no code fences."
+    "You break cooking activities into smaller, recognisable sub-steps "
+    "(operations) that a person watching the video would name. You reply with "
+    "JSON only: no prose, no markdown, no code fences."
 )
 
 OP_ALPHABET_PROMPT = """Recipe: {name}
 
 A pipeline has already grouped this recipe's annotated hand actions into
 functional states (the high-level goals). Your job is the level BELOW that:
-inside each state, name the OPERATIONS a robot would carry out.
+inside each state, name the OPERATIONS it breaks into — the smaller,
+recognisable sub-steps a person would name while watching the video.
 
 An operation is a short, self-contained piece of physical work with its own
 purpose - "load beans", "position the grinder", "remove the grounds". It is
@@ -1607,6 +1678,14 @@ def main():
     ap.add_argument("--granularity", default="action", choices=["action", "window"],
                     help="'window' forces one state per annotated activity "
                          "window (coarser, guaranteed contiguous)")
+    ap.add_argument("--min-states", type=int, default=None,
+                    help="floor guard against a degenerate graph "
+                         f"(default {STATE_FLOOR}); the LLM chooses the actual "
+                         f"count from the data")
+    ap.add_argument("--max-states", type=int, default=None,
+                    help="readability ceiling for the non-expert reader "
+                         f"(default {STATE_CEILING}); raise it for a recipe with "
+                         f"more distinct recurring goals")
     ap.add_argument("--rebuild", action="store_true", help="ignore LLM caches")
     ap.add_argument("--min-run", type=int, default=3,
                     help="a state visit shorter than this many actions is "
@@ -1689,10 +1768,15 @@ def main():
         raise SystemExit("No actions fell inside the recipe windows. Check that "
                          "the timestamps file matches this recipe, or --no-scope.")
 
-    targets = derive_targets(len(recipe["steps"]), len(sessions_actions))
-    print(f"  annotator steps={len(recipe['steps'])}  ->  target "
-          f"{targets['min_states']}-{targets['max_states']} states, "
-          f"density <= {targets['max_density']}", file=sys.stderr)
+    targets = derive_targets(len(sessions_actions),
+                             min_states=args.min_states,
+                             max_states=args.max_states)
+    # The recipe's own step count is printed for the leak check only — it is
+    # NOT fed to the LLM and does not set the target band.
+    print(f"  target {targets['min_states']}-{targets['max_states']} states "
+          f"(recipe-independent), density <= {targets['max_density']}  "
+          f"[recipe card has {len(recipe['steps'])} steps, not shown to LLM]",
+          file=sys.stderr)
 
     def build_feedback(mm, gr, mapping_):
         visits = "\n".join(f"  {v:>5} x per session   {i}"
@@ -1700,18 +1784,26 @@ def main():
         probs = []
         if mm["fragmented_states"]:
             probs.append(f"- Too fragmented: {', '.join(mm['fragmented_states'])}")
-        if mm["density_edges_per_node"] > mm["targets"]["max_density"]:
+        # Density is only a PROBLEM when it exceeds the render cap — a graph too
+        # dense to lay out. It is NOT judged against the S/2 evidence budget:
+        # that budget measures whether the DATA has enough sessions for arrows
+        # to repeat, which the abstraction cannot fix and must not shrink to
+        # chase. Low cross-session agreement is a property of the data, reported
+        # as advisory, never fed back as something to "fix".
+        if mm["density_edges_per_node"] > GATES["max_render_density"]:
             probs.append(
                 f"- {mm['n_edges']} arrows for {mm['n_states']} states "
-                f"({mm['density_edges_per_node']} per state). The graph is a "
-                f"hairball; the target is {mm['targets']['max_density']}.")
+                f"({mm['density_edges_per_node']} per state). The graph is too "
+                f"dense to lay out; the render limit is {GATES['max_render_density']}. "
+                f"Merge connective states, do not drop states that recur.")
         if mm["coverage"] < GATES["min_coverage"]:
             probs.append(f"- Only {mm['coverage']:.0%} of actions matched a "
                          f"state; the rest had to be absorbed into neighbours.")
-        if mm["cross_session_jaccard"] is not None and \
-                mm["cross_session_jaccard"] < GATES["min_jaccard"]:
-            probs.append(f"- Sessions disagreed on which states occur "
-                         f"(overlap {mm['cross_session_jaccard']}).")
+        # NOTE: the cross_session_jaccard / "sessions disagreed" problem was
+        # removed on purpose. Telling the LLM to raise agreement can only be
+        # obeyed by deleting session-specific states, i.e. by shrinking toward
+        # the recipe card — the exact circularity this pipeline avoids. Session
+        # disagreement is a finding (§5: order barely recurs), not a defect.
         pairs = collections.Counter()
         for e in gr["edges"]:
             if e["source"] not in ("START", "END") and e["target"] not in ("START", "END"):
@@ -1771,12 +1863,18 @@ def main():
             print(f"    merged -> '{merged}'", file=sys.stderr)
             sessions_segs, graph, m = rebuild()
 
-        # Rank by how many gates pass. Ranking on density alone picks an
-        # alphabet that wins one number while losing others - that is how the
-        # previous run chose a graph with density 2.2 but jaccard 0.4.
+        # Rank on the BLOCKING gates only — the ones that measure abstraction
+        # quality (fragmentation, coverage, readable count, layout density).
+        # The advisory gates (jaccard, repeat-edge share) are deliberately kept
+        # OUT of the score: they measure cross-session agreement, which is a
+        # property of the data, and ranking on them selects the smallest
+        # alphabet (the one that forces sessions to agree) — the shrink-to-the-
+        # card pressure we are removing. Tie-break on coverage (more actions
+        # explained) and fewer fragmented states, never on density or count.
         n_block = sum(1 for v in m["blocking_gates"].values() if v)
-        n_pass = sum(1 for v in m["gates"].values() if v)
-        score = (n_block, n_pass, -m["density_edges_per_node"], m["coverage"])
+        n_pass = sum(1 for v in m["gates"].values() if v)   # logged only
+        score = (1 if m["render_ready"] else 0, n_block,
+                 m["coverage"], -len(m["fragmented_states"]))
         failed = [k for k, v in m["gates"].items() if not v]
         print(f"  -> {m['n_states']} states, {m['n_edges']} edges, density "
               f"{m['density_edges_per_node']}, jaccard "
@@ -1787,7 +1885,10 @@ def main():
               file=sys.stderr)
         if best is None or score > best[0]:
             best = (score, alphabet, mapping, graph, m)
-        if m["passed"] or attempt == args.refine + 1:
+        # Stop as soon as the abstraction is RENDER-READY (all blocking gates
+        # pass). We no longer keep refining just to raise agreement metrics that
+        # the abstraction cannot move without deleting states that recur.
+        if m["render_ready"] or attempt == args.refine + 1:
             break
         feedback = build_feedback(m, graph, mapping)
 

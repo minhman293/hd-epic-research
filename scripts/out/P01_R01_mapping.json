@@ -1,6 +1,6 @@
 {
   "Finish preparing coffee\tclose\tbin": {
-    "state": "s5",
+    "state": "s6",
     "context": "Finish preparing coffee",
     "verb": "close",
     "noun": "bin",
@@ -11,10 +11,10 @@
     "context": "Finish preparing coffee",
     "verb": "lift",
     "noun": "lid",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Finish preparing coffee\tlift\tmilk": {
-    "state": "s4",
+    "state": "s5",
     "context": "Finish preparing coffee",
     "verb": "lift",
     "noun": "milk",
@@ -35,7 +35,7 @@
     "confidence": "high"
   },
   "Finish preparing coffee\topen\tlid": {
-    "state": "s5",
+    "state": "s6",
     "context": "Finish preparing coffee",
     "verb": "open",
     "noun": "lid",
@@ -53,10 +53,10 @@
     "context": "Finish preparing coffee",
     "verb": "shake",
     "noun": "spoon",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Finish preparing coffee\ttake\tmilk": {
-    "state": "s3",
+    "state": "s4",
     "context": "Finish preparing coffee",
     "verb": "take",
     "noun": "milk",
@@ -70,7 +70,7 @@
     "confidence": "high"
   },
   "Finish preparing coffee\tthrow\tspoon": {
-    "state": "s5",
+    "state": "s6",
     "context": "Finish preparing coffee",
     "verb": "throw",
     "noun": "spoon",
@@ -84,7 +84,7 @@
     "confidence": "medium"
   },
   "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring\tclose\tbin": {
-    "state": "s5",
+    "state": "s6",
     "context": "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring",
     "verb": "close",
     "noun": "bin",
@@ -95,24 +95,24 @@
     "context": "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring",
     "verb": "close",
     "noun": "box",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring\tclose\ttap": {
-    "state": "s5",
+    "state": "s6",
     "context": "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring",
     "verb": "close",
     "noun": "tap",
     "confidence": "high"
   },
   "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring\tdry\thand": {
-    "state": "s5",
+    "state": "s6",
     "context": "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring",
     "verb": "dry",
     "noun": "hand",
     "confidence": "high"
   },
   "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring\thold\tcup": {
-    "state": "s4",
+    "state": "s5",
     "context": "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring",
     "verb": "hold",
     "noun": "cup",
@@ -126,7 +126,7 @@
     "confidence": "high"
   },
   "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring\tlift\tmilk": {
-    "state": "s4",
+    "state": "s5",
     "context": "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring",
     "verb": "lift",
     "noun": "milk",
@@ -140,21 +140,21 @@
     "confidence": "high"
   },
   "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring\tmove\tcup": {
-    "state": "s4",
+    "state": "s5",
     "context": "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring",
     "verb": "move",
     "noun": "cup",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring\topen\tlid": {
-    "state": "s5",
+    "state": "s6",
     "context": "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring",
     "verb": "open",
     "noun": "lid",
     "confidence": "high"
   },
   "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring\topen\ttap": {
-    "state": "s5",
+    "state": "s6",
     "context": "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring",
     "verb": "open",
     "noun": "tap",
@@ -168,21 +168,21 @@
     "confidence": "high"
   },
   "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring\tpour\tmilk": {
-    "state": "s4",
+    "state": "s5",
     "context": "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring",
     "verb": "pour",
     "noun": "milk",
     "confidence": "high"
   },
   "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring\tput\tcup": {
-    "state": "s4",
+    "state": "s5",
     "context": "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring",
     "verb": "put",
     "noun": "cup",
     "confidence": "high"
   },
   "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring\tput\tmilk": {
-    "state": "s5",
+    "state": "s6",
     "context": "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring",
     "verb": "put",
     "noun": "milk",
@@ -203,7 +203,7 @@
     "confidence": "high"
   },
   "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring\ttake\tcup": {
-    "state": "s4",
+    "state": "s5",
     "context": "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring",
     "verb": "take",
     "noun": "cup",
@@ -217,21 +217,21 @@
     "confidence": "high"
   },
   "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring\tthrow\tspoon": {
-    "state": "s5",
+    "state": "s6",
     "context": "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring",
     "verb": "throw",
     "noun": "spoon",
     "confidence": "high"
   },
   "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring\tturn\tmilk": {
-    "state": "s5",
+    "state": "s6",
     "context": "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring",
     "verb": "turn",
     "noun": "milk",
     "confidence": "high"
   },
   "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring\twash\tmilk": {
-    "state": "s5",
+    "state": "s6",
     "context": "Finish preparing coffee [R01] by adding the frothed milk to the coffee and stirring",
     "verb": "wash",
     "noun": "milk",
@@ -242,38 +242,38 @@
     "context": "Prepare Coffee",
     "verb": "close",
     "noun": "cupboard",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare Coffee\tclose\tfridge": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare Coffee",
     "verb": "close",
     "noun": "fridge",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare Coffee\tflip\tmaker:coffee": {
-    "state": "s1",
+    "state": "s3",
     "context": "Prepare Coffee",
     "verb": "flip",
     "noun": "maker:coffee",
     "confidence": "high"
   },
   "Prepare Coffee\tlift\tbottle": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare Coffee",
     "verb": "lift",
     "noun": "bottle",
     "confidence": "high"
   },
   "Prepare Coffee\tlift\thandle": {
-    "state": "s1",
+    "state": "s2",
     "context": "Prepare Coffee",
     "verb": "lift",
     "noun": "handle",
     "confidence": "high"
   },
   "Prepare Coffee\topen\tbottle": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare Coffee",
     "verb": "open",
     "noun": "bottle",
@@ -284,133 +284,133 @@
     "context": "Prepare Coffee",
     "verb": "open",
     "noun": "cupboard",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare Coffee\topen\tfridge": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare Coffee",
     "verb": "open",
     "noun": "fridge",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare Coffee\tpress\tbutton": {
-    "state": "s2",
+    "state": "s3",
     "context": "Prepare Coffee",
     "verb": "press",
     "noun": "button",
     "confidence": "high"
   },
   "Prepare Coffee\tpull\thandle": {
-    "state": "s1",
+    "state": "s2",
     "context": "Prepare Coffee",
     "verb": "pull",
     "noun": "handle",
     "confidence": "high"
   },
   "Prepare Coffee\tput\tbottle": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare Coffee",
     "verb": "put",
     "noun": "bottle",
     "confidence": "high"
   },
   "Prepare Coffee\tput\tcup": {
-    "state": "s1",
+    "state": "s3",
     "context": "Prepare Coffee",
     "verb": "put",
     "noun": "cup",
     "confidence": "high"
   },
   "Prepare Coffee\tslide\tcoffee": {
-    "state": "s1",
+    "state": "s2",
     "context": "Prepare Coffee",
     "verb": "slide",
     "noun": "coffee",
     "confidence": "high"
   },
   "Prepare Coffee\tslide\tmilk": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare Coffee",
     "verb": "slide",
     "noun": "milk",
     "confidence": "high"
   },
   "Prepare Coffee\tstretch\thand": {
-    "state": "s1",
+    "state": "s3",
     "context": "Prepare Coffee",
     "verb": "stretch",
     "noun": "hand",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare Coffee\ttake\tbottle": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare Coffee",
     "verb": "take",
     "noun": "bottle",
     "confidence": "high"
   },
   "Prepare Coffee\ttake\tcoffee": {
-    "state": "s1",
+    "state": "s2",
     "context": "Prepare Coffee",
     "verb": "take",
     "noun": "coffee",
     "confidence": "high"
   },
   "Prepare Coffee\ttake\tcup": {
-    "state": "s1",
+    "state": "s3",
     "context": "Prepare Coffee",
     "verb": "take",
     "noun": "cup",
     "confidence": "high"
   },
   "Prepare Coffee\tturn\tcup": {
-    "state": "s1",
+    "state": "s3",
     "context": "Prepare Coffee",
     "verb": "turn",
     "noun": "cup",
     "confidence": "medium"
   },
   "Prepare Coffee\tturn-on\tmilk": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare Coffee",
     "verb": "turn-on",
     "noun": "milk",
     "confidence": "high"
   },
   "Prepare coffee\tattach\tmilk": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare coffee",
     "verb": "attach",
     "noun": "milk",
     "confidence": "high"
   },
   "Prepare coffee\tclose\tbin": {
-    "state": "s1",
+    "state": "s6",
     "context": "Prepare coffee",
     "verb": "close",
     "noun": "bin",
     "confidence": "high"
   },
   "Prepare coffee\tclose\tbottle": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare coffee",
     "verb": "close",
     "noun": "bottle",
     "confidence": "high"
   },
   "Prepare coffee\tclose\tbox": {
-    "state": "s1",
+    "state": "s5",
     "context": "Prepare coffee",
     "verb": "close",
     "noun": "box",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tclose\tfridge": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare coffee",
     "verb": "close",
     "noun": "fridge",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tclose\tlid": {
     "state": "s1",
@@ -420,14 +420,14 @@
     "confidence": "high"
   },
   "Prepare coffee\tclose\tmachine:washing": {
-    "state": "s1",
+    "state": "s2",
     "context": "Prepare coffee",
     "verb": "close",
     "noun": "machine:washing",
     "confidence": "high"
   },
   "Prepare coffee\tclose\ttap": {
-    "state": "s5",
+    "state": "s1",
     "context": "Prepare coffee",
     "verb": "close",
     "noun": "tap",
@@ -438,7 +438,7 @@
     "context": "Prepare coffee",
     "verb": "feel",
     "noun": "cupboard",
-    "confidence": "low"
+    "confidence": "high"
   },
   "Prepare coffee\thold\twater": {
     "state": "s1",
@@ -452,7 +452,7 @@
     "context": "Prepare coffee",
     "verb": "lift",
     "noun": "colander",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tlift\tlid": {
     "state": "s1",
@@ -462,28 +462,28 @@
     "confidence": "high"
   },
   "Prepare coffee\tlift\tmaker:coffee": {
-    "state": "unmapped",
+    "state": "s3",
     "context": "Prepare coffee",
     "verb": "lift",
     "noun": "maker:coffee",
-    "confidence": "low"
+    "confidence": "medium"
   },
   "Prepare coffee\tlift\tpot": {
-    "state": "unmapped",
+    "state": "s6",
     "context": "Prepare coffee",
     "verb": "lift",
     "noun": "pot",
-    "confidence": "low"
+    "confidence": "medium"
   },
   "Prepare coffee\tlift\tshelf": {
-    "state": "unmapped",
+    "state": "s3",
     "context": "Prepare coffee",
     "verb": "lift",
     "noun": "shelf",
     "confidence": "low"
   },
   "Prepare coffee\tlock\tcoffee": {
-    "state": "s1",
+    "state": "s2",
     "context": "Prepare coffee",
     "verb": "lock",
     "noun": "coffee",
@@ -494,14 +494,14 @@
     "context": "Prepare coffee",
     "verb": "look",
     "noun": "alarm",
-    "confidence": "low"
+    "confidence": "high"
   },
   "Prepare coffee\tlook\tcan": {
     "state": "unmapped",
     "context": "Prepare coffee",
     "verb": "look",
     "noun": "can",
-    "confidence": "low"
+    "confidence": "high"
   },
   "Prepare coffee\tmix\tcoffee": {
     "state": "s5",
@@ -511,28 +511,28 @@
     "confidence": "high"
   },
   "Prepare coffee\tmove\tmilk": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare coffee",
     "verb": "move",
     "noun": "milk",
     "confidence": "high"
   },
   "Prepare coffee\topen\tbin": {
-    "state": "unmapped",
+    "state": "s6",
     "context": "Prepare coffee",
     "verb": "open",
     "noun": "bin",
-    "confidence": "low"
+    "confidence": "high"
   },
   "Prepare coffee\topen\tbottle": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare coffee",
     "verb": "open",
     "noun": "bottle",
     "confidence": "high"
   },
   "Prepare coffee\topen\tbox": {
-    "state": "s1",
+    "state": "s2",
     "context": "Prepare coffee",
     "verb": "open",
     "noun": "box",
@@ -543,31 +543,31 @@
     "context": "Prepare coffee",
     "verb": "open",
     "noun": "cupboard",
-    "confidence": "low"
+    "confidence": "medium"
   },
   "Prepare coffee\topen\tdrawer": {
-    "state": "s1",
+    "state": "s2",
     "context": "Prepare coffee",
     "verb": "open",
     "noun": "drawer",
     "confidence": "high"
   },
   "Prepare coffee\topen\tfridge": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare coffee",
     "verb": "open",
     "noun": "fridge",
     "confidence": "medium"
   },
   "Prepare coffee\topen\ttap": {
-    "state": "s5",
+    "state": "s6",
     "context": "Prepare coffee",
     "verb": "open",
     "noun": "tap",
-    "confidence": "medium"
+    "confidence": "low"
   },
   "Prepare coffee\tpour\tmilk": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare coffee",
     "verb": "pour",
     "noun": "milk",
@@ -581,35 +581,35 @@
     "confidence": "high"
   },
   "Prepare coffee\tpress\tbutton": {
-    "state": "s2",
+    "state": "s3",
     "context": "Prepare coffee",
     "verb": "press",
     "noun": "button",
     "confidence": "high"
   },
   "Prepare coffee\tput\tbottle": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare coffee",
     "verb": "put",
     "noun": "bottle",
     "confidence": "medium"
   },
   "Prepare coffee\tput\tbox": {
-    "state": "s1",
+    "state": "s2",
     "context": "Prepare coffee",
     "verb": "put",
     "noun": "box",
     "confidence": "medium"
   },
   "Prepare coffee\tput\tcoffee": {
-    "state": "s1",
+    "state": "s2",
     "context": "Prepare coffee",
     "verb": "put",
     "noun": "coffee",
     "confidence": "high"
   },
   "Prepare coffee\tput\tcup": {
-    "state": "s1",
+    "state": "s3",
     "context": "Prepare coffee",
     "verb": "put",
     "noun": "cup",
@@ -620,49 +620,49 @@
     "context": "Prepare coffee",
     "verb": "put",
     "noun": "jug",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tput\tlid": {
     "state": "s1",
     "context": "Prepare coffee",
     "verb": "put",
     "noun": "lid",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tput\tmilk": {
-    "state": "s5",
+    "state": "s4",
     "context": "Prepare coffee",
     "verb": "put",
     "noun": "milk",
     "confidence": "medium"
   },
   "Prepare coffee\tput\tplate": {
-    "state": "unmapped",
+    "state": "s6",
     "context": "Prepare coffee",
     "verb": "put",
     "noun": "plate",
-    "confidence": "low"
+    "confidence": "medium"
   },
   "Prepare coffee\tput\tpot": {
-    "state": "unmapped",
+    "state": "s6",
     "context": "Prepare coffee",
     "verb": "put",
     "noun": "pot",
-    "confidence": "low"
+    "confidence": "medium"
   },
   "Prepare coffee\tput\tsponge": {
-    "state": "s5",
+    "state": "s6",
     "context": "Prepare coffee",
     "verb": "put",
     "noun": "sponge",
     "confidence": "medium"
   },
   "Prepare coffee\tput\ttop": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare coffee",
     "verb": "put",
     "noun": "top",
-    "confidence": "medium"
+    "confidence": "high"
   },
   "Prepare coffee\tput\twater": {
     "state": "s1",
@@ -672,21 +672,21 @@
     "confidence": "high"
   },
   "Prepare coffee\tremove\ttop": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare coffee",
     "verb": "remove",
     "noun": "top",
-    "confidence": "medium"
+    "confidence": "high"
   },
   "Prepare coffee\ttake\tbottle": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare coffee",
     "verb": "take",
     "noun": "bottle",
     "confidence": "high"
   },
   "Prepare coffee\ttake\tbox": {
-    "state": "s1",
+    "state": "s2",
     "context": "Prepare coffee",
     "verb": "take",
     "noun": "box",
@@ -697,17 +697,17 @@
     "context": "Prepare coffee",
     "verb": "take",
     "noun": "can",
-    "confidence": "low"
+    "confidence": "high"
   },
   "Prepare coffee\ttake\tcoffee": {
-    "state": "s1",
+    "state": "s2",
     "context": "Prepare coffee",
     "verb": "take",
     "noun": "coffee",
     "confidence": "high"
   },
   "Prepare coffee\ttake\tcup": {
-    "state": "s1",
+    "state": "s3",
     "context": "Prepare coffee",
     "verb": "take",
     "noun": "cup",
@@ -721,14 +721,14 @@
     "confidence": "high"
   },
   "Prepare coffee\ttake\tmilk": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare coffee",
     "verb": "take",
     "noun": "milk",
     "confidence": "high"
   },
   "Prepare coffee\ttake\tsponge": {
-    "state": "s5",
+    "state": "s6",
     "context": "Prepare coffee",
     "verb": "take",
     "noun": "sponge",
@@ -739,66 +739,66 @@
     "context": "Prepare coffee",
     "verb": "take",
     "noun": "spoon",
-    "confidence": "medium"
+    "confidence": "high"
   },
   "Prepare coffee\ttake\ttop": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare coffee",
     "verb": "take",
     "noun": "top",
     "confidence": "medium"
   },
   "Prepare coffee\tthrow\tcan": {
-    "state": "unmapped",
+    "state": "s6",
     "context": "Prepare coffee",
     "verb": "throw",
     "noun": "can",
-    "confidence": "low"
+    "confidence": "high"
   },
   "Prepare coffee\tthrow\tspoon": {
-    "state": "s5",
+    "state": "s6",
     "context": "Prepare coffee",
     "verb": "throw",
     "noun": "spoon",
-    "confidence": "high"
+    "confidence": "medium"
   },
   "Prepare coffee\tturn\tcan": {
     "state": "unmapped",
     "context": "Prepare coffee",
     "verb": "turn",
     "noun": "can",
-    "confidence": "low"
+    "confidence": "high"
   },
   "Prepare coffee\tturn\tcup": {
-    "state": "s1",
+    "state": "s3",
     "context": "Prepare coffee",
     "verb": "turn",
     "noun": "cup",
     "confidence": "medium"
   },
   "Prepare coffee\tturn-on\tmachine:washing": {
-    "state": "s2",
+    "state": "s3",
     "context": "Prepare coffee",
     "verb": "turn-on",
     "noun": "machine:washing",
     "confidence": "high"
   },
   "Prepare coffee\tturn-on\tmilk": {
-    "state": "s3",
+    "state": "s4",
     "context": "Prepare coffee",
     "verb": "turn-on",
     "noun": "milk",
     "confidence": "high"
   },
   "Prepare coffee\tturn-on\tplug": {
-    "state": "s2",
+    "state": "s3",
     "context": "Prepare coffee",
     "verb": "turn-on",
     "noun": "plug",
     "confidence": "medium"
   },
   "Prepare coffee\twash\tmilk": {
-    "state": "s5",
+    "state": "s6",
     "context": "Prepare coffee",
     "verb": "wash",
     "noun": "milk",
