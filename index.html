@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proactivity annotation tool — design draft</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;450;500;600&family=IBM+Plex+Mono:wght@400;450&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFBFA; --panel:#FFFFFF; --ink:#16181C; --mid:#5A6068; --soft:#8B9199;
+  --rule:#E3E3E0; --rule2:#F0F0EE; --accent:#1F5F4E; --accent-soft:#E8F0ED;
+  --shade:#F5F5F3;
+  --c-access:#1D8A6A; --c-block:#7E8A93; --c-clean:#4FB39A; --c-leave:#C9532C;
+  --c-manipulate:#BF3F70; --c-merge:#2F7BC4; --c-monitor:#A9690F; --c-retrieve:#6B62CC;
+  --c-sense:#D98A16; --c-split:#C93F3F; --c-transition:#7EA83F; --c-order:#9A6BB8;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px 96px}
+a{color:var(--accent)}
+h1,h2,h3{font-weight:500;margin:0}
+
+/* ---------- masthead ---------- */
+header{padding:44px 0 26px;border-bottom:1px solid var(--rule)}
+h1{font-size:26px;letter-spacing:-.015em}
+.sub{color:var(--mid);margin-top:6px;max-width:62ch}
+.meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:20px;font-size:12.5px;color:var(--soft)}
+.meta b{display:block;font-weight:450;color:var(--ink);font-size:15px;font-variant-numeric:tabular-nums}
+
+/* ---------- controls ---------- */
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:16px 0;border-bottom:1px solid var(--rule);position:sticky;top:0;background:var(--paper);z-index:20}
+.bar .lbl{font-size:12.5px;color:var(--soft)}
+select,button{font-family:inherit;font-size:13px;color:var(--ink);background:var(--panel);border:1px solid var(--rule);border-radius:5px;padding:6px 10px;cursor:pointer}
+select:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+button:hover{border-color:var(--soft)}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:5px;overflow:hidden;background:var(--panel)}
+.seg button{border:0;border-radius:0;padding:6px 12px}
+.seg button+button{border-left:1px solid var(--rule)}
+.seg button[aria-pressed=true]{background:var(--accent);color:#fff}
+.spacer{flex:1}
+
+/* ---------- sections ---------- */
+section{padding:34px 0;border-bottom:1px solid var(--rule)}
+.shead{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.snum{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);padding-top:2px}
+.shead h2{font-size:16.5px;letter-spacing:-.01em}
+.snote{color:var(--mid);font-size:13px;max-width:74ch;margin:0 0 18px 30px}
+.plot{margin-left:30px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+text{font-family:"IBM Plex Sans",sans-serif}
+
+/* ---------- annotation ---------- */
+.rate{margin-left:30px;background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:18px 20px}
+.rate.empty{background:none;border-style:dashed;color:var(--mid)}
+.clip{display:flex;gap:18px}
+.thumb{width:172px;height:104px;border-radius:6px;background:var(--shade);border:1px solid var(--rule2);flex:none;display:flex;align-items:center;justify-content:center;color:var(--soft);font-size:11.5px;text-align:center;padding:10px}
+.cname{font-size:17px;font-weight:500;letter-spacing:-.01em}
+.cmeta{font-size:12.5px;color:var(--soft);margin-top:3px;font-variant-numeric:tabular-nums}
+.narr{margin-top:10px;font-size:13.5px;color:var(--mid);border-left:2px solid var(--rule);padding-left:11px}
+.ctx{margin-top:11px;font-size:13px;color:var(--mid)}
+.ctx b{font-weight:450;color:var(--ink)}
+.opts{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.opt{padding:9px 15px;border-radius:6px;font-size:13.5px}
+.opt[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.why{margin-top:12px;width:100%;font-family:inherit;font-size:13px;padding:9px 11px;border:1px solid var(--rule);border-radius:6px;resize:vertical;min-height:38px;color:var(--ink);background:var(--panel)}
+.why:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.nav{display:flex;gap:8px;align-items:center;margin-top:14px;font-size:12.5px;color:var(--soft)}
+.row{margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--soft);background:var(--shade);border-radius:5px;padding:10px 12px;white-space:pre-wrap;word-break:break-all;line-height:1.6}
+kbd{font-family:"IBM Plex Mono",monospace;font-size:11px;border:1px solid var(--rule);border-bottom-width:2px;border-radius:3px;padding:1px 5px;background:var(--panel);color:var(--mid)}
+
+/* ---------- legend / footer ---------- */
+.legend{display:flex;gap:16px 22px;flex-wrap:wrap;margin:14px 0 0 30px;font-size:12px;color:var(--mid)}
+.sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.foot{padding:30px 0 0;font-size:12.5px;color:var(--soft);max-width:74ch}
+.how{margin:22px 0 0;border:1px solid var(--rule);border-radius:8px;background:var(--panel);padding:0 18px}
+.how summary{cursor:pointer;padding:13px 0;font-size:13.5px;color:var(--ink);list-style:none}
+.how summary::-webkit-details-marker{display:none}
+.how summary::before{content:"+";color:var(--accent);font-family:"IBM Plex Mono",monospace;margin-right:9px}
+.how[open] summary::before{content:"\2212"}
+.how ol{margin:0 0 16px;padding-left:20px;font-size:13.5px;color:var(--mid);max-width:76ch}
+.how li{margin-bottom:7px}
+.how li b{font-weight:500;color:var(--ink)}
+@media (max-width:720px){.wrap{padding:0 16px 60px}.plot,.rate,.snote,.legend{margin-left:0}.clip{flex-direction:column}.thumb{width:100%}}
+@media (prefers-reduced-motion:no-preference){.bk,.nd{transition:opacity .12s ease}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Robot-proactivity annotation, video-grounded</h1>
+  <p class="sub">A design draft. Real HD-EPIC actions, filtered to the recipe windows, aligned across sessions on recipe-step completion. Video clips are not wired up yet, so each instance shows its narration in place of the clip.</p>
+  <div class="meta" id="meta"></div>
+</header>
+
+  <details class="how">
+    <summary>How to use this, in six steps</summary>
+    <ol>
+      <li><b>Pick a recipe.</b> Two are loaded. The numbers above tell you how many actions there are and how many distinct kinds of action.</li>
+      <li><b>Glance at the top panel.</b> It shows the kinds of action that happen in more than one session, placed left to right by where they usually fall.</li>
+      <li><b>Look at the lanes.</b> One lane per session, every action shown. The vertical rules are recipe steps, and they line up across sessions even though the sessions took different amounts of time. Drag across the top strip to zoom in; double-click to zoom back out.</li>
+      <li><b>Click any block.</b> The panel at the bottom shows what the person was doing, what came just before and after, and how long their hands were free afterwards.</li>
+      <li><b>Rate it.</b> Passive, confirm, or assist. Press <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> and it moves to the next action on its own. Arrow keys move without rating. Rated blocks turn green.</li>
+      <li><b>Optional:</b> click a box in the top panel to see just that kind of action across all sessions, and check whether your answer holds when it happens at a different moment. Click it again to go back.</li>
+    </ol>
+  </details>
+
+<div class="bar">
+  <span class="lbl">Recipe</span>
+  <select id="recipe"></select>
+  <span class="lbl" style="margin-left:14px">Work through instances</span>
+  <div class="seg" role="group" aria-label="Traversal mode">
+    <button id="mChron" aria-pressed="true">In session order</button>
+    <button id="mNode" aria-pressed="false">By distinct action</button>
+  </div>
+  <span class="spacer"></span>
+  <span class="lbl" id="prog">0 rated</span>
+  <button id="export">Download labels</button>
+  <button id="reset">Clear</button>
+</div>
+
+<section>
+  <div class="shead"><span class="snum">1</span><h2>Which actions recur, and where they sit</h2></div>
+  <p class="snote">Every distinct action that appears in at least two sessions of this recipe. Rows group actions by what kind of action they are; horizontal position is where the action typically falls in the recipe. Arrows show what tends to follow what — thicker means more likely, darker means seen in more sessions. Select one to find its instances below.</p>
+  <div class="plot" id="graph"></div>
+  <div class="legend" id="legend"></div>
+</section>
+
+<section>
+  <div class="shead"><span class="snum">2</span><h2>Every instance, session by session</h2></div>
+  <p class="snote" id="slNote"></p>
+  <div class="plot" id="over"></div>
+  <div class="plot" id="detail" style="margin-top:6px"></div>
+</section>
+
+<section style="border-bottom:0">
+  <div class="shead"><span class="snum">3</span><h2>Would you want a robot to do this one?</h2></div>
+  <p class="snote">Passive means you would rather do it yourself. Confirm means the robot should offer and wait for your go-ahead. Assist means it should just get on with it.</p>
+  <div id="rate"></div>
+</section>
+
+<p class="foot">Actions come from HD-EPIC narrations, reduced to one verb and one noun each, then filtered to the windows where this recipe was actually being made. Rating scale from Pan et al., LEAP-HRI 2026.</p>
+
+</div>
+
+<script src="data.js"></script>
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const CATS=["retrieve","access","split","merge","manipulate","monitor","sense","distribute","order","transition","block","leave","clean"];
+const cc=c=>getComputedStyle(document.documentElement).getPropertyValue("--c-"+c).trim()||"#8B9199";
+const OPTS=["Passive","Proactive-confirm","Proactive-assist"];
+
+let key=Object.keys(DATA)[0], D=null, mode="chron", selNode=null, cur=null;
+let brush=[0,1], labels={};
+
+/* ---------- persistence ---------- */
+const LS="proactivity-labels-v1";
+try{labels=JSON.parse(localStorage.getItem(LS)||"{}")}catch(e){labels={}}
+function save(){try{localStorage.setItem(LS,JSON.stringify(labels))}catch(e){}}
+
+/* ---------- helpers ---------- */
+const iid=(r,i)=>key+"|"+D.sessions[r].id.replace(" ","")+"|"+i;
+function flat(){ // every instance in the current traversal order
+  const out=[];
+  D.sessions.forEach((s,r)=>s.a.forEach((a,i)=>{
+    if(selNode!==null && a[0]!==selNode) return;
+    out.push([r,i,a]);
+  }));
+  if(mode==="node") out.sort((p,q)=>p[2][0]-q[2][0] || p[2][4]-q[2][4]);
+  return out;
+}
+function nodeOf(a){return a[0]>=0?D.nodes[a[0]].k:null}
+function nameOf(a){return a?(a[0]>=0?D.nodes[a[0]].k:"("+a[1]+", one-off)"):"—"}
+
+/* ---------- layout constants ---------- */
+const VW=1000, LX=132, RX=982, PW=RX-LX;
+
+/* ================= 1. GRAPH ================= */
+function drawGraph(){
+  const N=D.nodes.map(n=>Object.assign({},n));
+  const rows=CATS.filter(c=>N.some(n=>n.c===c));
+  const RI={}; rows.forEach((c,i)=>RI[c]=i);
+  N.forEach(n=>{const p=n.k.split(" ");n.v=p[0];n.o=p.slice(1).join(" ");
+    n.w=Math.max(n.v.length*7.1,n.o.length*6.3)+22; n.px=LX+n.x*PW;});
+  /* pack each category into sub-lanes so x stays true to position */
+  const rowH=[]; let tot=0;
+  rows.forEach((c,ri)=>{
+    const g=N.filter(n=>n.c===c).sort((a,b)=>a.px-b.px), lanes=[];
+    const TOL=34; /* allow this much nudge before spilling to a new sub-lane */
+    g.forEach(n=>{
+      n.px=Math.max(LX+n.w/2,Math.min(RX-n.w/2,n.px));
+      let L=-1,shift=0;
+      for(let j=0;j<lanes.length;j++){
+        const need=lanes[j]+9-(n.px-n.w/2);
+        if(need<=0){L=j;shift=0;break}
+        if(need<=TOL && n.px+need+n.w/2<=RX){L=j;shift=need;break}
+      }
+      if(L<0){lanes.push(0);L=lanes.length-1;shift=0}
+      n.px+=shift; lanes[L]=n.px+n.w/2; n.lane=L;
+    });
+    rowH[ri]={top:tot,lanes:Math.max(1,lanes.length)}; tot+=Math.max(1,lanes.length)*40+14;
+  });
+  N.forEach(n=>{const ri=RI[n.c];n.y=52+rowH[ri].top+n.lane*40});
+  const RY=i=>52+rowH[i].top, H=52+tot+8;
+  let s=`<svg viewBox="0 0 ${VW} ${H}" role="img" aria-label="Recurring actions by kind and typical position">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M2 1.5L8 5L2 8.5" fill="none" stroke="context-stroke" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>`;
+  // milestone guides
+  const K=D.steps.length+1;
+  for(let i=1;i<K;i++){const x=LX+i/K*PW;
+    s+=`<line x1="${x.toFixed(1)}" y1="34" x2="${x.toFixed(1)}" y2="${H-10}" stroke="var(--rule)" stroke-width="1"/>`}
+  s+=`<text x="${LX}" y="24" font-size="11.5" fill="var(--soft)">start of recipe</text>`;
+  s+=`<text x="${RX}" y="24" text-anchor="end" font-size="11.5" fill="var(--soft)">end</text>`;
+  rows.forEach((c,i)=>{const y=RY(i),ln=rowH[i].lanes;
+    s+=`<line x1="${LX-10}" y1="${y-21}" x2="${RX}" y2="${y-21}" stroke="var(--rule2)" stroke-width="1"/>
+    <text x="${LX-18}" y="${y+4}" text-anchor="end" font-size="12.5" fill="${cc(c)}">${c}</text>`;
+    for(let j=0;j<ln;j++)s+=`<line x1="${LX-10}" y1="${y+j*40}" x2="${RX}" y2="${y+j*40}" stroke="var(--rule2)" stroke-width=".6" stroke-dasharray="2 4"/>`});
+  D.edges.forEach(([a,b,p,ns])=>{const na=N[a],nb=N[b],ya=na.y,yb=nb.y,back=nb.px<na.px;
+    const sx=na.px+(back?-na.w/2:na.w/2), ex=nb.px+(back?nb.w/2+7:-nb.w/2-7), my=(ya+yb)/2+(back?24:-12);
+    s+=`<path class="ed" data-a="${a}" data-b="${b}" d="M${sx.toFixed(1)} ${ya} C${((sx+ex)/2).toFixed(1)} ${my.toFixed(1)} ${((sx+ex)/2).toFixed(1)} ${my.toFixed(1)} ${ex.toFixed(1)} ${yb}" fill="none" stroke="${ns>=3?"#9AA1A8":"#C3C8CC"}" stroke-width="${(.7+p*3.2).toFixed(2)}" marker-end="url(#ah)"/>`});
+  N.forEach((n,i)=>{const y=n.y,col=cc(n.c);
+    s+=`<g class="nd" data-i="${i}" tabindex="0" role="button" aria-label="${n.k}, ${n.ct} instances">
+      <rect x="${(n.px-n.w/2).toFixed(1)}" y="${y-17}" width="${n.w.toFixed(1)}" height="34" rx="6" fill="${col}" fill-opacity=".12" stroke="${col}" stroke-width=".9"/>
+      <text x="${n.px.toFixed(1)}" y="${y-3}" text-anchor="middle" font-size="12" fill="var(--ink)">${n.v}</text>
+      <text x="${n.px.toFixed(1)}" y="${y+9.5}" text-anchor="middle" font-size="10.5" fill="var(--mid)">${n.o}</text>
+      <text x="${(n.px+n.w/2-4).toFixed(1)}" y="${y-20}" text-anchor="end" font-size="10" fill="var(--soft)">${n.ct}</text></g>`});
+  $("graph").innerHTML=s+"</svg>";
+  $("graph").querySelectorAll(".nd").forEach(g=>{
+    g.style.cursor="pointer";
+    const go=()=>pickNode(+g.dataset.i);
+    g.onclick=go; g.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}};
+  });
+  paintGraph();
+  $("legend").innerHTML=CATS.filter(c=>D.nodes.some(n=>n.c===c))
+    .map(c=>`<span><i class="sw" style="background:${cc(c)}"></i>${c}</span>`).join("")
+    +`<span style="color:var(--soft)">number at top right of a box = how many times it happens</span>`;
+}
+function paintGraph(){
+  $("graph").querySelectorAll(".nd").forEach(g=>{
+    const on=selNode===null||+g.dataset.i===selNode;
+    g.setAttribute("opacity",on?1:.22);
+    const r=g.querySelector("rect");
+    r.setAttribute("stroke-width",+g.dataset.i===selNode?2.2:.9);
+    r.setAttribute("fill-opacity",+g.dataset.i===selNode?.24:.12);
+  });
+  $("graph").querySelectorAll(".ed").forEach(e=>{
+    e.setAttribute("opacity",selNode===null?1:(+e.dataset.a===selNode||+e.dataset.b===selNode?1:.12));
+  });
+}
+function pickNode(i){
+  selNode=selNode===i?null:i;
+  mode=selNode===null?mode:"node";
+  setMode(mode,true);
+  const f=flat(); cur=f.length?[f[0][0],f[0][1]]:null;
+  if(selNode!==null){const xs=f.map(t=>t[2][4]);
+    brush=[Math.max(0,Math.min(...xs)-.04),Math.min(1,Math.max(...xs)+.04)];}
+  paintGraph(); drawLanes(); drawRate();
+}
+
+/* ================= 2. LANES ================= */
+function laneBlocks(sIdx,y,h,x0,x1,click){
+  const s=D.sessions[sIdx]; let out="";
+  s.a.forEach((a,i)=>{
+    const t=a[4]; if(t<x0-.002||t>x1+.002) return;
+    const w=Math.max(2.2,(x1-x0<.35?7:3.4));
+    const px=LX+(t-x0)/(x1-x0)*PW;
+    const lit=selNode===null||a[0]===selNode;
+    const isCur=cur&&cur[0]===sIdx&&cur[1]===i;
+    const done=labels[iid(sIdx,i)];
+    out+=`<rect class="bk" ${click?`data-r="${sIdx}" data-i="${i}" tabindex="0" role="button" aria-label="${nameOf(a)}"`:""} x="${(px-w/2).toFixed(1)}" y="${y}" width="${w}" height="${h}" rx="1.5" fill="${done?"var(--accent)":cc(a[1])}" fill-opacity="${lit?(done?.95:.72):.10}" ${isCur?'stroke="var(--ink)" stroke-width="1.6"':""}/>`;
+  });
+  return out;
+}
+function drawLanes(){
+  const K=D.steps.length+1, S=D.sessions;
+  /* --- overview --- */
+  const OH=34+S.length*34+30;
+  let o=`<svg viewBox="0 0 ${VW} ${OH}" role="img" aria-label="Overview of all sessions">`;
+  for(let i=1;i<K;i++){const x=LX+i/K*PW;
+    o+=`<line x1="${x.toFixed(1)}" y1="22" x2="${x.toFixed(1)}" y2="${34+S.length*34-6}" stroke="var(--rule)" stroke-width="1"/>`}
+  D.steps.forEach((st,i)=>{const x=LX+(i+.5)/K*PW;
+    o+=`<text x="${x.toFixed(1)}" y="16" text-anchor="middle" font-size="10.5" fill="var(--soft)">${st.id.split("_").pop()}</text>`});
+  S.forEach((s,r)=>{const y=30+r*34;
+    o+=`<text x="${LX-18}" y="${y+9}" text-anchor="end" font-size="12" fill="var(--ink)">${s.id}</text>
+        <text x="${LX-18}" y="${y+23}" text-anchor="end" font-size="10.5" fill="var(--soft)">${s.n} actions</text>
+        <rect x="${LX}" y="${y}" width="${PW}" height="22" fill="var(--shade)" rx="2"/>`;
+    o+=laneBlocks(r,y+2,18,0,1,false);});
+  const bx=LX+brush[0]*PW, bw=(brush[1]-brush[0])*PW;
+  o+=`<rect id="bsel" x="${bx.toFixed(1)}" y="24" width="${bw.toFixed(1)}" height="${S.length*34+2}" fill="var(--accent)" fill-opacity=".07" stroke="var(--accent)" stroke-width="1"/>
+      <rect id="bhit" x="${LX}" y="24" width="${PW}" height="${S.length*34+2}" fill="transparent" style="cursor:crosshair"/>
+      <text x="${LX}" y="${OH-8}" font-size="11.5" fill="var(--soft)">Drag across the strip to zoom in below.</text>`;
+  $("over").innerHTML=o+"</svg>";
+
+  /* --- detail --- */
+  const DH=26+S.length*46+26;
+  let d=`<svg viewBox="0 0 ${VW} ${DH}" role="img" aria-label="Zoomed detail">`;
+  for(let i=0;i<=K;i++){const t=i/K; if(t<brush[0]||t>brush[1])continue;
+    const x=LX+(t-brush[0])/(brush[1]-brush[0])*PW;
+    d+=`<line x1="${x.toFixed(1)}" y1="16" x2="${x.toFixed(1)}" y2="${22+S.length*46-8}" stroke="var(--rule)" stroke-width="1"/>`}
+  const segPx=(1/K)/(brush[1]-brush[0])*PW;
+  D.steps.forEach((st,i)=>{const t=(i+.5)/K; if(t<brush[0]||t>brush[1])return;
+    const x=LX+(t-brush[0])/(brush[1]-brush[0])*PW, max=Math.floor(segPx/5.6);
+    if(max<6)return;
+    const txt=st.label.length>max?st.label.slice(0,max-1)+"\u2026":st.label;
+    d+=`<text x="${x.toFixed(1)}" y="11" text-anchor="middle" font-size="10.5" fill="var(--soft)">${txt}</text>`});
+  S.forEach((s,r)=>{const y=22+r*46;
+    d+=`<text x="${LX-18}" y="${y+20}" text-anchor="end" font-size="12" fill="var(--ink)">${s.id}</text>
+        <rect x="${LX}" y="${y}" width="${PW}" height="32" fill="var(--shade)" rx="2"/>`;
+    d+=laneBlocks(r,y+3,26,brush[0],brush[1],true);});
+  $("detail").innerHTML=d+`<text x="${LX}" y="${DH-8}" font-size="11.5" fill="var(--soft)">Click a block to rate it. Vertical rules are recipe steps — the same step lines up across every session.</text></svg>`;
+  $("detail").querySelectorAll(".bk").forEach(b=>{
+    b.style.cursor="pointer";
+    const go=()=>{cur=[+b.dataset.r,+b.dataset.i];drawLanes();drawRate()};
+    b.onclick=go; b.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}};
+  });
+  wireBrush();
+  const n=D.nodes[selNode];
+  $("slNote").textContent = selNode===null
+    ? `All ${D.stats.acts} actions across ${S.length} sessions, on one shared horizontal axis: recipe-step boundaries line up even though the sessions took different amounts of time. Colour is the kind of action; green means you have rated it.`
+    : `${n.k} — ${n.ct} instances, in ${n.ns} of ${S.length} sessions. Consistent horizontal positions mean this action has a stable place in the recipe; scattered ones mean it does not.`;
+}
+function wireBrush(){
+  const hit=$("over").querySelector("#bhit"); if(!hit)return;
+  let a=null;
+  const xOf=ev=>{const r=hit.getBoundingClientRect();
+    const cx=(ev.touches?ev.touches[0].clientX:ev.clientX)-r.left;
+    return Math.max(0,Math.min(1,cx/r.width));};
+  const down=e=>{a=xOf(e);e.preventDefault();
+    window.addEventListener("pointermove",move);window.addEventListener("pointerup",up);};
+  const move=e=>{const b=xOf(e);const lo=Math.min(a,b),hi=Math.max(a,b);
+    if(hi-lo>.012){brush=[lo,hi];drawLanes()}};
+  const up=()=>{window.removeEventListener("pointermove",move);window.removeEventListener("pointerup",up);a=null};
+  hit.addEventListener("pointerdown",down);
+  hit.addEventListener("dblclick",()=>{brush=[0,1];drawLanes()});
+}
+
+/* ================= 3. RATE ================= */
+function drawRate(){
+  const box=$("rate");
+  if(!cur){box.innerHTML=`<div class="rate empty">Pick a block in the lanes above, or choose a distinct action, to start rating.</div>`;return}
+  const [r,i]=cur, s=D.sessions[r], a=s.a[i], pv=s.a[i-1], nx=s.a[i+1];
+  const gap=nx?(nx[2]-(a[2]+a[3])).toFixed(1):null;
+  const id=iid(r,i), rec=labels[id]||{};
+  const f=flat(), at=f.findIndex(t=>t[0]===r&&t[1]===i);
+  const row={instance_id:id,recipe:key,session:s.vid,node:nodeOf(a),verb_category:a[1],
+    clip:[a[2],+(a[2]+a[3]).toFixed(1)],duration_s:a[3],aligned_position:a[4],
+    step_segment:Math.floor(a[4]*(D.steps.length+1))+1,
+    prev:nameOf(pv),next:nameOf(nx),gap_after_s:gap?+gap:null,
+    node_recurs_in_sessions:a[0]>=0?D.nodes[a[0]].ns:1,
+    label:rec.label||null,rationale:rec.why||null,traversal:mode};
+  box.innerHTML=`<div class="rate">
+    <div class="clip">
+      <div class="thumb">clip ${a[2]}–${(a[2]+a[3]).toFixed(1)}s<br>not wired up yet</div>
+      <div style="flex:1;min-width:0">
+        <div class="cname">${nameOf(a)}</div>
+        <div class="cmeta">${s.id} — action ${i+1} of ${s.n}, lasted ${a[3]}s</div>
+        <div class="narr">${a[5]}</div>
+        <div class="ctx">Comes after <b>${nameOf(pv)}</b>, then <b>${nameOf(nx)}</b>.${gap?` The hands are free for <b>${gap}s</b> afterwards.`:""}</div>
+      </div>
+    </div>
+    <div class="opts">${OPTS.map((o,k)=>`<button class="opt" data-o="${o}" aria-pressed="${rec.label===o}">${o} <kbd>${k+1}</kbd></button>`).join("")}</div>
+    <textarea class="why" id="why" placeholder="Why? (optional, but please fill it in for the first few)">${rec.why||""}</textarea>
+    <div class="nav">
+      <button id="prev">Previous</button><button id="next">Next</button>
+      <span>${at+1} of ${f.length} in this pass — <kbd>left</kbd> <kbd>right</kbd> to move, <kbd>1</kbd>–<kbd>3</kbd> to rate</span>
+    </div>
+    <div class="row">${JSON.stringify(row)}</div></div>`;
+  box.querySelectorAll(".opt").forEach(b=>b.onclick=()=>setLabel(b.dataset.o));
+  $("why").onchange=e=>{labels[id]=Object.assign({},labels[id],{why:e.target.value});save()};
+  $("prev").onclick=()=>step(-1); $("next").onclick=()=>step(1);
+  $("prog").textContent=Object.values(labels).filter(v=>v&&v.label).length+" rated";
+}
+function setLabel(o){
+  if(!cur)return; const id=iid(cur[0],cur[1]);
+  labels[id]=Object.assign({},labels[id],{label:o}); save();
+  drawLanes(); drawRate();
+  setTimeout(()=>step(1),160);
+}
+function step(d){
+  const f=flat(); if(!f.length)return;
+  let at=cur?f.findIndex(t=>t[0]===cur[0]&&t[1]===cur[1]):-1;
+  at=Math.max(0,Math.min(f.length-1,at+d));
+  cur=[f[at][0],f[at][1]];
+  const t=f[at][2][4];
+  if(t<brush[0]||t>brush[1]){const w=brush[1]-brush[0];
+    brush=[Math.max(0,t-w/2),Math.min(1,Math.max(w,t+w/2))];}
+  drawLanes(); drawRate();
+}
+
+/* ================= shell ================= */
+function setMode(m,quiet){
+  mode=m;
+  $("mChron").setAttribute("aria-pressed",m==="chron");
+  $("mNode").setAttribute("aria-pressed",m==="node");
+  if(!quiet){const f=flat();cur=f.length?[f[0][0],f[0][1]]:null;drawLanes();drawRate()}
+}
+function load(k){
+  key=k; D=DATA[k]; selNode=null; cur=null; brush=[0,1];
+  $("meta").innerHTML=[["Recipe",D.name],["Sessions",D.sessions.length],
+    ["Actions",D.stats.acts],["Distinct actions",D.stats.types],
+    ["Recur in 2+ sessions",D.stats.core+" types, "+Math.round(D.stats.cov*100)+"% of actions"]]
+    .map(([a,b])=>`<span>${a}<b>${b}</b></span>`).join("");
+  drawGraph(); drawLanes(); drawRate();
+}
+$("recipe").innerHTML=Object.keys(DATA).map(k=>`<option value="${k}">${k} — ${DATA[k].name}</option>`).join("");
+$("recipe").onchange=e=>load(e.target.value);
+$("mChron").onclick=()=>{selNode=null;paintGraph();setMode("chron")};
+$("mNode").onclick=()=>setMode("node");
+$("export").onclick=()=>{
+  const rows=[];
+  Object.keys(DATA).forEach(k=>DATA[k].sessions.forEach((s,r)=>s.a.forEach((a,i)=>{
+    const id=k+"|"+s.id.replace(" ","")+"|"+i, rec=labels[id]; if(!rec||!rec.label)return;
+    rows.push({instance_id:id,recipe:k,session:s.vid,node:a[0]>=0?DATA[k].nodes[a[0]].k:null,
+      verb_category:a[1],clip:[a[2],+(a[2]+a[3]).toFixed(1)],duration_s:a[3],
+      aligned_position:a[4],prev:i>0?(s.a[i-1][0]>=0?DATA[k].nodes[s.a[i-1][0]].k:"one-off"):null,
+      next:i<s.a.length-1?(s.a[i+1][0]>=0?DATA[k].nodes[s.a[i+1][0]].k:"one-off"):null,
+      label:rec.label,rationale:rec.why||null});})));
+  const b=new Blob([JSON.stringify(rows,null,1)],{type:"application/json"});
+  const u=URL.createObjectURL(b), a=document.createElement("a");
+  a.href=u; a.download="proactivity_labels.json"; a.click(); URL.revokeObjectURL(u);
+};
+$("reset").onclick=()=>{if(confirm("Clear all labels on this device?")){labels={};save();drawLanes();drawRate()}};
+document.addEventListener("keydown",e=>{
+  if(/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName))return;
+  if(e.key==="ArrowRight"){step(1);e.preventDefault()}
+  else if(e.key==="ArrowLeft"){step(-1);e.preventDefault()}
+  else if("123".includes(e.key)){setLabel(OPTS[+e.key-1]);e.preventDefault()}
+});
+load(key);
+})();
+</script>
+</body>
+</html>
