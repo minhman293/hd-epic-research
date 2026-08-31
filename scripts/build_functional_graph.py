@@ -188,7 +188,7 @@ GATES = {
     "min_jaccard": 0.70,             # cross-session agreement on the state set
     "min_repeat_edge_share": 0.60,   # share of edges observed >= 2 times
     "min_coverage": 0.90,            # share of actions mapped to a real state
-    "hard_max_states": 15,           # readability ceiling regardless of recipe
+    "hard_max_states": 18,           # readability ceiling regardless of recipe
     "max_render_density": 3.0,       # above this a layout cannot be untangled
 }
 
@@ -204,8 +204,8 @@ GATES = {
 #                  than aim for it. Raise it with --max-states for a recipe that
 #                  genuinely has more distinct recurring goals (e.g. §5 measured
 #                  ~22 recurring episodes for drip coffee).
-STATE_FLOOR = 3
-STATE_CEILING = GATES["hard_max_states"]   # 15 by default; override per run
+STATE_FLOOR = 12
+STATE_CEILING = GATES["hard_max_states"]   # 18 by default; override per run
 
 
 def derive_targets(n_sessions, min_states=None, max_states=None):

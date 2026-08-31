@@ -150,7 +150,7 @@
       <span>
         <label for="sizeEncodeSelect">Size:</label>
         <select id="sizeEncodeSelect" class="control-select-sub" style="border: none; background: transparent; font-weight: 500; color: #334155; cursor: pointer;">
-          <option value="support">Frequency</option>
+          <option value="support">Support (# sessions)</option>
           <option value="duration">Duration</option>
         </select>
       </span>
@@ -171,7 +171,7 @@
       <article class="panel">
         <h2>
           <span id="graphPanelTitle">Merged Motion Graph</span>
-          <span class="graph-hint">— scroll to zoom · drag to pan · dashed edge = one session only</span>
+          <span class="graph-hint">— scroll to zoom · drag to pan · paler edge = fewer sessions · hover for exact numbers</span>
         </h2>
         <div id="graphWrap">
           <svg id="graphSvg"></svg>
@@ -183,6 +183,10 @@
           </div>
         </div>
         <div class="legend-strip" id="legendStrip"></div>
+        <!-- §7 always-on honesty caveat: sample size + whether a fixed order
+             exists. Populated by updateGraphCaveat() in app.js on every render. -->
+        <p id="graphCaveat" class="graph-hint"
+           style="margin:6px 2px 0; font-size:11.5px; line-height:1.45; color:#475569;"></p>
       </article>
 
       <!-- RIGHT PANEL: Video & Timelines -->

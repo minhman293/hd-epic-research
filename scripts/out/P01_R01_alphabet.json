@@ -1,107 +1,102 @@
 {
-  "n_states_rationale": "The actions and observed windows reveal 6 distinct recurring goals: preparing the coffee machine/water, loading and brewing the coffee capsule, preparing and frothing the milk, adding milk to the coffee and stirring, cleaning up equipment, and discarding waste. Using 6 states avoids generic grouping while completely capturing all procedural steps.",
+  "n_states_rationale": "The action stream reveals six distinct functional goals across all sessions: filling the water tank, preparing the coffee machine and inserting a capsule, frothing milk, brewing or running the coffee, assembling the final drink by combining coffee and milk, and cleaning up the equipment.",
   "states": [
     {
       "id": "s1",
-      "name": "prepare water tank",
-      "definition": "Filling and attaching the water tank to the coffee machine.",
-      "phase": "setup",
+      "name": "fill water tank",
+      "definition": "Retrieving the water jug, filling the tank with water, and placing the water tank back onto the coffee machine.",
+      "phase": "preparation",
       "typical_verbs": [
         "take",
         "pour",
         "put"
       ],
       "typical_objects": [
-        "jug",
         "water",
-        "tank"
+        "jug"
       ]
     },
     {
       "id": "s2",
       "name": "load coffee capsule",
-      "definition": "Opening the machine compartment, inserting the coffee capsule, and locking it in place.",
-      "phase": "brew",
+      "definition": "Opening the coffee machine compartment, inserting a coffee capsule, and locking the handle down.",
+      "phase": "brewing",
       "typical_verbs": [
         "open",
         "slide",
         "pull"
       ],
       "typical_objects": [
-        "drawer",
         "coffee",
-        "handle"
+        "drawer"
       ]
     },
     {
       "id": "s3",
-      "name": "brew coffee",
-      "definition": "Placing the cup and pressing the button to brew the coffee.",
-      "phase": "brew",
-      "typical_verbs": [
-        "take",
-        "put",
-        "press"
-      ],
-      "typical_objects": [
-        "cup",
-        "button",
-        "machine"
-      ]
-    },
-    {
-      "id": "s4",
       "name": "froth milk",
-      "definition": "Pouring milk into the frother, operating the frother, and preparing it for pouring.",
-      "phase": "brew",
+      "definition": "Opening the milk bottle, pouring milk into the milk frother, and running the frother.",
+      "phase": "brewing",
       "typical_verbs": [
         "open",
         "pour",
         "turn-on"
       ],
       "typical_objects": [
-        "bottle",
         "milk",
-        "plug"
+        "bottle"
+      ]
+    },
+    {
+      "id": "s4",
+      "name": "brew coffee",
+      "definition": "Placing a mug under the nozzle and pressing the button on the coffee machine to brew the coffee.",
+      "phase": "brewing",
+      "typical_verbs": [
+        "put",
+        "press",
+        "turn-on"
+      ],
+      "typical_objects": [
+        "cup",
+        "button"
       ]
     },
     {
       "id": "s5",
-      "name": "mix milk and coffee",
-      "definition": "Pouring the frothed milk into the mug and stirring it together with a wooden stirrer.",
-      "phase": "finish",
+      "name": "assemble final drink",
+      "definition": "Pouring the frothed milk into the mug with coffee and stirring the mixture with a wooden stirrer.",
+      "phase": "finishing",
       "typical_verbs": [
         "lift",
         "mix",
-        "put"
+        "throw"
       ],
       "typical_objects": [
         "milk",
-        "coffee",
-        "spoon"
+        "coffee"
       ]
     },
     {
       "id": "s6",
-      "name": "clean and tidy",
-      "definition": "Rinsing and washing equipment, disposing of waste in the bin, and putting away items.",
-      "phase": "finish",
+      "name": "clean equipment",
+      "definition": "Rinsing the milk frother and discarding used stirrers or capsules into the trash bin.",
+      "phase": "cleanup",
       "typical_verbs": [
         "wash",
-        "throw",
-        "close"
+        "open",
+        "throw"
       ],
       "typical_objects": [
         "milk",
-        "bin",
-        "tap"
+        "bin"
       ]
     }
   ],
   "phases": [
-    "setup",
-    "brew",
-    "finish"
+    "preparation",
+    "brewing",
+    "finishing",
+    "cleanup"
   ],
   "_leak_check": {
     "recipe_step_count": 5,

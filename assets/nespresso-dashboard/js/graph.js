@@ -28,6 +28,14 @@ const endId = (v) => (v && typeof v === "object") ? v.id : v;
 let activeSessionForStats = null;
 let currentProbLabel = null;
 
+// §7: exact numbers (probability, counts, support) live in the HOVER TOOLTIP
+// ONLY, never as a default on-canvas label. Edge strength is already read from
+// width + opacity, so the printed "0.67 · 2/3" is redundant clutter (Prof. Lin).
+// This is the SINGLE source of truth: every path that could set edge-label
+// opacity (creation, session highlight, spine highlight, reset, declutter)
+// checks it. Flip to true to bring the on-canvas numbers back.
+const SHOW_EDGE_PROB_LABELS = false;
+
 // ─────────────────────────────────────────────────────────────────────────────
 // HRI role time-budget
 // ─────────────────────────────────────────────────────────────────────────────
@@ -653,6 +661,7 @@ function getCurvedPath(link, layout, radiusMap, curvature = 0.18) {
 const LABEL_OFFSETS = ["50%", "40%", "60%", "32%", "68%", "25%", "75%"];
 
 function declutterEdgeLabels(root, { maxLabels = 120 } = {}) {
+  if (!SHOW_EDGE_PROB_LABELS) return;   // labels are hover-only; nothing to place
   const texts = root.selectAll("text.edge-prob-text").nodes();
   if (texts.length === 0 || texts.length > maxLabels) return;
 
@@ -1677,7 +1686,9 @@ export function createGraphController({
       return n > 0 ? `${p} (n=${n})` : p;
     };
     currentProbLabel = probLabel;
-    const probOpacity  = denseEdges ? 0.72 : 1;
+    // Hidden by default (§7). Flipping SHOW_EDGE_PROB_LABELS restores the
+    // original density-aware opacity, so the behaviour is fully reversible.
+    const probOpacity  = SHOW_EDGE_PROB_LABELS ? (denseEdges ? 0.72 : 1) : 0;
     // Labels ride on their own copies of the edges, always oriented
     // left-to-right. A <textPath> follows the direction of its path, so a
     // right-to-left edge rendered its probability mirrored and upside down.
@@ -3006,6 +3017,7 @@ export function createGraphController({
       });
 
       svg.selectAll("#zoomGroup .edge-prob-text").style("opacity", function(d) {
+        if (!SHOW_EDGE_PROB_LABELS) return 0;
         const isActive = d.per_session_counts && d.per_session_counts[sessionIndex] > 0;
         return isActive ? 1.0 : 0.05;
       });
@@ -3103,7 +3115,7 @@ export function createGraphController({
       const onPathEdge = (d) =>
         d && (pathEdges.has(d.key) || pathEdges.has(d.pairKey));
       svg.selectAll("#zoomGroup .edge-prob-text")
-        .style("opacity", (d) => onPathEdge(d) ? 1.0 : 0.18);
+        .style("opacity", (d) => !SHOW_EDGE_PROB_LABELS ? 0 : (onPathEdge(d) ? 1.0 : 0.18));
       svg.selectAll("#zoomGroup .bridge-count-text")
         .style("opacity", (d) => onPathEdge(d) ? 0.9 : 0);
       svg.selectAll("#zoomGroup .edge-gap-text")
@@ -3158,7 +3170,7 @@ export function createGraphController({
     });
 
     svg.selectAll("#zoomGroup .edge-prob-text")
-       .style("opacity", (d) => (d && d.__bg) ? 0 : 1.0);
+       .style("opacity", (d) => (!SHOW_EDGE_PROB_LABELS || (d && d.__bg)) ? 0 : 1.0);
     if (selfLoopSelection) selfLoopSelection.style("opacity", 1.0);
     svg.selectAll("#zoomGroup .self-loop-arc, #zoomGroup .self-loop-prob").style("opacity", 1.0);
   }

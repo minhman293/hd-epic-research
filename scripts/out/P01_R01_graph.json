@@ -21,7 +21,7 @@
     {
       "id": "brew coffee",
       "label": "brew coffee",
-      "phase": "brew",
+      "phase": "brewing",
       "count": 3,
       "support": 3,
       "sessions": [
@@ -29,8 +29,8 @@
         "P01-20240203-093333",
         "P01-20240204-095114"
       ],
-      "mean_duration": 3.71,
-      "median_rank": 0.1,
+      "mean_duration": 4.97,
+      "median_rank": 0.0,
       "members": [
         {
           "video_id": "P01-20240202-110250",
@@ -103,6 +103,46 @@
           "verb": "press",
           "noun": "button",
           "narration": " Press down the button to turn on the coffee machine using the right hand."
+        },
+        {
+          "video_id": "P01-20240203-093333",
+          "start": 7.74,
+          "end": 8.56,
+          "verb": "put",
+          "noun": "plate",
+          "narration": "put the empty plate on the countertop next to the sink"
+        },
+        {
+          "video_id": "P01-20240203-093333",
+          "start": 10.55,
+          "end": 11.07,
+          "verb": "feel",
+          "noun": "cupboard",
+          "narration": "Touch the handle of the cupboard and attempt to open it, pulling it only marginally, then decide not to open the cupboard and release the handle. You can hear the sound of a partial closing."
+        },
+        {
+          "video_id": "P01-20240203-093333",
+          "start": 12.4,
+          "end": 13.17,
+          "verb": "lift",
+          "noun": "pot",
+          "narration": "lift the pot from the drainer holding it with the left hand"
+        },
+        {
+          "video_id": "P01-20240203-093333",
+          "start": 13.3,
+          "end": 14.1,
+          "verb": "take",
+          "noun": "cup",
+          "narration": "Pick a mug from the drainer that is under the pot using the right hand holding it from its handle."
+        },
+        {
+          "video_id": "P01-20240203-093333",
+          "start": 13.9,
+          "end": 14.76,
+          "verb": "put",
+          "noun": "pot",
+          "narration": "return the pot to the drainer."
         },
         {
           "video_id": "P01-20240203-093333",
@@ -182,21 +222,21 @@
           "id": "retrieve mug",
           "label": "retrieve mug",
           "state": "brew coffee",
-          "phase": "brew",
-          "count": 3,
+          "phase": "brewing",
+          "count": 5,
           "support": 3,
           "sessions": [
             "P01-20240202-110250",
             "P01-20240203-093333",
             "P01-20240204-095114"
           ],
-          "mean_duration": 2.19,
-          "n_raw_actions": 7,
+          "mean_duration": 1.58,
+          "n_raw_actions": 9,
           "verb": "take",
           "provenance": {
             "source": "llm_operation_alphabet",
             "operation_id": "o1",
-            "definition": "open the cupboard, reach inside, and pick up a mug",
+            "definition": "Open cupboard and take out a mug to place under the coffee machine",
             "confidence": "high"
           },
           "members": [
@@ -242,6 +282,22 @@
             },
             {
               "video_id": "P01-20240203-093333",
+              "start": 10.55,
+              "end": 11.07,
+              "verb": "feel",
+              "noun": "cupboard",
+              "narration": "Touch the handle of the cupboard and attempt to open it, pulling it only marginally, then decide not to open the cupboard and release the handle. You can hear the sound of a partial closing."
+            },
+            {
+              "video_id": "P01-20240203-093333",
+              "start": 13.3,
+              "end": 14.1,
+              "verb": "take",
+              "noun": "cup",
+              "narration": "Pick a mug from the drainer that is under the pot using the right hand holding it from its handle."
+            },
+            {
+              "video_id": "P01-20240203-093333",
               "start": 14.96,
               "end": 16.13,
               "verb": "turn",
@@ -259,25 +315,25 @@
           ]
         },
         {
-          "id": "prepare maker",
-          "label": "prepare maker",
+          "id": "prepare machine",
+          "label": "prepare machine",
           "state": "brew coffee",
-          "phase": "brew",
-          "count": 3,
+          "phase": "brewing",
+          "count": 6,
           "support": 3,
           "sessions": [
             "P01-20240202-110250",
             "P01-20240203-093333",
             "P01-20240204-095114"
           ],
-          "mean_duration": 0.43,
-          "n_raw_actions": 3,
-          "verb": "lift",
+          "mean_duration": 0.4,
+          "n_raw_actions": 6,
+          "verb": "press",
           "provenance": {
             "source": "llm_operation_alphabet",
-            "operation_id": "o4",
-            "definition": "lift or flip parts of the coffee machine to ready it for brewing",
-            "confidence": "high"
+            "operation_id": "o3",
+            "definition": "Adjust machine parts and turn on the coffee machine",
+            "confidence": "medium"
           },
           "members": [
             {
@@ -289,6 +345,14 @@
               "narration": " Using the left hand, flip the bottom part of the coffee machine so as to put the mug using the right hand in the right place under the nozzle of the coffee machine."
             },
             {
+              "video_id": "P01-20240202-110250",
+              "start": 15.36,
+              "end": 15.65,
+              "verb": "press",
+              "noun": "button",
+              "narration": " Press down the button to turn on the coffee machine using the right hand."
+            },
+            {
               "video_id": "P01-20240203-093333",
               "start": 17.82,
               "end": 18.32,
@@ -297,12 +361,28 @@
               "narration": "lift the shelf of the coffee machine using the left hand"
             },
             {
+              "video_id": "P01-20240203-093333",
+              "start": 18.98,
+              "end": 19.25,
+              "verb": "press",
+              "noun": "button",
+              "narration": "press the button on the coffee machine to start the machine"
+            },
+            {
               "video_id": "P01-20240204-095114",
               "start": 16.85,
               "end": 17.25,
               "verb": "lift",
               "noun": "maker:coffee",
               "narration": "lift the lower part of the coffee machine using the left hand"
+            },
+            {
+              "video_id": "P01-20240204-095114",
+              "start": 17.93,
+              "end": 18.5,
+              "verb": "turn-on",
+              "noun": "machine:washing",
+              "narration": "switch on the coffee machine by pressing the button at the top using the left hand with the index finger"
             }
           ]
         },
@@ -310,7 +390,7 @@
           "id": "position mug",
           "label": "position mug",
           "state": "brew coffee",
-          "phase": "brew",
+          "phase": "brewing",
           "count": 3,
           "support": 3,
           "sessions": [
@@ -324,7 +404,7 @@
           "provenance": {
             "source": "llm_operation_alphabet",
             "operation_id": "o2",
-            "definition": "place the mug under the nozzle of the coffee machine",
+            "definition": "Place the mug under the nozzle of the coffee machine",
             "confidence": "high"
           },
           "members": [
@@ -358,7 +438,7 @@
           "id": "take(coffee)",
           "label": "take(coffee)",
           "state": "brew coffee",
-          "phase": "brew",
+          "phase": "brewing",
           "count": 1,
           "support": 1,
           "sessions": [
@@ -385,50 +465,92 @@
           ]
         },
         {
-          "id": "turn on machine",
-          "label": "turn on machine",
+          "id": "put(plate)",
+          "label": "put(plate)",
           "state": "brew coffee",
-          "phase": "brew",
-          "count": 3,
-          "support": 3,
+          "phase": "brewing",
+          "count": 1,
+          "support": 1,
           "sessions": [
-            "P01-20240202-110250",
-            "P01-20240203-093333",
-            "P01-20240204-095114"
+            "P01-20240203-093333"
           ],
-          "mean_duration": 0.38,
-          "n_raw_actions": 3,
-          "verb": "press",
+          "mean_duration": 0.82,
+          "n_raw_actions": 1,
+          "verb": "put",
           "provenance": {
             "source": "llm_operation_alphabet",
-            "operation_id": "o3",
-            "definition": "press the power button to switch on the coffee machine",
-            "confidence": "high"
+            "operation_id": "unmapped",
+            "definition": null,
+            "confidence": "low"
           },
           "members": [
             {
-              "video_id": "P01-20240202-110250",
-              "start": 15.36,
-              "end": 15.65,
-              "verb": "press",
-              "noun": "button",
-              "narration": " Press down the button to turn on the coffee machine using the right hand."
-            },
+              "video_id": "P01-20240203-093333",
+              "start": 7.74,
+              "end": 8.56,
+              "verb": "put",
+              "noun": "plate",
+              "narration": "put the empty plate on the countertop next to the sink"
+            }
+          ]
+        },
+        {
+          "id": "lift(pot)",
+          "label": "lift(pot)",
+          "state": "brew coffee",
+          "phase": "brewing",
+          "count": 1,
+          "support": 1,
+          "sessions": [
+            "P01-20240203-093333"
+          ],
+          "mean_duration": 0.77,
+          "n_raw_actions": 1,
+          "verb": "lift",
+          "provenance": {
+            "source": "llm_operation_alphabet",
+            "operation_id": "unmapped",
+            "definition": null,
+            "confidence": "low"
+          },
+          "members": [
             {
               "video_id": "P01-20240203-093333",
-              "start": 18.98,
-              "end": 19.25,
-              "verb": "press",
-              "noun": "button",
-              "narration": "press the button on the coffee machine to start the machine"
-            },
+              "start": 12.4,
+              "end": 13.17,
+              "verb": "lift",
+              "noun": "pot",
+              "narration": "lift the pot from the drainer holding it with the left hand"
+            }
+          ]
+        },
+        {
+          "id": "put(pot)",
+          "label": "put(pot)",
+          "state": "brew coffee",
+          "phase": "brewing",
+          "count": 1,
+          "support": 1,
+          "sessions": [
+            "P01-20240203-093333"
+          ],
+          "mean_duration": 0.86,
+          "n_raw_actions": 1,
+          "verb": "put",
+          "provenance": {
+            "source": "llm_operation_alphabet",
+            "operation_id": "unmapped",
+            "definition": null,
+            "confidence": "low"
+          },
+          "members": [
             {
-              "video_id": "P01-20240204-095114",
-              "start": 17.93,
-              "end": 18.5,
-              "verb": "turn-on",
-              "noun": "machine:washing",
-              "narration": "switch on the coffee machine by pressing the button at the top using the left hand with the index finger"
+              "video_id": "P01-20240203-093333",
+              "start": 13.9,
+              "end": 14.76,
+              "verb": "put",
+              "noun": "pot",
+              "narration": "return the pot to the drainer."
             }
           ]
         },
@@ -436,7 +558,7 @@
           "id": "move(milk)",
           "label": "move(milk)",
           "state": "brew coffee",
-          "phase": "brew",
+          "phase": "brewing",
           "count": 1,
           "support": 1,
           "sessions": [
@@ -465,6 +587,27 @@
       ],
       "operation_edges": [
         {
+          "source": "lift(pot)",
+          "target": "retrieve mug",
+          "n": 1,
+          "p": 1.0,
+          "support": 1,
+          "sessions": [
+            "P01-20240203-093333"
+          ]
+        },
+        {
+          "source": "position mug",
+          "target": "prepare machine",
+          "n": 2,
+          "p": 0.667,
+          "support": 2,
+          "sessions": [
+            "P01-20240203-093333",
+            "P01-20240204-095114"
+          ]
+        },
+        {
           "source": "position mug",
           "target": "take(coffee)",
           "n": 1,
@@ -475,21 +618,62 @@
           ]
         },
         {
-          "source": "position mug",
-          "target": "turn on machine",
-          "n": 2,
-          "p": 0.667,
-          "support": 2,
+          "source": "prepare machine",
+          "target": "move(milk)",
+          "n": 1,
+          "p": 0.25,
+          "support": 1,
           "sessions": [
+            "P01-20240204-095114"
+          ]
+        },
+        {
+          "source": "prepare machine",
+          "target": "position mug",
+          "n": 3,
+          "p": 0.75,
+          "support": 3,
+          "sessions": [
+            "P01-20240202-110250",
             "P01-20240203-093333",
             "P01-20240204-095114"
           ]
         },
         {
-          "source": "prepare maker",
-          "target": "position mug",
-          "n": 3,
+          "source": "put(plate)",
+          "target": "retrieve mug",
+          "n": 1,
           "p": 1.0,
+          "support": 1,
+          "sessions": [
+            "P01-20240203-093333"
+          ]
+        },
+        {
+          "source": "put(pot)",
+          "target": "retrieve mug",
+          "n": 1,
+          "p": 1.0,
+          "support": 1,
+          "sessions": [
+            "P01-20240203-093333"
+          ]
+        },
+        {
+          "source": "retrieve mug",
+          "target": "lift(pot)",
+          "n": 1,
+          "p": 0.2,
+          "support": 1,
+          "sessions": [
+            "P01-20240203-093333"
+          ]
+        },
+        {
+          "source": "retrieve mug",
+          "target": "prepare machine",
+          "n": 3,
+          "p": 0.6,
           "support": 3,
           "sessions": [
             "P01-20240202-110250",
@@ -499,49 +683,37 @@
         },
         {
           "source": "retrieve mug",
-          "target": "prepare maker",
-          "n": 3,
-          "p": 1.0,
-          "support": 3,
+          "target": "put(pot)",
+          "n": 1,
+          "p": 0.2,
+          "support": 1,
           "sessions": [
-            "P01-20240202-110250",
-            "P01-20240203-093333",
-            "P01-20240204-095114"
+            "P01-20240203-093333"
           ]
         },
         {
           "source": "take(coffee)",
-          "target": "turn on machine",
+          "target": "prepare machine",
           "n": 1,
           "p": 1.0,
           "support": 1,
           "sessions": [
             "P01-20240202-110250"
           ]
-        },
-        {
-          "source": "turn on machine",
-          "target": "move(milk)",
-          "n": 1,
-          "p": 1.0,
-          "support": 1,
-          "sessions": [
-            "P01-20240204-095114"
-          ]
         }
       ]
     },
     {
-      "id": "prepare water tank",
-      "label": "prepare water tank",
-      "phase": "setup",
+      "id": "fill water tank",
+      "label": "fill water tank",
+      "phase": "preparation",
       "count": 1,
       "support": 1,
       "sessions": [
         "P01-20240203-093333"
       ],
       "mean_duration": 11.91,
-      "median_rank": 0.2,
+      "median_rank": 0.111,
       "members": [
         {
           "video_id": "P01-20240203-093333",
@@ -602,22 +774,22 @@
       ],
       "operations": [
         {
-          "id": "remove water tank",
-          "label": "remove water tank",
-          "state": "prepare water tank",
-          "phase": "setup",
-          "count": 2,
+          "id": "remove tank",
+          "label": "remove tank",
+          "state": "fill water tank",
+          "phase": "preparation",
+          "count": 1,
           "support": 1,
           "sessions": [
             "P01-20240203-093333"
           ],
-          "mean_duration": 2.29,
-          "n_raw_actions": 3,
+          "mean_duration": 3.39,
+          "n_raw_actions": 2,
           "verb": "lift",
           "provenance": {
             "source": "llm_operation_alphabet",
             "operation_id": "o1",
-            "definition": "lift the lid and take the water tank off the coffee machine",
+            "definition": "Lift the lid and remove the water tank from the coffee machine",
             "confidence": "high"
           },
           "members": [
@@ -636,22 +808,14 @@
               "verb": "hold",
               "noun": "water",
               "narration": "Hold the water tank with the left hand."
-            },
-            {
-              "video_id": "P01-20240203-093333",
-              "start": 27.96,
-              "end": 29.15,
-              "verb": "close",
-              "noun": "lid",
-              "narration": "close the lid of the water tank while carrying it"
             }
           ]
         },
         {
           "id": "take(jug)",
           "label": "take(jug)",
-          "state": "prepare water tank",
-          "phase": "setup",
+          "state": "fill water tank",
+          "phase": "preparation",
           "count": 1,
           "support": 1,
           "sessions": [
@@ -678,10 +842,10 @@
           ]
         },
         {
-          "id": "fill water tank",
-          "label": "fill water tank",
-          "state": "prepare water tank",
-          "phase": "setup",
+          "id": "pour water",
+          "label": "pour water",
+          "state": "fill water tank",
+          "phase": "preparation",
           "count": 1,
           "support": 1,
           "sessions": [
@@ -693,7 +857,7 @@
           "provenance": {
             "source": "llm_operation_alphabet",
             "operation_id": "o2",
-            "definition": "pour water from a filter jug into the water tank",
+            "definition": "Fill the water tank using the water filter jug",
             "confidence": "high"
           },
           "members": [
@@ -710,8 +874,8 @@
         {
           "id": "put(jug)",
           "label": "put(jug)",
-          "state": "prepare water tank",
-          "phase": "setup",
+          "state": "fill water tank",
+          "phase": "preparation",
           "count": 1,
           "support": 1,
           "sessions": [
@@ -738,25 +902,33 @@
           ]
         },
         {
-          "id": "replace water tank",
-          "label": "replace water tank",
-          "state": "prepare water tank",
-          "phase": "setup",
+          "id": "replace tank",
+          "label": "replace tank",
+          "state": "fill water tank",
+          "phase": "preparation",
           "count": 1,
           "support": 1,
           "sessions": [
             "P01-20240203-093333"
           ],
-          "mean_duration": 3.04,
-          "n_raw_actions": 1,
-          "verb": "put",
+          "mean_duration": 4.23,
+          "n_raw_actions": 2,
+          "verb": "close",
           "provenance": {
             "source": "llm_operation_alphabet",
             "operation_id": "o3",
-            "definition": "close the lid and put the filled water tank back onto the coffee machine base",
+            "definition": "Close the lid and place the water tank back onto the coffee machine",
             "confidence": "high"
           },
           "members": [
+            {
+              "video_id": "P01-20240203-093333",
+              "start": 27.96,
+              "end": 29.15,
+              "verb": "close",
+              "noun": "lid",
+              "narration": "close the lid of the water tank while carrying it"
+            },
             {
               "video_id": "P01-20240203-093333",
               "start": 29.25,
@@ -770,7 +942,7 @@
       ],
       "operation_edges": [
         {
-          "source": "fill water tank",
+          "source": "pour water",
           "target": "put(jug)",
           "n": 1,
           "p": 1.0,
@@ -781,7 +953,7 @@
         },
         {
           "source": "put(jug)",
-          "target": "remove water tank",
+          "target": "replace tank",
           "n": 1,
           "p": 1.0,
           "support": 1,
@@ -790,20 +962,10 @@
           ]
         },
         {
-          "source": "remove water tank",
-          "target": "replace water tank",
-          "n": 1,
-          "p": 0.5,
-          "support": 1,
-          "sessions": [
-            "P01-20240203-093333"
-          ]
-        },
-        {
-          "source": "remove water tank",
+          "source": "remove tank",
           "target": "take(jug)",
           "n": 1,
-          "p": 0.5,
+          "p": 1.0,
           "support": 1,
           "sessions": [
             "P01-20240203-093333"
@@ -811,7 +973,7 @@
         },
         {
           "source": "take(jug)",
-          "target": "fill water tank",
+          "target": "pour water",
           "n": 1,
           "p": 1.0,
           "support": 1,
@@ -824,7 +986,7 @@
     {
       "id": "load coffee capsule",
       "label": "load coffee capsule",
-      "phase": "brew",
+      "phase": "brewing",
       "count": 3,
       "support": 3,
       "sessions": [
@@ -833,7 +995,7 @@
         "P01-20240204-095114"
       ],
       "mean_duration": 7.1,
-      "median_rank": 0.25,
+      "median_rank": 0.222,
       "members": [
         {
           "video_id": "P01-20240202-110250",
@@ -966,10 +1128,10 @@
       ],
       "operations": [
         {
-          "id": "open machine compartment",
-          "label": "open machine compartment",
+          "id": "insert capsule",
+          "label": "insert capsule",
           "state": "load coffee capsule",
-          "phase": "brew",
+          "phase": "brewing",
           "count": 3,
           "support": 3,
           "sessions": [
@@ -977,13 +1139,13 @@
             "P01-20240203-093333",
             "P01-20240204-095114"
           ],
-          "mean_duration": 0.69,
-          "n_raw_actions": 3,
+          "mean_duration": 1.57,
+          "n_raw_actions": 6,
           "verb": "open",
           "provenance": {
             "source": "llm_operation_alphabet",
             "operation_id": "o2",
-            "definition": "lift the handle to open the coffee machine capsule compartment",
+            "definition": "Open the machine compartment and slide the capsule inside",
             "confidence": "high"
           },
           "members": [
@@ -996,46 +1158,6 @@
               "narration": " Lift the handle of the coffee machine using the right hand so that to expose the gap where the coffee capsule should fit."
             },
             {
-              "video_id": "P01-20240203-093333",
-              "start": 45.6,
-              "end": 46.07,
-              "verb": "open",
-              "noun": "drawer",
-              "narration": "Open the coffee machine's compartment by lifting the handle up using the left hand."
-            },
-            {
-              "video_id": "P01-20240204-095114",
-              "start": 23.61,
-              "end": 24.64,
-              "verb": "open",
-              "noun": "drawer",
-              "narration": "open the compartment of coffee capsules in the coffee machine by holding the handle of the coffee machine with the left hand and pulling it up to reveal the compartment"
-            }
-          ]
-        },
-        {
-          "id": "insert capsule",
-          "label": "insert capsule",
-          "state": "load coffee capsule",
-          "phase": "brew",
-          "count": 5,
-          "support": 3,
-          "sessions": [
-            "P01-20240202-110250",
-            "P01-20240203-093333",
-            "P01-20240204-095114"
-          ],
-          "mean_duration": 1.17,
-          "n_raw_actions": 5,
-          "verb": "take",
-          "provenance": {
-            "source": "llm_operation_alphabet",
-            "operation_id": "o3",
-            "definition": "take a coffee capsule from the box and slide it into the machine",
-            "confidence": "high"
-          },
-          "members": [
-            {
               "video_id": "P01-20240202-110250",
               "start": 16.08,
               "end": 17.26,
@@ -1045,11 +1167,11 @@
             },
             {
               "video_id": "P01-20240203-093333",
-              "start": 43.76,
-              "end": 45.51,
-              "verb": "take",
-              "noun": "coffee",
-              "narration": "Pick up a coffee capsule from the box."
+              "start": 45.6,
+              "end": 46.07,
+              "verb": "open",
+              "noun": "drawer",
+              "narration": "Open the coffee machine's compartment by lifting the handle up using the left hand."
             },
             {
               "video_id": "P01-20240203-093333",
@@ -1061,11 +1183,11 @@
             },
             {
               "video_id": "P01-20240204-095114",
-              "start": 21.75,
-              "end": 23.23,
-              "verb": "take",
-              "noun": "coffee",
-              "narration": "pick up a coffee capsule using the right hand from the coffee capsule box by inserting the right hand into the box and picking one capsule"
+              "start": 23.61,
+              "end": 24.64,
+              "verb": "open",
+              "noun": "drawer",
+              "narration": "open the compartment of coffee capsules in the coffee machine by holding the handle of the coffee machine with the left hand and pulling it up to reveal the compartment"
             },
             {
               "video_id": "P01-20240204-095114",
@@ -1081,7 +1203,7 @@
           "id": "lock compartment",
           "label": "lock compartment",
           "state": "load coffee capsule",
-          "phase": "brew",
+          "phase": "brewing",
           "count": 3,
           "support": 3,
           "sessions": [
@@ -1094,8 +1216,8 @@
           "verb": "pull",
           "provenance": {
             "source": "llm_operation_alphabet",
-            "operation_id": "o4",
-            "definition": "pull down the handle to lock the capsule in place and close the machine",
+            "operation_id": "o3",
+            "definition": "Pull down the machine handle to lock the capsule in place",
             "confidence": "high"
           },
           "members": [
@@ -1126,23 +1248,23 @@
           ]
         },
         {
-          "id": "retrieve capsule box",
-          "label": "retrieve capsule box",
+          "id": "retrieve capsule",
+          "label": "retrieve capsule",
           "state": "load coffee capsule",
-          "phase": "brew",
+          "phase": "brewing",
           "count": 3,
           "support": 2,
           "sessions": [
             "P01-20240203-093333",
             "P01-20240204-095114"
           ],
-          "mean_duration": 3.91,
+          "mean_duration": 4.38,
           "n_raw_actions": 5,
-          "verb": "open",
+          "verb": "take",
           "provenance": {
             "source": "llm_operation_alphabet",
             "operation_id": "o1",
-            "definition": "take the box of coffee capsules from the shelf and open it",
+            "definition": "Open the capsule box and take out a coffee capsule",
             "confidence": "high"
           },
           "members": [
@@ -1156,19 +1278,19 @@
             },
             {
               "video_id": "P01-20240203-093333",
-              "start": 36.86,
-              "end": 38.37,
-              "verb": "put",
-              "noun": "box",
-              "narration": "Put the box on the counter top."
-            },
-            {
-              "video_id": "P01-20240203-093333",
               "start": 38.47,
               "end": 43.66,
               "verb": "open",
               "noun": "box",
               "narration": "open the box by unfolding its cover."
+            },
+            {
+              "video_id": "P01-20240203-093333",
+              "start": 43.76,
+              "end": 45.51,
+              "verb": "take",
+              "noun": "coffee",
+              "narration": "Pick up a coffee capsule from the box."
             },
             {
               "video_id": "P01-20240204-095114",
@@ -1178,6 +1300,66 @@
               "noun": "box",
               "narration": "open the cardboard box containing coffee capsules by holding the lid with the left hand pulling it up and keeping the hand to support the lid"
             },
+            {
+              "video_id": "P01-20240204-095114",
+              "start": 21.75,
+              "end": 23.23,
+              "verb": "take",
+              "noun": "coffee",
+              "narration": "pick up a coffee capsule using the right hand from the coffee capsule box by inserting the right hand into the box and picking one capsule"
+            }
+          ]
+        },
+        {
+          "id": "put(box)",
+          "label": "put(box)",
+          "state": "load coffee capsule",
+          "phase": "brewing",
+          "count": 1,
+          "support": 1,
+          "sessions": [
+            "P01-20240203-093333"
+          ],
+          "mean_duration": 1.51,
+          "n_raw_actions": 1,
+          "verb": "put",
+          "provenance": {
+            "source": "llm_operation_alphabet",
+            "operation_id": "unmapped",
+            "definition": null,
+            "confidence": "low"
+          },
+          "members": [
+            {
+              "video_id": "P01-20240203-093333",
+              "start": 36.86,
+              "end": 38.37,
+              "verb": "put",
+              "noun": "box",
+              "narration": "Put the box on the counter top."
+            }
+          ]
+        },
+        {
+          "id": "close(box)",
+          "label": "close(box)",
+          "state": "load coffee capsule",
+          "phase": "brewing",
+          "count": 1,
+          "support": 1,
+          "sessions": [
+            "P01-20240204-095114"
+          ],
+          "mean_duration": 0.31,
+          "n_raw_actions": 1,
+          "verb": "close",
+          "provenance": {
+            "source": "llm_operation_alphabet",
+            "operation_id": "unmapped",
+            "definition": null,
+            "confidence": "low"
+          },
+          "members": [
             {
               "video_id": "P01-20240204-095114",
               "start": 23.27,
@@ -1191,40 +1373,18 @@
       ],
       "operation_edges": [
         {
+          "source": "close(box)",
+          "target": "insert capsule",
+          "n": 1,
+          "p": 1.0,
+          "support": 1,
+          "sessions": [
+            "P01-20240204-095114"
+          ]
+        },
+        {
           "source": "insert capsule",
           "target": "lock compartment",
-          "n": 3,
-          "p": 0.6,
-          "support": 3,
-          "sessions": [
-            "P01-20240202-110250",
-            "P01-20240203-093333",
-            "P01-20240204-095114"
-          ]
-        },
-        {
-          "source": "insert capsule",
-          "target": "open machine compartment",
-          "n": 1,
-          "p": 0.2,
-          "support": 1,
-          "sessions": [
-            "P01-20240203-093333"
-          ]
-        },
-        {
-          "source": "insert capsule",
-          "target": "retrieve capsule box",
-          "n": 1,
-          "p": 0.2,
-          "support": 1,
-          "sessions": [
-            "P01-20240204-095114"
-          ]
-        },
-        {
-          "source": "open machine compartment",
-          "target": "insert capsule",
           "n": 3,
           "p": 1.0,
           "support": 3,
@@ -1235,24 +1395,43 @@
           ]
         },
         {
-          "source": "retrieve capsule box",
-          "target": "insert capsule",
-          "n": 2,
-          "p": 0.667,
-          "support": 2,
+          "source": "put(box)",
+          "target": "retrieve capsule",
+          "n": 1,
+          "p": 1.0,
+          "support": 1,
           "sessions": [
-            "P01-20240203-093333",
-            "P01-20240204-095114"
+            "P01-20240203-093333"
           ]
         },
         {
-          "source": "retrieve capsule box",
-          "target": "open machine compartment",
+          "source": "retrieve capsule",
+          "target": "close(box)",
           "n": 1,
           "p": 0.333,
           "support": 1,
           "sessions": [
             "P01-20240204-095114"
+          ]
+        },
+        {
+          "source": "retrieve capsule",
+          "target": "insert capsule",
+          "n": 1,
+          "p": 0.333,
+          "support": 1,
+          "sessions": [
+            "P01-20240203-093333"
+          ]
+        },
+        {
+          "source": "retrieve capsule",
+          "target": "put(box)",
+          "n": 1,
+          "p": 0.333,
+          "support": 1,
+          "sessions": [
+            "P01-20240203-093333"
           ]
         }
       ]
@@ -1260,7 +1439,7 @@
     {
       "id": "froth milk",
       "label": "froth milk",
-      "phase": "brew",
+      "phase": "brewing",
       "count": 6,
       "support": 3,
       "sessions": [
@@ -1268,7 +1447,7 @@
         "P01-20240203-093333",
         "P01-20240204-095114"
       ],
-      "mean_duration": 14.67,
+      "mean_duration": 14.51,
       "median_rank": 0.4,
       "members": [
         {
@@ -1569,11 +1748,11 @@
         },
         {
           "video_id": "P01-20240203-093333",
-          "start": 130.63,
-          "end": 131.03,
-          "verb": "put",
-          "noun": "milk",
-          "narration": "put the milk frother under the nozzle of the tap"
+          "start": 140.72,
+          "end": 141.03,
+          "verb": "close",
+          "noun": "tap",
+          "narration": "close the tap"
         },
         {
           "video_id": "P01-20240203-093333",
@@ -1614,14 +1793,6 @@
           "verb": "mix",
           "noun": "coffee",
           "narration": "Stir the coffee using the wooden stirrer. The wooden stirrer is in the right hand and the mug is being held with the left hand while moving. The milk stirrer will mix the milk with the coffee thoroughly in circular motions counterclockwise."
-        },
-        {
-          "video_id": "P01-20240203-093333",
-          "start": 149.65,
-          "end": 150.51,
-          "verb": "lift",
-          "noun": "colander",
-          "narration": "Lift the wooden stirrers out of the mug and shake it to drop any liquid on it."
         },
         {
           "video_id": "P01-20240204-095114",
@@ -1733,21 +1904,21 @@
           "id": "retrieve milk",
           "label": "retrieve milk",
           "state": "froth milk",
-          "phase": "brew",
-          "count": 7,
+          "phase": "brewing",
+          "count": 8,
           "support": 3,
           "sessions": [
             "P01-20240202-110250",
             "P01-20240203-093333",
             "P01-20240204-095114"
           ],
-          "mean_duration": 2.58,
-          "n_raw_actions": 19,
-          "verb": "open",
+          "mean_duration": 2.55,
+          "n_raw_actions": 21,
+          "verb": "close",
           "provenance": {
             "source": "llm_operation_alphabet",
             "operation_id": "o1",
-            "definition": "open the fridge, take out the milk bottle, and close the fridge",
+            "definition": "Open the fridge and take out the milk bottle",
             "confidence": "high"
           },
           "members": [
@@ -1833,6 +2004,14 @@
             },
             {
               "video_id": "P01-20240203-093333",
+              "start": 76.68,
+              "end": 77.9,
+              "verb": "close",
+              "noun": "bottle",
+              "narration": "close the milk bottle by putting the lid with the right hand and rotating it clockwise"
+            },
+            {
+              "video_id": "P01-20240203-093333",
               "start": 82.82,
               "end": 83.83,
               "verb": "open",
@@ -1902,27 +2081,37 @@
               "verb": "put",
               "noun": "bottle",
               "narration": "put the milk bottle on the countertop"
+            },
+            {
+              "video_id": "P01-20240204-095114",
+              "start": 32.2,
+              "end": 33.31,
+              "verb": "close",
+              "noun": "bottle",
+              "narration": "close the milk bottle by positioning the lid with the left hand on top of the milk bottle and rotating it clockwise the bottle is standing on the countertop"
             }
           ]
         },
         {
-          "id": "slide(milk)",
-          "label": "slide(milk)",
+          "id": "start frother",
+          "label": "start frother",
           "state": "froth milk",
-          "phase": "brew",
-          "count": 1,
-          "support": 1,
+          "phase": "brewing",
+          "count": 6,
+          "support": 3,
           "sessions": [
-            "P01-20240202-110250"
+            "P01-20240202-110250",
+            "P01-20240203-093333",
+            "P01-20240204-095114"
           ],
-          "mean_duration": 0.95,
-          "n_raw_actions": 1,
-          "verb": "slide",
+          "mean_duration": 1.63,
+          "n_raw_actions": 11,
+          "verb": "turn-on",
           "provenance": {
             "source": "llm_operation_alphabet",
-            "operation_id": "unmapped",
-            "definition": null,
-            "confidence": "low"
+            "operation_id": "o3",
+            "definition": "Plug in and turn on the milk frother to prepare frothed milk",
+            "confidence": "medium"
           },
           "members": [
             {
@@ -1932,6 +2121,86 @@
               "verb": "slide",
               "noun": "milk",
               "narration": " Slide the milk frother and its base on the counter to get it closer to where the person is standing."
+            },
+            {
+              "video_id": "P01-20240202-110250",
+              "start": 30.7,
+              "end": 32.4,
+              "verb": "turn-on",
+              "noun": "milk",
+              "narration": " While the left hand is closing the milk bottle, the right hand presses the power button on the milk frother to start it on."
+            },
+            {
+              "video_id": "P01-20240202-110250",
+              "start": 136.72,
+              "end": 137.47,
+              "verb": "take",
+              "noun": "milk",
+              "narration": " Pick up the milk frother with the right hand from its base."
+            },
+            {
+              "video_id": "P01-20240203-093333",
+              "start": 113.86,
+              "end": 114.58,
+              "verb": "take",
+              "noun": "milk",
+              "narration": "Pick up the milk frother from its space. Once it's removed from its space, the light goes off, so the milk frothing stops."
+            },
+            {
+              "video_id": "P01-20240203-093333",
+              "start": 141.54,
+              "end": 142.01,
+              "verb": "take",
+              "noun": "top",
+              "narration": "Pick the center piece from the counter top."
+            },
+            {
+              "video_id": "P01-20240203-093333",
+              "start": 142.2,
+              "end": 142.57,
+              "verb": "put",
+              "noun": "top",
+              "narration": "put the center piece back inside the milk frother by inserting the hand into the milk frother, putting the piece in."
+            },
+            {
+              "video_id": "P01-20240203-093333",
+              "start": 144.75,
+              "end": 145.25,
+              "verb": "put",
+              "noun": "milk",
+              "narration": "put the milk frother on its base."
+            },
+            {
+              "video_id": "P01-20240204-095114",
+              "start": 32.25,
+              "end": 32.97,
+              "verb": "turn-on",
+              "noun": "milk",
+              "narration": "try to start the milk frother by pressing the button on the outside using the right hand but it doesn't start because the plug is not in the socket"
+            },
+            {
+              "video_id": "P01-20240204-095114",
+              "start": 35.42,
+              "end": 36.72,
+              "verb": "attach",
+              "noun": "milk",
+              "narration": "plug the milk frother in the socket by picking up the plug from the countertop positioning it on the socket rightly and pushing in place with the right hand"
+            },
+            {
+              "video_id": "P01-20240204-095114",
+              "start": 37.02,
+              "end": 38.32,
+              "verb": "turn-on",
+              "noun": "plug",
+              "narration": "switch on the socket by pressing the button next to the plug with the right hand index"
+            },
+            {
+              "video_id": "P01-20240204-095114",
+              "start": 38.82,
+              "end": 39.84,
+              "verb": "turn-on",
+              "noun": "milk",
+              "narration": "turn on the milk frother by pressing the button on the outside using the right hand holding the milk frother with the right hand and pressing with the thumb"
             }
           ]
         },
@@ -1939,21 +2208,21 @@
           "id": "pour milk",
           "label": "pour milk",
           "state": "froth milk",
-          "phase": "brew",
-          "count": 5,
+          "phase": "brewing",
+          "count": 4,
           "support": 3,
           "sessions": [
             "P01-20240202-110250",
             "P01-20240203-093333",
             "P01-20240204-095114"
           ],
-          "mean_duration": 6.43,
-          "n_raw_actions": 10,
+          "mean_duration": 7.46,
+          "n_raw_actions": 8,
           "verb": "open",
           "provenance": {
             "source": "llm_operation_alphabet",
             "operation_id": "o2",
-            "definition": "open the milk bottle and pour milk into the milk frother",
+            "definition": "Open milk bottle and pour milk into the milk frother",
             "confidence": "high"
           },
           "members": [
@@ -1999,14 +2268,6 @@
             },
             {
               "video_id": "P01-20240203-093333",
-              "start": 76.68,
-              "end": 77.9,
-              "verb": "close",
-              "noun": "bottle",
-              "narration": "close the milk bottle by putting the lid with the right hand and rotating it clockwise"
-            },
-            {
-              "video_id": "P01-20240203-093333",
               "start": 115.15,
               "end": 127.78,
               "verb": "pour",
@@ -2028,85 +2289,14 @@
               "verb": "pour",
               "noun": "milk",
               "narration": "pour milk from the milk bottle into the milk frother by positioning the milk bottle on top of the milk frother and tilting the bottle so water pours into the milk frother. The bottle of milk is being held with the right hand and the milk frother is just supported by its space on the counter top. The left hand is holding the lid of the milk bottle that has just been opened"
-            },
-            {
-              "video_id": "P01-20240204-095114",
-              "start": 32.2,
-              "end": 33.31,
-              "verb": "close",
-              "noun": "bottle",
-              "narration": "close the milk bottle by positioning the lid with the left hand on top of the milk bottle and rotating it clockwise the bottle is standing on the countertop"
             }
           ]
         },
         {
-          "id": "setup frother",
-          "label": "setup frother",
+          "id": "press(button)",
+          "label": "press(button)",
           "state": "froth milk",
-          "phase": "brew",
-          "count": 2,
-          "support": 2,
-          "sessions": [
-            "P01-20240202-110250",
-            "P01-20240204-095114"
-          ],
-          "mean_duration": 3.02,
-          "n_raw_actions": 5,
-          "verb": "turn-on",
-          "provenance": {
-            "source": "llm_operation_alphabet",
-            "operation_id": "o3",
-            "definition": "plug in the milk frother and turn on the power button",
-            "confidence": "high"
-          },
-          "members": [
-            {
-              "video_id": "P01-20240202-110250",
-              "start": 30.7,
-              "end": 32.4,
-              "verb": "turn-on",
-              "noun": "milk",
-              "narration": " While the left hand is closing the milk bottle, the right hand presses the power button on the milk frother to start it on."
-            },
-            {
-              "video_id": "P01-20240204-095114",
-              "start": 32.25,
-              "end": 32.97,
-              "verb": "turn-on",
-              "noun": "milk",
-              "narration": "try to start the milk frother by pressing the button on the outside using the right hand but it doesn't start because the plug is not in the socket"
-            },
-            {
-              "video_id": "P01-20240204-095114",
-              "start": 35.42,
-              "end": 36.72,
-              "verb": "attach",
-              "noun": "milk",
-              "narration": "plug the milk frother in the socket by picking up the plug from the countertop positioning it on the socket rightly and pushing in place with the right hand"
-            },
-            {
-              "video_id": "P01-20240204-095114",
-              "start": 37.02,
-              "end": 38.32,
-              "verb": "turn-on",
-              "noun": "plug",
-              "narration": "switch on the socket by pressing the button next to the plug with the right hand index"
-            },
-            {
-              "video_id": "P01-20240204-095114",
-              "start": 38.82,
-              "end": 39.84,
-              "verb": "turn-on",
-              "noun": "milk",
-              "narration": "turn on the milk frother by pressing the button on the outside using the right hand holding the milk frother with the right hand and pressing with the thumb"
-            }
-          ]
-        },
-        {
-          "id": "start frothing",
-          "label": "start frothing",
-          "state": "froth milk",
-          "phase": "brew",
+          "phase": "brewing",
           "count": 3,
           "support": 2,
           "sessions": [
@@ -2118,9 +2308,9 @@
           "verb": "press",
           "provenance": {
             "source": "llm_operation_alphabet",
-            "operation_id": "o5",
-            "definition": "press the button on the coffee machine to begin frothing milk",
-            "confidence": "high"
+            "operation_id": "unmapped",
+            "definition": null,
+            "confidence": "low"
           },
           "members": [
             {
@@ -2161,7 +2351,7 @@
           "id": "turn(cup)",
           "label": "turn(cup)",
           "state": "froth milk",
-          "phase": "brew",
+          "phase": "brewing",
           "count": 1,
           "support": 1,
           "sessions": [
@@ -2188,49 +2378,10 @@
           ]
         },
         {
-          "id": "take(milk)",
-          "label": "take(milk)",
-          "state": "froth milk",
-          "phase": "brew",
-          "count": 2,
-          "support": 2,
-          "sessions": [
-            "P01-20240202-110250",
-            "P01-20240203-093333"
-          ],
-          "mean_duration": 0.73,
-          "n_raw_actions": 2,
-          "verb": "take",
-          "provenance": {
-            "source": "llm_operation_alphabet",
-            "operation_id": "unmapped",
-            "definition": null,
-            "confidence": "low"
-          },
-          "members": [
-            {
-              "video_id": "P01-20240202-110250",
-              "start": 136.72,
-              "end": 137.47,
-              "verb": "take",
-              "noun": "milk",
-              "narration": " Pick up the milk frother with the right hand from its base."
-            },
-            {
-              "video_id": "P01-20240203-093333",
-              "start": 113.86,
-              "end": 114.58,
-              "verb": "take",
-              "noun": "milk",
-              "narration": "Pick up the milk frother from its space. Once it's removed from its space, the light goes off, so the milk frothing stops."
-            }
-          ]
-        },
-        {
           "id": "pat(milk)",
           "label": "pat(milk)",
           "state": "froth milk",
-          "phase": "brew",
+          "phase": "brewing",
           "count": 1,
           "support": 1,
           "sessions": [
@@ -2260,7 +2411,7 @@
           "id": "take(can)",
           "label": "take(can)",
           "state": "froth milk",
-          "phase": "brew",
+          "phase": "brewing",
           "count": 1,
           "support": 1,
           "sessions": [
@@ -2290,7 +2441,7 @@
           "id": "turn(can)",
           "label": "turn(can)",
           "state": "froth milk",
-          "phase": "brew",
+          "phase": "brewing",
           "count": 1,
           "support": 1,
           "sessions": [
@@ -2320,7 +2471,7 @@
           "id": "look(can)",
           "label": "look(can)",
           "state": "froth milk",
-          "phase": "brew",
+          "phase": "brewing",
           "count": 1,
           "support": 1,
           "sessions": [
@@ -2350,7 +2501,7 @@
           "id": "look(alarm)",
           "label": "look(alarm)",
           "state": "froth milk",
-          "phase": "brew",
+          "phase": "brewing",
           "count": 1,
           "support": 1,
           "sessions": [
@@ -2377,23 +2528,23 @@
           ]
         },
         {
-          "id": "prepare stirrer",
-          "label": "prepare stirrer",
+          "id": "open(box)",
+          "label": "open(box)",
           "state": "froth milk",
-          "phase": "brew",
+          "phase": "brewing",
           "count": 1,
           "support": 1,
           "sessions": [
             "P01-20240203-093333"
           ],
-          "mean_duration": 1.59,
-          "n_raw_actions": 2,
+          "mean_duration": 0.97,
+          "n_raw_actions": 1,
           "verb": "open",
           "provenance": {
             "source": "llm_operation_alphabet",
-            "operation_id": "o4",
-            "definition": "open the stirrer box and pick a wooden stirrer",
-            "confidence": "high"
+            "operation_id": "unmapped",
+            "definition": null,
+            "confidence": "low"
           },
           "members": [
             {
@@ -2403,7 +2554,29 @@
               "verb": "open",
               "noun": "box",
               "narration": "Open the box of wooden stirrers."
-            },
+            }
+          ]
+        },
+        {
+          "id": "take(spoon)",
+          "label": "take(spoon)",
+          "state": "froth milk",
+          "phase": "brewing",
+          "count": 1,
+          "support": 1,
+          "sessions": [
+            "P01-20240203-093333"
+          ],
+          "mean_duration": 0.62,
+          "n_raw_actions": 1,
+          "verb": "take",
+          "provenance": {
+            "source": "llm_operation_alphabet",
+            "operation_id": "unmapped",
+            "definition": null,
+            "confidence": "low"
+          },
+          "members": [
             {
               "video_id": "P01-20240203-093333",
               "start": 89.76,
@@ -2418,7 +2591,7 @@
           "id": "take(cup)",
           "label": "take(cup)",
           "state": "froth milk",
-          "phase": "brew",
+          "phase": "brewing",
           "count": 2,
           "support": 1,
           "sessions": [
@@ -2453,56 +2626,18 @@
           ]
         },
         {
-          "id": "put(milk)",
-          "label": "put(milk)",
+          "id": "close(tap)",
+          "label": "close(tap)",
           "state": "froth milk",
-          "phase": "brew",
-          "count": 2,
-          "support": 1,
-          "sessions": [
-            "P01-20240203-093333"
-          ],
-          "mean_duration": 0.45,
-          "n_raw_actions": 2,
-          "verb": "put",
-          "provenance": {
-            "source": "llm_operation_alphabet",
-            "operation_id": "unmapped",
-            "definition": null,
-            "confidence": "low"
-          },
-          "members": [
-            {
-              "video_id": "P01-20240203-093333",
-              "start": 130.63,
-              "end": 131.03,
-              "verb": "put",
-              "noun": "milk",
-              "narration": "put the milk frother under the nozzle of the tap"
-            },
-            {
-              "video_id": "P01-20240203-093333",
-              "start": 144.75,
-              "end": 145.25,
-              "verb": "put",
-              "noun": "milk",
-              "narration": "put the milk frother on its base."
-            }
-          ]
-        },
-        {
-          "id": "take(top)",
-          "label": "take(top)",
-          "state": "froth milk",
-          "phase": "brew",
+          "phase": "brewing",
           "count": 1,
           "support": 1,
           "sessions": [
             "P01-20240203-093333"
           ],
-          "mean_duration": 0.47,
+          "mean_duration": 0.31,
           "n_raw_actions": 1,
-          "verb": "take",
+          "verb": "close",
           "provenance": {
             "source": "llm_operation_alphabet",
             "operation_id": "unmapped",
@@ -2512,41 +2647,11 @@
           "members": [
             {
               "video_id": "P01-20240203-093333",
-              "start": 141.54,
-              "end": 142.01,
-              "verb": "take",
-              "noun": "top",
-              "narration": "Pick the center piece from the counter top."
-            }
-          ]
-        },
-        {
-          "id": "put(top)",
-          "label": "put(top)",
-          "state": "froth milk",
-          "phase": "brew",
-          "count": 1,
-          "support": 1,
-          "sessions": [
-            "P01-20240203-093333"
-          ],
-          "mean_duration": 0.37,
-          "n_raw_actions": 1,
-          "verb": "put",
-          "provenance": {
-            "source": "llm_operation_alphabet",
-            "operation_id": "unmapped",
-            "definition": null,
-            "confidence": "low"
-          },
-          "members": [
-            {
-              "video_id": "P01-20240203-093333",
-              "start": 142.2,
-              "end": 142.57,
-              "verb": "put",
-              "noun": "top",
-              "narration": "put the center piece back inside the milk frother by inserting the hand into the milk frother, putting the piece in."
+              "start": 140.72,
+              "end": 141.03,
+              "verb": "close",
+              "noun": "tap",
+              "narration": "close the tap"
             }
           ]
         },
@@ -2554,7 +2659,7 @@
           "id": "mix(coffee)",
           "label": "mix(coffee)",
           "state": "froth milk",
-          "phase": "brew",
+          "phase": "brewing",
           "count": 1,
           "support": 1,
           "sessions": [
@@ -2579,39 +2684,19 @@
               "narration": "Stir the coffee using the wooden stirrer. The wooden stirrer is in the right hand and the mug is being held with the left hand while moving. The milk stirrer will mix the milk with the coffee thoroughly in circular motions counterclockwise."
             }
           ]
-        },
-        {
-          "id": "lift(colander)",
-          "label": "lift(colander)",
-          "state": "froth milk",
-          "phase": "brew",
-          "count": 1,
-          "support": 1,
-          "sessions": [
-            "P01-20240203-093333"
-          ],
-          "mean_duration": 0.86,
-          "n_raw_actions": 1,
-          "verb": "lift",
-          "provenance": {
-            "source": "llm_operation_alphabet",
-            "operation_id": "unmapped",
-            "definition": null,
-            "confidence": "low"
-          },
-          "members": [
-            {
-              "video_id": "P01-20240203-093333",
-              "start": 149.65,
-              "end": 150.51,
-              "verb": "lift",
-              "noun": "colander",
-              "narration": "Lift the wooden stirrers out of the mug and shake it to drop any liquid on it."
-            }
-          ]
         }
       ],
       "operation_edges": [
+        {
+          "source": "close(tap)",
+          "target": "start frother",
+          "n": 1,
+          "p": 1.0,
+          "support": 1,
+          "sessions": [
+            "P01-20240203-093333"
+          ]
+        },
         {
           "source": "look(alarm)",
           "target": "retrieve milk",
@@ -2633,8 +2718,8 @@
           ]
         },
         {
-          "source": "mix(coffee)",
-          "target": "lift(colander)",
+          "source": "open(box)",
+          "target": "take(spoon)",
           "n": 1,
           "p": 1.0,
           "support": 1,
@@ -2644,9 +2729,9 @@
         },
         {
           "source": "pour milk",
-          "target": "put(milk)",
+          "target": "close(tap)",
           "n": 1,
-          "p": 0.2,
+          "p": 0.25,
           "support": 1,
           "sessions": [
             "P01-20240203-093333"
@@ -2655,69 +2740,59 @@
         {
           "source": "pour milk",
           "target": "retrieve milk",
-          "n": 1,
-          "p": 0.2,
-          "support": 1,
-          "sessions": [
-            "P01-20240204-095114"
-          ]
-        },
-        {
-          "source": "pour milk",
-          "target": "setup frother",
           "n": 2,
-          "p": 0.4,
+          "p": 0.5,
           "support": 2,
           "sessions": [
-            "P01-20240202-110250",
+            "P01-20240203-093333",
             "P01-20240204-095114"
           ]
         },
         {
           "source": "pour milk",
-          "target": "start frothing",
+          "target": "start frother",
           "n": 1,
-          "p": 0.2,
+          "p": 0.25,
+          "support": 1,
+          "sessions": [
+            "P01-20240202-110250"
+          ]
+        },
+        {
+          "source": "press(button)",
+          "target": "retrieve milk",
+          "n": 1,
+          "p": 0.333,
           "support": 1,
           "sessions": [
             "P01-20240203-093333"
           ]
         },
         {
-          "source": "prepare stirrer",
-          "target": "start frothing",
-          "n": 1,
-          "p": 1.0,
-          "support": 1,
-          "sessions": [
-            "P01-20240203-093333"
-          ]
-        },
-        {
-          "source": "put(milk)",
+          "source": "press(button)",
           "target": "take(cup)",
           "n": 1,
-          "p": 0.5,
+          "p": 0.333,
           "support": 1,
           "sessions": [
             "P01-20240203-093333"
           ]
         },
         {
-          "source": "put(milk)",
-          "target": "take(top)",
+          "source": "press(button)",
+          "target": "turn(cup)",
           "n": 1,
-          "p": 0.5,
+          "p": 0.333,
           "support": 1,
           "sessions": [
-            "P01-20240203-093333"
+            "P01-20240202-110250"
           ]
         },
         {
-          "source": "put(top)",
-          "target": "put(milk)",
+          "source": "retrieve milk",
+          "target": "open(box)",
           "n": 1,
-          "p": 1.0,
+          "p": 0.125,
           "support": 1,
           "sessions": [
             "P01-20240203-093333"
@@ -2726,8 +2801,8 @@
         {
           "source": "retrieve milk",
           "target": "pour milk",
-          "n": 3,
-          "p": 0.429,
+          "n": 2,
+          "p": 0.25,
           "support": 2,
           "sessions": [
             "P01-20240203-093333",
@@ -2736,92 +2811,75 @@
         },
         {
           "source": "retrieve milk",
-          "target": "prepare stirrer",
-          "n": 1,
-          "p": 0.143,
-          "support": 1,
+          "target": "press(button)",
+          "n": 2,
+          "p": 0.25,
+          "support": 2,
           "sessions": [
+            "P01-20240202-110250",
             "P01-20240203-093333"
           ]
         },
         {
           "source": "retrieve milk",
-          "target": "slide(milk)",
-          "n": 1,
-          "p": 0.143,
-          "support": 1,
+          "target": "start frother",
+          "n": 2,
+          "p": 0.25,
+          "support": 2,
           "sessions": [
-            "P01-20240202-110250"
-          ]
-        },
-        {
-          "source": "retrieve milk",
-          "target": "start frothing",
-          "n": 1,
-          "p": 0.143,
-          "support": 1,
-          "sessions": [
-            "P01-20240202-110250"
+            "P01-20240202-110250",
+            "P01-20240204-095114"
           ]
         },
         {
           "source": "retrieve milk",
           "target": "take(can)",
           "n": 1,
-          "p": 0.143,
+          "p": 0.125,
           "support": 1,
           "sessions": [
             "P01-20240203-093333"
           ]
         },
         {
-          "source": "setup frother",
-          "target": "retrieve milk",
+          "source": "start frother",
+          "target": "pat(milk)",
           "n": 1,
-          "p": 1.0,
+          "p": 0.2,
           "support": 1,
           "sessions": [
             "P01-20240202-110250"
           ]
         },
         {
-          "source": "slide(milk)",
+          "source": "start frother",
           "target": "pour milk",
+          "n": 2,
+          "p": 0.4,
+          "support": 2,
+          "sessions": [
+            "P01-20240202-110250",
+            "P01-20240203-093333"
+          ]
+        },
+        {
+          "source": "start frother",
+          "target": "retrieve milk",
           "n": 1,
-          "p": 1.0,
+          "p": 0.2,
           "support": 1,
           "sessions": [
             "P01-20240202-110250"
           ]
         },
         {
-          "source": "start frothing",
-          "target": "retrieve milk",
-          "n": 1,
-          "p": 0.333,
-          "support": 1,
-          "sessions": [
-            "P01-20240203-093333"
-          ]
-        },
-        {
-          "source": "start frothing",
+          "source": "start frother",
           "target": "take(cup)",
           "n": 1,
-          "p": 0.333,
+          "p": 0.2,
           "support": 1,
           "sessions": [
             "P01-20240203-093333"
-          ]
-        },
-        {
-          "source": "start frothing",
-          "target": "turn(cup)",
-          "n": 1,
-          "p": 0.333,
-          "support": 1,
-          "sessions": [
-            "P01-20240202-110250"
           ]
         },
         {
@@ -2846,7 +2904,7 @@
         },
         {
           "source": "take(cup)",
-          "target": "take(milk)",
+          "target": "start frother",
           "n": 1,
           "p": 0.5,
           "support": 1,
@@ -2855,28 +2913,8 @@
           ]
         },
         {
-          "source": "take(milk)",
-          "target": "pat(milk)",
-          "n": 1,
-          "p": 0.5,
-          "support": 1,
-          "sessions": [
-            "P01-20240202-110250"
-          ]
-        },
-        {
-          "source": "take(milk)",
-          "target": "pour milk",
-          "n": 1,
-          "p": 0.5,
-          "support": 1,
-          "sessions": [
-            "P01-20240203-093333"
-          ]
-        },
-        {
-          "source": "take(top)",
-          "target": "put(top)",
+          "source": "take(spoon)",
+          "target": "press(button)",
           "n": 1,
           "p": 1.0,
           "support": 1,
@@ -2896,7 +2934,7 @@
         },
         {
           "source": "turn(cup)",
-          "target": "take(milk)",
+          "target": "start frother",
           "n": 1,
           "p": 1.0,
           "support": 1,
@@ -2907,9 +2945,9 @@
       ]
     },
     {
-      "id": "mix milk and coffee",
-      "label": "mix milk and coffee",
-      "phase": "finish",
+      "id": "assemble final drink",
+      "label": "assemble final drink",
+      "phase": "finishing",
       "count": 3,
       "support": 2,
       "sessions": [
@@ -3098,23 +3136,23 @@
       ],
       "operations": [
         {
-          "id": "pour milk into mug",
-          "label": "pour milk into mug",
-          "state": "mix milk and coffee",
-          "phase": "finish",
+          "id": "pour milk",
+          "label": "pour milk",
+          "state": "assemble final drink",
+          "phase": "finishing",
           "count": 3,
           "support": 2,
           "sessions": [
             "P01-20240202-110250",
             "P01-20240204-095114"
           ],
-          "mean_duration": 7.88,
+          "mean_duration": 7.93,
           "n_raw_actions": 6,
           "verb": "lift",
           "provenance": {
             "source": "llm_operation_alphabet",
-            "operation_id": "o2",
-            "definition": "tilt the milk frother to pour frothed milk into the coffee mug",
+            "operation_id": "o1",
+            "definition": "Tilt the milk frother to pour frothed milk into the mug with coffee",
             "confidence": "high"
           },
           "members": [
@@ -3144,6 +3182,14 @@
             },
             {
               "video_id": "P01-20240204-095114",
+              "start": 112.84,
+              "end": 113.69,
+              "verb": "take",
+              "noun": "milk",
+              "narration": "pick up the milk frother from its base on the countertop using the right hand in doing so the button on it actually gets switched off so by lifting it actually the milk frother is switched off"
+            },
+            {
+              "video_id": "P01-20240204-095114",
               "start": 116.43,
               "end": 123.16,
               "verb": "pour",
@@ -3157,22 +3203,14 @@
               "verb": "lift",
               "noun": "milk",
               "narration": "carefully allow the remaining frothed milk to be poured on the mug which is nearly filled by only very slowly tilting the milk frother"
-            },
-            {
-              "video_id": "P01-20240204-095114",
-              "start": 150.57999999999998,
-              "end": 151.29,
-              "verb": "hold",
-              "noun": "cup",
-              "narration": "hold the mug with the left hand on the countertop"
             }
           ]
         },
         {
           "id": "lift(lid)",
           "label": "lift(lid)",
-          "state": "mix milk and coffee",
-          "phase": "finish",
+          "state": "assemble final drink",
+          "phase": "finishing",
           "count": 1,
           "support": 1,
           "sessions": [
@@ -3199,24 +3237,23 @@
           ]
         },
         {
-          "id": "stir coffee",
-          "label": "stir coffee",
-          "state": "mix milk and coffee",
-          "phase": "finish",
-          "count": 4,
-          "support": 2,
+          "id": "move(spoon)",
+          "label": "move(spoon)",
+          "state": "assemble final drink",
+          "phase": "finishing",
+          "count": 1,
+          "support": 1,
           "sessions": [
-            "P01-20240202-110250",
-            "P01-20240204-095114"
+            "P01-20240202-110250"
           ],
-          "mean_duration": 3.64,
-          "n_raw_actions": 9,
-          "verb": "mix",
+          "mean_duration": 0.3,
+          "n_raw_actions": 1,
+          "verb": "move",
           "provenance": {
             "source": "llm_operation_alphabet",
-            "operation_id": "o3",
-            "definition": "use a wooden stirrer to mix the coffee and frothed milk together",
-            "confidence": "medium"
+            "operation_id": "unmapped",
+            "definition": null,
+            "confidence": "low"
           },
           "members": [
             {
@@ -3226,7 +3263,30 @@
               "verb": "move",
               "noun": "spoon",
               "narration": " Move the wooden stirrer from the left hand to the right hand."
-            },
+            }
+          ]
+        },
+        {
+          "id": "stir coffee",
+          "label": "stir coffee",
+          "state": "assemble final drink",
+          "phase": "finishing",
+          "count": 3,
+          "support": 2,
+          "sessions": [
+            "P01-20240202-110250",
+            "P01-20240204-095114"
+          ],
+          "mean_duration": 3.79,
+          "n_raw_actions": 5,
+          "verb": "mix",
+          "provenance": {
+            "source": "llm_operation_alphabet",
+            "operation_id": "o2",
+            "definition": "Take a wooden stirrer and mix the coffee and frothed milk together",
+            "confidence": "high"
+          },
+          "members": [
             {
               "video_id": "P01-20240202-110250",
               "start": 145.29,
@@ -3252,22 +3312,6 @@
               "narration": " Do one final stirring clockwise and then remove the wooden stirrer from the mug."
             },
             {
-              "video_id": "P01-20240202-110250",
-              "start": 150.73,
-              "end": 151.61,
-              "verb": "shake",
-              "noun": "spoon",
-              "narration": " Shake the wooden stirrer using the right hand to get rid of any excess liquid on it."
-            },
-            {
-              "video_id": "P01-20240204-095114",
-              "start": 131.28,
-              "end": 132.03,
-              "verb": "put",
-              "noun": "spoon",
-              "narration": "put the wooden stirrer inside the mug which contains coffee and frothed milk"
-            },
-            {
               "video_id": "P01-20240204-095114",
               "start": 151.67000000000002,
               "end": 152.49,
@@ -3282,6 +3326,37 @@
               "verb": "mix",
               "noun": "coffee",
               "narration": "stir the coffee inside the mug mixing the coffee with the frothed milk by rotating the wooden stirrer inside the mug in circular motions clockwise quickly and repeatedly until the coffee is fully mixed with the frothed milk"
+            }
+          ]
+        },
+        {
+          "id": "shake(spoon)",
+          "label": "shake(spoon)",
+          "state": "assemble final drink",
+          "phase": "finishing",
+          "count": 2,
+          "support": 2,
+          "sessions": [
+            "P01-20240202-110250",
+            "P01-20240204-095114"
+          ],
+          "mean_duration": 1.08,
+          "n_raw_actions": 2,
+          "verb": "shake",
+          "provenance": {
+            "source": "llm_operation_alphabet",
+            "operation_id": "unmapped",
+            "definition": null,
+            "confidence": "low"
+          },
+          "members": [
+            {
+              "video_id": "P01-20240202-110250",
+              "start": 150.73,
+              "end": 151.61,
+              "verb": "shake",
+              "noun": "spoon",
+              "narration": " Shake the wooden stirrer using the right hand to get rid of any excess liquid on it."
             },
             {
               "video_id": "P01-20240204-095114",
@@ -3296,8 +3371,8 @@
         {
           "id": "open(cupboard)",
           "label": "open(cupboard)",
-          "state": "mix milk and coffee",
-          "phase": "finish",
+          "state": "assemble final drink",
+          "phase": "finishing",
           "count": 1,
           "support": 1,
           "sessions": [
@@ -3326,8 +3401,8 @@
         {
           "id": "close(box)",
           "label": "close(box)",
-          "state": "mix milk and coffee",
-          "phase": "finish",
+          "state": "assemble final drink",
+          "phase": "finishing",
           "count": 1,
           "support": 1,
           "sessions": [
@@ -3356,8 +3431,8 @@
         {
           "id": "move(cup)",
           "label": "move(cup)",
-          "state": "mix milk and coffee",
-          "phase": "finish",
+          "state": "assemble final drink",
+          "phase": "finishing",
           "count": 1,
           "support": 1,
           "sessions": [
@@ -3384,33 +3459,25 @@
           ]
         },
         {
-          "id": "retrieve frother",
-          "label": "retrieve frother",
-          "state": "mix milk and coffee",
-          "phase": "finish",
+          "id": "pat(milk)",
+          "label": "pat(milk)",
+          "state": "assemble final drink",
+          "phase": "finishing",
           "count": 1,
           "support": 1,
           "sessions": [
             "P01-20240204-095114"
           ],
-          "mean_duration": 2.4,
-          "n_raw_actions": 2,
-          "verb": "take",
+          "mean_duration": 1.55,
+          "n_raw_actions": 1,
+          "verb": "pat",
           "provenance": {
             "source": "llm_operation_alphabet",
-            "operation_id": "o1",
-            "definition": "pick up the milk frother from its base on the countertop",
-            "confidence": "high"
+            "operation_id": "unmapped",
+            "definition": null,
+            "confidence": "low"
           },
           "members": [
-            {
-              "video_id": "P01-20240204-095114",
-              "start": 112.84,
-              "end": 113.69,
-              "verb": "take",
-              "noun": "milk",
-              "narration": "pick up the milk frother from its base on the countertop using the right hand in doing so the button on it actually gets switched off so by lifting it actually the milk frother is switched off"
-            },
             {
               "video_id": "P01-20240204-095114",
               "start": 114.94,
@@ -3422,10 +3489,70 @@
           ]
         },
         {
+          "id": "put(spoon)",
+          "label": "put(spoon)",
+          "state": "assemble final drink",
+          "phase": "finishing",
+          "count": 1,
+          "support": 1,
+          "sessions": [
+            "P01-20240204-095114"
+          ],
+          "mean_duration": 0.75,
+          "n_raw_actions": 1,
+          "verb": "put",
+          "provenance": {
+            "source": "llm_operation_alphabet",
+            "operation_id": "unmapped",
+            "definition": null,
+            "confidence": "low"
+          },
+          "members": [
+            {
+              "video_id": "P01-20240204-095114",
+              "start": 131.28,
+              "end": 132.03,
+              "verb": "put",
+              "noun": "spoon",
+              "narration": "put the wooden stirrer inside the mug which contains coffee and frothed milk"
+            }
+          ]
+        },
+        {
+          "id": "hold(cup)",
+          "label": "hold(cup)",
+          "state": "assemble final drink",
+          "phase": "finishing",
+          "count": 1,
+          "support": 1,
+          "sessions": [
+            "P01-20240204-095114"
+          ],
+          "mean_duration": 0.71,
+          "n_raw_actions": 1,
+          "verb": "hold",
+          "provenance": {
+            "source": "llm_operation_alphabet",
+            "operation_id": "unmapped",
+            "definition": null,
+            "confidence": "low"
+          },
+          "members": [
+            {
+              "video_id": "P01-20240204-095114",
+              "start": 150.57999999999998,
+              "end": 151.29,
+              "verb": "hold",
+              "noun": "cup",
+              "narration": "hold the mug with the left hand on the countertop"
+            }
+          ]
+        },
+        {
           "id": "take(cup)",
           "label": "take(cup)",
-          "state": "mix milk and coffee",
-          "phase": "finish",
+          "state": "assemble final drink",
+          "phase": "finishing",
           "count": 1,
           "support": 1,
           "sessions": [
@@ -3464,8 +3591,18 @@
           ]
         },
         {
-          "source": "lift(lid)",
+          "source": "hold(cup)",
           "target": "stir coffee",
+          "n": 1,
+          "p": 1.0,
+          "support": 1,
+          "sessions": [
+            "P01-20240204-095114"
+          ]
+        },
+        {
+          "source": "lift(lid)",
+          "target": "move(spoon)",
           "n": 1,
           "p": 1.0,
           "support": 1,
@@ -3475,12 +3612,22 @@
         },
         {
           "source": "move(cup)",
-          "target": "retrieve frother",
+          "target": "pour milk",
           "n": 1,
           "p": 1.0,
           "support": 1,
           "sessions": [
             "P01-20240204-095114"
+          ]
+        },
+        {
+          "source": "move(spoon)",
+          "target": "stir coffee",
+          "n": 1,
+          "p": 1.0,
+          "support": 1,
+          "sessions": [
+            "P01-20240202-110250"
           ]
         },
         {
@@ -3494,7 +3641,17 @@
           ]
         },
         {
-          "source": "pour milk into mug",
+          "source": "pat(milk)",
+          "target": "pour milk",
+          "n": 1,
+          "p": 1.0,
+          "support": 1,
+          "sessions": [
+            "P01-20240204-095114"
+          ]
+        },
+        {
+          "source": "pour milk",
           "target": "lift(lid)",
           "n": 1,
           "p": 0.333,
@@ -3504,18 +3661,28 @@
           ]
         },
         {
-          "source": "pour milk into mug",
-          "target": "stir coffee",
-          "n": 2,
-          "p": 0.667,
+          "source": "pour milk",
+          "target": "pat(milk)",
+          "n": 1,
+          "p": 0.333,
           "support": 1,
           "sessions": [
             "P01-20240204-095114"
           ]
         },
         {
-          "source": "retrieve frother",
-          "target": "pour milk into mug",
+          "source": "pour milk",
+          "target": "put(spoon)",
+          "n": 1,
+          "p": 0.333,
+          "support": 1,
+          "sessions": [
+            "P01-20240204-095114"
+          ]
+        },
+        {
+          "source": "put(spoon)",
+          "target": "hold(cup)",
           "n": 1,
           "p": 1.0,
           "support": 1,
@@ -3525,11 +3692,12 @@
         },
         {
           "source": "stir coffee",
-          "target": "pour milk into mug",
-          "n": 1,
-          "p": 0.5,
-          "support": 1,
+          "target": "shake(spoon)",
+          "n": 2,
+          "p": 0.667,
+          "support": 2,
           "sessions": [
+            "P01-20240202-110250",
             "P01-20240204-095114"
           ]
         },
@@ -3537,7 +3705,7 @@
           "source": "stir coffee",
           "target": "take(cup)",
           "n": 1,
-          "p": 0.5,
+          "p": 0.333,
           "support": 1,
           "sessions": [
             "P01-20240204-095114"
@@ -3556,18 +3724,18 @@
       ]
     },
     {
-      "id": "clean and tidy",
-      "label": "clean and tidy",
-      "phase": "finish",
-      "count": 7,
+      "id": "clean equipment",
+      "label": "clean equipment",
+      "phase": "cleanup",
+      "count": 6,
       "support": 3,
       "sessions": [
         "P01-20240202-110250",
         "P01-20240203-093333",
         "P01-20240204-095114"
       ],
-      "mean_duration": 4.55,
-      "median_rank": 0.7,
+      "mean_duration": 4.84,
+      "median_rank": 0.8,
       "members": [
         {
           "video_id": "P01-20240202-110250",
@@ -3592,46 +3760,6 @@
           "verb": "close",
           "noun": "bin",
           "narration": " Close the cover of the trash bin using the right hand. This action occurs off screen, but we can hear it."
-        },
-        {
-          "video_id": "P01-20240203-093333",
-          "start": 7.74,
-          "end": 8.56,
-          "verb": "put",
-          "noun": "plate",
-          "narration": "put the empty plate on the countertop next to the sink"
-        },
-        {
-          "video_id": "P01-20240203-093333",
-          "start": 10.55,
-          "end": 11.07,
-          "verb": "feel",
-          "noun": "cupboard",
-          "narration": "Touch the handle of the cupboard and attempt to open it, pulling it only marginally, then decide not to open the cupboard and release the handle. You can hear the sound of a partial closing."
-        },
-        {
-          "video_id": "P01-20240203-093333",
-          "start": 12.4,
-          "end": 13.17,
-          "verb": "lift",
-          "noun": "pot",
-          "narration": "lift the pot from the drainer holding it with the left hand"
-        },
-        {
-          "video_id": "P01-20240203-093333",
-          "start": 13.3,
-          "end": 14.1,
-          "verb": "take",
-          "noun": "cup",
-          "narration": "Pick a mug from the drainer that is under the pot using the right hand holding it from its handle."
-        },
-        {
-          "video_id": "P01-20240203-093333",
-          "start": 13.9,
-          "end": 14.76,
-          "verb": "put",
-          "noun": "pot",
-          "narration": "return the pot to the drainer."
         },
         {
           "video_id": "P01-20240203-093333",
@@ -3672,6 +3800,14 @@
           "verb": "put",
           "noun": "lid",
           "narration": "Put the lid on the counter top."
+        },
+        {
+          "video_id": "P01-20240203-093333",
+          "start": 130.63,
+          "end": 131.03,
+          "verb": "put",
+          "noun": "milk",
+          "narration": "put the milk frother under the nozzle of the tap"
         },
         {
           "video_id": "P01-20240203-093333",
@@ -3739,11 +3875,11 @@
         },
         {
           "video_id": "P01-20240203-093333",
-          "start": 140.72,
-          "end": 141.03,
-          "verb": "close",
-          "noun": "tap",
-          "narration": "close the tap"
+          "start": 149.65,
+          "end": 150.51,
+          "verb": "lift",
+          "noun": "colander",
+          "narration": "Lift the wooden stirrers out of the mug and shake it to drop any liquid on it."
         },
         {
           "video_id": "P01-20240203-093333",
@@ -3894,8 +4030,8 @@
         {
           "id": "discard waste",
           "label": "discard waste",
-          "state": "clean and tidy",
-          "phase": "finish",
+          "state": "clean equipment",
+          "phase": "cleanup",
           "count": 4,
           "support": 3,
           "sessions": [
@@ -3909,7 +4045,7 @@
           "provenance": {
             "source": "llm_operation_alphabet",
             "operation_id": "o2",
-            "definition": "throw used stirrers and expired items into the trash bin",
+            "definition": "Open the trash bin and throw away used stirrers or expired items",
             "confidence": "high"
           },
           "members": [
@@ -4012,181 +4148,23 @@
           ]
         },
         {
-          "id": "put(plate)",
-          "label": "put(plate)",
-          "state": "clean and tidy",
-          "phase": "finish",
-          "count": 2,
-          "support": 1,
-          "sessions": [
-            "P01-20240203-093333"
-          ],
-          "mean_duration": 0.52,
-          "n_raw_actions": 2,
-          "verb": "put",
-          "provenance": {
-            "source": "llm_operation_alphabet",
-            "operation_id": "unmapped",
-            "definition": null,
-            "confidence": "low"
-          },
-          "members": [
-            {
-              "video_id": "P01-20240203-093333",
-              "start": 7.74,
-              "end": 8.56,
-              "verb": "put",
-              "noun": "plate",
-              "narration": "put the empty plate on the countertop next to the sink"
-            },
-            {
-              "video_id": "P01-20240203-093333",
-              "start": 135.52,
-              "end": 135.75,
-              "verb": "put",
-              "noun": "plate",
-              "narration": "Put the piece on the counter top."
-            }
-          ]
-        },
-        {
-          "id": "feel(cupboard)",
-          "label": "feel(cupboard)",
-          "state": "clean and tidy",
-          "phase": "finish",
-          "count": 1,
-          "support": 1,
-          "sessions": [
-            "P01-20240203-093333"
-          ],
-          "mean_duration": 0.52,
-          "n_raw_actions": 1,
-          "verb": "feel",
-          "provenance": {
-            "source": "llm_operation_alphabet",
-            "operation_id": "unmapped",
-            "definition": null,
-            "confidence": "low"
-          },
-          "members": [
-            {
-              "video_id": "P01-20240203-093333",
-              "start": 10.55,
-              "end": 11.07,
-              "verb": "feel",
-              "noun": "cupboard",
-              "narration": "Touch the handle of the cupboard and attempt to open it, pulling it only marginally, then decide not to open the cupboard and release the handle. You can hear the sound of a partial closing."
-            }
-          ]
-        },
-        {
-          "id": "lift(pot)",
-          "label": "lift(pot)",
-          "state": "clean and tidy",
-          "phase": "finish",
-          "count": 1,
-          "support": 1,
-          "sessions": [
-            "P01-20240203-093333"
-          ],
-          "mean_duration": 0.77,
-          "n_raw_actions": 1,
-          "verb": "lift",
-          "provenance": {
-            "source": "llm_operation_alphabet",
-            "operation_id": "unmapped",
-            "definition": null,
-            "confidence": "low"
-          },
-          "members": [
-            {
-              "video_id": "P01-20240203-093333",
-              "start": 12.4,
-              "end": 13.17,
-              "verb": "lift",
-              "noun": "pot",
-              "narration": "lift the pot from the drainer holding it with the left hand"
-            }
-          ]
-        },
-        {
-          "id": "take(cup)",
-          "label": "take(cup)",
-          "state": "clean and tidy",
-          "phase": "finish",
-          "count": 1,
-          "support": 1,
-          "sessions": [
-            "P01-20240203-093333"
-          ],
-          "mean_duration": 0.8,
-          "n_raw_actions": 1,
-          "verb": "take",
-          "provenance": {
-            "source": "llm_operation_alphabet",
-            "operation_id": "unmapped",
-            "definition": null,
-            "confidence": "low"
-          },
-          "members": [
-            {
-              "video_id": "P01-20240203-093333",
-              "start": 13.3,
-              "end": 14.1,
-              "verb": "take",
-              "noun": "cup",
-              "narration": "Pick a mug from the drainer that is under the pot using the right hand holding it from its handle."
-            }
-          ]
-        },
-        {
-          "id": "put(pot)",
-          "label": "put(pot)",
-          "state": "clean and tidy",
-          "phase": "finish",
-          "count": 1,
-          "support": 1,
-          "sessions": [
-            "P01-20240203-093333"
-          ],
-          "mean_duration": 0.86,
-          "n_raw_actions": 1,
-          "verb": "put",
-          "provenance": {
-            "source": "llm_operation_alphabet",
-            "operation_id": "unmapped",
-            "definition": null,
-            "confidence": "low"
-          },
-          "members": [
-            {
-              "video_id": "P01-20240203-093333",
-              "start": 13.9,
-              "end": 14.76,
-              "verb": "put",
-              "noun": "pot",
-              "narration": "return the pot to the drainer."
-            }
-          ]
-        },
-        {
-          "id": "rinse milk frother",
-          "label": "rinse milk frother",
-          "state": "clean and tidy",
-          "phase": "finish",
+          "id": "rinse frother",
+          "label": "rinse frother",
+          "state": "clean equipment",
+          "phase": "cleanup",
           "count": 4,
           "support": 2,
           "sessions": [
             "P01-20240203-093333",
             "P01-20240204-095114"
           ],
-          "mean_duration": 4.42,
+          "mean_duration": 4.44,
           "n_raw_actions": 18,
           "verb": "wash",
           "provenance": {
             "source": "llm_operation_alphabet",
             "operation_id": "o1",
-            "definition": "take apart the milk frother and rinse it under the tap",
+            "definition": "Take the milk frother to the tap, open water, and rinse it out",
             "confidence": "high"
           },
           "members": [
@@ -4205,6 +4183,14 @@
               "verb": "put",
               "noun": "lid",
               "narration": "Put the lid on the counter top."
+            },
+            {
+              "video_id": "P01-20240203-093333",
+              "start": 130.63,
+              "end": 131.03,
+              "verb": "put",
+              "noun": "milk",
+              "narration": "put the milk frother under the nozzle of the tap"
             },
             {
               "video_id": "P01-20240203-093333",
@@ -4245,14 +4231,6 @@
               "verb": "wash",
               "noun": "milk",
               "narration": "Rinse the milk frother. This action is somehow off screen."
-            },
-            {
-              "video_id": "P01-20240203-093333",
-              "start": 140.72,
-              "end": 141.03,
-              "verb": "close",
-              "noun": "tap",
-              "narration": "close the tap"
             },
             {
               "video_id": "P01-20240204-095114",
@@ -4337,24 +4315,53 @@
           ]
         },
         {
-          "id": "wipe and dry",
-          "label": "wipe and dry",
-          "state": "clean and tidy",
-          "phase": "finish",
-          "count": 3,
-          "support": 2,
+          "id": "put(plate)",
+          "label": "put(plate)",
+          "state": "clean equipment",
+          "phase": "cleanup",
+          "count": 1,
+          "support": 1,
           "sessions": [
-            "P01-20240203-093333",
-            "P01-20240204-095114"
+            "P01-20240203-093333"
           ],
-          "mean_duration": 1.12,
-          "n_raw_actions": 3,
+          "mean_duration": 0.23,
+          "n_raw_actions": 1,
+          "verb": "put",
+          "provenance": {
+            "source": "llm_operation_alphabet",
+            "operation_id": "unmapped",
+            "definition": null,
+            "confidence": "low"
+          },
+          "members": [
+            {
+              "video_id": "P01-20240203-093333",
+              "start": 135.52,
+              "end": 135.75,
+              "verb": "put",
+              "noun": "plate",
+              "narration": "Put the piece on the counter top."
+            }
+          ]
+        },
+        {
+          "id": "take(sponge)",
+          "label": "take(sponge)",
+          "state": "clean equipment",
+          "phase": "cleanup",
+          "count": 1,
+          "support": 1,
+          "sessions": [
+            "P01-20240203-093333"
+          ],
+          "mean_duration": 0.45,
+          "n_raw_actions": 1,
           "verb": "take",
           "provenance": {
             "source": "llm_operation_alphabet",
-            "operation_id": "o3",
-            "definition": "use a sponge to clean up and dry hands with a towel",
-            "confidence": "high"
+            "operation_id": "unmapped",
+            "definition": null,
+            "confidence": "low"
           },
           "members": [
             {
@@ -4364,7 +4371,29 @@
               "verb": "take",
               "noun": "sponge",
               "narration": "pick up the sponge"
-            },
+            }
+          ]
+        },
+        {
+          "id": "put(sponge)",
+          "label": "put(sponge)",
+          "state": "clean equipment",
+          "phase": "cleanup",
+          "count": 1,
+          "support": 1,
+          "sessions": [
+            "P01-20240203-093333"
+          ],
+          "mean_duration": 0.23,
+          "n_raw_actions": 1,
+          "verb": "put",
+          "provenance": {
+            "source": "llm_operation_alphabet",
+            "operation_id": "unmapped",
+            "definition": null,
+            "confidence": "low"
+          },
+          "members": [
             {
               "video_id": "P01-20240203-093333",
               "start": 138.65,
@@ -4372,7 +4401,59 @@
               "verb": "put",
               "noun": "sponge",
               "narration": "Put the sponge back on the countertop."
-            },
+            }
+          ]
+        },
+        {
+          "id": "lift(colander)",
+          "label": "lift(colander)",
+          "state": "clean equipment",
+          "phase": "cleanup",
+          "count": 1,
+          "support": 1,
+          "sessions": [
+            "P01-20240203-093333"
+          ],
+          "mean_duration": 0.86,
+          "n_raw_actions": 1,
+          "verb": "lift",
+          "provenance": {
+            "source": "llm_operation_alphabet",
+            "operation_id": "unmapped",
+            "definition": null,
+            "confidence": "low"
+          },
+          "members": [
+            {
+              "video_id": "P01-20240203-093333",
+              "start": 149.65,
+              "end": 150.51,
+              "verb": "lift",
+              "noun": "colander",
+              "narration": "Lift the wooden stirrers out of the mug and shake it to drop any liquid on it."
+            }
+          ]
+        },
+        {
+          "id": "dry hands",
+          "label": "dry hands",
+          "state": "clean equipment",
+          "phase": "cleanup",
+          "count": 1,
+          "support": 1,
+          "sessions": [
+            "P01-20240204-095114"
+          ],
+          "mean_duration": 2.67,
+          "n_raw_actions": 1,
+          "verb": "dry",
+          "provenance": {
+            "source": "llm_operation_alphabet",
+            "operation_id": "o3",
+            "definition": "Wipe and dry hands using a kitchen towel",
+            "confidence": "high"
+          },
+          "members": [
             {
               "video_id": "P01-20240204-095114",
               "start": 147.61,
@@ -4386,8 +4467,8 @@
         {
           "id": "put(cup)",
           "label": "put(cup)",
-          "state": "clean and tidy",
-          "phase": "finish",
+          "state": "clean equipment",
+          "phase": "cleanup",
           "count": 1,
           "support": 1,
           "sessions": [
@@ -4427,7 +4508,7 @@
         },
         {
           "source": "discard waste",
-          "target": "rinse milk frother",
+          "target": "rinse frother",
           "n": 1,
           "p": 0.5,
           "support": 1,
@@ -4436,47 +4517,17 @@
           ]
         },
         {
-          "source": "feel(cupboard)",
-          "target": "lift(pot)",
+          "source": "dry hands",
+          "target": "discard waste",
           "n": 1,
           "p": 1.0,
           "support": 1,
           "sessions": [
-            "P01-20240203-093333"
+            "P01-20240204-095114"
           ]
         },
         {
-          "source": "lift(pot)",
-          "target": "take(cup)",
-          "n": 1,
-          "p": 1.0,
-          "support": 1,
-          "sessions": [
-            "P01-20240203-093333"
-          ]
-        },
-        {
-          "source": "put(plate)",
-          "target": "feel(cupboard)",
-          "n": 1,
-          "p": 0.5,
-          "support": 1,
-          "sessions": [
-            "P01-20240203-093333"
-          ]
-        },
-        {
-          "source": "put(plate)",
-          "target": "wipe and dry",
-          "n": 1,
-          "p": 0.5,
-          "support": 1,
-          "sessions": [
-            "P01-20240203-093333"
-          ]
-        },
-        {
-          "source": "put(pot)",
+          "source": "lift(colander)",
           "target": "discard waste",
           "n": 1,
           "p": 1.0,
@@ -4486,8 +4537,38 @@
           ]
         },
         {
-          "source": "rinse milk frother",
-          "target": "discard waste",
+          "source": "put(plate)",
+          "target": "take(sponge)",
+          "n": 1,
+          "p": 1.0,
+          "support": 1,
+          "sessions": [
+            "P01-20240203-093333"
+          ]
+        },
+        {
+          "source": "put(sponge)",
+          "target": "rinse frother",
+          "n": 1,
+          "p": 1.0,
+          "support": 1,
+          "sessions": [
+            "P01-20240203-093333"
+          ]
+        },
+        {
+          "source": "rinse frother",
+          "target": "dry hands",
+          "n": 1,
+          "p": 0.25,
+          "support": 1,
+          "sessions": [
+            "P01-20240204-095114"
+          ]
+        },
+        {
+          "source": "rinse frother",
+          "target": "lift(colander)",
           "n": 1,
           "p": 0.25,
           "support": 1,
@@ -4496,7 +4577,7 @@
           ]
         },
         {
-          "source": "rinse milk frother",
+          "source": "rinse frother",
           "target": "put(plate)",
           "n": 1,
           "p": 0.25,
@@ -4506,41 +4587,20 @@
           ]
         },
         {
-          "source": "rinse milk frother",
-          "target": "wipe and dry",
-          "n": 2,
-          "p": 0.5,
-          "support": 2,
-          "sessions": [
-            "P01-20240203-093333",
-            "P01-20240204-095114"
-          ]
-        },
-        {
-          "source": "take(cup)",
-          "target": "put(pot)",
+          "source": "rinse frother",
+          "target": "put(sponge)",
           "n": 1,
-          "p": 1.0,
+          "p": 0.25,
           "support": 1,
           "sessions": [
             "P01-20240203-093333"
           ]
         },
         {
-          "source": "wipe and dry",
-          "target": "discard waste",
+          "source": "take(sponge)",
+          "target": "rinse frother",
           "n": 1,
-          "p": 0.333,
-          "support": 1,
-          "sessions": [
-            "P01-20240204-095114"
-          ]
-        },
-        {
-          "source": "wipe and dry",
-          "target": "rinse milk frother",
-          "n": 2,
-          "p": 0.667,
+          "p": 1.0,
           "support": 1,
           "sessions": [
             "P01-20240203-093333"
@@ -4570,24 +4630,13 @@
     {
       "source": "START",
       "target": "brew coffee",
-      "n": 1,
-      "p": 0.333,
+      "n": 2,
+      "p": 0.667,
       "sessions": [
-        "P01-20240202-110250"
-      ],
-      "support": 1,
-      "interruption_actions": 0,
-      "interruption_seconds": 0
-    },
-    {
-      "source": "START",
-      "target": "clean and tidy",
-      "n": 1,
-      "p": 0.333,
-      "sessions": [
+        "P01-20240202-110250",
         "P01-20240203-093333"
       ],
-      "support": 1,
+      "support": 2,
       "interruption_actions": 0,
       "interruption_seconds": 0
     },
@@ -4598,6 +4647,31 @@
       "p": 0.333,
       "sessions": [
         "P01-20240204-095114"
+      ],
+      "support": 1,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "assemble final drink",
+      "target": "clean equipment",
+      "n": 3,
+      "p": 1.0,
+      "sessions": [
+        "P01-20240202-110250",
+        "P01-20240204-095114"
+      ],
+      "support": 2,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "brew coffee",
+      "target": "fill water tank",
+      "n": 1,
+      "p": 0.333,
+      "sessions": [
+        "P01-20240203-093333"
       ],
       "support": 1,
       "interruption_actions": 0,
@@ -4617,22 +4691,10 @@
       "interruption_seconds": 0
     },
     {
-      "source": "brew coffee",
-      "target": "prepare water tank",
-      "n": 1,
-      "p": 0.333,
-      "sessions": [
-        "P01-20240203-093333"
-      ],
-      "support": 1,
-      "interruption_actions": 0,
-      "interruption_seconds": 0
-    },
-    {
-      "source": "clean and tidy",
+      "source": "clean equipment",
       "target": "END",
       "n": 3,
-      "p": 0.429,
+      "p": 0.5,
       "sessions": [
         "P01-20240202-110250",
         "P01-20240203-093333",
@@ -4643,40 +4705,53 @@
       "interruption_seconds": 0
     },
     {
-      "source": "clean and tidy",
-      "target": "brew coffee",
+      "source": "clean equipment",
+      "target": "assemble final drink",
       "n": 1,
-      "p": 0.143,
-      "sessions": [
-        "P01-20240203-093333"
-      ],
-      "support": 1,
-      "interruption_actions": 0,
-      "interruption_seconds": 0
-    },
-    {
-      "source": "clean and tidy",
-      "target": "froth milk",
-      "n": 2,
-      "p": 0.286,
-      "sessions": [
-        "P01-20240203-093333"
-      ],
-      "support": 1,
-      "interruption_actions": 0,
-      "interruption_seconds": 0
-    },
-    {
-      "source": "clean and tidy",
-      "target": "mix milk and coffee",
-      "n": 1,
-      "p": 0.143,
+      "p": 0.167,
       "sessions": [
         "P01-20240204-095114"
       ],
       "support": 1,
       "interruption_actions": 0,
       "interruption_seconds": 0
+    },
+    {
+      "source": "clean equipment",
+      "target": "froth milk",
+      "n": 2,
+      "p": 0.333,
+      "sessions": [
+        "P01-20240203-093333"
+      ],
+      "support": 1,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "fill water tank",
+      "target": "load coffee capsule",
+      "n": 1,
+      "p": 1.0,
+      "sessions": [
+        "P01-20240203-093333"
+      ],
+      "support": 1,
+      "interruption_actions": 0,
+      "interruption_seconds": 0
+    },
+    {
+      "source": "froth milk",
+      "target": "assemble final drink",
+      "n": 2,
+      "p": 0.333,
+      "sessions": [
+        "P01-20240202-110250",
+        "P01-20240204-095114"
+      ],
+      "support": 2,
+      "interruption_actions": 29,
+      "interruption_seconds": 47.7
     },
     {
       "source": "froth milk",
@@ -4692,7 +4767,7 @@
     },
     {
       "source": "froth milk",
-      "target": "clean and tidy",
+      "target": "clean equipment",
       "n": 3,
       "p": 0.5,
       "sessions": [
@@ -4701,19 +4776,6 @@
       "support": 1,
       "interruption_actions": 0,
       "interruption_seconds": 0
-    },
-    {
-      "source": "froth milk",
-      "target": "mix milk and coffee",
-      "n": 2,
-      "p": 0.333,
-      "sessions": [
-        "P01-20240202-110250",
-        "P01-20240204-095114"
-      ],
-      "support": 2,
-      "interruption_actions": 29,
-      "interruption_seconds": 47.7
     },
     {
       "source": "load coffee capsule",
@@ -4728,31 +4790,6 @@
       "support": 3,
       "interruption_actions": 50,
       "interruption_seconds": 62.8
-    },
-    {
-      "source": "mix milk and coffee",
-      "target": "clean and tidy",
-      "n": 3,
-      "p": 1.0,
-      "sessions": [
-        "P01-20240202-110250",
-        "P01-20240204-095114"
-      ],
-      "support": 2,
-      "interruption_actions": 0,
-      "interruption_seconds": 0
-    },
-    {
-      "source": "prepare water tank",
-      "target": "load coffee capsule",
-      "n": 1,
-      "p": 1.0,
-      "sessions": [
-        "P01-20240203-093333"
-      ],
-      "support": 1,
-      "interruption_actions": 0,
-      "interruption_seconds": 0
     }
   ]
 }

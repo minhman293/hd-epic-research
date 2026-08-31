@@ -414,6 +414,49 @@ function resetExpansion() {
   if (typeof updateExpandChrome === "function") updateExpandChrome();
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// ALWAYS-ON HONESTY CAVEAT (§7)
+//
+// A persistent, plain-language line under the graph title stating (a) the
+// sample size — this is a small-sample backbone, not a population result — and
+// (b) whether a fixed order exists at all. §5 established that for unscripted
+// recipes the actions recur but their ORDER does not; the graph must say so
+// rather than implying a mainstream flow that isn't in the data. Derived from
+// the payload, never hard-coded, so it stays true per recipe and per view.
+// ─────────────────────────────────────────────────────────────────────────────
+function updateGraphCaveat(view) {
+  const el = document.getElementById("graphCaveat");
+  if (!el) return;
+  const n = (view && view.nSessions) || 1;
+
+  if (!view || !view.isMerged || n < 2) {
+    el.textContent =
+      "Single session — this is one observed run, not a pattern. "
+      + "Cross-session agreement cannot be measured here.";
+    return;
+  }
+
+  const rep = (mergedGraphPayload
+    && mergedGraphPayload.analysis
+    && mergedGraphPayload.analysis.canonical_spine_report) || {};
+
+  let orderNote;
+  if (rep.verdict === "no_shared_pattern") {
+    orderNote = "These actions recur, but their order does not — there is no "
+              + "fixed sequence for this recipe.";
+  } else if (rep.verdict === "partial_pattern" || rep.verdict === "shared_pattern") {
+    orderNote = "A recurring order exists — choose “Common to every session” "
+              + "under Pattern to highlight it.";
+  } else {
+    orderNote = "";
+  }
+
+  el.textContent =
+    `Based on ${n} sessions — a small-sample backbone (n=${n}). `
+    + "Bigger node = performed in more sessions; a paler edge = fewer sessions. "
+    + orderNote;
+}
+
 function reapplyGraphSettings(resetPositions = false, { animate = false } = {}) {
   if (!mergedGraphPayload) return;
   queueMicrotask(() => {
@@ -438,6 +481,7 @@ function reapplyGraphSettings(resetPositions = false, { animate = false } = {}) 
   }
 
   if (graphPanelTitle) graphPanelTitle.textContent = view.title;
+  updateGraphCaveat(view);
 
   // Attach the pipeline's filter ledger to the graph object so the renderer
   // can state scope provenance on canvas without a second plumbing path.
