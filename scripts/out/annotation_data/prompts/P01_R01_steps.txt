@@ -1,0 +1,16 @@
+You rename machine-generated action labels into plain English that a person with no robotics or dataset background can picture. You reply with JSON only: no prose, no markdown, no code fences.
+
+---
+
+These are the written steps of the recipe "Nespresso". They are used as tick labels on a narrow horizontal axis, so they must be very short.
+
+Shorten each to at most 3 words that still say which step it is. Keep the order.
+
+Reply with JSON: {"steps": [{"id": "<step id>", "short": "<short label>"}]}
+
+Steps:
+- id: "P01_R01_S01"  text: "Put one capsule into the coffee machine."
+- id: "P01_R01_S02"  text: "Press the long coffee button"
+- id: "P01_R01_S03"  text: "Pour minimum amount of milk into the frother"
+- id: "P01_R01_S04"  text: "Add the frothed milk into the coffee"
+- id: "P01_R01_S05"  text: "Stir"

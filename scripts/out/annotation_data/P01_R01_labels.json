@@ -1,0 +1,407 @@
+{
+ "take crockery": {
+  "rule": [
+   "take",
+   "cup"
+  ],
+  "llm": [
+   "pick up",
+   "mug"
+  ],
+  "used": [
+   "pick up",
+   "mug"
+  ],
+  "source": "llm"
+ },
+ "lift cookware": {
+  "rule": [
+   "lift",
+   "cookware"
+  ],
+  "llm": [
+   "lift",
+   "handle"
+  ],
+  "used": [
+   "lift",
+   "handle"
+  ],
+  "source": "llm"
+ },
+ "turn crockery": {
+  "rule": [
+   "turn",
+   "cup"
+  ],
+  "llm": [
+   "turn",
+   "mug"
+  ],
+  "used": [
+   "turn",
+   "mug"
+  ],
+  "source": "llm"
+ },
+ "put crockery": {
+  "rule": [
+   "put",
+   "crockery"
+  ],
+  "llm": [
+   "put down",
+   "mug"
+  ],
+  "used": [
+   "put down",
+   "mug"
+  ],
+  "source": "llm"
+ },
+ "take drinks": {
+  "rule": [
+   "take",
+   "coffee"
+  ],
+  "llm": [
+   "pick up",
+   "coffee pod"
+  ],
+  "used": [
+   "pick up",
+   "coffee pod"
+  ],
+  "source": "llm"
+ },
+ "open storage": {
+  "rule": [
+   "open",
+   "cupboard"
+  ],
+  "llm": [
+   "open",
+   "cupboard"
+  ],
+  "used": [
+   "open",
+   "cupboard"
+  ],
+  "source": "llm"
+ },
+ "open furniture": {
+  "rule": [
+   "open",
+   "drawer"
+  ],
+  "llm": [
+   "open",
+   "compartment"
+  ],
+  "used": [
+   "open",
+   "compartment"
+  ],
+  "source": "llm"
+ },
+ "put drinks": {
+  "rule": [
+   "put",
+   "coffee"
+  ],
+  "llm": [
+   "insert",
+   "coffee pod"
+  ],
+  "used": [
+   "insert",
+   "coffee pod"
+  ],
+  "source": "llm"
+ },
+ "take containers": {
+  "rule": [
+   "take",
+   "bottle"
+  ],
+  "llm": [
+   "pick up",
+   "milk bottle"
+  ],
+  "used": [
+   "pick up",
+   "milk bottle"
+  ],
+  "source": "llm"
+ },
+ "close containers": {
+  "rule": [
+   "close",
+   "containers"
+  ],
+  "llm": [
+   "close",
+   "lid"
+  ],
+  "used": [
+   "close",
+   "lid"
+  ],
+  "source": "llm"
+ },
+ "put containers": {
+  "rule": [
+   "put",
+   "bottle"
+  ],
+  "llm": [
+   "put down",
+   "milk bottle"
+  ],
+  "used": [
+   "put down",
+   "milk bottle"
+  ],
+  "source": "llm"
+ },
+ "turn-on dairy and eggs": {
+  "rule": [
+   "turn on",
+   "milk"
+  ],
+  "llm": [
+   "turn on",
+   "milk frother"
+  ],
+  "used": [
+   "turn on",
+   "milk frother"
+  ],
+  "source": "llm"
+ },
+ "open containers": {
+  "rule": [
+   "open",
+   "containers"
+  ],
+  "llm": [
+   "open",
+   "milk bottle"
+  ],
+  "used": [
+   "open",
+   "milk bottle"
+  ],
+  "source": "llm"
+ },
+ "lift containers": {
+  "rule": [
+   "lift",
+   "lid"
+  ],
+  "llm": [
+   "lift",
+   "lid"
+  ],
+  "used": [
+   "lift",
+   "lid"
+  ],
+  "source": "llm"
+ },
+ "press appliances": {
+  "rule": [
+   "press",
+   "button"
+  ],
+  "llm": [
+   "press",
+   "button"
+  ],
+  "used": [
+   "press",
+   "button"
+  ],
+  "source": "llm"
+ },
+ "close appliances": {
+  "rule": [
+   "close",
+   "appliances"
+  ],
+  "llm": [
+   "close",
+   "fridge"
+  ],
+  "used": [
+   "close",
+   "fridge"
+  ],
+  "source": "llm"
+ },
+ "open appliances": {
+  "rule": [
+   "open",
+   "fridge"
+  ],
+  "llm": [
+   "open",
+   "fridge"
+  ],
+  "used": [
+   "open",
+   "fridge"
+  ],
+  "source": "llm"
+ },
+ "pour dairy and eggs": {
+  "rule": [
+   "pour",
+   "milk"
+  ],
+  "llm": [
+   "pour",
+   "milk"
+  ],
+  "used": [
+   "pour",
+   "milk"
+  ],
+  "source": "llm"
+ },
+ "take dairy and eggs": {
+  "rule": [
+   "take",
+   "milk"
+  ],
+  "llm": [
+   "pick up",
+   "milk frother"
+  ],
+  "used": [
+   "pick up",
+   "milk frother"
+  ],
+  "source": "llm"
+ },
+ "pat dairy and eggs": {
+  "rule": [
+   "pat",
+   "milk"
+  ],
+  "llm": [
+   "tap",
+   "milk frother"
+  ],
+  "used": [
+   "tap",
+   "milk frother"
+  ],
+  "source": "llm"
+ },
+ "lift dairy and eggs": {
+  "rule": [
+   "lift",
+   "milk"
+  ],
+  "llm": [
+   "tilt",
+   "milk frother"
+  ],
+  "used": [
+   "tilt",
+   "milk frother"
+  ],
+  "source": "llm"
+ },
+ "put dairy and eggs": {
+  "rule": [
+   "put",
+   "milk"
+  ],
+  "llm": [
+   "put down",
+   "milk frother"
+  ],
+  "used": [
+   "put down",
+   "milk frother"
+  ],
+  "source": "llm"
+ },
+ "wash dairy and eggs": {
+  "rule": [
+   "wash",
+   "milk"
+  ],
+  "llm": [
+   "wash",
+   "milk frother"
+  ],
+  "used": [
+   "wash",
+   "milk frother"
+  ],
+  "source": "llm"
+ },
+ "mix drinks": {
+  "rule": [
+   "mix",
+   "coffee"
+  ],
+  "llm": [
+   "stir",
+   "coffee"
+  ],
+  "used": [
+   "stir",
+   "coffee"
+  ],
+  "source": "llm"
+ },
+ "shake cutlery": {
+  "rule": [
+   "shake",
+   "spoon"
+  ],
+  "llm": [
+   "shake",
+   "stirrer"
+  ],
+  "used": [
+   "shake",
+   "stirrer"
+  ],
+  "source": "llm"
+ },
+ "throw cutlery": {
+  "rule": [
+   "throw",
+   "spoon"
+  ],
+  "llm": [
+   "throw away",
+   "stirrer"
+  ],
+  "used": [
+   "throw away",
+   "stirrer"
+  ],
+  "source": "llm"
+ },
+ "close rubbish": {
+  "rule": [
+   "close",
+   "bin"
+  ],
+  "llm": [
+   "close",
+   "bin"
+  ],
+  "used": [
+   "close",
+   "bin"
+  ],
+  "source": "llm"
+ }
+}

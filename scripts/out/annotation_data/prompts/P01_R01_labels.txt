@@ -1,0 +1,201 @@
+You rename machine-generated action labels into plain English that a person with no robotics or dataset background can picture. You reply with JSON only: no prose, no markdown, no code fences.
+
+---
+
+These are action types extracted from egocentric video of one person making "Nespresso". Each was built mechanically as [verb class] + [object category], which produces phrases nobody says out loud, like "lift dairy and eggs".
+
+Rewrite each in plain English a non-expert would recognise. The node box prints
+the action on the first line and the thing it acts on underneath, so return the
+two parts SEPARATELY. Do not put the whole phrase in one field.
+
+Rules:
+  - "verb": the action, including any particle that belongs to it.
+    "pick up", "turn on", "put back", "pour". 1-2 words, lower case.
+  - "object": what it acts on. "mug", "milk bottle", "machine button".
+    1-3 words, lower case, no article.
+  - The particle goes with the VERB, never with the object. "pick up mug" splits
+    as verb "pick up" / object "mug", never verb "pick" / object "up mug".
+  - Keep the verb's meaning. Do not invent an action that is not in the samples.
+  - Replace the object CATEGORY with the concrete object that dominates the
+    samples. "dairy and eggs" where every sample is milk becomes "milk".
+  - If the samples genuinely mix objects, use a plain umbrella word ("cups",
+    "containers"), not the dataset's category name.
+  - verb+object together must be unique across all keys.
+
+Reply with JSON:
+{"labels": [{"key": "<key exactly as given>", "verb": "<action>", "object": "<thing>"}]}
+
+Action types:
+- key: "take crockery"
+  objects seen: cup x6, jug x1
+  samples:
+    * Pick up a mug from the lower shelf of the cupboard that is upside down using the left hand.
+    * Pick a mug from the drainer that is under the pot using the right hand holding it from its handle.
+    * pick up the water filter jug from the countertop
+    * Pick up the mug from under the nozzle of the coffee machine. Once the mug is removed, the shelf is dropped aut
+- key: "lift cookware"
+  objects seen: handle x1, pot x1
+  samples:
+    * Lift the handle of the coffee machine using the right hand so that to expose the gap where the coffee capsule 
+    * lift the pot from the drainer holding it with the left hand
+- key: "turn crockery"
+  objects seen: cup x3
+  samples:
+    * Turn the mug in the left hand to face the camera so as to check how clean it is.
+    * hold the mug of coffee with the left hand and rotate it so that the handle is facing to the left side. Then ho
+    * turn the mug to be upright
+- key: "put crockery"
+  objects seen: cup x4, plate x2, jug x1
+  samples:
+    * Put the mug that is in the right hand under the nozzle of the coffee machine.
+    * put the empty plate on the countertop next to the sink
+    * Put the mug under the coffee machine's nozzle.
+    * put down the water filter jug on the counter top, this action is off screen
+- key: "take drinks"
+  objects seen: coffee x3
+  samples:
+    * Using the left hand, pick up the coffee capsule from the countertop to the left of the coffee machine.
+    * Pick up a coffee capsule from the box.
+    * pick up a coffee capsule using the right hand from the coffee capsule box by inserting the right hand into the
+- key: "open storage"
+  objects seen: cupboard x2
+  samples:
+    * Open the upper cupboard by holding the handle of the cupboard with the left hand.
+    * open the upper cupboard using the left hand holding the handle
+- key: "open furniture"
+  objects seen: drawer x2
+  samples:
+    * Open the coffee machine's compartment by lifting the handle up using the left hand.
+    * open the compartment of coffee capsules in the coffee machine by holding the handle of the coffee machine with
+- key: "put drinks"
+  objects seen: coffee x2, water x1
+  samples:
+    * Put the water tank back on its base on the back of the coffee machine, having filled it with water, so it's re
+    * Put the coffee capsule into the coffee machine.
+    * place the coffee capsule inside the compartment of the coffee machine by positioning the hand on top of the co
+- key: "take containers"
+  objects seen: bottle x5, box x1, can x1
+  samples:
+    * Using the left hand, pick up the milk bottle using the handle, which is located in the lower shelf of the door
+    * Pick up the milk bottle from its handle using the left hand.
+    * Pick up a box of coffee capsules from the shelf under the countertop using the right hand.
+    * Pick up the milk bottle.
+- key: "close containers"
+  objects seen: bottle x2, box x2, lid x1
+  samples:
+    * close the lid of the water tank while carrying it
+    * close the milk bottle by putting the lid with the right hand and rotating it clockwise
+    * close the cardboard box by releasing its cover with the left hand so it actually closes
+    * close the milk bottle by positioning the lid with the left hand on top of the milk bottle and rotating it cloc
+- key: "put containers"
+  objects seen: bottle x4, box x1, lid x1
+  samples:
+    * Put down the milk bottle inside the fridge in the lower shelf of the door using the left hand.
+    * Put the box on the counter top.
+    * Put the lid on the counter top.
+    * Put the milk bottle in the door of the fridge, in the lower shelf, using the left hand.
+- key: "turn-on dairy and eggs"
+  objects seen: milk x3
+  samples:
+    * While the left hand is closing the milk bottle, the right hand presses the power button on the milk frother to
+    * try to start the milk frother by pressing the button on the outside using the right hand but it doesn't start 
+    * turn on the milk frother by pressing the button on the outside using the right hand holding the milk frother w
+- key: "open containers"
+  objects seen: bottle x3, box x3, lid x2
+  samples:
+    * Open the milk bottle by holding it with the right hand, holding the lid with the left hand, and rotating the l
+    * using the right hand, open the lid of the trash bin.
+    * open the box by unfolding its cover.
+    * Open the milk bottle, holding the bottle with the left hand and the lid with the right hand and rotating the l
+- key: "lift containers"
+  objects seen: lid x3, bottle x2
+  samples:
+    * While holding the milk bottle lid with the left hand, using the right hand tilt the milk bottle to pour milk f
+    * Tilt the milk bottle up after the milk has been poured. Place the lid from the left hand on top of the milk bo
+    * using the left hand, lift the lid of the box of wooden stirrers using the left hand while holding the cover. P
+    * lift the lid off the water tank of the coffee machine then pick up the water tank separating it from the coffe
+- key: "press appliances"
+  objects seen: button x6
+  samples:
+    * Press down the button to turn on the coffee machine using the right hand.
+    * Using the left hand press the button of the long coffee on the coffee machine.
+    * press the button on the coffee machine to start the machine
+    * press the button on the milk frother to start it
+- key: "close appliances"
+  objects seen: fridge x5, tap x3, machine:washing x1
+  samples:
+    * Close the fridge.
+    * Close the fridge.
+    * close the coffee machine by pulling the handle down locking the capsule in place and closing the compartment o
+    * close the fridge
+- key: "open appliances"
+  objects seen: fridge x5, tap x3
+  samples:
+    * Open the fridge.
+    * Open the fridge.
+    * open the fridge
+    * Open the fridge.
+- key: "pour dairy and eggs"
+  objects seen: milk x4
+  samples:
+    * pour some milk from the bottle into the milk frother, by holding the milk on top of the milk frother and tilti
+    * Pour milk from the milk frother into the mug. The mug is being held with the left hand and the milk frother is
+    * pour milk from the milk bottle into the milk frother by positioning the milk bottle on top of the milk frother
+    * pour the frothed milk from the milk frother into the mug holding the mug with the left hand while it's resting
+- key: "take dairy and eggs"
+  objects seen: milk x3
+  samples:
+    * Pick up the milk frother with the right hand from its base.
+    * Pick up the milk frother from its space. Once it's removed from its space, the light goes off, so the milk fro
+    * pick up the milk frother from its base on the countertop using the right hand in doing so the button on it act
+- key: "pat dairy and eggs"
+  objects seen: milk x2
+  samples:
+    * Hit the milk frother on the countertop using the right hand to set the milk frothing inside.
+    * hit the milk frother twice on the surface of the countertop using the right hand to steady the frothed milk in
+- key: "lift dairy and eggs"
+  objects seen: milk x4
+  samples:
+    * Tilt the milk frother to pour the frothed milk from inside it into the mug which is being held using the left 
+    * Lift and drop the milk-frother slightly using the right hand up and down twice to get rid of all the froth ins
+    * Tilt the milk frothing back upwards and place it on the countertop.
+    * carefully allow the remaining frothed milk to be poured on the mug which is nearly filled by only very slowly 
+- key: "put dairy and eggs"
+  objects seen: milk x4
+  samples:
+    * put the milk frother under the nozzle of the tap
+    * put the milk frother on its base.
+    * position the milk frother under the nozzle of the tap in the sink
+    * put the milk frother back on its base on the countertop using the right hand
+- key: "wash dairy and eggs"
+  objects seen: milk x5
+  samples:
+    * Rinse the milk frother.
+    * lather the inside of the milk frother using the sponge by inserting the sponge inside the milk frother.
+    * Rinse the milk frother. This action is somehow off screen.
+    * rinse the milk frother also using the right hand index to scrape its inner surface
+- key: "mix drinks"
+  objects seen: coffee x4
+  samples:
+    * Using the wooden stirrer, stir the coffee and the frothed milk in the mug using the right hand rotating clockw
+    * Now stir the coffee and the milk frothing using the wooden stirrer but stirring a counter-clockwise.
+    * Stir the coffee using the wooden stirrer. The wooden stirrer is in the right hand and the mug is being held wi
+    * stir the coffee inside the mug mixing the coffee with the frothed milk by rotating the wooden stirrer inside t
+- key: "shake cutlery"
+  objects seen: spoon x2
+  samples:
+    * Shake the wooden stirrer using the right hand to get rid of any excess liquid on it.
+    * shake the wooden stirrer on top of the mug to drop any liquid that stuck to it
+- key: "throw cutlery"
+  objects seen: spoon x3
+  samples:
+    * throw the wooden stirrer which is in the right hand inside the bin.
+    * Throw the wooden stirrer.
+    * throw the wooden stirrer in the trash bin
+- key: "close rubbish"
+  objects seen: bin x4
+  samples:
+    * Close the cover of the trash bin using the right hand. This action occurs off screen, but we can hear it.
+    * close the trash bin this action is off screen
+    * close the trash bin
+    * close the trash bin

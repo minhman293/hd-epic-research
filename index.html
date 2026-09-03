@@ -19,7 +19,11 @@
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1180px;margin:0 auto;padding:0 28px 96px}
+.wrap{width:90%;max-width:2200px;margin:0 auto;padding:0 28px 96px}
+.toprow{display:grid;grid-template-columns:1fr 1.22fr;gap:26px;align-items:start;border-bottom:1px solid var(--rule);margin-bottom:26px}
+.toprow>section{border-bottom:0;margin-bottom:0;padding-bottom:22px;min-width:0}
+.toprow .snote,.toprow .plot,.toprow .legend,.toprow .gctl{margin-left:0;max-width:none}
+@media (max-width:1200px){.toprow{grid-template-columns:1fr}}
 a{color:var(--accent)}
 h1,h2,h3{font-weight:500;margin:0}
 
@@ -48,21 +52,37 @@ section{padding:34px 0;border-bottom:1px solid var(--rule)}
 .snum{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);padding-top:2px}
 .shead h2{font-size:16.5px;letter-spacing:-.01em}
 .snote{color:var(--mid);font-size:13px;max-width:74ch;margin:0 0 18px 30px}
+.gctl{margin:0 0 10px 30px;display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--soft);flex-wrap:wrap}
+.gbtn{font:inherit;padding:4px 11px;border:1px solid var(--rule);background:var(--panel);cursor:pointer;color:var(--mid)}
+.gbtn:first-of-type{border-radius:5px 0 0 5px}.gbtn:last-of-type{border-radius:0 5px 5px 0;border-left:none}
+.gbtn.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.gchk{display:flex;align-items:center;gap:5px;margin-left:10px;cursor:pointer}
 .plot{margin-left:30px}
 svg{display:block;width:100%;height:auto;overflow:visible}
 text{font-family:"IBM Plex Sans",sans-serif}
 
 /* ---------- annotation ---------- */
-.rate{margin-left:30px;background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:18px 20px}
+.rate{margin-left:0;background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:22px 24px}
+.ctrack{position:relative;height:7px;border-radius:4px;background:var(--rule2);margin-top:8px;overflow:hidden}
+.cact{position:absolute;top:0;bottom:0;background:var(--accent);opacity:.5}
+.chead{position:absolute;top:-2px;width:2px;height:11px;background:var(--ink);left:0}
+.bulk{margin:14px 0 0;font-size:12.5px;color:var(--soft);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .rate.empty{background:none;border-style:dashed;color:var(--mid)}
-.clip{display:flex;gap:18px}
+.clip{display:flex;gap:22px;align-items:stretch}
+.clipcol{width:min(720px,46%);flex:none;min-width:0}
+.clipv{width:100%;aspect-ratio:16/9;border-radius:6px;background:#000;border:1px solid var(--rule2)}
+.clipv video{width:100%;height:100%;border-radius:6px;object-fit:cover;filter:brightness(2) contrast(1.15) saturate(1.1)}
+.ctext{flex:1;min-width:0;display:flex;flex-direction:column}
+.cclip{font-size:11px;color:var(--soft);margin-top:5px;text-align:center;font-variant-numeric:tabular-nums}
 .thumb{width:172px;height:104px;border-radius:6px;background:var(--shade);border:1px solid var(--rule2);flex:none;display:flex;align-items:center;justify-content:center;color:var(--soft);font-size:11.5px;text-align:center;padding:10px}
 .cname{font-size:17px;font-weight:500;letter-spacing:-.01em}
 .cmeta{font-size:12.5px;color:var(--soft);margin-top:3px;font-variant-numeric:tabular-nums}
 .narr{margin-top:10px;font-size:13.5px;color:var(--mid);border-left:2px solid var(--rule);padding-left:11px}
-.ctx{margin-top:11px;font-size:13px;color:var(--mid)}
+.ctx{margin-top:11px;margin-bottom:16px;font-size:13px;color:var(--mid)}
 .ctx b{font-weight:450;color:var(--ink)}
-.opts{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+/* margin-top:auto pushes the controls to the foot of the text column so
+   they line up with the bottom of the video instead of leaving a hole. */
+.opts{display:flex;gap:8px;margin-top:auto;padding-top:20px;flex-wrap:wrap;border-top:1px solid var(--rule)}
 .opt{padding:9px 15px;border-radius:6px;font-size:13.5px}
 .opt[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
 .why{margin-top:12px;width:100%;font-family:inherit;font-size:13px;padding:9px 11px;border:1px solid var(--rule);border-radius:6px;resize:vertical;min-height:38px;color:var(--ink);background:var(--panel)}
@@ -83,7 +103,8 @@ kbd{font-family:"IBM Plex Mono",monospace;font-size:11px;border:1px solid var(--
 .how ol{margin:0 0 16px;padding-left:20px;font-size:13.5px;color:var(--mid);max-width:76ch}
 .how li{margin-bottom:7px}
 .how li b{font-weight:500;color:var(--ink)}
-@media (max-width:720px){.wrap{padding:0 16px 60px}.plot,.rate,.snote,.legend{margin-left:0}.clip{flex-direction:column}.thumb{width:100%}}
+@media (max-width:980px){.clip{flex-direction:column}.clipv{width:100%}}
+@media (max-width:720px){.wrap{width:auto;padding:0 16px 60px}.plot,.rate,.snote,.legend{margin-left:0}.thumb{width:100%}}
 @media (prefers-reduced-motion:no-preference){.bk,.nd{transition:opacity .12s ease}}
 </style>
 </head>
@@ -122,9 +143,15 @@ kbd{font-family:"IBM Plex Mono",monospace;font-size:11px;border:1px solid var(--
   <button id="reset">Clear</button>
 </div>
 
+<div class="toprow">
 <section>
   <div class="shead"><span class="snum">1</span><h2>Which actions recur, and where they sit</h2></div>
-  <p class="snote">Every distinct action that appears in at least two sessions of this recipe. Rows group actions by what kind of action they are; horizontal position is where the action typically falls in the recipe. Arrows show what tends to follow what — thicker means more likely, darker means seen in more sessions. Select one to find its instances below.</p>
+  <p class="snote">Every distinct action that appears in at least two sessions of this recipe. Horizontal position is where the action typically falls in the recipe. Group the rows by kind of action, or by which recipe step they belong to. Arrows show what tends to follow what — thicker means more likely. Hover a box to isolate what connects to it; select one to find its instances below.</p>
+  <div class="gctl">
+    <span>Group by</span>
+    <button class="gbtn on" data-g="cat">kind of action</button><button class="gbtn" data-g="step">recipe step</button>
+    <label class="gchk"><input type="checkbox" id="mainOnly"> only the most likely next step</label>
+  </div>
   <div class="plot" id="graph"></div>
   <div class="legend" id="legend"></div>
 </section>
@@ -135,10 +162,11 @@ kbd{font-family:"IBM Plex Mono",monospace;font-size:11px;border:1px solid var(--
   <div class="plot" id="over"></div>
   <div class="plot" id="detail" style="margin-top:6px"></div>
 </section>
+</div>
 
 <section style="border-bottom:0">
   <div class="shead"><span class="snum">3</span><h2>Would you want a robot to do this one?</h2></div>
-  <p class="snote">Passive means you would rather do it yourself. Confirm means the robot should offer and wait for your go-ahead. Assist means it should just get on with it.</p>
+  <p class="snote">Passive means the robot only does it when you explicitly ask. Confirm means it notices and offers, then waits for your go-ahead. Assist means it notices and just gets on with it.</p>
   <div id="rate"></div>
 </section>
 
@@ -146,7 +174,7 @@ kbd{font-family:"IBM Plex Mono",monospace;font-size:11px;border:1px solid var(--
 
 </div>
 
-<script src="data.js"></script>
+<script src="scripts\out\annotation_data\data.js"></script>
 <script>
 (function(){
 "use strict";
@@ -154,6 +182,8 @@ const $=id=>document.getElementById(id);
 const CATS=["retrieve","access","split","merge","manipulate","monitor","sense","distribute","order","transition","block","leave","clean"];
 const cc=c=>getComputedStyle(document.documentElement).getPropertyValue("--c-"+c).trim()||"#8B9199";
 const OPTS=["Passive","Proactive-confirm","Proactive-assist"];
+let grouping="cat", mainOnly=false;
+const VIDEO_BASE="https://object-aware-fair-string.trycloudflare.com/hd_epic_videos";
 
 let key=Object.keys(DATA)[0], D=null, mode="chron", selNode=null, cur=null;
 let brush=[0,1], labels={};
@@ -171,73 +201,154 @@ function flat(){ // every instance in the current traversal order
     if(selNode!==null && a[0]!==selNode) return;
     out.push([r,i,a]);
   }));
-  if(mode==="node") out.sort((p,q)=>p[2][0]-q[2][0] || p[2][4]-q[2][4]);
+  /* flat() already yields sessions in order, and actions in order within a
+     session, so selecting a node lands on its first instance in the earliest
+     session that contains it. Do not re-sort by position: that used to jump
+     to whichever session happened to perform it earliest in the recipe. */
   return out;
 }
 function nodeOf(a){return a[0]>=0?D.nodes[a[0]].k:null}
-function nameOf(a){return a?(a[0]>=0?D.nodes[a[0]].k:"("+a[1]+", one-off)"):"—"}
+/* Always name the concrete thing. a[8] is this instance's own verb+noun, so
+   a one-off reads "pour oat milk" instead of "(merge, one-off)". */
+function nameOf(a){if(!a)return "\u2014";
+  if(a[0]>=0){const n=D.nodes[a[0]];return n.lab||n.k}
+  return a[8]||"("+a[1]+", one-off)"}
+function isOneOff(a){return a&&a[0]<0}
 
 /* ---------- layout constants ---------- */
 const VW=1000, LX=132, RX=982, PW=RX-LX;
+/* The swimlane has its own geometry. Its left gutter only has to hold
+   "Session 1", so it starts at 68 instead of 132 and runs to the right
+   edge — about 9% more drawing width, which goes straight into block size. */
+const LVW=1000, LLX=76, LRX=998, LPW=LRX-LLX;
 
 /* ================= 1. GRAPH ================= */
+function segOf(n){
+  if(n.seg!=null) return n.seg;
+  const F=D.segfrac||[]; let k=0;
+  for(let j=1;j<F.length-1;j++) if(n.x>=F[j]) k=j;
+  return k;
+}
+/* Greedy lane packing: keep x true, spill downward only when boxes collide. */
+function packLanes(list,startLane){
+  const lanes=[]; let max=startLane-1;
+  list.forEach(n=>{
+    n.px=Math.max(LX+n.w/2,Math.min(RX-n.w/2,n.px));
+    let L=-1,shift=0;
+    for(let j=0;j<lanes.length;j++){
+      const need=lanes[j]+9-(n.px-n.w/2);
+      if(need<=0){L=j;shift=0;break}
+      if(need<=34 && n.px+need+n.w/2<=RX){L=j;shift=need;break}
+    }
+    if(L<0){lanes.push(0);L=lanes.length-1;shift=0}
+    n.px+=shift; lanes[L]=n.px+n.w/2; n.lane=startLane+L;
+    max=Math.max(max,n.lane);
+  });
+  return {lanes:Math.max(1,lanes.length),max:max};
+}
 function drawGraph(){
   const N=D.nodes.map(n=>Object.assign({},n));
-  const rows=CATS.filter(c=>N.some(n=>n.c===c));
-  const RI={}; rows.forEach((c,i)=>RI[c]=i);
-  N.forEach(n=>{const p=n.k.split(" ");n.v=p[0];n.o=p.slice(1).join(" ");
+  N.forEach(n=>{const p=(n.lab||n.k).split(" ");n.v=n.lv||p[0];n.o=n.ln||p.slice(1).join(" ");
     n.w=Math.max(n.v.length*7.1,n.o.length*6.3)+22; n.px=LX+n.x*PW;});
-  /* pack each category into sub-lanes so x stays true to position */
-  const rowH=[]; let tot=0;
-  rows.forEach((c,ri)=>{
-    const g=N.filter(n=>n.c===c).sort((a,b)=>a.px-b.px), lanes=[];
-    const TOL=34; /* allow this much nudge before spilling to a new sub-lane */
-    g.forEach(n=>{
-      n.px=Math.max(LX+n.w/2,Math.min(RX-n.w/2,n.px));
-      let L=-1,shift=0;
-      for(let j=0;j<lanes.length;j++){
-        const need=lanes[j]+9-(n.px-n.w/2);
-        if(need<=0){L=j;shift=0;break}
-        if(need<=TOL && n.px+need+n.w/2<=RX){L=j;shift=need;break}
-      }
-      if(L<0){lanes.push(0);L=lanes.length-1;shift=0}
-      n.px+=shift; lanes[L]=n.px+n.w/2; n.lane=L;
+  const F=D.segfrac||Array.from({length:D.steps.length+2},(_,i)=>i/(D.steps.length+1));
+  const rowsC=CATS.filter(c=>N.some(n=>n.c===c));
+  let H, rowH=[], bandTint="";
+
+  if(grouping==="cat"){
+    /* rows = kind of action */
+    let tot=0;
+    rowsC.forEach((c,ri)=>{
+      const g=N.filter(n=>n.c===c).sort((a,b)=>a.px-b.px);
+      const r=packLanes(g,0);
+      g.forEach(n=>n.y=52+tot+n.lane*40);
+      rowH[ri]={top:tot,lanes:r.lanes}; tot+=r.lanes*40+14;
     });
-    rowH[ri]={top:tot,lanes:Math.max(1,lanes.length)}; tot+=Math.max(1,lanes.length)*40+14;
-  });
-  N.forEach(n=>{const ri=RI[n.c];n.y=52+rowH[ri].top+n.lane*40});
-  const RY=i=>52+rowH[i].top, H=52+tot+8;
-  let s=`<svg viewBox="0 0 ${VW} ${H}" role="img" aria-label="Recurring actions by kind and typical position">
+    H=52+tot+8;
+  }else{
+    /* grouped by recipe step: the step is a labelled column, so vertical
+       space is spent on packing instead of on a second copy of the verb
+       category (which the colour already carries). Consecutive actions end
+       up near each other, so the arrows stop crossing the whole canvas. */
+    const g=N.slice().sort((a,b2)=>a.px-b2.px);
+    const r=packLanes(g,0);
+    N.forEach(n=>n.y=52+n.lane*40);
+    H=52+(r.max+1)*40+30;
+    for(let b=0;b<F.length-1;b++){
+      const x0=LX+F[b]*PW,x1=LX+F[b+1]*PW;
+      bandTint+=`<rect x="${x0.toFixed(1)}" y="34" width="${(x1-x0).toFixed(1)}" height="${H-44}" fill="var(--shade)" fill-opacity="${b%2?0:.55}"/>`;
+    }
+  }
+
+  let s=`<svg viewBox="0 0 ${VW} ${H}" role="img" aria-label="Recurring actions and typical position">
   <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M2 1.5L8 5L2 8.5" fill="none" stroke="context-stroke" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>`;
-  // milestone guides
-  const K=D.steps.length+1;
-  for(let i=1;i<K;i++){const x=LX+i/K*PW;
+  s+=bandTint;
+  for(let i=1;i<F.length-1;i++){const x=LX+F[i]*PW;
     s+=`<line x1="${x.toFixed(1)}" y1="34" x2="${x.toFixed(1)}" y2="${H-10}" stroke="var(--rule)" stroke-width="1"/>`}
   s+=`<text x="${LX}" y="24" font-size="11.5" fill="var(--soft)">start of recipe</text>`;
   s+=`<text x="${RX}" y="24" text-anchor="end" font-size="11.5" fill="var(--soft)">end</text>`;
-  rows.forEach((c,i)=>{const y=RY(i),ln=rowH[i].lanes;
-    s+=`<line x1="${LX-10}" y1="${y-21}" x2="${RX}" y2="${y-21}" stroke="var(--rule2)" stroke-width="1"/>
-    <text x="${LX-18}" y="${y+4}" text-anchor="end" font-size="12.5" fill="${cc(c)}">${c}</text>`;
-    for(let j=0;j<ln;j++)s+=`<line x1="${LX-10}" y1="${y+j*40}" x2="${RX}" y2="${y+j*40}" stroke="var(--rule2)" stroke-width=".6" stroke-dasharray="2 4"/>`});
-  D.edges.forEach(([a,b,p,ns])=>{const na=N[a],nb=N[b],ya=na.y,yb=nb.y,back=nb.px<na.px;
+
+  if(grouping==="cat"){
+    rowsC.forEach((c,i)=>{const y=52+rowH[i].top,ln=rowH[i].lanes;
+      s+=`<line x1="${LX-10}" y1="${y-21}" x2="${RX}" y2="${y-21}" stroke="var(--rule2)" stroke-width="1"/>
+      <text x="${LX-18}" y="${y+4}" text-anchor="end" font-size="12.5" fill="${cc(c)}">${c}</text>`;
+      for(let j=0;j<ln;j++)s+=`<line x1="${LX-10}" y1="${y+j*40}" x2="${RX}" y2="${y+j*40}" stroke="var(--rule2)" stroke-width=".6" stroke-dasharray="2 4"/>`});
+  }else{
+    D.steps.forEach((st,i)=>{const x=LX+(F[i]+F[i+1])/2*PW;
+      s+=`<text x="${x.toFixed(1)}" y="${H-14}" text-anchor="middle" font-size="11.5" fill="var(--soft)">${st.short||st.id.split("_").pop()}</text>`});
+    s+=`<text x="${LX-18}" y="56" text-anchor="end" font-size="12.5" fill="var(--soft)">actions</text>`;
+  }
+
+  /* transitions. Width = how likely, darkness = how many sessions.
+     No printed numbers: the encoding is the number. Exact values on hover. */
+  D.edges.forEach(([a,b,p,ns,kind])=>{
+    if(mainOnly && !(kind===0 && p>=.34)) return;
+    const na=N[a],nb=N[b],ya=na.y,yb=nb.y,back=nb.px<na.px;
     const sx=na.px+(back?-na.w/2:na.w/2), ex=nb.px+(back?nb.w/2+7:-nb.w/2-7), my=(ya+yb)/2+(back?24:-12);
-    s+=`<path class="ed" data-a="${a}" data-b="${b}" d="M${sx.toFixed(1)} ${ya} C${((sx+ex)/2).toFixed(1)} ${my.toFixed(1)} ${((sx+ex)/2).toFixed(1)} ${my.toFixed(1)} ${ex.toFixed(1)} ${yb}" fill="none" stroke="${ns>=3?"#9AA1A8":"#C3C8CC"}" stroke-width="${(.7+p*3.2).toFixed(2)}" marker-end="url(#ah)"/>`});
+    const bb=kind===1;
+    s+=`<path class="ed" data-a="${a}" data-b="${b}" data-kind="${kind||0}" d="M${sx.toFixed(1)} ${ya} C${((sx+ex)/2).toFixed(1)} ${my.toFixed(1)} ${((sx+ex)/2).toFixed(1)} ${my.toFixed(1)} ${ex.toFixed(1)} ${yb}" fill="none" stroke="${bb?"#D6DADD":(ns>=3?"#9AA1A8":"#C3C8CC")}" stroke-width="${(bb?.8:(.7+p*3.2)).toFixed(2)}" ${bb?'stroke-dasharray="3 3"':""} marker-end="url(#ah)"><title>${na.lab||na.k} \u2192 ${nb.lab||nb.k}: ${(p*100).toFixed(0)}% of the time, seen in ${ns} session${ns>1?"s":""}${bb?" \u2014 kept so this action is not a dead end":""}</title></path>`});
+
+  (D.loops||[]).forEach(([i,p,ns])=>{const n=N[i],x=n.px+n.w/2-6,y=n.y-17;
+    s+=`<path class="ed" data-a="${i}" data-b="${i}" d="M${x} ${y} c 8 -12, 22 -12, 26 0 c 2 7, -6 11, -13 8" fill="none" stroke="#9AA1A8" stroke-width="${(.7+p*2.4).toFixed(2)}" marker-end="url(#ah)"><title>repeats immediately ${(p*100).toFixed(0)}% of the time</title></path>`});
+
+  /* residual: the mark says "there is more here", the tooltip says how much */
+  N.forEach((n,i)=>{if(!(n.res>0.08))return;const x=n.px+n.w/2+3,y=n.y+13;
+    s+=`<g opacity=".7"><line x1="${x}" y1="${y}" x2="${(x+7+n.res*14).toFixed(1)}" y2="${y}" stroke="#C3C8CC" stroke-width="1" stroke-dasharray="2 2"/>
+      <title>${Math.round(n.res*100)}% of the time this is followed by something seen in only one session, not drawn here</title></g>`});
+
+  /* Session start / end markers removed: two more glyph shapes on a canvas
+     that already carries boxes, arrows, loops and dashes cost more than the
+     fact is worth. D.starts and D.ends are still in the data. */
+
   N.forEach((n,i)=>{const y=n.y,col=cc(n.c);
-    s+=`<g class="nd" data-i="${i}" tabindex="0" role="button" aria-label="${n.k}, ${n.ct} instances">
+    s+=`<g class="nd" data-i="${i}" tabindex="0" role="button" aria-label="${n.lab||n.k}, ${n.c}">
       <rect x="${(n.px-n.w/2).toFixed(1)}" y="${y-17}" width="${n.w.toFixed(1)}" height="34" rx="6" fill="${col}" fill-opacity=".12" stroke="${col}" stroke-width=".9"/>
       <text x="${n.px.toFixed(1)}" y="${y-3}" text-anchor="middle" font-size="12" fill="var(--ink)">${n.v}</text>
       <text x="${n.px.toFixed(1)}" y="${y+9.5}" text-anchor="middle" font-size="10.5" fill="var(--mid)">${n.o}</text>
-      <text x="${(n.px+n.w/2-4).toFixed(1)}" y="${y-20}" text-anchor="end" font-size="10" fill="var(--soft)">${n.ct}</text></g>`});
+      <title>${n.lab||n.k} \u2014 ${n.ct} times across ${n.ns} of ${D.sessions.length} sessions</title></g>`});
   $("graph").innerHTML=s+"</svg>";
-  $("graph").querySelectorAll(".nd").forEach(g=>{
+  const svg=$("graph");
+  svg.querySelectorAll(".nd").forEach(g=>{
     g.style.cursor="pointer";
-    const go=()=>pickNode(+g.dataset.i);
+    const i=+g.dataset.i, go=()=>pickNode(i);
     g.onclick=go; g.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}};
+    /* focus plus context: hovering isolates what connects to this node */
+    g.onmouseenter=()=>focusNode(i); g.onmouseleave=()=>focusNode(null);
+    g.onfocus=()=>focusNode(i); g.onblur=()=>focusNode(null);
   });
   paintGraph();
   $("legend").innerHTML=CATS.filter(c=>D.nodes.some(n=>n.c===c))
     .map(c=>`<span><i class="sw" style="background:${cc(c)}"></i>${c}</span>`).join("")
-    +`<span style="color:var(--soft)">number at top right of a box = how many times it happens</span>`;
+    +`<span style="color:var(--soft)">thicker arrow = more likely next; dashed = seen in one session only</span>`;
+}
+function focusNode(i){
+  const svg=$("graph"); if(!svg) return;
+  if(i===null){svg.querySelectorAll(".ed").forEach(e=>e.style.opacity="");
+    svg.querySelectorAll(".nd").forEach(g=>g.style.opacity="");paintGraph();return}
+  const near=new Set([i]);
+  svg.querySelectorAll(".ed").forEach(e=>{
+    const a=+e.dataset.a,b=+e.dataset.b,on=(a===i||b===i);
+    e.style.opacity=on?1:.08; if(on){near.add(a);near.add(b)}});
+  svg.querySelectorAll(".nd").forEach(g=>g.style.opacity=near.has(+g.dataset.i)?1:.22);
 }
 function paintGraph(){
   $("graph").querySelectorAll(".nd").forEach(g=>{
@@ -262,56 +373,80 @@ function pickNode(i){
 }
 
 /* ================= 2. LANES ================= */
+/* Block width used to be hard-coded at 3.4 units, which is under three
+   pixels once the swimlane sits in a half-width column. Instead, measure how
+   much room the blocks actually have: take the median gap between visible
+   neighbours and fill most of it. Dense stretches still abut, but a lone
+   action in a quiet stretch becomes a real click target. */
+function blockW(sIdx,x0,x1){
+  const n=D.sessions[sIdx].a.filter(t=>t[4]>=x0-.002&&t[4]<=x1+.002).length;
+  if(n<2) return 22;
+  /* Budget the lane's whole width across the blocks in it rather than
+     following local gaps: 68 blocks in 850 units can afford 11 units each.
+     Clustered runs then overlap into a solid band, which is what a burst of
+     back-to-back actions actually is, and the white edge keeps them countable. */
+  return Math.max(6,Math.min(22,LPW/n*0.9));
+}
 function laneBlocks(sIdx,y,h,x0,x1,click){
   const s=D.sessions[sIdx]; let out="";
+  const W=click?blockW(sIdx,x0,x1):Math.max(3,blockW(sIdx,x0,x1)*.55);
   s.a.forEach((a,i)=>{
     const t=a[4]; if(t<x0-.002||t>x1+.002) return;
-    const w=Math.max(2.2,(x1-x0<.35?7:3.4));
-    const px=LX+(t-x0)/(x1-x0)*PW;
+    const w=W;
+    const px=LLX+(t-x0)/(x1-x0)*LPW;
     const lit=selNode===null||a[0]===selNode;
     const isCur=cur&&cur[0]===sIdx&&cur[1]===i;
     const done=labels[iid(sIdx,i)];
-    out+=`<rect class="bk" ${click?`data-r="${sIdx}" data-i="${i}" tabindex="0" role="button" aria-label="${nameOf(a)}"`:""} x="${(px-w/2).toFixed(1)}" y="${y}" width="${w}" height="${h}" rx="1.5" fill="${done?"var(--accent)":cc(a[1])}" fill-opacity="${lit?(done?.95:.72):.10}" ${isCur?'stroke="var(--ink)" stroke-width="1.6"':""}/>`;
+    out+=`<rect class="bk" ${click?`data-r="${sIdx}" data-i="${i}" tabindex="0" role="button" aria-label="${nameOf(a)}"`:""} x="${(px-w/2).toFixed(1)}" y="${y}" width="${w.toFixed(2)}" height="${h}" rx="2" fill="${done?"var(--accent)":cc(a[1])}" fill-opacity="${lit?(done?.95:.78):.10}" ${isCur?'stroke="var(--ink)" stroke-width="1.8"':(click?'stroke="var(--panel)" stroke-width="0.7"':"")}/>`;
   });
   return out;
 }
 function drawLanes(){
   const K=D.steps.length+1, S=D.sessions;
-  /* --- overview --- */
-  const OH=34+S.length*34+30;
-  let o=`<svg viewBox="0 0 ${VW} ${OH}" role="img" aria-label="Overview of all sessions">`;
-  for(let i=1;i<K;i++){const x=LX+i/K*PW;
-    o+=`<line x1="${x.toFixed(1)}" y1="22" x2="${x.toFixed(1)}" y2="${34+S.length*34-6}" stroke="var(--rule)" stroke-width="1"/>`}
-  D.steps.forEach((st,i)=>{const x=LX+(i+.5)/K*PW;
-    o+=`<text x="${x.toFixed(1)}" y="16" text-anchor="middle" font-size="10.5" fill="var(--soft)">${st.id.split("_").pop()}</text>`});
-  S.forEach((s,r)=>{const y=30+r*34;
-    o+=`<text x="${LX-18}" y="${y+9}" text-anchor="end" font-size="12" fill="var(--ink)">${s.id}</text>
-        <text x="${LX-18}" y="${y+23}" text-anchor="end" font-size="10.5" fill="var(--soft)">${s.n} actions</text>
-        <rect x="${LX}" y="${y}" width="${PW}" height="22" fill="var(--shade)" rx="2"/>`;
-    o+=laneBlocks(r,y+2,18,0,1,false);});
-  const bx=LX+brush[0]*PW, bw=(brush[1]-brush[0])*PW;
-  o+=`<rect id="bsel" x="${bx.toFixed(1)}" y="24" width="${bw.toFixed(1)}" height="${S.length*34+2}" fill="var(--accent)" fill-opacity=".07" stroke="var(--accent)" stroke-width="1"/>
-      <rect id="bhit" x="${LX}" y="24" width="${PW}" height="${S.length*34+2}" fill="transparent" style="cursor:crosshair"/>
-      <text x="${LX}" y="${OH-8}" font-size="11.5" fill="var(--soft)">Drag across the strip to zoom in below.</text>`;
-  $("over").innerHTML=o+"</svg>";
+  /* The overview and the detail used to show the same picture twice, because
+     the detail defaults to the full range. The strip only earns its place once
+     you are zoomed in and need to know where the window sits. So: one lane
+     normally, drag on it to zoom, and the strip appears above as a locator. */
+  const zoomed = brush[0]>0.002 || brush[1]<0.998;
+  const OH=22+S.length*22+22;
+  if(!zoomed){ $("over").innerHTML=""; }
+  else{
+    let o=`<svg viewBox="0 0 ${LVW} ${OH}" role="img" aria-label="Where the zoomed window sits in the whole recipe">`;
+    o+=`<text x="${LLX-9}" y="14" text-anchor="end" font-size="10" fill="var(--soft)">whole</text>`;
+    for(let i=1;i<K;i++){const x=LLX+i/K*LPW;
+      o+=`<line x1="${x.toFixed(1)}" y1="6" x2="${x.toFixed(1)}" y2="${14+S.length*22}" stroke="var(--rule)" stroke-width="1"/>`}
+    S.forEach((s,r)=>{const y=8+r*22;
+      o+=`<rect x="${LLX}" y="${y}" width="${LPW}" height="16" fill="var(--shade)" rx="2"/>`;
+      o+=laneBlocks(r,y+2,12,0,1,false);});
+    const bx=LLX+brush[0]*LPW, bw=(brush[1]-brush[0])*LPW;
+    o+=`<rect id="bsel" x="${bx.toFixed(1)}" y="5" width="${bw.toFixed(1)}" height="${S.length*22+4}" fill="var(--accent)" fill-opacity=".09" stroke="var(--accent)" stroke-width="1"/>
+        <rect id="bhit" x="${LLX}" y="5" width="${LPW}" height="${S.length*22+4}" fill="transparent" style="cursor:crosshair"/>
+        <text x="${LLX}" y="${OH-6}" font-size="11.5" fill="var(--soft)">Showing part of the recipe. Double-click a lane to see all of it again.</text>`;
+    $("over").innerHTML=o+"</svg>";
+  }
 
   /* --- detail --- */
-  const DH=26+S.length*46+26;
-  let d=`<svg viewBox="0 0 ${VW} ${DH}" role="img" aria-label="Zoomed detail">`;
+  const DH=26+S.length*58+26;
+  let d=`<svg viewBox="0 0 ${LVW} ${DH}" role="img" aria-label="Zoomed detail">`;
   for(let i=0;i<=K;i++){const t=i/K; if(t<brush[0]||t>brush[1])continue;
-    const x=LX+(t-brush[0])/(brush[1]-brush[0])*PW;
-    d+=`<line x1="${x.toFixed(1)}" y1="16" x2="${x.toFixed(1)}" y2="${22+S.length*46-8}" stroke="var(--rule)" stroke-width="1"/>`}
-  const segPx=(1/K)/(brush[1]-brush[0])*PW;
+    const x=LLX+(t-brush[0])/(brush[1]-brush[0])*LPW;
+    d+=`<line x1="${x.toFixed(1)}" y1="16" x2="${x.toFixed(1)}" y2="${22+S.length*58-8}" stroke="var(--rule)" stroke-width="1"/>`}
+  const segPx=(1/K)/(brush[1]-brush[0])*LPW;
   D.steps.forEach((st,i)=>{const t=(i+.5)/K; if(t<brush[0]||t>brush[1])return;
-    const x=LX+(t-brush[0])/(brush[1]-brush[0])*PW, max=Math.floor(segPx/5.6);
-    if(max<6)return;
-    const txt=st.label.length>max?st.label.slice(0,max-1)+"\u2026":st.label;
+    const x=LLX+(t-brush[0])/(brush[1]-brush[0])*LPW, max=Math.floor(segPx/5.6);
+    if(max<5)return;
+    const full=st.short||st.label;
+    const txt=full.length>max?full.slice(0,max-1)+"\u2026":full;
     d+=`<text x="${x.toFixed(1)}" y="11" text-anchor="middle" font-size="10.5" fill="var(--soft)">${txt}</text>`});
-  S.forEach((s,r)=>{const y=22+r*46;
-    d+=`<text x="${LX-18}" y="${y+20}" text-anchor="end" font-size="12" fill="var(--ink)">${s.id}</text>
-        <rect x="${LX}" y="${y}" width="${PW}" height="32" fill="var(--shade)" rx="2"/>`;
-    d+=laneBlocks(r,y+3,26,brush[0],brush[1],true);});
-  $("detail").innerHTML=d+`<text x="${LX}" y="${DH-8}" font-size="11.5" fill="var(--soft)">Click a block to rate it. Vertical rules are recipe steps — the same step lines up across every session.</text></svg>`;
+  S.forEach((s,r)=>{const y=22+r*58;
+    d+=`<text x="${LLX-9}" y="${y+18}" text-anchor="end" font-size="11.5" fill="var(--ink)">${s.id}</text>
+        <text x="${LLX-9}" y="${y+31}" text-anchor="end" font-size="10" fill="var(--soft)">${s.n} actions</text>
+        <rect x="${LLX}" y="${y}" width="${LPW}" height="42" fill="var(--shade)" rx="2"/>`;});
+  /* behind the blocks, so a click still lands on a block and a drag on empty
+     lane background zooms instead */
+  d+=`<rect id="dhit" x="${LLX}" y="22" width="${LPW}" height="${S.length*58-16}" fill="transparent" style="cursor:crosshair"/>`;
+  S.forEach((s,r)=>{d+=laneBlocks(r,22+r*58+4,34,brush[0],brush[1],true);});
+  $("detail").innerHTML=d+`<text x="${LLX}" y="${DH-8}" font-size="11.5" fill="var(--soft)">Click a block to rate it${zoomed?"":"; drag across a lane to zoom in"}. Vertical rules are recipe steps — the same step lines up across every session.</text></svg>`;
   $("detail").querySelectorAll(".bk").forEach(b=>{
     b.style.cursor="pointer";
     const go=()=>{cur=[+b.dataset.r,+b.dataset.i];drawLanes();drawRate()};
@@ -324,14 +459,21 @@ function drawLanes(){
     : `${n.k} — ${n.ct} instances, in ${n.ns} of ${S.length} sessions. Consistent horizontal positions mean this action has a stable place in the recipe; scattered ones mean it does not.`;
 }
 function wireBrush(){
-  const hit=$("over").querySelector("#bhit"); if(!hit)return;
+  /* The strip maps to the whole recipe; the detail lane maps to whatever
+     window is currently shown, so dragging there narrows within it. */
+  bindBrush($("over").querySelector("#bhit"), ()=>[0,1]);
+  bindBrush($("detail").querySelector("#dhit"), ()=>brush.slice());
+}
+function bindBrush(hit,range){
+  if(!hit)return;
   let a=null;
-  const xOf=ev=>{const r=hit.getBoundingClientRect();
+  const tOf=ev=>{const r=hit.getBoundingClientRect();
     const cx=(ev.touches?ev.touches[0].clientX:ev.clientX)-r.left;
-    return Math.max(0,Math.min(1,cx/r.width));};
-  const down=e=>{a=xOf(e);e.preventDefault();
+    const f=Math.max(0,Math.min(1,cx/r.width)), w=range();
+    return w[0]+f*(w[1]-w[0]);};
+  const down=e=>{a=tOf(e);e.preventDefault();
     window.addEventListener("pointermove",move);window.addEventListener("pointerup",up);};
-  const move=e=>{const b=xOf(e);const lo=Math.min(a,b),hi=Math.max(a,b);
+  const move=e=>{const b=tOf(e);const lo=Math.min(a,b),hi=Math.max(a,b);
     if(hi-lo>.012){brush=[lo,hi];drawLanes()}};
   const up=()=>{window.removeEventListener("pointermove",move);window.removeEventListener("pointerup",up);a=null};
   hit.addEventListener("pointerdown",down);
@@ -351,32 +493,76 @@ function drawRate(){
     step_segment:Math.floor(a[4]*(D.steps.length+1))+1,
     prev:nameOf(pv),next:nameOf(nx),gap_after_s:gap?+gap:null,
     node_recurs_in_sessions:a[0]>=0?D.nodes[a[0]].ns:1,
-    label:rec.label||null,rationale:rec.why||null,traversal:mode};
+    label:rec.label||null,rationale:rec.why||null,traversal:mode,
+    rating_scope:rec.scope||"instance"};
+  const vid=s.vids[a[6]];
+  /* A 0.7s clip is unwatchable and gives the annotator nothing to judge.
+     Pad the window so there is lead-in and lead-out, but mark where the
+     rated action actually sits so the ground truth is not lost. */
+  const A0=a[2], A1=+(a[2]+a[3]).toFixed(2);
+  const PAD=Math.max(2.5,(9-a[3])/2);
+  const C0=Math.max(0,+(A0-PAD).toFixed(2)), C1=+(A1+PAD).toFixed(2);
+  const fr=t=>Math.max(0,Math.min(100,(t-C0)/(C1-C0)*100));
   box.innerHTML=`<div class="rate">
     <div class="clip">
-      <div class="thumb">clip ${a[2]}–${(a[2]+a[3]).toFixed(1)}s<br>not wired up yet</div>
-      <div style="flex:1;min-width:0">
-        <div class="cname">${nameOf(a)}</div>
+      <div class="clipcol">
+        <div class="clipv"><video id="clipv" src="${VIDEO_BASE}/${vid}.mp4#t=${C0},${C1}"
+          muted playsinline controls preload="metadata" data-s="${C0}" data-e="${C1}"
+          data-a0="${A0}" data-a1="${A1}"></video></div>
+        <div class="ctrack" title="the shaded part is the action you are rating"><div class="cact" style="left:${fr(A0)}%;width:${Math.max(1.5,fr(A1)-fr(A0))}%"></div><div class="chead" id="chead"></div></div>
+        <div class="cclip">clip ${C0}\u2013${C1}s \u00b7 rating the shaded ${a[3]}s \u00b7 ${vid}</div>
+      </div>
+      <div class="ctext">
+        <div class="cname">${nameOf(a)}${isOneOff(a)?' <span style="font-size:12px;color:var(--soft);font-weight:400">\u2014 happens only once</span>':""}</div>
         <div class="cmeta">${s.id} — action ${i+1} of ${s.n}, lasted ${a[3]}s</div>
+        ${a[0]>=0?(()=>{const n=D.nodes[a[0]],S=D.sessions.length,
+          stable=(n.xhi-n.xlo)<0.12;
+          return `<div class="cmeta">Happens in ${n.ns} of ${S} sessions, ${n.ct} times in all.
+            ${stable?"It lands in the same part of the recipe every time.":"Where it lands varies a lot between sessions."}
+            ${n.dmax>n.dmin*1.8?`Took between ${n.dmin}s and ${n.dmax}s.`:""}</div>`})()
+          :`<div class="cmeta">This exact action happened only once, in this session.</div>`}
         <div class="narr">${a[5]}</div>
         <div class="ctx">Comes after <b>${nameOf(pv)}</b>, then <b>${nameOf(nx)}</b>.${gap?` The hands are free for <b>${gap}s</b> afterwards.`:""}</div>
-      </div>
-    </div>
-    <div class="opts">${OPTS.map((o,k)=>`<button class="opt" data-o="${o}" aria-pressed="${rec.label===o}">${o} <kbd>${k+1}</kbd></button>`).join("")}</div>
+        <div class="opts">${OPTS.map((o,k)=>`<button class="opt" data-o="${o}" aria-pressed="${rec.label===o}">${o} <kbd>${k+1}</kbd></button>`).join("")}</div>
+    ${selNode!==null&&f.length>1?`<div class="bulk">
+      <span>All ${f.length} instances of <b>${nameOf(a)}</b>, across ${new Set(f.map(t=>t[0])).size} session${new Set(f.map(t=>t[0])).size>1?"s":""}.</span>
+      <button id="bulkAll" ${rec.label?"":"disabled"}>Give all of them this rating</button>
+      <span>${rec.label?"":"pick a rating first"}</span></div>`:""}
     <textarea class="why" id="why" placeholder="Why? (optional, but please fill it in for the first few)">${rec.why||""}</textarea>
     <div class="nav">
       <button id="prev">Previous</button><button id="next">Next</button>
       <span>${at+1} of ${f.length} in this pass — <kbd>left</kbd> <kbd>right</kbd> to move, <kbd>1</kbd>–<kbd>3</kbd> to rate</span>
     </div>
+      </div>
+    </div>
     <div class="row">${JSON.stringify(row)}</div></div>`;
+  /* Media fragments are advisory: Safari ignores the end time and every
+     browser lets you scrub past it. Clamp playback to the clip ourselves. */
+  const cv=box.querySelector("#clipv");
+  if(cv){const t0=+cv.dataset.s, t1=+cv.dataset.e, hd=box.querySelector("#chead");
+    const seek=()=>{if(cv.currentTime<t0-.05||cv.currentTime>t1+.05)cv.currentTime=t0};
+    cv.addEventListener("loadedmetadata",seek,{once:true});
+    cv.addEventListener("timeupdate",()=>{
+      if(hd)hd.style.left=Math.max(0,Math.min(100,(cv.currentTime-t0)/(t1-t0)*100))+"%";
+      if(cv.currentTime>t1){cv.pause();cv.currentTime=t0}});
+    cv.addEventListener("error",()=>{cv.parentElement.innerHTML=
+      `<div style="color:#888;font-size:11.5px;padding:14px;text-align:center">clip unavailable<br>${cv.src.split("/").pop()}</div>`});
+  }
   box.querySelectorAll(".opt").forEach(b=>b.onclick=()=>setLabel(b.dataset.o));
+  const bk=box.querySelector("#bulkAll");
+  if(bk)bk.onclick=()=>{
+    const lab=rec.label; if(!lab)return;
+    flat().forEach(t=>{const j=iid(t[0],t[1]);
+      labels[j]=Object.assign({},labels[j],{label:lab,scope:"node"})});
+    save(); drawLanes(); drawRate();
+  };
   $("why").onchange=e=>{labels[id]=Object.assign({},labels[id],{why:e.target.value});save()};
   $("prev").onclick=()=>step(-1); $("next").onclick=()=>step(1);
   $("prog").textContent=Object.values(labels).filter(v=>v&&v.label).length+" rated";
 }
 function setLabel(o){
   if(!cur)return; const id=iid(cur[0],cur[1]);
-  labels[id]=Object.assign({},labels[id],{label:o}); save();
+  labels[id]=Object.assign({},labels[id],{label:o,scope:"instance"}); save();
   drawLanes(); drawRate();
   setTimeout(()=>step(1),160);
 }
@@ -408,6 +594,12 @@ function load(k){
 }
 $("recipe").innerHTML=Object.keys(DATA).map(k=>`<option value="${k}">${k} — ${DATA[k].name}</option>`).join("");
 $("recipe").onchange=e=>load(e.target.value);
+document.querySelectorAll(".gbtn").forEach(b=>b.onclick=()=>{
+  grouping=b.dataset.g;
+  document.querySelectorAll(".gbtn").forEach(o=>o.classList.toggle("on",o===b));
+  drawGraph();
+});
+$("mainOnly").onchange=e=>{mainOnly=e.target.checked;drawGraph()};
 $("mChron").onclick=()=>{selNode=null;paintGraph();setMode("chron")};
 $("mNode").onclick=()=>setMode("node");
 $("export").onclick=()=>{
@@ -418,7 +610,9 @@ $("export").onclick=()=>{
       verb_category:a[1],clip:[a[2],+(a[2]+a[3]).toFixed(1)],duration_s:a[3],
       aligned_position:a[4],prev:i>0?(s.a[i-1][0]>=0?DATA[k].nodes[s.a[i-1][0]].k:"one-off"):null,
       next:i<s.a.length-1?(s.a[i+1][0]>=0?DATA[k].nodes[s.a[i+1][0]].k:"one-off"):null,
-      label:rec.label,rationale:rec.why||null});})));
+      node_label:a[0]>=0?(DATA[k].nodes[a[0]].lab||DATA[k].nodes[a[0]].k):(a[8]||null),
+      narration_id:a[7]||null,
+      label:rec.label,rationale:rec.why||null,rating_scope:rec.scope||"instance"});})));
   const b=new Blob([JSON.stringify(rows,null,1)],{type:"application/json"});
   const u=URL.createObjectURL(b), a=document.createElement("a");
   a.href=u; a.download="proactivity_labels.json"; a.click(); URL.revokeObjectURL(u);

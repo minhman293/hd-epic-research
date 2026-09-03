@@ -1,0 +1,555 @@
+{
+ "recipe": "P01_R01",
+ "name": "Nespresso",
+ "generated": "2026-09-03 14:30",
+ "params": {
+  "min_sessions": 2,
+  "node_definition": "verb key + noun category",
+  "transitions": "contract",
+  "segment_weights": "uniform",
+  "llm": "gemini-3.5-flash-lite"
+ },
+ "stage0_load": {
+  "pair_source": {
+   "main_action_classes": 373
+  },
+  "multi_action_narrations": 0,
+  "unmapped_class_ids": 0
+ },
+ "stage1_scope": [
+  {
+   "session": 1,
+   "videos": [
+    "P01-20240202-110250"
+   ],
+   "actions_in_videos": 224,
+   "kept": 40,
+   "dropped_other_activity": 184,
+   "span_s": 155.0
+  },
+  {
+   "session": 2,
+   "videos": [
+    "P01-20240203-093333"
+   ],
+   "actions_in_videos": 68,
+   "kept": 68,
+   "dropped_other_activity": 0,
+   "span_s": 152.9
+  },
+  {
+   "session": 3,
+   "videos": [
+    "P01-20240204-095114"
+   ],
+   "actions_in_videos": 81,
+   "kept": 52,
+   "dropped_other_activity": 29,
+   "span_s": 164.5
+  }
+ ],
+ "stage3_identity_table": {
+  "verb key + noun key": 81,
+  "verb key + noun category": 63,
+  "verb category + noun category": 49,
+  "verb key alone": 26,
+  "verb category alone": 10
+ },
+ "stage4_alignment": {
+  "segments": 6,
+  "seg_fractions": [
+   0.0,
+   0.16666666666666666,
+   0.3333333333333333,
+   0.5,
+   0.6666666666666666,
+   0.8333333333333334,
+   1.0
+  ],
+  "notes": [
+   {
+    "session": 1,
+    "notes": [
+     {
+      "step": "P01_R01_S02",
+      "issue": "2 occurrences, used last end"
+     },
+     {
+      "step": "-",
+      "issue": "1 zero-length segment(s) from out-of-order or revisited steps"
+     }
+    ]
+   },
+   {
+    "session": 2,
+    "notes": [
+     {
+      "step": "P01_R01_S02",
+      "issue": "3 occurrences, used last end"
+     },
+     {
+      "step": "-",
+      "issue": "1 zero-length segment(s) from out-of-order or revisited steps"
+     }
+    ]
+   },
+   {
+    "session": 3,
+    "notes": [
+     {
+      "step": "P01_R01_S02",
+      "issue": "2 occurrences, used last end"
+     },
+     {
+      "step": "-",
+      "issue": "1 zero-length segment(s) from out-of-order or revisited steps"
+     }
+    ]
+   }
+  ]
+ },
+ "stage5_recurrence": {
+  "total_types": 63,
+  "total_instances": 160,
+  "coverage_by_threshold": {
+   "1": {
+    "types": 63,
+    "instances": 160,
+    "coverage": 1.0
+   },
+   "2": {
+    "types": 27,
+    "instances": 121,
+    "coverage": 0.756
+   },
+   "3": {
+    "types": 12,
+    "instances": 69,
+    "coverage": 0.431
+   }
+  },
+  "chosen": 2,
+  "requested": 2,
+  "n_sessions": 3
+ },
+ "stage6_graph": {
+  "nodes": 27,
+  "edges_core": 24,
+  "edges_backbone": 14,
+  "edges_hidden": 42,
+  "self_loops": 7,
+  "contracted_oneoff_steps": 39,
+  "orphans": {
+   "no_outgoing": [],
+   "no_incoming": []
+  },
+  "residual_mass_max": 0.8
+ },
+ "stage7_labels": {
+  "take crockery": {
+   "rule": [
+    "take",
+    "cup"
+   ],
+   "llm": [
+    "pick up",
+    "mug"
+   ],
+   "used": [
+    "pick up",
+    "mug"
+   ],
+   "source": "llm"
+  },
+  "lift cookware": {
+   "rule": [
+    "lift",
+    "cookware"
+   ],
+   "llm": [
+    "lift",
+    "handle"
+   ],
+   "used": [
+    "lift",
+    "handle"
+   ],
+   "source": "llm"
+  },
+  "turn crockery": {
+   "rule": [
+    "turn",
+    "cup"
+   ],
+   "llm": [
+    "turn",
+    "mug"
+   ],
+   "used": [
+    "turn",
+    "mug"
+   ],
+   "source": "llm"
+  },
+  "put crockery": {
+   "rule": [
+    "put",
+    "crockery"
+   ],
+   "llm": [
+    "put down",
+    "mug"
+   ],
+   "used": [
+    "put down",
+    "mug"
+   ],
+   "source": "llm"
+  },
+  "take drinks": {
+   "rule": [
+    "take",
+    "coffee"
+   ],
+   "llm": [
+    "pick up",
+    "coffee pod"
+   ],
+   "used": [
+    "pick up",
+    "coffee pod"
+   ],
+   "source": "llm"
+  },
+  "open storage": {
+   "rule": [
+    "open",
+    "cupboard"
+   ],
+   "llm": [
+    "open",
+    "cupboard"
+   ],
+   "used": [
+    "open",
+    "cupboard"
+   ],
+   "source": "llm"
+  },
+  "open furniture": {
+   "rule": [
+    "open",
+    "drawer"
+   ],
+   "llm": [
+    "open",
+    "compartment"
+   ],
+   "used": [
+    "open",
+    "compartment"
+   ],
+   "source": "llm"
+  },
+  "put drinks": {
+   "rule": [
+    "put",
+    "coffee"
+   ],
+   "llm": [
+    "insert",
+    "coffee pod"
+   ],
+   "used": [
+    "insert",
+    "coffee pod"
+   ],
+   "source": "llm"
+  },
+  "take containers": {
+   "rule": [
+    "take",
+    "bottle"
+   ],
+   "llm": [
+    "pick up",
+    "milk bottle"
+   ],
+   "used": [
+    "pick up",
+    "milk bottle"
+   ],
+   "source": "llm"
+  },
+  "close containers": {
+   "rule": [
+    "close",
+    "containers"
+   ],
+   "llm": [
+    "close",
+    "lid"
+   ],
+   "used": [
+    "close",
+    "lid"
+   ],
+   "source": "llm"
+  },
+  "put containers": {
+   "rule": [
+    "put",
+    "bottle"
+   ],
+   "llm": [
+    "put down",
+    "milk bottle"
+   ],
+   "used": [
+    "put down",
+    "milk bottle"
+   ],
+   "source": "llm"
+  },
+  "turn-on dairy and eggs": {
+   "rule": [
+    "turn on",
+    "milk"
+   ],
+   "llm": [
+    "turn on",
+    "milk frother"
+   ],
+   "used": [
+    "turn on",
+    "milk frother"
+   ],
+   "source": "llm"
+  },
+  "open containers": {
+   "rule": [
+    "open",
+    "containers"
+   ],
+   "llm": [
+    "open",
+    "milk bottle"
+   ],
+   "used": [
+    "open",
+    "milk bottle"
+   ],
+   "source": "llm"
+  },
+  "lift containers": {
+   "rule": [
+    "lift",
+    "lid"
+   ],
+   "llm": [
+    "lift",
+    "lid"
+   ],
+   "used": [
+    "lift",
+    "lid"
+   ],
+   "source": "llm"
+  },
+  "press appliances": {
+   "rule": [
+    "press",
+    "button"
+   ],
+   "llm": [
+    "press",
+    "button"
+   ],
+   "used": [
+    "press",
+    "button"
+   ],
+   "source": "llm"
+  },
+  "close appliances": {
+   "rule": [
+    "close",
+    "appliances"
+   ],
+   "llm": [
+    "close",
+    "fridge"
+   ],
+   "used": [
+    "close",
+    "fridge"
+   ],
+   "source": "llm"
+  },
+  "open appliances": {
+   "rule": [
+    "open",
+    "fridge"
+   ],
+   "llm": [
+    "open",
+    "fridge"
+   ],
+   "used": [
+    "open",
+    "fridge"
+   ],
+   "source": "llm"
+  },
+  "pour dairy and eggs": {
+   "rule": [
+    "pour",
+    "milk"
+   ],
+   "llm": [
+    "pour",
+    "milk"
+   ],
+   "used": [
+    "pour",
+    "milk"
+   ],
+   "source": "llm"
+  },
+  "take dairy and eggs": {
+   "rule": [
+    "take",
+    "milk"
+   ],
+   "llm": [
+    "pick up",
+    "milk frother"
+   ],
+   "used": [
+    "pick up",
+    "milk frother"
+   ],
+   "source": "llm"
+  },
+  "pat dairy and eggs": {
+   "rule": [
+    "pat",
+    "milk"
+   ],
+   "llm": [
+    "tap",
+    "milk frother"
+   ],
+   "used": [
+    "tap",
+    "milk frother"
+   ],
+   "source": "llm"
+  },
+  "lift dairy and eggs": {
+   "rule": [
+    "lift",
+    "milk"
+   ],
+   "llm": [
+    "tilt",
+    "milk frother"
+   ],
+   "used": [
+    "tilt",
+    "milk frother"
+   ],
+   "source": "llm"
+  },
+  "put dairy and eggs": {
+   "rule": [
+    "put",
+    "milk"
+   ],
+   "llm": [
+    "put down",
+    "milk frother"
+   ],
+   "used": [
+    "put down",
+    "milk frother"
+   ],
+   "source": "llm"
+  },
+  "wash dairy and eggs": {
+   "rule": [
+    "wash",
+    "milk"
+   ],
+   "llm": [
+    "wash",
+    "milk frother"
+   ],
+   "used": [
+    "wash",
+    "milk frother"
+   ],
+   "source": "llm"
+  },
+  "mix drinks": {
+   "rule": [
+    "mix",
+    "coffee"
+   ],
+   "llm": [
+    "stir",
+    "coffee"
+   ],
+   "used": [
+    "stir",
+    "coffee"
+   ],
+   "source": "llm"
+  },
+  "shake cutlery": {
+   "rule": [
+    "shake",
+    "spoon"
+   ],
+   "llm": [
+    "shake",
+    "stirrer"
+   ],
+   "used": [
+    "shake",
+    "stirrer"
+   ],
+   "source": "llm"
+  },
+  "throw cutlery": {
+   "rule": [
+    "throw",
+    "spoon"
+   ],
+   "llm": [
+    "throw away",
+    "stirrer"
+   ],
+   "used": [
+    "throw away",
+    "stirrer"
+   ],
+   "source": "llm"
+  },
+  "close rubbish": {
+   "rule": [
+    "close",
+    "bin"
+   ],
+   "llm": [
+    "close",
+    "bin"
+   ],
+   "used": [
+    "close",
+    "bin"
+   ],
+   "source": "llm"
+  }
+ }
+}
